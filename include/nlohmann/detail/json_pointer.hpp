@@ -228,7 +228,7 @@ class json_pointer
         }
 
         const char* p = s.c_str();
-        char* p_end = nullptr;
+        char* p_end = nullptr; // NOLINT(misc-const-correctness)
         errno = 0; // strtoull doesn't reset errno
         const unsigned long long res = std::strtoull(p, &p_end, 10); // NOLINT(runtime/int)
         if (p == p_end // invalid input or empty string

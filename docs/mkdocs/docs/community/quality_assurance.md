@@ -54,8 +54,9 @@ violations will result in a failed build.
         | Clang 16.0.6                                 | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
         | Clang 17.0.6                                 | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
         | Clang 18.1.8                                 | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
-        | Clang 19.1.6                                 | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
-        | Clang 20.0.0                                 | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
+        | Clang 19.1.7                                 | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
+        | Clang 20.1.1                                 | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
+        | Clang 21.0.0                                 | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
         | GNU 4.8.5                                    | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
         | GNU 4.9.3                                    | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |
         | GNU 5.5.0                                    | x86_64       | Ubuntu 22.04.1 LTS       | GitHub    |

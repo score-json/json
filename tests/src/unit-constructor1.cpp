@@ -412,7 +412,7 @@ TEST_CASE("constructors")
 
         SECTION("char[]")
         {
-            char const s[] {"Hello world"}; // NOLINT(cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays,modernize-avoid-c-arrays)
+            const char s[] {"Hello world"}; // NOLINT(misc-const-correctness,cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays,modernize-avoid-c-arrays)
             json const j(s);
             CHECK(j.type() == json::value_t::string);
             CHECK(j == j_reference);
