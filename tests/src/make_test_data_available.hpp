@@ -18,7 +18,8 @@ namespace utils
 
 inline bool check_testsuite_downloaded()
 {
-    const std::unique_ptr<std::FILE, decltype(&std::fclose)> file(std::fopen(TEST_DATA_DIRECTORY "/README.md", "r"), &std::fclose);
+    using FilePtr = std::unique_ptr<FILE, int(*)(FILE*)>;
+    const FilePtr file(std::fopen(TEST_DATA_DIRECTORY "/README.md", "r"), std::fclose);
     return file != nullptr;
 }
 
