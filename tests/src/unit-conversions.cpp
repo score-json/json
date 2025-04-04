@@ -1658,6 +1658,31 @@ TEST_CASE("JSON to enum mapping")
 }
 
 #ifdef JSON_HAS_CPP_17
+#if JSON_HAS_FILESYSTEM || JSON_HAS_EXPERIMENTAL_FILESYSTEM
+TEST_CASE("std::filesystem::path")
+{
+    SECTION("ascii")
+    {
+        json const j_string = "Path";
+        auto p = j_string.template get<nlohmann::detail::std_fs::path>();
+        json const j_path = p;
+
+        CHECK(j_path.template get<std::string>() ==
+              j_string.template get<std::string>());
+    }
+
+    SECTION("utf-8")
+    {
+        json const j_string = "P\xc4\x9b\xc5\xa1ina";
+        auto p = j_string.template get<nlohmann::detail::std_fs::path>();
+        json const j_path = p;
+
+        CHECK(j_path.template get<std::string>() ==
+              j_string.template get<std::string>());
+    }
+}
+#endif
+
 #ifndef JSON_USE_IMPLICIT_CONVERSIONS
 TEST_CASE("std::optional")
 {
