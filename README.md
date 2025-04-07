@@ -1199,7 +1199,7 @@ To use this library from a CMake project, you can locate it directly with `find_
 
 ```cmake
 # CMakeLists.txt
-find_package(nlohmann_json 3.11.3 REQUIRED)
+find_package(nlohmann_json 3.12.0 REQUIRED)
 ...
 add_library(foo ...)
 ...
@@ -1243,7 +1243,7 @@ Example:
 ```cmake
 include(FetchContent)
 
-FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz)
+FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.12.0/json.tar.xz)
 FetchContent_MakeAvailable(json)
 
 target_link_libraries(foo PRIVATE nlohmann_json::nlohmann_json)
@@ -1275,7 +1275,7 @@ target_link_libraries(foo PRIVATE nlohmann_json::nlohmann_json)
 # thirdparty/CMakeLists.txt
 ...
 if(FOO_USE_EXTERNAL_JSON)
-  find_package(nlohmann_json 3.11.3 REQUIRED)
+  find_package(nlohmann_json 3.12.0 REQUIRED)
 else()
   set(JSON_BuildTests OFF CACHE INTERNAL "")
   add_subdirectory(nlohmann_json)
