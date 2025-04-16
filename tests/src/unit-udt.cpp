@@ -841,7 +841,7 @@ class Evil
   public:
     Evil() = default;
     template <typename T>
-    Evil(T t) : m_i(sizeof(t))
+    Evil(const T& t) : m_i(sizeof(t))
     {
         static_cast<void>(t); // fix MSVC's C4100 warning
     }
@@ -863,6 +863,10 @@ TEST_CASE("Issue #924")
     // silence Wunused-template warnings
     Evil e(1);
     CHECK(e.m_i >= 0);
+
+    // suppress warning: function "<unnamed>::Evil::Evil(T) [with T=std::string]" was declared but never referenced [declared_but_not_referenced]
+    Evil e2(std::string("foo"));
+    CHECK(e2.m_i >= 0);
 }
 
 TEST_CASE("Issue #1237")
