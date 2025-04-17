@@ -12601,17 +12601,22 @@ class binary_reader
         {
             return;
         }
-        if constexpr(std::is_integral_v<NumberType>)
+        else if constexpr(std::is_integral_v<NumberType>)
         {
             number = std::byteswap(number);
             return;
         }
-#endif
-        auto* ptr = reinterpret_cast<std::uint8_t*>(&number);
-        for (std::size_t i = 0; i < sz / 2; ++i)
+        else
         {
-            std::swap(ptr[i], ptr[sz - i - 1]);
+#endif
+            auto* ptr = reinterpret_cast<std::uint8_t*>(&number);
+            for (std::size_t i = 0; i < sz / 2; ++i)
+            {
+                std::swap(ptr[i], ptr[sz - i - 1]);
+            }
+#ifdef __cpp_lib_byteswap
         }
+#endif
     }
 
     /*
