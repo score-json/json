@@ -13,7 +13,9 @@
 #include <tuple> // tuple
 #include <type_traits> // false_type, is_constructible, is_integral, is_same, true_type
 #include <utility> // declval
-
+#if defined(__cpp_lib_byte) && __cpp_lib_byte >= 201603L
+    #include <cstddef> // byte
+#endif
 #include <nlohmann/detail/iterators/iterator_traits.hpp>
 #include <nlohmann/detail/macro_scope.hpp>
 #include <nlohmann/detail/meta/call_std/begin.hpp>
@@ -238,6 +240,30 @@ struct char_traits<signed char> : std::char_traits<char>
         return static_cast<int_type>(std::char_traits<char>::eof());
     }
 };
+
+#if defined(__cpp_lib_byte) && __cpp_lib_byte >= 201603L
+template<>
+struct char_traits<std::byte> : std::char_traits<char>
+{
+    using char_type = std::byte;
+    using int_type = uint64_t;
+
+    static int_type to_int_type(char_type c) noexcept
+    {
+        return static_cast<int_type>(std::to_integer<unsigned char>(c));
+    }
+
+    static char_type to_char_type(int_type i) noexcept
+    {
+        return std::byte(static_cast<unsigned char>(i));
+    }
+
+    static constexpr int_type eof() noexcept
+    {
+        return static_cast<int_type>(std::char_traits<char>::eof());
+    }
+};
+#endif
 
 ///////////////////
 // is_ functions //
