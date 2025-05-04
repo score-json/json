@@ -42,12 +42,12 @@ namespace detail
 
 // Note to maintainers:
 //
-// Every trait in this file expects a non CV-qualified type.
+// Every trait in this file expects a non-CV-qualified type.
 // The only exceptions are in the 'aliases for detected' section
-// (i.e. those of the form: decltype(T::member_function(std::declval<T>())))
+// (i.e., those of the form: decltype(T::member_function(std::declval<T>())))
 //
 // In this case, T has to be properly CV-qualified to constraint the function arguments
-// (e.g. to_json(BasicJsonType&, const T&))
+// (e.g., to_json(BasicJsonType&, const T&))
 
 template<typename> struct is_basic_json : std::false_type {};
 
@@ -55,7 +55,7 @@ NLOHMANN_BASIC_JSON_TPL_DECLARATION
 struct is_basic_json<NLOHMANN_BASIC_JSON_TPL> : std::true_type {};
 
 // used by exceptions create() member functions
-// true_type for pointer to possibly cv-qualified basic_json or std::nullptr_t
+// true_type for the pointer to possibly cv-qualified basic_json or std::nullptr_t
 // false_type otherwise
 template<typename BasicJsonContext>
 struct is_basic_json_context :
@@ -281,7 +281,7 @@ template<class B> struct negation : std::integral_constant < bool, !B::value > {
 
 // Reimplementation of is_constructible and is_default_constructible, due to them being broken for
 // std::pair and std::tuple until LWG 2367 fix (see https://cplusplus.github.io/LWG/lwg-defects.html#2367).
-// This causes compile errors in e.g. clang 3.5 or gcc 4.9.
+// This causes compile errors in e.g., Clang 3.5 or GCC 4.9.
 template <typename T>
 struct is_default_constructible : std::is_default_constructible<T> {};
 
@@ -361,7 +361,7 @@ using range_value_t = value_type_t<iterator_traits<iterator_t<T>>>;
 
 // The following implementation of is_complete_type is taken from
 // https://blogs.msdn.microsoft.com/vcblog/2015/12/02/partial-support-for-expression-sfinae-in-vs-2015-update-1/
-// and is written by Xiang Fan who agreed to using it in this library.
+// and is written by Xiang Fan who agreed to use it in this library.
 
 template<typename T, typename = void>
 struct is_complete_type : std::false_type {};
@@ -598,7 +598,7 @@ decltype(std::declval<Compare>()(std::declval<B>(), std::declval<A>()))
 template<typename T>
 using detect_is_transparent = typename T::is_transparent;
 
-// type trait to check if KeyType can be used as object key (without a BasicJsonType)
+// type trait to check if KeyType can be used as an object key (without a BasicJsonType)
 // see is_usable_as_basic_json_key_type below
 template<typename Comparator, typename ObjectKeyType, typename KeyTypeCVRef, bool RequireTransparentComparator = true,
          bool ExcludeObjectKeyType = RequireTransparentComparator, typename KeyType = uncvref_t<KeyTypeCVRef>>
@@ -612,7 +612,7 @@ using is_usable_as_key_type = typename std::conditional <
                               std::true_type,
                               std::false_type >::type;
 
-// type trait to check if KeyType can be used as object key
+// type trait to check if KeyType can be used as an object key
 // true if:
 //   - KeyType is comparable with BasicJsonType::object_t::key_type
 //   - if ExcludeObjectKeyType is true, KeyType is not BasicJsonType::object_t::key_type

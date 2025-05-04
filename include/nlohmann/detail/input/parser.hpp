@@ -106,7 +106,7 @@ class parser
                                                     exception_message(token_type::end_of_input, "value"), nullptr));
             }
 
-            // in case of an error, return discarded value
+            // in case of an error, return a discarded value
             if (sdp.is_errored())
             {
                 result = value_t::discarded;
@@ -133,7 +133,7 @@ class parser
                                 parse_error::create(101, m_lexer.get_position(), exception_message(token_type::end_of_input, "value"), nullptr));
             }
 
-            // in case of an error, return discarded value
+            // in case of an error, return a discarded value
             if (sdp.is_errored())
             {
                 result = value_t::discarded;
@@ -336,7 +336,7 @@ class parser
 
                     case token_type::parse_error:
                     {
-                        // using "uninitialized" to avoid "expected" message
+                        // using "uninitialized" to avoid an "expected" message
                         return sax->parse_error(m_lexer.get_position(),
                                                 m_lexer.get_token_string(),
                                                 parse_error::create(101, m_lexer.get_position(), exception_message(token_type::uninitialized, "value"), nullptr));

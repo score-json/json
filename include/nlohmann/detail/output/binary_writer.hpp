@@ -1552,7 +1552,7 @@ class binary_writer
                 {
                     return 'L';
                 }
-                // anything else is treated as high-precision number
+                // anything else is treated as a high-precision number
                 return 'H'; // LCOV_EXCL_LINE
             }
 
@@ -1590,7 +1590,7 @@ class binary_writer
                 {
                     return 'M';
                 }
-                // anything else is treated as high-precision number
+                // anything else is treated as a high-precision number
                 return 'H'; // LCOV_EXCL_LINE
             }
 
@@ -1756,11 +1756,11 @@ class binary_writer
     template<typename NumberType>
     void write_number(const NumberType n, const bool OutputIsLittleEndian = false)
     {
-        // step 1: write number to array of length NumberType
+        // step 1: write the number to an array of length NumberType
         std::array<CharType, sizeof(NumberType)> vec{};
         std::memcpy(vec.data(), &n, sizeof(NumberType));
 
-        // step 2: write array to output (with possible reordering)
+        // step 2: write the array to output (with possible reordering)
         if (is_little_endian != OutputIsLittleEndian)
         {
             // reverse byte order prior to conversion if necessary

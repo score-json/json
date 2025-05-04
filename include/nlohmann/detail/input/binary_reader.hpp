@@ -334,7 +334,7 @@ class binary_reader
                 return get_number<std::uint64_t, true>(input_format_t::bson, value) && sax->number_unsigned(value);
             }
 
-            default: // anything else not supported (yet)
+            default: // anything else is not supported (yet)
             {
                 std::array<char, 3> cr{{}};
                 static_cast<void>((std::snprintf)(cr.data(), cr.size(), "%.2hhX", static_cast<unsigned char>(element_type))); // NOLINT(cppcoreguidelines-pro-type-vararg,hicpp-vararg)
@@ -731,7 +731,7 @@ class binary_reader
             case 0xD2:
             case 0xD3:
             case 0xD4:
-            case 0xD8: // tagged item (1 bytes follow)
+            case 0xD8: // tagged item (1 byte follows)
             case 0xD9: // tagged item (2 bytes follow)
             case 0xDA: // tagged item (4 bytes follow)
             case 0xDB: // tagged item (8 bytes follow)
@@ -783,7 +783,7 @@ class binary_reader
                     case cbor_tag_handler_t::store:
                     {
                         binary_t b;
-                        // use binary subtype and store in binary container
+                        // use binary subtype and store in a binary container
                         switch (current)
                         {
                             case 0xD8:
@@ -852,7 +852,7 @@ class binary_reader
                 const auto byte1 = static_cast<unsigned char>(byte1_raw);
                 const auto byte2 = static_cast<unsigned char>(byte2_raw);
 
-                // code from RFC 7049, Appendix D, Figure 3:
+                // Code from RFC 7049, Appendix D, Figure 3:
                 // As half-precision floating-point numbers were only added
                 // to IEEE 754 in 2008, today's programming platforms often
                 // still only have limited support for them. It is very
@@ -2159,7 +2159,7 @@ class binary_reader
                 {
                     break;
                 }
-                if (is_ndarray) // ndarray dimensional vector can only contain integers, and can not embed another array
+                if (is_ndarray) // ndarray dimensional vector can only contain integers and cannot embed another array
                 {
                     return sax->parse_error(chars_read, get_token_string(), parse_error::create(113, chars_read, exception_message(input_format, "ndarray dimensional vector is not allowed", "size"), nullptr));
                 }
@@ -2417,7 +2417,7 @@ class binary_reader
                 const auto byte1 = static_cast<unsigned char>(byte1_raw);
                 const auto byte2 = static_cast<unsigned char>(byte2_raw);
 
-                // code from RFC 7049, Appendix D, Figure 3:
+                // Code from RFC 7049, Appendix D, Figure 3:
                 // As half-precision floating-point numbers were only added
                 // to IEEE 754 in 2008, today's programming platforms often
                 // still only have limited support for them. It is very
@@ -2705,7 +2705,7 @@ class binary_reader
 
     bool get_ubjson_high_precision_number()
     {
-        // get size of following number string
+        // get the size of the following number string
         std::size_t size{};
         bool no_ndarray = true;
         auto res = get_ubjson_size_value(size, no_ndarray);
@@ -2803,7 +2803,7 @@ class binary_reader
         chars_read += new_chars_read;
         if (JSON_HEDLEY_UNLIKELY(new_chars_read < sizeof(T)))
         {
-            // in case of failure, advance position by 1 to report failing location
+            // in case of failure, advance position by 1 to report the failing location
             ++chars_read;
             sax->parse_error(chars_read, "<end of file>", parse_error::create(110, chars_read, exception_message(format, "unexpected end of input", context), nullptr));
             return false;

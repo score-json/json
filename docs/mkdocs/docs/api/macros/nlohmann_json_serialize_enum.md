@@ -4,8 +4,8 @@
 #define NLOHMANN_JSON_SERIALIZE_ENUM(type, conversion...)
 ```
 
-By default, enum values are serialized to JSON as integers. In some cases this could result in undesired behavior. If an
-enum is modified or re-ordered after data has been serialized to JSON, the later deserialized JSON data may be
+By default, enum values are serialized to JSON as integers. In some cases, this could result in undesired behavior. If
+an enum is modified or re-ordered after data has been serialized to JSON, the later deserialized JSON data may be
 undefined or a different enum value than was originally intended.
 
 The `NLOHMANN_JSON_SERIALIZE_ENUM` allows to define a user-defined serialization for every enumerator.
