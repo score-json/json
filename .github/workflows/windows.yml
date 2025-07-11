@@ -6,6 +6,7 @@ on:
       - develop
       - master
       - release/*
+      - nilseb_adjust_pipeline
   pull_request:
   workflow_dispatch:
 
