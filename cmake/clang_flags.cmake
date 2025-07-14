@@ -5,7 +5,7 @@
 # -Wno-extra-semi-stmt            The library uses assert which triggers this warning.
 # -Wno-padded                     We do not care about padding warnings.
 # -Wno-covered-switch-default     All switches list all cases and a default case.
-# -Wno-unsafe-buffer-usage        Otherwise Doctest would not compile.
+# -Wno-unsafe-buffer-usage        Otherwise Doctest would not compile. - removed since not part of clang 20
 
 set(CLANG_CXXFLAGS
     -Werror
@@ -16,5 +16,4 @@ set(CLANG_CXXFLAGS
     -Wno-extra-semi-stmt
     -Wno-padded
     -Wno-covered-switch-default
-    -Wno-unsafe-buffer-usage
 )
