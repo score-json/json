@@ -38,10 +38,15 @@
 
 # Swift Package Manager build directory
 /.build
+# docs:incremental and docs:ide_support build artifacts
+/_build
+/build
 
 venv
 
 nlohmann_json.spdx
 
 # Bazel-related
+bazel-*
 MODULE.bazel.lock
+user.bazelrc
