@@ -176,7 +176,7 @@ jobs:
 
   ci_test_standards_gcc:
     runs-on: ubuntu-latest
-    container: gcc:latest
+    container: gcc:20
     strategy:
       matrix:
         standard: [11, 14, 17, 20, 23, 26]
