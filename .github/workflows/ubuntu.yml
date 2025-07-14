@@ -75,7 +75,7 @@ jobs:
       - name: Run CMake
         run: cmake -S . -B build -DJSON_CI=On -DCLANG_TOOL=clang++-20
       - name: Build
-        run: cmake --build build --target ${{ matrix.target }} -DCLANG_TOOL=clang++-20
+        run: cmake --build build --target ${{ matrix.target }} 
 
   ci_cmake_options:
     runs-on: ubuntu-latest
