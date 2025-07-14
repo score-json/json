@@ -76,6 +76,8 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On -DCMAKE_C_COMPILER=clang-20 -DCMAKE_CXX_COMPILER=clang++-20
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
+        env:
+          CXX: clang++-20
 
   ci_cmake_options:
     runs-on: ubuntu-latest
