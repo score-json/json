@@ -73,11 +73,9 @@ jobs:
       - name: Get latest CMake and ninja
         uses: lukka/get-cmake@28983e0d3955dba2bb0a6810caae0c6cf268ec0c # v4.0.0
       - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On -DCMAKE_C_COMPILER=clang-20 -DCMAKE_CXX_COMPILER=clang++-20
+        run: cmake -S . -B build -DJSON_CI=On -DCLANG_TOOL=clang++-20
       - name: Build
-        run: cmake --build build --target ${{ matrix.target }}
-        env:
-          CXX: clang++-20
+        run: cmake --build build --target ${{ matrix.target }} -DCLANG_TOOL=clang++-20
 
   ci_cmake_options:
     runs-on: ubuntu-latest
