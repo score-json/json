@@ -1,6 +1,6 @@
 ---
 level: 1.1
-normative: false
+normative: true
 ---
 
 System is integrated into the S-Core bazel registry.
