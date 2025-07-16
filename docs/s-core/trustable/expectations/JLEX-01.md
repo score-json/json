@@ -3,4 +3,5 @@ level: 1.1
 normative: true
 ---
 
-The JSON-library is buildable using a certified CPP compiler.
+The JSON-Library provides a service to check the well-formedness of JSON data.
+
