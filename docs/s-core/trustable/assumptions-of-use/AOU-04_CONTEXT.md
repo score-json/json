@@ -1,6 +1,6 @@
 ---
 level: 1.1
-normative: true
+normative: false
 ---
 
 All exceptions (json::parse_error, json::invalid_iterator, json::type_error, json::out_of_range, json::other_error) inherit from json::exception. 

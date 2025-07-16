@@ -1,6 +1,6 @@
 ---
 level: 1.1
-normative: false
+normative: true
 ---
 
-The integrator has Integrator-controlled mirrors of the dependencies.
+The integrator has integrator-controlled mirrors of the dependencies.

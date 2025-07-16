@@ -1,6 +1,6 @@
 ---
 level: 1.1
-normative: false
+normative: true
 ---
 
 Exceptions are properly handled or turned off.
