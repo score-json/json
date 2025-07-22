@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The fraction of expectations covered by tests is calculated. 
+A github workflow calculates the fraction of expectations covered by tests (TODO).
