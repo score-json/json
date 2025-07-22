@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The github workflow saves trends for each score in the trustable graph.
+A github workflow saves the history of scores in the trustable graph to derive trends. (TODO)
