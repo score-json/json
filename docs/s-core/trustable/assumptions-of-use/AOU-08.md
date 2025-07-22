@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-System is integrated into the S-Core bazel registry.
+The integrator ensures that all necessary source files and built tools are mirrored, e.g. using a built server without internet access.
