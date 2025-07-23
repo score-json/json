@@ -51,4 +51,6 @@ bazel-*
 MODULE.bazel.lock
 user.bazelrc
 
-/graphs
+/temp
+
+/docs/s-core/trustable/generated

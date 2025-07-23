@@ -37,7 +37,14 @@ extensions = [
     "score_draw_uml_funcs",
     "score_source_code_linker",
     "score_layout",
+    "myst_parser",
 ]
+
+source_suffix = {
+    '.rst': None,
+    '.md': None,
+}
+
 
 exclude_patterns = [
     # The following entries are not required when building the documentation via 'bazel
