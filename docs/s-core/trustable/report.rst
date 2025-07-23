@@ -22,9 +22,5 @@ Report
    :caption: Report
    :glob:
 
-   trudag/m2r2_test/trustable_report_for_json_library
-   trudag/m2r2_test/dashboard
-   trudag/m2r2_test/TA
-   trudag/m2r2_test/TRUSTABLE
-   trudag/m2r2_test/TT
-   trudag/m2r2_test/WFJ
+   generated/trustable_report_for_Software
+   trustable_graph.rst

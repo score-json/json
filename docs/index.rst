@@ -34,7 +34,6 @@ This repository provides the aspired setup for projects using **C++** and **Baze
 
    s-core/introduction/index.rst
    s-core/trustable/concept.rst
-   s-core/trustable/tenets/index.rst
    s-core/trustable/report.rst
    Eclipse <https://projects.eclipse.org/projects/automotive.score>
 

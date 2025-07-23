@@ -10,7 +10,7 @@ if [[ ! -d "$TARGET_FOLDER" ]]; then
 fi
 
 # Create the 'temp' directory at the top level (relative to this script)
-TEMP_FOLDER="graphs"
+TEMP_FOLDER="temp/graphs"
 mkdir -p "$TEMP_FOLDER"  # -p ensures no error if the folder already exists
 
 # Iterate through all .md files in the specified folder
@@ -29,6 +29,9 @@ for file in "$TARGET_FOLDER"/*.md; do
     fi
 done
 
-echo "All files processed. Output saved in the 'temp' directory."
+output_file="${TEMP_FOLDER}/Trustable.svg"
+trudag plot -o "$output_file"
+
+echo "All files processed. Output saved in the 'temp/graphs' directory."
 
 
