@@ -1,0 +1,175 @@
+# *******************************************************************************
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
+
+# this workflow is copied from eclipse-score/cicd-workflows/.github/workflows/publish_documentation.yml
+# and modified to download the trudag report artifact before building the documentation
+
+name: Documentation Build
+
+on:
+  workflow_call:
+    inputs:
+      retention-days:
+        description: "Number of days to retain the artifact"
+        required: false
+        default: 1
+        type: number
+      workflow-version:
+        description: "Version or branch to checkout"
+        required: false
+        default: "main"
+        type: string
+      bazel-target:
+        description: "The Bazel target to build (e.g., //docs:github_pages)"
+        required: false
+        type: string
+        default: "//docs:github_pages"
+      deployment_type:
+        description: "Type of deployment: legacy or workflow"
+        type: string
+        required: false
+        default: "workflow"
+
+jobs:
+  docs-build:
+    name: Build Documentation
+    runs-on: ${{ vars.REPO_RUNNER_LABELS && fromJSON(vars.REPO_RUNNER_LABELS) || 'ubuntu-latest' }}
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Checkout repository (Handle all events)
+        uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ github.head_ref || github.event.pull_request.head.ref || github.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+
+      - name: Checkout action
+        uses: actions/checkout@v4.2.2
+        with:
+          # current repo name
+          repository: eclipse-score/cicd-workflows
+          ref: ${{ inputs.workflow-version }}
+          path: ./cicd-workflows
+
+      - name: Setup Bazel with shared caching
+        uses: bazel-contrib/setup-bazel@0.14.0
+        with:
+          disk-cache: true
+          repository-cache: true
+          bazelisk-cache: true
+
+      - name: Install Graphviz
+        uses: eclipse-score/apt-install@main
+        with:
+          packages: graphviz
+          cache: false
+
+      # only this step is different from the original workflow
+      - name: Download trudag report artifact
+        uses: actions/download-artifact@v4.1.8
+        with:
+          name: trudag-report-${{ github.event.pull_request.head.sha || github.sha }}
+          path: docs/s-core/trustable/generated/
+
+      - name: Build documentation
+        run: |
+          bazel run ${{ inputs.bazel-target }}
+          tar -cf github-pages.tar _build
+
+      - name: Upload documentation artifact
+        uses: actions/upload-artifact@v4.4.0
+        with:
+          name: github-pages-${{ github.event.pull_request.head.sha || github.sha }}
+          path: github-pages.tar
+          retention-days: ${{ inputs.retention-days }}
+          if-no-files-found: error
+
+  docs-deploy:
+    name: Deploy Documentation to GitHub Pages
+    runs-on: ${{ vars.REPO_RUNNER_LABELS && fromJSON(vars.REPO_RUNNER_LABELS) || 'ubuntu-latest' }}
+    needs: docs-build
+    permissions:
+      pages: write
+      id-token: write
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Ensure gh-pages branch exists with initial files
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -e
+          if ! git ls-remote --exit-code --heads "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" gh-pages; then
+            echo "gh-pages branch does not exist. Creating it..."
+            git clone --depth=1 "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" repo
+            cd repo
+            git fetch origin main --depth=1
+            AUTHOR_NAME=$(git log origin/main -1 --pretty=format:'%an')
+            AUTHOR_EMAIL=$(git log origin/main -1 --pretty=format:'%ae')
+            git config user.name "$AUTHOR_NAME"
+            git config user.email "$AUTHOR_EMAIL"
+            echo "Using commit identity: $AUTHOR_NAME <$AUTHOR_EMAIL>"
+
+            git checkout --orphan gh-pages
+            git rm -rf . || true
+            REPO_NAME=$(basename "${REPO}")
+            OWNER_NAME="${REPO%%/*}"
+
+            touch versions.json
+            echo "[" > versions.json
+            echo "  {" >> versions.json
+            echo "    \"version\": \"main\"," >> versions.json
+            echo "    \"url\": \"https://${OWNER_NAME}.github.io/${REPO_NAME}/main/\"" >> versions.json
+            echo "  }" >> versions.json
+            echo "]" >> versions.json
+
+            touch index.html
+            echo '<!DOCTYPE html>' > index.html
+            echo '<html lang="en">' >> index.html
+            echo '<head>' >> index.html
+            echo '    <meta charset="UTF-8">' >> index.html
+            echo '    <meta http-equiv="refresh" content="0; URL=main/">' >> index.html
+            echo '    <title>Redirecting...</title>' >> index.html
+            echo '</head>' >> index.html
+            echo '<body>' >> index.html
+            echo '    <p>If you are not redirected, <a href="main/">click here</a>.</p>' >> index.html
+            echo '</body>' >> index.html
+            echo '</html>' >> index.html
+
+            touch .nojekyll
+            git add versions.json index.html .nojekyll
+            git commit -m "Initialize gh-pages branch with versions.json and index.html"
+            git push origin gh-pages
+            cd ..
+            rm -rf repo
+          else
+            echo "gh-pages branch exists. Skipping creation."
+          fi
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Download documentation artifact
+        uses: actions/download-artifact@v4.1.8
+        with:
+          name: github-pages-${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Untar documentation artifact
+        run: mkdir -p extracted_docs && tar -xf github-pages.tar -C extracted_docs
+
+      - name: Deploy 🚀
+        id: pages-deployment
+        uses: eclipse-score/cicd-workflows/.github/actions/deploy-versioned-pages@main
+        with:
+          source_folder: extracted_docs/_build
+          deployment_type: ${{ inputs.deployment_type }}
