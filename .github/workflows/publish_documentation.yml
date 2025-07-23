@@ -25,6 +25,7 @@ on:
   push:
     branches:
       - main
+      - trudag_report_generation
   merge_group:
     types: [checks_requested]
 
