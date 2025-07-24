@@ -1,0 +1,813 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Migration Guide &#8212; NLOHMANN JSON LIBRARY  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_needs.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_design.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'mkdocs/docs/integration/migration_guide';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://score-json.github.io/json/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.12.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../s-core/introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../s-core/trustable/concept.html">
+    Concept
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../s-core/trustable/report.html">
+    Report
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../s-core/introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../s-core/trustable/concept.html">
+    Concept
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../s-core/trustable/report.html">
+    Report
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Migration Guide</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="migration-guide">
+<h1>Migration Guide<a class="headerlink" href="#migration-guide" title="Link to this heading">#</a></h1>
+<p>This page collects some guidelines on how to future-proof your code for future versions of this library.</p>
+<section id="replace-deprecated-functions">
+<h2>Replace deprecated functions<a class="headerlink" href="#replace-deprecated-functions" title="Link to this heading">#</a></h2>
+<p>The following functions have been deprecated and will be removed in the next major version (i.e., 4.0.0). All
+deprecations are annotated with
+<a class="reference external" href="https://nemequ.github.io/hedley/api-reference.html#HEDLEY_DEPRECATED_FOR"><code class="docutils literal notranslate"><span class="pre">HEDLEY_DEPRECATED_FOR</span></code></a> to report which
+function to use instead.</p>
+<section id="parsing">
+<h3>Parsing<a class="headerlink" href="#parsing" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Function <code class="docutils literal notranslate"><span class="pre">friend</span> <span class="pre">std::istream&amp;</span> <span class="pre">operator&lt;&lt;(basic_json&amp;,</span> <span class="pre">std::istream&amp;)</span></code> is deprecated since 3.0.0. Please use
+<a class="reference internal" href="../api/operator_gtgt.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">friend</span> <span class="pre">std::istream&amp;</span>&#160; <span class="pre">operator&gt;&gt;(std::istream&amp;,</span> <span class="pre">basic_json&amp;)</span></code></span></a> instead.</p>
+<p>=== “Deprecated”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  ```cpp
+  nlohmann::json j;
+  std::stringstream ss(&quot;[1,2,3]&quot;);
+  j &lt;&lt; ss;
+  ```
+</pre></div>
+</div>
+<p>=== “Future-proof”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  ```cpp
+  nlohmann::json j;
+  std::stringstream ss(&quot;[1,2,3]&quot;);
+  ss &gt;&gt; j;
+  ```
+</pre></div>
+</div>
+</li>
+<li><p>Passing iterator pairs or pointer/length pairs to parsing functions (<a class="reference internal" href="../api/basic_json/parse.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">parse</span></code></span></a>,
+<a class="reference internal" href="../api/basic_json/accept.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">accept</span></code></span></a>, <a class="reference internal" href="../api/basic_json/sax_parse.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">sax_parse</span></code></span></a>,
+<a class="reference internal" href="../api/basic_json/from_cbor.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">from_cbor</span></code></span></a>, <a class="reference internal" href="../api/basic_json/from_msgpack.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">from_msgpack</span></code></span></a>,
+<a class="reference internal" href="../api/basic_json/from_ubjson.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">from_ubjson</span></code></span></a>, and <a class="reference internal" href="../api/basic_json/from_bson.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">from_bson</span></code></span></a> via initializer
+lists is deprecated since 3.8.0. Instead, pass two iterators; for instance, call <code class="docutils literal notranslate"><span class="pre">from_cbor(ptr,</span> <span class="pre">ptr+len)</span></code> instead of
+<code class="docutils literal notranslate"><span class="pre">from_cbor({ptr,</span> <span class="pre">len})</span></code>.</p>
+<p>=== “Deprecated”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ```cpp
+    const char* s = &quot;[1,2,3]&quot;;
+    bool ok = nlohmann::json::accept({s, s + std::strlen(s)});
+    ```
+</pre></div>
+</div>
+<p>=== “Future-proof”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ```cpp
+    const char* s = &quot;[1,2,3]&quot;;
+    bool ok = nlohmann::json::accept(s, s + std::strlen(s));
+    ```
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="json-pointers">
+<h3>JSON Pointers<a class="headerlink" href="#json-pointers" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Comparing JSON Pointers with strings via <a class="reference internal" href="../api/json_pointer/operator_eq.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">operator==</span></code></span></a> and
+<a class="reference internal" href="../api/json_pointer/operator_ne.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">operator!=</span></code></span></a> is deprecated since 3.11.2. To compare a
+<a class="reference internal" href="../api/json_pointer/index.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">json_pointer</span></code></span></a> <code class="docutils literal notranslate"><span class="pre">p</span></code> with a string <code class="docutils literal notranslate"><span class="pre">s</span></code>, convert <code class="docutils literal notranslate"><span class="pre">s</span></code> to a <code class="docutils literal notranslate"><span class="pre">json_pointer</span></code> first and use
+<a class="reference internal" href="../api/json_pointer/operator_eq.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">json_pointer::operator==</span></code></span></a> or
+<a class="reference internal" href="../api/json_pointer/operator_ne.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">json_pointer::operator!=</span></code></span></a>.</p>
+<p>=== “Deprecated”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  ```cpp
+  nlohmann::json::json_pointer lhs(&quot;/foo/bar/1&quot;);
+  assert(lhs == &quot;/foo/bar/1&quot;);
+  ```
+</pre></div>
+</div>
+<p>=== “Future-proof”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  ```cpp
+  nlohmann::json::json_pointer lhs(&quot;/foo/bar/1&quot;);
+  assert(lhs == nlohmann::json::json_pointer(&quot;/foo/bar/1&quot;));
+  ```
+</pre></div>
+</div>
+</li>
+<li><p>The implicit conversion from JSON Pointers to string
+(<a class="reference internal" href="../api/json_pointer/operator_string_t.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">json_pointer::operator</span> <span class="pre">string_t</span></code></span></a>) is deprecated since 3.11.0. Use
+<a class="reference internal" href="../api/json_pointer/to_string.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">json_pointer::to_string</span></code></span></a> instead.</p>
+<p>=== “Deprecated”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ```cpp
+    nlohmann::json::json_pointer ptr(&quot;/foo/bar/1&quot;);
+    std::string s = ptr;
+    ```
+</pre></div>
+</div>
+<p>=== “Future-proof”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ```cpp
+    nlohmann::json::json_pointer ptr(&quot;/foo/bar/1&quot;);
+    std::string s = ptr.to_string();
+    ```
+</pre></div>
+</div>
+</li>
+<li><p>Passing a <code class="docutils literal notranslate"><span class="pre">basic_json</span></code> specialization as template parameter <code class="docutils literal notranslate"><span class="pre">RefStringType</span></code> to
+<a class="reference internal" href="../api/json_pointer/index.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">json_pointer</span></code></span></a> is deprecated since 3.11.0. The string type can now be directly
+provided.</p>
+<p>=== “Deprecated”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ```cpp
+    using my_json = nlohmann::basic_json&lt;std::map, std::vector, my_string_type&gt;;
+    nlohmann::json_pointer&lt;my_json&gt; ptr(&quot;/foo/bar/1&quot;);
+    ```
+</pre></div>
+</div>
+<p>=== “Future-proof”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ```cpp
+    nlohmann::json_pointer&lt;my_string_type&gt; ptr(&quot;/foo/bar/1&quot;);
+    ```
+</pre></div>
+</div>
+<p>Thereby, <code class="docutils literal notranslate"><span class="pre">nlohmann::my_json::json_pointer</span></code> is an alias for <code class="docutils literal notranslate"><span class="pre">nlohmann::json_pointer&lt;my_string_type&gt;</span></code> and is always an
+alias to the <code class="docutils literal notranslate"><span class="pre">json_pointer</span></code> with the appropriate string type for all specializations of <code class="docutils literal notranslate"><span class="pre">basic_json</span></code>.</p>
+</li>
+</ul>
+</section>
+<section id="miscellaneous-functions">
+<h3>Miscellaneous functions<a class="headerlink" href="#miscellaneous-functions" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>The function <code class="docutils literal notranslate"><span class="pre">iterator_wrapper</span></code> is deprecated since 3.1.0. Please use the member function
+<a class="reference internal" href="../api/basic_json/items.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">items</span></code></span></a> instead.</p>
+<p>=== “Deprecated”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ```cpp
+    for (auto &amp;x : nlohmann::json::iterator_wrapper(j))
+    {
+        std::cout &lt;&lt; x.key() &lt;&lt; &quot;:&quot; &lt;&lt; x.value() &lt;&lt; std::endl;
+    }
+    ```
+</pre></div>
+</div>
+<p>=== “Future-proof”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ```cpp
+    for (auto &amp;x : j.items())
+    {
+        std::cout &lt;&lt; x.key() &lt;&lt; &quot;:&quot; &lt;&lt; x.value() &lt;&lt; std::endl;
+    }
+    ```
+</pre></div>
+</div>
+</li>
+<li><p>Function <code class="docutils literal notranslate"><span class="pre">friend</span> <span class="pre">std::ostream&amp;</span> <span class="pre">operator&gt;&gt;(const</span> <span class="pre">basic_json&amp;,</span> <span class="pre">std::ostream&amp;)</span></code> is deprecated since 3.0.0. Please use
+<a class="reference internal" href="../api/operator_ltlt.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">friend</span> <span class="pre">operator&lt;&lt;(std::ostream&amp;,</span> <span class="pre">const</span> <span class="pre">basic_json&amp;)</span></code></span></a> instead.</p>
+<p>=== “Deprecated”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ```cpp
+    j &gt;&gt; std::cout;
+    ```
+</pre></div>
+</div>
+<p>=== “Future-proof”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ```cpp
+    std::cout &lt;&lt; j;
+    ```
+</pre></div>
+</div>
+</li>
+<li><p>The legacy comparison behavior for discarded values is deprecated since 3.11.0. It is already disabled by default and
+can still be enabled by defining
+<a class="reference internal" href="../api/macros/json_use_legacy_discarded_value_comparison.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">JSON_USE_LEGACY_DISCARDED_VALUE_COMPARISON</span></code></span></a> to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<p>=== “Deprecated”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ```cpp
+    #define JSON_USE_LEGACY_DISCARDED_VALUE_COMPARISON 1
+    #include &lt;nlohmann/json.hpp&gt;
+    ```
+</pre></div>
+</div>
+<p>=== “Future-proof”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ```cpp
+    #include &lt;nlohmann/json.hpp&gt;
+    ```
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="replace-implicit-conversions">
+<h2>Replace implicit conversions<a class="headerlink" href="#replace-implicit-conversions" title="Link to this heading">#</a></h2>
+<p>Implicit conversions via <a class="reference internal" href="../api/basic_json/operator_ValueType.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">operator</span> <span class="pre">ValueType</span></code></span></a> will be switched off by default
+in the next major release of the library.</p>
+<p>You can prepare existing code by already defining
+<a class="reference internal" href="../api/macros/json_use_implicit_conversions.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">JSON_USE_IMPLICIT_CONVERSIONS</span></code></span></a> to <code class="docutils literal notranslate"><span class="pre">0</span></code> and replace any implicit
+conversions with calls to <a class="reference internal" href="../api/basic_json/get.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">get</span></code></span></a>, <a class="reference internal" href="../api/basic_json/get_to.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">get_to</span></code></span></a>,
+<a class="reference internal" href="../api/basic_json/get_ref.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">get_ref</span></code></span></a>, or <a class="reference internal" href="../api/basic_json/get_ptr.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">get_ptr</span></code></span></a>.</p>
+<p>=== “Deprecated”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  ```cpp
+  nlohmann::json j = &quot;Hello, world!&quot;;
+  std::string s = j;
+  ```
+</pre></div>
+</div>
+<p>=== “Future-proof”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  ```cpp
+  nlohmann::json j = &quot;Hello, world!&quot;;
+  auto s = j.template get&lt;std::string&gt;();
+  ```
+</pre></div>
+</div>
+<p>=== “Future-proof (alternative)”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  ```cpp
+  nlohmann::json j = &quot;Hello, world!&quot;;
+  std::string s;
+  j.get_to(s);
+  ```
+</pre></div>
+</div>
+<p>You can prepare existing code by already defining
+<a class="reference internal" href="../api/macros/json_use_implicit_conversions.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">JSON_USE_IMPLICIT_CONVERSIONS</span></code></span></a> to <code class="docutils literal notranslate"><span class="pre">0</span></code> and replace any implicit
+conversions with calls to <a class="reference internal" href="../api/basic_json/get.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">get</span></code></span></a>.</p>
+</section>
+<section id="import-namespace-literals-for-udls">
+<h2>Import namespace <code class="docutils literal notranslate"><span class="pre">literals</span></code> for UDLs<a class="headerlink" href="#import-namespace-literals-for-udls" title="Link to this heading">#</a></h2>
+<p>The user-defined string literals <a class="reference internal" href="../api/operator_literal_json.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">operator&quot;&quot;_json</span></code></span></a> and
+<a class="reference internal" href="../api/operator_literal_json_pointer.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">operator&quot;&quot;_json_pointer</span></code></span></a> will be removed from the global namespace in the
+next major release of the library.</p>
+<p>=== “Deprecated”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  ```cpp
+  nlohmann::json j = &quot;[1,2,3]&quot;_json;
+  ```
+</pre></div>
+</div>
+<p>=== “Future-proof”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  ```cpp
+  using namespace nlohmann::literals;
+  nlohmann::json j = &quot;[1,2,3]&quot;_json;
+  ```
+</pre></div>
+</div>
+<p>To prepare existing code, define <a class="reference internal" href="../api/macros/json_use_global_udls.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">JSON_USE_GLOBAL_UDLS</span></code></span></a> to <code class="docutils literal notranslate"><span class="pre">0</span></code> and bring the
+string literals into scope where needed.</p>
+</section>
+<section id="do-not-hard-code-the-complete-library-namespace">
+<h2>Do not hard-code the complete library namespace<a class="headerlink" href="#do-not-hard-code-the-complete-library-namespace" title="Link to this heading">#</a></h2>
+<p>The <a class="reference internal" href="../features/namespace.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">nlohmann</span></code> namespace</span></a> contains a sub-namespace to avoid problems when different
+versions or configurations of the library are used in the same project. Always use <code class="docutils literal notranslate"><span class="pre">nlohmann</span></code> as namespace or, when the
+exact version and configuration is relevant, use macro
+<a class="reference internal" href="../api/macros/nlohmann_json_namespace.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">NLOHMANN_JSON_NAMESPACE</span></code></span></a> to denote the namespace.</p>
+<p>=== “Dangerous”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  ```cpp
+  void to_json(nlohmann::json_abi_v3_11_2::json&amp; j, const person&amp; p)
+  {
+      j[&quot;age&quot;] = p.age;
+  }
+  ```
+</pre></div>
+</div>
+<p>=== “Future-proof”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  ```cpp
+  void to_json(nlohmann::json&amp; j, const person&amp; p)
+  {
+      j[&quot;age&quot;] = p.age;
+  }
+  ```
+</pre></div>
+</div>
+<p>=== “Future-proof (alternative)”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  ```cpp
+  void to_json(NLOHMANN_JSON_NAMESPACE::json&amp; j, const person&amp; p)
+  {
+      j[&quot;age&quot;] = p.age;
+  }
+  ```
+</pre></div>
+</div>
+</section>
+<section id="do-not-use-the-details-namespace">
+<h2>Do not use the <code class="docutils literal notranslate"><span class="pre">details</span></code> namespace<a class="headerlink" href="#do-not-use-the-details-namespace" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">details</span></code> namespace is not part of the public API of the library and can change in any version without an
+announcement. Do not rely on any function or type in the <code class="docutils literal notranslate"><span class="pre">details</span></code> namespace.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replace-deprecated-functions">Replace deprecated functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parsing">Parsing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#json-pointers">JSON Pointers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous-functions">Miscellaneous functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replace-implicit-conversions">Replace implicit conversions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-namespace-literals-for-udls">Import namespace <code class="docutils literal notranslate"><span class="pre">literals</span></code> for UDLs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#do-not-hard-code-the-complete-library-namespace">Do not hard-code the complete library namespace</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#do-not-use-the-details-namespace">Do not use the <code class="docutils literal notranslate"><span class="pre">details</span></code> namespace</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/score-json/json/edit/main/docs/mkdocs/docs/integration/migration_guide.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/mkdocs/docs/integration/migration_guide.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
