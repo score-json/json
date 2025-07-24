@@ -18,5 +18,9 @@
   {
     "version": "pr-11",
     "url": "https://score-json.github.io/json/pr-11/"
+  },
+  {
+    "version": "trudag_report_documentation",
+    "url": "https://score-json.github.io/json/trudag_report_documentation/"
   }
 ]
