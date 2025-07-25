@@ -56,3 +56,5 @@ user.bazelrc
 /docs/s-core/trustable/generated
 
 /.venv
+
+__pycache__/
