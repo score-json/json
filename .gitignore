@@ -50,3 +50,7 @@ nlohmann_json.spdx
 bazel-*
 MODULE.bazel.lock
 user.bazelrc
+
+/temp
+
+/docs/s-core/trustable/generated

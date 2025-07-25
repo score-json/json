@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-Project tracks known security advisories for dependencies.
+Automated tests are reviewed by a Subject Matter Expert to verify they test the properties they claim to.

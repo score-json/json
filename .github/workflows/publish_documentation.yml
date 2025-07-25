@@ -29,8 +29,48 @@ on:
     types: [checks_requested]
 
 jobs:
+  run-trudag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      pull-requests: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11.2'
+
+      - name: Install trudag and dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y graphviz
+          pip install trustable --index-url https://gitlab.com/api/v4/projects/66600816/packages/pypi/simple
+
+      - name: Generate trudag report
+        run: |
+          TRUDAG_REPORT_FOLDER="docs/s-core/trustable/generated"
+          mkdir -p "$TRUDAG_REPORT_FOLDER"
+          trudag publish --validate --output-dir "$TRUDAG_REPORT_FOLDER"
+          trudag plot -o "$TRUDAG_REPORT_FOLDER/graph.svg"
+          python scripts/clean_trudag_output.py
+
+      - name: Upload trudag artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: trudag-report-${{ github.event.pull_request.head.sha || github.sha }}
+          path: docs/s-core/trustable/generated/
+          if-no-files-found: error
+          
   build-docs:
-    uses: eclipse-score/cicd-workflows/.github/workflows/docs.yml@main
+    needs: run-trudag
+    # the eclipse-score/cicd-workflow docs.yml is adjusted to download the trudag report artifact before building the documentation
+    uses: ./.github/workflows/docs.yml
     permissions:
       contents: write
       pages: write
