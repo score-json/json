@@ -33,5 +33,3 @@ output_file="${TEMP_FOLDER}/Trustable.svg"
 trudag plot -o "$output_file"
 
 echo "All files processed. Output saved in the 'temp/graphs' directory."
-
-
