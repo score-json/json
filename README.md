@@ -1868,9 +1868,6 @@ As Intel compilers use unsafe floating point optimization by default, the unit t
 
 # Documentation for TSF
 
-You can build and serve the documentation using the following commands:
+### Build Docs
 
-```bash
-bazel run //docs:incremental
-python3 -m http.server --directory _build
-```
+You can build and serve the documentation using the following shell script: `scripts/generate_documentation.sh`
