@@ -110,8 +110,8 @@ class CPPTestReference(BaseReference):
         adjusted_lines = []
         for line in lines:
             if line.strip():  # Non-empty line
-                if not line.startswith(' ' * ident_to_remove):
-                    # If the indentation is not larger than for the baseline, return the original text
+                if not line.startswith(lines[0][:ident_to_remove]):
+                    # If the indentation is not >= than for the baseline, return the original text
                     return text
                 adjusted_lines.append(line[ident_to_remove:] if len(line) >= ident_to_remove else line)
             else:  # Empty line

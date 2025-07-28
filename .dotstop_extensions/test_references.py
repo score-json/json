@@ -164,6 +164,22 @@ def test_remove_leading_whitespace_preserve_indentation():
     result = ref.remove_leading_whitespace_preserve_indentation(text)
     assert result == expected
 
+def test_remove_leading_whitespace_preserve_indentation_tabs():
+    test_input = '''            SECTION("empty object")
+            {
+                CHECK(parser_helper("{}") == json(json::value_t::object));
+            }
+'''
+
+    expected_output = '''SECTION("empty object")
+{
+    CHECK(parser_helper("{}") == json(json::value_t::object));
+}
+'''
+    ref = CPPTestReference("test", "test.cpp")
+    result = ref.remove_leading_whitespace_preserve_indentation(test_input)
+    assert result == expected_output
+
 def test_get_section_integration(temp_cpp_file):
     """Test complete section extraction."""
     ref = CPPTestReference("basic_test", str(temp_cpp_file))
