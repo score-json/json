@@ -128,3 +128,7 @@ class CPPTestReference(BaseReference):
     def as_markdown(self, filepath: None | str = None) -> str:
         content = self.content.decode('utf-8')
         return self.remove_leading_whitespace_preserve_indentation(content)
+    
+    def __str__(self) -> str:
+        # this is used as a title in the trudag report
+        return f"cpp-test-reference: [{self._name}]\n({self._path})"
