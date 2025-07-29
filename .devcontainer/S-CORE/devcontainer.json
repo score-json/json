@@ -25,7 +25,9 @@
 				"jebbs.plantuml",
 				"streetsidesoftware.code-spell-checker",
 				"BazelBuild.vscode-bazel",
-				"eamodio.gitlens"
+				"eamodio.gitlens",
+				"ms-python.python",
+    			"ms-python.vscode-pylance"
 			]
 		}
 	}
@@ -37,7 +39,7 @@
 	// "forwardPorts": [],
 
 	// Uncomment the next line to run commands after the container is created.
-	// "postCreateCommand": "cat /etc/os-release",
+	"postCreateCommand": "bash .devcontainer/S-CORE/post_create_script.sh",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
