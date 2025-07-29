@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; NLOHMANN JSON LIBRARY  documentation</title>
+    <title>AOU-01 &#8212; NLOHMANN JSON LIBRARY  documentation</title>
   
   
   
@@ -62,7 +62,7 @@
     <script src="../../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
     <script src="../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
     <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 's-core/trustable/parse-json-data/PJD-02';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 's-core/trustable/generated/AOU';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://score-json.github.io/json/versions.json';
@@ -408,7 +408,7 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">&lt;no title&gt;</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">AOU-01</span></li>
   </ul>
 </nav>
 </div>
@@ -425,7 +425,291 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>The service transforms a JSON text into a C++ representation using C++ containers (for arrays and objects) and primitive datatypes (for strings, numbers, boolean, null).</p>
+  <hr class="docutils" />
+<section id="aou-01">
+<h1>AOU-01<a class="headerlink" href="#aou-01" title="Link to this heading">#</a></h1>
+<p>Problems with nlohmann_json’s implementation identified during testing are reported to the upstream nlohmann_json project.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-fixes"><span class="std std-ref">TA-FIXES</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<hr class="docutils" />
+</section>
+<section id="aou-02">
+<h1>AOU-02<a class="headerlink" href="#aou-02" title="Link to this heading">#</a></h1>
+<p>The build environment used for nlohmann_json in an integrating system is supplied with consistent dependencies.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-supply_chain"><span class="std std-ref">TA-SUPPLY_CHAIN</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<hr class="docutils" />
+</section>
+<section id="aou-03">
+<h1>AOU-03<a class="headerlink" href="#aou-03" title="Link to this heading">#</a></h1>
+<p>The integrator has integrator-controlled mirrors of the dependencies.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-supply_chain"><span class="std std-ref">TA-SUPPLY_CHAIN</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<hr class="docutils" />
+</section>
+<section id="aou-04">
+<h1>AOU-04<a class="headerlink" href="#aou-04" title="Link to this heading">#</a></h1>
+<p>Exceptions are properly handled or turned off.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-constraints"><span class="std std-ref">TA-CONSTRAINTS</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<hr class="docutils" />
+</section>
+<section id="aou-05">
+<h1>AOU-05<a class="headerlink" href="#aou-05" title="Link to this heading">#</a></h1>
+<p>Input is encoded as UTF-8 (as required by RFC8259) and in case other string formats are used, it is expected that the parse or dump function may throw an exception.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-constraints"><span class="std std-ref">TA-CONSTRAINTS</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<hr class="docutils" />
+</section>
+<section id="aou-06">
+<h1>AOU-06<a class="headerlink" href="#aou-06" title="Link to this heading">#</a></h1>
+<p>Brace initialization (e.g. json j{true};) is not used with the types basic_json, json, or ordered_json unless you want to create an object or array.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-constraints"><span class="std std-ref">TA-CONSTRAINTS</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<hr class="docutils" />
+</section>
+<section id="aou-07">
+<h1>AOU-07<a class="headerlink" href="#aou-07" title="Link to this heading">#</a></h1>
+<p>If the input is no valid JSON, exceptions are expected during parsing with default parameters.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-constraints"><span class="std std-ref">TA-CONSTRAINTS</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<hr class="docutils" />
+</section>
+<section id="aou-08">
+<h1>AOU-08<a class="headerlink" href="#aou-08" title="Link to this heading">#</a></h1>
+<p>The integrator ensures that all necessary source files and built tools are mirrored, e.g. using a built server without internet access.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-releases"><span class="std std-ref">TA-RELEASES</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<hr class="docutils" />
+</section>
+<section id="aou-09">
+<h1>AOU-09<a class="headerlink" href="#aou-09" title="Link to this heading">#</a></h1>
+<p>TA-INDICATORS falls within the responsibility of the integrator.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-indicators"><span class="std std-ref">TA-INDICATORS</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<hr class="docutils" />
+</section>
+<section id="aou-10">
+<h1>AOU-10<a class="headerlink" href="#aou-10" title="Link to this heading">#</a></h1>
+<p>The integrator is required to evaluate the provided evidence for TA-FIXES and supplement it where necessary.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-fixes"><span class="std std-ref">TA-FIXES</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<hr class="docutils" />
+</section>
+<section id="aou-11">
+<h1>AOU-11<a class="headerlink" href="#aou-11" title="Link to this heading">#</a></h1>
+<p>The integrator is required to evaluate the provided evidence for TA-METHODOLOGIES and supplement it where necessary.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-methodologies"><span class="std std-ref">TA-METHODOLOGIES</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<hr class="docutils" />
+</section>
+<section id="aou-12">
+<h1>AOU-12<a class="headerlink" href="#aou-12" title="Link to this heading">#</a></h1>
+<p>The integrator is required to evaluate the provided evidence for TA-CONFIDENCE and supplement it where necessary.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-confidence"><span class="std std-ref">TA-CONFIDENCE</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<hr class="docutils" />
+</section>
+<section id="aou-13">
+<h1>AOU-13<a class="headerlink" href="#aou-13" title="Link to this heading">#</a></h1>
+<p>The integrator is required to evaluate the provided evidence for TA-INPUTS and supplement it where necessary.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-inputs"><span class="std std-ref">TA-INPUTS</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<hr class="docutils" />
+</section>
+<section id="aou-14">
+<h1>AOU-14<a class="headerlink" href="#aou-14" title="Link to this heading">#</a></h1>
+<p>The JSON-library is built with tools from the provided matrix specification. (not yet provided)</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-constraints"><span class="std std-ref">TA-CONSTRAINTS</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<hr class="docutils" />
+</section>
+<section id="aou-15">
+<h1>AOU-15<a class="headerlink" href="#aou-15" title="Link to this heading">#</a></h1>
+<p>The integrator maintains mirrors for all code and tools utilized in testing.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-tests"><span class="std std-ref">TA-TESTS</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<hr class="docutils" />
+</section>
+<section id="aou-16">
+<h1>AOU-16<a class="headerlink" href="#aou-16" title="Link to this heading">#</a></h1>
+<p>The integrator uses C++ versions and compilers that are tested in the CI pipeline.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-constraints"><span class="std std-ref">TA-CONSTRAINTS</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<hr class="docutils" />
+</section>
+<section id="aou-17">
+<h1>AOU-17<a class="headerlink" href="#aou-17" title="Link to this heading">#</a></h1>
+<p>The integrator is responsible for identifying additional misbehaviours for the JSON library, defining appropriate mitigations, and ensuring that these mitigations are thoroughly validated.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-misbehaviours"><span class="std std-ref">TA-MISBEHAVIOURS</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<hr class="docutils" />
+</section>
+<section id="aou-18">
+<h1>AOU-18<a class="headerlink" href="#aou-18" title="Link to this heading">#</a></h1>
+<p>The integrator ensures monitoring data from deployed software is accurately captured, securely stored, and well-documented for analysis.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-data"><span class="std std-ref">TA-DATA</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<hr class="docutils" />
+</section>
+<section id="aou-19">
+<h1>AOU-19<a class="headerlink" href="#aou-19" title="Link to this heading">#</a></h1>
+<p>The integrator ensures that monitoring data is systematically analyzed to detect trends and identify issues.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-analysis"><span class="std std-ref">TA-ANALYSIS</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+</section>
 
 
                 </article>
@@ -455,7 +739,26 @@
     <i class="fa-solid fa-list"></i> On this page
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">AOU-01</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-02">AOU-02</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-03">AOU-03</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-04">AOU-04</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-05">AOU-05</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-06">AOU-06</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-07">AOU-07</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-08">AOU-08</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-09">AOU-09</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-10">AOU-10</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-11">AOU-11</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-12">AOU-12</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-13">AOU-13</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-14">AOU-14</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-15">AOU-15</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-16">AOU-16</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-17">AOU-17</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-18">AOU-18</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-19">AOU-19</a></li>
 </ul>
 
   </nav></div>
@@ -464,7 +767,7 @@
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/score-json/json/edit/main/docs/s-core/trustable/parse-json-data/PJD-02.md">
+    <a href="https://github.com/score-json/json/edit/main/docs/s-core/trustable/generated/AOU.md">
       <i class="fa-solid fa-pencil"></i>
       
       
@@ -480,7 +783,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../../_sources/s-core/trustable/parse-json-data/PJD-02.md.txt"
+      <li><a href="../../../_sources/s-core/trustable/generated/AOU.md.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>
