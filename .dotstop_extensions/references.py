@@ -131,4 +131,4 @@ class CPPTestReference(BaseReference):
     
     def __str__(self) -> str:
         # this is used as a title in the trudag report
-        return f"cpp-test-reference: [{self._name}]\n({self._path})"
+        return f"cpp-test: [{self._name}]\n({self._path})"
