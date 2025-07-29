@@ -1,5 +1,6 @@
 from pathlib import Path
 from trudag.dotstop.core.reference.references import BaseReference
+import requests
 
 class CPPTestReference(BaseReference):
     """
@@ -132,3 +133,39 @@ class CPPTestReference(BaseReference):
     def __str__(self) -> str:
         # this is used as a title in the trudag report
         return f"cpp-test: [{self._name}]\n({self._path})"
+
+
+class JSONTestsuiteReference(BaseReference):
+
+    def __init__(self, name: str, path, test_suite_path: str, description: str) -> None:
+        self._name = name
+        self._path = Path(path)
+        self._test_suite_path = test_suite_path
+        self._loaded_json = self.get_testsuite_content()
+        self._description = description
+
+    @classmethod
+    def type(cls) -> str:
+        return "JSON_testsuite"
+    
+    def get_testsuite_content(self) -> str:
+        url = "https://raw.githubusercontent.com/nlohmann/json_test_data/master/" + str(self._test_suite_path)
+        try:
+            response = requests.get(url)
+            response.raise_for_status()
+            return response.text
+        except requests.RequestException as e:
+            raise ValueError(f"Failed to fetch testsuite content from {url}: {e}")
+    
+    @property
+    def content(self) -> bytes:
+        return self._loaded_json.encode('utf-8')
+
+    def as_markdown(self, filepath: None | str = None) -> str:
+        # TODO check if file is too large, then include reference only
+        description = f"Description: {self._description}\n\n"
+        return description + self._loaded_json
+    
+    def __str__(self) -> str:
+        # this is used as a title in the trudag report
+        return f"cpp-testsuite: [{self._name}]\n({self._test_suite_path})"

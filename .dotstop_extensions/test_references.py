@@ -2,7 +2,7 @@ import pytest
 import tempfile
 from pathlib import Path
 from unittest.mock import patch, mock_open
-from references import CPPTestReference
+from references import CPPTestReference, JSONTestsuiteReference
 
 
 @pytest.fixture
@@ -225,3 +225,10 @@ def test_nested_section_extraction(temp_cpp_file):
     ref = CPPTestReference("basic_test:section1:nested_section", temp_cpp_file)
     section = ref.get_section()
     assert 'nested_section' in section
+
+def test_testsuite_json_loading():
+    """Test TestsuiteReference initialization and type."""
+    suite_ref = JSONTestsuiteReference("name", "path", "/json_tests/fail2.json", "description")
+    json = suite_ref.get_testsuite_content()
+    assert json == '["Unclosed array"'
+    
