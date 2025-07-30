@@ -13,4 +13,4 @@ references:
       path: "/workspaces/json/tests/src/unit-testsuites.cpp"
 ---
 
-The service does accept non-empty object.
+The service accepts non-empty objects.

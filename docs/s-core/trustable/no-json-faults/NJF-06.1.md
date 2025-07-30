@@ -7,4 +7,4 @@ references:
       path: "/workspaces/json/tests/src/unit-class_parser.cpp"
 ---
 
-The service does accept empty object.
+The service accepts the empty object.

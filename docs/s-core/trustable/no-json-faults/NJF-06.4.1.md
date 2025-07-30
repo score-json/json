@@ -7,4 +7,4 @@ references:
       path: "/workspaces/json/tests/src/unit-class_parser.cpp"
 ---
 
-The does accept strings as names. 
+The service accepts strings as names. 

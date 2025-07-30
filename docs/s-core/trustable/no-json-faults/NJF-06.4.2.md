@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The service does only accept strings as names.
+The service does not accept any other token as name.
