@@ -1,6 +1,11 @@
 ---
 level: 1.1
 normative: true
+---
+
+---
+level: 1.1
+normative: true
 references:
     - type: "cpp_test"
       name: "parser class:accept:array:empty array"

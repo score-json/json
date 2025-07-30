@@ -2,9 +2,9 @@
 level: 1.1
 normative: true
 references:
-    - type: cpp_reference
+    - type: "cpp_test"
       name: "parser class:accept:object:nonempty object"
-      path: "/workspaces/json/tests/src/unit-class-parser.cpp"
+      path: "/workspaces/json/tests/src/unit-class_parser.cpp"
 ---
 
 The does accept strings as names. 
