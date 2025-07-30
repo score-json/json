@@ -13,4 +13,4 @@ references:
       path: "/workspaces/json/tests/src/unit-testsuites.cpp"
 ---
 
-The service does not accept objects with improper types.
+The service does not accept objects with improper members.

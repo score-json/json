@@ -13,4 +13,4 @@ references:
       path: "/workspaces/json/tests/src/unit-testsuites.cpp"
 ---
 
-The service does not accept objects with different types.
+The admissible members of an object have the form name : value.

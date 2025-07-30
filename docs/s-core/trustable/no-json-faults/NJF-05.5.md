@@ -16,4 +16,4 @@ references:
       path: "/workspaces/json/tests/src/unit-testsuites.cpp"
 ---
 
-The service does not accept arrays with improper elements.
+The service does not accept arrays with improper values.
