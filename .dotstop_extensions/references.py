@@ -135,10 +135,10 @@ class CPPTestReference(BaseReference):
         return f"cpp-test: [{self._name}]\n({self._path})"
 
 
-class JSONTestsuiteReference(BaseReference):
+class JSONTestsuiteReference(CPPTestReference):
 
     def __init__(self, name: str, path, test_suite_path: str, description: str) -> None:
-        self._name = name
+        super().__init__(name, path)
         self._path = Path(path)
         self._test_suite_path = test_suite_path
         self._loaded_json = self.get_testsuite_content()
@@ -159,13 +159,58 @@ class JSONTestsuiteReference(BaseReference):
     
     @property
     def content(self) -> bytes:
-        return self._loaded_json.encode('utf-8')
+        content = self.get_section() + "\n" + self._loaded_json
+        return content.encode('utf-8')
+    
+    def is_json_test_line(self, line: str) -> bool:
+        stripped = line.strip()
+
+        test_data_prefixes = ['// TEST_DATA_DIRECTORY',
+                            '//TEST_DATA_DIRECTORY',
+                            'TEST_DATA_DIRECTORY'
+        ]
+
+        json_file_suffixes = ['.json",', '.json"']  
+
+        has_test_data_prefix = any(stripped.startswith(prefix) for prefix in test_data_prefixes)
+        has_json_file_suffix = any(stripped.endswith(suffix) for suffix in json_file_suffixes)
+
+        return has_test_data_prefix and has_json_file_suffix
+
+    def filter_other_test_data_lines(self, text: str) -> str:
+        """Remove lines that only contain comments, whitespace, and TEST_DATA_DIRECTORY paths."""
+        lines = text.split('\n')
+        filtered_lines = []
+        
+        for line in lines:
+            if self._test_suite_path in line or not self.is_json_test_line(line):
+                filtered_lines.append(line)
+
+        if len(filtered_lines) < len(lines):
+            filtered_lines.append('\n Note: Other test data lines have been filtered out for conciseness.') 
+        
+        return '\n'.join(filtered_lines)
+    
+    def get_json_as_markdown(self) -> str:
+        json_lines = self._loaded_json.split('\n')
+        if len(json_lines) > 42:
+            json = f"JSON Testsuite: {self._test_suite_path}\n\n[Content too large - {len(json_lines)} lines, showing reference only]\n\n"
+        else:
+            json = f"JSON Testsuite: {self._test_suite_path}\n\n {self._loaded_json}\n\n"
+        
+
 
     def as_markdown(self, filepath: None | str = None) -> str:
         # TODO check if file is too large, then include reference only
         description = f"Description: {self._description}\n\n"
-        return description + self._loaded_json
-    
+        section = self.remove_leading_whitespace_preserve_indentation(self.get_section())
+        filtered_section = self.filter_other_test_data_lines(section)
+        section = f"cpp-test: [{self._name}] ({self._path}) \n\n {filtered_section} \n\n"
+
+        json = self.get_json_as_markdown() + "\n\n"
+        separator = "-------------------------------------\n\n"
+        return description + separator + json + separator + section
+
     def __str__(self) -> str:
         # this is used as a title in the trudag report
-        return f"cpp-testsuite: [{self._name}]\n({self._test_suite_path})"
+        return f"cpp-testsuite: [{self._test_suite_path}]"
