@@ -11,6 +11,9 @@ references:
     - type: "cpp_test"
       name: "nst's JSONTestSuite (2):test_parsing:n"
       path: "/workspaces/json/tests/src/unit-testsuites.cpp"
+    - type: "cpp_test"
+      name: "compliance tests from json.org:expected failures"
+      path: "/workspaces/json/tests/src/unit-testsuites.cpp"
 ---
 
-The service does not accept any other literal name.
+The service does not accept improperly bounded arrays.
