@@ -2,6 +2,20 @@ from pathlib import Path
 from trudag.dotstop.core.reference.references import BaseReference
 import requests
 
+def format_cpp_code_as_markdown(code: str) -> str:
+    return f"```cpp\n{code}\n```\n"
+
+def format_json_as_markdown(json_content: str) -> str:
+    return f"```json\n{json_content}\n```\n"
+
+def make_md_bullet_point(text: str, indent_level: int = 0) -> str:
+    indent = '\t' * indent_level
+    return f"{indent}- {text}\n"
+
+def add_indentation(text: str, indent_level: int) -> str:
+    indent = '\t' * indent_level
+    return indent + text.replace('\n', '\n' + indent)
+
 class CPPTestReference(BaseReference):
     """
     Represents a reference to a specific section within a C++ test file. The class
@@ -128,28 +142,47 @@ class CPPTestReference(BaseReference):
 
     def as_markdown(self, filepath: None | str = None) -> str:
         content = self.content.decode('utf-8')
-        return self.remove_leading_whitespace_preserve_indentation(content)
-    
+        content = self.remove_leading_whitespace_preserve_indentation(content)
+        return format_cpp_code_as_markdown(content)
+
     def __str__(self) -> str:
         # this is used as a title in the trudag report
         return f"cpp-test: [{self._name}]\n({self._path})"
 
 
 class JSONTestsuiteReference(CPPTestReference):
+    """Represents a reference to one or more JSON testsuite files. The referenced JSON files
+    are displayed (using the as_markdown function) as well as the relevant part of the C++ 
+    test section that uses them. Both the C++ test file and the JSON files are included in the 
+    content property that is used for hashing."""
 
-    def __init__(self, name: str, path, test_suite_path: str, description: str) -> None:
+    def __init__(self, name: str, path, test_suite_paths: str, description: str) -> None:
+        """
+        Initialize JSONTestsuiteReference.
+        
+        Args:
+            name: Section name in the C++ test file, use colon-separated for nested sections
+            path: Relative path from project root to the C++ test file
+            test_suite_paths: List of relative paths to JSON test files in the nlohmann test data repository
+            description: Human-readable description of what this test suite covers
+            
+        Raises:
+            ValueError: If test_suite_paths is not a list of strings
+        """
         super().__init__(name, path)
         self._path = Path(path)
-        self._test_suite_path = test_suite_path
-        self._loaded_json = self.get_testsuite_content()
+        if not isinstance(test_suite_paths, list):
+            raise ValueError(f"test_suite_paths must be a list of strings: {test_suite_paths}")
+        self._test_suite_paths = test_suite_paths
+        self._loaded_json_map = {path: self.get_testsuite_content(path) for path in self._test_suite_paths}
         self._description = description
 
     @classmethod
     def type(cls) -> str:
         return "JSON_testsuite"
-    
-    def get_testsuite_content(self) -> str:
-        url = "https://raw.githubusercontent.com/nlohmann/json_test_data/master/" + str(self._test_suite_path)
+
+    def get_testsuite_content(self, test_suite_path: str) -> str:
+        url = "https://raw.githubusercontent.com/nlohmann/json_test_data/master/" + str(test_suite_path)
         try:
             response = requests.get(url)
             response.raise_for_status()
@@ -159,7 +192,8 @@ class JSONTestsuiteReference(CPPTestReference):
     
     @property
     def content(self) -> bytes:
-        content = self.get_section() + "\n" + self._loaded_json
+        all_json_content = "\n".join(self._loaded_json_map.values())
+        content = self.get_section() + "\n" + all_json_content
         return content.encode('utf-8')
     
     def is_json_test_line(self, line: str) -> bool:
@@ -178,39 +212,50 @@ class JSONTestsuiteReference(CPPTestReference):
         return has_test_data_prefix and has_json_file_suffix
 
     def filter_other_test_data_lines(self, text: str) -> str:
-        """Remove lines that only contain comments, whitespace, and TEST_DATA_DIRECTORY paths."""
+        """Remove lines that only contain other test data references."""
         lines = text.split('\n')
         filtered_lines = []
         
         for line in lines:
-            if self._test_suite_path in line or not self.is_json_test_line(line):
+            if any(test_suite_path in line for test_suite_path in self._test_suite_paths) or not self.is_json_test_line(line):
                 filtered_lines.append(line)
 
         if len(filtered_lines) < len(lines):
-            filtered_lines.append('\n Note: Other test data lines have been filtered out for conciseness.') 
+            filtered_lines.append('\n // Note: Other test data lines have been filtered out for conciseness.') 
         
         return '\n'.join(filtered_lines)
-    
-    def get_json_as_markdown(self) -> str:
-        json_lines = self._loaded_json.split('\n')
-        if len(json_lines) > 42:
-            json = f"JSON Testsuite: {self._test_suite_path}\n\n[Content too large - {len(json_lines)} lines, showing reference only]\n\n"
-        else:
-            json = f"JSON Testsuite: {self._test_suite_path}\n\n {self._loaded_json}\n\n"
-        
 
+    def get_single_json_as_markdown(self, test_suite_path: str) -> str:
+        json_lines = self._loaded_json_map[test_suite_path].split('\n')
+        if len(json_lines) > 42:
+            link_to_file = f"https://raw.githubusercontent.com/nlohmann/json_test_data/master/{test_suite_path}"
+            return f"[Link to file]({link_to_file}) [Content too large - {len(json_lines)} lines]\n\n"
+        else:
+            json_content = format_json_as_markdown(self._loaded_json_map[test_suite_path])
+            markdown_bullet_point = make_md_bullet_point(f"JSON Testsuite: {test_suite_path}")
+            return f"{markdown_bullet_point}\n\n {json_content}\n\n"
 
     def as_markdown(self, filepath: None | str = None) -> str:
-        # TODO check if file is too large, then include reference only
         description = f"Description: {self._description}\n\n"
-        section = self.remove_leading_whitespace_preserve_indentation(self.get_section())
-        filtered_section = self.filter_other_test_data_lines(section)
-        section = f"cpp-test: [{self._name}] ({self._path}) \n\n {filtered_section} \n\n"
 
-        json = self.get_json_as_markdown() + "\n\n"
-        separator = "-------------------------------------\n\n"
-        return description + separator + json + separator + section
+        cpp_test_content = self.remove_leading_whitespace_preserve_indentation(self.get_section())
+        cpp_test_content = self.filter_other_test_data_lines(cpp_test_content)
+        cpp_test_content = format_cpp_code_as_markdown(cpp_test_content)
+
+        json_content = "\n\n".join(
+            self.get_single_json_as_markdown(test_suite_path) for test_suite_path in self._test_suite_paths
+        )
+
+        cpp_test_title = super().__str__() + '\n\n'
+        markdown_content = (
+            make_md_bullet_point(description) + 
+            json_content + 
+            make_md_bullet_point(cpp_test_title) + 
+            cpp_test_content
+        )
+
+        return add_indentation(markdown_content, 1)
 
     def __str__(self) -> str:
         # this is used as a title in the trudag report
-        return f"cpp-testsuite: [{self._test_suite_path}]"
+        return f"cpp-testsuite: [{', '.join(self._test_suite_paths)}]"

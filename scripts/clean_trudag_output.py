@@ -41,6 +41,7 @@ def clean_file(filepath):
         lines = f.readlines()
     new_lines = [clean_line(line) for line in lines]
     new_lines = [line for line in new_lines if not remove_line(line)]  # Remove empty lines
+    new_lines = [line[2:] if line.startswith('\t\t') else line for line in new_lines]
     if new_lines != lines:
         with open(filepath, 'w', encoding='utf-8') as f:
             f.writelines(new_lines)

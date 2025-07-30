@@ -228,7 +228,7 @@ def test_nested_section_extraction(temp_cpp_file):
 
 def test_testsuite_json_loading():
     """Test TestsuiteReference initialization and type."""
-    suite_ref = JSONTestsuiteReference("name", "path", "/json_tests/fail2.json", "description")
-    json = suite_ref.get_testsuite_content()
+    suite_ref = JSONTestsuiteReference("name", "path", ["/json_tests/fail2.json"], "description")
+    json = suite_ref.get_testsuite_content("/json_tests/fail2.json")
     assert json == '["Unclosed array"'
     
