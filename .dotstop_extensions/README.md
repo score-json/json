@@ -2,7 +2,7 @@
 
 The custom references can be used by specifying the arguments as specified in the constructor (see references.py) at the top of the trudag item files under references:
 
-For the `CPPTestReferenceTestsuite` an example is:
+For the `JSONTestsuiteReference` an example is:
 ```
 ---
 ...
@@ -18,7 +18,7 @@ references:
 ---
 ```
 
-For the `JSONTestsuiteReference` an example is:
+For the `CPPTestReference` an example is:
 ```
 ---
 ...
