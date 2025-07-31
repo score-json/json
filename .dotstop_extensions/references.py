@@ -2,6 +2,9 @@ from pathlib import Path
 from trudag.dotstop.core.reference.references import BaseReference
 import requests
 
+# Constants
+MAX_JSON_LINES_FOR_DISPLAY = 25
+
 def format_cpp_code_as_markdown(code: str) -> str:
     return f"```cpp\n{code}\n```\n"
 
@@ -46,15 +49,26 @@ class CPPTestReference(BaseReference):
         """Extract the specified section from the C++ test file."""
         with open(self._path, 'r') as file:
             lines = file.readlines()
-            start_index = self.find_section_start(lines)
-            end_index = self.find_section_end(lines, start_index)
-            test_section = ''.join(lines[start_index:end_index])
+            section_start_line = self.find_section_start(lines)
+            section_end_line = self.find_section_end(lines, section_start_line)
+            test_section = ''.join(lines[section_start_line:section_end_line])
         return test_section
     
     def find_section_start(self, file_lines: list[str]) -> int:
-        """Find the starting line index of the section in the file."""
+        """ 
+        This method finds the starting line index of the section in the file. It expects 
+        the section name to be in the format "section1" or "section1:section2". It searches 
+        for the first occurrence of a line containing either SECTION("section1")
+        or TEST_CASE("section1") where section1 matches the first part of the section name. 
+        This is done iteratively for nested sections until the full section name sequence 
+        is matched.
 
-        # section names are colon-separated, e.g., "section1:section2"
+        Args:
+            file_lines: List of lines from the C++ test file
+
+        Returns:
+            Line index where the section starts
+        """
         section_names = self._name.split(':')
         for line_number, line in enumerate(file_lines):
             # Check if current line contains a SECTION or TEST_CASE declaration matching the current first section name
@@ -62,12 +76,11 @@ class CPPTestReference(BaseReference):
             test_case_pattern = f'TEST_CASE("{section_names[0]}")'
             if section_pattern in line or test_case_pattern in line:
                 if len(section_names) == 1:
-                    # If we only have one section name, we found our target
+                    # If we only have one section name left, we found our target
                     return line_number
                 else:
                     # Remove the found section from the list and continue searching for nested sections
                     section_names.pop(0)
-
 
         raise ValueError("Section start not found")
     
@@ -196,7 +209,8 @@ class JSONTestsuiteReference(CPPTestReference):
         content = self.get_section() + "\n" + all_json_content
         return content.encode('utf-8')
     
-    def is_json_test_line(self, line: str) -> bool:
+    @staticmethod
+    def is_json_test_line(line: str) -> bool:
         stripped = line.strip()
 
         test_data_prefixes = ['// TEST_DATA_DIRECTORY',
@@ -226,34 +240,40 @@ class JSONTestsuiteReference(CPPTestReference):
         return '\n'.join(filtered_lines)
 
     def get_single_json_as_markdown(self, test_suite_path: str) -> str:
-        json_lines = self._loaded_json_map[test_suite_path].split('\n')
-        if len(json_lines) > 42:
+        num_json_lines = len(self._loaded_json_map[test_suite_path].split('\n'))
+        if num_json_lines > MAX_JSON_LINES_FOR_DISPLAY:
             link_to_file = f"https://raw.githubusercontent.com/nlohmann/json_test_data/master/{test_suite_path}"
-            return f"[Link to file]({link_to_file}) [Content too large - {len(json_lines)} lines]\n\n"
+            json_for_display = f"[Link to file]({link_to_file}) [Content too large - {num_json_lines} lines]\n\n"
         else:
-            json_content = format_json_as_markdown(self._loaded_json_map[test_suite_path])
-            markdown_bullet_point = make_md_bullet_point(f"JSON Testsuite: {test_suite_path}")
-            return f"{markdown_bullet_point}\n\n {json_content}\n\n"
+            json_for_display = format_json_as_markdown(self._loaded_json_map[test_suite_path])
+
+        markdown_bullet_point = make_md_bullet_point(f"JSON Testsuite: {test_suite_path}")
+        return f"{markdown_bullet_point}\n\n {json_for_display}\n\n"
+        
+    def get_all_json_as_markdown(self) -> str:
+        """Get all JSON test files as markdown."""
+        return "\n\n".join(
+            self.get_single_json_as_markdown(test_suite_path) for test_suite_path in self._test_suite_paths
+        )
 
     def as_markdown(self, filepath: None | str = None) -> str:
         description = f"Description: {self._description}\n\n"
 
+        # we can not simply use the parent class's as_markdown method, because it does not filter out
+        # the other test data lines, which are not relevant for the trudag report
         cpp_test_content = self.remove_leading_whitespace_preserve_indentation(self.get_section())
         cpp_test_content = self.filter_other_test_data_lines(cpp_test_content)
         cpp_test_content = format_cpp_code_as_markdown(cpp_test_content)
 
-        json_content = "\n\n".join(
-            self.get_single_json_as_markdown(test_suite_path) for test_suite_path in self._test_suite_paths
-        )
-
         cpp_test_title = super().__str__() + '\n\n'
+
         markdown_content = (
             make_md_bullet_point(description) + 
-            json_content + 
+            self.get_all_json_as_markdown() + 
             make_md_bullet_point(cpp_test_title) + 
             cpp_test_content
         )
-
+        # the markdown content is indented by one level to fit into the report markdown structure
         return add_indentation(markdown_content, 1)
 
     def __str__(self) -> str:
