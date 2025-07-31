@@ -25,6 +25,7 @@ on:
       - "CIFuzz"
       - "Check amalgamation"
       - "Test Trudag extensions"
+      - "Ubuntu"
     types:
       - completed
 
