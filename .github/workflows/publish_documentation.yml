@@ -22,11 +22,7 @@ permissions:
 on:
   pull_request:
     types: [opened, reopened, synchronize] # Allows forks to trigger the docs build
-  push:
-    branches:
-      - main
-  merge_group:
-    types: [checks_requested]
+
 
 jobs:
   run-trudag:
@@ -38,12 +34,27 @@ jobs:
       id-token: write
 
     steps:
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./out/artifacts
+
+      - name: Verify all workflows completed
+        run: |
+          REQUIRED_ARTIFACTS=(
+            "cifuzz-completed"
+          )
+          for ARTIFACT in "${REQUIRED_ARTIFACTS[@]}"; do
+            if [ ! -f "./artifacts/$ARTIFACT" ]; then
+              echo "❌ Missing the artifact: $ARTIFACT"
+              exit 1
+            fi
+          done
+          echo "✅ All required artifacts are verified and present."
+
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Wait for 5 minutes
-        run: sleep 250
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
