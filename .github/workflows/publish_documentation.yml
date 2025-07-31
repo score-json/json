@@ -20,8 +20,11 @@ permissions:
   id-token: write
 
 on:
-  pull_request:
-    types: [opened, reopened, synchronize] # Allows forks to trigger the docs build
+  workflow_run:
+    workflows: 
+      - "CIFuzz"
+    types:
+      - completed
 
 
 jobs:
