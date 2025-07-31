@@ -15,7 +15,7 @@ string wrapper_for_trudag(string evidence, string wrap_left = "\t\t\t\t- \"", st
 string get_json_from_candidate(string candidate){
     regex pattern("\"([^\"]*)\"");
     smatch m;
-    if (regex_search(candidate,m,pattern)){
+    if (candidate.find("TEST_DATA_DIRECTORY")!=string::npos && regex_search(candidate,m,pattern)){
         return wrapper_for_trudag(m[1]);
     } else {
         throw 0;
@@ -59,7 +59,7 @@ bool read_line_by_line(ifstream& source, ofstream& target){
             line = stoi(ans);
         } catch (...) {
             cout << "Error: couldn't convert " << ans << " to integer!\n";
-            return false;
+            continue;
         }
         if (line<=0){
             cout << "Invalid line, please try again.\n";
@@ -89,7 +89,7 @@ bool read_region(ifstream& source, ofstream& target){
             start_line = stoi(ans);
         } catch (...) {
             cout << "Error: couldn't convert " << ans << " to integer!\n";
-            return false;
+            continue;
         }
         cout << "Line to end on: ";
         getline(std::cin, ans);
@@ -97,7 +97,7 @@ bool read_region(ifstream& source, ofstream& target){
             end_line = stoi(ans);
         } catch (...) {
             cout << "Error: couldn't convert " << ans << " to integer!\n";
-            return false;
+            continue;
         }
         if (start_line>end_line) {
             cout << "Invalid configuration: start-line is after end-line.\n";
