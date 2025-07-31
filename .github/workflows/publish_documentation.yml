@@ -30,7 +30,7 @@ on:
 
 jobs:
   run-trudag:
-  needs: Fuzzing
+    needs: Fuzzing
     runs-on: ubuntu-latest
     permissions:
       contents: write
