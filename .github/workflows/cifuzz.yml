@@ -33,3 +33,9 @@ jobs:
       with:
         name: artifacts
         path: ./out/artifacts
+
+    - name: Upload completion artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: cifuzz-completed
+        path: ./out/artifacts
