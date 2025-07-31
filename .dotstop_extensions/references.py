@@ -186,9 +186,26 @@ class JSONTestsuiteReference(CPPTestReference):
         self._path = Path(path)
         if not isinstance(test_suite_paths, list):
             raise ValueError(f"test_suite_paths must be a list of strings: {test_suite_paths}")
-        self._test_suite_paths = test_suite_paths
-        self._loaded_json_map = {path: self.get_testsuite_content(path) for path in self._test_suite_paths}
+        
         self._description = description
+        self._test_suite_paths = test_suite_paths
+        self.check_testsuite_file_is_used_by_cpp_test()
+        self._loaded_json_cache = {}
+    
+    @property
+    def _loaded_json_map(self) -> dict[str, str]:
+        """Lazy-load JSON content for all test suite paths."""
+        for path in self._test_suite_paths:
+            if path not in self._loaded_json_cache:
+                self._loaded_json_cache[path] = self.get_testsuite_content(path)
+        return self._loaded_json_cache
+
+    def check_testsuite_file_is_used_by_cpp_test(self) -> None:
+        """Check if the C++ test file uses the JSON testsuite files."""
+        cpp_test_content = self.get_section()
+        for test_suite_path in self._test_suite_paths:
+            if test_suite_path not in cpp_test_content:
+                raise ValueError(f"JSON testsuite {test_suite_path} is not used in the C++ test file {self._path}")
 
     @classmethod
     def type(cls) -> str:

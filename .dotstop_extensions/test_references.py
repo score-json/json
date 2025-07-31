@@ -272,9 +272,15 @@ def test_nested_section_extraction(temp_cpp_file):
 
 def test_testsuite_json_loading():
     """Test TestsuiteReference initialization and type."""
-    suite_ref = JSONTestsuiteReference("name", "path", ["/json_tests/fail2.json"], "description")
-    json = suite_ref.get_testsuite_content("/json_tests/fail2.json")
-    assert json == '["Unclosed array"'
+    with patch.object(JSONTestsuiteReference, 'check_testsuite_file_is_used_by_cpp_test') as mock_check, \
+         patch.object(JSONTestsuiteReference, 'get_testsuite_content') as mock_get_content:
+        
+        mock_check.return_value = None  # Mock the validation check
+        mock_get_content.return_value = '["Unclosed array"'
+        
+        suite_ref = JSONTestsuiteReference("name", "path", ["/json_tests/fail2.json"], "description")
+        json = suite_ref.get_testsuite_content("/json_tests/fail2.json")
+        assert json == '["Unclosed array"'
 
 def test_json_testsuite_reference_content(temp_cpp_file_with_testsuite, sample_testsuite_test):
     """Test JSONTestsuiteReference content property."""
@@ -299,8 +305,11 @@ def test_json_testsuite_reference_init_valid():
     test_suite_paths = ["tests/data/json_tests/pass1.json", "tests/data/json_tests/pass2.json"]
     description = "Test suite for valid JSON parsing"
     
-    with patch.object(JSONTestsuiteReference, 'get_testsuite_content') as mock_get_content:
+    with patch.object(JSONTestsuiteReference, 'get_testsuite_content') as mock_get_content, \
+         patch.object(JSONTestsuiteReference, 'check_testsuite_file_is_used_by_cpp_test') as mock_check:
+        
         mock_get_content.side_effect = lambda path: f"content of {path}"
+        mock_check.return_value = None  # Mock the validation check
         
         ref = JSONTestsuiteReference("test_section", "test.cpp", test_suite_paths, description)
         
@@ -347,9 +356,12 @@ def test_filter_other_test_data_lines_keeps_relevant_lines():
     """Test filter_other_test_data_lines keeps lines with relevant test suite paths."""
     test_suite_paths = ["json_tests/pass1.json", "json_tests/pass2.json"]
     
-    with patch.object(JSONTestsuiteReference, 'get_testsuite_content') as mock_get_content:
-        mock_get_content.return_value = "sample json content"
+    with patch.object(JSONTestsuiteReference, 'get_testsuite_content') as mock_get_content, \
+         patch.object(JSONTestsuiteReference, 'check_testsuite_file_is_used_by_cpp_test') as mock_check:
         
+        mock_get_content.return_value = "sample json content"
+        mock_check.return_value = None  # Mock the validation check
+
         ref = JSONTestsuiteReference("test_section", "test.cpp", test_suite_paths, "Test description")
         
         input_text = '''TEST_CASE("test")
@@ -372,9 +384,13 @@ def test_get_single_json_as_markdown_small_content():
             return 'test\n'*500
         return ""
     
-    with patch.object(JSONTestsuiteReference, 'get_testsuite_content') as mock_get_content:
-        mock_get_content.side_effect = mock_content_side_effect
+    with patch.object(JSONTestsuiteReference, 'get_testsuite_content') as mock_get_content, \
+        patch.object(JSONTestsuiteReference, 'check_testsuite_file_is_used_by_cpp_test') as mock_check:
         
+        mock_get_content.side_effect = mock_content_side_effect
+        mock_check.return_value = None  # Mock the validation check
+        
+       
         ref = JSONTestsuiteReference("test_section", "test.cpp", test_suite_paths, "Test description")
         
         result1 = ref.get_single_json_as_markdown("json_tests/small.json")
@@ -397,8 +413,12 @@ def test_get_all_json_as_markdown():
             return '{"name": "test2"}'
         return ""
     
-    with patch.object(JSONTestsuiteReference, 'get_testsuite_content') as mock_get_content:
+    with patch.object(JSONTestsuiteReference, 'get_testsuite_content') as mock_get_content, \
+        patch.object(JSONTestsuiteReference, 'check_testsuite_file_is_used_by_cpp_test') as mock_check:
+        
         mock_get_content.side_effect = mock_content_side_effect
+        mock_check.return_value = None  # Mock the validation check
+      
         
         ref = JSONTestsuiteReference("test_section", "test.cpp", test_suite_paths, "Test description")
         
@@ -432,7 +452,8 @@ def test_as_markdown():
         mock_get_content.side_effect = mock_content_side_effect
         mock_get_section.return_value = '''TEST_CASE("test")
 {
-    // TEST_DATA_DIRECTORY "/json_tests/test1.json",
+    TEST_DATA_DIRECTORY "/json_tests/test1.json",
+    TEST_DATA_DIRECTORY "/json_tests/test2.json",
     CHECK(true);
 }'''
         
@@ -456,3 +477,46 @@ def test_as_markdown():
         
         # Should be indented (starts with tab)
         assert result.startswith('\t')
+
+
+def test_check_testsuite_file_is_used_by_cpp_test_valid():
+    """Test check_testsuite_file_is_used_by_cpp_test with valid usage."""
+    test_suite_paths = ["json_tests/pass1.json", "json_tests/pass2.json"]
+    
+    with patch.object(JSONTestsuiteReference, 'get_testsuite_content') as mock_get_content, \
+         patch.object(JSONTestsuiteReference, 'get_section') as mock_get_section:
+        
+        mock_get_content.return_value = "sample json content"
+        mock_get_section.return_value = '''TEST_CASE("test")
+{
+    for (const auto* filename :
+        {
+            TEST_DATA_DIRECTORY "/json_tests/pass1.json",
+            TEST_DATA_DIRECTORY "/json_tests/pass2.json",
+        })
+    {
+        CHECK(true);
+    }
+}'''
+        
+        # Should not raise any exception
+        ref = JSONTestsuiteReference("test_section", "test.cpp", test_suite_paths, "Test description")
+        assert ref._test_suite_paths == test_suite_paths
+
+def test_check_testsuite_file_is_used_by_cpp_test_missing_file():
+    """Test check_testsuite_file_is_used_by_cpp_test with missing file reference."""
+    test_suite_paths = ["json_tests/missing.json", "json_tests/pass1.json"]
+    
+    with patch.object(JSONTestsuiteReference, 'get_testsuite_content') as mock_get_content, \
+         patch.object(JSONTestsuiteReference, 'get_section') as mock_get_section:
+        
+        mock_get_content.return_value = "sample json content"
+        mock_get_section.return_value = '''TEST_CASE("test")
+{
+    TEST_DATA_DIRECTORY "/json_tests/pass1.json",
+    CHECK(true);
+}'''
+        
+        # Should raise ValueError for missing file
+        with pytest.raises(ValueError, match="JSON testsuite json_tests/missing.json is not used in the C\\+\\+ test file"):
+            JSONTestsuiteReference("test_section", "test.cpp", test_suite_paths, "Test description")
