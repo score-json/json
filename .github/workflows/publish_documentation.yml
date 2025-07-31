@@ -23,6 +23,8 @@ on:
   workflow_run:
     workflows: 
       - "CIFuzz"
+      - "Check amalgamation"
+      - "Test Trudag extensions"
     types:
       - completed
 
