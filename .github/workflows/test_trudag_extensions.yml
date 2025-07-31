@@ -1,0 +1,47 @@
+name: Test Trudag extensions
+
+on:
+  workflow_dispatch:
+      inputs:
+        PARENT_SHA:
+          description: "Parent Workflow SHA"
+          required: true
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11.2'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest
+        pip install trustable --index-url https://gitlab.com/api/v4/projects/66600816/packages/pypi/simple
+    
+    - name: Run tests
+      run: |
+        cd .dotstop_extensions
+        pytest -v
+
+    - name: Checkout specific commit from Parent Workflow
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.inputs.PARENT_SHA }}
+
+    - name: Create Completion Flag
+      run: echo "Trudag extensions workflow completed." > TRUDAG_EXTENSIONS_flag_${{ github.event.inputs.PARENT_SHA }}.txt
+
+    - name: Upload completion artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: workflow-TRUDAG-EXTENSIONS-completed_${{ github.event.inputs.PARENT_SHA }}
+        path: TRUDAG_EXTENSIONS_flag_${{ github.event.inputs.PARENT_SHA }}.txt

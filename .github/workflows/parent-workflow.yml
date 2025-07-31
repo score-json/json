@@ -1,0 +1,40 @@
+name: Parent Workflow
+
+on: [pull_request]
+
+permissions:
+  contents:  write
+  pages: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  trigger-workflows:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Trigger "Check Amalgamation" Workflow
+        run: gh workflow run "Check amalgamation"
+        env:
+          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
+
+      - name: Trigger "Dependency Review" Workflow
+        run: gh workflow run "Dependency Review"
+        env:
+          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
+
+      - name: Trigger "Test Trudag Extensions" Workflow
+        run: gh workflow run "Test Trudag extensions"
+        env:
+          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
+
+      #- name: Trigger "CIFuzz" Workflow
+      #  run: gh workflow run "CIFuzz"
+
+      - name: Trigger "Pull Request Labeler" Workflow
+        run: gh workflow run "Pull Request Labeler"
+        env:
+          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
