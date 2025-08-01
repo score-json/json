@@ -38,8 +38,3 @@ jobs:
         run: gh workflow run "Pull Request Labeler"
         env:
           GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
-
-      - name: Trigger "Ubuntu" Workflow
-        run: gh workflow run "Ubuntu"
-        env:
-          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}

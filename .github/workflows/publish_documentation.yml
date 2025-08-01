@@ -49,11 +49,6 @@ jobs:
         with:
           python-version: '3.11.2'
 
-      - name: Download Trudag test artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: trudag-test-data
-
       - name: Install trudag and dependencies
         run: |
           sudo apt-get update
