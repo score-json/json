@@ -55,8 +55,8 @@ jobs:
             done
 
             if [ "$COMPLETED" = "false" ]; then
-              echo "Not all artifacts are ready. Sleeping for 30 seconds..."
-              sleep 30
+              echo "Not all artifacts are ready. Sleeping for 15 seconds..."
+              sleep 15
             fi
           done
 
