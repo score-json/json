@@ -32,9 +32,9 @@ This repository provides the aspired setup for projects using **C++** and **Baze
    :maxdepth: 1
    :glob:
 
-   s-core/introduction/index.rst
-   s-core/trustable/concept.rst
-   s-core/trustable/report.rst
+   introduction/index.rst
+   trustable/concept.rst
+   trustable/report.rst
    Eclipse <https://projects.eclipse.org/projects/automotive.score>
 
 General Requirements
