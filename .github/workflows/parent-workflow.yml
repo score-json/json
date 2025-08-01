@@ -3,11 +3,11 @@ name: Parent Workflow
 on: [pull_request]
 
 permissions:
-  contents:  write
+  contents: write
   pages: write
   pull-requests: write
   id-token: write
-#test10
+
 jobs:
   trigger-workflows:
     runs-on: ubuntu-latest
@@ -26,9 +26,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
-      #- name: Trigger "CIFuzz" Workflow
-      #  run: gh workflow run "CIFuzz"
-
       - name: Trigger "Pull Request Labeler" Workflow
         run: gh workflow run "Pull Request Labeler"
         env:
@@ -40,10 +37,11 @@ jobs:
         run: |
           echo "Waiting for artifacts from child workflows..."
 
+          # List of required artifacts
           REQUIRED_ARTIFACTS=(
             workflow-AMALGAMATION-completed
             workflow-TRUDAG-EXTENSIONS-completed
-            workflow-LABELER-completed  
+            workflow-LABELER-completed
           )
 
           COMPLETED=false
@@ -56,8 +54,12 @@ jobs:
             for ARTIFACT in "${REQUIRED_ARTIFACTS[@]}"; do
               echo "Attempting to download artifact: $ARTIFACT"
 
-              # Download the artifact (fails silently if it doesn't exist yet)
-              gh run download --name "$ARTIFACT" || COMPLETED=false
+              # Create a unique folder for this artifact to avoid overwriting
+              ARTIFACT_DIR="artifacts/$ARTIFACT"
+              mkdir -p "$ARTIFACT_DIR"
+
+              # Download the artifact to the unique folder
+              gh run download --name "$ARTIFACT" --dir "$ARTIFACT_DIR" || COMPLETED=false
             done
 
             if [ "$COMPLETED" = "false" ]; then
@@ -67,9 +69,14 @@ jobs:
             fi
           done
 
-          if [ $COMPLETED = "false" ]; then
+          if [ "$COMPLETED" = "false" ]; then
             echo "Timed out while waiting for artifacts."
             exit 1
           fi
 
           echo "All required artifacts have been downloaded successfully!"
+
+      - name: Verify Artifacts
+        run: |
+          echo "Listing downloaded files..."
+          ls -Rl artifacts/
