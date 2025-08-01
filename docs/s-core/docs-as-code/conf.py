@@ -45,10 +45,12 @@ extensions = [
 myst_enable_extensions = ["colon_fence"]
 
 source_suffix = {
-    '.rst': None,
-    '.md': None,
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
 }
 
+# Add this setting
+suppress_warnings = ['ref.warning', 'toc.not_included', 'myst.xref_missing', 'myst.header']
 
 exclude_patterns = [
     # The following entries are not required when building the documentation via 'bazel

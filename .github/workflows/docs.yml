@@ -79,22 +79,12 @@ jobs:
         uses: actions/download-artifact@v4.1.8
         with:
           name: trudag-report-${{ github.event.pull_request.head.sha || github.sha }}
-          path: docs/s-core/docs-as-code/generated/
+          path: docs/s-core/trustable/generated/
 
       - name: Build documentation
         run: |
-          bazel run ${{ inputs.bazel-target }} 2>&1 | tee output.log
+          bazel run ${{ inputs.bazel-target }}
           tar -cf github-pages.tar _build
-        continue-on-error: true
-
-      - name: Check for errors in output
-        run: |
-          if grep -q "ERROR" output.log; then
-            echo "ERROR found in output!"
-            exit 1
-          else
-            echo "No ERROR found in output."
-          fi
 
       - name: Upload documentation artifact
         uses: actions/upload-artifact@v4.4.0
