@@ -2,8 +2,6 @@ name: "Pull Request Labeler"
 
 on:
   workflow_dispatch:
-#  pull_request_target:
- #   types: [opened, synchronize]
      inputs:
       PARENT_SHA:
         description: "Parent Workflow SHA"

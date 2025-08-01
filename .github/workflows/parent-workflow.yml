@@ -7,7 +7,7 @@ permissions:
   pages: write
   pull-requests: write
   id-token: write
-#test22
+
 jobs:
   trigger-workflows:
     runs-on: ubuntu-latest
@@ -30,8 +30,12 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
-      #- name: Trigger "CIFuzz" Workflow
-      #  run: gh workflow run "CIFuzz"
+      - name: Trigger "CIFuzz" Workflow
+        run: |
+          echo "Triggering cifuzz workflow with branch: ${{ github.head_ref }}"
+          gh workflow run "CIFuzz" --ref ${{ github.head_ref }} -F PARENT_SHA=${{ github.sha }}
+        env:
+          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
       - name: Trigger "Pull Request Labeler" Workflow
         run: |
@@ -50,6 +54,7 @@ jobs:
             workflow-AMALGAMATION-completed_${{ github.sha }}
             workflow-TRUDAG-EXTENSIONS-completed_${{ github.sha }}
             workflow-LABELER-completed_${{ github.sha }}
+            workflow-CIFUZZ-completed_${{ github.event.inputs.PARENT_SHA }}
           )
 
           COMPLETED=false

@@ -1,5 +1,11 @@
 name: CIFuzz
-on: workflow_dispatch #[pull_request]
+
+on:
+  workflow_dispatch:
+     inputs:
+      PARENT_SHA:
+        description: "Parent Workflow SHA"
+        required: true
 
 permissions:
   contents: read
@@ -8,28 +14,45 @@ jobs:
   Fuzzing:
     runs-on: ubuntu-latest
     steps:
-    - name: Harden Runner
-      uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
-      with:
-        egress-policy: audit
+      - name: Harden Runner
+        uses: step-security/harden-runner@6c439dc8bdf85cadbbce9ed30d1c7b959517bc49 # v2.12.2
+        with:
+          egress-policy: audit
 
-    - name: Build Fuzzers
-      id: build
-      uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@57fe4475324c5506adbfecdcdd2917f65c86ee9e # master
-      with:
-        oss-fuzz-project-name: 'json'
-        dry-run: false
-        language: c++
-    - name: Run Fuzzers
-      uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@57fe4475324c5506adbfecdcdd2917f65c86ee9e # master
-      with:
-        oss-fuzz-project-name: 'json'
-        fuzz-seconds: 300
-        dry-run: false
-        language: c++
-    - name: Upload Crash
-      uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4.6.0
-      if: failure() && steps.build.outcome == 'success'
-      with:
-        name: artifacts
-        path: ./out/artifacts
+      - name: Build Fuzzers
+        id: build
+        uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@57fe4475324c5506adbfecdcdd2917f65c86ee9e 
+        with:
+          oss-fuzz-project-name: 'json'
+          dry-run: false
+          language: c++
+
+      - name: Run Fuzzers
+        uses: google/oss-fuzz/infra/cifuzz/actions/run_fuzzers@57fe4475324c5506adbfecdcdd2917f65c86ee9e # master
+        with:
+          oss-fuzz-project-name: 'json'
+          fuzz-seconds: 300
+          dry-run: false
+          language: c++
+
+      - name: Upload Crash
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: failure() && steps.build.outcome == 'success'
+        with:
+          name: artifacts
+          path: ./out/artifacts
+
+      - name: Checkout specific commit from Parent Workflow
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.PARENT_SHA }}
+          path: actions/checkout@v4 
+
+      - name: Create Completion Flag
+        run: echo "CIfuzz workflow completed." > CIFUZZ_flag_${{ github.event.inputs.PARENT_SHA }}.txt
+
+      - name: Upload completion artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: workflow-CIFUZZ-completed_${{ github.event.inputs.PARENT_SHA }}
+          path: CIFUZZ_flag_${{ github.event.inputs.PARENT_SHA }}.txt
