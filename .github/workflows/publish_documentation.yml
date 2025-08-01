@@ -22,12 +22,13 @@ permissions:
 on:
   workflow_run:
     workflows: 
-      - "Check amalgamation"
+     - "Parent Workflow"
+     # - "Check amalgamation"
      # - "CIFuzz"
-      - "Dependency Review"
-      - "Test Trudag extensions"
-      - "Pull Request Labeler"
-      - "Ubuntu"
+     # - "Dependency Review"
+     # - "Test Trudag extensions"
+     # - "Pull Request Labeler"
+     # - "Ubuntu"
     types:
       - completed
 
