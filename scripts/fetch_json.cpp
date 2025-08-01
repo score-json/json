@@ -6,7 +6,21 @@
 
 using namespace std;
 
-string wrapper_for_trudag(string evidence, string wrap_left = "\t\t\t\t- \"", string wrap_right = "\"\n"){
+string replace_tab_with_spaces(const string& input, int num_of_spaces = 4){
+    string output = input;
+    string spaces = "    ";
+    regex tab("\t");
+    if (num_of_spaces==4){
+        spaces = "";
+        for (int i = 0; i<num_of_spaces; i++){
+            spaces += " ";
+        }
+    }
+    regex_replace(output,tab,spaces);
+    return output;
+}
+
+string wrapper_for_trudag(string evidence, string wrap_left = "\t\t\t- \"", string wrap_right = "\"\n"){
     stringstream res;
     res << wrap_left << evidence << wrap_right;
     return res.str();
@@ -16,7 +30,7 @@ string get_json_from_candidate(string candidate){
     regex pattern("\"([^\"]*)\"");
     smatch m;
     if (candidate.find("TEST_DATA_DIRECTORY")!=string::npos && regex_search(candidate,m,pattern)){
-        return wrapper_for_trudag(m[1]);
+        return replace_tab_with_spaces(wrapper_for_trudag(m[1]));
     } else {
         throw 0;
     }
@@ -186,18 +200,18 @@ int main(int arg_num, char* args[]){
     // get name
     string description;
     while (true){
-        evidence << "\t\t- type: JSON_testsuite\n";
+        evidence << replace_tab_with_spaces("\t\t- type: JSON_testsuite\n");
         cout << "Testname ";
         getline(std::cin, ans);
         cout << "Initialising collection of evidence for " << ans << "\n";
-        evidence << "\t\t\tname: \"" << ans << "\"\n";
-        evidence << "\t\t\tpath: \"";
+        evidence << replace_tab_with_spaces("\t\t  name: \"") << ans << "\"\n";
+        evidence << replace_tab_with_spaces("\t\t  path: \"");
         if (path_to_testsuite.substr(0,3)=="../") {
             evidence << path_to_testsuite.substr(3);
         } else {
             evidence << path_to_testsuite;
         }
-        evidence << "\"\n\t\t\ttest_suite_paths:\n";
+        evidence << replace_tab_with_spaces("\"\n\t\t  test_suite_paths:\n");
         cout << "Description of the test: ";
         getline(std::cin, description);
 
@@ -223,7 +237,7 @@ int main(int arg_num, char* args[]){
                 return -1;
             }
         }
-        evidence << "\t\t\tdescription: \"" << description << "\"\n";
+        evidence << replace_tab_with_spaces("\t\t  description: \"") << description << "\"\n";
         cout << "Add another test? y/n? ";
         getline(std::cin, ans);
         if (ans!="y"&&ans!="Y"&&ans!="") {
