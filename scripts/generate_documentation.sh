@@ -9,6 +9,6 @@ trudag plot -o "$TRUDAG_REPORT_FOLDER/graph.svg"
 
 python3 scripts/clean_trudag_output.py
 
-bazel run //docs:incremental
+bazel run //:docs
 
 python3 -m http.server --directory _build
