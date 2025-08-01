@@ -26,7 +26,8 @@ class CPPTestReference(BaseReference):
     Represents a reference to a specific section within a C++ test file. The class
     assumes that the C++ test sections are defined using `SECTION("name")` or
     `TEST_CASE("name")` syntax, where the section name can be nested using
-    colon-separated names (e.g., "testcase1:section1:section2"). 
+    colon-separated names (e.g., "testcase1:section1:section2"). We assume that the 
+    section path is unique within the file.
     
     Additionally, the opening brace `{` must be on the line immediately after the 
     section declaration, and the closing brace `}` must have the same indentation 
@@ -63,13 +64,13 @@ class CPPTestReference(BaseReference):
         for the first occurrence of a line containing either SECTION("section1")
         or TEST_CASE("section1") where section1 matches the first part of the section name. 
         This is done iteratively for nested sections until the full section name sequence 
-        is matched.
+        is matched. This implicitly assumes that the section paths are unique within the file.
 
         Args:
             file_lines: List of lines from the C++ test file
 
         Returns:
-            Line index where the section starts
+            Line index where the section starts (i.e. the line containing SECTION or TEST_CASE)
         """
         section_names = self._name.split(':')
         for line_number, line in enumerate(file_lines):
