@@ -8,8 +8,6 @@ permissions:
   pull-requests: write
   id-token: write
 
-#test12
-
 jobs:
   trigger-workflows:
     runs-on: ubuntu-latest
@@ -18,32 +16,46 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Trigger workflows and capture their run IDs
+      # Trigger "Check Amalgamation" workflow and get its run_id
       - name: Trigger "Check Amalgamation" Workflow
         id: trigger_amalgamation
         run: |
           echo "Triggering Check Amalgamation workflow..."
-          RUN_ID=$(gh workflow run "Check amalgamation" --json id -q '.id')
+          gh workflow run "Check amalgamation" --ref $GITHUB_SHA
+          
+          # Wait to ensure the workflow is triggered and then fetch its run_id
+          sleep 5
+          RUN_ID=$(gh run list --workflow "Check amalgamation" --json databaseId,headSha -q ".[? headSha == '$GITHUB_SHA'] | max_by(.created_at) | .databaseId")
           echo "Triggered Check Amalgamation workflow with RUN_ID: $RUN_ID"
           echo "RUN_ID_AMALGAMATION=$RUN_ID" >> $GITHUB_ENV
         env:
           GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
+      # Trigger "Test Trudag Extensions" workflow and get its run_id
       - name: Trigger "Test Trudag Extensions" Workflow
         id: trigger_trudag
         run: |
           echo "Triggering Test Trudag Extensions workflow..."
-          RUN_ID=$(gh workflow run "Test Trudag extensions" --json id -q '.id')
+          gh workflow run "Test Trudag extensions" --ref $GITHUB_SHA
+          
+          # Wait to ensure the workflow is triggered and then fetch its run_id
+          sleep 5
+          RUN_ID=$(gh run list --workflow "Test Trudag extensions" --json databaseId,headSha -q ".[? headSha == '$GITHUB_SHA'] | max_by(.created_at) | .databaseId")
           echo "Triggered Test Trudag Extensions workflow with RUN_ID: $RUN_ID"
           echo "RUN_ID_TRUDAG=$RUN_ID" >> $GITHUB_ENV
         env:
           GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
+      # Trigger "Pull Request Labeler" workflow and get its run_id
       - name: Trigger "Pull Request Labeler" Workflow
         id: trigger_labeler
         run: |
           echo "Triggering Pull Request Labeler workflow..."
-          RUN_ID=$(gh workflow run "Pull Request Labeler" --json id -q '.id')
+          gh workflow run "Pull Request Labeler" --ref $GITHUB_SHA
+          
+          # Wait to ensure the workflow is triggered and then fetch its run_id
+          sleep 5
+          RUN_ID=$(gh run list --workflow "Pull Request Labeler" --json databaseId,headSha -q ".[? headSha == '$GITHUB_SHA'] | max_by(.created_at) | .databaseId")
           echo "Triggered Pull Request Labeler workflow with RUN_ID: $RUN_ID"
           echo "RUN_ID_LABELER=$RUN_ID" >> $GITHUB_ENV
         env:
