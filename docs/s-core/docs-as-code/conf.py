@@ -20,9 +20,10 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = "NLOHMANN JSON LIBRARY"
+project = "Score NLOHMANN JSON LIBRARY FORK"
 author = "S-CORE"
 version = "3.12.0"
+project_url = "https://score-json.github.io/json"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -31,14 +32,16 @@ version = "3.12.0"
 extensions = [
     "sphinx_design",
     "sphinx_needs",
+    "myst_parser",
     "sphinxcontrib.plantuml",
     "score_plantuml",
     "score_metamodel",
     "score_draw_uml_funcs",
     "score_source_code_linker",
     "score_layout",
-    "myst_parser",
 ]
+
+myst_enable_extensions = ["colon_fence"]
 
 source_suffix = {
     '.rst': None,
