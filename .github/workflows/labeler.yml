@@ -4,6 +4,10 @@ on:
   workflow_dispatch:
 #  pull_request_target:
  #   types: [opened, synchronize]
+     inputs:
+      PARENT_SHA:
+        description: "Parent Workflow SHA"
+        required: true
 
 permissions:
   contents: read
@@ -26,11 +30,17 @@ jobs:
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
+      - name: Checkout specific commit from Parent Workflow
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.PARENT_SHA }}
+
       - name: Create Completion Flag
-        run: echo "Labeler workflow completed." > LABELER_flag1.txt
+        run:  echo "Labeler workflow completed" > LABELER_flag_${{ github.event.inputs.PARENT_SHA }}.txt
+
 
       - name: Upload completion artifact
         uses: actions/upload-artifact@v4
         with:
-          name: workflow-LABELER-completed1
-          path: LABELER_flag1.txt
+          name: workflow-LABELER-completed_${{ github.event.inputs.PARENT_SHA }}
+          path: LABELER_flag_${{ github.event.inputs.PARENT_SHA }}.txt

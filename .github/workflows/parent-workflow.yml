@@ -7,7 +7,7 @@ permissions:
   pages: write
   pull-requests: write
   id-token: write
-#test19
+#test22
 jobs:
   trigger-workflows:
     runs-on: ubuntu-latest
@@ -17,12 +17,16 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Trigger "Check Amalgamation" Workflow
-        run: gh workflow run "Check amalgamation"
+        run: |
+          echo "Triggering Check Amalgamation workflow with branch: ${{ github.head_ref }}"
+          gh workflow run "Check amalgamation" --ref ${{ github.head_ref }} -F PARENT_SHA=${{ github.sha }}
         env:
           GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
       - name: Trigger "Test Trudag Extensions" Workflow
-        run: gh workflow run "Test Trudag extensions"
+        run: |
+          echo "Triggering Test Trudag Extensions workflow with branch: ${{ github.head_ref }}"
+          gh workflow run "Test Trudag extensions" --ref ${{ github.head_ref }} -F PARENT_SHA=${{ github.sha }}
         env:
           GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
@@ -30,7 +34,9 @@ jobs:
       #  run: gh workflow run "CIFuzz"
 
       - name: Trigger "Pull Request Labeler" Workflow
-        run: gh workflow run "Pull Request Labeler"
+        run: |
+          echo "Triggering Pull Request Labeler workflow with branch: ${{ github.head_ref }}"
+          gh workflow run "Pull Request Labeler" --ref ${{ github.head_ref }} -F PARENT_SHA=${{ github.sha }}
         env:
           GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
@@ -41,9 +47,9 @@ jobs:
           echo "Waiting for artifacts from child workflows..."
 
           REQUIRED_ARTIFACTS=(
-            workflow-AMALGAMATION-completed1
-            workflow-TRUDAG-EXTENSIONS-completed1
-            workflow-LABELER-completed1
+            workflow-AMALGAMATION-completed_${{ github.sha }}
+            workflow-TRUDAG-EXTENSIONS-completed_${{ github.sha }}
+            workflow-LABELER-completed_${{ github.sha }}
           )
 
           COMPLETED=false

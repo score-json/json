@@ -3,6 +3,10 @@ name: "Check amalgamation"
 on:
   workflow_dispatch:
 #  pull_request:
+    inputs:
+      PARENT_SHA:
+        description: "Parent Workflow SHA"
+        required: true
 
 permissions:
   contents: read
@@ -76,11 +80,16 @@ jobs:
           echo Check
           find $MAIN_DIR -name '*.orig' -exec false {} \+
 
+      - name: Checkout specific commit from Parent Workflow
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.PARENT_SHA }}
+
       - name: Create Completion Flag
-        run: echo "Check amalgamation workflow completed." > AMALGAMATION_flag1.txt
+        run: echo "Check amalgamation workflow completed." > AMALGAMATION_flag_${{ github.event.inputs.PARENT_SHA }}.txt
 
       - name: Upload completion artifact
         uses: actions/upload-artifact@v4
         with:
-          name: workflow-AMALGAMATION-completed1
-          path: AMALGAMATION_flag1.txt
+          name: workflow-AMALGAMATION-completed_${{ github.event.inputs.PARENT_SHA }}
+          path: AMALGAMATION_flag_${{ github.event.inputs.PARENT_SHA }}.txt
