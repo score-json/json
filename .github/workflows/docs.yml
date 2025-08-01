@@ -83,8 +83,18 @@ jobs:
 
       - name: Build documentation
         run: |
-          bazel run ${{ inputs.bazel-target }}
+          bazel run ${{ inputs.bazel-target }} 2>&1 | tee output.log
           tar -cf github-pages.tar _build
+        continue-on-error: true
+
+      - name: Check for errors in output
+        run: |
+          if grep -q "ERROR" output.log; then
+            echo "ERROR found in output!"
+            exit 1
+          else
+            echo "No ERROR found in output."
+          fi
 
       - name: Upload documentation artifact
         uses: actions/upload-artifact@v4.4.0
