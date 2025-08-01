@@ -75,3 +75,12 @@ jobs:
           ${{ github.workspace }}/venv/bin/astyle --project=tools/astyle/.astylerc --suffix=orig $(find docs/examples include tests -type f \( -name '*.hpp' -o -name '*.cpp' -o -name '*.cu' \) -not -path 'tests/thirdparty/*' -not -path 'tests/abi/include/nlohmann/*' | sort)
           echo Check
           find $MAIN_DIR -name '*.orig' -exec false {} \+
+
+      - name: Create Completion Flag
+        run: echo "Check amalgamation workflow completed." > AMALGAMATION_flag1.txt
+
+      - name: Upload completion artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: workflow-AMALGAMATION-completed1
+          path: AMALGAMATION_flag1.txt

@@ -7,7 +7,7 @@ permissions:
   pages: write
   pull-requests: write
   id-token: write
-
+#test19
 jobs:
   trigger-workflows:
     runs-on: ubuntu-latest
@@ -18,11 +18,6 @@ jobs:
 
       - name: Trigger "Check Amalgamation" Workflow
         run: gh workflow run "Check amalgamation"
-        env:
-          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
-
-      - name: Trigger "Dependency Review" Workflow
-        run: gh workflow run "Dependency Review"
         env:
           GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
@@ -38,3 +33,43 @@ jobs:
         run: gh workflow run "Pull Request Labeler"
         env:
           GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
+
+      - name: Wait and Download Artifacts From Child Workflows
+        env:
+          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
+        run: |
+          echo "Waiting for artifacts from child workflows..."
+
+          REQUIRED_ARTIFACTS=(
+            workflow-AMALGAMATION-completed1
+            workflow-TRUDAG-EXTENSIONS-completed1
+            workflow-LABELER-completed1
+          )
+
+          COMPLETED=false
+          MAX_RETRIES=60  # Retry up to 60 times (15 mins with 15s intervals)
+          RETRY_COUNT=0
+
+          while [ "$COMPLETED" = "false" ] && [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+            COMPLETED=true # Assume all artifacts exist initially
+
+            for ARTIFACT in "${REQUIRED_ARTIFACTS[@]}"; do
+              echo "Attempting to download artifact: $ARTIFACT"
+
+              # Download the artifact (fails silently if it doesn't exist yet)
+              gh run download --name "$ARTIFACT" || COMPLETED=false
+            done
+
+            if [ "$COMPLETED" = "false" ]; then
+              echo "Not all artifacts are ready. Waiting 15 seconds..."
+              sleep 15
+              RETRY_COUNT=$((RETRY_COUNT + 1))
+            fi
+          done
+
+          if [ $COMPLETED = "false" ]; then
+            echo "Timed out while waiting for artifacts."
+            exit 1
+          fi
+
+          echo "All required artifacts have been downloaded successfully!"
