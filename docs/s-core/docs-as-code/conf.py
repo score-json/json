@@ -24,6 +24,7 @@ project = "Score NLOHMANN JSON LIBRARY FORK"
 author = "S-CORE"
 version = "3.12.0"
 project_url = "https://score-json.github.io/json"
+project_prefix = "JSON_"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
