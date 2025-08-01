@@ -8,6 +8,8 @@ permissions:
   pull-requests: write
   id-token: write
 
+#test12
+
 jobs:
   trigger-workflows:
     runs-on: ubuntu-latest
