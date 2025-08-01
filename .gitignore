@@ -54,6 +54,7 @@ user.bazelrc
 /temp
 
 /docs/s-core/trustable/generated
+/docs/s-core/docs-as-code/generated
 
 /.venv
 

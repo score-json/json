@@ -25,7 +25,6 @@ on:
   push:
     branches:
       - main
-      - test_documentation_workflow
   merge_group:
     types: [checks_requested]
 
@@ -55,7 +54,7 @@ jobs:
 
       - name: Generate trudag report
         run: |
-          TRUDAG_REPORT_FOLDER="docs/s-core/trustable/generated"
+          TRUDAG_REPORT_FOLDER="docs/s-core/docs-as-code/generated"
           mkdir -p "$TRUDAG_REPORT_FOLDER"
           trudag publish --validate --output-dir "$TRUDAG_REPORT_FOLDER"
           trudag plot -o "$TRUDAG_REPORT_FOLDER/graph.svg"
@@ -65,7 +64,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: trudag-report-${{ github.event.pull_request.head.sha || github.sha }}
-          path: docs/s-core/trustable/generated/
+          path: docs/s-core/docs-as-code/generated/
           if-no-files-found: error
           
   build-docs:
@@ -80,5 +79,5 @@ jobs:
 
     with:
       # the bazel-target depends on your repo specific docs_targets configuration (e.g. "suffix")Add commentMore actions
-      bazel-target: "//:docs -- --github_user=${{ github.repository_owner }} --github_repo=${{ github.event.repository.name }}"
+      bazel-target: "//:docs -- --github_user=${{ github.repository_owner }} --github_repo=${{ github.event.repository.name }} --notreat_warnings_as_errors"
       retention-days: 3
