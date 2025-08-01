@@ -3,9 +3,25 @@ level: 1.1
 normative: true
 
 references:
-- type: cpp_test
-  name: "parser class:accept:string:escaped"
-  path: "tests/src/unit-class_parser.cpp"
+        - type: cpp_test
+          name: "parser class:accept:string:escaped"
+          path: "tests/src/unit-class_parser.cpp"
+        - type: JSON_testsuite
+          name: "nst's JSONTestSuite (2):test_parsing:y"
+          path: "tests/src/unit-testsuites.cpp"
+          test_suite_paths:
+            - "/nst_json_testsuite2/test_parsing/y_string_1_2_3_bytes_UTF-8_sequences.json"
+            - "/nst_json_testsuite2/test_parsing/y_string_accepted_surrogate_pair.json"
+            - "/nst_json_testsuite2/test_parsing/y_string_accepted_surrogate_pairs.json"
+            - "/nst_json_testsuite2/test_parsing/y_string_allowed_escapes.json"
+            - "/nst_json_testsuite2/test_parsing/y_string_backslash_and_u_escaped_zero.json"
+            - "/nst_json_testsuite2/test_parsing/y_string_backslash_doublequotes.json"
+            - "/nst_json_testsuite2/test_parsing/y_string_comments.json"
+            - "/nst_json_testsuite2/test_parsing/y_string_double_escape_a.json"
+            - "/nst_json_testsuite2/test_parsing/y_string_double_escape_n.json"
+            - "/nst_json_testsuite2/test_parsing/y_string_escaped_control_character.json"
+            - "/nst_json_testsuite2/test_parsing/y_string_escaped_noncharacter.json"
+          description: "Checks that various escaped control and unicode characters are accepted."
 ---
 
 The service does accept escaped control characters.
