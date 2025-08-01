@@ -48,11 +48,6 @@ jobs:
         with:
           python-version: '3.11.2'
 
-      - name: Download documentation artifact
-        uses: actions/download-artifact@v4.1.8
-        with:
-          name: github-pages-${{ github.event.pull_request.head.sha || github.sha }}
-
       - name: Download Trudag test artifacts
         uses: actions/download-artifact@v4
         with:
