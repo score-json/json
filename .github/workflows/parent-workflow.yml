@@ -7,7 +7,7 @@ permissions:
   pages: write
   pull-requests: write
   id-token: write
-#test11
+
 jobs:
   trigger-workflows:
     runs-on: ubuntu-latest
@@ -16,32 +16,48 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Trigger workflows and capture their run IDs
       - name: Trigger "Check Amalgamation" Workflow
-        run: gh workflow run "Check amalgamation"
+        id: trigger_amalgamation
+        run: |
+          echo "Triggering Check Amalgamation workflow..."
+          RUN_ID=$(gh workflow run "Check amalgamation" --json id -q '.id')
+          echo "Triggered Check Amalgamation workflow with RUN_ID: $RUN_ID"
+          echo "RUN_ID_AMALGAMATION=$RUN_ID" >> $GITHUB_ENV
         env:
           GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
       - name: Trigger "Test Trudag Extensions" Workflow
-        run: gh workflow run "Test Trudag extensions"
+        id: trigger_trudag
+        run: |
+          echo "Triggering Test Trudag Extensions workflow..."
+          RUN_ID=$(gh workflow run "Test Trudag extensions" --json id -q '.id')
+          echo "Triggered Test Trudag Extensions workflow with RUN_ID: $RUN_ID"
+          echo "RUN_ID_TRUDAG=$RUN_ID" >> $GITHUB_ENV
         env:
           GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
       - name: Trigger "Pull Request Labeler" Workflow
-        run: gh workflow run "Pull Request Labeler"
+        id: trigger_labeler
+        run: |
+          echo "Triggering Pull Request Labeler workflow..."
+          RUN_ID=$(gh workflow run "Pull Request Labeler" --json id -q '.id')
+          echo "Triggered Pull Request Labeler workflow with RUN_ID: $RUN_ID"
+          echo "RUN_ID_LABELER=$RUN_ID" >> $GITHUB_ENV
         env:
           GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
+      # Wait and Download Artifacts From Child Workflows
       - name: Wait and Download Artifacts From Child Workflows
         env:
           GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
         run: |
           echo "Waiting for artifacts from child workflows..."
 
-          # List of required artifacts
-          REQUIRED_ARTIFACTS=(
-            workflow-AMALGAMATION-completed
-            workflow-TRUDAG-EXTENSIONS-completed
-            workflow-LABELER-completed
+          REQUIRED_RUN_IDS=(
+            $RUN_ID_AMALGAMATION
+            $RUN_ID_TRUDAG
+            $RUN_ID_LABELER
           )
 
           COMPLETED=false
@@ -49,17 +65,15 @@ jobs:
           RETRY_COUNT=0
 
           while [ "$COMPLETED" = "false" ] && [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
-            COMPLETED=true # Assume all artifacts exist initially
+            COMPLETED=true # Assume all runs have completed and artifacts are ready
 
-            for ARTIFACT in "${REQUIRED_ARTIFACTS[@]}"; do
-              echo "Attempting to download artifact: $ARTIFACT"
+            for RUN_ID in "${REQUIRED_RUN_IDS[@]}"; do
+              echo "Attempting to download artifacts for RUN_ID: $RUN_ID"
 
-              # Create a unique folder for this artifact to avoid overwriting
-              ARTIFACT_DIR="artifacts/$ARTIFACT"
-              mkdir -p "$ARTIFACT_DIR"
-
-              # Download the artifact to the unique folder
-              gh run download --name "$ARTIFACT" --dir "$ARTIFACT_DIR" || COMPLETED=false
+              # Download artifacts from the specific workflow run ID
+              RUN_DIR="artifacts/$RUN_ID"
+              mkdir -p "$RUN_DIR"
+              gh run download "$RUN_ID" --dir "$RUN_DIR" || COMPLETED=false
             done
 
             if [ "$COMPLETED" = "false" ]; then
@@ -75,8 +89,3 @@ jobs:
           fi
 
           echo "All required artifacts have been downloaded successfully!"
-
-      - name: Verify Artifacts
-        run: |
-          echo "Listing downloaded files..."
-          ls -Rl artifacts/
