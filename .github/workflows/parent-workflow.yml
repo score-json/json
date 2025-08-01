@@ -53,17 +53,23 @@ jobs:
           )
 
           COMPLETED=false
-          MAX_RETRIES=60  # Retry up to 60 times (15 mins with 15s intervals)
+          MAX_RETRIES=60  # Retry up to 60 times (15 mins, with 15s intervals)
           RETRY_COUNT=0
 
+          # Create a directory for each artifact to prevent name conflicts
           while [ "$COMPLETED" = "false" ] && [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
-            COMPLETED=true # Assume all artifacts exist initially
+            COMPLETED=true
 
             for ARTIFACT in "${REQUIRED_ARTIFACTS[@]}"; do
               echo "Attempting to download artifact: $ARTIFACT"
 
-              # Download the artifact (fails silently if it doesn't exist yet)
-              gh run download --name "$ARTIFACT" || COMPLETED=false
+              # Create a fresh directory for the artifact
+              EXTRACT_DIR="artifacts/$ARTIFACT"
+              rm -rf "$EXTRACT_DIR" # Ensure the directory is clean
+              mkdir -p "$EXTRACT_DIR"
+
+              # Download and extract the artifact into the clean directory
+              gh run download --name "$ARTIFACT" --dir "$EXTRACT_DIR" || COMPLETED=false
             done
 
             if [ "$COMPLETED" = "false" ]; then
@@ -73,9 +79,10 @@ jobs:
             fi
           done
 
-          if [ $COMPLETED = "false" ]; then
+          if [ "$COMPLETED" = "false" ]; then
             echo "Timed out while waiting for artifacts."
             exit 1
           fi
 
           echo "All required artifacts have been downloaded successfully!"
+          echo "Artifacts can be found in the 'artifacts/' directory."
