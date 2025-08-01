@@ -54,7 +54,7 @@ class CPPTestReference(BaseReference):
                     section_names.pop(0)
 
 
-        raise ValueError("Section start not found")
+        raise ValueError(f"Section start not found for '{self._name}' in file '{self._path}'")
     
     def find_section_end(self, file_lines: list[str], start_index: int):
         """
@@ -99,7 +99,7 @@ class CPPTestReference(BaseReference):
             if file_lines[line_number].rstrip() == end_line.rstrip():
                 return line_number + 1
         
-        raise ValueError("Section end not found")
+        raise ValueError(f"Section end not found for '{self._name}' in file '{self._path}")
     
     def remove_leading_whitespace_preserve_indentation(self, text: str) -> str:
         """Remove leading whitespace from all lines while preserving relative indentation."""
