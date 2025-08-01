@@ -7,7 +7,7 @@ permissions:
   pages: write
   pull-requests: write
   id-token: write
-#test5
+#test6
 jobs:
   trigger-workflows:
     runs-on: ubuntu-latest
