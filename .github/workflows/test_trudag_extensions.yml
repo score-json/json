@@ -29,13 +29,6 @@ jobs:
         cd .dotstop_extensions
         pytest -v
 
-    - name: Upload Trudag test artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: trudag-test-data
-        path: docs/s-core/trustable/generated/
-        if-no-files-found: warn
-
     - name: Create Completion Flag
       run: echo "Trudag extensions workflow completed." > completion_flag.txt
 

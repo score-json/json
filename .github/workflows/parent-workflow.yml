@@ -38,9 +38,9 @@ jobs:
       - name: Wait for All Artifacts
         run: |
           REQUIRED_ARTIFACTS=(
-            artifact-workflow-AMALGAMATION-completed
-            artifact-workflow-TRUDAG-EXTENSIONS-completed
-            artifact-workflow-PULL-REQUEST-LABELER-completed
+            workflow-AMALGAMATION-completed
+            workflow-TRUDAG-EXTENSIONS-completed
+            workflow-LABELER-completed  
           )
 
           COMPLETED=false
