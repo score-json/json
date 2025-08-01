@@ -1,7 +1,7 @@
 import pytest
 import tempfile
 from pathlib import Path
-from unittest.mock import patch, mock_open
+from unittest.mock import patch
 from references import CPPTestReference, JSONTestsuiteReference
 
 
@@ -197,8 +197,8 @@ def test_find_section_end_no_closing_brace():
 def test_remove_leading_whitespace_preserve_indentation():
     """Test whitespace removal while preserving indentation."""
     ref = CPPTestReference("test", "test.cpp")
-    # 4 - 8 - 4 spaces here
-    text = "    line1\n        line2\n    line3\n"
+    # 4 - (tab+4) - 4 spaces here
+    text = "    line1\n\t    line2\n    line3\n"
     # 0 - 4 - 0 spaces here
     expected = "line1\n    line2\nline3\n"
     result = ref.remove_leading_whitespace_preserve_indentation(text)
@@ -213,7 +213,7 @@ def test_remove_leading_whitespace_preserve_indentation_tabs():
 
     expected_output = '''SECTION("empty object")
 {
-\tCHECK(parser_helper("{}") == json(json::value_t::object));
+    CHECK(parser_helper("{}") == json(json::value_t::object));
 }
 '''
     ref = CPPTestReference("test", "test.cpp")
@@ -338,19 +338,13 @@ def test_type_classmethod_JSON_testsuite():
 
 def test_is_json_test_line_valid_cases():
     """Test is_json_test_line with valid JSON test lines."""
-    # Test with comment prefix and .json", suffix
-    assert JSONTestsuiteReference.is_json_test_line('// TEST_DATA_DIRECTORY "/json_tests/fail1.json",')
-    assert JSONTestsuiteReference.is_json_test_line('//TEST_DATA_DIRECTORY "/json_tests/fail2.json",')
-    assert JSONTestsuiteReference.is_json_test_line('TEST_DATA_DIRECTORY "/json_tests/fail3.json",')
-    
-    # Test with .json" suffix (no comma)
-    assert JSONTestsuiteReference.is_json_test_line('// TEST_DATA_DIRECTORY "/json_tests/pass1.json"')
-    assert JSONTestsuiteReference.is_json_test_line('//TEST_DATA_DIRECTORY "/json_tests/pass2.json"')
-    assert JSONTestsuiteReference.is_json_test_line('TEST_DATA_DIRECTORY "/json_tests/pass3.json"')
-    
-    # Test with whitespace
-    assert JSONTestsuiteReference.is_json_test_line('    // TEST_DATA_DIRECTORY "/json_tests/test.json",    ')
-    assert JSONTestsuiteReference.is_json_test_line('\t\tTEST_DATA_DIRECTORY "/path/to/file.json"\t')
+    # line from "json.org examples"
+    assert JSONTestsuiteReference.is_json_test_line('    std::ifstream f(TEST_DATA_DIRECTORY "/json.org/5.json");')
+    # line from "compliance tests from json.org"
+    assert JSONTestsuiteReference.is_json_test_line('    TEST_DATA_DIRECTORY "/json_tests/fail2.json",')
+    # line from "nst's JSONTestSuite (2)"
+    assert JSONTestsuiteReference.is_json_test_line('TEST_DATA_DIRECTORY "/nst_json_testsuite2/test_parsing/y_string_surrogates_U+1D11E_MUSICAL_SYMBOL_G_CLEF.json",')
+
 
 def test_filter_other_test_data_lines_keeps_relevant_lines():
     """Test filter_other_test_data_lines keeps lines with relevant test suite paths."""

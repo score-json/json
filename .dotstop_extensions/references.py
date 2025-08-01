@@ -4,6 +4,8 @@ import requests
 
 # Constants
 MAX_JSON_LINES_FOR_DISPLAY = 25
+TEST_DATA_REPO_URL = "https://raw.githubusercontent.com/nlohmann/json_test_data/master/"
+NUM_WHITESPACE_FOR_TAB = 4
 
 def format_cpp_code_as_markdown(code: str) -> str:
     return f"```cpp\n{code}\n```\n"
@@ -112,19 +114,23 @@ class CPPTestReference(BaseReference):
         # Verify we have a valid line after the section declaration
         if start_index + 1 >= len(file_lines):
             raise ValueError("Section declaration is on the last line - no opening brace found")
-            
-        # The line after the section starts is " "*n + "{" and the section ends with " "*n + "}"
+        
+        # replace in every line tabs with spaces to ensure consistency
+        file_lines_whitespaces = [line.replace('\t', ' ' * NUM_WHITESPACE_FOR_TAB) for line in file_lines]
+
+        # The line after the section starts with " "*n + "{"  and the section ends with " "*n + "}"
+        # We assume that there are only whitespace characters after the opening/ending brace
         # Check that the pattern matches the expected format
-        line_after_start_line = file_lines[start_index + 1]
-        if not line_after_start_line.strip().endswith('{'):
-            raise ValueError("Section start line does not match expected pattern (*{)")
+        line_after_start_line = file_lines_whitespaces[start_index + 1]
+        if not line_after_start_line.strip() == '{':
+            raise ValueError("Section start line does not match expected pattern (' '*n + '{')")
         
         # Create the expected closing line by replacing '{' with '}'
-        end_line = line_after_start_line.replace('{', '}')
+        end_line = line_after_start_line.replace('{', '}').rstrip()
         
         # Search for the matching closing brace with same indentation
         for line_number in range(start_index + 1, len(file_lines)):
-            if file_lines[line_number].rstrip() == end_line.rstrip():
+            if file_lines[line_number].rstrip() == end_line:
                 return line_number + 1
         
         raise ValueError("Section end not found")
@@ -132,6 +138,7 @@ class CPPTestReference(BaseReference):
     def remove_leading_whitespace_preserve_indentation(self, text: str) -> str:
         """Remove leading whitespace from all lines while preserving relative indentation."""
         lines = text.split('\n')
+        lines = [line.replace('\t', ' ' * NUM_WHITESPACE_FOR_TAB) for line in lines]
         ident_to_remove = len(lines[0]) - len(lines[0].lstrip())
         
         # Remove the baseline indentation from all lines
@@ -164,12 +171,17 @@ class CPPTestReference(BaseReference):
 
 
 class JSONTestsuiteReference(CPPTestReference):
-    """Represents a reference to one or more JSON testsuite files. The referenced JSON files
-    are displayed (using the as_markdown function) as well as the relevant part of the C++ 
-    test section that uses them. Both the C++ test file and the JSON files are included in the 
-    content property that is used for hashing."""
+    """
+    Represents a reference to one or more JSON testsuite files, where the CPP test 
+    structure is assumed to be as in tests/src/unit-testsuites.cpp and the JSON testsuite 
+    files are assumed to be hosted in the nlohmann/json_test_data repository on github. 
+    
+    The referenced JSON files are displayed (using the as_markdown function) as well as 
+    the relevant part of the C++ test section that uses them. Both the C++ test file and 
+    the JSON files are included in the content property that is used for hashing.
+    """
 
-    def __init__(self, name: str, path, test_suite_paths: str, description: str) -> None:
+    def __init__(self, name: str, path, test_suite_paths: str, description: str, remove_other_test_data_lines: bool = True) -> None:
         """
         Initialize JSONTestsuiteReference.
         
@@ -178,7 +190,8 @@ class JSONTestsuiteReference(CPPTestReference):
             path: Relative path from project root to the C++ test file
             test_suite_paths: List of relative paths to JSON test files in the nlohmann test data repository
             description: Human-readable description of what this test suite covers
-            
+            remove_other_test_data_lines: If True, removes lines from the markdown (not the content used for hashing) that include 'TEST_DATA_DIRECTORY' and '.json"'
+
         Raises:
             ValueError: If test_suite_paths is not a list of strings
         """
@@ -190,6 +203,7 @@ class JSONTestsuiteReference(CPPTestReference):
         self._description = description
         self._test_suite_paths = test_suite_paths
         self.check_testsuite_file_is_used_by_cpp_test()
+        self._remove_other_test_data_lines = remove_other_test_data_lines
         self._loaded_json_cache = {}
     
     @property
@@ -212,7 +226,7 @@ class JSONTestsuiteReference(CPPTestReference):
         return "JSON_testsuite"
 
     def get_testsuite_content(self, test_suite_path: str) -> str:
-        url = "https://raw.githubusercontent.com/nlohmann/json_test_data/master/" + str(test_suite_path)
+        url = TEST_DATA_REPO_URL + str(test_suite_path)
         try:
             response = requests.get(url)
             response.raise_for_status()
@@ -228,20 +242,8 @@ class JSONTestsuiteReference(CPPTestReference):
     
     @staticmethod
     def is_json_test_line(line: str) -> bool:
-        stripped = line.strip()
-
-        test_data_prefixes = ['// TEST_DATA_DIRECTORY',
-                            '//TEST_DATA_DIRECTORY',
-                            'TEST_DATA_DIRECTORY'
-        ]
-
-        json_file_suffixes = ['.json",', '.json"']  
-
-        has_test_data_prefix = any(stripped.startswith(prefix) for prefix in test_data_prefixes)
-        has_json_file_suffix = any(stripped.endswith(suffix) for suffix in json_file_suffixes)
-
-        return has_test_data_prefix and has_json_file_suffix
-
+        return 'TEST_DATA_DIRECTORY' in line and '.json"' in line
+    
     def filter_other_test_data_lines(self, text: str) -> str:
         """Remove lines that only contain other test data references."""
         lines = text.split('\n')
@@ -259,7 +261,7 @@ class JSONTestsuiteReference(CPPTestReference):
     def get_single_json_as_markdown(self, test_suite_path: str) -> str:
         num_json_lines = len(self._loaded_json_map[test_suite_path].split('\n'))
         if num_json_lines > MAX_JSON_LINES_FOR_DISPLAY:
-            link_to_file = f"https://raw.githubusercontent.com/nlohmann/json_test_data/master/{test_suite_path}"
+            link_to_file = TEST_DATA_REPO_URL + str(test_suite_path)
             json_for_display = f"[Link to file]({link_to_file}) [Content too large - {num_json_lines} lines]\n\n"
         else:
             json_for_display = format_json_as_markdown(self._loaded_json_map[test_suite_path])
@@ -279,7 +281,8 @@ class JSONTestsuiteReference(CPPTestReference):
         # we can not simply use the parent class's as_markdown method, because it does not filter out
         # the other test data lines, which are not relevant for the trudag report
         cpp_test_content = self.remove_leading_whitespace_preserve_indentation(self.get_section())
-        cpp_test_content = self.filter_other_test_data_lines(cpp_test_content)
+        if self._remove_other_test_data_lines:
+            cpp_test_content = self.filter_other_test_data_lines(cpp_test_content)
         cpp_test_content = format_cpp_code_as_markdown(cpp_test_content)
 
         cpp_test_title = super().__str__() + '\n\n'

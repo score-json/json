@@ -15,6 +15,7 @@ references:
     - "/json_tests/fail2.json"
     - "/json_tests/fail3.json"
   description: "invalid json"
+  remove_other_test_data_lines: False # optional, the default value is True 
 ---
 ```
 
