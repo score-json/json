@@ -1,0 +1,731 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Frequently Asked Questions (FAQ) &#8212; NLOHMANN JSON LIBRARY  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_needs.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/score_design.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-needs/modern.css?v=803738c0" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'mkdocs/docs/home/faq';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://score-json.github.io/json/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.12.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../s-core/introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../s-core/trustable/concept.html">
+    Concept
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../s-core/trustable/report.html">
+    Report
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../s-core/introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../s-core/trustable/concept.html">
+    Concept
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../s-core/trustable/report.html">
+    Report
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Frequently Asked Questions (FAQ)</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="frequently-asked-questions-faq">
+<h1>Frequently Asked Questions (FAQ)<a class="headerlink" href="#frequently-asked-questions-faq" title="Link to this heading">#</a></h1>
+<section id="known-bugs">
+<h2>Known bugs<a class="headerlink" href="#known-bugs" title="Link to this heading">#</a></h2>
+<section id="brace-initialization-yields-arrays">
+<h3>Brace initialization yields arrays<a class="headerlink" href="#brace-initialization-yields-arrays" title="Link to this heading">#</a></h3>
+<p>!!! question</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Why does
+
+```cpp
+json j{true};
+```
+
+and
+
+```cpp
+json j(true);
+```
+
+yield different results (`#!json [true]` vs. `#!json true`)?
+</pre></div>
+</div>
+<p>This is a known issue, and – even worse – the behavior differs between GCC and Clang. The “culprit” for this is the library’s constructor overloads for initializer lists to allow syntax like</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">json</span><span class="w"> </span><span class="n">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">};</span>
+</pre></div>
+</div>
+<p>for arrays and</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">json</span><span class="w"> </span><span class="n">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="s">&quot;one&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;two&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">}};</span><span class="w"> </span>
+</pre></div>
+</div>
+<p>for objects.</p>
+<p>!!! tip</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>To avoid any confusion and ensure portable code, **do not** use brace initialization with the types `basic_json`, `json`, or `ordered_json` unless you want to create an object or array as shown in the examples above.
+</pre></div>
+</div>
+</section>
+</section>
+<section id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading">#</a></h2>
+<section id="relaxed-parsing">
+<h3>Relaxed parsing<a class="headerlink" href="#relaxed-parsing" title="Link to this heading">#</a></h3>
+<p>!!! question</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Can you add an option to ignore trailing commas?
+</pre></div>
+</div>
+<p>This library does not support any feature that would jeopardize interoperability.</p>
+</section>
+<section id="parse-errors-reading-non-ascii-characters">
+<h3>Parse errors reading non-ASCII characters<a class="headerlink" href="#parse-errors-reading-non-ascii-characters" title="Link to this heading">#</a></h3>
+<p>!!! question “Questions”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Why is the parser complaining about a Chinese character?
+- Does the library support Unicode?
+- I get an exception `[json.exception.parse_error.101] parse error at line 1, column 53: syntax error while parsing value - invalid string: ill-formed UTF-8 byte; last read: &#39;&quot;Testé$&#39;)&quot;`
+</pre></div>
+</div>
+<p>The library supports <strong>Unicode input</strong> as follows:</p>
+<ul class="simple">
+<li><p>Only <strong>UTF-8</strong> encoded input is supported, which is the default encoding for JSON, according to <a class="reference external" href="https://tools.ietf.org/html/rfc8259.html#section-8.1">RFC 8259</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">std::u16string</span></code> and <code class="docutils literal notranslate"><span class="pre">std::u32string</span></code> can be parsed, assuming UTF-16 and UTF-32 encoding, respectively. These encodings are not supported when reading from files or other input containers.</p></li>
+<li><p>Other encodings such as Latin-1 or ISO 8859-1 are <strong>not</strong> supported and will yield parse or serialization errors.</p></li>
+<li><p>The library will not replace <a class="reference external" href="http://www.unicode.org/faq/private_use.html#nonchar1">Unicode noncharacters</a>.</p></li>
+<li><p>Invalid surrogates (e.g., incomplete pairs such as <code class="docutils literal notranslate"><span class="pre">\uDEAD</span></code>) will yield parse errors.</p></li>
+<li><p>The strings stored in the library are UTF-8 encoded. When using the default string type (<code class="docutils literal notranslate"><span class="pre">std::string</span></code>), note that its length/size functions return the number of stored bytes rather than the number of characters or glyphs.</p></li>
+<li><p>When you store strings with different encodings in the library, calling <a class="reference external" href="https://nlohmann.github.io/json/classnlohmann_1_1basic__json_a50ec80b02d0f3f51130d4abb5d1cfdc5.html#a50ec80b02d0f3f51130d4abb5d1cfdc5"><code class="docutils literal notranslate"><span class="pre">dump()</span></code></a> may throw an exception unless <code class="docutils literal notranslate"><span class="pre">json::error_handler_t::replace</span></code> or <code class="docutils literal notranslate"><span class="pre">json::error_handler_t::ignore</span></code> are used as error handlers.</p></li>
+</ul>
+<p>In most cases, the parser is right to complain, because the input is not UTF-8 encoded. This is especially true for Microsoft Windows where Latin-1 or ISO 8859-1 is often the standard encoding.</p>
+</section>
+<section id="wide-string-handling">
+<h3>Wide string handling<a class="headerlink" href="#wide-string-handling" title="Link to this heading">#</a></h3>
+<p>!!! question</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Why are wide strings (e.g., `std::wstring`) dumped as arrays of numbers?
+</pre></div>
+</div>
+<p>As described <a class="reference internal" href="#parse-errors-reading-non-ascii-characters"><span class="xref myst">above</span></a>, the library assumes UTF-8 as encoding.  To store a wide string, you need to change the encoding.</p>
+<p>!!! example</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```cpp
+#include &lt;codecvt&gt; // codecvt_utf8
+#include &lt;locale&gt;  // wstring_convert
+
+// encoding function
+std::string to_utf8(std::wstring&amp; wide_string)
+{
+    static std::wstring_convert&lt;std::codecvt_utf8&lt;wchar_t&gt;&gt; utf8_conv;
+    return utf8_conv.to_bytes(wide_string);
+}
+
+json j;
+std::wstring ws = L&quot;車B1234 こんにちは&quot;;
+
+j[&quot;original&quot;] = ws;
+j[&quot;encoded&quot;] = to_utf8(ws);
+
+std::cout &lt;&lt; j &lt;&lt; std::endl;
+```
+
+The result is:
+
+```json
+{
+  &quot;encoded&quot;: &quot;車B1234 こんにちは&quot;,
+  &quot;original&quot;: [36554, 66, 49, 50, 51, 52, 32, 12371, 12435, 12395, 12385, 12399]
+}
+```
+</pre></div>
+</div>
+</section>
+</section>
+<section id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading">#</a></h2>
+<section id="parsing-without-exceptions">
+<h3>Parsing without exceptions<a class="headerlink" href="#parsing-without-exceptions" title="Link to this heading">#</a></h3>
+<p>!!! question</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Is it possible to indicate a parse error without throwing an exception?
+</pre></div>
+</div>
+<p>Yes, see <a class="reference internal" href="../features/parsing/parse_exceptions.html"><span class="std std-doc">Parsing and exceptions</span></a>.</p>
+</section>
+<section id="key-name-in-exceptions">
+<h3>Key name in exceptions<a class="headerlink" href="#key-name-in-exceptions" title="Link to this heading">#</a></h3>
+<p>!!! question</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Can I get the key of the object item that caused an exception?
+</pre></div>
+</div>
+<p>Yes, you can. Please define the symbol <a class="reference internal" href="../api/macros/json_diagnostics.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">JSON_DIAGNOSTICS</span></code></span></a> to get <a class="reference internal" href="exceptions.html#extended-diagnostic-messages"><span class="std std-ref">extended diagnostics messages</span></a>.</p>
+</section>
+</section>
+<section id="serialization-issues">
+<h2>Serialization issues<a class="headerlink" href="#serialization-issues" title="Link to this heading">#</a></h2>
+<section id="number-precision">
+<h3>Number precision<a class="headerlink" href="#number-precision" title="Link to this heading">#</a></h3>
+<p>!!! question</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- It seems that precision is lost when serializing a double.
+- Can I change the precision for floating-point serialization?
+</pre></div>
+</div>
+<p>The library uses <code class="docutils literal notranslate"><span class="pre">std::numeric_limits&lt;number_float_t&gt;::digits10</span></code> (15 for IEEE <code class="docutils literal notranslate"><span class="pre">double</span></code>s) digits for serialization. This value is sufficient to guarantee roundtripping. If one uses more than this number of digits of precision, then string -&gt; value -&gt; string is not guaranteed to round-trip.</p>
+<p>!!! quote “<a class="reference external" href="https://en.cppreference.com/w/cpp/types/numeric_limits/digits10">cppreference.com</a>”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The value of `std::numeric_limits&lt;T&gt;::digits10` is the number of base-10 digits that can be represented by the type T without change, that is, any number with this many significant decimal digits can be converted to a value of type T and back to decimal form, without change due to rounding or overflow. 
+</pre></div>
+</div>
+<p>!!! tip</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The website https://float.exposed gives a good insight into the internal storage of floating-point numbers.
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../features/types/number_handling.html#number-serialization"><span class="std std-ref">this section</span></a> on the library’s number handling for more information.</p>
+</section>
+</section>
+<section id="compilation-issues">
+<h2>Compilation issues<a class="headerlink" href="#compilation-issues" title="Link to this heading">#</a></h2>
+<section id="android-sdk">
+<h3>Android SDK<a class="headerlink" href="#android-sdk" title="Link to this heading">#</a></h3>
+<p>!!! question</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Why does the code not compile with Android SDK?
+</pre></div>
+</div>
+<p>Android defaults to using very old compilers and C++ libraries. To fix this, add the following to your <code class="docutils literal notranslate"><span class="pre">Application.mk</span></code>. This will switch to the LLVM C++ library, the Clang compiler, and enable C++11 and other features disabled by default.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">APP_STL</span><span class="w"> </span><span class="o">:</span><span class="s">= c++_shared</span>
+<span class="na">NDK_TOOLCHAIN_VERSION</span><span class="w"> </span><span class="o">:</span><span class="s">= clang3.6</span>
+<span class="na">APP_CPPFLAGS +</span><span class="o">=</span><span class="w"> </span><span class="s">-frtti -fexceptions</span>
+</pre></div>
+</div>
+<p>The code compiles successfully with <a class="reference external" href="https://developer.android.com/ndk/index.html?hl=ml">Android NDK</a>, Revision 9 - 11 (and possibly later) and <a class="reference external" href="https://www.crystax.net/en/android/ndk">CrystaX’s Android NDK</a> version 10.</p>
+</section>
+<section id="missing-stl-function">
+<h3>Missing STL function<a class="headerlink" href="#missing-stl-function" title="Link to this heading">#</a></h3>
+<p>!!! question “Questions”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Why do I get a compilation error `&#39;to_string&#39; is not a member of &#39;std&#39;` (or similarly, for `strtod` or `strtof`)?
+- Why does the code not compile with MinGW or Android SDK?
+</pre></div>
+</div>
+<p>This is not an issue with the code, but rather with the compiler itself. On Android, see above to build with a newer environment.  For MinGW, please refer to <a class="reference external" href="http://tehsausage.com/mingw-to-string">this site</a> and <a class="reference external" href="https://github.com/nlohmann/json/issues/136">this discussion</a> for information on how to fix this bug. For Android NDK using <code class="docutils literal notranslate"><span class="pre">APP_STL</span> <span class="pre">:=</span> <span class="pre">gnustl_static</span></code>, please refer to <a class="reference external" href="https://github.com/nlohmann/json/issues/219">this discussion</a>.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-bugs">Known bugs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#brace-initialization-yields-arrays">Brace initialization yields arrays</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relaxed-parsing">Relaxed parsing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parse-errors-reading-non-ascii-characters">Parse errors reading non-ASCII characters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wide-string-handling">Wide string handling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parsing-without-exceptions">Parsing without exceptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-name-in-exceptions">Key name in exceptions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#serialization-issues">Serialization issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#number-precision">Number precision</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation-issues">Compilation issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#android-sdk">Android SDK</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-stl-function">Missing STL function</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/score-json/json/edit/main/docs/mkdocs/docs/home/faq.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/mkdocs/docs/home/faq.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
