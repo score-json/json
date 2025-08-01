@@ -21,11 +21,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
-      - name: Trigger "Dependency Review" Workflow
-        run: gh workflow run "Dependency Review"
-        env:
-          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
-
       - name: Trigger "Test Trudag Extensions" Workflow
         run: gh workflow run "Test Trudag extensions"
         env:
@@ -39,19 +34,30 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
-      - name: Wait for All Workflows to Complete
-        id: wait
+
+      - name: Wait for All Artifacts
         run: |
+          REQUIRED_ARTIFACTS=(
+            artifact-workflow-AMALGAMATION-completed
+            artifact-workflow-TRUDAG-EXTENSIONS-completed
+            artifact-workflow-PULL-REQUEST-LABELER-completed
+          )
+
           COMPLETED=false
           while [ "$COMPLETED" = "false" ]; do
-              RUN_STATUS=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-                https://api.github.com/repos/${{ github.repository }}/actions/runs)
-              
-              if [[ "$RUN_STATUS" == *"completed"* ]]; then
-                  COMPLETED=true
-                  echo "All workflows are complete."
-              else
-                  echo "Child workflows are still running... waiting 30 seconds."
-                  sleep 30
+            COMPLETED=true # Assume all artifacts are found
+
+            for ARTIFACT in "${REQUIRED_ARTIFACTS[@]}"; do
+              if [[ ! -f "$ARTIFACT" ]]; then
+                COMPLETED=false
+                echo "Waiting for $ARTIFACT..."
               fi
+            done
+
+            if [ "$COMPLETED" = "false" ]; then
+              echo "Not all artifacts are ready. Sleeping for 30 seconds..."
+              sleep 30
+            fi
           done
+
+          echo "All required artifacts are now available."

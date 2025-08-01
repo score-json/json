@@ -25,3 +25,9 @@ jobs:
       - uses: srvaroa/labeler@e216fb40e2e6d3b17d90fb1d950f98bee92f65ce # master
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Upload completion artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: workflow-LABELER-completed  
+          path: completion_flag.txt

@@ -35,3 +35,9 @@ jobs:
         name: trudag-test-data
         path: docs/s-core/trustable/generated/
         if-no-files-found: warn
+
+    - name: Upload completion artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: workflow-TRUDAG_EXTENSIONS-completed
+        path: completion_flag.txt
