@@ -1,0 +1,93 @@
+name: Parent Workflow
+
+on: [pull_request]
+
+permissions:
+  contents:  write
+  pages: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  trigger-workflows:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Trigger "Check Amalgamation" Workflow
+        run: |
+          echo "Triggering Check Amalgamation workflow with branch: ${{ github.head_ref }}"
+          gh workflow run "Check amalgamation" --ref ${{ github.head_ref }} -F PARENT_SHA=${{ github.sha }}
+        env:
+          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
+
+      - name: Trigger "Test Trudag Extensions" Workflow
+        run: |
+          echo "Triggering Test Trudag Extensions workflow with branch: ${{ github.head_ref }}"
+          gh workflow run "Test Trudag extensions" --ref ${{ github.head_ref }} -F PARENT_SHA=${{ github.sha }}
+        env:
+          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
+
+      - name: Trigger "CIFuzz" Workflow
+        run: |
+          echo "Triggering cifuzz workflow with branch: ${{ github.head_ref }}"
+          gh workflow run "CIFuzz" --ref ${{ github.head_ref }} -F PARENT_SHA=${{ github.sha }}
+        env:
+          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
+
+      - name: Trigger "Pull Request Labeler" Workflow
+        run: |
+          echo "Triggering Pull Request Labeler workflow with branch: ${{ github.head_ref }}"
+          gh workflow run "Pull Request Labeler" --ref ${{ github.head_ref }} -F PARENT_SHA=${{ github.sha }}
+        env:
+          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
+
+      - name: Wait and Download Artifacts From Child Workflows
+        env:
+          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
+        run: |
+          echo "Waiting for artifacts from child workflows..."
+
+          REQUIRED_ARTIFACTS=(
+            workflow-AMALGAMATION-completed_${{ github.sha }}
+            workflow-TRUDAG-EXTENSIONS-completed_${{ github.sha }}
+            workflow-LABELER-completed_${{ github.sha }}
+            workflow-CIFUZZ-completed_${{ github.event.inputs.PARENT_SHA }}
+          )
+
+          COMPLETED=false
+          MAX_RETRIES=60  # Retry up to 60 times (15 mins, with 15s intervals)
+          RETRY_COUNT=0
+
+          # Create a directory for each artifact to prevent name conflicts
+          while [ "$COMPLETED" = "false" ] && [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+            COMPLETED=true
+
+            for ARTIFACT in "${REQUIRED_ARTIFACTS[@]}"; do
+              echo "Attempting to download artifact: $ARTIFACT"
+
+              # Create a fresh directory for the artifact
+              EXTRACT_DIR="artifacts/$ARTIFACT"
+              rm -rf "$EXTRACT_DIR" # Ensure the directory is clean
+              mkdir -p "$EXTRACT_DIR"
+
+              # Download and extract the artifact into the clean directory
+              gh run download --name "$ARTIFACT" --dir "$EXTRACT_DIR" || COMPLETED=false
+            done
+
+            if [ "$COMPLETED" = "false" ]; then
+              echo "Not all artifacts are ready. Waiting 15 seconds..."
+              sleep 15
+              RETRY_COUNT=$((RETRY_COUNT + 1))
+            fi
+          done
+
+          if [ "$COMPLETED" = "false" ]; then
+            echo "Timed out while waiting for artifacts."
+            exit 1
+          fi
+
+          echo "All required artifacts have been downloaded successfully!"
+          echo "Artifacts can be found in the 'artifacts/' directory."

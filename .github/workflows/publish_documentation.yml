@@ -20,13 +20,12 @@ permissions:
   id-token: write
 
 on:
-  pull_request_target:
-    types: [opened, reopened, synchronize] # Allows forks to trigger the docs build
-  push:
-    branches:
-      - main
-  merge_group:
-    types: [checks_requested]
+  workflow_run:
+    workflows: 
+     - "Parent Workflow"
+
+    types:
+      - completed
 
 jobs:
   run-trudag:
@@ -40,7 +39,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -51,6 +49,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y graphviz
           pip install trustable --index-url https://gitlab.com/api/v4/projects/66600816/packages/pypi/simple
+      
 
       - name: Generate trudag report
         run: |
