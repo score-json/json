@@ -49,7 +49,6 @@ source_suffix = {
     '.md': 'markdown',
 }
 
-# Add this setting
 suppress_warnings = ['ref.warning', 'toc.not_included', 'myst.xref_missing', 'myst.header']
 
 exclude_patterns = [

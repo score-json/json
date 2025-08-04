@@ -44,11 +44,11 @@ def remove_invalid_markdown_start(lines: list[str]) -> list[str]:
     ---
     ' as this leads to errors in doc-as-code
     """
-    if len(lines) > 2 and lines[2].startswith("---"):
-        return lines[3:]
-        print("Invalid markdown start found.")
-    else:
-        return lines
+    if len(lines) > 2:
+        first_two_lines_empty = not lines[0].strip() and not lines[1].strip() 
+        if first_two_lines_empty and lines[2].startswith("---"):
+            return lines[3:]
+    return lines
 
 def clean_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as f:
