@@ -81,5 +81,5 @@ cc_library(
 )
 
 docs(
-    source_dir = "TSF/docs/",
+    source_dir = "TSF/docs",
 )
