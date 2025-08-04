@@ -1,8 +1,8 @@
 name: Parent Workflow
 
-on:
+on: 
   pull_request:
-  push:
+  push: 
     branches:
       - develop
       - main
@@ -14,74 +14,72 @@ permissions:
   id-token: write
 
 jobs:
-  trigger-and-deploy:
-    name: Trigger and Deploy All Workflows
+  child-workflows:
+    name: Run Child Workflows
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        workflow: 
+          - { name: "labeler", path: ".github/workflows/labeler.yml" }
+          - { name: "check_amalgamation", path: ".github/workflows/check_amalgamation.yml" }
+          - { name: "test_trudag_extensions", path: ".github/workflows/test_trudag_extensions.yml" }
+    steps:
+      - name: Trigger ${{ matrix.workflow.name }} Workflow
+        uses: ${{ matrix.workflow.path }}
+        with:
+          artifact_id: "${{ matrix.workflow.name }}-${{ github.sha }}"
+
+  collect-and-deploy:
+    name: "Collect Results & Deploy"
+    needs: child-workflows
+    runs-on: ubuntu-latest
+    if: always() # Run even if some jobs fail
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Define Workflows
-        id: define-workflows
+      - name: Check child workflow results
         run: |
-          echo "WORKFLOWS=$(jq -c . <<EOF
-          [
-            {"name": "labeler", "file": "labeler.yml"},
-            {"name": "check_amalgamation", "file": "check_amalgamation.yml"},
-            {"name": "test_trudag_extensions", "file": "test_trudag_extensions.yml"}
-          ]
-          EOF
-          )" >> $GITHUB_ENV
-
-      - name: Trigger Workflows Dynamically
-        id: trigger
-        run: |
-          workflows="$WORKFLOWS"
-          echo "$workflows" | jq -c '.[]' | while read -r workflow; do
-            NAME=$(echo "$workflow" | jq -r '.name')
-            FILE=$(echo "$workflow" | jq -r '.file')
-            ARTIFACT_ID="${NAME}-${GITHUB_SHA}"
-
-            echo "Triggering workflow: $NAME from file: $FILE with artifact ID: $ARTIFACT_ID"
-            gh workflow run "./.github/workflows/$FILE" -F artifact_id="${ARTIFACT_ID}" || exit 1
+          echo "=== Child Workflow Results ==="
+          for workflow in labeler check_amalgamation test_trudag_extensions; do
+            echo "${workflow} workflow: ${{ needs.child-workflows.outputs[workflow].result }}"
+          done
+          echo "================================"
+          
+          for workflow in labeler check_amalgamation test_trudag_extensions; do
+            if [[ "${{ needs.child-workflows.outputs[workflow].result }}" != "success" ]]; then
+              echo "❌ One or more child workflows failed"
+              exit 1
+            fi
           done
 
-      - name: Wait for Workflows to Complete
-        run: |
-          echo "Waiting for workflows to complete..."
-          sleep 20 # Optionally replace this with smarter polling logic
+          echo "✅ Child workflows completed successfully!"
 
-      - name: Download All Workflow Artifacts
-        run: |
-          workflows="$WORKFLOWS"
-          echo "$workflows" | jq -c '.[]' | while read -r workflow; do
-            NAME=$(echo "$workflow" | jq -r '.name')
-            ARTIFACT_ID="${NAME}-${GITHUB_SHA}"
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: "${{ matrix.workflow.name }}-${{ github.sha }}"
+          path: artifacts/
 
-            echo "Downloading artifact for workflow: $NAME (Artifact ID: $ARTIFACT_ID)"
-            mkdir -p artifacts/$NAME
-            gh run download --name "$ARTIFACT_ID" --dir "artifacts/$NAME" || echo "⚠️ No artifacts for $NAME"
-          done
-
-      - name: Create Deployment Package
+      - name: Create deployment package
         run: |
           echo "Creating deployment package..."
           mkdir -p deployment
           echo "Deployment ready - $(date)" > deployment/deployment-info.txt
-
+          
           # Copy all artifacts to deployment folder
           if [[ -d artifacts ]]; then
             cp -r artifacts/* deployment/
           fi
 
-      - name: Upload Final Deployment Package
+      - name: Upload final deployment artifact
         uses: actions/upload-artifact@v4
         with:
           name: "deployment-package-${{ github.sha }}"
           path: deployment/
 
-      - name: Deployment Simulation
+      - name: Deployment simulation
         run: |
           echo "🚀 Simulating deployment..."
           sleep 2
