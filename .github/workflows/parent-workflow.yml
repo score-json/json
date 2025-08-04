@@ -19,25 +19,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Define Workflows
         id: define-workflows
         run: |
-          echo "::set-output name=workflows::$(cat <<EOF
+          echo "WORKFLOWS=$(jq -c . <<EOF
           [
             {"name": "labeler", "file": "labeler.yml"},
             {"name": "check_amalgamation", "file": "check_amalgamation.yml"},
             {"name": "test_trudag_extensions", "file": "test_trudag_extensions.yml"}
           ]
           EOF
-          )"
+          )" >> $GITHUB_ENV
 
       - name: Trigger Workflows Dynamically
         id: trigger
         run: |
-          workflows='${{ steps.define-workflows.outputs.workflows }}'
+          workflows="$WORKFLOWS"
           echo "$workflows" | jq -c '.[]' | while read -r workflow; do
             NAME=$(echo "$workflow" | jq -r '.name')
             FILE=$(echo "$workflow" | jq -r '.file')
@@ -50,11 +50,11 @@ jobs:
       - name: Wait for Workflows to Complete
         run: |
           echo "Waiting for workflows to complete..."
-          sleep 20 # Optional step to wait or add smarter polling based on workflow state
+          sleep 20 # Optionally replace this with smarter polling logic
 
       - name: Download All Workflow Artifacts
         run: |
-          workflows='${{ steps.define-workflows.outputs.workflows }}'
+          workflows="$WORKFLOWS"
           echo "$workflows" | jq -c '.[]' | while read -r workflow; do
             NAME=$(echo "$workflow" | jq -r '.name')
             ARTIFACT_ID="${NAME}-${GITHUB_SHA}"
