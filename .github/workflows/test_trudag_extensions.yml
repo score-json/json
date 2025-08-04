@@ -36,7 +36,7 @@ jobs:
     - name: Generate test_trudag_extensions artifact
       run: |
         echo "Generating test_trudag_extensions artifact..."
-        mkdir -p labeler
+        mkdir -p test_trudag_extensions
         echo "test_trudag_extensions processed for ${{ inputs.artifact_id }}" > test_trudag_extensions/test_trudag_extensions.txt
 
     - name: Upload test_trudag_extensions artifact
