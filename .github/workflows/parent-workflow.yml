@@ -12,7 +12,6 @@ permissions:
   pages: write
   pull-requests: write
   id-token: write
-  workflows: write
 
 jobs:
   trigger-workflows:
