@@ -21,32 +21,32 @@ jobs:
           echo "Triggering Check Amalgamation workflow with branch: ${{ github.head_ref }}"
           gh workflow run "Check amalgamation" --ref ${{ github.head_ref }} -F PARENT_SHA=${{ github.sha }}
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
       - name: Trigger "Test Trudag Extensions" Workflow
         run: |
           echo "Triggering Test Trudag Extensions workflow with branch: ${{ github.head_ref }}"
           gh workflow run "Test Trudag extensions" --ref ${{ github.head_ref }} -F PARENT_SHA=${{ github.sha }}
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
       - name: Trigger "CIFuzz" Workflow
         run: |
           echo "Triggering cifuzz workflow with branch: ${{ github.head_ref }}"
           gh workflow run "CIFuzz" --ref ${{ github.head_ref }} -F PARENT_SHA=${{ github.sha }}
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
       - name: Trigger "Pull Request Labeler" Workflow
         run: |
           echo "Triggering Pull Request Labeler workflow with branch: ${{ github.head_ref }}"
           gh workflow run "Pull Request Labeler" --ref ${{ github.head_ref }} -F PARENT_SHA=${{ github.sha }}
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
       - name: Wait and Download Artifacts From Child Workflows
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
         run: |
           echo "Waiting for artifacts from child workflows..."
 
