@@ -22,55 +22,79 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Define Workflows
+      - name: Save Workflows to Environment
         id: define-workflows
         run: |
-          echo "::set-output name=workflows::$(cat <<EOF
+          echo "WORKFLOWS=$(cat <<EOF
           [
             {"name": "labeler", "file": "labeler.yml"},
             {"name": "check_amalgamation", "file": "check_amalgamation.yml"},
             {"name": "test_trudag_extensions", "file": "test_trudag_extensions.yml"}
           ]
           EOF
-          )"
+          )" >> $GITHUB_ENV
 
-      - name: Trigger Workflows Dynamically
+      - name: Trigger Workflows Dynamically and Track Results
         id: trigger
         run: |
-          workflows='${{ steps.define-workflows.outputs.workflows }}'
+          workflows="$WORKFLOWS"
+          results=()
+          
           echo "$workflows" | jq -c '.[]' | while read -r workflow; do
             NAME=$(echo "$workflow" | jq -r '.name')
             FILE=$(echo "$workflow" | jq -r '.file')
             ARTIFACT_ID="${NAME}-${GITHUB_SHA}"
+            
+            echo "Triggering workflow: $NAME (file: $FILE, artifact ID: $ARTIFACT_ID)"
+            RUN_ID=$(gh workflow run "./.github/workflows/$FILE" -F artifact_id="${ARTIFACT_ID}" --json id -q '.id')
 
-            echo "Triggering workflow: $NAME from file: $FILE with artifact ID: $ARTIFACT_ID"
-            gh workflow run "./.github/workflows/$FILE" -F artifact_id="${ARTIFACT_ID}" || exit 1
+            echo "$RUN_ID started for $NAME"
+            results+=("{\"name\":\"$NAME\",\"run_id\":\"$RUN_ID\"}")
           done
 
-      - name: Wait for Workflows to Complete
+          echo "::set-output name=workflow-results::$(echo ${results[@]} | jq -c '.')"
+
+      - name: Wait for Workflows and Output Results
         run: |
-          echo "Waiting for workflows to complete..."
-          sleep 20 # Optional step to wait or add smarter polling based on workflow state
+          workflow_results='${{ steps.trigger.outputs.workflow-results }}'
+          echo "$workflow_results" | jq -c '.[]' | while read -r result; do
+            NAME=$(echo "$result" | jq -r '.name')
+            RUN_ID=$(echo "$result" | jq -r '.run_id')
+
+            echo "Checking status for $NAME workflow..."
+            STATUS=""
+            while [[ "$STATUS" != "completed" ]]; do
+              STATUS=$(gh run view "$RUN_ID" --json status -q '.status')
+              [[ "$STATUS" == "completed" ]] || sleep 10
+            done
+
+            CONCLUSION=$(gh run view "$RUN_ID" --json conclusion -q '.conclusion')
+            if [[ "$CONCLUSION" == "success" ]]; then
+              echo "✅ Workflow $NAME completed successfully."
+            else
+              echo "❌ Workflow $NAME failed with status: $CONCLUSION"
+            fi
+          done
 
       - name: Download All Workflow Artifacts
         run: |
-          workflows='${{ steps.define-workflows.outputs.workflows }}'
+          workflows="$WORKFLOWS"
           echo "$workflows" | jq -c '.[]' | while read -r workflow; do
             NAME=$(echo "$workflow" | jq -r '.name')
             ARTIFACT_ID="${NAME}-${GITHUB_SHA}"
 
             echo "Downloading artifact for workflow: $NAME (Artifact ID: $ARTIFACT_ID)"
             mkdir -p artifacts/$NAME
-            gh run download --name "$ARTIFACT_ID" --dir "artifacts/$NAME" || echo "⚠️ No artifacts for $NAME"
+            gh run download --name "$ARTIFACT_ID" --dir "artifacts/$NAME" || echo "⚠️ No artifacts found for $NAME"
           done
 
       - name: Create Deployment Package
         run: |
           echo "Creating deployment package..."
           mkdir -p deployment
-          echo "Deployment ready - $(date)" > deployment/deployment-info.txt
+          echo "Deployment created at $(date)" >> deployment/deployment-info.txt
 
-          # Copy all artifacts to deployment folder
+          # Consolidate artifacts into deployment folder
           if [[ -d artifacts ]]; then
             cp -r artifacts/* deployment/
           fi
