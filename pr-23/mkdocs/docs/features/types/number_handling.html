@@ -1,0 +1,968 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Number Handling &#8212; NLOHMANN JSON LIBRARY  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/score.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/score_needs.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/score_design.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-data-viewer/jsonview.bundle.css?v=f6ef2277" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/libs/html/datatables.min.css?v=4b4fd840" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_links.css?v=2150a916" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_style.css?v=92936fa5" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_toggle.css?v=5c6620df" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/needstable.css?v=5e1b6797" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/common_css/need_core.css?v=f5b60a78" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-needs/modern.css?v=803738c0" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../../../../_static/sphinx-data-viewer/jsonview.bundle.js?v=18cd53c5"></script>
+    <script src="../../../../_static/sphinx-data-viewer/jsonview_loader.js?v=f7ff7e7d"></script>
+    <script src="../../../../_static/sphinx-needs/libs/html/datatables.min.js?v=8a4aee21"></script>
+    <script src="../../../../_static/sphinx-needs/libs/html/datatables_loader.js?v=a2cae175"></script>
+    <script src="../../../../_static/sphinx-needs/libs/html/sphinx_needs_collapse.js?v=dca66431"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'mkdocs/docs/features/types/number_handling';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://score-json.github.io/json/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.12.0" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Eclipse S-CORE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../s-core/introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../s-core/trustable/concept.html">
+    Concept
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../s-core/trustable/report.html">
+    Report
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../s-core/introduction/index.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../s-core/trustable/concept.html">
+    Concept
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../s-core/trustable/report.html">
+    Report
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
+    Eclipse
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/eclipse-score" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Number Handling</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="number-handling">
+<h1>Number Handling<a class="headerlink" href="#number-handling" title="Link to this heading">#</a></h1>
+<p>This document describes how the library is handling numbers.</p>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
+<p>This section briefly summarizes how the JSON specification describes how numbers should be handled.</p>
+<section id="json-number-syntax">
+<h3>JSON number syntax<a class="headerlink" href="#json-number-syntax" title="Link to this heading">#</a></h3>
+<p>JSON defines the syntax of numbers as follows:</p>
+<p>!!! quote “<a class="reference external" href="https://tools.ietf.org/html/rfc8259#section-6">RFC 8259</a>, Section 6”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The representation of numbers is similar to that used in most
+programming languages.  A number is represented in base 10 using
+decimal digits.  It contains an integer component that may be
+prefixed with an optional minus sign, which may be followed by a
+fraction part and/or an exponent part.  Leading zeros are not
+allowed.
+
+A fraction part is a decimal point followed by one or more digits.
+
+An exponent part begins with the letter E in uppercase or lowercase,
+which may be followed by a plus or minus sign.  The E and optional
+sign are followed by one or more digits.
+</pre></div>
+</div>
+<p>The following railroad diagram from <a class="reference external" href="https://json.org">json.org</a> visualizes the number syntax:</p>
+<p><img alt="Syntax for JSON numbers" src="../../../../_images/json_syntax_number.png" /></p>
+</section>
+<section id="number-interoperability">
+<h3>Number interoperability<a class="headerlink" href="#number-interoperability" title="Link to this heading">#</a></h3>
+<p>On number interoperability, the following remarks are made:</p>
+<p>!!! quote “<a class="reference external" href="https://tools.ietf.org/html/rfc8259#section-6">RFC 8259</a>, Section 6”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>This specification allows implementations to set limits on the range
+and precision of numbers accepted.  Since software that implements
+IEEE 754 binary64 (double precision) numbers [IEEE754] is generally
+available and widely used, good interoperability can be achieved by
+implementations that expect no more precision or range than these
+provide, in the sense that implementations will approximate JSON
+numbers within the expected precision.  A JSON number such as 1E400
+or 3.141592653589793238462643383279 may indicate potential
+interoperability problems, since it suggests that the software that
+created it expects receiving software to have greater capabilities
+for numeric magnitude and precision than is widely available.
+
+Note that when such software is used, numbers that are integers and
+are in the range $[-2^{53}+1, 2^{53}-1]$ are interoperable in the
+sense that implementations will agree exactly on their numeric
+values.
+</pre></div>
+</div>
+</section>
+</section>
+<section id="library-implementation">
+<h2>Library implementation<a class="headerlink" href="#library-implementation" title="Link to this heading">#</a></h2>
+<p>This section describes how this library implements the above number specification.</p>
+<section id="number-storage">
+<h3>Number storage<a class="headerlink" href="#number-storage" title="Link to this heading">#</a></h3>
+<p>In the default <a class="reference internal" href="../../api/json.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">json</span></code></span></a> type, numbers are stored as <code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">std::uint64_t</span></code>, <code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">std::int64_t</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">double</span></code>, respectively. Thereby, <code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">std::uint64_t</span></code> and <code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">std::int64_t</span></code> are used only if they can store the
+number without loss of precision. If this is impossible (e.g., if the number is too large), the number is stored as
+<code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">double</span></code>.</p>
+<p>!!! info “Notes”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Numbers with a decimal digit or scientific notation are always stored as `#!c double`.
+- The number types can be changed, see [Template number types](#template-number-types). 
+- As of version 3.9.1, the conversion is realized by
+  [`std::strtoull`](https://en.cppreference.com/w/cpp/string/byte/strtoul),
+  [`std::strtoll`](https://en.cppreference.com/w/cpp/string/byte/strtol), and
+  [`std::strtod`](https://en.cppreference.com/w/cpp/string/byte/strtof), respectively.
+</pre></div>
+</div>
+<p>!!! example “Examples”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Integer `#!c -12345678912345789123456789` is smaller than `#!c INT64_MIN` and will be stored as floating-point
+  number `#!c -1.2345678912345788e+25`.
+- Integer `#!c 1E3` will be stored as floating-point number `#!c 1000.0`.
+</pre></div>
+</div>
+</section>
+<section id="number-limits">
+<h3>Number limits<a class="headerlink" href="#number-limits" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Any 64-bit signed or unsigned integer can be stored without loss of precision.</p></li>
+<li><p>Numbers exceeding the limits of <code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">double</span></code> (i.e., numbers that after conversion via
+<a class="reference external" href="https://en.cppreference.com/w/cpp/string/byte/strtof"><code class="docutils literal notranslate"><span class="pre">std::strtod</span></code></a> are not satisfying
+<a class="reference external" href="https://en.cppreference.com/w/cpp/numeric/math/isfinite"><code class="docutils literal notranslate"><span class="pre">std::isfinite</span></code></a> such as <code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">1E400</span></code>) will throw exception
+<a class="reference internal" href="../../home/exceptions.html#jsonexceptionout_of_range406"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">json.exception.out_of_range.406</span></code></span></a> during parsing.</p></li>
+<li><p>Floating-point numbers are rounded to the next number representable as <code class="docutils literal notranslate"><span class="pre">double</span></code>. For instance
+<code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">3.141592653589793238462643383279</span></code> is stored as <a class="reference external" href="https://float.exposed/0x400921fb54442d18"><code class="docutils literal notranslate"><span class="pre">0x400921fb54442d18</span></code></a>.
+This is the same behavior as the code <code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">double</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">3.141592653589793238462643383279;</span></code>.</p></li>
+</ul>
+<p>!!! success “Interoperability”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- The library interoperable with respect to the specification, because its supported range $[-2^{63}, 2^{64}-1]$ is
+  larger than the described range $[-2^{53}+1, 2^{53}-1]$.
+- All integers outside the range $[-2^{63}, 2^{64}-1]$, as well as floating-point numbers are stored as `double`.
+  This also concurs with the specification above.
+</pre></div>
+</div>
+</section>
+<section id="zeros">
+<h3>Zeros<a class="headerlink" href="#zeros" title="Link to this heading">#</a></h3>
+<p>The JSON number grammar allows for different ways to express zero, and this library will store zeros differently:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Literal</p></th>
+<th class="head"><p>Stored value and type</p></th>
+<th class="head"><p>Serialization</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">std::uint64_t(0)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-0</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">std::int64_t(0)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">double(0.0)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-0.0</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">double(-0.0)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-0.0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0E0</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">double(0.0)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-0E0</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">double(-0.0)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-0.0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>That is, <code class="docutils literal notranslate"><span class="pre">-0</span></code> is stored as a signed integer, but the serialization does not reproduce the <code class="docutils literal notranslate"><span class="pre">-</span></code>.</p>
+</section>
+<section id="number-serialization">
+<h3>Number serialization<a class="headerlink" href="#number-serialization" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Integer numbers are serialized as is; that is, no scientific notation is used.</p></li>
+<li><p>Floating-point numbers are serialized as specified by the <code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">%g</span></code> printf modifier with
+<a class="reference external" href="https://en.cppreference.com/w/cpp/types/numeric_limits/max_digits10"><code class="docutils literal notranslate"><span class="pre">std::numeric_limits&lt;double&gt;::max_digits10</span></code></a>
+significant digits. The rationale is to use the shortest representation while still allowing round-tripping.</p></li>
+</ul>
+<p>!!! hint “Notes regarding precision of floating-point numbers”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>As described above, floating-point numbers are rounded to the nearest double and serialized with the shortest
+representation to allow round-tripping. This can yield confusing examples:
+
+- The serialization can have fewer decimal places than the input: `#!c 2555.5599999999999` will be serialized as
+  `#!c 2555.56`. The reverse can also be true.
+- The serialization can be in scientific notation even if the input is not: `#!c 0.0000972439793401814` will be 
+  serialized as `#!c 9.72439793401814e-05`. The reverse can also be true: `#!c 12345E-5` will be serialized as
+  `#!c 0.12345`.
+- Conversions from `#!c float` to `#!c double` can also introduce rounding errors:
+    ```cpp
+    float f = 0.3;
+    json j = f;
+    std::cout &lt;&lt; j &lt;&lt; &#39;\n&#39;;
+    ```
+    yields `#!c 0.30000001192092896`.
+
+All examples here can be reproduced by passing the original double value to
+
+```cpp
+std::printf(&quot;%.*g\n&quot;, std::numeric_limits&lt;double&gt;::max_digits10, double_value);
+```
+</pre></div>
+</div>
+<section id="nan-handling">
+<h4>NaN handling<a class="headerlink" href="#nan-handling" title="Link to this heading">#</a></h4>
+<p>NaN (not-a-number) cannot be expressed with the number syntax described above and are in fact explicitly excluded:</p>
+<p>!!! quote “<a class="reference external" href="https://tools.ietf.org/html/rfc8259#section-6">RFC 8259</a>, Section 6”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Numeric values that cannot be represented in the grammar below (such
+as Infinity and NaN) are not permitted.
+</pre></div>
+</div>
+<p>That is, there is no way to <em>parse</em> a NaN value. However, assignments can store NaN values in a JSON value.</p>
+<p>This library serializes NaN values  as <code class="docutils literal notranslate"><span class="pre">#!js</span> <span class="pre">null</span></code>. This corresponds to the behavior of JavaScript’s
+<a class="reference external" href="https://www.w3schools.com/js/js_json_stringify.asp"><code class="docutils literal notranslate"><span class="pre">JSON.stringify</span></code></a> function.</p>
+<p>!!! example</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The following example shows how a NaN value is stored in a `json` value.
+
+```cpp
+int main()
+{
+    double val = std::numeric_limits&lt;double&gt;::quiet_NaN();
+    std::cout &lt;&lt; &quot;val=&quot; &lt;&lt; val &lt;&lt; std::endl;
+    json j = val;
+    std::cout &lt;&lt; &quot;j=&quot; &lt;&lt; j.dump() &lt;&lt; std::endl;
+    val = j;
+    std::cout &lt;&lt; &quot;val=&quot; &lt;&lt; val &lt;&lt; std::endl;
+}
+```
+
+output:
+
+```
+val=nan
+j=null
+val=nan
+```
+</pre></div>
+</div>
+</section>
+</section>
+<section id="number-comparison">
+<h3>Number comparison<a class="headerlink" href="#number-comparison" title="Link to this heading">#</a></h3>
+<p>Floating-point inside JSON values numbers are compared with <code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">json::number_float_t::operator==</span></code> which is
+<code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">double::operator==</span></code> by default.</p>
+<p>!!! example “Alternative comparison functions”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>To compare floating-point while respecting an epsilon, an alternative
+[comparison function](https://github.com/mariokonrad/marnav/blob/master/include/marnav/math/floatingpoint.hpp#L34-#L39)
+could be used, for instance
+
+```cpp
+template&lt;typename T, typename = typename std::enable_if&lt;std::is_floating_point&lt;T&gt;::value, T&gt;::type&gt;
+inline bool is_same(T a, T b, T epsilon = std::numeric_limits&lt;T&gt;::epsilon()) noexcept
+{
+    return std::abs(a - b) &lt;= epsilon;
+}
+```
+Or you can self-define an operator equal function like this:
+
+```cpp
+bool my_equal(const_reference lhs, const_reference rhs)
+{
+    const auto lhs_type lhs.type();
+    const auto rhs_type rhs.type();
+    if (lhs_type == rhs_type)
+    {
+        switch(lhs_type)
+        {
+            // self_defined case
+            case value_t::number_float:
+                return std::abs(lhs - rhs) &lt;= std::numeric_limits&lt;float&gt;::epsilon();
+    
+            // other cases remain the same with the original
+            ...
+        }
+    }
+    ...
+}
+```
+
+(see [#703](https://github.com/nlohmann/json/issues/703) for more information.)
+</pre></div>
+</div>
+<p>!!! note</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>NaN values never compare equal to themselves or to other NaN values. See [#514](https://github.com/nlohmann/json/issues/514).
+</pre></div>
+</div>
+</section>
+<section id="number-conversion">
+<h3>Number conversion<a class="headerlink" href="#number-conversion" title="Link to this heading">#</a></h3>
+<p>Just like the C++ language itself, the <code class="docutils literal notranslate"><span class="pre">get</span></code> family of functions allows conversions between unsigned and signed
+integers, and between integers and floating-point values to integers. This behavior may be surprising.</p>
+<p>!!! warning “Unconditional number conversions”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```cpp hl_lines=&quot;3&quot;
+double d = 42.3;                                   // non-integer double value 42.3
+json jd = d;                                       // stores double value 42.3
+std::int64_t i = jd.template get&lt;std::int64_t&gt;();  // now i==42; no warning or error is produced
+```
+
+Note the last line with throw a [`json.exception.type_error.302`](../../home/exceptions.md#jsonexceptiontype_error302)
+exception if `jd` is not a numerical type, for instance a string.
+</pre></div>
+</div>
+<p>The rationale is twofold:</p>
+<ol class="arabic simple">
+<li><p>JSON does not define a number type or precision (see above).</p></li>
+<li><p>C++ also allows silently converting between number types.</p></li>
+</ol>
+<p>!!! success “Conditional number conversion”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The code above can be solved by explicitly checking the nature of the value with members such as
+[`is_number_integer()`](../../api/basic_json/is_number_integer.md) or
+[`is_number_unsigned()`](../../api/basic_json/is_number_unsigned.md):
+
+```cpp hl_lines=&quot;2&quot;
+// check if jd is really integer-valued
+if (jd.is_number_integer())
+{
+    // if so, do the conversion and use i
+    std::int64_t i = jd.template get&lt;std::int64_t&gt;();
+    // ...
+}
+else
+{
+    // otherwise, take appropriate action
+    // ...
+}
+```
+
+Note this approach also has the advantage that it can react on non-numerical JSON value types such as strings.
+
+(Example taken from [#777](https://github.com/nlohmann/json/issues/777#issuecomment-459968458).)
+</pre></div>
+</div>
+</section>
+<section id="determine-number-types">
+<h3>Determine number types<a class="headerlink" href="#determine-number-types" title="Link to this heading">#</a></h3>
+<p>As the example in <a class="reference internal" href="#number-conversion"><span class="xref myst">Number conversion</span></a> shows, there are different functions to determine the type of
+the stored number:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../api/basic_json/is_number.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">is_number()</span></code></span></a> returns <code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">true</span></code> for any number type</p></li>
+<li><p><a class="reference internal" href="../../api/basic_json/is_number_integer.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">is_number_integer()</span></code></span></a> returns <code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">true</span></code> for signed and unsigned integers</p></li>
+<li><p><a class="reference internal" href="../../api/basic_json/is_number_unsigned.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">is_number_unsigned()</span></code></span></a> returns <code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">true</span></code> for unsigned integers only</p></li>
+<li><p><a class="reference internal" href="../../api/basic_json/is_number_float.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">is_number_float()</span></code></span></a> returns <code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">true</span></code> for floating-point numbers</p></li>
+<li><p><a class="reference internal" href="../../api/basic_json/type_name.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">type_name()</span></code></span></a> returns <code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">&quot;number&quot;</span></code> for any number type</p></li>
+<li><p><a class="reference internal" href="../../api/basic_json/type.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">type()</span></code></span></a> returns a different enumerator of
+<a class="reference internal" href="../../api/basic_json/value_t.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">value_t</span></code></span></a> for all number types</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>function</p></th>
+<th class="head"><p>unsigned integer</p></th>
+<th class="head"><p>signed integer</p></th>
+<th class="head"><p>floating-point</p></th>
+<th class="head"><p>string</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../api/basic_json/is_number.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">is_number()</span></code></span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">true</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">true</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">true</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../api/basic_json/is_number_integer.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">is_number_integer()</span></code></span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">true</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">true</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">false</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../api/basic_json/is_number_unsigned.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">is_number_unsigned()</span></code></span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">true</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">false</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">false</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../api/basic_json/is_number_float.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">is_number_float()</span></code></span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">false</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">false</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">true</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../api/basic_json/type_name.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">type_name()</span></code></span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">&quot;number&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">&quot;number&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">&quot;number&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">&quot;string&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../api/basic_json/type.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">type()</span></code></span></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">number_unsigned</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">number_integer</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">number_float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="template-number-types">
+<h3>Template number types<a class="headerlink" href="#template-number-types" title="Link to this heading">#</a></h3>
+<p>The number types can be changed with template parameters.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>position</p></th>
+<th class="head"><p>number type</p></th>
+<th class="head"><p>default type</p></th>
+<th class="head"><p>possible values</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>signed integers</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">std::int64_t</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">std::int32_t</span></code>, <code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">std::int16_t</span></code>, etc.</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>unsigned integers</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">std::uint64_t</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">std::uint32_t</span></code>, <code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">std::uint16_t</span></code>, etc.</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>floating-point</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">double</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">#!c</span> <span class="pre">long</span> <span class="pre">double</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>!!! info “Constraints on number types”</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- The type for signed integers must be convertible from `#!c long long`. The type for floating-point numbers is used
+  in case of overflow.
+- The type for unsigned integers must be convertible from `#!c unsigned long long`.  The type for floating-point
+  numbers is used in case of overflow.
+- The types for signed and unsigned integers must be distinct, see
+  [#2573](https://github.com/nlohmann/json/issues/2573).
+- Only `#!c double`, `#!c float`, and `#!c long double` are supported for floating-point numbers.
+</pre></div>
+</div>
+<p>!!! example</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>A `basic_json` type that uses `#!c long double` as floating-point type.
+
+```cpp hl_lines=&quot;2&quot;
+using json_ld = nlohmann::basic_json&lt;std::map, std::vector, std::string, bool,
+                                     std::int64_t, std::uint64_t, long double&gt;;
+```
+
+Note values should then be parsed with `json_ld::parse` rather than `json::parse` as the latter would parse
+floating-point values to `#!c double` before then converting them to `#!c long double`.
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#json-number-syntax">JSON number syntax</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#number-interoperability">Number interoperability</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#library-implementation">Library implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#number-storage">Number storage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#number-limits">Number limits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zeros">Zeros</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#number-serialization">Number serialization</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nan-handling">NaN handling</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#number-comparison">Number comparison</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#number-conversion">Number conversion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determine-number-types">Determine number types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#template-number-types">Template number types</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/score-json/json/edit/main/docs/mkdocs/docs/features/types/number_handling.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../../_sources/mkdocs/docs/features/types/number_handling.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
