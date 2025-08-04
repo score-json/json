@@ -1,16 +1,16 @@
 name: Ubuntu
 
 on:
-  push:
-    branches:
-      - develop
-      - main
-      - release/*
-  pull_request:
   workflow_dispatch:
-  schedule:
+ # push:
+ #   branches:
+ #     - develop
+  #    - main
+   #   - release/*
+  #pull_request:
+  #schedule:
   # Runs every day at 9:00 AM UTC
-  - cron: "0 9 * * *"
+  #- cron: "0 9 * * *"
 
 permissions:
   contents: read
