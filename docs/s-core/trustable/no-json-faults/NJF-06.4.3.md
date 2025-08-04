@@ -7,7 +7,7 @@ references:
           path: "/workspaces/json/tests/src/unit-class_parser.cpp"
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2):test_parsing:y"
-          path: "tests/src/unit-testsuites.cpp"
+          path: "/workspaces/json/tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/y_object_basic.json"
             - "/nst_json_testsuite2/test_parsing/y_object_duplicated_key.json"

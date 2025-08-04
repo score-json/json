@@ -5,10 +5,10 @@ normative: true
 references:
         - type: cpp_test
           name: "parser class:accept:string:escaped"
-          path: "tests/src/unit-class_parser.cpp"
+          path: "/workspaces/json/tests/src/unit-class_parser.cpp"
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2):test_parsing:y"
-          path: "tests/src/unit-testsuites.cpp"
+          path: "/workspaces/json/tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/y_string_accepted_surrogate_pair.json"
             - "/nst_json_testsuite2/test_parsing/y_string_accepted_surrogate_pairs.json"

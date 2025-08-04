@@ -4,13 +4,13 @@ normative: true
 references:
         - type: cpp_test
           name: "parser class:accept:parse errors (accept)"
-          path: "tests/src/unit-class_parser.cpp"
+          path: "/workspaces/json/tests/src/unit-class_parser.cpp"
         - type: cpp_test
           name: "deserialization:contiguous containers:error cases"
-          path: "tests/src/unit-deserialization.cpp"
+          path: "/workspaces/json/tests/src/unit-deserialization.cpp"
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2):test_parsing:n"
-          path: "tests/src/unit-testsuites.cpp"
+          path: "/workspaces/json/tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/n_string_no_quotes_with_bad_escape.json"
             - "/nst_json_testsuite2/test_parsing/n_string_single_doublequote.json"

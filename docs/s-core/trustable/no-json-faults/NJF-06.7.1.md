@@ -4,7 +4,7 @@ normative: true
 references:
         - type: JSON_testsuite
           name: "json.org examples"
-          path: "tests/src/unit-testsuites.cpp"
+          path: "/workspaces/json/tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/json.org/1.json"
             - "/json.org/2.json"

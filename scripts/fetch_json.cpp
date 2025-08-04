@@ -207,9 +207,9 @@ int main(int arg_num, char* args[]){
         evidence << replace_tab_with_spaces("\t\t  name: \"") << ans << "\"\n";
         evidence << replace_tab_with_spaces("\t\t  path: \"");
         if (path_to_testsuite.substr(0,3)=="../") {
-            evidence << path_to_testsuite.substr(3);
+            evidence << "/workspaces/json/" << path_to_testsuite.substr(3);
         } else {
-            evidence << path_to_testsuite;
+            evidence << "/workspaces/json/scripts/" << path_to_testsuite;
         }
         evidence << replace_tab_with_spaces("\"\n\t\t  test_suite_paths:\n");
         cout << "Description of the test: ";
