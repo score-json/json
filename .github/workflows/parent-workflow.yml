@@ -23,6 +23,7 @@ jobs:
           echo "TEST_TRUDAG_EXTENSIONS=Test Trudag extensions" >> workflows_list.txt
           echo "CIFUZZ=CIFuzz" >> workflows_list.txt
           echo "PR_LABELER=Pull Request Labeler" >> workflows_list.txt
+          echo "CODEQL=Code scanning - action" >> workflows_list.txt
 
       - name: Trigger Workflows Dynamically
         run: |
@@ -44,6 +45,7 @@ jobs:
             workflow-TRUDAG-EXTENSIONS-completed_${{ github.sha }}
             workflow-LABELER-completed_${{ github.sha }}
             workflow-CIFUZZ-completed_${{ github.sha }}
+            workflow-CODEQL-completed_${{ github.sha }}
           )
 
           COMPLETED=false

@@ -1,6 +1,11 @@
 name: "Code scanning - action"
 
 on:
+  workflow_dispatch:
+     inputs:
+      PARENT_SHA:
+        description: "Parent Workflow SHA"
+        required: true
   push:
     branches:
       - develop
@@ -47,3 +52,18 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@fc7e4a0fa01c3cca5fd6a1fddec5c0740c977aa2 # v3.28.14
+
+    - name: Checkout specific commit from Parent Workflow
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.inputs.PARENT_SHA }}
+        path: actions/checkout@v4 
+
+    - name: Create Completion Flag
+      run: echo "CODEQL workflow completed." > CODEQL_flag_${{ github.event.inputs.PARENT_SHA }}.txt
+
+    - name: Upload completion artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: workflow-CODEQL-completed_${{ github.event.inputs.PARENT_SHA }}
+        path: CODEQL_flag_${{ github.event.inputs.PARENT_SHA }}.txt
