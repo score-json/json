@@ -77,7 +77,7 @@ jobs:
       - name: Upload final deployment artifact
         uses: actions/upload-artifact@v4
         with:
-          name: "deployment-package-${{ github.ref_name }}-${{ github.sha }}"
+          name: "deployment-package-${{ github.sha }}"
           path: deployment/
 
       - name: Deployment simulation
