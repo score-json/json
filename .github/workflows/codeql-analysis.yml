@@ -1,12 +1,12 @@
 name: "Code scanning - action"
 
 on:
-  push:
-    branches:
-      - develop
-      - main
-      - release/*
-  pull_request:
+#  push:
+#    branches:
+#      - develop
+#      - main
+#      - release/*
+#  pull_request:
   schedule:
     - cron: '0 19 * * 1'
   workflow_dispatch:
