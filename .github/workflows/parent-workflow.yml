@@ -14,67 +14,66 @@ permissions:
   id-token: write
 
 jobs:
+  # Dynamically run all child workflows
   child-workflows:
     name: Run Child Workflows
     runs-on: ubuntu-latest
     strategy:
       matrix:
         workflow: 
+          # Define workflows to trigger
           - { name: "labeler", path: ".github/workflows/labeler.yml" }
           - { name: "check_amalgamation", path: ".github/workflows/check_amalgamation.yml" }
           - { name: "test_trudag_extensions", path: ".github/workflows/test_trudag_extensions.yml" }
-    outputs:
-      results: ${{ steps.collect-results.outputs.results }}
     steps:
       - name: Trigger ${{ matrix.workflow.name }} Workflow
-        uses: ${{ matrix.workflow.path }}
+        uses: ./${{ matrix.workflow.path }}
         with:
           artifact_id: "${{ matrix.workflow.name }}-${{ github.sha }}"
-        id: trigger-workflow
 
-      - name: Collect Workflow Results
-        id: collect-results
-        run: echo '{"${{ matrix.workflow.name }}" "${{ job.status }}"}' > results.json
-        env:
-          JOB_STATUS: ${{ job.status }}
-        outputs:
-          results: ${{ steps.collect-results.outputs.results }}
-
+  # Collect results and deploy
   collect-and-deploy:
-    name: "Collect Results & Deploy"
-    needs: child-workflows
+    name: Collect Results & Deploy
+    needs: 
+      - child-workflows
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # This will summarize the results of each child workflow triggered dynamically
       - name: Display Workflow Results
         run: |
-          echo "=== Child Workflow Results ==="
-          echo "${{ needs.child-workflows.outputs.results }}"
-          echo "================================"
-          # Example check (all child workflows must pass)
-          if [[ "${{ needs.child-workflows.outputs.results }}" != *"success"* ]]; then
-            echo "❌ One or more workflows failed!"
+          echo "Checking results from matrix child workflows..."
+          RESULTS_SUCCESS=true
+          for result in ${{ toJson(needs.child-workflows.result) }}; do
+            echo "Child workflow: $result"
+            if [[ "$result" != "success" ]]; then
+              echo "❌ A child workflow failed."
+              RESULTS_SUCCESS=false
+            fi
+          done
+
+          if [[ "$RESULTS_SUCCESS" == "false" ]]; then
             exit 1
-          else
-            echo "✅ All workflows succeeded!"
           fi
 
       - name: Download Artifacts for All Workflows
         run: |
-          for workflow in labeler check_amalgamation test_trudag_extensions; do
-            echo "Downloading artifact for $workflow"
-            mkdir -p artifacts/$workflow
-            curl -O "actions/download-artifact"
+          echo "Downloading generated artifacts..."
+          mkdir -p artifacts
+          for workflow_name in labeler check_amalgamation test_trudag_extensions; do
+            echo "Downloading artifact for $workflow_name"
+            mkdir -p artifacts/$workflow_name
+            curl -O "<INSERT-ARTIFACT-DOWNLOAD-LOGIC>"
           done
 
       - name: Create Deployment Package
         run: |
+          echo "Creating deployment package..."
           mkdir -p deployment
-          echo "Preparing deployment artifacts..."
           cp -r artifacts/* deployment/
-          echo "Deployment ready at $(date)" > deployment/deployment-info.txt
+          echo "Deployment package prepared at $(date)" > deployment/deployment-info.txt
 
       - name: Upload Deployment Package
         uses: actions/upload-artifact@v4
@@ -82,8 +81,8 @@ jobs:
           name: "deployment-package-${{ github.sha }}"
           path: deployment/
 
-      - name: Deployment Simulation
+      - name: Run Deployment Simulation
         run: |
-          echo "🚀 Simulating deployment..."
-          sleep 2
-          echo "✅ Deployment successful!"
+          echo "Running deployment simulation..."
+          sleep 3
+          echo "✅ Deployment complete!"
