@@ -1,5 +1,6 @@
 load("@rules_cc//cc:cc_library.bzl", "cc_library")
 load("@rules_license//rules:license.bzl", "license")
+load("@score_docs_as_code//:docs.bzl", "docs")
 
 package(
     default_applicable_licenses = [":license"],
@@ -77,4 +78,8 @@ cc_library(
     ],
     includes = ["single_include"],
     visibility = ["//visibility:public"],
+)
+
+docs(
+    source_dir = "TSF/docs",
 )

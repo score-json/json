@@ -53,7 +53,7 @@ user.bazelrc
 
 /temp
 
-/docs/s-core/trustable/generated
+/TSF/docs/generated
 
 /.venv
 
