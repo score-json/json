@@ -81,5 +81,5 @@ cc_library(
 )
 
 docs(
-    source_dir = "docs/s-core/docs-as-code",
+    source_dir = "TSF/docs/",
 )

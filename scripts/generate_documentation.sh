@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TRUDAG_REPORT_FOLDER="docs/s-core/docs-as-code/generated"
+TRUDAG_REPORT_FOLDER="TSF/docs/generated"
 mkdir -p "$TRUDAG_REPORT_FOLDER"  # -p ensures no error if the folder already exists
 
 trudag publish --validate --output-dir "$TRUDAG_REPORT_FOLDER"

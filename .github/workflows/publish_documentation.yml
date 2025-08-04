@@ -65,7 +65,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: trudag-report-${{ github.event.pull_request.head.sha || github.sha }}
-          path: docs/s-core/docs-as-code/generated/
+          path: TSF/docs/generated/
           if-no-files-found: error
           
   build-docs:
