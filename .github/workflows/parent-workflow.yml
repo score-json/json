@@ -14,21 +14,28 @@ permissions:
   id-token: write
 
 jobs:
-  run-labeler:
+  labeler:
     name: Run Labeler Workflow
     uses: ./.github/workflows/labeler.yml
     with:
       artifact_id: "labeler-${{ github.sha }}"
 
-  run-amalgamation:
+  check_amalgamation:
     name: Run Amalgamation Workflow
     uses: ./.github/workflows/check_amalgamation.yml
     with:
       artifact_id: "amalgamation-${{ github.sha }}"
+      
+  test_trudag_extensions:
+    name: Run Test Trudag Extensions Workflow
+    uses: ./.github/workflows/test_trudag_extensions.yml
+    with:
+      artifact_id: "test_trudag_extensions-${{ github.sha }}"
+
 
   collect-and-deploy:
     name: "Collect Results & Deploy"
-    needs: [run-labeler, run-amalgamation]
+    needs: [labeler, check_amalgamation, test_trudag_extensions]
     runs-on: ubuntu-latest
     if: always() # Run even if some jobs fail
 
@@ -39,12 +46,15 @@ jobs:
       - name: Check child workflow results
         run: |
           echo "=== Child Workflow Results ==="
-          echo "Labeler workflow: ${{ needs.run-labeler.result }}"
-          echo "Amalgamation workflow: ${{ needs.run-amalgamation.result }}"
+          echo "Labeler workflow: ${{ needs.labeler.result }}"
+          echo "Amalgamation workflow: ${{ needs.check_amalgamation.result }}"
+          echo "Test Trudag Extensions workflow: ${{ needs.test_trudag_extensions.result }}"
           echo "================================"
           
-          if [[ "${{ needs.run-labeler.result }}" != "success" ]] || \
-            [[ "${{ needs.run-amalgamation.result }}" != "success" ]]; then
+          if [[ "${{ needs.labeler.result }}" != "success" ]] || \
+            [[ "${{ needs.check_amalgamation.result }}" != "success" ]] || \
+            [[ "${{ needs.test_trudag_extensions.result }}" != "success" ]] 
+            ; then
             echo "❌ One or more child workflows failed"
             exit 1
           fi
@@ -60,7 +70,13 @@ jobs:
       - name: Download amalgamation artifacts
         uses: actions/download-artifact@v4
         with:
-          name: "amalgamation-${{ github.sha }}"
+          name: "check_amalgamation-${{ github.sha }}"
+          path: artifacts/
+          
+      - name: Download test_trudag_extensions artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: "test_trudag_extensions-${{ github.sha }}"
           path: artifacts/
 
       - name: Create deployment package
