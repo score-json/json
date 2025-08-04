@@ -14,12 +14,13 @@ permissions:
   id-token: write
 
 jobs:
-  run-tests:
+  run-labeler:
     name: Run Labeler Workflow
     uses: ./.github/workflows/labeler.yml
     with:
       artifact_id: "labeler-${{ github.sha }}"
 
+  run-amalgamation:
     name: Run Amalgamation Workflow
     uses: ./.github/workflows/check_amalgamation.yml
     with:

@@ -1,11 +1,6 @@
 name: "Code scanning - action"
 
 on:
-  workflow_dispatch:
-     inputs:
-      PARENT_SHA:
-        description: "Parent Workflow SHA"
-        required: true
   push:
     branches:
       - develop
