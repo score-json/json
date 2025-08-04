@@ -79,7 +79,7 @@ jobs:
         uses: actions/download-artifact@v4.1.8
         with:
           name: trudag-report-${{ github.event.pull_request.head.sha || github.sha }}
-          path: docs/s-core/trustable/generated/
+          path: TSF/docs/generated/
 
       - name: Build documentation
         run: |

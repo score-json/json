@@ -53,17 +53,17 @@ jobs:
 
       - name: Generate trudag report
         run: |
-          TRUDAG_REPORT_FOLDER="docs/s-core/trustable/generated"
+          TRUDAG_REPORT_FOLDER="TSF/docs/generated"
           mkdir -p "$TRUDAG_REPORT_FOLDER"
           trudag publish --validate --output-dir "$TRUDAG_REPORT_FOLDER"
           trudag plot -o "$TRUDAG_REPORT_FOLDER/graph.svg"
-          python scripts/clean_trudag_output.py
+          python TSF/scripts/clean_trudag_output.py
 
       - name: Upload trudag artifact
         uses: actions/upload-artifact@v4
         with:
           name: trudag-report-${{ github.event.pull_request.head.sha || github.sha }}
-          path: docs/s-core/trustable/generated/
+          path: TSF/docs/generated/
           if-no-files-found: error
           
   build-docs:
@@ -78,5 +78,5 @@ jobs:
 
     with:
       # the bazel-target depends on your repo specific docs_targets configuration (e.g. "suffix")Add commentMore actions
-      bazel-target: "//docs:incremental -- --github_user=${{ github.repository_owner }} --github_repo=${{ github.event.repository.name }}"
+      bazel-target: "//:docs -- --github_user=${{ github.repository_owner }} --github_repo=${{ github.event.repository.name }}"
       retention-days: 3
