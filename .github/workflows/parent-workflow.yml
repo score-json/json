@@ -34,7 +34,7 @@ jobs:
 
       - name: Collect Workflow Results
         id: collect-results
-        run: echo '{"${{ matrix.workflow.name }}": "${{ job.status }}"}' > results.json
+        run: echo '{"${{ matrix.workflow.name }}" "${{ job.status }}"}' > results.json
         env:
           JOB_STATUS: ${{ job.status }}
         outputs:
