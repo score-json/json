@@ -54,7 +54,7 @@ jobs:
             workflow-AMALGAMATION-completed_${{ github.sha }}
             workflow-TRUDAG-EXTENSIONS-completed_${{ github.sha }}
             workflow-LABELER-completed_${{ github.sha }}
-            workflow-CIFUZZ-completed_${{ github.event.inputs.PARENT_SHA }}
+            workflow-CIFUZZ-completed_${{ github.sha }}
           )
 
           COMPLETED=false
