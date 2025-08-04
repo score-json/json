@@ -14,73 +14,73 @@ permissions:
   id-token: write
 
 jobs:
-    run-tests:
-      name: Run Labeler Workflow
-      uses: ./.github/workflows/labeler.yml
-      with:
-        artifact_id: "labeler-${{ github.sha }}"
+  run-tests:
+    name: Run Labeler Workflow
+    uses: ./.github/workflows/labeler.yml
+    with:
+      artifact_id: "labeler-${{ github.sha }}"
 
-      name: Run Amalgamation Workflow
-      uses: ./.github/workflows/check_amalgamation.yml
-      with:
-        artifact_id: "amalgamation-${{ github.sha }}"
+    name: Run Amalgamation Workflow
+    uses: ./.github/workflows/check_amalgamation.yml
+    with:
+      artifact_id: "amalgamation-${{ github.sha }}"
 
-    collect-and-deploy:
-      name: "Collect Results & Deploy"
-      needs: [trigger-workflows]
-      runs-on: ubuntu-latest
-      if: always() # Run even if some jobs fail
+  collect-and-deploy:
+    name: "Collect Results & Deploy"
+    needs: [trigger-workflows]
+    runs-on: ubuntu-latest
+    if: always() # Run even if some jobs fail
 
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-        - name: Check child workflow results
-          run: |
-            echo "=== Child Workflow Results ==="
-            echo "Labeler workflow: ${{ needs.trigger-workflows.outputs.labeler }}"
-            echo "Amalgamation workflow: ${{ needs.trigger-workflows.outputs.amalgamation }}"
-            echo "================================"
-            
-            if [[ "${{ needs.trigger-workflows.outputs.labeler }}" != "success" ]] || \
-              [[ "${{ needs.trigger-workflows.outputs.amalgamation }}" != "success" ]]; then
-              echo "❌ One or more child workflows failed"
-              exit 1
-            fi
+      - name: Check child workflow results
+        run: |
+          echo "=== Child Workflow Results ==="
+          echo "Labeler workflow: ${{ needs.trigger-workflows.outputs.labeler }}"
+          echo "Amalgamation workflow: ${{ needs.trigger-workflows.outputs.amalgamation }}"
+          echo "================================"
+          
+          if [[ "${{ needs.trigger-workflows.outputs.labeler }}" != "success" ]] || \
+            [[ "${{ needs.trigger-workflows.outputs.amalgamation }}" != "success" ]]; then
+            echo "❌ One or more child workflows failed"
+            exit 1
+          fi
 
-            echo "✅ Child workflows completed successfully!"
+          echo "✅ Child workflows completed successfully!"
 
-        - name: Download labeler artifacts
-          uses: actions/download-artifact@v4
-          with:
-            name: "labeler-${{ github.sha }}"
-            path: artifacts/
+      - name: Download labeler artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: "labeler-${{ github.sha }}"
+          path: artifacts/
 
-        - name: Download amalgamation artifacts
-          uses: actions/download-artifact@v4
-          with:
-            name: "amalgamation-${{ github.sha }}"
-            path: artifacts/
+      - name: Download amalgamation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: "amalgamation-${{ github.sha }}"
+          path: artifacts/
 
-        - name: Create deployment package
-          run: |
-            echo "Creating deployment package..."
-            mkdir -p deployment
-            echo "Deployment ready - $(date)" > deployment/deployment-info.txt
-            
-            # Copy all artifacts to deployment folder
-            if [[ -d artifacts ]]; then
-              cp -r artifacts/* deployment/
-            fi
+      - name: Create deployment package
+        run: |
+          echo "Creating deployment package..."
+          mkdir -p deployment
+          echo "Deployment ready - $(date)" > deployment/deployment-info.txt
+          
+          # Copy all artifacts to deployment folder
+          if [[ -d artifacts ]]; then
+            cp -r artifacts/* deployment/
+          fi
 
-        - name: Upload final deployment artifact
-          uses: actions/upload-artifact@v4
-          with:
-            name: "deployment-package-${{ github.ref_name }}-${{ github.sha }}"
-            path: deployment/
+      - name: Upload final deployment artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: "deployment-package-${{ github.ref_name }}-${{ github.sha }}"
+          path: deployment/
 
-        - name: Deployment simulation
-          run: |
-            echo "🚀 Simulating deployment..."
-            sleep 2
-            echo "✅ Deployment completed successfully!"
+      - name: Deployment simulation
+        run: |
+          echo "🚀 Simulating deployment..."
+          sleep 2
+          echo "✅ Deployment completed successfully!"
