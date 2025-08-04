@@ -1144,7 +1144,7 @@ The library is used in multiple projects, applications, operating systems, etc. 
 Though it's 2025 already, the support for C++11 is still a bit sparse. Currently, the following compilers are known to work:
 
 - GCC 4.8 - 14.2 (and possibly later)
-- Clang 3.4 - 20.0 (and possibly later)
+- Clang 3.4 - 21.0 (and possibly later)
 - Apple Clang 9.1 - 16.0 (and possibly later)
 - Intel C++ Compiler 17.0.2 (and possibly later)
 - Nvidia CUDA Compiler 11.0.221 (and possibly later)
@@ -1199,7 +1199,7 @@ To use this library from a CMake project, you can locate it directly with `find_
 
 ```cmake
 # CMakeLists.txt
-find_package(nlohmann_json 3.11.3 REQUIRED)
+find_package(nlohmann_json 3.12.0 REQUIRED)
 ...
 add_library(foo ...)
 ...
@@ -1243,7 +1243,7 @@ Example:
 ```cmake
 include(FetchContent)
 
-FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz)
+FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.12.0/json.tar.xz)
 FetchContent_MakeAvailable(json)
 
 target_link_libraries(foo PRIVATE nlohmann_json::nlohmann_json)
@@ -1275,7 +1275,7 @@ target_link_libraries(foo PRIVATE nlohmann_json::nlohmann_json)
 # thirdparty/CMakeLists.txt
 ...
 if(FOO_USE_EXTERNAL_JSON)
-  find_package(nlohmann_json 3.11.3 REQUIRED)
+  find_package(nlohmann_json 3.12.0 REQUIRED)
 else()
   set(JSON_BuildTests OFF CACHE INTERNAL "")
   add_subdirectory(nlohmann_json)
@@ -1706,6 +1706,44 @@ I deeply appreciate the help of the following people.
 344. [Aleksei Sapitskii](https://github.com/aleksproger) added support for Apple's Swift Package Manager.
 345. [Benjamin Buch](https://github.com/bebuch) fixed the installation path in CMake.
 346. [Colby Haskell](https://github.com/colbychaskell) clarified the parse error message in case a file cannot be opened.
+347. [Juan Carlos Arevalo Baeza](https://github.com/TheJCAB) fixed the enum conversion.
+348. [alferov](https://github.com/ALF-ONE) fixed a version in the documentation.
+349. [ss](https://github.com/serge-s) fixed the amalgamation call.
+350. [AniketDhemare](https://github.com/AniketDhemare) fixed a version in the documentation.
+351. [Philip Müller](https://github.com/philip-paul-mueller) fixed an example.
+352. [Leila Shcheglova](https://github.com/LeilaShcheglova) fixed a warning in a test.
+353. [Alex Prabhat Bara](https://github.com/alexprabhat99) fixed a function name in the documentation.
+354. [laterlaugh](https://github.com/laterlaugh) fixed some typos.
+355. [Yuanhao Jia](https://github.com/MrJia1997) fixed the GDB pretty printer.
+356. [Fallen_Breath](https://github.com/Fallen-Breath) fixed an example for JSON Pointer.
+357. [Nikhil Idiculla](https://github.com/tsnl) fixed some typos.
+358. [Griffin Myers](https://github.com/gmyers18) updated the Natvis file.
+359. [thetimr](https://github.com/thetimr) fixed a typo in the documentation.
+360. [Balazs Erseki](https://github.com/zerocukor287) fixed a URL in the contribution guidelines.
+361. [Niccolò Iardella](https://github.com/rotolof) added `NLOHMANN_DEFINE_DERIVED_TYPE_*` macros.
+362. [Borislav Stanimirov](https://github.com/iboB) allowed overriding the CMake target name.
+363. [Captain Crutches](https://github.com/captaincrutches) made `iterator_proxy_value` a `std::forward_iterator`.
+364. [Fredrik Sandhei](https://github.com/fsandhei) added type conversion support for `std::optional`.
+365. [jh96](https://github.com/jordan-hoang) added exceptions when `nullptr` is passed to `parse`.
+366. [Stuart Gorman](https://github.com/StuartGorman) fixed number parsing when `EINTR` set in `errno`.
+367. [Dylan Baker](https://github.com/dcbaker) generated a pkg-config file that follows the pkg-config conventions.
+368. [Tianyi Chen](https://github.com/TianyiChen) optimized the binary `get_number` implementation.
+369. [peng-wang-cn](https://github.com/peng-wang-cn) added type conversion support for multidimensional arrays.
+370. [Einars Netlis-Galejs](https://github.com/EinarsNG) added `ONLY_SERIALIZE` for `NLOHMANN_DEFINE_DERIVED_TYPE_*` macros.
+371. [Marcel](https://github.com/mering) removed `alwayslink=True` Bazel flag.
+372. [Harinath Nampally](https://github.com/hnampally) added diagnostic positions to exceptions.
+373. [Nissim Armand Ben Danan](https://github.com/NissimBendanan) fixed `NLOHMANN_DEFINE_TYPE_INTRUSIVE_WITH_DEFAULT` with an empty JSON instance.
+374. [Michael Valladolid](https://github.com/codenut) added support for BSON uint64 serialization/deserialization.
+375. [Nikhil](https://github.com/nikhilreddydev) updated the documentation.
+376. [Nebojša Cvetković](https://github.com/nebkat) added support for BJDATA optimized binary array type.
+377. [Sushrut Shringarputale](https://github.com/sushshring) added support for diagnostic positions. 
+378. [kimci86](https://github.com/kimci86) templated to `NLOHMANN_DEFINE_TYPE` macros to also support `ordered_json`.
+379. [Richard Topchii](https://github.com/richardtop) added support for VisionOS in the Swift Package Manager.
+380. [Robert Chisholm](https://github.com/Robadob) fixed a typo.
+381. [zjyhjqs](https://github.com/zjyhjqs) added CPack support.
+382. [bitFiedler](https://github.com/bitFiedler) made GDB pretty printer work with Python 3.8.
+383. [Gianfranco Costamagna](https://github.com/LocutusOfBorg) fixed a compiler warning.
+384. [risa2000](https://github.com/risa2000) made `std::filesystem::path` conversion to/from UTF-8 encoded string explicit.
 
 Thanks a lot for helping out! Please [let me know](mailto:mail@nlohmann.me) if I forgot someone.
 
@@ -1826,3 +1864,10 @@ Some tests change the installed files and hence make the whole process not repro
 Note you need to call `cmake -LE "not_reproducible|git_required"` to exclude both labels. See [issue #2596](https://github.com/nlohmann/json/issues/2596) for more information.
 
 As Intel compilers use unsafe floating point optimization by default, the unit tests may fail. Use flag [`/fp:precise`](https://www.intel.com/content/www/us/en/docs/cpp-compiler/developer-guide-reference/2021-8/fp-model-fp.html) then.
+
+
+# Documentation for TSF
+
+### Build Docs
+
+You can build and serve the documentation using the following shell script: `scripts/generate_documentation.sh`

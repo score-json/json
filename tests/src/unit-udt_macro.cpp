@@ -1,6 +1,6 @@
 //     __ _____ _____ _____
 //  __|  |   __|     |   | |  JSON for Modern C++ (supporting code)
-// |  |  |__   |  |  | | | |  version 3.11.3
+// |  |  |__   |  |  | | | |  version 3.12.0
 // |_____|_____|_____|_|___|  https://github.com/nlohmann/json
 //
 // SPDX-FileCopyrightText: 2013 - 2025 Niels Lohmann <https://nlohmann.me>
@@ -181,6 +181,7 @@ class person_without_private_data_2
     {}
 };
 
+// NOLINTNEXTLINE(misc-use-internal-linkage)
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(person_without_private_data_2, age, name, metadata)
 
 class derived_person_without_private_data_2 : public person_without_private_data_2
@@ -201,6 +202,7 @@ class derived_person_without_private_data_2 : public person_without_private_data
     {}
 };
 
+// NOLINTNEXTLINE(misc-use-internal-linkage)
 NLOHMANN_DEFINE_DERIVED_TYPE_NON_INTRUSIVE(derived_person_without_private_data_2, person_without_private_data_2, hair_color)
 
 class person_without_private_data_3
@@ -236,6 +238,7 @@ class person_without_private_data_3
     }
 };
 
+// NOLINTNEXTLINE(misc-use-internal-linkage)
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(person_without_private_data_3, age, name, metadata)
 
 class derived_person_without_private_data_3 : public person_without_private_data_3
@@ -261,6 +264,7 @@ class derived_person_without_private_data_3 : public person_without_private_data
     }
 };
 
+// NOLINTNEXTLINE(misc-use-internal-linkage)
 NLOHMANN_DEFINE_DERIVED_TYPE_NON_INTRUSIVE_WITH_DEFAULT(derived_person_without_private_data_3, person_without_private_data_3, hair_color)
 
 class person_with_private_alphabet
@@ -387,6 +391,7 @@ class person_with_public_alphabet
     int z = 0;
 };
 
+// NOLINTNEXTLINE(misc-use-internal-linkage)
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(person_with_public_alphabet, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z)
 
 class person_without_default_constructor_1
@@ -425,6 +430,7 @@ class person_without_default_constructor_2
     {}
 };
 
+// NOLINTNEXTLINE(misc-use-internal-linkage)
 NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_ONLY_SERIALIZE(person_without_default_constructor_2, name, age)
 
 class derived_person_only_serialize_public : public person_without_default_constructor_1
@@ -438,6 +444,7 @@ class derived_person_only_serialize_public : public person_without_default_const
     {}
 };
 
+// NOLINTNEXTLINE(misc-use-internal-linkage)
 NLOHMANN_DEFINE_DERIVED_TYPE_NON_INTRUSIVE_ONLY_SERIALIZE(derived_person_only_serialize_public, person_without_default_constructor_1, hair_color)
 
 class derived_person_only_serialize_private : person_without_default_constructor_1

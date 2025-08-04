@@ -237,5 +237,3 @@ make BUILD.bazel
 ### `Package.swift`
 
 ### `WORKSPACE.bazel`
-
-### `wsjcpp.yml`

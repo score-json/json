@@ -7,7 +7,7 @@ the result of an internet search. If you know further customers of the library, 
 
 ## Space Exploration
 
-- [**Peregrine Lunar Lander Flight 01**](https://en.wikipedia.org/wiki/Peregrine_Mission_One) - The library was utilized for payload management in the **Peregrine Moon Lander**, developed by **Astrobotic Technology** and launched as part of NASA's **Commercial Lunar Payload Services (CLPS)** program. After six days in orbit, the spacecraft was intentionally redirected into Earth's atmosphere, where it burned up over the Pacific Ocean on **January 18, 2024**.
+- [**Peregrine Lunar Lander Flight 01**](https://en.wikipedia.org/wiki/Peregrine_Mission_One) - The library was used for payload management in the **Peregrine Moon Lander**, developed by **Astrobotic Technology** and launched as part of NASA's **Commercial Lunar Payload Services (CLPS)** program. After six days in orbit, the spacecraft was intentionally redirected into Earth's atmosphere, where it burned up over the Pacific Ocean on **January 18, 2024**.
 
 ## Automotive
 
@@ -84,7 +84,7 @@ the result of an internet search. If you know further customers of the library, 
 - [**Avular Mobile Robotics**](https://www.avular.com/licenses/nlohmann-json-3.9.1.txt): a platform for developing and deploying mobile robotics solutions
 - [**Google gemma.cpp**](https://github.com/google/gemma.cpp), a lightweight C++ inference engine designed for running AI models from the Gemma family
 - [**llama.cpp**](https://github.com/ggerganov/llama.cpp), a C++ library designed for efficient inference of large language models (LLMs), enabling streamlined integration into applications
-- [**MLX**](https://github.com/ml-explore/mlx), an array framework for machine learning on Apple silicon
+- [**MLX**](https://github.com/ml-explore/mlx), an array framework for machine learning on Apple Silicon
 - [**Mozilla llamafile**](https://github.com/Mozilla-Ocho/llamafile), a tool designed for distributing and executing large language models (LLMs) efficiently using a single file format
 - [**NVIDIA ACE**](https://docs.nvidia.com/ace/latest/index.html), a suite of real-time AI solutions designed for the development of interactive avatars and digital human applications, enabling scalable and sophisticated user interactions
 - [**Peer**](https://support.peer.inc/hc/en-us/articles/17261335054235-Licenses): a platform offering personalized AI assistants for interactive learning and creative collaboration
@@ -111,6 +111,7 @@ the result of an internet search. If you know further customers of the library, 
 - [**Autodesk Desktop**](https://damassets.autodesk.net/content/dam/autodesk/www/Company/legal-notices-trademarks/autodesk-desktop-platform-components/internal-autodesk-components-web-page-2023.pdf), a software platform developed by Autodesk for creating and managing desktop applications and services
 - [**Check Point**](https://www.checkpoint.com/about-us/copyright-and-trademarks/): a cybersecurity company specializing in threat prevention and network security solutions, offering a range of products designed to protect enterprises from cyber threats and ensure data integrity
 - [**Microsoft Office for Mac**](https://officecdnmac.microsoft.com/pr/legal/mac/OfficeforMacAttributions.html), a suite of productivity applications developed by Microsoft for macOS, including tools for word processing, spreadsheets, and presentations
+- [**Microsoft Teams**](https://www.microsoft.com/microsoft-teams/), a team collaboration application offering workspace chat and video conferencing, file storage, and integration of proprietary and third-party applications and services
 - [**Nexthink Infinity**](https://docs.nexthink.com/legal/services-terms/experience-open-source-software-licenses/infinity-2022.8-software-licenses): a digital employee experience management platform for monitoring and improving IT performance
 - [**Sophos Connect Client**](https://docs.sophos.com/nsg/licenses/SophosConnect/SophosConnectAttribution.html): a secure VPN client from Sophos that allows remote users to connect to their corporate network, ensuring secure access to resources and data
 - [**Stonebranch**](https://stonebranchdocs.atlassian.net/wiki/spaces/UA77/pages/799545647/Licenses+for+Third-Party+Libraries): a cloud-based cybersecurity solution that integrates backup, disaster recovery, and cybersecurity features to protect data and ensure business continuity for organizations
@@ -159,4 +160,4 @@ the result of an internet search. If you know further customers of the library, 
 - [**Microsoft Azure IoT SDK**](https://library.e.abb.com/public/2779c5f85f30484192eb3cb3f666a201/IP%20Gateway%20Open%20License%20Declaration_9AKK108467A4095_Rev_C.pdf), a collection of tools and libraries to help developers connect, build, and deploy Internet of Things (IoT) solutions on the Azure cloud platform
 - [**Microsoft WinGet**](https://github.com/microsoft/winget-cli), a command-line utility included in the Windows Package Manager
 - [**Pointr**](https://docs-dev.pointr.tech/docs/8.x/Developer%20Portal/Open%20Source%20Licenses/): a platform for indoor positioning and navigation solutions, offering tools and SDKs for developers to create location-based applications
-- [**secunet protect4use**](https://www.secunet.com/en/about-us/press/article/elstersecure-bietet-komfortablen-login-ohne-passwort-dank-secunet-protect4use): a secure, passwordless multi-factor authentication solution that transforms smartphones into digital keyrings, ensuring high security for online services and digital identities
+- [**secunet protect4use**](https://www.secunet.com/en/about-us/press/article/elstersecure-bietet-komfortablen-login-ohne-passwort-dank-secunet-protect4use): a secure, passwordless multifactor authentication solution that transforms smartphones into digital keyrings, ensuring high security for online services and digital identities

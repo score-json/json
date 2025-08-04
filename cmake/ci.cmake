@@ -541,6 +541,11 @@ add_custom_target(ci_benchmarks
 # CMake flags
 ###############################################################################
 
+# we test the project with different CMake versions:
+# - CMake 3.5 (the earliest supported)
+# - CMake 3.31.6 (the latest 3.x release)
+# - CMake 4.0.0 (the latest release)
+
 function(ci_get_cmake version var)
     set(${var} ${PROJECT_BINARY_DIR}/cmake-${version}/bin/cmake)
     add_custom_command(
@@ -548,26 +553,30 @@ function(ci_get_cmake version var)
         COMMAND wget -nc https://github.com/Kitware/CMake/releases/download/v${version}/cmake-${version}.tar.gz
         COMMAND tar xfz cmake-${version}.tar.gz
         COMMAND rm cmake-${version}.tar.gz
-        COMMAND ${CMAKE_COMMAND} -S cmake-${version} -B cmake-${version}
-        COMMAND ${CMAKE_COMMAND} --build cmake-${version} --parallel 10
+        # -DCMAKE_POLICY_VERSION_MINIMUM=3.5 required to compile older CMake versions with CMake 4.0.0
+        COMMAND cmake -S cmake-${version} -B cmake-${version} -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+        COMMAND cmake --build cmake-${version} --parallel 10
         WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
         COMMENT "Download CMake ${version}"
     )
     set(${var} ${${var}} PARENT_SCOPE)
 endfunction()
 
-ci_get_cmake(3.1.0 CMAKE_3_1_0_BINARY)
-ci_get_cmake(3.13.0 CMAKE_3_13_0_BINARY)
+ci_get_cmake(3.5.0  CMAKE_3_5_0_BINARY)
+ci_get_cmake(3.31.6 CMAKE_3_31_6_BINARY)
+ci_get_cmake(4.0.0  CMAKE_4_0_0_BINARY)
 
-set(JSON_CMAKE_FLAGS_3_1_0 JSON_Diagnostics JSON_Diagnostic_Positions JSON_GlobalUDLs JSON_ImplicitConversions JSON_DisableEnumSerialization
+# the tests require CMake 3.13 or later, so they are excluded for CMake 3.5.0
+set(JSON_CMAKE_FLAGS_3_5_0 JSON_Diagnostics JSON_Diagnostic_Positions JSON_GlobalUDLs JSON_ImplicitConversions JSON_DisableEnumSerialization
     JSON_LegacyDiscardedValueComparison JSON_Install JSON_MultipleHeaders JSON_SystemInclude JSON_Valgrind)
-set(JSON_CMAKE_FLAGS_3_13_0 JSON_BuildTests)
+set(JSON_CMAKE_FLAGS_3_31_6 JSON_BuildTests ${JSON_CMAKE_FLAGS_3_31_6})
+set(JSON_CMAKE_FLAGS_4_0_0 JSON_BuildTests ${JSON_CMAKE_FLAGS_3_5_0})
 
 function(ci_add_cmake_flags_targets flag min_version)
     string(TOLOWER "ci_cmake_flag_${flag}" flag_target)
     string(REPLACE . _ min_version_var ${min_version})
     set(cmake_binary ${CMAKE_${min_version_var}_BINARY})
-    add_custom_target(${flag_target}
+    add_custom_target(${flag_target}_${min_version}_2
         COMMENT "Check CMake flag ${flag} (CMake ${CMAKE_VERSION})"
         COMMAND ${CMAKE_COMMAND}
             -Werror=dev
@@ -587,12 +596,16 @@ function(ci_add_cmake_flags_targets flag min_version)
     set(JSON_CMAKE_FLAG_BUILD_DIRS ${JSON_CMAKE_FLAG_BUILD_DIRS} PARENT_SCOPE)
 endfunction()
 
-foreach(JSON_CMAKE_FLAG ${JSON_CMAKE_FLAGS_3_1_0})
-    ci_add_cmake_flags_targets(${JSON_CMAKE_FLAG} 3.1.0)
+foreach(JSON_CMAKE_FLAG ${JSON_CMAKE_FLAGS_3_5_0})
+    ci_add_cmake_flags_targets(${JSON_CMAKE_FLAG} 3.5.0)
 endforeach()
 
-foreach(JSON_CMAKE_FLAG ${JSON_CMAKE_FLAGS_3_13_0})
-    ci_add_cmake_flags_targets(${JSON_CMAKE_FLAG} 3.13.0)
+foreach(JSON_CMAKE_FLAG ${JSON_CMAKE_FLAGS_3_31_6})
+    ci_add_cmake_flags_targets(${JSON_CMAKE_FLAG} 3.31.6)
+endforeach()
+
+foreach(JSON_CMAKE_FLAG ${JSON_CMAKE_FLAGS_4_0_0})
+    ci_add_cmake_flags_targets(${JSON_CMAKE_FLAG} 4.0.0)
 endforeach()
 
 add_custom_target(ci_cmake_flags
@@ -695,6 +708,6 @@ add_custom_target(ci_test_build_documentation
 ###############################################################################
 
 add_custom_target(ci_clean
-    COMMAND rm -fr ${PROJECT_BINARY_DIR}/build_* cmake-3.1.0-Darwin64 ${JSON_CMAKE_FLAG_BUILD_DIRS} ${single_binaries}
+    COMMAND rm -fr ${PROJECT_BINARY_DIR}/build_* cmake-3.5.0-Darwin64 ${JSON_CMAKE_FLAG_BUILD_DIRS} ${single_binaries}
     COMMENT "Clean generated directories"
 )

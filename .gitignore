@@ -4,9 +4,6 @@
 *.gcda
 .DS_Store
 
-.wsjcpp-logs/*
-.wsjcpp/*
-
 /.idea
 /cmake-build-*
 
@@ -41,10 +38,23 @@
 
 # Swift Package Manager build directory
 /.build
+# docs:incremental and docs:ide_support build artifacts
+/_build
+/build
 
 venv
 
 nlohmann_json.spdx
 
 # Bazel-related
+bazel-*
 MODULE.bazel.lock
+user.bazelrc
+
+/temp
+
+/docs/s-core/trustable/generated
+
+/.venv
+
+__pycache__/

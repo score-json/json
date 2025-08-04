@@ -1,20 +1,20 @@
 # Package Managers
 
 <center>
-![Homebrew](../images/package_managers/homebrew.svg){: style="height:1em"}&nbsp;[**Homebrew**](#homebrew) `nlohmann-json` &emsp;
-![Meson](../images/package_managers/meson.svg){: style="height:1em"}&nbsp;[**Meson**](#meson) `nlohmann_json` &emsp;
-![Bazel](../images/package_managers/bazel.svg){: style="height:1em"}&nbsp;[**Bazel**](#bazel) `nlohmann_json`<br>
-![Conan](../images/package_managers/conan.svg){: style="height:1em"}&nbsp;[**Conan**](#conan) `nlohmann_json` &emsp;
-![Spack](../images/package_managers/spack.svg){: style="height:1em"}&nbsp;[**Spack**](#spack) `nlohmann-json` &emsp;
+![Homebrew](../images/package_managers/homebrew.svg)&nbsp;[**Homebrew**](#homebrew) `nlohmann-json` &emsp;
+![Meson](../images/package_managers/meson.svg)&nbsp;[**Meson**](#meson) `nlohmann_json` &emsp;
+![Bazel](../images/package_managers/bazel.svg)&nbsp;[**Bazel**](#bazel) `nlohmann_json`<br>
+![Conan](../images/package_managers/conan.svg)&nbsp;[**Conan**](#conan) `nlohmann_json` &emsp;
+![Spack](../images/package_managers/spack.svg)&nbsp;[**Spack**](#spack) `nlohmann-json` &emsp;
 [**Hunter**](#hunter) `nlohmann_json`<br>
-![vcpkg](../images/package_managers/vcpkg.png){: style="height:1em"}&nbsp;[**vcpkg**](#vcpkg) `nlohmann-json` &emsp;
+![vcpkg](../images/package_managers/vcpkg.png)&nbsp;[**vcpkg**](#vcpkg) `nlohmann-json` &emsp;
 [**cget**](#cget) `nlohmann/json` &emsp;
-![Swift Package Manager](../images/package_managers/swift.svg){: style="height:1em"}&nbsp;[**Swift Package Manager**](#swift-package-manager) `nlohmann/json`<br>
-![Nuget](../images/package_managers/nuget.svg){: style="height:1em"}&nbsp;[**NuGet**](#nuget) `nlohmann.json` &emsp;
-![Conda](../images/package_managers/conda.svg){: style="height:1em"}&nbsp;[**Conda**](#conda) `nlohmann_json` &emsp;
-![MacPorts](../images/package_managers/macports.svg){: style="height:1em"}&nbsp;[**MacPorts**](#macports) `nlohmann-json`<br>
-![cpm.cmake](../images/package_managers/CPM.png){: style="height:1em"}&nbsp;[**CPM.cmake**](#cpmcmake) `gh:nlohmann/json`
-![xmake](../images/package_managers/xmake.svg){: style="height:1em"}&nbsp;[**xmake**](#xmake) `nlohmann_json`
+![Swift Package Manager](../images/package_managers/swift.svg)&nbsp;[**Swift Package Manager**](#swift-package-manager) `nlohmann/json`<br>
+![Nuget](../images/package_managers/nuget.svg)&nbsp;[**NuGet**](#nuget) `nlohmann.json` &emsp;
+![Conda](../images/package_managers/conda.svg)&nbsp;[**Conda**](#conda) `nlohmann_json` &emsp;
+![MacPorts](../images/package_managers/macports.svg)&nbsp;[**MacPorts**](#macports) `nlohmann-json`<br>
+![cpm.cmake](../images/package_managers/CPM.png)&nbsp;[**CPM.cmake**](#cpmcmake) `gh:nlohmann/json`
+![xmake](../images/package_managers/xmake.svg)&nbsp;[**xmake**](#xmake) `nlohmann_json`
 </center>
 
 ## Running example
@@ -163,7 +163,7 @@ using the subproject directly.
     - :octicons-question-24: [Bazel website](https://bazel.build)
 
 This repository provides a [Bazel](https://bazel.build/) `MODULE.bazel` and a corresponding `BUILD.bazel` file. Therefore, this
-repository can be referenced within a `MODULE.bazel` by rules such as `archive_override`, `git_override`, or `local_path_override`. To use the library you need to depend on the target `@nlohmann_json//:json` (i.e., via `deps` attribute).
+repository can be referenced within a `MODULE.bazel` by rules such as `archive_override`, `git_override`, or `local_path_override`. To use the library, you need to depend on the target `@nlohmann_json//:json` (i.e., via `deps` attribute).
 
 ??? example
 
@@ -307,7 +307,7 @@ the [nlohmann_json package](https://hunter.readthedocs.io/en/latest/packages/pkg
 hunter_add_package(nlohmann_json)
 ```
 
-Please see the  Hunter project for any issues regarding the packaging.
+Please see the Hunter project for any issues regarding the packaging.
 
 ??? example
 
@@ -398,7 +398,7 @@ If you are using [cget](http://cget.readthedocs.io/en/latest/), you can install 
 cget install nlohmann/json
 ```
 
-A specific version can be installed with `cget install nlohmann/json@v3.11.3`. Also, the multiple header version can be
+A specific version can be installed with `cget install nlohmann/json@v3.12.0`. Also, the multiple header version can be
 installed by adding the `-DJSON_MultipleHeaders=ON` flag (i.e., `cget install nlohmann/json -DJSON_MultipleHeaders=ON`).
 
 ??? example
@@ -727,7 +727,7 @@ If you are using [`CPM.cmake`](https://github.com/TheLartians/CPM.cmake), add th
 [CPM.cmake script](https://github.com/TheLartians/CPM.cmake#adding-cpm) and the following snippet to your CMake project:
 
 ```cmake
-CPMAddPackage("gh:nlohmann/json@3.11.3")
+CPMAddPackage("gh:nlohmann/json@3.12.0")
 ```
 
 ??? example
@@ -824,12 +824,3 @@ to your podfile (see [an example](https://bitbucket.org/benman/nlohmann_json-coc
 !!! warning
 
     The module is outdated as the respective [pod](https://cocoapods.org/pods/nlohmann_json) has not been updated in years.
-
-## wsjcpp
-
-If you are using [`wsjcpp`](http://wsjcpp.org), you can use the command `wsjcpp install "https://github.com/nlohmann/json:develop"`
-to get the latest version. Note you can change the branch `:develop` to an existing tag or another branch.
-
-!!! warning
-
-    The package manager is outdated as the respective [repository](https://github.com/wsjcpp/wsjcpp) has not been updated in years.
