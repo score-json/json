@@ -39,12 +39,12 @@ jobs:
       - name: Check child workflow results
         run: |
           echo "=== Child Workflow Results ==="
-          echo "Labeler workflow: ${{ needs.run-labeler.outputs.labeler }}"
-          echo "Amalgamation workflow: ${{ needs.run-amalgamation.outputs.amalgamation }}"
+          echo "Labeler workflow: ${{ needs.run-labeler.labeler }}"
+          echo "Amalgamation workflow: ${{ needs.run-amalgamation.amalgamation }}"
           echo "================================"
           
-          if [[ "${{ needs.run-labeler.outputs.labeler }}" != "success" ]] || \
-            [[ "${{ needs.run-amalgamation.outputs.amalgamation }}" != "success" ]]; then
+          if [[ "${{ needs.run-labeler.labeler }}" != "success" ]] || \
+            [[ "${{ needs.run-amalgamation.amalgamation }}" != "success" ]]; then
             echo "❌ One or more child workflows failed"
             exit 1
           fi
