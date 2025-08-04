@@ -1,6 +1,6 @@
 name: Parent Workflow
 
-on: 
+on:
   pull_request:
   push:
     branches:
@@ -12,32 +12,31 @@ permissions:
   pages: write
   pull-requests: write
   id-token: write
-
-env:
-  WORKFLOWS: |
-    [
-      {"name": "labeler", "file": "labeler.yml"},
-      {"name": "check_amalgamation", "file": "check_amalgamation.yml"},
-      {"name": "test_trudag_extensions", "file": "test_trudag_extensions.yml"}
-    ]
+  workflows: write
 
 jobs:
-  trigger-and-collect:
+  trigger-workflows:
     name: Trigger All Workflows
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        workflow: ${{ fromJson(env.WORKFLOWS) }}
+        workflow:
+          - { name: "labeler", file: "labeler.yml" }
+          - { name: "check_amalgamation", file: "check_amalgamation.yml" }
+          - { name: "test_trudag_extensions", file: "test_trudag_extensions.yml" }
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Trigger Child Workflow - ${{ matrix.workflow.name }}
         uses: ./.github/workflows/${{ matrix.workflow.file }}
         with:
           artifact_id: "${{ matrix.workflow.name }}-${{ github.sha }}"
-    
+
   collect-and-deploy:
     name: Collect Results & Deploy
-    needs: trigger-and-collect
+    needs: trigger-workflows
     runs-on: ubuntu-latest
     if: always() # Run even if some jobs fail
 
@@ -47,15 +46,10 @@ jobs:
 
       - name: Download All Workflow Artifacts
         run: |
-          WORKFLOWS='${{ env.WORKFLOWS }}'
-          for WORKFLOW in $(echo "$WORKFLOWS" | jq -cr '.[] | @base64'); do
-            _jq() {
-              echo "$WORKFLOW" | base64 --decode | jq -r "${1}"
-            }
-            NAME=$(_jq '.name')
+          workflows=("labeler" "check_amalgamation" "test_trudag_extensions")
+          for NAME in "${workflows[@]}"; do
             ARTIFACT_ID="${NAME}-${{ github.sha }}"
-
-            echo "Downloading artifact for workflow: $NAME"
+            echo "Downloading artifact for workflow: $NAME (Artifact ID: $ARTIFACT_ID)"
             mkdir -p artifacts/$NAME
             gh run download --name "$ARTIFACT_ID" --dir "artifacts/$NAME" || echo "⚠️ No artifacts for $NAME"
           done
@@ -65,8 +59,8 @@ jobs:
           echo "Creating deployment package..."
           mkdir -p deployment
           echo "Deployment ready - $(date)" > deployment/deployment-info.txt
-          
-          # Copy all artifacts to deployment folder
+
+          # Copy artifacts into deployment folder
           if [[ -d artifacts ]]; then
             cp -r artifacts/* deployment/
           fi
