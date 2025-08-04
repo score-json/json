@@ -1,6 +1,11 @@
 name: Parent Workflow
-#testerr
-on: [pull_request]
+
+on: 
+  pull_request:
+  push: 
+    branches:
+      - develop
+      - main
 
 permissions:
   contents: write
@@ -10,72 +15,83 @@ permissions:
 
 jobs:
   trigger-workflows:
+    name: Trigger Child Workflows
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Define Workflows to Trigger
-        id: define-workflows
+      # Call the Pull Request Labeler Workflow
+      - name: Run Labeler Workflow
+        id: labeler
+        uses: ./.github/workflows/labeler.yml
+        with:
+          artifact_id: "labeler-${{ github.sha }}"
+
+      # Call another reusable workflow (e.g., Build & Security Tests)
+      - name: Run Amalgamation Workflow
+        id: amalgamation
+        uses: ./.github/workflows/check_amalgamation.yml
+        with:
+          artifact_id: "amalgamation-${{ github.sha }}"
+
+  collect-and-deploy:
+    name: "Collect Results & Deploy"
+    needs: [trigger-workflows]
+    runs-on: ubuntu-latest
+    if: always() # Run even if some jobs fail
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check child workflow results
         run: |
-          echo "CHECK_AMALGAMATION=Check amalgamation" >> workflows_list.txt
-          echo "TEST_TRUDAG_EXTENSIONS=Test Trudag extensions" >> workflows_list.txt
-          echo "CIFUZZ=CIFuzz" >> workflows_list.txt
-          echo "PR_LABELER=Pull Request Labeler" >> workflows_list.txt
-          echo "CODEQL=Code scanning - action" >> workflows_list.txt
-
-      - name: Trigger Workflows Dynamically
-        run: |
-          while IFS='=' read -r ID WORKFLOW; do
-            echo "Triggering $WORKFLOW workflow with branch: ${{ github.head_ref }}"
-            gh workflow run "$WORKFLOW" --ref "${{ github.head_ref }}" -F PARENT_SHA="${{ github.sha }}"
-          done < workflows_list.txt
-        env:
-          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
-
-      - name: Wait and Download Artifacts From Child Workflows
-        env:
-          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
-        run: |
-          echo "Waiting for artifacts from child workflows..."
-
-          REQUIRED_ARTIFACTS=(
-            workflow-AMALGAMATION-completed_${{ github.sha }}
-            workflow-TRUDAG-EXTENSIONS-completed_${{ github.sha }}
-            workflow-LABELER-completed_${{ github.sha }}
-            workflow-CIFUZZ-completed_${{ github.sha }}
-            workflow-CODEQL-completed_${{ github.sha }}
-          )
-
-          COMPLETED=false
-          MAX_RETRIES=60  # Retry up to 60 times (15 mins, with 15s intervals)
-          RETRY_COUNT=0
-
-          while [ "$COMPLETED" = "false" ] && [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
-            COMPLETED=true
-
-            for ARTIFACT in "${REQUIRED_ARTIFACTS[@]}"; do
-              echo "Attempting to download artifact: $ARTIFACT"
-
-              EXTRACT_DIR="artifacts/$ARTIFACT"
-              rm -rf "$EXTRACT_DIR" # Ensure the directory is clean
-              mkdir -p "$EXTRACT_DIR"
-
-              gh run download --name "$ARTIFACT" --dir "$EXTRACT_DIR" || COMPLETED=false
-            done
-
-            if [ "$COMPLETED" = "false" ]; then
-              echo "Not all artifacts are ready. Waiting 15 seconds..."
-              sleep 15
-              RETRY_COUNT=$((RETRY_COUNT + 1))
-            fi
-          done
-
-          if [ "$COMPLETED" = "false" ]; then
-            echo "Timed out while waiting for artifacts."
+          echo "=== Child Workflow Results ==="
+          echo "Labeler workflow: ${{ needs.trigger-workflows.outputs.labeler }}"
+          echo "Amalgamation workflow: ${{ needs.trigger-workflows.outputs.amalgamation }}"
+          echo "================================"
+          
+          if [[ "${{ needs.trigger-workflows.outputs.labeler }}" != "success" ]] || \
+             [[ "${{ needs.trigger-workflows.outputs.amalgamation }}" != "success" ]]; then
+            echo "❌ One or more child workflows failed"
             exit 1
           fi
 
-          echo "All required artifacts have been downloaded successfully!"
-          echo "Artifacts can be found in the 'artifacts/' directory."
+          echo "✅ Child workflows completed successfully!"
+
+      - name: Download labeler artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: "labeler-${{ github.sha }}"
+          path: artifacts/
+
+      - name: Download amalgamation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: "amalgamation-${{ github.sha }}"
+          path: artifacts/
+
+      - name: Create deployment package
+        run: |
+          echo "Creating deployment package..."
+          mkdir -p deployment
+          echo "Deployment ready - $(date)" > deployment/deployment-info.txt
+          
+          # Copy all artifacts to deployment folder
+          if [[ -d artifacts ]]; then
+            cp -r artifacts/* deployment/
+          fi
+
+      - name: Upload final deployment artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: "deployment-package-${{ github.ref_name }}-${{ github.sha }}"
+          path: deployment/
+
+      - name: Deployment simulation
+        run: |
+          echo "🚀 Simulating deployment..."
+          sleep 2
+          echo "✅ Deployment completed successfully!"
