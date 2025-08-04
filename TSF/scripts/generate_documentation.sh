@@ -7,7 +7,7 @@ trudag publish --validate --output-dir "$TRUDAG_REPORT_FOLDER"
 
 trudag plot -o "$TRUDAG_REPORT_FOLDER/graph.svg"
 
-python3 scripts/clean_trudag_output.py
+python3 TSF/scripts/clean_trudag_output.py
 
 bazel run //:docs
 
