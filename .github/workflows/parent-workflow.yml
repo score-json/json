@@ -28,7 +28,7 @@ jobs:
 
   collect-and-deploy:
     name: "Collect Results & Deploy"
-    needs: [trigger-workflows]
+    needs: [run-labeler, run-amalgamation]
     runs-on: ubuntu-latest
     if: always() # Run even if some jobs fail
 
