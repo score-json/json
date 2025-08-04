@@ -1,8 +1,8 @@
 name: Parent Workflow
 
-on: 
+on:
   pull_request:
-  push: 
+  push:
     branches:
       - develop
       - main
@@ -14,75 +14,69 @@ permissions:
   id-token: write
 
 jobs:
-  # Dynamically run all child workflows
-  child-workflows:
-    name: Run Child Workflows
-    runs-on: ubuntu-latest
+  child_workflows:
+    name: Run ${{ matrix.name }} Workflow
     strategy:
       matrix:
-        workflow: 
-          # Define workflows to trigger
-          - { name: "labeler", path: ".github/workflows/labeler.yml" }
-          - { name: "check_amalgamation", path: ".github/workflows/check_amalgamation.yml" }
-          - { name: "test_trudag_extensions", path: ".github/workflows/test_trudag_extensions.yml" }
-    steps:
-      - name: Trigger ${{ matrix.workflow.name }} Workflow
-        uses: ./${{ matrix.workflow.path }}
-        with:
-          artifact_id: "${{ matrix.workflow.name }}-${{ github.sha }}"
+        include:
+          - name: labeler
+            workflow: labeler.yml
+          - name: check_amalgamation
+            workflow: check_amalgamation.yml
+          - name: test_trudag_extensions
+            workflow: test_trudag_extensions.yml
+    uses: ./.github/workflows/${{ matrix.workflow }}
+    with:
+      artifact_id: "${{ matrix.name }}-${{ github.sha }}"
+    secrets: inherit
 
-  # Collect results and deploy
   collect-and-deploy:
-    name: Collect Results & Deploy
-    needs: 
-      - child-workflows
+    name: "Collect Results & Deploy"
+    needs: [child_workflows]
     runs-on: ubuntu-latest
+    if: always()
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # This will summarize the results of each child workflow triggered dynamically
-      - name: Display Workflow Results
+      - name: Check child workflow results
         run: |
-          echo "Checking results from matrix child workflows..."
-          RESULTS_SUCCESS=true
-          for result in ${{ toJson(needs.child-workflows.result) }}; do
-            echo "Child workflow: $result"
+          echo "=== Child Workflow Results ==="
+          for job in labeler check_amalgamation test_trudag_extensions; do
+            result="${{ needs.child_workflows.outputs['${job}'] }}"
+            echo "$job workflow: $result"
             if [[ "$result" != "success" ]]; then
-              echo "❌ A child workflow failed."
-              RESULTS_SUCCESS=false
+              echo "❌ $job failed"
+              exit 1
             fi
           done
+          echo "✅ All workflows succeeded"
 
-          if [[ "$RESULTS_SUCCESS" == "false" ]]; then
-            exit 1
-          fi
-
-      - name: Download Artifacts for All Workflows
+      - name: Download Artifacts
         run: |
-          echo "Downloading generated artifacts..."
-          mkdir -p artifacts
-          for workflow_name in labeler check_amalgamation test_trudag_extensions; do
-            echo "Downloading artifact for $workflow_name"
-            mkdir -p artifacts/$workflow_name
-            curl -O "<INSERT-ARTIFACT-DOWNLOAD-LOGIC>"
+          mkdir -p artifacts/
+          for job in labeler check_amalgamation test_trudag_extensions; do
+            echo "Downloading artifact for $job"
+            gh run download --name "${job}-${GITHUB_SHA}" --dir artifacts/
           done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Create Deployment Package
+      - name: Create deployment package
         run: |
-          echo "Creating deployment package..."
           mkdir -p deployment
+          echo "Deployment ready - $(date)" > deployment/deployment-info.txt
           cp -r artifacts/* deployment/
-          echo "Deployment package prepared at $(date)" > deployment/deployment-info.txt
 
-      - name: Upload Deployment Package
+      - name: Upload final deployment artifact
         uses: actions/upload-artifact@v4
         with:
           name: "deployment-package-${{ github.sha }}"
           path: deployment/
 
-      - name: Run Deployment Simulation
+      - name: Deployment simulation
         run: |
-          echo "Running deployment simulation..."
-          sleep 3
-          echo "✅ Deployment complete!"
+          echo "🚀 Simulating deployment..."
+          sleep 2
+          echo "✅ Deployment completed successfully!"
