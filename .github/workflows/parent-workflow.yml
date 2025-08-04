@@ -3,7 +3,7 @@ name: Parent Workflow
 on: [pull_request]
 #test
 permissions:
-  contents:  write
+  contents: write
   pages: write
   pull-requests: write
   id-token: write
@@ -16,31 +16,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Trigger "Check Amalgamation" Workflow
+      - name: Define Workflows to Trigger
+        id: define-workflows
         run: |
-          echo "Triggering Check Amalgamation workflow with branch: ${{ github.head_ref }}"
-          gh workflow run "Check amalgamation" --ref ${{ github.head_ref }} -F PARENT_SHA=${{ github.sha }}
-        env:
-          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
+          echo "CHECK_AMALGAMATION=Check amalgamation" >> workflows_list.txt
+          echo "TEST_TRUDAG_EXTENSIONS=Test Trudag extensions" >> workflows_list.txt
+          echo "CIFUZZ=CIFuzz" >> workflows_list.txt
+          echo "PR_LABELER=Pull Request Labeler" >> workflows_list.txt
 
-      - name: Trigger "Test Trudag Extensions" Workflow
+      - name: Trigger Workflows Dynamically
         run: |
-          echo "Triggering Test Trudag Extensions workflow with branch: ${{ github.head_ref }}"
-          gh workflow run "Test Trudag extensions" --ref ${{ github.head_ref }} -F PARENT_SHA=${{ github.sha }}
-        env:
-          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
-
-      - name: Trigger "CIFuzz" Workflow
-        run: |
-          echo "Triggering cifuzz workflow with branch: ${{ github.head_ref }}"
-          gh workflow run "CIFuzz" --ref ${{ github.head_ref }} -F PARENT_SHA=${{ github.sha }}
-        env:
-          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
-
-      - name: Trigger "Pull Request Labeler" Workflow
-        run: |
-          echo "Triggering Pull Request Labeler workflow with branch: ${{ github.head_ref }}"
-          gh workflow run "Pull Request Labeler" --ref ${{ github.head_ref }} -F PARENT_SHA=${{ github.sha }}
+          while IFS='=' read -r ID WORKFLOW; do
+            echo "Triggering $WORKFLOW workflow with branch: ${{ github.head_ref }}"
+            gh workflow run "$WORKFLOW" --ref "${{ github.head_ref }}" -F PARENT_SHA="${{ github.sha }}"
+          done < workflows_list.txt
         env:
           GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
@@ -61,19 +50,16 @@ jobs:
           MAX_RETRIES=60  # Retry up to 60 times (15 mins, with 15s intervals)
           RETRY_COUNT=0
 
-          # Create a directory for each artifact to prevent name conflicts
           while [ "$COMPLETED" = "false" ] && [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
             COMPLETED=true
 
             for ARTIFACT in "${REQUIRED_ARTIFACTS[@]}"; do
               echo "Attempting to download artifact: $ARTIFACT"
 
-              # Create a fresh directory for the artifact
               EXTRACT_DIR="artifacts/$ARTIFACT"
               rm -rf "$EXTRACT_DIR" # Ensure the directory is clean
               mkdir -p "$EXTRACT_DIR"
 
-              # Download and extract the artifact into the clean directory
               gh run download --name "$ARTIFACT" --dir "$EXTRACT_DIR" || COMPLETED=false
             done
 
