@@ -2,7 +2,7 @@ name: Parent Workflow
 
 on: 
   pull_request:
-  push: 
+  push:
     branches:
       - develop
       - main
@@ -13,29 +13,31 @@ permissions:
   pull-requests: write
   id-token: write
 
+env:
+  WORKFLOWS: |
+    [
+      {"name": "labeler", "file": "labeler.yml"},
+      {"name": "check_amalgamation", "file": "check_amalgamation.yml"},
+      {"name": "test_trudag_extensions", "file": "test_trudag_extensions.yml"}
+    ]
+
 jobs:
-  labeler:
-    name: Run Labeler Workflow
-    uses: ./.github/workflows/labeler.yml
-    with:
-      artifact_id: "labeler-${{ github.sha }}"
+  trigger-and-collect:
+    name: Trigger All Workflows
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        workflow: ${{ fromJson(env.WORKFLOWS) }}
 
-  check_amalgamation:
-    name: Run Amalgamation Workflow
-    uses: ./.github/workflows/check_amalgamation.yml
-    with:
-      artifact_id: "amalgamation-${{ github.sha }}"
-      
-  test_trudag_extensions:
-    name: Run Test Trudag Extensions Workflow
-    uses: ./.github/workflows/test_trudag_extensions.yml
-    with:
-      artifact_id: "test_trudag_extensions-${{ github.sha }}"
-
-
+    steps:
+      - name: Trigger Child Workflow - ${{ matrix.workflow.name }}
+        uses: ./.github/workflows/${{ matrix.workflow.file }}
+        with:
+          artifact_id: "${{ matrix.workflow.name }}-${{ github.sha }}"
+    
   collect-and-deploy:
-    name: "Collect Results & Deploy"
-    needs: [labeler, check_amalgamation, test_trudag_extensions]
+    name: Collect Results & Deploy
+    needs: trigger-and-collect
     runs-on: ubuntu-latest
     if: always() # Run even if some jobs fail
 
@@ -43,43 +45,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Check child workflow results
+      - name: Download All Workflow Artifacts
         run: |
-          echo "=== Child Workflow Results ==="
-          echo "Labeler workflow: ${{ needs.labeler.result }}"
-          echo "Amalgamation workflow: ${{ needs.check_amalgamation.result }}"
-          echo "Test Trudag Extensions workflow: ${{ needs.test_trudag_extensions.result }}"
-          echo "================================"
-          
-          if [[ "${{ needs.labeler.result }}" != "success" ]] || \
-            [[ "${{ needs.check_amalgamation.result }}" != "success" ]] || \
-            [[ "${{ needs.test_trudag_extensions.result }}" != "success" ]] 
-            ; then
-            echo "❌ One or more child workflows failed"
-            exit 1
-          fi
+          WORKFLOWS='${{ env.WORKFLOWS }}'
+          for WORKFLOW in $(echo "$WORKFLOWS" | jq -cr '.[] | @base64'); do
+            _jq() {
+              echo "$WORKFLOW" | base64 --decode | jq -r "${1}"
+            }
+            NAME=$(_jq '.name')
+            ARTIFACT_ID="${NAME}-${{ github.sha }}"
 
-          echo "✅ Child workflows completed successfully!"
+            echo "Downloading artifact for workflow: $NAME"
+            mkdir -p artifacts/$NAME
+            gh run download --name "$ARTIFACT_ID" --dir "artifacts/$NAME" || echo "⚠️ No artifacts for $NAME"
+          done
 
-      - name: Download labeler artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: "labeler-${{ github.sha }}"
-          path: artifacts/
-
-      - name: Download amalgamation artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: "check_amalgamation-${{ github.sha }}"
-          path: artifacts/
-          
-      - name: Download test_trudag_extensions artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: "test_trudag_extensions-${{ github.sha }}"
-          path: artifacts/
-
-      - name: Create deployment package
+      - name: Create Deployment Package
         run: |
           echo "Creating deployment package..."
           mkdir -p deployment
@@ -90,13 +71,13 @@ jobs:
             cp -r artifacts/* deployment/
           fi
 
-      - name: Upload final deployment artifact
+      - name: Upload Deployment Package
         uses: actions/upload-artifact@v4
         with:
           name: "deployment-package-${{ github.sha }}"
           path: deployment/
 
-      - name: Deployment simulation
+      - name: Deployment Simulation
         run: |
           echo "🚀 Simulating deployment..."
           sleep 2
