@@ -1,13 +1,15 @@
 name: Test Trudag extensions
 
 on:
-  workflow_dispatch:
-      inputs:
-        PARENT_SHA:
-          description: "Parent Workflow SHA"
-          required: true
-  push:
-    branches: [ main ]
+  workflow_call:
+    inputs:
+      artifact_id:
+        description: 'Unique identifier for artifacts'
+        required: true
+        type: string
+
+permissions:
+  contents: read
 
 jobs:
   test:
@@ -32,16 +34,14 @@ jobs:
         cd .dotstop_extensions
         pytest -v
 
-    - name: Checkout specific commit from Parent Workflow
-      uses: actions/checkout@v4
-      with:
-        ref: ${{ github.event.inputs.PARENT_SHA }}
+    - name: Generate test_trudag_extensions artifact
+      run: |
+        echo "Generating test_trudag_extensions artifact..."
+        mkdir -p test_trudag_extensions
+        echo "test_trudag_extensions processed for ${{ inputs.artifact_id }}" > test_trudag_extensions/test_trudag_extensions.txt
 
-    - name: Create Completion Flag
-      run: echo "Trudag extensions workflow completed." > TRUDAG_EXTENSIONS_flag_${{ github.event.inputs.PARENT_SHA }}.txt
-
-    - name: Upload completion artifact
+    - name: Upload test_trudag_extensions artifact
       uses: actions/upload-artifact@v4
       with:
-        name: workflow-TRUDAG-EXTENSIONS-completed_${{ github.event.inputs.PARENT_SHA }}
-        path: TRUDAG_EXTENSIONS_flag_${{ github.event.inputs.PARENT_SHA }}.txt
+        name: ${{ inputs.artifact_id }}
+        path: test_trudag_extensions/
