@@ -61,12 +61,12 @@ jobs:
 
   collect-and-deploy:
     name: "Collect Results & Deploy"
-    needs: [labeler, check_amalgamation, test_trudag_extensions, codeql, cifuzz, dependency_review]
+    needs: [labeler, check_amalgamation, test_trudag_extensions, codeql, cifuzz, dependency_review, ubuntu]
     runs-on: ubuntu-latest
     if: always() # Run even if some jobs fail
     strategy:
       matrix:
-        target: [labeler, check_amalgamation, test_trudag_extensions, codeql, cifuzz, dependency_review ] 
+        target: [labeler, check_amalgamation, test_trudag_extensions, codeql, cifuzz, dependency_review, ubuntu] 
 
     steps:
       - name: Checkout code
