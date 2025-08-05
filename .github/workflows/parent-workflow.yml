@@ -22,7 +22,7 @@ jobs:
         target: [labeler, check_amalgamation, test_trudag_extensions]
     steps:
       - name: Run child workflows
-        uses: ./workflows/${{ matrix12.target }}.yml
+        uses: ./workflows/${{ target }}.yml
         with:
           artifact_id: "${{ matrix.target }}-${{ github.sha }}"
 
