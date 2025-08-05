@@ -19,10 +19,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [labeler, check_amalgamation, test_trudag_extensions]
+        target: 
+          - { name: "labeler", workflow: "./workflows/labeler.yml" }
+          - { name: "check_amalgamation", workflow: "./workflows/check_amalgamation.yml" }
+          - { name: "test_trudag_extensions", workflow: "./workflows/test_trudag_extensions.yml" }
     steps:
-      - name: Run child workflows
-        run: ./.github/workflows/${{ matrix.target }}.yml
+      - name: Run child workflow
+        uses: ${{ matrix.target.workflow }} # Dynamically choose a fixed workflow based on the matrix
+        with:
+          artifact_id: "${{ matrix.target.name }}-${{ github.sha }}"
 
 
   collect-and-deploy:
