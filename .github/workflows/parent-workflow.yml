@@ -1,12 +1,11 @@
 name: Parent Workflow
 
-on:
+on: 
   pull_request:
-  push:
+  push: 
     branches:
       - develop
       - main
-      - needs_method
 
 permissions:
   contents: write
@@ -15,28 +14,33 @@ permissions:
   id-token: write
 
 jobs:
-  child_workflows:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout repository
-        uses: actions/checkout@v4
-      - name: Dynamically Trigger Workflow
-        run: |
-          targets=("Pull Request Labeler" "Check amalgamation" "Test Trudag extensions")
-          for target in "${targets[@]}"; do
-            echo "Triggering $target"
-            gh workflow run "${target}" -F artifact_id="${target}-${GITHUB_SHA}"
-          done
-        env:
-          GITHUB_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
+  labeler:
+    name: Run Labeler Workflow
+    uses: ./.github/workflows/labeler.yml
+    with:
+      artifact_id: "labeler-${{ github.sha }}"
 
+  check_amalgamation:
+    name: Run Amalgamation Workflow
+    uses: ./.github/workflows/check_amalgamation.yml
+    with:
+      artifact_id: "amalgamation-${{ github.sha }}"
+      
+  test_trudag_extensions:
+    name: Run Test Trudag Extensions Workflow
+    uses: ./.github/workflows/test_trudag_extensions.yml
+    with:
+      artifact_id: "test_trudag_extensions-${{ github.sha }}"
 
 
   collect-and-deploy:
     name: "Collect Results & Deploy"
-    needs: [child_workflows]
+    needs: [labeler, check_amalgamation, test_trudag_extensions]
     runs-on: ubuntu-latest
-    if: always()
+    if: always() # Run even if some jobs fail
+    strategy:
+      matrix:
+        target: [labeler, check_amalgamation, test_trudag_extensions]
 
     steps:
       - name: Checkout code
@@ -45,30 +49,33 @@ jobs:
       - name: Check child workflow results
         run: |
           echo "=== Child Workflow Results ==="
-          for job in labeler check_amalgamation test_trudag_extensions; do
-            result="${{ needs.child_workflows.outputs['${job}'] }}"
-            echo "$job workflow: $result"
-            if [[ "$result" != "success" ]]; then
-              echo "❌ $job failed"
-              exit 1
-            fi
-          done
-          echo "✅ All workflows succeeded"
-      - name: Download Artifacts
-        run: |
-          mkdir -p artifacts/
-          for job in labeler check_amalgamation test_trudag_extensions; do
-            echo "Downloading artifact for $job"
-            gh run download --name "${job}-${GITHUB_SHA}" --dir artifacts/
-          done
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          echo "${{ matrix.target }} workflow: ${{ needs.${{ matrix.target }}.result }}"
+          echo "================================"
+          
+          if [[ "${{ needs.${{ matrix.target }}.result }}" != "success" ]] ; then
+            echo "❌ One or more child workflows failed"
+            exit 1
+          fi
+
+          echo "✅ Child workflows completed successfully!"
+ 
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: "${{ matrix.target }}-${{ github.sha }}"
+          path: artifacts/
 
       - name: Create deployment package
         run: |
+          echo "Creating deployment package..."
           mkdir -p deployment
           echo "Deployment ready - $(date)" > deployment/deployment-info.txt
-          cp -r artifacts/* deployment/
+          
+          # Copy all artifacts to deployment folder
+          if [[ -d artifacts ]]; then
+            cp -r artifacts/* deployment/
+          fi
+
       - name: Upload final deployment artifact
         uses: actions/upload-artifact@v4
         with:
