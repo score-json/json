@@ -18,6 +18,8 @@ jobs:
   child_workflows:
     runs-on: ubuntu-latest
     steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
       - name: Dynamically Trigger Workflow
         run: |
           targets=("Pull Request Labeler" "Check amalgamation" "Test Trudag extensions")
