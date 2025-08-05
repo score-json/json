@@ -69,23 +69,6 @@ jobs:
           name: "${{ matrix.target }}-${{ github.sha }}"
           path: artifacts/
 
-      - name: Create deployment package
-        run: |
-          echo "Creating deployment package..."
-          mkdir -p deployment
-          echo "Deployment ready - $(date)" > deployment/deployment-info.txt
-          
-          # Copy all artifacts to deployment folder
-          if [[ -d artifacts ]]; then
-            cp -r artifacts/* deployment/
-          fi
-
-      - name: Upload final deployment artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: "deployment-package-${{ github.sha }}-${{ matrix.target }}"
-          path: deployment/
-
       - name: Deployment simulation
         run: |
           echo "🚀 Simulating deployment..."
