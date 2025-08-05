@@ -4,8 +4,8 @@ normative: true
 
 references:
         - type: cpp_test
-          name: "Markus Kuhn's UTF-8 decoder capability and stress test:4  Overlong sequences"
-          path: "/workspaces/json/tests/src/unit-unicode1.cpp"
+          name: "accept:overlong sequences"
+          path: "/workspaces/json/tests/s-core/unit-strings.cpp"
 ---
 
 The service rejects "overlong sequences".

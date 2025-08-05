@@ -28,7 +28,7 @@ references:
           name: "accept:names:strings:unicode"
           path: "/workspaces/json/tests/s-core/unit-objects.cpp"
         - type: cpp_test
-          name: "accept:names:strings:UTF-16 surrogates"
+          name: "accept:names:strings:escaped UTF-16 surrogates"
           path: "/workspaces/json/tests/s-core/unit-objects.cpp"          
 ---
 

@@ -3,9 +3,6 @@ level: 1.1
 normative: true
 
 references:
-        - type: cpp_test
-          name: "Markus Kuhn's UTF-8 decoder capability and stress test:5  Illegal code positions"
-          path: "/workspaces/json/tests/src/unit-unicode1.cpp"
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2):test_parsing:n"
           path: "/workspaces/json/tests/src/unit-testsuites.cpp"
@@ -13,6 +10,9 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_structure_incomplete_UTF8_BOM.json"
             - "/nst_json_testsuite2/test_parsing/n_structure_lone-invalid-utf-8.json"
           description: ""
+        - type: cpp_test
+          name: "accept:unescaped utf-16 surrogates"
+          path: "/workspaces/json/tests/s-core/unit-strings.cpp"
 ---
 
 The service rejects single and paired UTF-16 surrogates.

@@ -4,8 +4,8 @@ normative: true
 
 references:
         - type: cpp_test
-          name: "Markus Kuhn's UTF-8 decoder capability and stress test:2  Boundary condition test cases"
-          path: "/workspaces/json/tests/src/unit-unicode1.cpp"
+          name: "accept:basic multilingual plane"
+          path: "/workspaces/json/tests/s-core/unit-strings.cpp"
 ---
 
 The service accepts well-formed UTF-8 data.

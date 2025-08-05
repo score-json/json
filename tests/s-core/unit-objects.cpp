@@ -1,4 +1,4 @@
-
+#include <fstream>
 #include "doctest_compatibility.h"
 
 #include <nlohmann/json.hpp>
@@ -85,7 +85,7 @@ TEST_CASE("accept")
                 // unescaped
                 CHECK(json::accept("{\"\u0066\u006f\u006f\u0062\u0061\u0072\":123}"));
             }
-            SECTION("UTF-16 surrogates")
+            SECTION("escaped UTF-16 surrogates")
             {
                 CHECK(json::accept("{\"\\ud834\\udd1e\":123}"));
                 CHECK(json::accept("{\"\\ud83d\\ude00\":123}"));
@@ -160,5 +160,20 @@ TEST_CASE("parse")
             CHECK(json::parse("{ \"foo\"\t:\n\"bar\"\n}")==json::parse("{\"foo\":\"bar\"}"));
             CHECK(json::parse("{\t\t\t\t\t\n\n\u000d\"foo\"\t \t\t  \n\n  \u000d:\"bar\"}")==json::parse("{\"foo\":\"bar\"}"));
         }
+    }
+    // It is checked in unit-testsuites that duplicate values are parsed without error.
+    // The exact behaviour, however, appears to be not tested for yet.
+    SECTION("duplicate names")
+    {
+        // object containing 100,000 members with the same name and different values.
+        std::ifstream f("duplicate_objects.json");
+        json _1 = json::parse(f);
+        CHECK(_1 == "{\"name\":\"value\"}"); 
+        // object containing 100,000 members with only first and last member of the same name
+        std::ifstream f2("100000_members_one_duplicate_name.json");
+        std::ifstream f3("100000_members_without_duplicate_name.json");
+        json _2 = json::parse(f2);
+        json _3 = json::parse(f3);
+        CHECK(_2==_3);
     }
 }
