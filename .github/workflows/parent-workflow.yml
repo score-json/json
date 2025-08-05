@@ -15,14 +15,16 @@ permissions:
 
 jobs:
   child_workflows:
-    name: Run ${{ matrix.name }} Workflow
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         target: [labeler.yml, check_amalgamation.yml, test_trudag_extensions.yml]
-    uses: ./.github/workflows/${{ matrix.target }}
-    with:
-      artifact_id: "${{ matrix.name }}-${{ github.sha }}"
-    secrets: inherit
+    steps:
+      - name: run child workflows
+      - uses: ./.github/workflows/${{ matrix.target }}
+      - with:
+          artifact_id: "${{ matrix.name }}-${{ github.sha }}"
+      - secrets: inherit
 
   collect-and-deploy:
     name: "Collect Results & Deploy"
