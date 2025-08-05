@@ -1,11 +1,12 @@
 name: "Pull Request Labeler"
 
 on:
-  workflow_dispatch:
-     inputs:
-      PARENT_SHA:
-        description: "Parent Workflow SHA"
+  workflow_call:
+    inputs:
+      artifact_id:
+        description: 'Unique identifier for artifacts'
         required: true
+        type: string
 
 permissions:
   contents: read
@@ -28,17 +29,14 @@ jobs:
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
-      - name: Checkout specific commit from Parent Workflow
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.inputs.PARENT_SHA }}
+      - name: Generate label artifact
+        run: |
+          echo "Generating label artifact..."
+          mkdir -p labeler
+          echo "Labels processed for ${{ inputs.artifact_id }}" > labeler/labeler.txt
 
-      - name: Create Completion Flag
-        run:  echo "Labeler workflow completed" > LABELER_flag_${{ github.event.inputs.PARENT_SHA }}.txt
-
-
-      - name: Upload completion artifact
+      - name: Upload label artifact
         uses: actions/upload-artifact@v4
         with:
-          name: workflow-LABELER-completed_${{ github.event.inputs.PARENT_SHA }}
-          path: LABELER_flag_${{ github.event.inputs.PARENT_SHA }}.txt
+          name: ${{ inputs.artifact_id }}
+          path: labeler/

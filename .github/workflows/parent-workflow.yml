@@ -1,79 +1,98 @@
 name: Parent Workflow
 
-on: [pull_request]
-#test
+on: 
+  pull_request:
+  push: 
+    branches:
+      - develop
+      - main
+      
 permissions:
   contents: write
   pages: write
   pull-requests: write
   id-token: write
+  security-events: write
 
 jobs:
-  trigger-workflows:
+  labeler:
+    name: Run Labeler Workflow
+    uses: ./.github/workflows/labeler.yml
+    with:
+      artifact_id: "labeler-${{ github.sha }}"
+
+  check_amalgamation:
+    name: Run Amalgamation Workflow
+    uses: ./.github/workflows/check_amalgamation.yml
+    with:
+      artifact_id: "check_amalgamation-${{ github.sha }}"
+      
+  test_trudag_extensions:
+    name: Run Test Trudag Extensions Workflow
+    uses: ./.github/workflows/test_trudag_extensions.yml
+    with:
+      artifact_id: "test_trudag_extensions-${{ github.sha }}"
+
+  cifuzz:
+    name: Run CIFuzz Workflow
+    uses: ./.github/workflows/cifuzz.yml
+    with:
+      artifact_id: "cifuzz-${{ github.sha }}"
+
+  codeql:
+    name: Run Codeql analysis Workflow
+    uses: ./.github/workflows/codeql-analysis.yml
+    with:
+      artifact_id: "codeql-${{ github.sha }}"
+
+  ubuntu:
+    name: Run Ubuntu Workflow
+    uses: ./.github/workflows/ubuntu.yml
+    with:
+      artifact_id: "ubuntu-${{ github.sha }}"
+
+  dependency_review:
+    name: Run dependency_review Workflow
+    uses: ./.github/workflows/dependency-review.yml
+    with:
+      artifact_id: "dependency_review-${{ github.sha }}"
+
+
+  collect-and-deploy:
+    name: "Collect Results & Deploy"
+    needs: [labeler, check_amalgamation, test_trudag_extensions, codeql, cifuzz, dependency_review]
     runs-on: ubuntu-latest
+    if: always() # Run even if some jobs fail
+    strategy:
+      matrix:
+        target: [labeler, check_amalgamation, test_trudag_extensions, codeql, cifuzz, dependency_review ] 
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Define Workflows to Trigger
-        id: define-workflows
+      - name: Check child workflow results 
         run: |
-          echo "CHECK_AMALGAMATION=Check amalgamation" >> workflows_list.txt
-          echo "TEST_TRUDAG_EXTENSIONS=Test Trudag extensions" >> workflows_list.txt
-          echo "CIFUZZ=CIFuzz" >> workflows_list.txt
-          echo "PR_LABELER=Pull Request Labeler" >> workflows_list.txt
+          echo "=== Checking Child Workflow Results ==="
+          result="${{ needs[matrix.target].result }}"
+          echo "${{ matrix.target }} workflow result: $result"
 
-      - name: Trigger Workflows Dynamically
-        run: |
-          while IFS='=' read -r ID WORKFLOW; do
-            echo "Triggering $WORKFLOW workflow with branch: ${{ github.head_ref }}"
-            gh workflow run "$WORKFLOW" --ref "${{ github.head_ref }}" -F PARENT_SHA="${{ github.sha }}"
-          done < workflows_list.txt
-        env:
-          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
-
-      - name: Wait and Download Artifacts From Child Workflows
-        env:
-          GH_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
-        run: |
-          echo "Waiting for artifacts from child workflows..."
-
-          REQUIRED_ARTIFACTS=(
-            workflow-AMALGAMATION-completed_${{ github.sha }}
-            workflow-TRUDAG-EXTENSIONS-completed_${{ github.sha }}
-            workflow-LABELER-completed_${{ github.sha }}
-            workflow-CIFUZZ-completed_${{ github.sha }}
-          )
-
-          COMPLETED=false
-          MAX_RETRIES=60  # Retry up to 60 times (15 mins, with 15s intervals)
-          RETRY_COUNT=0
-
-          while [ "$COMPLETED" = "false" ] && [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
-            COMPLETED=true
-
-            for ARTIFACT in "${REQUIRED_ARTIFACTS[@]}"; do
-              echo "Attempting to download artifact: $ARTIFACT"
-
-              EXTRACT_DIR="artifacts/$ARTIFACT"
-              rm -rf "$EXTRACT_DIR" # Ensure the directory is clean
-              mkdir -p "$EXTRACT_DIR"
-
-              gh run download --name "$ARTIFACT" --dir "$EXTRACT_DIR" || COMPLETED=false
-            done
-
-            if [ "$COMPLETED" = "false" ]; then
-              echo "Not all artifacts are ready. Waiting 15 seconds..."
-              sleep 15
-              RETRY_COUNT=$((RETRY_COUNT + 1))
-            fi
-          done
-
-          if [ "$COMPLETED" = "false" ]; then
-            echo "Timed out while waiting for artifacts."
+          if [[ "$result" != "success" ]]; then
+            echo "❌ ${{ matrix.target }} workflow failed! Exiting..."
             exit 1
           fi
+          echo "✅ Child workflows completed successfully!" 
+        env:
+          current_workflow: ${{ matrix.target }}
+ 
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: "${{ matrix.target }}-${{ github.sha }}"
+          path: artifacts/
 
-          echo "All required artifacts have been downloaded successfully!"
-          echo "Artifacts can be found in the 'artifacts/' directory."
+      - name: Deployment simulation
+        run: |
+          echo "🚀 Simulating deployment..."
+          sleep 2
+          echo "✅ Deployment completed successfully!"
