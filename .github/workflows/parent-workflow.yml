@@ -2,10 +2,10 @@ name: Parent Workflow
 
 on: 
   pull_request:
-  push: 
-    branches:
-      - develop
-      - main
+  #push: 
+  #  branches:
+  #    - develop
+  #    - main
 #test
 permissions:
   contents: write
