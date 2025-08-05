@@ -91,4 +91,3 @@ jobs:
           echo "🚀 Simulating deployment..."
           sleep 2
           echo "✅ Deployment completed successfully!"
-check_amalgamation-e571c9d4d883472b91f1053ffb1e8d3950f3f168
