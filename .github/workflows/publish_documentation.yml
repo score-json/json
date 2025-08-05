@@ -23,7 +23,6 @@ on:
   workflow_run:
     workflows: 
      - "Parent Workflow"
-
     types:
       - completed
 

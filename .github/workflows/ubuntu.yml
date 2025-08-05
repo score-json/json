@@ -1,16 +1,21 @@
 name: Ubuntu
 
 on:
-  push:
-    branches:
-      - develop
-      - main
-      - release/*
-  pull_request:
+  workflow_call:
+    inputs:
+      artifact_id:
+        description: 'Unique identifier for artifacts'
+        required: true
+        type: string
   workflow_dispatch:
-  schedule:
+ # push:
+ #   branches:
+ #     - develop
+  #    - main
+   #   - release/*
+  #schedule:
   # Runs every day at 9:00 AM UTC
-  - cron: "0 9 * * *"
+  #- cron: "0 9 * * *"
 
 permissions:
   contents: read
@@ -253,3 +258,15 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
+
+      - name: Generate ubuntu artifact
+        run: |
+          echo "Generating ubuntu artifact..."
+          mkdir -p ubuntu
+          echo "ubuntu processed for ${{ inputs.artifact_id }}" > ubuntu/ubuntu.txt
+
+      - name: Upload ubuntu artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact_id }}
+          path: ubuntu/
