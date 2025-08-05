@@ -51,14 +51,21 @@ jobs:
     with:
       artifact_id: "ubuntu-${{ github.sha }}"
 
+  dependency_review:
+    name: Run dependency_review Workflow
+    uses: ./.github/workflows/dependency_review.yml
+    with:
+      artifact_id: "dependency_review-${{ github.sha }}"
+
+
   collect-and-deploy:
     name: "Collect Results & Deploy"
-    needs: [labeler, check_amalgamation, test_trudag_extensions, codeql, ubuntu ]
+    needs: [labeler, check_amalgamation, test_trudag_extensions, codeql, ubuntu, dependency_review]
     runs-on: ubuntu-latest
     if: always() # Run even if some jobs fail
     strategy:
       matrix:
-        target: [labeler, check_amalgamation, test_trudag_extensions,  codeql, ubuntu ] 
+        target: [labeler, check_amalgamation, test_trudag_extensions, codeql, ubuntu, dependency_review ] 
 
     steps:
       - name: Checkout code
