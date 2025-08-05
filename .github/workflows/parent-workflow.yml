@@ -2,11 +2,11 @@ name: Parent Workflow
 
 on: 
   pull_request:
-  #push: 
-  #  branches:
-  #    - develop
-  #    - main
-#test
+  push: 
+    branches:
+      - develop
+      - main
+
 permissions:
   contents: write
   pages: write
@@ -45,11 +45,11 @@ jobs:
     with:
       artifact_id: "codeql-${{ github.sha }}"
 
-  #ubuntu:
-    #name: Run Ubuntu Workflow
-    #uses: ./.github/workflows/ubuntu.yml
-    #with:
-    #  artifact_id: "ubuntu-${{ github.sha }}"
+  ubuntu:
+    name: Run Ubuntu Workflow
+    uses: ./.github/workflows/ubuntu.yml
+    with:
+      artifact_id: "ubuntu-${{ github.sha }}"
 
   dependency_review:
     name: Run dependency_review Workflow
