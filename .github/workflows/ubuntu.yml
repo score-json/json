@@ -268,5 +268,5 @@ jobs:
       - name: Upload ubuntu artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ inputs.artifact_id }}
+          name: ${{ inputs.artifact_id }}-${{ matrix.target }}
           path: ubuntu-${{ matrix.target }}/
