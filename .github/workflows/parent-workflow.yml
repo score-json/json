@@ -20,10 +20,10 @@ jobs:
     steps:
       - name: Dynamically Trigger Workflow
         run: |
-          targets=("labeler" "check_amalgamation" "test_trudag_extensions")
+          targets=("Pull Request Labeler" "Check amalgamation" "Test Trudag extensions")
           for target in "${targets[@]}"; do
             echo "Triggering $target"
-            gh workflow run "${target}.yml" --field artifact_id="${target}-${GITHUB_SHA}"
+            gh workflow run "${target}" --field artifact_id="${target}-${GITHUB_SHA}"
           done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
