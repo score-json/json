@@ -1,12 +1,12 @@
 name: Parent Workflow
-#test
+
 on: 
   pull_request:
   push: 
     branches:
       - develop
       - main
-      
+
 permissions:
   contents: write
   pages: write
@@ -96,4 +96,3 @@ jobs:
           echo "🚀 Simulating deployment..."
           sleep 2
           echo "✅ Deployment completed successfully!"
-
