@@ -40,7 +40,7 @@ jobs:
 
   codeql:
     name: Run Test Trudag Extensions Workflow
-    uses: ./.github/workflows/codeql.yml
+    uses: ./.github/workflows/codeql-analysis.yml
     with:
       artifact_id: "codeql-${{ github.sha }}"
 
