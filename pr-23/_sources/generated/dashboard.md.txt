@@ -67,7 +67,7 @@ The distribution of scores for all nodes across the graph.
 |statements|86|
 |reviewed statements|22|
 |unreviewed statements|64|
-|orphaned statements|0|
+|orphaned statements|1|
 |statements with evidence|18|
 |evidence|60|
 |expectations|1|
