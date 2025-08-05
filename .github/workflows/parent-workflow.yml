@@ -15,7 +15,7 @@ permissions:
   id-token: write
 
 jobs:
-  trigger_dynamic_workflows:
+  child_workflows:
     runs-on: ubuntu-latest
     steps:
       - name: Dynamically Trigger Workflow
