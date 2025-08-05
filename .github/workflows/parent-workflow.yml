@@ -12,6 +12,7 @@ permissions:
   pages: write
   pull-requests: write
   id-token: write
+  security-events: write
 
 jobs:
   labeler:
