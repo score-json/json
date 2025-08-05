@@ -46,20 +46,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Check child workflow results
+      - name: Check child workflow results 
         run: |
-          echo "=== Child Workflow Results ==="
-          echo "Labeler workflow: ${{ needs.labeler.result }}"
-          echo "Amalgamation workflow: ${{ needs.check_amalgamation.result }}"
-          echo "Test Trudag Extensions workflow: ${{ needs.test_trudag_extensions.result }}"
-          echo "================================"
-          
-          if [[ "${{ needs.labeler.result }}" != "success" ]] || \
-            [[ "${{ needs.check_amalgamation.result }}" != "success" ]] || \
-            [[ "${{ needs.test_trudag_extensions.result }}" != "success" ]] ; then
-            echo "❌ One or more child workflows failed"
+          echo "=== Checking Child Workflow Results ==="
+          result="${{ needs[matrix.target].result }}"
+          echo "${{ matrix.target }} workflow result: $result"
+
+          if [[ "$result" != "success" ]]; then
+            echo "❌ ${{ matrix.target }} workflow failed! Exiting..."
             exit 1
           fi
+        env:
+          current_workflow: ${{ matrix.target }}
 
           echo "✅ Child workflows completed successfully!"
  
