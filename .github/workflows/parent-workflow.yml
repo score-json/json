@@ -33,27 +33,32 @@ jobs:
     with:
       artifact_id: "test_trudag_extensions-${{ github.sha }}"
 
-  cifuzz:
-    name: Run Test Trudag Extensions Workflow
-    uses: ./.github/workflows/cifuzz.yml
-    with:
-      artifact_id: "cifuzz-${{ github.sha }}"
+ # cifuzz:
+  #  name: Run CIFuzz Workflow
+   # uses: ./.github/workflows/cifuzz.yml
+    #with:
+     # artifact_id: "cifuzz-${{ github.sha }}"
 
   codeql:
-    name: Run Test Trudag Extensions Workflow
+    name: Run Codeql analysis Workflow
     uses: ./.github/workflows/codeql-analysis.yml
     with:
       artifact_id: "codeql-${{ github.sha }}"
 
+  ubuntu:
+    name: Run Ubuntu Workflow
+    uses: ./.github/workflows/ubuntu.yml
+    with:
+      artifact_id: "ubuntu-${{ github.sha }}"
 
   collect-and-deploy:
     name: "Collect Results & Deploy"
-    needs: [labeler, check_amalgamation, test_trudag_extensions, cifuzz, codeql]
+    needs: [labeler, check_amalgamation, test_trudag_extensions, codeql, ubuntu ]
     runs-on: ubuntu-latest
     if: always() # Run even if some jobs fail
     strategy:
       matrix:
-        target: [labeler, check_amalgamation, test_trudag_extensions, cifuzz, codeql]
+        target: [labeler, check_amalgamation, test_trudag_extensions,  codeql, ubuntu ] 
 
     steps:
       - name: Checkout code

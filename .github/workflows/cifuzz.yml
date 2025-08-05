@@ -28,7 +28,7 @@ jobs:
         id: build
         uses: google/oss-fuzz/infra/cifuzz/actions/build_fuzzers@57fe4475324c5506adbfecdcdd2917f65c86ee9e 
         with:
-          oss-fuzz-project-name: 'json_dev'
+          oss-fuzz-project-name: 'json'
           dry-run: false
           language: c++
 
