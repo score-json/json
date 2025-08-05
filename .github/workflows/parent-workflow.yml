@@ -22,7 +22,7 @@ jobs:
         target: [labeler, check_amalgamation, test_trudag_extensions]
     steps:
       - name: Run child workflows
-        run: ./workflows/${{ matrix.target }}.yml
+        run: ./.github/workflows/${{ matrix.target }}.yml
 
 
   collect-and-deploy:
