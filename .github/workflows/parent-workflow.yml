@@ -28,7 +28,7 @@ jobs:
             gh workflow run "${target}" --field artifact_id="${target}-${GITHUB_SHA}"
           done
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PARENT_WORKFLOW_TRIGGER }}
 
 
 
