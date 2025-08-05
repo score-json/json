@@ -49,10 +49,13 @@ jobs:
       - name: Check child workflow results
         run: |
           echo "=== Child Workflow Results ==="
-          echo "${{ matrix.target }} workflow: ${{ needs.${{ matrix.target }}.result }}"
+          echo "${{ matrix.target }} workflow: ${{ needs.result }}"
           echo "================================"
           
-          if [[ "${{ needs.${{ matrix.target }}.result }}" != "success" ]] ; then
+          if [[ "${{ needs.labeler.result }}" != "success" ]] || \
+            [[ "${{ needs.check_amalgamation.result }}" != "success" ]] || \
+            [[ "${{ needs.test_trudag_extensions.result }}" != "success" ]] 
+            ; then
             echo "❌ One or more child workflows failed"
             exit 1
           fi
