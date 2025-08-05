@@ -32,15 +32,27 @@ jobs:
     with:
       artifact_id: "test_trudag_extensions-${{ github.sha }}"
 
+  cifuzz:
+    name: Run Test Trudag Extensions Workflow
+    uses: ./.github/workflows/cifuzz.yml
+    with:
+      artifact_id: "cifuzz-${{ github.sha }}"
+
+  codeql:
+    name: Run Test Trudag Extensions Workflow
+    uses: ./.github/workflows/codeql.yml
+    with:
+      artifact_id: "codeql-${{ github.sha }}"
+
 
   collect-and-deploy:
     name: "Collect Results & Deploy"
-    needs: [labeler, check_amalgamation, test_trudag_extensions]
+    needs: [labeler, check_amalgamation, test_trudag_extensions, cifuzz, codeql]
     runs-on: ubuntu-latest
     if: always() # Run even if some jobs fail
     strategy:
       matrix:
-        target: [labeler, check_amalgamation, test_trudag_extensions]
+        target: [labeler, check_amalgamation, test_trudag_extensions, cifuzz, codeql]
 
     steps:
       - name: Checkout code
@@ -59,7 +71,6 @@ jobs:
           echo "✅ Child workflows completed successfully!" 
         env:
           current_workflow: ${{ matrix.target }}
-
  
       - name: Download artifacts
         uses: actions/download-artifact@v4

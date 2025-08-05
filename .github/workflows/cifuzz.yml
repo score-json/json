@@ -1,11 +1,12 @@
 name: CIFuzz
 
 on:
-  workflow_dispatch:
-     inputs:
-      PARENT_SHA:
-        description: "Parent Workflow SHA"
+  workflow_call:
+    inputs:
+      artifact_id:
+        description: 'Unique identifier for artifacts'
         required: true
+        type: string
 
 permissions:
   contents: read
@@ -42,17 +43,14 @@ jobs:
           name: artifacts
           path: ./out/artifacts
 
-      - name: Checkout specific commit from Parent Workflow
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.inputs.PARENT_SHA }}
-          path: actions/checkout@v4 
+      - name: Generate cifuzz artifact
+        run: |
+          echo "Generating cifuzz artifact..."
+          mkdir -p cifuzz
+          echo "cifuzz processed for ${{ inputs.artifact_id }}" > cifuzz/cifuzz.txt
 
-      - name: Create Completion Flag
-        run: echo "CIfuzz workflow completed." > CIFUZZ_flag_${{ github.event.inputs.PARENT_SHA }}.txt
-
-      - name: Upload completion artifact
+      - name: Upload cifuzz artifact
         uses: actions/upload-artifact@v4
         with:
-          name: workflow-CIFUZZ-completed_${{ github.event.inputs.PARENT_SHA }}
-          path: CIFUZZ_flag_${{ github.event.inputs.PARENT_SHA }}.txt
+          name: ${{ inputs.artifact_id }}
+          path: cifuzz/
