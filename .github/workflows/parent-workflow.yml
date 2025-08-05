@@ -20,11 +20,11 @@ jobs:
       matrix:
         target: [labeler.yml, check_amalgamation.yml, test_trudag_extensions.yml]
     steps:
-      - name: run child workflows
-      - uses: ./.github/workflows/${{ matrix.target }}
-      - with:
-          artifact_id: "${{ matrix.name }}-${{ github.sha }}"
-      - secrets: inherit
+      - name: Run child workflows
+        uses: ./.github/workflows/${{ matrix.target }}.yml
+        with:
+          artifact_id: "${{ matrix.target }}-${{ github.sha }}"
+
 
   collect-and-deploy:
     name: "Collect Results & Deploy"
