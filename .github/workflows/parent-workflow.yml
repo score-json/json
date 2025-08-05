@@ -23,8 +23,6 @@ jobs:
     steps:
       - name: Run child workflows
         run: ./workflows/${{ matrix.target }}.yml
-        with:
-          artifact_id: "${{ matrix.target }}-${{ github.sha }}"
 
 
   collect-and-deploy:
