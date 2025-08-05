@@ -18,13 +18,7 @@ jobs:
     name: Run ${{ matrix.name }} Workflow
     strategy:
       matrix:
-        include:
-          - name: labeler
-            workflow: labeler.yml
-          - name: check_amalgamation
-            workflow: check_amalgamation.yml
-          - name: test_trudag_extensions
-            workflow: test_trudag_extensions.yml
+        target: [labeler.yml, check_amalgamation.yml, test_trudag_extensions.yml]
     uses: ./.github/workflows/${{ matrix.workflow }}
     with:
       artifact_id: "${{ matrix.name }}-${{ github.sha }}"
@@ -52,7 +46,6 @@ jobs:
             fi
           done
           echo "✅ All workflows succeeded"
-
       - name: Download Artifacts
         run: |
           mkdir -p artifacts/
@@ -68,7 +61,6 @@ jobs:
           mkdir -p deployment
           echo "Deployment ready - $(date)" > deployment/deployment-info.txt
           cp -r artifacts/* deployment/
-
       - name: Upload final deployment artifact
         uses: actions/upload-artifact@v4
         with:
