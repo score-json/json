@@ -56,10 +56,10 @@ jobs:
             echo "❌ ${{ matrix.target }} workflow failed! Exiting..."
             exit 1
           fi
+          echo "✅ Child workflows completed successfully!" 
         env:
           current_workflow: ${{ matrix.target }}
 
-          echo "✅ Child workflows completed successfully!"
  
       - name: Download artifacts
         uses: actions/download-artifact@v4
