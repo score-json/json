@@ -83,11 +83,11 @@ jobs:
       - name: Generate amalgamation artifact
         run: |
           echo "Generating amalgamation artifact..."
-          mkdir -p amalgamation
-          echo "Amalgamation processed for ${{ inputs.artifact_id }}" > amalgamation/amalgamation.txt
+          mkdir -p check_amalgamation
+          echo "Amalgamation processed for ${{ inputs.artifact_id }}" > check_amalgamation/check_amalgamation.txt
 
       - name: Upload amalgamation artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.artifact_id }}
-          path: amalgamation/
+          path: check_amalgamation/
