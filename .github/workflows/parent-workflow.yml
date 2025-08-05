@@ -47,6 +47,7 @@ jobs:
 
   ubuntu:
     name: Run Ubuntu Workflow
+    needs: [codeql]
     uses: ./.github/workflows/ubuntu.yml
     with:
       artifact_id: "ubuntu-${{ github.sha }}"
