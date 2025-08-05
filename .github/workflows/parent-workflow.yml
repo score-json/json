@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         target: [labeler.yml, check_amalgamation.yml, test_trudag_extensions.yml]
-    uses: ./.github/workflows/${{ matrix.workflow }}
+    uses: ./.github/workflows/${{ matrix.target }}
     with:
       artifact_id: "${{ matrix.name }}-${{ github.sha }}"
     secrets: inherit
