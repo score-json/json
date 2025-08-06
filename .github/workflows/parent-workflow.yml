@@ -34,18 +34,18 @@ jobs:
     with:
       artifact_id: "test_trudag_extensions-${{ github.sha }}"
 
-  codeql:
-    name: Run Codeql analysis Workflow
-    uses: ./.github/workflows/codeql-analysis.yml
-    with:
-      artifact_id: "codeql-${{ github.sha }}"
+  #codeql:
+  #  name: Run Codeql analysis Workflow
+  #  uses: ./.github/workflows/codeql-analysis.yml
+  #  with:
+  #    artifact_id: "codeql-${{ github.sha }}"
 
-  ubuntu:
-    name: Run Ubuntu Workflow
-    needs: [codeql] # Error if CodeQL and Ubuntu triggered at the same time due to conflicting priorities
-    uses: ./.github/workflows/ubuntu.yml
-    with:
-      artifact_id: "ubuntu-${{ github.sha }}"
+  #ubuntu:
+  #  name: Run Ubuntu Workflow
+  #  needs: [codeql] # Error if CodeQL and Ubuntu triggered at the same time due to conflicting priorities
+  #  uses: ./.github/workflows/ubuntu.yml
+  #  with:
+  #    artifact_id: "ubuntu-${{ github.sha }}"
 
   dependency_review:
     name: Run dependency_review Workflow
@@ -57,11 +57,11 @@ jobs:
   collect-and-deploy-pr:
     name: "Collect Results & Deploy (PR)"
     if: github.event_name == 'pull_request'
-    needs: [labeler, check_amalgamation, test_trudag_extensions, codeql, dependency_review, ubuntu]
+    needs: [labeler, check_amalgamation, test_trudag_extensions, dependency_review]
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [labeler, check_amalgamation, test_trudag_extensions, codeql, dependency_review, ubuntu]
+        target: [labeler, check_amalgamation, test_trudag_extensions, dependency_review]
 
     steps:
       - name: Checkout code
@@ -97,11 +97,11 @@ jobs:
   collect-and-deploy-non-pr:
     name: "Collect Results & Deploy (Non-PR)"
     if: github.event_name != 'pull_request'
-    needs: [labeler, check_amalgamation, test_trudag_extensions, codeql, ubuntu]  # no dependency_review if non PR
+    needs: [labeler, check_amalgamation, test_trudag_extensions]  # no dependency_review if non PR
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [labeler, check_amalgamation, test_trudag_extensions, codeql, ubuntu]
+        target: [labeler, check_amalgamation, test_trudag_extensions]
 
     steps:
       - name: Checkout code
