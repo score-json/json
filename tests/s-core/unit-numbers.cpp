@@ -330,9 +330,27 @@ TEST_CASE("parse")
             CHECK(json::parse("12415\u006516")==json::parse("12415\u00650016"));
             CHECK(json::parse("12.415\u006516")==json::parse("12.415\u00650016"));
         }
+        SECTION("leading plus")
+        {
+            CHECK(json::parse("1\u0045+1")==json::parse("1\u00451"));
+            CHECK(json::parse("1\u0065+1")==json::parse("1\u00651"));
+            CHECK(json::parse("1.0034\u0045+23")==json::parse("1.0034\u004523"));
+            CHECK(json::parse("1.0034\u0065+23")==json::parse("1.0034\u006523"));
+        }
     }
-    SECTION("bases")
+    SECTION("trailing zeroes")
+    {   
+        // Trailing zeroes after the decimal point do not influence the parsing
+        CHECK(json::parse("3.1415000000000000000000000")==json::parse("3.1415"));
+        CHECK(json::parse("3.1415000000000\u004515")==json::parse("3.1415\u004515"));
+        CHECK(json::parse("3.1415926000000000\u006515")==json::parse("3.1415926\u006515"));
+        // This also works for numbers that are not parsed correctly anyway
+        CHECK(json::parse("2.2250738585072011360574097967091319759348195463516456400000000e-308")==json::parse("2.22507385850720113605740979670913197593481954635164564e-308"));
+        CHECK(json::parse("0.999999999999999944488848768742172978818416595458984374")==json::parse("0.999999999999999944488848768742172978818416595458984374000000"));
+    }
+    SECTION("Whitespace")
     {
-        
+        // Leading and trailing whitespace is ignored.
+        CHECK(json::parse("\n\n\t 123\n\t\t  \u000d")==json::parse("123"));
     }
 }

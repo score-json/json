@@ -62,7 +62,7 @@ TEST_CASE("accept")
     SECTION("noncharacter code positions")
     {
         // 5.3.1  U+FFFE = ef bf be
-        CHECK(json::accept("\xef\xbf\xbe"));
+        CHECK(!json::accept("\xef\xbf\xbe"));
         // 5.3.2  U+FFFF = ef bf bf
         CHECK(!json::accept("\xef\xbf\xbf"));
 
@@ -255,6 +255,68 @@ TEST_CASE("accept")
             CHECK(!json::accept("\xff"));
             // 3.5.3  fe fe ff ff
             CHECK(!json::accept("\xfe\xfe\xff\xff"));
+        }
+    }
+}
+
+TEST_CASE("parse")
+{
+    SECTION("escaped unicode")
+    {
+        for (uint32_t i = 0x0000; i<=0xFFFF; i++)
+        {
+            std::ostringstream temp;
+            std::ostringstream temp2;
+            temp << "\"\\u" << std::hex << std::uppercase << std::setfill('0') << std::setw(4) << i << "\"";
+            temp2 << "\"\\u" << std::hex << std::nouppercase << std::setfill('0') << std::setw(4) << i << "\"";
+            if (i>=0xD800 && i<=0xDFFF)
+            {
+                // Unpaired utf-16 surrogates are illegal.
+                // Observe that this verbatim not what RFC8259 §7 prescribes; 
+                // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
+                // Illegal characters are not parsed anyway.
+                continue;
+            } else { 
+                // all other characters of the basic multilingual plane are accepted.
+                CHECK(json::parse(temp.str())==json::parse(temp2.str()));
+            }
+        }
+    }
+    SECTION("unescaped unicode")
+    {
+        for (uint32_t i = 0x0000; i<=0x10FFFF; i++)
+        {
+            if (i>=0xD800 && i<=0xDFFF)
+            {
+                // Unpaired utf-16 surrogates are illegal.
+                // Observe that this verbatim not what RFC8259 §7 prescribes; 
+                // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
+                // Illegal characters are not parsed anyway.
+                continue;
+            } else if (i<0x0020||i==0x0022||i==0x005c) { 
+                // These characters are illegal if unescaped.
+            } else {
+                // All other characters are valid according to RFC8259
+                std::string temp = "\"";
+                // evil chat-gpt magic transforms i into utf-8 encoded unescaped character
+                if (i <= 0x7F) {
+                    temp += static_cast<char>(i); // 1-byte (ASCII)
+                } else if (i <= 0x7FF) {
+                    temp += static_cast<char>(0xC0 | ((i >> 6) & 0x1F)); // 2-byte sequence
+                    temp += static_cast<char>(0x80 | (i & 0x3F));
+                } else if (i <= 0xFFFF) {
+                    temp += static_cast<char>(0xE0 | ((i >> 12) & 0x0F)); // 3-byte sequence
+                    temp += static_cast<char>(0x80 | ((i >> 6) & 0x3F));
+                    temp += static_cast<char>(0x80 | (i & 0x3F));
+                } else if (i <= 0x10FFFF) {
+                    temp += static_cast<char>(0xF0 | ((i >> 18) & 0x07)); // 4-byte sequence
+                    temp += static_cast<char>(0x80 | ((i >> 12) & 0x3F));
+                    temp += static_cast<char>(0x80 | ((i >> 6) & 0x3F));
+                    temp += static_cast<char>(0x80 | (i & 0x3F));
+                }
+                temp += "\"";
+                CHECK_NOTHROW(json::parse(temp));
+            }
         }
     }
 }

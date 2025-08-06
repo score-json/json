@@ -1061,3 +1061,64 @@ TEST_CASE("accept")
 		}
     }
 }
+
+TEST_CASE("parse")
+{
+    SECTION("values")
+    {
+        CHECK(json::parse("null")==nullptr);
+        CHECK(json::parse("true")==true);
+        CHECK(json::parse("false")==false);
+    }
+    SECTION("whitespace")
+    {
+        CHECK(json::parse(" false ")==json::parse("false"));
+        CHECK(json::parse(" false\t")==json::parse("false"));
+        CHECK(json::parse(" false\n")==json::parse("false"));
+        CHECK(json::parse(" false\u000d")==json::parse("false"));
+        CHECK(json::parse("\tfalse ")==json::parse("false"));
+        CHECK(json::parse("\tfalse\t")==json::parse("false"));
+        CHECK(json::parse("\tfalse\n")==json::parse("false"));
+        CHECK(json::parse("\tfalse\u000d")==json::parse("false"));
+        CHECK(json::parse("\nfalse ")==json::parse("false"));
+        CHECK(json::parse("\nfalse\t")==json::parse("false"));
+        CHECK(json::parse("\nfalse\n")==json::parse("false"));
+        CHECK(json::parse("\nfalse\u000d")==json::parse("false"));
+        CHECK(json::parse("\u000dfalse ")==json::parse("false"));
+        CHECK(json::parse("\u000dfalse\t")==json::parse("false"));
+        CHECK(json::parse("\u000dfalse\n")==json::parse("false"));
+        CHECK(json::parse("\u000dfalse\u000d")==json::parse("false"));
+        CHECK(json::parse(" null ")==json::parse("null"));
+        CHECK(json::parse(" null\t")==json::parse("null"));
+        CHECK(json::parse(" null\n")==json::parse("null"));
+        CHECK(json::parse(" null\u000d")==json::parse("null"));
+        CHECK(json::parse("\tnull ")==json::parse("null"));
+        CHECK(json::parse("\tnull\t")==json::parse("null"));
+        CHECK(json::parse("\tnull\n")==json::parse("null"));
+        CHECK(json::parse("\tnull\u000d")==json::parse("null"));
+        CHECK(json::parse("\nnull ")==json::parse("null"));
+        CHECK(json::parse("\nnull\t")==json::parse("null"));
+        CHECK(json::parse("\nnull\n")==json::parse("null"));
+        CHECK(json::parse("\nnull\u000d")==json::parse("null"));
+        CHECK(json::parse("\u000dnull ")==json::parse("null"));
+        CHECK(json::parse("\u000dnull\t")==json::parse("null"));
+        CHECK(json::parse("\u000dnull\n")==json::parse("null"));
+        CHECK(json::parse("\u000dnull\u000d")==json::parse("null"));
+        CHECK(json::parse(" true ")==json::parse("true"));
+        CHECK(json::parse(" true\t")==json::parse("true"));
+        CHECK(json::parse(" true\n")==json::parse("true"));
+        CHECK(json::parse(" true\u000d")==json::parse("true"));
+        CHECK(json::parse("\ttrue ")==json::parse("true"));
+        CHECK(json::parse("\ttrue\t")==json::parse("true"));
+        CHECK(json::parse("\ttrue\n")==json::parse("true"));
+        CHECK(json::parse("\ttrue\u000d")==json::parse("true"));
+        CHECK(json::parse("\ntrue ")==json::parse("true"));
+        CHECK(json::parse("\ntrue\t")==json::parse("true"));
+        CHECK(json::parse("\ntrue\n")==json::parse("true"));
+        CHECK(json::parse("\ntrue\u000d")==json::parse("true"));
+        CHECK(json::parse("\u000dtrue ")==json::parse("true"));
+        CHECK(json::parse("\u000dtrue\t")==json::parse("true"));
+        CHECK(json::parse("\u000dtrue\n")==json::parse("true"));
+        CHECK(json::parse("\u000dtrue\u000d")==json::parse("true"));    
+    }
+}
