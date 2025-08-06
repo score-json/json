@@ -54,7 +54,6 @@ jobs:
     with:
       artifact_id: "dependency_review-${{ github.sha }}"
 
-jobs:
   collect-and-deploy-pr:
     name: "Collect Results & Deploy (PR)"
     if: github.event_name == 'pull_request'
