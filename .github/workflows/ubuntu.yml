@@ -258,15 +258,16 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
-
+        
+  ubuntu_artifact:
       - name: Generate ubuntu artifact
         run: |
           echo "Generating ubuntu artifact..."
-          mkdir -p ubuntu-${{ matrix.target }}
-          echo "ubuntu processed for ${{ inputs.artifact_id }}" > ubuntu-${{ matrix.target }}/ubuntu-${{ matrix.target }}.txt
+          mkdir -p ubuntu
+          echo "ubuntu processed for ${{ inputs.artifact_id }}" > ubuntu/ubuntu.txt
 
       - name: Upload ubuntu artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ inputs.artifact_id }}-${{ matrix.target }}
-          path: ubuntu-${{ matrix.target }}/
+          name: ${{ inputs.artifact_id }}
+          path: ubuntu/
