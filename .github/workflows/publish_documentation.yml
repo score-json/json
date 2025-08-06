@@ -25,6 +25,8 @@ on:
      - "Parent Workflow"
     types:
       - completed
+    branches:
+      - 'custom_validators_nils'
 
 jobs:
   run-trudag:
