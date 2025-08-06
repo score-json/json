@@ -28,114 +28,6 @@ using nlohmann::json;
 
 namespace
 {
-// class SaxEventLogger
-// {
-//   public:
-//     bool null()
-//     {
-//         events.emplace_back("null()");
-//         return true;
-//     }
-
-//     bool boolean(bool val)
-//     {
-//         events.emplace_back(val ? "boolean(true)" : "boolean(false)");
-//         return true;
-//     }
-
-//     bool number_integer(json::number_integer_t val)
-//     {
-//         events.push_back("number_integer(" + std::to_string(val) + ")");
-//         return true;
-//     }
-
-//     bool number_unsigned(json::number_unsigned_t val)
-//     {
-//         events.push_back("number_unsigned(" + std::to_string(val) + ")");
-//         return true;
-//     }
-
-//     bool number_float(json::number_float_t /*unused*/, const std::string& s)
-//     {
-//         events.push_back("number_float(" + s + ")");
-//         return true;
-//     }
-
-//     bool string(std::string& val)
-//     {
-//         events.push_back("string(" + val + ")");
-//         return true;
-//     }
-
-//     bool binary(json::binary_t& val)
-//     {
-//         std::string binary_contents = "binary(";
-//         std::string comma_space;
-//         for (auto b : val)
-//         {
-//             binary_contents.append(comma_space);
-//             binary_contents.append(std::to_string(static_cast<int>(b)));
-//             comma_space = ", ";
-//         }
-//         binary_contents.append(")");
-//         events.push_back(binary_contents);
-//         return true;
-//     }
-
-//     bool start_object(std::size_t elements)
-//     {
-//         if (elements == (std::numeric_limits<std::size_t>::max)())
-//         {
-//             events.emplace_back("start_object()");
-//         }
-//         else
-//         {
-//             events.push_back("start_object(" + std::to_string(elements) + ")");
-//         }
-//         return true;
-//     }
-
-//     bool key(std::string& val)
-//     {
-//         events.push_back("key(" + val + ")");
-//         return true;
-//     }
-
-//     bool end_object()
-//     {
-//         events.emplace_back("end_object()");
-//         return true;
-//     }
-
-//     bool start_array(std::size_t elements)
-//     {
-//         if (elements == (std::numeric_limits<std::size_t>::max)())
-//         {
-//             events.emplace_back("start_array()");
-//         }
-//         else
-//         {
-//             events.push_back("start_array(" + std::to_string(elements) + ")");
-//         }
-//         return true;
-//     }
-
-//     bool end_array()
-//     {
-//         events.emplace_back("end_array()");
-//         return true;
-//     }
-
-//     bool parse_error(std::size_t position, const std::string& /*unused*/, const json::exception& /*unused*/)
-//     {
-//         errored = true;
-//         events.push_back("parse_error(" + std::to_string(position) + ")");
-//         return false;
-//     }
-
-//     std::vector<std::string> events {}; // NOLINT(readability-redundant-member-init)
-//     bool errored = false;
-// };
 
 class SaxCountdown : public nlohmann::json::json_sax_t
 {
@@ -214,114 +106,17 @@ class SaxCountdown : public nlohmann::json::json_sax_t
 
 json parser_helper(const std::string& s);
 bool accept_helper(const std::string& s);
-// void comments_helper(const std::string& s);
 
 json parser_helper(const std::string& s)
 {
-    /**********************************************************
-    * Modified: Only use json::parse() directly
-    **********************************************************/
-
-    // json j;
-    // json::parser(nlohmann::detail::input_adapter(s)).parse(true, j);
-
-    // // if this line was reached, no exception occurred
-    // // -> check if result is the same without exceptions
-    // json j_nothrow;
-    // CHECK_NOTHROW(json::parser(nlohmann::detail::input_adapter(s), nullptr, false).parse(true, j_nothrow));
-    // CHECK(j_nothrow == j);
-
-    // json j_sax;
-    // nlohmann::detail::json_sax_dom_parser<json, nlohmann::detail::string_input_adapter_type> sdp(j_sax);
-    // json::sax_parse(s, &sdp);
-    // CHECK(j_sax == j);
-
-    // comments_helper(s);
-
-    // return j;
-
     return json::parse(s); 
 }
 
 bool accept_helper(const std::string& s)
 {
-    /**********************************************************
-    * Modified: Only use json::accept() directly 
-    **********************************************************/
-
     CAPTURE(s)
-
-    // // 1. parse s without exceptions
-    // json j;
-    // CHECK_NOTHROW(json::parser(nlohmann::detail::input_adapter(s), nullptr, false).parse(true, j));
-    // const bool ok_noexcept = !j.is_discarded();
-
-    // // 2. accept s
-    // const bool ok_accept = json::parser(nlohmann::detail::input_adapter(s)).accept(true);
-
-    // // 3. check if both approaches come to the same result
-    // CHECK(ok_noexcept == ok_accept);
-
-    // // 4. parse with SAX (compare with relaxed accept result)
-    // SaxEventLogger el;
-    // CHECK_NOTHROW(json::sax_parse(s, &el, json::input_format_t::json, false));
-    // CHECK(json::parser(nlohmann::detail::input_adapter(s)).accept(false) == !el.errored);
-
-    // // 5. parse with simple callback
-    // json::parser_callback_t const cb = [](int /*unused*/, json::parse_event_t /*unused*/, json& /*unused*/) noexcept
-    // {
-    //     return true;
-    // };
-    // json const j_cb = json::parse(s, cb, false);
-    // const bool ok_noexcept_cb = !j_cb.is_discarded();
-
-    // // 6. check if this approach came to the same result
-    // CHECK(ok_noexcept == ok_noexcept_cb);
-
-    // // 7. check if comments are properly ignored
-    // if (ok_accept)
-    // {
-    //     comments_helper(s);
-    // }
-
-    // // 8. return result
-    // return ok_accept;
-
     return json::accept(s);
 }
-
-// void comments_helper(const std::string& s)
-// {
-//     json _;
-
-//     // parse/accept with default parser
-//     CHECK_NOTHROW(_ = json::parse(s));
-//     CHECK(json::accept(s));
-
-//     // parse/accept while skipping comments
-//     CHECK_NOTHROW(_ = json::parse(s, nullptr, false, true));
-//     CHECK(json::accept(s, true));
-
-//     std::vector<std::string> json_with_comments;
-
-//     // start with a comment
-//     json_with_comments.push_back(std::string("// this is a comment\n") + s);
-//     json_with_comments.push_back(std::string("/* this is a comment */") + s);
-//     // end with a comment
-//     json_with_comments.push_back(s + "// this is a comment");
-//     json_with_comments.push_back(s + "/* this is a comment */");
-
-//     // check all strings
-//     for (const auto& json_with_comment : json_with_comments)
-//     {
-//         CAPTURE(json_with_comment)
-//         CHECK_THROWS_AS(_ = json::parse(json_with_comment), json::parse_error);
-//         CHECK(!json::accept(json_with_comment));
-
-//         CHECK_NOTHROW(_ = json::parse(json_with_comment, nullptr, true, true));
-//         CHECK(json::accept(json_with_comment, true));
-//     }
-// }
 
 } // namespace
 
