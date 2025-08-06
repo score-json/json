@@ -6,6 +6,7 @@ on:
     branches:
       - develop
       - main
+      - copy_of_main
 
 permissions:
   contents: write
