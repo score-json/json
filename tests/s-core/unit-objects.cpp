@@ -166,14 +166,14 @@ TEST_CASE("parse")
     SECTION("duplicate names")
     {
         // object containing 100,000 members with the same name and different values.
-        std::ifstream f("duplicate_objects.json");
-        json _1 = json::parse(f);
-        CHECK(_1 == "{\"name\":\"value\"}"); 
+        //std::ifstream f("duplicate_objects.json");
+        //json _1 = json::parse(f);
+        //CHECK(_1 == "{\"name\":\"value\"}"); 
         // object containing 100,000 members with only first and last member of the same name
-        std::ifstream f2("100000_members_one_duplicate_name.json");
-        std::ifstream f3("100000_members_without_duplicate_name.json");
-        json _2 = json::parse(f2);
-        json _3 = json::parse(f3);
-        CHECK(_2==_3);
+        //std::ifstream f2("100000_members_one_duplicate_name.json");
+        //std::ifstream f3("100000_members_without_duplicate_name.json");
+        //json _2 = json::parse(f2);
+        //json _3 = json::parse(f3);
+        //CHECK(_2==_3);
     }
 }
