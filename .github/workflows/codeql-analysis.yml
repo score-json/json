@@ -1,11 +1,11 @@
 name: "Code scanning - action"
 
 on:
-#  push:
-#    branches:
-#      - develop
-#      - main
-#      - release/*
+  push:
+    branches:
+      - develop
+      - main
+      - release/*
   workflow_call:
     inputs:
       artifact_id:

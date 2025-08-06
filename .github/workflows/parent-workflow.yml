@@ -47,7 +47,7 @@ jobs:
 
   ubuntu:
     name: Run Ubuntu Workflow
-    needs: [codeql]
+    needs: [codeql] # Error if CodeQL and Ubuntu triggered at the same time due to conflicting priorities
     uses: ./.github/workflows/ubuntu.yml
     with:
       artifact_id: "ubuntu-${{ github.sha }}"
