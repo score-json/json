@@ -20,11 +20,7 @@ permissions:
   id-token: write
 
 on:
-  workflow_run:
-    workflows: 
-     - "Parent Workflow"
-    types:
-      - completed
+  pull_request:
 
 jobs:
   run-trudag:
