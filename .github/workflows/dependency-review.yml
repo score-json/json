@@ -7,7 +7,14 @@
 #
 # Source repository: https://github.com/actions/dependency-review-action
 name: 'Dependency Review'
-on: [pull_request]
+on:  
+  workflow_call:
+    inputs:
+      artifact_id:
+        description: 'Unique identifier for artifacts'
+        required: true
+        type: string
+
 
 permissions:
   contents: read
@@ -25,3 +32,16 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@ce3cf9537a52e8119d91fd484ab5b8a807627bf8 # v4.6.0
+
+
+      - name: Generate dependency_review artifact
+        run: |
+          echo "Generating Dependency Review artifact..."
+          mkdir -p dependency_review
+          echo "dependency review processed for ${{ inputs.artifact_id }}" > dependency_review/dependency_review.txt
+
+      - name: Upload dependency_review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact_id }}
+          path: dependency_review/
