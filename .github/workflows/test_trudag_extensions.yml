@@ -7,8 +7,6 @@ on:
         description: 'Unique identifier for artifacts'
         required: true
         type: string
-  push:
-    branches: [ main ]
 
 permissions:
   contents: read
