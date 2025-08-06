@@ -14,7 +14,6 @@ permissions:
   pull-requests: write
   id-token: write
   security-events: write
-  workflow_run: write
 
 jobs:
   hello-world:
