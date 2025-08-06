@@ -3,10 +3,10 @@ level: 1.1
 normative: true
 references:
         - type: cpp_test
-          name: "accept:exponents:U+0425"
+          name: "accept;exponents;U+0425"
           path: "/workspaces/json/tests/s-core/unit-numbers.cpp"
         - type: cpp_test
-          name: "accept:exponents:U+0436"
+          name: "accept;exponents;U+0436"
           path: "/workspaces/json/tests/s-core/unit-numbers.cpp"
 ---
 

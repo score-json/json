@@ -4,7 +4,7 @@ normative: true
 
 references:
         - type: cpp_test
-          name: "accept:basic multilingual plane"
+          name: "accept;basic multilingual plane"
           path: "/workspaces/json/tests/s-core/unit-strings.cpp"
 ---
 

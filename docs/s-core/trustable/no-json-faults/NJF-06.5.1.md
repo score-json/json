@@ -1,9 +1,9 @@
 ---
 level: 1.1
 normative: true
-reference:
+reference;
         - type: JSON_testsuite
-          name: "nst's JSONTestSuite (2):test_parsing:n"
+          name: "nst's JSONTestSuite (2);test_parsing;n"
           path: "/workspaces/json/tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/n_object_single_quote.json"
@@ -15,7 +15,7 @@ reference:
             - "/nst_json_testsuite2/test_parsing/n_object_unquoted_key.json"
           description: "Checks that invalid names are rejected."
         - type: JSON_testsuite 
-          name: "nst's JSONTestSuite (2):test_parsing:i -> n"
+          name: "nst's JSONTestSuite (2);test_parsing;i -> n"
           path: "/workspaces/json/tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/i_object_key_lone_2nd_surrogate.json"

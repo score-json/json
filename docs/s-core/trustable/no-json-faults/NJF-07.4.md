@@ -4,10 +4,10 @@ normative: true
 
 references:
         - type: cpp_test
-          name: "parser class:accept:string:escaped"
+          name: "parser class;accept;string;escaped"
           path: "/workspaces/json/tests/src/unit-class_parser.cpp"
         - type: JSON_testsuite
-          name: "nst's JSONTestSuite (2):test_parsing:y"
+          name: "nst's JSONTestSuite (2);test_parsing;y"
           path: "/workspaces/json/tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/y_string_1_2_3_bytes_UTF-8_sequences.json"
@@ -23,10 +23,10 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_string_escaped_noncharacter.json"
           description: "Checks that various escaped control and unicode characters are accepted."
         - type: cpp_test
-          name: "Unicode (1/5):\\\\uxxxx sequences:correct sequences"
+          name: "Unicode (1/5);\\\\uxxxx sequences;correct sequences"
           path: "/workspaces/json/tests/src/unit-unicode1.cpp"
         - type: cpp_test
-          name: "accept:basic multilingual plane"
+          name: "accept;basic multilingual plane"
           path: "/workspaces/json/tests/s-core/unit-strings.cpp"
 ---
 

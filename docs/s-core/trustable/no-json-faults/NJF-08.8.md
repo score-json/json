@@ -4,17 +4,17 @@ normative: true
 
 references:
         - type: JSON_testsuite
-          name: "nst's JSONTestSuite (2):test_parsing:n"
+          name: "nst's JSONTestSuite (2);test_parsing;n"
           path: "/workspaces/json/tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/n_number_-01.json"
             - "/nst_json_testsuite2/test_parsing/n_number_neg_int_starting_with_zero.json"
           description: "Checks that -01 is rejected."
         - type: cpp_test
-          name: "parser class:accept:number:invalid numbers"
+          name: "parser class;accept;number;invalid numbers"
           path: "/workspaces/json/tests/src/unit-class_parser.cpp"
         - type: cpp_test
-          name: "accept:Leading zeroes"
+          name: "accept;Leading zeroes"
           path: "/workspaces/json/tests/s-core/unit-numbers.cpp"
 ---
 

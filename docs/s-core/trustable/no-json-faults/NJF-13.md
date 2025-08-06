@@ -4,7 +4,7 @@ normative: true
 
 references:
         - type: cpp_test
-          name: "compliance tests from json.org:expected passes"
+          name: "compliance tests from json.org;expected passes"
           path: "/workspaces/json/tests/src/unit-testsuites.cpp"
 ---
 

@@ -4,7 +4,7 @@ normative: true
 
 references:
         - type: cpp_test
-          name: "accept:noncharacter code positions"
+          name: "accept;noncharacter code positions"
           path: "/workspaces/json/tests/s-core/unit-strings.cpp"
 ---
 

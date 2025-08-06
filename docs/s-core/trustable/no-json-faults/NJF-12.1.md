@@ -4,7 +4,7 @@ normative: true
 
 references:
         - type: cpp_test
-          name: "accept:malformed sequences"
+          name: "accept;malformed sequences"
           path: "/workspaces/json/tests/s-core/unit-strings.cpp"
 ---
 

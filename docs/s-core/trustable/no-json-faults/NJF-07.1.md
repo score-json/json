@@ -4,10 +4,10 @@ normative: true
 
 references:
         - type: cpp_test
-          name: "parser class:accept:string"
+          name: "parser class;accept;string"
           path: "/workspaces/json/tests/src/unit-class_parser.cpp"
         - type: cpp_test
-          name: "compliance tests from nativejson-benchmark:strings"
+          name: "compliance tests from nativejson-benchmark;strings"
           path: "/workspaces/json/tests/src/unit-testsuites.cpp"
             
 ---

@@ -4,7 +4,7 @@ normative: true
 
 references:
         - type: cpp_test
-          name: "nst's JSONTestSuite (2):test_parsing:n"
+          name: "nst's JSONTestSuite (2);test_parsing;n"
           path: "/workspaces/json/tests/src/unit-testsuites.cpp"
 ---
 

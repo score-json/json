@@ -3,10 +3,10 @@ level: 1.1
 normative: true
 references:
         - type: cpp_test
-          name: "deserialization:contiguous containers:error cases:case 15"
+          name: "deserialization;contiguous containers;error cases;case 15"
           path: "/workspaces/json/tests/src/unit-deserialization.cpp"
         - type: JSON_testsuite
-          name: "nst's JSONTestSuite (2):test_parsing:n"
+          name: "nst's JSONTestSuite (2);test_parsing;n"
           path: "/workspaces/json/tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/n_structure_comma_instead_of_closing_brace.json"

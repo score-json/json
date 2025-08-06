@@ -4,7 +4,7 @@ normative: true
 
 references:
         - type: cpp_test
-          name: "parser class:accept:string:errors"
+          name: "parser class;accept;string;errors"
           path: "/workspaces/json/tests/src/unit-class_parser.cpp"
 ---
 

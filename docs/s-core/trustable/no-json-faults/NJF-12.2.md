@@ -4,7 +4,7 @@ normative: true
 
 references:
         - type: cpp_test
-          name: "accept:overlong sequences"
+          name: "accept;overlong sequences"
           path: "/workspaces/json/tests/s-core/unit-strings.cpp"
 ---
 

@@ -3,10 +3,10 @@ level: 1.1
 normative: true
 references:
         - type: cpp_test
-          name: "parser class:accept:object:nonempty object"
+          name: "parser class;accept;object;nonempty object"
           path: "/workspaces/json/tests/src/unit-class_parser.cpp"
         - type: JSON_testsuite
-          name: "nst's JSONTestSuite (2):test_parsing:y"
+          name: "nst's JSONTestSuite (2);test_parsing;y"
           path: "/workspaces/json/tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/y_object_basic.json"
@@ -22,13 +22,13 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_object_with_newlines.json"
           description: "Checks that various keys, particularly containing unicode characters, are accepted."
         - type: cpp_test
-          name: "accept:names:strings:control characters"
+          name: "accept;names;strings;control characters"
           path: "/workspaces/json/tests/s-core/unit-objects.cpp"
         - type: cpp_test
-          name: "accept:names:strings:unicode"
+          name: "accept;names;strings;unicode"
           path: "/workspaces/json/tests/s-core/unit-objects.cpp"
         - type: cpp_test
-          name: "accept:names:strings:escaped UTF-16 surrogates"
+          name: "accept;names;strings;escaped UTF-16 surrogates"
           path: "/workspaces/json/tests/s-core/unit-objects.cpp"          
 ---
 
