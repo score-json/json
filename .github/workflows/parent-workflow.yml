@@ -49,6 +49,7 @@ jobs:
 
   dependency_review:
     name: Run dependency_review Workflow
+    if: ${{ github.event_name == 'pull_request' }} 
     uses: ./.github/workflows/dependency-review.yml
     with:
       artifact_id: "dependency_review-${{ github.sha }}"
@@ -56,12 +57,13 @@ jobs:
 
   collect-and-deploy:
     name: "Collect Results & Deploy"
-    needs: [labeler, check_amalgamation, test_trudag_extensions, codeql, dependency_review, ubuntu]
+    #Only expect artifact from dependency_review if triggered by pull request
+    needs: ${{ github.event_name == 'pull_request' && 'labeler, check_amalgamation, test_trudag_extensions, codeql, dependency_review, ubuntu' || 'labeler, check_amalgamation, test_trudag_extensions, codeql, ubuntu' }}
     runs-on: ubuntu-latest
     if: always() # Run even if some jobs fail
     strategy:
       matrix:
-        target: [labeler, check_amalgamation, test_trudag_extensions, codeql, dependency_review, ubuntu] 
+        target: ${{ github.event_name == 'pull_request' && 'labeler, check_amalgamation, test_trudag_extensions, codeql, dependency_review, ubuntu' || 'labeler, check_amalgamation, test_trudag_extensions, codeql, ubuntu' }} 
 
     steps:
       - name: Checkout code
