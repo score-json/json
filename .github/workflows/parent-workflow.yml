@@ -4,9 +4,7 @@ on:
   pull_request:
   push: 
     branches:
-      - develop
       - main
-      - copy_of_main
 
 permissions:
   contents: write
