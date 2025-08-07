@@ -1,0 +1,532 @@
+
+
+---
+
+### AOU-01 
+
+Problems with nlohmann_json's implementation identified during testing are reported to the upstream nlohmann_json project.
+
+
+**Supported Requests;**
+
+- [TA-FIXES](TA.md#ta-fixes)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
+
+
+---
+
+### AOU-02 
+
+The build environment used for nlohmann_json in an integrating system is supplied with consistent dependencies.
+
+
+**Supported Requests;**
+
+- [TA-SUPPLY_CHAIN](TA.md#ta-supply_chain)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
+
+
+---
+
+### AOU-03 
+
+The integrator has integrator-controlled mirrors of the dependencies.
+
+
+**Supported Requests;**
+
+- [TA-SUPPLY_CHAIN](TA.md#ta-supply_chain)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
+
+
+---
+
+### AOU-04 
+
+Exceptions are properly handled or turned off.
+
+
+**Supported Requests;**
+
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
+
+
+---
+
+### AOU-05 
+
+Input is encoded as UTF-8 (as required by RFC8259) and in case other string formats are used, it is expected that the parse or dump function may throw an exception.
+
+
+**Supported Requests;**
+
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
+
+
+---
+
+### AOU-06 
+
+Brace initialization (e.g. json j{true};) is not used with the types basic_json, json, or ordered_json unless you want to create an object or array.
+
+
+**Supported Requests;**
+
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
+
+
+---
+
+### AOU-07 
+
+If the input is no valid JSON, exceptions are expected during parsing with default parameters.
+
+
+**Supported Requests;**
+
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
+
+
+---
+
+### AOU-08 
+
+The integrator ensures that all necessary source files and built tools are mirrored, e.g. using a built server without internet access.
+
+
+**Supported Requests;**
+
+- [TA-RELEASES](TA.md#ta-releases)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
+
+
+---
+
+### AOU-09 
+
+TA-INDICATORS falls within the responsibility of the integrator.
+
+
+**Supported Requests;**
+
+- [TA-INDICATORS](TA.md#ta-indicators)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
+
+
+---
+
+### AOU-10 
+
+The integrator is required to evaluate the provided evidence for TA-FIXES and supplement it where necessary.
+
+
+**Supported Requests;**
+
+- [TA-FIXES](TA.md#ta-fixes)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
+
+
+---
+
+### AOU-11 
+
+The integrator is required to evaluate the provided evidence for TA-METHODOLOGIES and supplement it where necessary.
+
+
+**Supported Requests;**
+
+- [TA-METHODOLOGIES](TA.md#ta-methodologies)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
+
+
+---
+
+### AOU-12 
+
+The integrator is required to evaluate the provided evidence for TA-CONFIDENCE and supplement it where necessary.
+
+
+**Supported Requests;**
+
+- [TA-CONFIDENCE](TA.md#ta-confidence)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
+
+
+---
+
+### AOU-13 
+
+The integrator is required to evaluate the provided evidence for TA-INPUTS and supplement it where necessary.
+
+
+**Supported Requests;**
+
+- [TA-INPUTS](TA.md#ta-inputs)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
+
+
+---
+
+### AOU-14 
+
+The JSON-library is built with tools from the provided matrix specification. (not yet provided)
+
+
+**Supported Requests;**
+
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
+
+
+---
+
+### AOU-15 
+
+The integrator maintains mirrors for all code and tools utilized in testing.
+
+
+**Supported Requests;**
+
+- [TA-TESTS](TA.md#ta-tests)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
+
+
+---
+
+### AOU-16 
+
+The integrator uses C++ versions and compilers that are tested in the CI pipeline.
+
+
+**Supported Requests;**
+
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
+
+
+---
+
+### AOU-17 
+
+The integrator is responsible for identifying additional misbehaviours for the JSON library, defining appropriate mitigations, and ensuring that these mitigations are thoroughly validated.
+
+
+**Supported Requests;**
+
+- [TA-MISBEHAVIOURS](TA.md#ta-misbehaviours)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
+
+
+---
+
+### AOU-18 
+
+The integrator ensures monitoring data from deployed software is accurately captured, securely stored, and well-documented for analysis.
+
+
+**Supported Requests;**
+
+- [TA-DATA](TA.md#ta-data)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
+
+
+---
+
+### AOU-19 
+
+The integrator ensures that monitoring data is systematically analyzed to detect trends and identify issues.
+
+
+**Supported Requests;**
+
+- [TA-ANALYSIS](TA.md#ta-analysis)
+
+**Supporting Items;**
+
+_None_
+
+
+
+**References;**
+
+_None_
+
+
+
+**Fallacies;**
+
+_None_
