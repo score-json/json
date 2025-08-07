@@ -72,7 +72,7 @@ class CPPTestReference(BaseReference):
         Returns:
             Line index where the section starts (i.e. the line containing SECTION or TEST_CASE)
         """
-        section_names = self._name.split(':')
+        section_names = self._name.split(';')
         for line_number, line in enumerate(file_lines):
             # Check if current line contains a SECTION or TEST_CASE declaration matching the current first section name
             section_pattern = f'SECTION("{section_names[0]}"'

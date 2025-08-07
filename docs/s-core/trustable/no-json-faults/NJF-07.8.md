@@ -1,7 +1,7 @@
 ---
 level: 1.1
 normative: true
-reference;
+references:
         - type: cpp_test
           name: "accept;basic multilingual plane"
           path: "/workspaces/json/tests/s-core/unit-strings.cpp"
