@@ -52,7 +52,7 @@ jobs:
     with:
       artifact_id: "dependency_review-${{ github.sha }}"
 
-  collect-and-deploy-pr:
+  collect_and_deploy_pr:
     name: "Collect Results & Deploy (PR)"
     if: github.event_name == 'pull_request'
     needs: [labeler, check_amalgamation, test_trudag_extensions, dependency_review, codeql, ubuntu]
@@ -92,7 +92,7 @@ jobs:
           echo "✅ Deployment completed successfully!"
 
 
-  collect-and-deploy-non-pr:
+  collect_and_deploy_non_pr:
     name: "Collect Results & Deploy (Non-PR)"
     if: github.event_name != 'pull_request'
     needs: [labeler, check_amalgamation, test_trudag_extensions, codeql, ubuntu]  # no dependency_review if non PR
@@ -130,3 +130,19 @@ jobs:
           echo "🚀 Simulating deployment..."
           sleep 2
           echo "✅ Deployment completed successfully!"
+
+  publish_documentation_pr:
+    name: Run publish_documentation Workflow pr
+    if: github.event_name == 'pull_request'
+    needs: [collect_and_deploy_pr]
+    uses: ./.github/workflows/publish_documentation.yml
+    with:
+      artifact_id: "publish_documentation-${{ github.sha }}"
+
+  publish_documentation_non_pr:
+    name: Run publish_documentation Workflow non pr
+    if: github.event_name != 'pull_request'
+    needs: [collect_and_deploy_non_pr]
+    uses: ./.github/workflows/publish_documentation.yml
+    with:
+      artifact_id: "publish_documentation-${{ github.sha }}"
