@@ -1,13 +1,18 @@
 name: Ubuntu
 
 on:
+  workflow_call:
+    inputs:
+      artifact_id:
+        description: 'Unique identifier for artifacts'
+        required: true
+        type: string
+  workflow_dispatch:
   push:
     branches:
       - develop
       - main
       - release/*
-  pull_request:
-  workflow_dispatch:
   schedule:
   # Runs every day at 9:00 AM UTC
   - cron: "0 9 * * *"
@@ -253,3 +258,19 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
+
+  ubuntu_artifact:
+    runs-on: ubuntu-latest
+    needs: [ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
+    steps:
+      - name: Generate ubuntu artifact
+        run: |
+          echo "Generating ubuntu artifact..."
+          mkdir -p ubuntu
+          echo "ubuntu processed for ${{ inputs.artifact_id }}" > ubuntu/ubuntu.txt
+
+      - name: Upload ubuntu artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact_id }}
+          path: ubuntu/
