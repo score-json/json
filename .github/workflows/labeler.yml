@@ -1,12 +1,8 @@
 name: "Pull Request Labeler"
 
 on:
-  workflow_call:
-    inputs:
-      artifact_id:
-        description: 'Unique identifier for artifacts'
-        required: true
-        type: string
+  pull_request_target:
+    types: [opened, synchronize]
 
 permissions:
   contents: read
@@ -28,15 +24,3 @@ jobs:
       - uses: srvaroa/labeler@e216fb40e2e6d3b17d90fb1d950f98bee92f65ce # master
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-
-      - name: Generate label artifact
-        run: |
-          echo "Generating label artifact..."
-          mkdir -p labeler
-          echo "Labels processed for ${{ inputs.artifact_id }}" > labeler/labeler.txt
-
-      - name: Upload label artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ inputs.artifact_id }}
-          path: labeler/

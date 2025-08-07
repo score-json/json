@@ -1,15 +1,9 @@
 name: Test Trudag extensions
 
 on:
-  workflow_call:
-    inputs:
-      artifact_id:
-        description: 'Unique identifier for artifacts'
-        required: true
-        type: string
-
-permissions:
-  contents: read
+  push:
+    branches: [ main ]
+  pull_request:
 
 jobs:
   test:
@@ -33,15 +27,3 @@ jobs:
       run: |
         cd .dotstop_extensions
         pytest -v
-
-    - name: Generate test_trudag_extensions artifact
-      run: |
-        echo "Generating test_trudag_extensions artifact..."
-        mkdir -p test_trudag_extensions
-        echo "test_trudag_extensions processed for ${{ inputs.artifact_id }}" > test_trudag_extensions/test_trudag_extensions.txt
-
-    - name: Upload test_trudag_extensions artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: ${{ inputs.artifact_id }}
-        path: test_trudag_extensions/

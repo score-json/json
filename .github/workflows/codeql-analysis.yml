@@ -12,6 +12,7 @@ on:
         description: 'Unique identifier for artifacts'
         required: true
         type: string
+
   schedule:
     - cron: '0 19 * * 1'
   workflow_dispatch:
@@ -22,7 +23,6 @@ concurrency:
 
 permissions:
   contents: read
-  
 
 jobs:
   CodeQL-Build:
@@ -53,15 +53,3 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@fc7e4a0fa01c3cca5fd6a1fddec5c0740c977aa2 # v3.28.14
-
-    - name: Generate codeql artifact
-      run: |
-        echo "Generating codeql artifact..."
-        mkdir -p codeql
-        echo "codeql processed for ${{ inputs.artifact_id }}" > codeql/codeql.txt
-
-    - name: Upload codeql artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: ${{ inputs.artifact_id }}
-        path: codeql/

@@ -5,7 +5,7 @@ on:
   push: 
     branches:
       - main
-#test
+
 permissions:
   contents: write
   pages: write
@@ -60,6 +60,7 @@ jobs:
     strategy:
       matrix:
         target: [labeler, check_amalgamation, test_trudag_extensions, dependency_review]
+
 
     steps:
       - name: Checkout code
