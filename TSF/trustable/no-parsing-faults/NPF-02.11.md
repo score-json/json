@@ -3,7 +3,7 @@ level: 1.1
 normative: true
 references:
         - type: cpp_test
-          name: "regression tests 1;issue #186 miloyip/nativejson-benchmak; floating-point parsing"
+          name: "regression tests 1;issue #186 miloyip/nativejson-benchmark: floating-point parsing"
           path: "/workspaces/json/tests/src/unit-regression1.cpp"
 ---
 

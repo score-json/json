@@ -3,7 +3,7 @@ level: 1.1
 normative: true
 references:
         - type: cpp_test
-          name: "parse;exponent;leading zeroes"
+          name: "parse;exponents;leading zeroes"
           path: "/workspaces/json/TSF/tests/unit-numbers.cpp"
 ---
 
