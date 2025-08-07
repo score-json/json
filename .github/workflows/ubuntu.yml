@@ -7,16 +7,7 @@ on:
         description: 'Unique identifier for artifacts'
         required: true
         type: string
-  workflow_dispatch:
-  push:
-    branches:
-      - develop
-      - main
-      - release/*
-  schedule:
-  # Runs every day at 9:00 AM UTC
-  - cron: "0 9 * * *"
-
+        
 permissions:
   contents: read
 
