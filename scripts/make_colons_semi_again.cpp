@@ -28,6 +28,12 @@ string restore_args(const string& input){
     output = regex_replace(output, regex("path;"), "path:");
     output = regex_replace(output, regex("test_suite_paths;"), "test_suite_paths:");
     output = regex_replace(output, regex("description;"), "description:");
+    output = regex_replace(output, regex("references;"), "references:");
+    output = regex_replace(output, regex("reference;"), "reference:");
+    output = regex_replace(output, regex("reference:"), "references:");
+    output = regex_replace(output, regex("https;//"), "https://");
+    output = regex_replace(output, regex("json;;"), "json::");
+    output = regex_replace(output, regex("std;;"), "std::");
     return output;
 }
 

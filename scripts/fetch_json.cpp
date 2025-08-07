@@ -6,7 +6,37 @@
 
 using namespace std;
 
-string replace_tab_with_spaces(const string& input, int num_of_spaces = 4){
+/*
+This is a command line tool that fetches the .json file-names from the file unit-testsuites.cpp and
+prints the result into a file using the desired format for use in the items in the trustable graph.
+
+User inputs are asked from the command line and are
+    - relative path to file from which names are read (i.e. unit-testsuites.cpp)
+    - relative path to output file
+    - name of the test
+    - description of the test
+    - whether a single line at a time is to be read or all lines from a starting line until an ending line
+    - these lines
+
+Assumptions:
+    - A .json filename is the only value within quotation marks in a line containing "TEST_DATA_DIRECTORY".
+    - The provided lines are valid.
+
+Dangers:
+    - output file is overwritten by default.
+
+*/
+
+string replace_tab_with_spaces(const string& input, const int num_of_spaces = 4);
+string wrapper_for_trudag(string evidence, string wrap_left = "\t\t\t- \"", string wrap_right = "\"\n");
+bool get_json_from_line(int line, ifstream& source, ofstream& target);
+bool read_line_by_line(ifstream& source, ofstream& target);
+bool read_region(ifstream& source, ofstream& target);
+
+
+// Horizontal tabs are automatically replaced by four spaces in VSCode except if a '\t' is pasted into the file.
+// This function does the same.
+string replace_tab_with_spaces(const string& input, const int num_of_spaces = 4){
     string output = input;
     string spaces = "    ";
     regex tab("\t");
@@ -20,12 +50,15 @@ string replace_tab_with_spaces(const string& input, int num_of_spaces = 4){
     return output;
 }
 
+// This function brings a filename in the format which can be directly pasted in the item of the trustable graph.
 string wrapper_for_trudag(string evidence, string wrap_left = "\t\t\t- \"", string wrap_right = "\"\n"){
     stringstream res;
     res << wrap_left << evidence << wrap_right;
     return res.str();
 }
 
+// This function attempts to extract the filename.json from a candidate line.
+// On error, an exception is thrown.
 string get_json_from_candidate(string candidate){
     regex pattern("\"([^\"]*)\"");
     smatch m;
@@ -36,6 +69,8 @@ string get_json_from_candidate(string candidate){
     }
 }
 
+// Attempts to extract filename.json from a specified line in the source file and writes it into the target file.
+// If filename.json could be located, true is returned, and false otherwise.
 bool get_json_from_line(int line, ifstream& source, ofstream& target){
     if (line<=0){
         throw;
@@ -61,8 +96,8 @@ bool get_json_from_line(int line, ifstream& source, ofstream& target){
     return true;
 }
 
-void replace(ifstream& source, ofstream& target){}
-
+// Reads the filename.json line by line.
+// Asks the user to input the line-numbers.
 bool read_line_by_line(ifstream& source, ofstream& target){
     int line = -1;
     string ans;
@@ -92,6 +127,8 @@ bool read_line_by_line(ifstream& source, ofstream& target){
     return true;
 }
 
+// Reads the filename.json beginning from a starting line until (inclusively) an ending line.
+// Asks the reader to input these line-numbers. 
 bool read_region(ifstream& source, ofstream& target){
     int start_line;
     int end_line;
