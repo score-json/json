@@ -1,7 +1,12 @@
 name: "Check amalgamation"
 
 on:
-  pull_request:
+  workflow_call:
+    inputs:
+      artifact_id:
+        description: 'Unique identifier for artifacts'
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -74,3 +79,15 @@ jobs:
           ${{ github.workspace }}/venv/bin/astyle --project=tools/astyle/.astylerc --suffix=orig $(find docs/examples include tests -type f \( -name '*.hpp' -o -name '*.cpp' -o -name '*.cu' \) -not -path 'tests/thirdparty/*' -not -path 'tests/abi/include/nlohmann/*' | sort)
           echo Check
           find $MAIN_DIR -name '*.orig' -exec false {} \+
+
+      - name: Generate amalgamation artifact
+        run: |
+          echo "Generating amalgamation artifact..."
+          mkdir -p check_amalgamation
+          echo "Amalgamation processed for ${{ inputs.artifact_id }}" > check_amalgamation/check_amalgamation.txt
+
+      - name: Upload amalgamation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact_id }}
+          path: check_amalgamation/
