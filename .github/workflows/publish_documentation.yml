@@ -20,11 +20,12 @@ permissions:
   id-token: write
 
 on:
-  workflow_run:
-    workflows: 
-     - "Parent Workflow"
-    types:
-      - completed
+  workflow_call:
+    inputs:
+      artifact_id:
+        description: 'Unique identifier for artifacts'
+        required: true
+        type: string
 
 jobs:
   run-trudag:
