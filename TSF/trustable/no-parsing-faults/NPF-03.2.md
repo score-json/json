@@ -9,7 +9,7 @@ references:
           name: "compliance tests from nativejson-benchmark;strings"
           path: "/workspaces/json/tests/src/unit-testsuites.cpp"
         - type: cpp_test
-          name: "Unicode (1/5);\\uxxxx sequences;correct sequences"
+          name: "Unicode (1/5);\\\\uxxxx sequences;correct sequences"
           path: "/workspaces/json/tests/src/unit-unicode1.cpp"
 ---
 
