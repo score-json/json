@@ -3,8 +3,8 @@ level: 1.1
 normative: true
 references:
         - type: cpp_test
-          name: "parse;exponent;leading zeroes"
+          name: "parse;exponents;Capitalisation"
           path: "/workspaces/json/tests/s-core/unit-numbers.cpp"
 ---
 
-The service ignores leading zeroes in the exponent.
+The service ignores capitalisation of the exponent.
