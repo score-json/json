@@ -17,6 +17,6 @@ references:
           path: "/workspaces/json/TSF/tests/unit-literals.cpp"
 ---
 
-The service does not accept NaN, infinity. (Could be added)
+The service does not accept NaN, infinity.
 
 

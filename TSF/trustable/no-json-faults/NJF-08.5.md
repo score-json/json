@@ -10,4 +10,4 @@ references:
           path: "/workspaces/json/TSF/tests/unit-numbers.cpp"
 ---
 
-The service does not accept cyrillic e u0415, u0436, nor exp. (could be added)
+The service does not accept cyrillic e u0415, u0436, nor exp.

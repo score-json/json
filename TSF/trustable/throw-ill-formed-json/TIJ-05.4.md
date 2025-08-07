@@ -1,0 +1,6 @@
+---
+level: 1.1
+normative: true
+---
+
+The service throws an exception if any member has an improper value.

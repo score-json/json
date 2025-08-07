@@ -275,7 +275,8 @@ TEST_CASE("parse")
                 // Observe that this verbatim not what RFC8259 §7 prescribes; 
                 // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
                 // Illegal characters are not parsed anyway.
-                continue;
+                CHECK_THROWS_AS(json::parse(temp.str()),json::parse_error&);
+                CHECK_THROWS_AS(json::parse(temp2.str()),json::parse_error&);
             } else { 
                 // all other characters of the basic multilingual plane are accepted.
                 CHECK(json::parse(temp.str())==json::parse(temp2.str()));
@@ -286,15 +287,30 @@ TEST_CASE("parse")
     {
         for (uint32_t i = 0x0000; i<=0x10FFFF; i++)
         {
-            if (i>=0xD800 && i<=0xDFFF)
-            {
+            if (i>=0xD800 && i<=0xDFFF||i<0x0020||i==0x0022||i==0x005c) { 
                 // Unpaired utf-16 surrogates are illegal.
                 // Observe that this verbatim not what RFC8259 §7 prescribes; 
                 // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
-                // Illegal characters are not parsed anyway.
-                continue;
-            } else if (i<0x0020||i==0x0022||i==0x005c) { 
-                // These characters are illegal if unescaped.
+                // The other characters are illegal if unescaped.
+                std::string temp = "\"";
+                // evil chat-gpt magic transforms i into utf-8 encoded unescaped character
+                if (i <= 0x7F) {
+                    temp += static_cast<char>(i); // 1-byte (ASCII)
+                } else if (i <= 0x7FF) {
+                    temp += static_cast<char>(0xC0 | ((i >> 6) & 0x1F)); // 2-byte sequence
+                    temp += static_cast<char>(0x80 | (i & 0x3F));
+                } else if (i <= 0xFFFF) {
+                    temp += static_cast<char>(0xE0 | ((i >> 12) & 0x0F)); // 3-byte sequence
+                    temp += static_cast<char>(0x80 | ((i >> 6) & 0x3F));
+                    temp += static_cast<char>(0x80 | (i & 0x3F));
+                } else if (i <= 0x10FFFF) {
+                    temp += static_cast<char>(0xF0 | ((i >> 18) & 0x07)); // 4-byte sequence
+                    temp += static_cast<char>(0x80 | ((i >> 12) & 0x3F));
+                    temp += static_cast<char>(0x80 | ((i >> 6) & 0x3F));
+                    temp += static_cast<char>(0x80 | (i & 0x3F));
+                }
+                temp += "\"";
+                CHECK_THROWS_AS(json::parse(temp),json::parse_error&);
             } else {
                 // All other characters are valid according to RFC8259
                 std::string temp = "\"";

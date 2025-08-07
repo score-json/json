@@ -19,4 +19,4 @@ references:
           path: "/workspaces/json/TSF/tests/unit-numbers.cpp"
 ---
 
-The service does not accept any base exceeding 10 in ist standard representation. (could be added)
+The service does not accept any base exceeding 10 in ist standard representation.
