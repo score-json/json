@@ -47,6 +47,7 @@ string restore_args(const string& input){
     output = regex_replace(output, regex("json;;"), "json::");
     output = regex_replace(output, regex("std;;"), "std::");
     output = regex_replace(output, regex("ill-formed;"), "ill-formed:");
+    output = regex_replace(output, regex("miloyip/nativejson-benchmark;"), "miloyip/nativejson-benchmark:");
     return output;
 }
 
