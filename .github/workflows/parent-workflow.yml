@@ -126,12 +126,6 @@ jobs:
           name: "${{ matrix.target }}-${{ github.sha }}"
           path: artifacts/
 
-      - name: Deployment simulation
-        run: |
-          echo "🚀 Simulating deployment..."
-          sleep 2
-          echo "✅ Deployment completed successfully!"
-
   publish_documentation_pr:
     name: Run publish_documentation Workflow pr
     if: github.event_name == 'pull_request'
