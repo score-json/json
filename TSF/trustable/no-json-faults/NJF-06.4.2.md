@@ -11,7 +11,7 @@ references:
           description: "Checks that numbers as keys are rejected."
         - type: cpp_test
           name: "accept;names"
-          path: "/workspaces/json/tests/src/unit-testsuites.cpp"
+          path: "/workspaces/json/TSF/tests/unit-objects.cpp"
 ---
 
 The service does not accept any other token as name.
