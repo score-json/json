@@ -16,7 +16,7 @@ This change was necessary because the folders of the project have been restructu
 This method replaces every single path within a file.
 It is assumed that the input is a file, and not a path; and this is not tested for.
 */
-void replace_colons(const filesystem::path& file){
+void fix_paths(const filesystem::path& file){
     ifstream source(file);
     stringstream buffer;
     buffer << source.rdbuf();
@@ -30,13 +30,13 @@ void replace_colons(const filesystem::path& file){
 
 /*
 The program gets the relative path of a directory as input. 
-Within this directory, replace_colons is applied to every single mark-down file.
+Within this directory, fix_paths is applied to every single mark-down file.
 */
 int main(int argnum, char* args[]){
     for (int arg = 1; arg<argnum; arg++){
         for (const auto& entry: filesystem::recursive_directory_iterator(args[arg])){
             if (filesystem::is_regular_file(entry) && entry.path().extension()==".md"){
-                replace_colons(entry.path());
+                fix_paths(entry.path());
             }            
         }
     }
