@@ -337,6 +337,10 @@ TEST_CASE("parse")
             CHECK(json::parse("1.0034\u0045+23")==json::parse("1.0034\u004523"));
             CHECK(json::parse("1.0034\u0065+23")==json::parse("1.0034\u006523"));
         }
+        SECTION("Capitalisation")
+        {
+            CHECK(json::parse("3.1415\u00454")==json::parse("3.1415\u00654"));
+        }
     }
     SECTION("trailing zeroes")
     {   
@@ -352,5 +356,21 @@ TEST_CASE("parse")
     {
         // Leading and trailing whitespace is ignored.
         CHECK(json::parse("\n\n\t 123\n\t\t  \u000d")==json::parse("123"));
+        CHECK(json::parse(" 123 ")==json::parse("123"));
+        CHECK(json::parse(" 123\t")==json::parse("123"));
+        CHECK(json::parse(" 123\n")==json::parse("123"));
+        CHECK(json::parse(" 123\u000d")==json::parse("123"));
+        CHECK(json::parse("\t123 ")==json::parse("123"));
+        CHECK(json::parse("\t123\t")==json::parse("123"));
+        CHECK(json::parse("\t123\n")==json::parse("123"));
+        CHECK(json::parse("\t123\u000d")==json::parse("123"));
+        CHECK(json::parse("\n123 ")==json::parse("123"));
+        CHECK(json::parse("\n123\t")==json::parse("123"));
+        CHECK(json::parse("\n123\n")==json::parse("123"));
+        CHECK(json::parse("\n123\u000d")==json::parse("123"));
+        CHECK(json::parse("\u000d123 ")==json::parse("123"));
+        CHECK(json::parse("\u000d123\t")==json::parse("123"));
+        CHECK(json::parse("\u000d123\n")==json::parse("123"));
+        CHECK(json::parse("\u000d123\u000d")==json::parse("123"));
     }
 }

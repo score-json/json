@@ -319,4 +319,24 @@ TEST_CASE("parse")
             }
         }
     }
+    SECTION("whitespace")
+    {
+        // leading and trailing whitespace is ignored.
+        CHECK(json::parse(" \"foo\" ")==json::parse("foo"));
+        CHECK(json::parse(" \"foo\"\t")==json::parse("foo"));
+        CHECK(json::parse(" \"foo\"\n")==json::parse("foo"));
+        CHECK(json::parse(" \"foo\"\u000d")==json::parse("foo"));
+        CHECK(json::parse("\t\"foo\" ")==json::parse("foo"));
+        CHECK(json::parse("\t\"foo\"\t")==json::parse("foo"));
+        CHECK(json::parse("\t\"foo\"\n")==json::parse("foo"));
+        CHECK(json::parse("\t\"foo\"\u000d")==json::parse("foo"));
+        CHECK(json::parse("\n\"foo\" ")==json::parse("foo"));
+        CHECK(json::parse("\n\"foo\"\t")==json::parse("foo"));
+        CHECK(json::parse("\n\"foo\"\n")==json::parse("foo"));
+        CHECK(json::parse("\n\"foo\"\u000d")==json::parse("foo"));
+        CHECK(json::parse("\u000d\"foo\" ")==json::parse("foo"));
+        CHECK(json::parse("\u000d\"foo\"\t")==json::parse("foo"));
+        CHECK(json::parse("\u000d\"foo\"\n")==json::parse("foo"));
+        CHECK(json::parse("\u000d\"foo\"\u000d")==json::parse("foo"));
+    }
 }
