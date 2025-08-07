@@ -10,7 +10,7 @@ references:
           path: "/workspaces/json/tests/src/unit-unicode1.cpp"
         - type: cpp_test
           name: "parse;unescaped unicode"
-          path: "/workspaces/json/tests/s-core/unit-strings.cpp"
+          path: "/workspaces/json/TSF/tests/unit-strings.cpp"
 ---
 
 The service parses all unescaped utf-8 characters except quotation mark, reverse solidus and the control characters.

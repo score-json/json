@@ -5,7 +5,7 @@ normative: true
 references:
         - type: cpp_test
           name: "accept;basic multilingual plane"
-          path: "/workspaces/json/tests/s-core/unit-strings.cpp"
+          path: "/workspaces/json/TSF/tests/unit-strings.cpp"
 ---
 
 The service accepts well-formed UTF-8 data.

@@ -5,7 +5,7 @@ normative: true
 references:
         - type: cpp_test
           name: "accept;overlong sequences"
-          path: "/workspaces/json/tests/s-core/unit-strings.cpp"
+          path: "/workspaces/json/TSF/tests/unit-strings.cpp"
 ---
 
 The service rejects "overlong sequences".

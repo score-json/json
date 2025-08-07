@@ -23,13 +23,13 @@ references:
           description: "Checks that various keys, particularly containing unicode characters, are accepted."
         - type: cpp_test
           name: "accept;names;strings;control characters"
-          path: "/workspaces/json/tests/s-core/unit-objects.cpp"
+          path: "/workspaces/json/TSF/tests/unit-objects.cpp"
         - type: cpp_test
           name: "accept;names;strings;unicode"
-          path: "/workspaces/json/tests/s-core/unit-objects.cpp"
+          path: "/workspaces/json/TSF/tests/unit-objects.cpp"
         - type: cpp_test
           name: "accept;names;strings;escaped UTF-16 surrogates"
-          path: "/workspaces/json/tests/s-core/unit-objects.cpp"          
+          path: "/workspaces/json/TSF/tests/unit-objects.cpp"          
 ---
 
 The service accepts strings as names. 

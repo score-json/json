@@ -16,7 +16,7 @@ references:
           description: "Rejects Hexadecimals"
         - type: cpp_test
           name: "accept;bases"
-          path: "/workspaces/json/tests/s-core/unit-numbers.cpp"
+          path: "/workspaces/json/TSF/tests/unit-numbers.cpp"
 ---
 
 The service does not accept any base exceeding 10 in ist standard representation. (could be added)

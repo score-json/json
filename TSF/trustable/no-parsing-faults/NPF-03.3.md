@@ -4,7 +4,7 @@ normative: true
 references:
         - type: cpp_test
           name: "parse;escaped unicode"
-          path: "/workspaces/json/tests/s-core/unit-strings.cpp"
+          path: "/workspaces/json/TSF/tests/unit-strings.cpp"
 ---
 
 The service ignores capitalisation in escaped hexadecimal unicode.

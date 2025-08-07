@@ -27,7 +27,7 @@ references:
           path: "/workspaces/json/tests/src/unit-unicode1.cpp"
         - type: cpp_test
           name: "accept;basic multilingual plane"
-          path: "/workspaces/json/tests/s-core/unit-strings.cpp"
+          path: "/workspaces/json/TSF/tests/unit-strings.cpp"
 ---
 
 The service does accept escaped control characters.

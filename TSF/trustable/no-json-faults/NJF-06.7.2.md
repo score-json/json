@@ -24,7 +24,7 @@ references:
           description: "Checks that the empty member separator is rejected."
         - type: cpp_test
           name: "accept;member separator"
-          path: "/workspaces/json/tests/s-core/unit-objects.cpp"
+          path: "/workspaces/json/TSF/tests/unit-objects.cpp"
 ---
 
 The service does not accept any other member separator.

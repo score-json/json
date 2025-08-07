@@ -15,7 +15,7 @@ references:
           path: "/workspaces/json/tests/src/unit-class_parser.cpp"
         - type: cpp_test
           name: "accept;Leading zeroes"
-          path: "/workspaces/json/tests/s-core/unit-numbers.cpp"
+          path: "/workspaces/json/TSF/tests/unit-numbers.cpp"
 ---
 
 The service does not accept leading zeroes.

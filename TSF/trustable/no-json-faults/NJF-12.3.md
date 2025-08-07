@@ -12,7 +12,7 @@ references:
           description: ""
         - type: cpp_test
           name: "accept;unescaped utf-16 surrogates"
-          path: "/workspaces/json/tests/s-core/unit-strings.cpp"
+          path: "/workspaces/json/TSF/tests/unit-strings.cpp"
 ---
 
 The service rejects single and paired UTF-16 surrogates.

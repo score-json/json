@@ -11,7 +11,7 @@ references:
           path: "/workspaces/json/tests/src/unit-testsuites.cpp"
         - type: cpp_test
           name: "accept;operators"
-          path: "/workspaces/json/tests/s-core/unit-numbers.cpp"
+          path: "/workspaces/json/TSF/tests/unit-numbers.cpp"
 ---
 
 The service does not accept invalid syntax for numbers.

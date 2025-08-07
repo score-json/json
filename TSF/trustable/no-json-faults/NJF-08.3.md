@@ -14,7 +14,7 @@ references:
           description: "Checks that NaN and Inf are rejected."
         - type: cpp_test
           name: "accept;illegal literal numbers"
-          path: "/workspaces/json/tests/s-core/unit-literals.cpp"
+          path: "/workspaces/json/TSF/tests/unit-literals.cpp"
 ---
 
 The service does not accept NaN, infinity. (Could be added)

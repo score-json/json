@@ -7,7 +7,7 @@ references:
           path: "/workspaces/json/tests/src/unit-class_parser.cpp"
         - type: cpp_test
           name: "accept;whitespace;empty object"
-          path: "/workspaces/json/tests/s-core/unit-objects.cpp"
+          path: "/workspaces/json/TSF/tests/unit-objects.cpp"
 ---
 
 The service accepts the empty object.

@@ -15,7 +15,7 @@ references:
           description: "Checks that single and multiple surrogates are accepted."
         - type: cpp_test
           name: "accept;escaped utf-16 surrogates"
-          path: "/workspaces/json/tests/s-core/unit-strings.cpp"
+          path: "/workspaces/json/TSF/tests/unit-strings.cpp"
 ---
 
 The service accepts UTF-16 surrogate pairs.

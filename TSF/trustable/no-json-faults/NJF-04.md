@@ -25,10 +25,10 @@ references:
           description: ""
         - type: cpp_test
           name: "accept;capitalisation"
-          path: "/workspaces/json/tests/s-core/unit-literals.cpp"
+          path: "/workspaces/json/TSF/tests/unit-literals.cpp"
         - type: cpp_test
           name: "accept;illegal literals"
-          path: "/workspaces/json/tests/s-core/unit-literals.cpp"
+          path: "/workspaces/json/TSF/tests/unit-literals.cpp"
 ---
 
 The service does not accept any other literal name.

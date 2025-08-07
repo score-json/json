@@ -4,7 +4,7 @@ normative: true
 references:
         - type: cpp_test
           name: "parse;UTF-8;unexpected BOM"
-          path: "/workspaces/json/tests/s-core/unit-byte_order_mark.cpp"
+          path: "/workspaces/json/TSF/tests/unit-byte_order_mark.cpp"
 ---
 
 The service does not parse UTF-8 byte order marks at any other place of the input.

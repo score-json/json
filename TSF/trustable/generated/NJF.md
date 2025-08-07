@@ -2203,7 +2203,7 @@ _None_
 			
 
 - `cpp-test; [accept;capitalisation]
-(/workspaces/json/tests/s-core/unit-literals.cpp)`
+(/workspaces/json/TSF/tests/unit-literals.cpp)`
 
 
 		```cpp
@@ -2285,7 +2285,7 @@ _None_
 
 
 - `cpp-test; [accept;illegal literals]
-(/workspaces/json/tests/s-core/unit-literals.cpp)`
+(/workspaces/json/TSF/tests/unit-literals.cpp)`
 
 
 		```cpp
@@ -4992,7 +4992,7 @@ _None_
 
 
 - `cpp-test; [accept;whitespace;empty object]
-(/workspaces/json/tests/s-core/unit-objects.cpp)`
+(/workspaces/json/TSF/tests/unit-objects.cpp)`
 
 
 		```cpp
@@ -5917,7 +5917,7 @@ _None_
 			
 
 - `cpp-test; [accept;names;strings;control characters]
-(/workspaces/json/tests/s-core/unit-objects.cpp)`
+(/workspaces/json/TSF/tests/unit-objects.cpp)`
 
 
 		```cpp
@@ -5961,7 +5961,7 @@ _None_
 
 
 - `cpp-test; [accept;names;strings;unicode]
-(/workspaces/json/tests/s-core/unit-objects.cpp)`
+(/workspaces/json/TSF/tests/unit-objects.cpp)`
 
 
 		```cpp
@@ -5977,7 +5977,7 @@ _None_
 
 
 - `cpp-test; [accept;names;strings;UTF-16 surrogates]
-(/workspaces/json/tests/s-core/unit-objects.cpp)`
+(/workspaces/json/TSF/tests/unit-objects.cpp)`
 
 
 		```cpp
@@ -7133,7 +7133,7 @@ _None_
 			
 
 - `cpp-test; [accept;member separator]
-(/workspaces/json/tests/s-core/unit-objects.cpp)`
+(/workspaces/json/TSF/tests/unit-objects.cpp)`
 
 
 		```cpp
@@ -8286,7 +8286,7 @@ _None_
 
 
 - `cpp-test; [accept;basic multilingual plane]
-(/workspaces/json/tests/s-core/unit-strings.cpp)`
+(/workspaces/json/TSF/tests/unit-strings.cpp)`
 
 
 		```cpp
@@ -9137,7 +9137,7 @@ _None_
 **References;**
 
 - `cpp-test; [accept;exponents;U+0425]
-(/workspaces/json/tests/s-core/unit-numbers.cpp)`
+(/workspaces/json/TSF/tests/unit-numbers.cpp)`
 
 
 		```cpp
@@ -9154,7 +9154,7 @@ _None_
 
 
 - `cpp-test; [accept;exponents;U+0436]
-(/workspaces/json/tests/s-core/unit-numbers.cpp)`
+(/workspaces/json/TSF/tests/unit-numbers.cpp)`
 
 
 		```cpp
@@ -9440,7 +9440,7 @@ _None_
 
 
 - `cpp-test; [accept;operators]
-(/workspaces/json/tests/s-core/unit-numbers.cpp)`
+(/workspaces/json/TSF/tests/unit-numbers.cpp)`
 
 
 		```cpp
@@ -9682,7 +9682,7 @@ _None_
 
 
 - `cpp-test; [accept;Leading zeroes]
-(/workspaces/json/tests/s-core/unit-numbers.cpp)`
+(/workspaces/json/TSF/tests/unit-numbers.cpp)`
 
 
 		```cpp
@@ -9875,7 +9875,7 @@ _None_
 			
 
 - `cpp-test; [accept;bases]
-(/workspaces/json/tests/s-core/unit-numbers.cpp)`
+(/workspaces/json/TSF/tests/unit-numbers.cpp)`
 
 
 		```cpp

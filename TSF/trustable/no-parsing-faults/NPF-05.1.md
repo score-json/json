@@ -7,7 +7,7 @@ references:
           path: "/workspaces/json/tests/src/unit-class_parser.cpp"
         - type: cpp_test
           name: "parse;whitespace"
-          path: "/workspaces/json/tests/s-core/unit-arrays.cpp"
+          path: "/workspaces/json/TSF/tests/unit-arrays.cpp"
 ---
 
 The service ignores leading and trailing whitespace for each value.
