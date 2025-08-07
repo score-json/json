@@ -776,7 +776,7 @@ TEST_CASE("accept")
     }
     // The literal names NaN and any expression for infinity are not valid json tokens.
     // Verify that they are rejected, no matter the capitalisation.
-    SECTION("Illegal literal numbers")
+    SECTION("illegal literal numbers")
     {
 		SECTION("inf")
 		{
