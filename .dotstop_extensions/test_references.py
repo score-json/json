@@ -122,7 +122,7 @@ def test_find_section_start_nested_section():
         '    }\n',
         '}\n'
     ]
-    ref = CPPTestReference("basic_test:section1", "test.cpp")
+    ref = CPPTestReference("basic_test;section1", "test.cpp")
     start_index = ref.find_section_start(lines)
     assert start_index == 2
 
@@ -237,7 +237,7 @@ def test_remove_leading_whitespace_preserve_indentation_tabs():
 
 def test_get_section_integration(temp_cpp_file):
     """Test complete section extraction."""
-    ref = CPPTestReference("basic_test:section1", str(temp_cpp_file))
+    ref = CPPTestReference("basic_test;section1", str(temp_cpp_file))
     section = ref.get_section()
     assert 'TEST_CASE("basic_test")' not in section
     assert 'SECTION("section1")' in section
@@ -281,7 +281,7 @@ def test_find_different_sections(sample_cpp_content, section_name, expected_line
 
 def test_nested_section_extraction(temp_cpp_file):
     """Test extracting nested sections."""
-    ref = CPPTestReference("basic_test:section1:nested_section", temp_cpp_file)
+    ref = CPPTestReference("basic_test;section1;nested_section", temp_cpp_file)
     section = ref.get_section()
     assert 'nested_section' in section
 
@@ -299,7 +299,7 @@ def test_testsuite_json_loading():
 
 def test_json_testsuite_reference_content(temp_cpp_file_with_testsuite, sample_testsuite_test):
     """Test JSONTestsuiteReference content property."""
-    suite_ref = JSONTestsuiteReference("compliance tests from json.org:expected failures", str(temp_cpp_file_with_testsuite), ["/json_tests/fail2.json", "/json_tests/fail3.json"], "description")
+    suite_ref = JSONTestsuiteReference("compliance tests from json.org;expected failures", str(temp_cpp_file_with_testsuite), ["/json_tests/fail2.json", "/json_tests/fail3.json"], "description")
     
     content = suite_ref.content
     assert isinstance(content, bytes)
