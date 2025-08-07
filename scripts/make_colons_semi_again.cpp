@@ -6,6 +6,17 @@
 
 using namespace std;
 
+/*
+This is a program to replace names of the form "test_case:section1:section2:etc." by "test_case;section1;section2;etc".
+
+The change of the separator was necessary because the colon is used in section names of unit-unicode2.cpp. 
+*/
+
+string semi_colon(const string& input);
+string restore_args(const string& input);
+void replace_colons(const filesystem::path& file);
+
+// replaces every colon in a string by a semi-colon
 string semi_colon(const string& input){
     string output;
     for (char c: input){
@@ -18,6 +29,7 @@ string semi_colon(const string& input){
     return output;
 }
 
+// Some colons are not to be replaced, so that we change back.
 string restore_args(const string& input){
     string output = input;
     output = regex_replace(output, regex("level;"), "level:");
@@ -34,9 +46,15 @@ string restore_args(const string& input){
     output = regex_replace(output, regex("https;//"), "https://");
     output = regex_replace(output, regex("json;;"), "json::");
     output = regex_replace(output, regex("std;;"), "std::");
+    output = regex_replace(output, regex("ill-formed;"), "ill-formed:");
     return output;
 }
 
+/*
+This method replaces every single colon within a file by a semi-colon, and reverts the changes
+as described by restore_args.
+It is assumed that the input is a file, and not a path; and this is not tested for.
+*/
 void replace_colons(const filesystem::path& file){
     ifstream source(file);
     stringstream buffer;
@@ -50,6 +68,10 @@ void replace_colons(const filesystem::path& file){
     target.close();
 }
 
+/*
+The program gets the relative path of a directory as input. 
+Within this directory, replace_colons is applied to every single mark-down file.
+*/
 int main(int argnum, char* args[]){
     for (int arg = 1; arg<argnum; arg++){
         for (const auto& entry: filesystem::recursive_directory_iterator(args[arg])){
