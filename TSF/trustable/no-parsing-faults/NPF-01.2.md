@@ -7,4 +7,4 @@ references:
           path: "/workspaces/json/TSF/tests/unit-byte_order_mark.cpp"
 ---
 
-The service does not parse multiple UTF-8 byte order marks.
+The service does not parse multiple UTF-8 byte order marks and throws an exception.

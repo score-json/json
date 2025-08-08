@@ -16,6 +16,15 @@ TEST_CASE("accept")
 {
     SECTION("UTF-8")
     {
+        SECTION("single BOM")
+        {
+            CHECK(json::accept("\xEF\xBB\xBF"));
+            CHECK(json::accept("\xEF\xBB\xBF\n\"foo\""));
+            CHECK(json::accept("\xEF\xBB\xBF\"foo\""));
+            CHECK(json::accept("\xEF\xBB\xBF 123"));
+            CHECK(json::accept("\xEF\xBB\xBF[1,2,3]"));
+            CHECK(json::accept("\xEF\xBB\xBF{\"foo\":1,\"bar\":2,\"test\":3}"));
+        }
         SECTION("multiple BOM")
         {
             CHECK(!json::accept("\xEF\xBB\xBF\xEF\xBB\xBF"));

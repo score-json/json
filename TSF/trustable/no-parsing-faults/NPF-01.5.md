@@ -16,4 +16,4 @@ references:
           path: "/workspaces/json/tests/src/unit-unicode1.cpp"
 ---
 
-The service does not parse partial and perturbed UTF-8 byte order marks.
+The service does not parse partial and perturbed UTF-8 byte order marks and throws an exception.
