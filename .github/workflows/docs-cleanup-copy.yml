@@ -90,11 +90,6 @@ jobs:
           jq --arg repo "${{ github.repository }}" '[.[] | select(.version != "main")] | sort_by(.version) | [{"version": "main", "url": ("https://eclipse-score.github.io/" + ($repo | split("/")[1]) + "/main/")}] + .' versions_tmp_clean.json > versions.json
 
           rm versions_tmp.json versions_tmp_clean.json
-      
-      # - name: Verify Git Repository
-      #   run: |
-      #     cd gh-pages-cleanup
-      #     git status
 
       - name: Commit and Push Changes
         uses: JamesIves/github-pages-deploy-action@v4
