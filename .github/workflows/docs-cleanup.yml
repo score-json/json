@@ -19,9 +19,8 @@ permissions:
   id-token: write
 
 on:
-  push:
-    branches:
-      - fix_docs_cleanup
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at midnight UTC
 
 jobs:
   docs-cleanup:
