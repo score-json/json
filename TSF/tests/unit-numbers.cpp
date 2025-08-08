@@ -317,6 +317,24 @@ TEST_CASE("parse")
     // leading zeroes in the exponent are allowed and ignored in the parsing.
     SECTION("exponents")
     {
+        // The only valid exponents are U+0065 and U+0045.
+        // Their look-alikes, in particular U+0425 and U+0436 are forbidden.
+        SECTION("U+0425")
+        {            
+            CHECK_THROWS_AS(json::parse("0\u0425123"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123\u04250"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("0.123\u0425123"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u0425123"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u04250"),json::parse_error&);
+        }
+        SECTION("U+0436")
+        {            
+            CHECK_THROWS_AS(json::parse("0\u0436123"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123\u04360"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("0.123\u0436123"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u0436123"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u04360"),json::parse_error&);
+        }
         SECTION("leading zeroes")
         {
             CHECK(json::parse("1\u00451")==json::parse("1\u004501"));
@@ -340,6 +358,73 @@ TEST_CASE("parse")
         SECTION("Capitalisation")
         {
             CHECK(json::parse("3.1415\u00454")==json::parse("3.1415\u00654"));
+        }
+    }
+    SECTION("operators")
+    {
+        SECTION("plus")
+        {
+            CHECK_THROWS_AS(json::parse("1+1"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("0.1+1"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("0.1+1.0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("0+0.1"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("0.1\u00452+1"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("0.1\u00652+1"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1+0.1\u00652"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("3.5+0.1\u00652"),json::parse_error&);
+        }
+        SECTION("minus")
+        {
+            
+            CHECK_THROWS_AS(json::parse("1-1"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("0.1-1"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("0.1-1.0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("0-0.1"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("0.1\u00452-1"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("0.1\u00652-1"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1-0.1\u00652"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("3.5-0.1\u00652"),json::parse_error&);
+        }
+        SECTION("brackets")
+        {
+            
+            CHECK_THROWS_AS(json::parse("(145)"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("(34.32874)"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("42\u0045(134)"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("42\u0065(134)"),json::parse_error&);
+        }
+        SECTION("factorial")
+        {
+            CHECK_THROWS_AS(json::parse("13!"),json::parse_error&);
+        }
+        SECTION("multiplication")
+        {
+            
+            CHECK_THROWS_AS(json::parse("1*1"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.45*5"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("154*23.76"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1\u004545*3"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1\u006545*3"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("3*6\u004512"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("3*6\u006512"),json::parse_error&);
+        }
+        SECTION("division")
+        {
+            
+            CHECK_THROWS_AS(json::parse("0/0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.45/5"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("154/23.76"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1\u004545/3"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1\u006545/3"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("7/6\u004512"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("7/6\u006512"),json::parse_error&);
+        }
+        SECTION("comma")
+        {
+            
+            CHECK_THROWS_AS(json::parse("0,0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("100,000"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1,000.23"),json::parse_error&);
         }
     }
     SECTION("trailing zeroes")
@@ -372,5 +457,79 @@ TEST_CASE("parse")
         CHECK(json::parse("\u000d123\t")==json::parse("123"));
         CHECK(json::parse("\u000d123\n")==json::parse("123"));
         CHECK(json::parse("\u000d123\u000d")==json::parse("123"));
+    }
+    SECTION("invalid whitespace")
+    {
+        SECTION("space")
+        {
+            CHECK_THROWS_AS(json::parse("0 1"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1234 567"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123.456 789"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123\u00450 0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123\u0045132 94"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u00450 0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u0045132 94"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123\u00650 0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123\u0065132 94"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u00650 0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u0065132 94"),json::parse_error&);
+        }
+        SECTION("tab")
+        {
+            CHECK_THROWS_AS(json::parse("0\t1"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1234\t567"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123.456\t789"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123\u00450\t0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123\u0045132\t94"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u00450\t0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u0045132\t94"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123\u00650\t0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123\u0065132\t94"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u00650\t0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u0065132\t94"),json::parse_error&);
+        }
+        SECTION("new line")
+        {
+            CHECK_THROWS_AS(json::parse("0\n1"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1234\n567"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123.456\n789"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123\u00450\n0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123\u0045132\n94"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u00450\n0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u0045132\n94"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123\u00650\n0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123\u0065132\n94"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u00650\n0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u0065132\n94"),json::parse_error&);
+        }
+        SECTION("Carriage return")
+        {
+            CHECK_THROWS_AS(json::parse("0\u000d1"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1234\u000d567"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123.456\u000d789"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123\u00450\u000d0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123\u0045132\u000d94"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u00450\u000d0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u0045132\u000d94"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123\u00650\u000d0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("123\u0065132\u000d94"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u00650\u000d0"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("1.23\u0065132\u000d94"),json::parse_error&);
+        }
+    }
+    SECTION("Leading zeroes")
+    {
+        CHECK_THROWS_AS(json::parse("01.0"),json::parse_error&);
+        CHECK_THROWS_AS(json::parse("05\u004542"),json::parse_error&);
+        CHECK_THROWS_AS(json::parse("05\u006542"),json::parse_error&);
+        CHECK_THROWS_AS(json::parse("00"),json::parse_error&);
+        CHECK_THROWS_AS(json::parse("000000000000000000000000000000000000000000000000"),json::parse_error&);
+        CHECK_THROWS_AS(json::parse("0000000000000000000000000000000000042"),json::parse_error&);
+        CHECK_THROWS_AS(json::parse("-01.0"),json::parse_error&);
+        CHECK_THROWS_AS(json::parse("-05\u004542"),json::parse_error&);
+        CHECK_THROWS_AS(json::parse("-05\u006542"),json::parse_error&);
+        CHECK_THROWS_AS(json::parse("-00"),json::parse_error&);
+        CHECK_THROWS_AS(json::parse("-000000000000000000000000000000000000000000000000"),json::parse_error&);
+        CHECK_THROWS_AS(json::parse("-0000000000000000000000000000000000042"),json::parse_error&);
     }
 }

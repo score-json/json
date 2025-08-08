@@ -160,6 +160,50 @@ TEST_CASE("parse")
             CHECK(json::parse("{ \"foo\"\t:\n\"bar\"\n}")==json::parse("{\"foo\":\"bar\"}"));
             CHECK(json::parse("{\t\t\t\t\t\n\n\u000d\"foo\"\t \t\t  \n\n  \u000d:\"bar\"}")==json::parse("{\"foo\":\"bar\"}"));
         }
+    }    
+    // The colon U+003A is the only valid member separator.
+    // Look-alikes are illegal.
+    // All other valid structural characters are illegal.
+    SECTION("member separator")
+    {
+        CHECK_NOTHROW(json::parse("{\"foo\"\u003a\"bar\"}"));      //:
+        CHECK_THROWS_AS(json::parse("{\"foo\"\uff1a\"bar\"}"),json::parse_error&);     
+        CHECK_THROWS_AS(json::parse("{\"foo\"\ua789\"bar\"}"),json::parse_error&);
+        CHECK_THROWS_AS(json::parse("{\"foo\"\u005b\"bar\"}"),json::parse_error&);     //[
+        CHECK_THROWS_AS(json::parse("{\"foo\"\u007b\"bar\"}"),json::parse_error&);     //{
+        CHECK_THROWS_AS(json::parse("{\"foo\"\u005d\"bar\"}"),json::parse_error&);     //]
+        CHECK_THROWS_AS(json::parse("{\"foo\"\u007d\"bar\"}"),json::parse_error&);     //}
+        CHECK_THROWS_AS(json::parse("{\"foo\"\u002c\"bar\"}"),json::parse_error&);     //,
+        CHECK_THROWS_AS(json::parse("{\"foo\"\u003b\"bar\"}"),json::parse_error&);     //;
+    }
+    SECTION("names")
+    {
+        SECTION("numbers")
+        {
+            // cf. n_object_non_string_key.json, n_object_non_string_key_but_huge_number_instead.json, for some integers
+            CHECK_THROWS_AS(json::parse("{0.1:\"foo\"}"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("{3\u004542:\"foo\"}"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("{3.1415\u006542:\"foo\"}"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("{-15:\"foo\"}"),json::parse_error&);
+        }
+        SECTION("arrays")
+        {
+            CHECK_THROWS_AS(json::parse("{[]:\"foo\"}"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("{[1]:\"foo\"}"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("{[1,\"foo\"]:\"bar\"}"),json::parse_error&);
+        }
+        SECTION("objects")
+        {
+            CHECK_THROWS_AS(json::parse("{{}:\"foo\"}"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("{{\"a\":1}:\"foo\"}"),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("{{\"a\":1,\"b\":\"foo\"}:\"bar\"}"),json::parse_error&);
+        }
+        SECTION("literals")
+        {
+            CHECK_THROWS_AS(json::parse("true:\"foo\""),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("false:\"foo\""),json::parse_error&);
+            CHECK_THROWS_AS(json::parse("null:\"foo\""),json::parse_error&);
+        }
     }
     // It is checked in unit-testsuites that duplicate values are parsed without error.
     // The exact behaviour, however, appears to be not tested for yet.
