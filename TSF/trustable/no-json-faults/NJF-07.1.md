@@ -4,7 +4,7 @@ normative: true
 
 references:
         - type: cpp_test
-          name: "parser class;accept;string"
+          name: "parser class - core;accept;string"
           path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
         - type: cpp_test
           name: "compliance tests from nativejson-benchmark;strings"

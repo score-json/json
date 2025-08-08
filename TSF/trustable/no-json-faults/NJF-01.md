@@ -4,7 +4,7 @@ normative: true
 references:
         - type: cpp_test
           path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
-          name: "parser class"
+          name: "parser class - core"
         - type: JSON_testsuite
           name: "nst's JSONTestSuite;test_parsing;y"
           path: "/workspaces/json/tests/src/unit-testsuites.cpp"

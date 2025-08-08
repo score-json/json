@@ -3,10 +3,10 @@ level: 1.1
 normative: true
 references:
         - type: cpp_test
-          name: "parser class;parse;number;floating-point;without exponent"
+          name: "parser class - core;parse;number;floating-point;without exponent"
           path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
         - type: cpp_test
-          name: "parser class;parse;number;integers;without exponent"
+          name: "parser class - core;parse;number;integers;without exponent"
           path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2);test_parsing;y"

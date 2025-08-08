@@ -9,7 +9,7 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_array_empty.json"
           description: "Tests whether the empty array is parsed without exception."
         - type: cpp_test
-          name: "parser class;parse;array;empty array"
+          name: "parser class - core;parse;array;empty array"
           path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
 ---
 

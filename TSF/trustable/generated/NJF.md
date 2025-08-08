@@ -1519,7 +1519,7 @@ _None_
 
 **References;**
 
-- `cpp-test; [parser class;accept;true]
+- `cpp-test; [parser class - core;accept;true]
 (/workspaces/json/tests/src/unit-class_parser.cpp)`
 
 
@@ -1742,7 +1742,7 @@ _None_
 
 **References;**
 
-- `cpp-test; [parser class;accept;false]
+- `cpp-test; [parser class - core;accept;false]
 (/workspaces/json/tests/src/unit-class_parser.cpp)`
 
 
@@ -1862,7 +1862,7 @@ _None_
 
 **References;**
 
-- `cpp-test; [parser class;accept;parse errors (accept)]
+- `cpp-test; [parser class - core;accept;parse errors (accept)]
 (/workspaces/json/tests/src/unit-class_parser.cpp)`
 
 
@@ -3045,7 +3045,7 @@ _None_
 
 **References;**
 
-- `cpp-test; [parser class;accept;array;empty array]
+- `cpp-test; [parser class - core;accept;array;empty array]
 (/workspaces/json/tests/src/unit-class_parser.cpp)`
 
 
@@ -3229,7 +3229,7 @@ _None_
 
 **References;**
 
-- `cpp-test; [parser class;accept;array;nonempty array]
+- `cpp-test; [parser class - core;accept;array;nonempty array]
 (/workspaces/json/tests/src/unit-class_parser.cpp)`
 
 
@@ -3993,7 +3993,7 @@ _None_
 
 **References;**
 
-- `cpp-test; [parser class;accept;parse errors (accept)]
+- `cpp-test; [parser class - core;accept;parse errors (accept)]
 (/workspaces/json/tests/src/unit-class_parser.cpp)`
 
 
@@ -4977,7 +4977,7 @@ _None_
 
 **References;**
 
-- `cpp-test; [parser class;accept;object;empty object]
+- `cpp-test; [parser class - core;accept;object;empty object]
 (/workspaces/json/tests/src/unit-class_parser.cpp)`
 
 
@@ -5200,7 +5200,7 @@ _None_
 		```
 
 
-- `cpp-test; [parser class;accept;object;nonempty object]
+- `cpp-test; [parser class - core;accept;object;nonempty object]
 (/workspaces/json/tests/src/unit-class_parser.cpp)`
 
 
@@ -5750,7 +5750,7 @@ _None_
 
 **References;**
 
-- `cpp-test; [parser class;accept;object;nonempty object]
+- `cpp-test; [parser class - core;accept;object;nonempty object]
 (/workspaces/json/tests/src/unit-class_parser.cpp)`
 
 
@@ -6053,7 +6053,7 @@ _None_
 
 **References;**
 
-- `cpp-test; [parser class;accept;object;nonempty object]
+- `cpp-test; [parser class - core;accept;object;nonempty object]
 (/workspaces/json/tests/src/unit-class_parser.cpp)`
 
 

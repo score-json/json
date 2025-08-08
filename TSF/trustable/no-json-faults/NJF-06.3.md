@@ -6,7 +6,7 @@ references:
           name: "deserialization;JSON Lines"
           path: "/workspaces/json/tests/src/unit-deserialization.cpp"
         - type: cpp_test
-          name: "parser class;accept;object;nonempty object"
+          name: "parser class - core;accept;object;nonempty object"
           path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"            
 ---
 

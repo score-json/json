@@ -6,7 +6,7 @@ references:
           name: "compliance tests from nativejson-benchmark;strings"
           path: "/workspaces/json/tests/src/unit-testsuites.cpp"
         - type: cpp_test
-          name: "parser class;parse;string;escaped"
+          name: "parser class - core;parse;string;escaped"
           path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
 ---
 

@@ -4,7 +4,7 @@ normative: true
 
 references:
         - type: cpp_test
-          name: "parser class;accept;number;integers;edge cases"
+          name: "parser class - core;accept;number;integers;edge cases"
           path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
 ---
 

@@ -3,7 +3,7 @@ level: 1.1
 normative: true
 references:
         - type: cpp_test
-          name: "parser class;accept;array;empty array"
+          name: "parser class - core;accept;array;empty array"
           path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
         - type: JSON_testsuite
           name: "nst's JSONTestSuite;test_parsing;y"
