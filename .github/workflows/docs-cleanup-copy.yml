@@ -95,9 +95,10 @@ jobs:
 
       - name: Commit and Push Changes
         uses: JamesIves/github-pages-deploy-action@v4
+        working-directory: gh-pages-cleanup
         with:
           branch: gh-pages
-          folder: gh-pages-cleanup
+          folder: .
           commit-message: "Daily cleanup of outdated documentation"
 
      # Workflow-based GitHub Pages deployment
