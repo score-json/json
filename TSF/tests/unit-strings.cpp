@@ -296,7 +296,7 @@ TEST_CASE("parse")
     {
         for (uint32_t i = 0x0000; i<=0x10FFFF; i++)
         {
-            if (i>=0xD800 && i<=0xDFFF||i<0x0020||i==0x0022||i==0x005c) { 
+            if ((i>=0xD800 && i<=0xDFFF)||i<0x0020||i==0x0022||i==0x005c) { 
                 // Unpaired utf-16 surrogates are illegal.
                 // Observe that this verbatim not what RFC8259 §7 prescribes; 
                 // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
