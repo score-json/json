@@ -51,13 +51,11 @@ jobs:
           repository: ${{ github.repository }}
           ref: gh-pages
           fetch-depth: 0
-          path: gh-pages-cleanup
 
       - name: Install GitHub CLI
         run: sudo apt-get update && sudo apt-get install -y gh jq
 
       - name: Cleanup old documentation
-        working-directory: gh-pages-cleanup
         env:
           GH_TOKEN: ${{ secrets.token }}
         run: |
@@ -95,7 +93,6 @@ jobs:
 
       - name: Commit and Push Changes
         uses: JamesIves/github-pages-deploy-action@v4
-        working-directory: gh-pages-cleanup
         with:
           branch: gh-pages
           folder: .
