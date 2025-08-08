@@ -224,26 +224,26 @@ TEST_CASE("parse")
             std::stringstream ss1;
             ss1 << "{";
             for (int i = 1; i<100000;i++){
-                ss1 << "\"name\":" << i << ",";
+                ss1 << R"("name":)" << i << ",";
             }
-            ss1 << "\"name\":\"value\"}";
+            ss1 << R"("name":"value"})";
             json _1;
             ss1 >> _1;
-            CHECK(_1 == json::parse("{\"name\":\"value\"}"));
+            CHECK(_1 == json::parse(R"({"name":"value"})"));
         }
         SECTION("first and last key duplicate")
         {
             // object containing 100,000 members with only first and last member of the same name
             std::stringstream ss2;
             std::stringstream ss3;
-            ss2 << "{\"key0\":0,";
+            ss2 << R"({"key0":0,)";
             ss3 << "{";
             for (int i = 1; i<100000; i++){
-                ss2 << "\"key" << i << "\":" << i << ",";
-                ss3 << "\"key" << i << "\":" << i << ",";
+                ss2 << R"("key)" << i << "\":" << i << ",";
+                ss3 << R"("key)" << i << "\":" << i << ",";
             }
-            ss2 << "\"key0\":0}";
-            ss3 << "\"key0\":0}";
+            ss2 << R"("key0":0})";
+            ss3 << R"("key0":0})";
             json _2;
             json _3;
             ss2 >> _2;
