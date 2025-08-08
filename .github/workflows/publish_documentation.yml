@@ -20,13 +20,12 @@ permissions:
   id-token: write
 
 on:
-  pull_request_target:
-    types: [opened, reopened, synchronize] # Allows forks to trigger the docs build
-  push:
-    branches:
-      - main
-  merge_group:
-    types: [checks_requested]
+  workflow_call:
+    inputs:
+      artifact_id:
+        description: 'Unique identifier for artifacts'
+        required: true
+        type: string
 
 jobs:
   run-trudag:
@@ -40,7 +39,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -51,20 +49,21 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y graphviz
           pip install trustable --index-url https://gitlab.com/api/v4/projects/66600816/packages/pypi/simple
+      
 
       - name: Generate trudag report
         run: |
-          TRUDAG_REPORT_FOLDER="docs/s-core/trustable/generated"
+          TRUDAG_REPORT_FOLDER="TSF/docs/generated"
           mkdir -p "$TRUDAG_REPORT_FOLDER"
           trudag publish --validate --output-dir "$TRUDAG_REPORT_FOLDER"
           trudag plot -o "$TRUDAG_REPORT_FOLDER/graph.svg"
-          python scripts/clean_trudag_output.py
+          python TSF/scripts/clean_trudag_output.py
 
       - name: Upload trudag artifact
         uses: actions/upload-artifact@v4
         with:
           name: trudag-report-${{ github.event.pull_request.head.sha || github.sha }}
-          path: docs/s-core/trustable/generated/
+          path: TSF/docs/generated/
           if-no-files-found: error
           
   build-docs:
@@ -79,5 +78,5 @@ jobs:
 
     with:
       # the bazel-target depends on your repo specific docs_targets configuration (e.g. "suffix")Add commentMore actions
-      bazel-target: "//docs:incremental -- --github_user=${{ github.repository_owner }} --github_repo=${{ github.event.repository.name }}"
+      bazel-target: "//:docs -- --github_user=${{ github.repository_owner }} --github_repo=${{ github.event.repository.name }}"
       retention-days: 3

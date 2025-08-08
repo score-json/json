@@ -22,5 +22,9 @@ Report
    :caption: Report
    :glob:
 
+<<<<<<<< HEAD:TSF/trustable/report.rst
    generated/trustable_report_for_Software
+========
+   generated/trustable_report_for_Software.md
+>>>>>>>> main:TSF/docs/report.rst
    trustable_graph.rst
