@@ -58,8 +58,10 @@ TEST_CASE("accept")
         }
         SECTION("UTF-32")
         {
-            CHECK(!json::accept("\x00\x00\xFE\xFF"));
-            CHECK(!json::accept("\xFF\xFE\x00\x00"));
+            std::string utf32bom1("\x00\x00\xFE\xFF", 4);
+            std::string utf32bom2("\xFF\xFE\x00\x00", 4);
+            CHECK(!json::accept(utf32bom1));
+            CHECK(!json::accept(utf32bom2));
         }
     }
 }
