@@ -5,6 +5,8 @@ on:
   push: 
     branches:
       - main
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at midnight UTC
 
 permissions:
   contents: write
@@ -52,7 +54,7 @@ jobs:
     with:
       artifact_id: "dependency_review-${{ github.sha }}"
 
-  collect_and_deploy_pr:
+  collect_artifacts_pr:
     name: "Collect Results & Deploy (PR)"
     if: github.event_name == 'pull_request'
     needs: [labeler, check_amalgamation, test_trudag_extensions, dependency_review, codeql, ubuntu]
@@ -85,14 +87,7 @@ jobs:
           name: "${{ matrix.target }}-${{ github.sha }}"
           path: artifacts/
 
-      - name: Deployment simulation
-        run: |
-          echo "🚀 Simulating deployment..."
-          sleep 2
-          echo "✅ Deployment completed successfully!"
-
-
-  collect_and_deploy_non_pr:
+  collect_artifacts_non_pr:
     name: "Collect Results & Deploy (Non-PR)"
     if: github.event_name != 'pull_request'
     needs: [labeler, check_amalgamation, test_trudag_extensions, codeql, ubuntu]  # no dependency_review if non PR
@@ -125,16 +120,10 @@ jobs:
           name: "${{ matrix.target }}-${{ github.sha }}"
           path: artifacts/
 
-      - name: Deployment simulation
-        run: |
-          echo "🚀 Simulating deployment..."
-          sleep 2
-          echo "✅ Deployment completed successfully!"
-
   publish_documentation_pr:
     name: Run publish_documentation Workflow pr
     if: github.event_name == 'pull_request'
-    needs: [collect_and_deploy_pr]
+    needs: [collect_artifacts_pr]
     uses: ./.github/workflows/publish_documentation.yml
     with:
       artifact_id: "publish_documentation-${{ github.sha }}"
@@ -142,7 +131,7 @@ jobs:
   publish_documentation_non_pr:
     name: Run publish_documentation Workflow non pr
     if: github.event_name != 'pull_request'
-    needs: [collect_and_deploy_non_pr]
+    needs: [collect_artifacts_non_pr]
     uses: ./.github/workflows/publish_documentation.yml
     with:
       artifact_id: "publish_documentation-${{ github.sha }}"
