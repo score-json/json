@@ -4,16 +4,16 @@ normative: true
 references:
         - type: cpp_test
           name: "parser class - core;parse;string;escaped"
-          path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
+          path: "TSF/tests/unit-class_parser_core.cpp"
         - type: cpp_test
           name: "compliance tests from nativejson-benchmark;strings"
-          path: "/workspaces/json/tests/src/unit-testsuites.cpp"
+          path: "tests/src/unit-testsuites.cpp"
         - type: cpp_test
           name: "RFC 8259 examples;7. Strings"
-          path: "/workspaces/json/tests/src/unit-testsuites.cpp"
+          path: "tests/src/unit-testsuites.cpp"
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2);test_parsing;y"
-          path: "/workspaces/json/tests/src/unit-testsuites.cpp"
+          path: "tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/y_string_1_2_3_bytes_UTF-8_sequences.json"
             - "/nst_json_testsuite2/test_parsing/y_string_accepted_surrogate_pair.json"

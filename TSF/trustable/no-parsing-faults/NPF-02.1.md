@@ -4,13 +4,13 @@ normative: true
 references:
         - type: cpp_test
           name: "parser class - core;parse;number;floating-point;without exponent"
-          path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
+          path: "TSF/tests/unit-class_parser_core.cpp"
         - type: cpp_test
           name: "parser class - core;parse;number;integers;without exponent"
-          path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
+          path: "TSF/tests/unit-class_parser_core.cpp"
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2);test_parsing;y"
-          path: "/workspaces/json/tests/src/unit-testsuites.cpp"
+          path: "tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/y_number_simple_int.json"
             - "/nst_json_testsuite2/test_parsing/y_number_simple_real.json"

@@ -4,7 +4,7 @@ normative: true
 references:
         - type: cpp_test
           name: "parse;whitespace"
-          path: "/workspaces/json/TSF/tests/unit-literals.cpp"
+          path: "TSF/tests/unit-literals.cpp"
 ---
 
 The service ignores leading and trailing whitespace.

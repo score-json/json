@@ -4,10 +4,10 @@ normative: true
 references:
         - type: cpp_test
           name: "parser class - core;accept;array;nonempty array"
-          path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
+          path: "TSF/tests/unit-class_parser_core.cpp"
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2);test_parsing;y"
-          path: "/workspaces/json/tests/src/unit-testsuites.cpp"
+          path: "tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/y_array_false.json"
             - "/nst_json_testsuite2/test_parsing/y_array_heterogeneous.json"
@@ -19,7 +19,7 @@ references:
           description: "Checks that various valid arrays are accepted."
         - type: JSON_testsuite
           name: "json.org examples"
-          path: "/workspaces/json/tests/src/unit-testsuites.cpp"
+          path: "tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/json.org/1.json"
             - "/json.org/2.json"

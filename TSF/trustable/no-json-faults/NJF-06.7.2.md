@@ -4,19 +4,19 @@ normative: true
 references:
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2);test_parsing;n"   
-          path: "/workspaces/json/tests/src/unit-testsuites.cpp"
+          path: "tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/n_object_comma_instead_of_colon.json"
           description: "Checks that comma instead of colon is rejected."
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2);test_parsing;n"
-          path: "/workspaces/json/tests/src/unit-testsuites.cpp" 
+          path: "tests/src/unit-testsuites.cpp" 
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/n_object_double_colon.json"
           description: "Checks that double colon is rejected."
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2);test_parsing;n"
-          path: "/workspaces/json/tests/src/unit-testsuites.cpp"
+          path: "tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/n_object_missing_colon.json"
             - "/nst_json_testsuite2/test_parsing/n_object_missing_semicolon.json"
@@ -24,7 +24,7 @@ references:
           description: "Checks that the empty member separator is rejected."
         - type: cpp_test
           name: "accept;member separator"
-          path: "/workspaces/json/TSF/tests/unit-objects.cpp"
+          path: "TSF/tests/unit-objects.cpp"
 ---
 
 The service does not accept any other member separator.

@@ -5,10 +5,10 @@ normative: true
 references:
         - type: cpp_test
           name: "parser class - core;accept;string;escaped"
-          path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
+          path: "TSF/tests/unit-class_parser_core.cpp"
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2);test_parsing;y"
-          path: "/workspaces/json/tests/src/unit-testsuites.cpp"
+          path: "tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/y_string_1_2_3_bytes_UTF-8_sequences.json"
             - "/nst_json_testsuite2/test_parsing/y_string_accepted_surrogate_pair.json"
@@ -24,10 +24,10 @@ references:
           description: "Checks that various escaped control and unicode characters are accepted."
         - type: cpp_test
           name: "Unicode (1/5);\\\\uxxxx sequences;correct sequences"
-          path: "/workspaces/json/tests/src/unit-unicode1.cpp"
+          path: "tests/src/unit-unicode1.cpp"
         - type: cpp_test
           name: "accept;basic multilingual plane"
-          path: "/workspaces/json/TSF/tests/unit-strings.cpp"
+          path: "TSF/tests/unit-strings.cpp"
 ---
 
 The service does accept escaped control characters.

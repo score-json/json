@@ -3,7 +3,7 @@ level: 1.1
 normative: true
 references:
         - type: "file"
-          path: "/workspaces/json/include/nlohmann/detail/input/lexer.hpp"
+          path: "include/nlohmann/detail/input/lexer.hpp"
 
 ---
 

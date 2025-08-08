@@ -4,7 +4,7 @@ normative: true
 references:
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2);test_parsing;n"
-          path: "/workspaces/json/tests/src/unit-testsuites.cpp"
+          path: "tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/n_number_++.json"
             - "/nst_json_testsuite2/test_parsing/n_number_+1.json"
@@ -60,10 +60,10 @@ references:
           description: "Tests whether various numbers with invalid syntax according to RFC8259 throw an exception."
         - type: cpp_test
           name: "parse;operators"
-          path: "/workspaces/json/TSF/tests/unit-numbers.cpp"
+          path: "TSF/tests/unit-numbers.cpp"
         - type: cpp_test
           name: "parse;invalid whitespace"
-          path: "/workspaces/json/TSF/tests/unit-numbers.cpp"        
+          path: "TSF/tests/unit-numbers.cpp"        
 ---
 
 The service throws an exception on invalid number syntax.

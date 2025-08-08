@@ -4,7 +4,7 @@ normative: true
 references:
         - type: cpp_test
           name: "parse;exponents;leading zeroes"
-          path: "/workspaces/json/TSF/tests/unit-numbers.cpp"
+          path: "TSF/tests/unit-numbers.cpp"
 ---
 
 The service ignores leading zeroes in the exponent.

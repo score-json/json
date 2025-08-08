@@ -5,7 +5,7 @@ normative: true
 references:
         - type: cpp_test
           name: "accept;noncharacter code positions"
-          path: "/workspaces/json/TSF/tests/unit-strings.cpp"
+          path: "TSF/tests/unit-strings.cpp"
 ---
 
 The service accepts Non-Characters

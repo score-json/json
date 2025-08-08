@@ -5,7 +5,7 @@ normative: true
 references:
         - type: cpp_test
           name: "parser class - core;accept;string;errors"
-          path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
+          path: "TSF/tests/unit-class_parser_core.cpp"
 ---
 
 The service does not accept unescaped control characters.

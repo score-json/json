@@ -1,4 +1,4 @@
-#include <fstream>
+#include <sstream>
 #include "doctest_compatibility.h"
 
 #include <nlohmann/json.hpp>
@@ -218,15 +218,37 @@ TEST_CASE("parse")
     // The exact behaviour, however, appears to be not tested for yet.
     SECTION("duplicate names")
     {
-        // object containing 100,000 members with the same name and different values.
-        //std::ifstream f("duplicate_objects.json");
-        //json _1 = json::parse(f);
-        //CHECK(_1 == "{\"name\":\"value\"}"); 
-        // object containing 100,000 members with only first and last member of the same name
-        //std::ifstream f2("100000_members_one_duplicate_name.json");
-        //std::ifstream f3("100000_members_without_duplicate_name.json");
-        //json _2 = json::parse(f2);
-        //json _3 = json::parse(f3);
-        //CHECK(_2==_3);
+        SECTION("100,000 identical keys")
+        {
+            // object containing 100,000 members with the same name and different values.
+            std::stringstream ss1;
+            ss1 << "{";
+            for (int i = 1; i<100000;i++){
+                ss1 << "\"name\":" << i << ",";
+            }
+            ss1 << "\"name\":\"value\"}";
+            json _1;
+            ss1 >> _1;
+            CHECK(_1 == json::parse("{\"name\":\"value\"}"));
+        }
+        SECTION("first and last key duplicate")
+        {
+            // object containing 100,000 members with only first and last member of the same name
+            std::stringstream ss2;
+            std::stringstream ss3;
+            ss2 << "{\"key0\":0,";
+            ss3 << "{";
+            for (int i = 1; i<100000; i++){
+                ss2 << "\"key" << i << "\":" << i << ",";
+                ss3 << "\"key" << i << "\":" << i << ",";
+            }
+            ss2 << "\"key0\":0}";
+            ss3 << "\"key0\":0}";
+            json _2;
+            json _3;
+            ss2 >> _2;
+            ss3 >> _3;
+            CHECK(_2==_3);
+        }        
     }
 }

@@ -4,10 +4,10 @@ normative: true
 references:
         - type: cpp_test
           name: "parser class - core;accept;object;nonempty object"
-          path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
+          path: "TSF/tests/unit-class_parser_core.cpp"
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2);test_parsing;y"
-          path: "/workspaces/json/tests/src/unit-testsuites.cpp"
+          path: "tests/src/unit-testsuites.cpp"
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/y_object_basic.json"
             - "/nst_json_testsuite2/test_parsing/y_object_duplicated_key.json"
@@ -23,13 +23,13 @@ references:
           description: "Checks that various keys, particularly containing unicode characters, are accepted."
         - type: cpp_test
           name: "accept;names;strings;control characters"
-          path: "/workspaces/json/TSF/tests/unit-objects.cpp"
+          path: "TSF/tests/unit-objects.cpp"
         - type: cpp_test
           name: "accept;names;strings;unicode"
-          path: "/workspaces/json/TSF/tests/unit-objects.cpp"
+          path: "TSF/tests/unit-objects.cpp"
         - type: cpp_test
           name: "accept;names;strings;escaped UTF-16 surrogates"
-          path: "/workspaces/json/TSF/tests/unit-objects.cpp"          
+          path: "TSF/tests/unit-objects.cpp"          
 ---
 
 The service accepts strings as names. 
