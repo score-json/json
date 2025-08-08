@@ -5,12 +5,12 @@
 using nlohmann::json;
 
 namespace{
-void parser_helper(std::string input);
+void parser_helper(const std::string& input);
 // build throws a warning when json::parse(foo) is used without output.
 // The parser_helper prevents this.
-void parser_helper(std::string input)
+void parser_helper(const std::string& input)
 {
-    json temp = json::parse(input);
+    const json temp = json::parse(input);
 }
 } //namespace
 

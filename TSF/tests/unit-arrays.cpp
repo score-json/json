@@ -35,7 +35,7 @@ TEST_CASE("parse")
 {
     SECTION("whitespace")
     {
-        json j = json::parse("[\"1\",\"2\",\"test\",\"foo\",\"bar\"]");
+        json j = json::parse(R"(["1","2","test","foo","bar"])");
         CHECK(json::parse("[ \"1\" , \"2\" , \"test\" , \"foo\" , \"bar\" ]")==j);
         CHECK(json::parse("[ \"1\"\t, \"2\"\t, \"test\"\t, \"foo\"\t, \"bar\"\t]")==j);
         CHECK(json::parse("[ \"1\"\n, \"2\"\n, \"test\"\n, \"foo\"\n, \"bar\"\n]")==j);

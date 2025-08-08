@@ -9,10 +9,10 @@ using nlohmann::json;
 
 namespace
 {
-void parser_helper(std::string input);
+void parser_helper(const std::string& input);
 
-void parser_helper(std::string input){
-    json temp = json::parse(input);
+void parser_helper(const std::string& input){
+    const json temp = json::parse(input);
 }
 } //namespace
 
