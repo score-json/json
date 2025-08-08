@@ -19,11 +19,12 @@ permissions:
   id-token: write
 
 on:
-  schedule:
-    - cron: '0 0 * * *' # Runs every day at midnight UTC
+  push:
+    branches:
+      - fix_docs_cleanup
 
 jobs:
   docs-cleanup:
-    uses: eclipse-score/cicd-workflows/.github/workflows/docs-cleanup.yml@main
+    uses: ./.github/workflows/docs-cleanup-copy.yml
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}

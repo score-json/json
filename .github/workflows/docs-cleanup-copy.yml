@@ -1,0 +1,123 @@
+# *******************************************************************************
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
+
+name: Daily Documentation Cleanup
+
+permissions:
+  contents: write
+  pages:   write
+  id-token: write
+
+on:
+  workflow_call:
+    inputs:
+      workflow-version:
+        description: "Version or branch to checkout"
+        required: false
+        default: "main"
+        type: string
+      deployment_type:
+        description: "Type of deployment: legacy or workflow"
+        type: string
+        required: false
+        default: "workflow"
+    secrets:
+      token:
+        description: "GitHub Token"
+        required: true
+
+jobs:
+  docs-cleanup:
+    name: Cleanup old documentation
+    runs-on: ${{ vars.REPO_RUNNER_LABELS && fromJSON(vars.REPO_RUNNER_LABELS) || 'ubuntu-latest' }}
+    permissions:
+      pages: write
+      contents: write
+      id-token: write
+    steps:
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository }}
+          ref: gh-pages
+          fetch-depth: 0
+          path: gh-pages-cleanup
+
+      - name: Install GitHub CLI
+        run: sudo apt-get update && sudo apt-get install -y gh jq
+
+      - name: Cleanup old documentation
+        working-directory: gh-pages-cleanup
+        env:
+          GH_TOKEN: ${{ secrets.token }}
+        run: |
+          gh auth status
+
+          ACTIVE_BRANCHES=$(gh api --paginate repos/${{ github.repository }}/branches --jq '.[].name')
+          OPEN_PRS=$(gh api --paginate repos/${{ github.repository }}/pulls --jq '.[].number' | sed 's/^/pr-/')
+          VALID_ENTRIES=$(echo -e "$ACTIVE_BRANCHES\n$OPEN_PRS")
+          CURRENT_FOLDERS=$(find . -maxdepth 1 -type d -not -name '.' -not -path './.*' -exec basename {} \;)
+
+          if [[ -f versions.json ]]; then
+            jq '.' versions.json > versions_tmp.json
+          else
+            echo "[]" > versions_tmp.json
+          fi
+
+          for FOLDER in $CURRENT_FOLDERS; do
+            if ! echo "$VALID_ENTRIES" | grep -Fxq "$FOLDER"; then
+              echo "Removing $FOLDER"
+              rm -rf "$FOLDER"
+              jq --arg ver "$FOLDER" 'map(select(.version != $ver))' versions_tmp.json > tmp.json && mv tmp.json versions_tmp.json
+            fi
+          done
+
+          jq '[.[] | select((.version | IN($folders[])))]' --argjson folders "$(ls -1 | jq -R -s -c 'split("\n")[:-1]')" versions_tmp.json > versions_tmp_clean.json
+
+          jq --arg repo "${{ github.repository }}" '[.[] | select(.version != "main")] | sort_by(.version) | [{"version": "main", "url": ("https://eclipse-score.github.io/" + ($repo | split("/")[1]) + "/main/")}] + .' versions_tmp_clean.json > versions.json
+
+          rm versions_tmp.json versions_tmp_clean.json
+      
+      - name: Verify Git Repository
+        run: |
+          git status
+          git -C gh-pages-cleanup status
+
+      - name: Commit and Push Changes
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: gh-pages-cleanup
+          commit-message: "Daily cleanup of outdated documentation"
+
+     # Workflow-based GitHub Pages deployment
+      - name: Workflow Configure GitHub Pages
+        if: ${{ inputs.deployment_type == 'workflow' }}
+        uses: actions/configure-pages@v3
+
+      - name: Workflow Checkout gh-pages branch
+        if: ${{ inputs.deployment_type == 'workflow' }}
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages-content
+
+      - name: Workflow Upload site artifacts
+        if: ${{ inputs.deployment_type == 'workflow' }}
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: gh-pages-content
+
+      - name: Workflow Deploy site
+        if: ${{ inputs.deployment_type == 'workflow' }}
+        uses: actions/deploy-pages@v4
