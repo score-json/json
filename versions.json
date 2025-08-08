@@ -1,95 +1,7 @@
 [
   {
     "version": "main",
-    "url": "https://score-json.github.io/json/main/"
-  },
-  {
-    "version": "pr-7",
-    "url": "https://score-json.github.io/json/pr-7/"
-  },
-  {
-    "version": "pr-8",
-    "url": "https://score-json.github.io/json/pr-8/"
-  },
-  {
-    "version": "pr-10",
-    "url": "https://score-json.github.io/json/pr-10/"
-  },
-  {
-    "version": "pr-11",
-    "url": "https://score-json.github.io/json/pr-11/"
-  },
-  {
-    "version": "trudag_report_documentation",
-    "url": "https://score-json.github.io/json/trudag_report_documentation/"
-  },
-  {
-    "version": "pr-12",
-    "url": "https://score-json.github.io/json/pr-12/"
-  },
-  {
-    "version": "pr-14",
-    "url": "https://score-json.github.io/json/pr-14/"
-  },
-  {
-    "version": "pr-16",
-    "url": "https://score-json.github.io/json/pr-16/"
-  },
-  {
-    "version": "pr-17",
-    "url": "https://score-json.github.io/json/pr-17/"
-  },
-  {
-    "version": "pr-18",
-    "url": "https://score-json.github.io/json/pr-18/"
-  },
-  {
-    "version": "pr-19",
-    "url": "https://score-json.github.io/json/pr-19/"
-  },
-  {
-    "version": "pr-21",
-    "url": "https://score-json.github.io/json/pr-21/"
-  },
-  {
-    "version": "test_documentation_workflow",
-    "url": "https://score-json.github.io/json/test_documentation_workflow/"
-  },
-  {
-    "version": "pr-23",
-    "url": "https://score-json.github.io/json/pr-23/"
-  },
-  {
-    "version": "pr-30",
-    "url": "https://score-json.github.io/json/pr-30/"
-  },
-  {
-    "version": "pr-29",
-    "url": "https://score-json.github.io/json/pr-29/"
-  },
-  {
-    "version": "pr-38",
-    "url": "https://score-json.github.io/json/pr-38/"
-  },
-  {
-    "version": "pr-39",
-    "url": "https://score-json.github.io/json/pr-39/"
-  },
-  {
-    "version": "pr-42",
-    "url": "https://score-json.github.io/json/pr-42/"
-  },
-  {
-    "version": "pr-45",
-    "url": "https://score-json.github.io/json/pr-45/"
-  },
-  {
-    "version": "pr-46",
-    "url": "https://score-json.github.io/json/pr-46/"
-  },
-  {
-    "version": "pr-47",
-    "url": "https://score-json.github.io/json/pr-47/"
+    "url": "https://eclipse-score.github.io/json/main/"
   },
   {
     "version": "pr-48",
@@ -98,5 +10,9 @@
   {
     "version": "pr-49",
     "url": "https://score-json.github.io/json/pr-49/"
+  },
+  {
+    "version": "test_documentation_workflow",
+    "url": "https://score-json.github.io/json/test_documentation_workflow/"
   }
 ]
