@@ -4,7 +4,7 @@ normative: true
 references:
         - type: cpp_test
           name: "parser class;parse;number;floating-point"
-          path: "/workspaces/json/tests/src/unit-class_parser.cpp"
+          path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
         - type: cpp_test
           name: "regression tests 1;issue #360 - Loss of precision when serializing <double>"
           path: "/workspaces/json/tests/src/unit-regression1.cpp"

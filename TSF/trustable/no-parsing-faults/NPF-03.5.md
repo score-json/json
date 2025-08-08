@@ -7,7 +7,7 @@ references:
           path: "/workspaces/json/tests/src/unit-testsuites.cpp"
         - type: cpp_test
           name: "parser class;parse;string;escaped"
-          path: "/workspaces/json/tests/src/unit-class_parser.cpp"
+          path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
 ---
 
 The service parses \\, \\/, \\b,\\f, \\n, \\r, \\t and escaped quotation marks.

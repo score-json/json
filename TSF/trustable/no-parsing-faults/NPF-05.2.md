@@ -10,7 +10,7 @@ references:
           description: "Tests whether the empty array is parsed without exception."
         - type: cpp_test
           name: "parser class;parse;array;empty array"
-          path: "/workspaces/json/tests/src/unit-class_parser.cpp"
+          path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
 ---
 
 The service parses empty arrays.

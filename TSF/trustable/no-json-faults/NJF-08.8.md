@@ -12,7 +12,7 @@ references:
           description: "Checks that -01 is rejected."
         - type: cpp_test
           name: "parser class;accept;number;invalid numbers"
-          path: "/workspaces/json/tests/src/unit-class_parser.cpp"
+          path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
         - type: cpp_test
           name: "accept;Leading zeroes"
           path: "/workspaces/json/TSF/tests/unit-numbers.cpp"

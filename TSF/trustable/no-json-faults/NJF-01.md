@@ -3,7 +3,7 @@ level: 1.1
 normative: true
 references:
         - type: cpp_test
-          path: "/workspaces/json/tests/src/unit-class_parser.cpp"
+          path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
           name: "parser class"
         - type: JSON_testsuite
           name: "nst's JSONTestSuite;test_parsing;y"

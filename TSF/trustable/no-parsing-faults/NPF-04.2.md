@@ -4,7 +4,7 @@ normative: true
 references:
         - type: cpp_test
           name: "parser class;parse;true"
-          path: "/workspaces/json/tests/src/unit-class_parser.cpp"
+          path: "/workspaces/json/TSF/tests/unit-class_parser_core.cpp"
 ---
 
 The service parses the literal name true.
