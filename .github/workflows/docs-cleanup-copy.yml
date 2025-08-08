@@ -11,6 +11,9 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
+# should be removed once the issue is solved in the eclipse-score/cicd repository
+# https://github.com/eclipse-score/cicd-workflows/issues/34
+
 name: Daily Documentation Cleanup
 
 permissions:
@@ -51,6 +54,8 @@ jobs:
           repository: ${{ github.repository }}
           ref: gh-pages
           fetch-depth: 0
+          # the original workflow checkouts the repository into a separate folder
+          # but this leads to a bug in committing changes (line 96)
 
       - name: Install GitHub CLI
         run: sudo apt-get update && sudo apt-get install -y gh jq
@@ -95,7 +100,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: .
+          folder: . # changed the folder as this folder has to be a Git repository
           commit-message: "Daily cleanup of outdated documentation"
 
      # Workflow-based GitHub Pages deployment

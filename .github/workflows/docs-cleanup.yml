@@ -25,6 +25,8 @@ on:
 
 jobs:
   docs-cleanup:
+    # we use an adapted version here due to an issue in the eclipse-score/cicd repository
+    # https://github.com/eclipse-score/cicd-workflows/issues/34
     uses: ./.github/workflows/docs-cleanup-copy.yml
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
