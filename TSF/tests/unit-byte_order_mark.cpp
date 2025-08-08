@@ -58,8 +58,8 @@ TEST_CASE("accept")
         }
         SECTION("UTF-32")
         {
-            std::string utf32bom1("\x00\x00\xFE\xFF", 4);
-            std::string utf32bom2("\xFF\xFE\x00\x00", 4);
+            const std::string utf32bom1("\x00\x00\xFE\xFF", 4);
+            const std::string utf32bom2("\xFF\xFE\x00\x00", 4);
             CHECK(!json::accept(utf32bom1));
             CHECK(!json::accept(utf32bom2));
         }
@@ -103,8 +103,10 @@ TEST_CASE("parse")
         }
         SECTION("UTF-32")
         {
-            CHECK_THROWS_AS(parser_helper("\x00\x00\xFE\xFF"),json::parse_error&);
-            CHECK_THROWS_AS(parser_helper("\xFF\xFE\x00\x00"),json::parse_error&);
+            const std::string utf32bom1("\x00\x00\xFE\xFF", 4);
+            const std::string utf32bom2("\xFF\xFE\x00\x00", 4);
+            CHECK_THROWS_AS(parser_helper(utf32bom1),json::parse_error&);
+            CHECK_THROWS_AS(parser_helper(utf32bom2),json::parse_error&);
         }
     }
 }
