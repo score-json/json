@@ -18,7 +18,8 @@ TEST_CASE("accept")
     {
         SECTION("single BOM")
         {
-            CHECK(json::accept("\xEF\xBB\xBF"));
+            // a single byte order mark is treated as an empty token, which is not a valid json token. 
+            CHECK(!json::accept("\xEF\xBB\xBF"));
             CHECK(json::accept("\xEF\xBB\xBF\n\"foo\""));
             CHECK(json::accept("\xEF\xBB\xBF\"foo\""));
             CHECK(json::accept("\xEF\xBB\xBF 123"));

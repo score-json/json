@@ -259,6 +259,10 @@ TEST_CASE("accept")
     }
 }
 
+void parser_helper(std::string input){
+    json temp = json::parse(input);
+}
+
 TEST_CASE("parse")
 {
     SECTION("escaped unicode")
@@ -275,8 +279,8 @@ TEST_CASE("parse")
                 // Observe that this verbatim not what RFC8259 §7 prescribes; 
                 // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
                 // Illegal characters are not parsed anyway.
-                CHECK_THROWS_AS(json::parse(temp.str()),json::parse_error&);
-                CHECK_THROWS_AS(json::parse(temp2.str()),json::parse_error&);
+                CHECK_THROWS_AS(parser_helper(temp.str()),json::parse_error&);
+                CHECK_THROWS_AS(parser_helper(temp2.str()),json::parse_error&);
             } else { 
                 // all other characters of the basic multilingual plane are accepted.
                 CHECK(json::parse(temp.str())==json::parse(temp2.str()));
@@ -310,7 +314,7 @@ TEST_CASE("parse")
                     temp += static_cast<char>(0x80 | (i & 0x3F));
                 }
                 temp += "\"";
-                CHECK_THROWS_AS(json::parse(temp),json::parse_error&);
+                CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
             } else {
                 // All other characters are valid according to RFC8259
                 std::string temp = "\"";
@@ -331,28 +335,28 @@ TEST_CASE("parse")
                     temp += static_cast<char>(0x80 | (i & 0x3F));
                 }
                 temp += "\"";
-                CHECK_NOTHROW(json::parse(temp));
+                CHECK_NOTHROW(parser_helper(temp));
             }
         }
     }
     SECTION("whitespace")
     {
         // leading and trailing whitespace is ignored.
-        CHECK(json::parse(" \"foo\" ")==json::parse("foo"));
-        CHECK(json::parse(" \"foo\"\t")==json::parse("foo"));
-        CHECK(json::parse(" \"foo\"\n")==json::parse("foo"));
-        CHECK(json::parse(" \"foo\"\u000d")==json::parse("foo"));
-        CHECK(json::parse("\t\"foo\" ")==json::parse("foo"));
-        CHECK(json::parse("\t\"foo\"\t")==json::parse("foo"));
-        CHECK(json::parse("\t\"foo\"\n")==json::parse("foo"));
-        CHECK(json::parse("\t\"foo\"\u000d")==json::parse("foo"));
-        CHECK(json::parse("\n\"foo\" ")==json::parse("foo"));
-        CHECK(json::parse("\n\"foo\"\t")==json::parse("foo"));
-        CHECK(json::parse("\n\"foo\"\n")==json::parse("foo"));
-        CHECK(json::parse("\n\"foo\"\u000d")==json::parse("foo"));
-        CHECK(json::parse("\u000d\"foo\" ")==json::parse("foo"));
-        CHECK(json::parse("\u000d\"foo\"\t")==json::parse("foo"));
-        CHECK(json::parse("\u000d\"foo\"\n")==json::parse("foo"));
-        CHECK(json::parse("\u000d\"foo\"\u000d")==json::parse("foo"));
+        CHECK(json::parse(" \"foo\" ")==json::parse("\"foo\""));
+        CHECK(json::parse(" \"foo\"\t")==json::parse("\"foo\""));
+        CHECK(json::parse(" \"foo\"\n")==json::parse("\"foo\""));
+        CHECK(json::parse(" \"foo\"\u000d")==json::parse("\"foo\""));
+        CHECK(json::parse("\t\"foo\" ")==json::parse("\"foo\""));
+        CHECK(json::parse("\t\"foo\"\t")==json::parse("\"foo\""));
+        CHECK(json::parse("\t\"foo\"\n")==json::parse("\"foo\""));
+        CHECK(json::parse("\t\"foo\"\u000d")==json::parse("\"foo\""));
+        CHECK(json::parse("\n\"foo\" ")==json::parse("\"foo\""));
+        CHECK(json::parse("\n\"foo\"\t")==json::parse("\"foo\""));
+        CHECK(json::parse("\n\"foo\"\n")==json::parse("\"foo\""));
+        CHECK(json::parse("\n\"foo\"\u000d")==json::parse("\"foo\""));
+        CHECK(json::parse("\u000d\"foo\" ")==json::parse("\"foo\""));
+        CHECK(json::parse("\u000d\"foo\"\t")==json::parse("\"foo\""));
+        CHECK(json::parse("\u000d\"foo\"\n")==json::parse("\"foo\""));
+        CHECK(json::parse("\u000d\"foo\"\u000d")==json::parse("\"foo\""));
     }
 }

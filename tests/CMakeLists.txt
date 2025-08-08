@@ -150,7 +150,8 @@ message(STATUS "${msg}")
 json_test_should_build_32bit_test(json_32bit_test json_32bit_test_only "${JSON_32bitTest}")
 file(GLOB files src/unit-*.cpp)
 
-file(GLOB s-core_tests s-core/unit-*.cpp)
+# add unit-tests defined to increase coverage for TSF
+file(GLOB s-core_tests ../TSF/tests/unit-*.cpp)
 list(APPEND files ${s-core_tests})
 
 if(json_32bit_test_only)
