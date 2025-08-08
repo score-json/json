@@ -7,6 +7,15 @@
 #include <nlohmann/json.hpp>
 using nlohmann::json;
 
+namespace
+{
+void parser_helper(std::string input);
+
+void parser_helper(std::string input){
+    json temp = json::parse(input);
+}
+} //namespace
+
 TEST_CASE("accept")
 {
     SECTION("basic multilingual plane")
@@ -257,10 +266,6 @@ TEST_CASE("accept")
             CHECK(!json::accept("\xfe\xfe\xff\xff"));
         }
     }
-}
-
-void parser_helper(std::string input){
-    json temp = json::parse(input);
 }
 
 TEST_CASE("parse")

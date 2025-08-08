@@ -4,6 +4,15 @@
 #include <nlohmann/json.hpp>
 using nlohmann::json;
 
+namespace
+{
+void parser_helper(std::string input);
+
+void parser_helper(std::string input){
+    json temp = json::parse(input);
+}
+} //namespace
+
 TEST_CASE("accept")
 {
     SECTION("exponents")
@@ -309,10 +318,6 @@ TEST_CASE("accept")
             CHECK(!json::accept("42F3"));
         }
     }
-}
-
-void parser_helper(std::string input){
-    json temp = json::parse(input);
 }
 
 TEST_CASE("parse")

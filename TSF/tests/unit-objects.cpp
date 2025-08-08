@@ -4,6 +4,15 @@
 #include <nlohmann/json.hpp>
 using nlohmann::json;
 
+namespace
+{
+void parser_helper(std::string input);
+
+void parser_helper(std::string input){
+    json temp = json::parse(input);
+}
+} //namespace
+
 TEST_CASE("accept")
 {
     // A name (or key) is a string. No other token is a valid name
@@ -137,10 +146,6 @@ TEST_CASE("accept")
         CHECK(!json::accept("{\"foo\"\u002c\"bar\"}"));     //,
         CHECK(!json::accept("{\"foo\"\u003b\"bar\"}"));     //;
     }
-}
-
-void parser_helper(std::string input){
-    json temp = json::parse(input);
 }
 
 TEST_CASE("parse")
