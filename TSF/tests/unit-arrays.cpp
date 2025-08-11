@@ -3,6 +3,7 @@
 
 #include <nlohmann/json.hpp>
 #include <fstream>
+#include <sstream>
 using nlohmann::json;
 
 
