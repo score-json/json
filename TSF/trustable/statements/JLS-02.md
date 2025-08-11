@@ -6,4 +6,4 @@ references:
           url: "https://introspector.oss-fuzz.com/project-profile?project=json"
 ---
 
-Fuzz testing is used to uncover edge cases and failure modes throughout development. (https://github.com/nlohmann/json/blob/develop/tests/fuzzing.md)
+Fuzz testing is used in the original nlohmann_json repository (https://github.com/nlohmann/json) to uncover edge cases and failure modes throughout development. (https://github.com/nlohmann/json/blob/develop/tests/fuzzing.md)
