@@ -170,7 +170,7 @@ bool read_region(ifstream& source, ofstream& target){
 
 int main(){
     // define standard paths
-    string path_to_testsuite = "../tests/src/unit-testsuites.cpp";
+    string path_to_testsuite = "../../tests/src/unit-testsuites.cpp";
     string path_to_evidence = "temp.md";
     
     // Setup source
