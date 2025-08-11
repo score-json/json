@@ -6,6 +6,7 @@
 #include <sstream>
 using nlohmann::json;
 
+namespace{
 // The pipeline complains if json::parse is called without an output.
 // Masking this call within a helper function suppresses this complaint.
 json parser_helper(const std::string& input);
@@ -13,6 +14,7 @@ json parser_helper(const std::string& input);
 json parser_helper(const std::string& input){
     return json::parse(input);
 }
+}//namespace
 
 TEST_CASE("accept")
 {

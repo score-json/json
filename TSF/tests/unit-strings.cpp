@@ -10,61 +10,37 @@ using nlohmann::json;
 namespace
 {
 void parser_helper(const std::string& input);
+std::string uint_to_utf8(const uint32_t& input); 
 
 void parser_helper(const std::string& input){
     const json temp = json::parse(input);
+}
+
+std::string uint_to_utf8(const uint32_t& input){
+    std::string temp = "\"";
+    // evil chat-gpt magic transforms i into utf-8 encoded unescaped character
+    if (input <= 0x7F) {
+        temp += static_cast<char>(input); // 1-byte (ASCII)
+    } else if (input <= 0x7FF) {
+        temp += static_cast<char>(0xC0 | ((input >> 6) & 0x1F)); // 2-byte sequence
+        temp += static_cast<char>(0x80 | (input & 0x3F));
+    } else if (input <= 0xFFFF) {
+        temp += static_cast<char>(0xE0 | ((input >> 12) & 0x0F)); // 3-byte sequence
+        temp += static_cast<char>(0x80 | ((input >> 6) & 0x3F));
+        temp += static_cast<char>(0x80 | (input & 0x3F));
+    } else if (input <= 0x10FFFF) {
+        temp += static_cast<char>(0xF0 | ((input >> 18) & 0x07)); // 4-byte sequence
+        temp += static_cast<char>(0x80 | ((input >> 12) & 0x3F));
+        temp += static_cast<char>(0x80 | ((input >> 6) & 0x3F));
+        temp += static_cast<char>(0x80 | (input & 0x3F));
+    }
+    temp += "\"";
+    return temp;
 }
 } //namespace
 
 TEST_CASE("accept")
 {
-    SECTION("basic multilingual plane")
-    {
-        for (uint32_t i = 0x0000; i<=0xFFFF; i++)
-        {
-            std::ostringstream temp;
-            temp << "\"\\u" << std::hex << std::uppercase << std::setfill('0') << std::setw(4) << i << "\"";
-            if (i>=0xD800 && i<=0xDFFF)
-            {
-                // Unpaired utf-16 surrogates are illegal.
-                // Observe that this verbatim not what RFC8259 §7 prescribes; 
-                // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
-                CHECK(!json::accept(temp.str()));
-            } else { 
-                // all other characters of the basic multilingual plane are accepted.
-                CHECK(json::accept(temp.str()));
-            }
-        }
-    }
-    // escaped utf-16 surrogate pairs are accepted.
-    SECTION("escaped utf-16 surrogates")
-    {
-        for (uint16_t i = 0xD800; i <= 0xDBFF; i++){
-            for (uint16_t j = 0xDC00; j <= 0xDFFF; j++){
-                std::ostringstream temp;
-                temp << "\"\\u" << std::hex << std::uppercase << std::setfill('0') << std::setw(4) << i\
-                << "\\u" << std::hex << std::uppercase << std::setfill('0') << std::setw(4) << j\
-                << "\"" ;
-                CHECK(json::accept(temp.str()));
-            }
-        }
-    }
-    // unescaped utf-16 surrogates are rejected.
-    SECTION("unescaped utf-16 surrogates")
-    {
-        for (uint16_t i = 0xD800; i <= 0xDBFF; i++){
-            for (uint16_t j = 0xDC00; j <= 0xDFFF; j++){
-                std::string temp;
-                temp += static_cast<char>(0xED);
-                temp += static_cast<char>(i>>8);
-                temp += static_cast<char>(i&0xFF);
-                temp += static_cast<char>(0xED);
-                temp += static_cast<char>(j>>8);
-                temp += static_cast<char>(j&0xFF);
-                CHECK(!json::accept(temp));
-            }
-        }
-    }
     // noncharacters
     // The parsing of these is tested in unit-unicode.cpp;
     // here: replace roundtrip() (i.e. test for parse() and dump()) with accept.
@@ -268,7 +244,7 @@ TEST_CASE("accept")
     }
 }
 
-TEST_CASE("parse")
+TEST_CASE("Unicode")
 {
     SECTION("escaped unicode")
     {
@@ -284,10 +260,14 @@ TEST_CASE("parse")
                 // Observe that this verbatim not what RFC8259 §7 prescribes; 
                 // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
                 // Illegal characters are not parsed anyway.
+                CHECK(!json::accept(temp.str()));
+                CHECK(!json::accept(temp2.str()));
                 CHECK_THROWS_AS(parser_helper(temp.str()),json::parse_error&);
                 CHECK_THROWS_AS(parser_helper(temp2.str()),json::parse_error&);
             } else { 
                 // all other characters of the basic multilingual plane are accepted.
+                CHECK(json::accept(temp.str()));
+                CHECK(json::accept(temp2.str()));
                 CHECK(json::parse(temp.str())==json::parse(temp2.str()));
             }
         }
@@ -296,54 +276,51 @@ TEST_CASE("parse")
     {
         for (uint32_t i = 0x0000; i<=0x10FFFF; i++)
         {
-            if ((i>=0xD800 && i<=0xDFFF)||i<0x0020||i==0x0022||i==0x005c) { 
+            if ((i>=0xD800 && i<=0xDFFF)) { 
                 // Unpaired utf-16 surrogates are illegal.
                 // Observe that this verbatim not what RFC8259 §7 prescribes; 
                 // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
                 // The other characters are illegal if unescaped.
-                std::string temp = "\"";
-                // evil chat-gpt magic transforms i into utf-8 encoded unescaped character
-                if (i <= 0x7F) {
-                    temp += static_cast<char>(i); // 1-byte (ASCII)
-                } else if (i <= 0x7FF) {
-                    temp += static_cast<char>(0xC0 | ((i >> 6) & 0x1F)); // 2-byte sequence
-                    temp += static_cast<char>(0x80 | (i & 0x3F));
-                } else if (i <= 0xFFFF) {
-                    temp += static_cast<char>(0xE0 | ((i >> 12) & 0x0F)); // 3-byte sequence
-                    temp += static_cast<char>(0x80 | ((i >> 6) & 0x3F));
-                    temp += static_cast<char>(0x80 | (i & 0x3F));
-                } else if (i <= 0x10FFFF) {
-                    temp += static_cast<char>(0xF0 | ((i >> 18) & 0x07)); // 4-byte sequence
-                    temp += static_cast<char>(0x80 | ((i >> 12) & 0x3F));
-                    temp += static_cast<char>(0x80 | ((i >> 6) & 0x3F));
-                    temp += static_cast<char>(0x80 | (i & 0x3F));
-                }
-                temp += "\"";
+                std::string temp = uint_to_utf8(i);
+                CHECK(!json::accept(temp));
+                CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
+                if (i<=0xDBFF){
+                    for (uint32_t j = 0xDC00; j<=0xDFFF; j++){
+                        temp += uint_to_utf8(j);
+                        CHECK(!json::accept(temp));
+                        CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
+                    }
+                } 
+            } else if (i<0x0020||i==0x0022||i==0x005c){
+                std::string temp = uint_to_utf8(i);
+                CHECK(!json::accept(temp));
                 CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
             } else {
                 // All other characters are valid according to RFC8259
-                std::string temp = "\"";
-                // evil chat-gpt magic transforms i into utf-8 encoded unescaped character
-                if (i <= 0x7F) {
-                    temp += static_cast<char>(i); // 1-byte (ASCII)
-                } else if (i <= 0x7FF) {
-                    temp += static_cast<char>(0xC0 | ((i >> 6) & 0x1F)); // 2-byte sequence
-                    temp += static_cast<char>(0x80 | (i & 0x3F));
-                } else if (i <= 0xFFFF) {
-                    temp += static_cast<char>(0xE0 | ((i >> 12) & 0x0F)); // 3-byte sequence
-                    temp += static_cast<char>(0x80 | ((i >> 6) & 0x3F));
-                    temp += static_cast<char>(0x80 | (i & 0x3F));
-                } else if (i <= 0x10FFFF) {
-                    temp += static_cast<char>(0xF0 | ((i >> 18) & 0x07)); // 4-byte sequence
-                    temp += static_cast<char>(0x80 | ((i >> 12) & 0x3F));
-                    temp += static_cast<char>(0x80 | ((i >> 6) & 0x3F));
-                    temp += static_cast<char>(0x80 | (i & 0x3F));
-                }
-                temp += "\"";
+                std::string temp = uint_to_utf8(i);
                 CHECK_NOTHROW(parser_helper(temp));
             }
         }
     }
+    // escaped utf-16 surrogate pairs are accepted and parsed.
+    SECTION("escaped utf-16 surrogates")
+    {
+        for (uint16_t i = 0xD800; i <= 0xDBFF; i++){
+            for (uint16_t j = 0xDC00; j <= 0xDFFF; j++){
+                std::ostringstream temp;
+                temp << "\"\\u" << std::hex << std::uppercase << std::setfill('0') << std::setw(4) << i\
+                << "\\u" << std::hex << std::uppercase << std::setfill('0') << std::setw(4) << j\
+                << "\"" ;
+                CHECK(json::accept(temp.str()));
+                CHECK_NOTHROW(parser_helper(temp.str()));
+            }
+        }
+    }
+
+}
+
+TEST_CASE("parse")
+{
     SECTION("whitespace")
     {
         // leading and trailing whitespace is ignored.

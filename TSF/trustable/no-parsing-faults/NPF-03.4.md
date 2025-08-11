@@ -12,7 +12,7 @@ references:
             - "/json_nlohmann_tests/all_unicode.json"
           description: ""
         - type: cpp_test
-          name: "parse;unescaped unicode"
+          name: "Unicode;unescaped unicode"
           path: "TSF/tests/unit-strings.cpp"
 ---
 

@@ -11,7 +11,7 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_structure_lone-invalid-utf-8.json"
           description: ""
         - type: cpp_test
-          name: "accept;unescaped utf-16 surrogates"
+          name: "Unicode;unescaped unicode"
           path: "TSF/tests/unit-strings.cpp"
 ---
 

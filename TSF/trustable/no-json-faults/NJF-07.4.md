@@ -26,7 +26,7 @@ references:
           name: "Unicode (1/5);\\\\uxxxx sequences;correct sequences"
           path: "tests/src/unit-unicode1.cpp"
         - type: cpp_test
-          name: "accept;basic multilingual plane"
+          name: "Unicode;escaped unicode"
           path: "TSF/tests/unit-strings.cpp"
 ---
 
