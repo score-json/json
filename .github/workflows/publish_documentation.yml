@@ -58,6 +58,8 @@ jobs:
           trudag publish --validate --output-dir "$TRUDAG_REPORT_FOLDER"
           trudag plot -o "$TRUDAG_REPORT_FOLDER/graph.svg"
           python TSF/scripts/clean_trudag_output.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload trudag artifact
         uses: actions/upload-artifact@v4
