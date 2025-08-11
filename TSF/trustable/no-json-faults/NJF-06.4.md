@@ -13,4 +13,4 @@ references:
           path: "tests/src/unit-testsuites.cpp"
 ---
 
-The admissible members of an object have the form name ; value.
+The admissible members of an object have the form name : value.
