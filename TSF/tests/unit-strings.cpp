@@ -276,12 +276,12 @@ TEST_CASE("Unicode")
     {
         for (uint32_t i = 0x0000; i<=0x10FFFF; i++)
         {
+            std::string temp = uint_to_utf8(i);
             if ((i>=0xD800 && i<=0xDFFF)) { 
                 // Unpaired utf-16 surrogates are illegal.
                 // Observe that this verbatim not what RFC8259 §7 prescribes; 
                 // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
                 // The other characters are illegal if unescaped.
-                std::string temp = uint_to_utf8(i);
                 CHECK(!json::accept(temp));
                 CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
                 if (i<=0xDBFF){
@@ -292,12 +292,10 @@ TEST_CASE("Unicode")
                     }
                 } 
             } else if (i<0x0020||i==0x0022||i==0x005c){
-                std::string temp = uint_to_utf8(i);
                 CHECK(!json::accept(temp));
                 CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
             } else {
                 // All other characters are valid according to RFC8259
-                std::string temp = uint_to_utf8(i);
                 CHECK_NOTHROW(parser_helper(temp));
             }
         }
