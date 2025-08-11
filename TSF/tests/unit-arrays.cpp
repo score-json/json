@@ -26,8 +26,15 @@ TEST_CASE("accept")
         CHECK(!json::accept("([1,32,5,\"foo\"]]"));
 
         // Test whether 100,000 opening brackets with "Moin!" and 99,999 closing brackets are rejected.
-        std::ifstream fs("faulty_arrays.json");
-        CHECK(!json::accept(fs));
+        std::stringstream faulty_array;
+        for (int i = 0; i < 100000; i++){
+            faulty_array << "[";
+        }
+        faulty_array << "\"Moin!\"";
+        for (int i = 1; i < 100000; i++){
+            faulty_array << "]";
+        }
+        CHECK(!json::accept(faulty_array.str()));
     }
 }
 
