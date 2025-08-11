@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <regex>
+#include <stdexcept>
 
 using namespace std;
 
@@ -36,7 +37,7 @@ bool read_region(ifstream& source, ofstream& target);
 
 // Horizontal tabs are automatically replaced by four spaces in VSCode except if a '\t' is pasted into the file.
 // This function does the same.
-string replace_tab_with_spaces(const string& input, const int num_of_spaces = 4){
+string replace_tab_with_spaces(const string& input, const int num_of_spaces){
     string output = input;
     string spaces = "    ";
     regex tab("\t");
@@ -50,7 +51,7 @@ string replace_tab_with_spaces(const string& input, const int num_of_spaces = 4)
 }
 
 // This function brings a filename in the format which can be directly pasted in the item of the trustable graph.
-string wrapper_for_trudag(string evidence, string wrap_left = "\t\t\t- \"", string wrap_right = "\"\n"){
+string wrapper_for_trudag(string evidence, string wrap_left, string wrap_right){
     stringstream res;
     res << wrap_left << evidence << wrap_right;
     return res.str();
@@ -72,7 +73,7 @@ string get_json_from_candidate(string candidate){
 // If filename.json could be located, true is returned, and false otherwise.
 bool get_json_from_line(int line, ifstream& source, ofstream& target){
     if (line<=0){
-        throw;
+        throw invalid_argument("Can not read negative lines.");
     }
     // reset getline()
     source.clear();
@@ -82,7 +83,9 @@ bool get_json_from_line(int line, ifstream& source, ofstream& target){
     // read until
     string candidate;
     while (cnt <= line){
-        getline(source, candidate);
+        if (!getline(source, candidate)){
+            throw out_of_range("Only "+to_string(cnt-1)+" lines to be found.");
+        }
         cnt++;
     }
     string res;
@@ -114,7 +117,15 @@ bool read_line_by_line(ifstream& source, ofstream& target){
             continue;
         }
         cout << "Reading line " << line << "\n";
-        if (!get_json_from_line(line,source,target)) {
+        bool success;
+            try {
+                success = get_json_from_line(line,source,target);
+            } catch (const invalid_argument& ia){
+                cout << ia.what();
+            } catch (const out_of_range& oor) {
+                cout << oor.what();
+            }
+        if (!success) {
             cout << "Could not find json reference in line " << line << " !\n";
         }
         cout << "Add another line? y/n? ";
@@ -155,7 +166,17 @@ bool read_region(ifstream& source, ofstream& target){
         }
         for (int line = start_line; line <= end_line; line++){
             cout << "Reading line " << line << "\n";
-            if (!get_json_from_line(line,source,target)) {
+            bool success;
+            try {
+                success = get_json_from_line(line,source,target);
+            } catch (const invalid_argument& ia){
+                cout << ia.what();
+                return false;
+            } catch (const out_of_range& oor) {
+                cout << oor.what();
+                return false;
+            }
+            if (!success) {
                 cout << "Could not find json reference in line " << line << " !\n";
             }
         }
