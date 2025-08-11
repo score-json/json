@@ -8,4 +8,4 @@ references:
           path: "TSF/tests/unit-strings.cpp"
 ---
 
-The service accepts Non-Characters
+The service accepts Non-Characters.

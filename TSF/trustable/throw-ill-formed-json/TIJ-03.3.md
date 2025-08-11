@@ -16,4 +16,4 @@ references:
           description: "Tests whether several improperly bounded strings throw an exception."
 ---
 
-The service throws an exception on improperly bounded strings
+The service throws an exception on improperly bounded strings.

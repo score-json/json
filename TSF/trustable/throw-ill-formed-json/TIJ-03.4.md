@@ -27,4 +27,4 @@ references:
           description: "Tests whether various illegal control characters and utf-8 characters throw an exception."
 ---
 
-The service throws an exception on escaped invalid characters
+The service throws an exception on escaped invalid characters.
