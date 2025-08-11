@@ -36,6 +36,8 @@ TEST_CASE("accept")
             faulty_array << "]";
         }
         CHECK(!json::accept(faulty_array.str()));
+        // double check if rejection is not due to overflow
+        CHECK_THROWS_AS(json::parse(faulty_array.str()),json::parse_error&);
     }
 }
 
