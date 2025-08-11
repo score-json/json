@@ -40,14 +40,13 @@ string replace_tab_with_spaces(const string& input, const int num_of_spaces = 4)
     string output = input;
     string spaces = "    ";
     regex tab("\t");
-    if (num_of_spaces==4){
+    if (num_of_spaces!=4){
         spaces = "";
         for (int i = 0; i<num_of_spaces; i++){
             spaces += " ";
         }
     }
-    regex_replace(output,tab,spaces);
-    return output;
+    return regex_replace(output,tab,spaces);
 }
 
 // This function brings a filename in the format which can be directly pasted in the item of the trustable graph.
@@ -169,22 +168,7 @@ bool read_region(ifstream& source, ofstream& target){
     return true;
 }
 
-int main(int arg_num, char* args[]){
-    if (arg_num>2){
-        cout << "Error: illegal number of options\n" << arg_num << "\n";
-        return -1;
-    }
-    bool overwrite = true;
-    if (arg_num == 2){
-        if (args[0]=="--append"){
-            overwrite = false;
-            cout << "Modus: append\n\n";
-        } else if (args[0] == "--replace"){
-            cout << "Modus: replace\n\n";
-        } else {
-            cout << "Un-known option " << args[0] << "\nModus: replace\n\n";
-        }
-    }
+int main(){
     // define standard paths
     string path_to_testsuite = "../tests/src/unit-testsuites.cpp";
     string path_to_evidence = "temp.md";
