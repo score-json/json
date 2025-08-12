@@ -1,30 +1,26 @@
 [
   {
     "version": "main",
-    "url": "https://eclipse-score.github.io/json/main/"
+    "url": "https://score-json.github.io/json/main/"
   },
   {
     "version": "pr-48",
     "url": "https://score-json.github.io/json/pr-48/"
   },
   {
-    "version": "pr-49",
-    "url": "https://score-json.github.io/json/pr-49/"
-  },
-  {
-    "version": "test_documentation_workflow",
-    "url": "https://score-json.github.io/json/test_documentation_workflow/"
+    "version": "pr-50",
+    "url": "https://score-json.github.io/json/pr-50/"
   },
   {
     "version": "pr-52",
     "url": "https://score-json.github.io/json/pr-52/"
   },
   {
-    "version": "pr-50",
-    "url": "https://score-json.github.io/json/pr-50/"
-  },
-  {
     "version": "pr-53",
     "url": "https://score-json.github.io/json/pr-53/"
+  },
+  {
+    "version": "test_documentation_workflow",
+    "url": "https://score-json.github.io/json/test_documentation_workflow/"
   }
 ]
