@@ -103,8 +103,8 @@ TEST_CASE("parse")
         }
         SECTION("UTF-32")
         {
-            const std::string utf32bom1("\x00\x00\xFE\xFF\x30", 4);
-            const std::string utf32bom2("\xFF\xFE\x00\x00\x30", 4);
+            const std::string utf32bom1("\x00\x00\xFE\xFF\x30", 5);
+            const std::string utf32bom2("\xFF\xFE\x00\x00\x30", 5);
             CHECK_THROWS_AS(parser_helper(utf32bom1),json::parse_error&);
             CHECK_THROWS_AS(parser_helper(utf32bom2),json::parse_error&);
         }
