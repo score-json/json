@@ -20,6 +20,8 @@ references:
           test_suite_paths:
             - "/json.org/5.json"
           description: ""
+score:
+    Jonas-Kirchhoff: 0.9
 ---
 
 The service does accept comma as value separator.

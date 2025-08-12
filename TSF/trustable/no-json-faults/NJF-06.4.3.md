@@ -21,6 +21,8 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_object_string_unicode.json"
             - "/nst_json_testsuite2/test_parsing/y_object_with_newlines.json"      
           description: "Checks that various strings and numbers are accepted values."
+score:
+    Jonas-Kirchhoff: 0.75
 ---
 
-The service does accept different types of values.
+The service does accept the different types of values.

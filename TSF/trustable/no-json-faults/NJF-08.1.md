@@ -6,6 +6,8 @@ references:
         - type: cpp_test
           name: "parser class - core;accept;number;integers"
           path: "TSF/tests/unit-class_parser_core.cpp"
+score:
+    Jonas-Kirchhoff: 0.7
 ---
 
 The service does accept integers.

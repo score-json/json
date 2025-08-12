@@ -14,6 +14,8 @@ references:
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/i_structure_500_nested_arrays.json"
           description: ""
+score:
+    Jonas-Kirchhoff: 0.7
 ---
 
 The service accepts nested arrays.

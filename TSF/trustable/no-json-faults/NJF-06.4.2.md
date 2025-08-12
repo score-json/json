@@ -21,6 +21,8 @@ references:
         - type: cpp_test
           name: "accept;names;literals"
           path: "TSF/tests/unit-objects.cpp"
+score:
+    Jonas-Kirchhoff: 0.9
 ---
 
 The service does not accept any other token as name.

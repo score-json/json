@@ -17,6 +17,8 @@ references:
             - "/json.org/4.json"
             - "/json.org/5.json"
           description: "Checks that various arrays with more than one value are accepted."
+score:
+    Jonas-Kirchhoff: 0.9
 ---
 
 The service accepts comma as member separator.

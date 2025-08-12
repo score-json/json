@@ -9,7 +9,8 @@ references:
         - type: cpp_test
           name: "compliance tests from nativejson-benchmark;strings"
           path: "tests/src/unit-testsuites.cpp"
-            
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service does accept empty string.

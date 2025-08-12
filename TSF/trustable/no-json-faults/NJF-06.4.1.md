@@ -30,6 +30,8 @@ references:
         - type: cpp_test
           name: "accept;names;strings;escaped UTF-16 surrogates"
           path: "TSF/tests/unit-objects.cpp"          
+score:
+    Jonas-Kirchhoff: 0.9
 ---
 
-The service accepts strings as names. 
+The service accepts the strings as names. 

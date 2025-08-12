@@ -17,6 +17,8 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_string_single_quote.json"
             - "/nst_json_testsuite2/test_parsing/n_string_single_string_no_double_quotes.json"
           description: ""
+score:
+    Jonas-Kirchhoff: 0.7
 ---
 
-The service does not accept improperly bounded string.
+The service does not accept the improperly bounded strings.

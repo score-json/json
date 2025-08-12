@@ -29,6 +29,8 @@ references:
         - type: cpp_test
           name: "accept;illegal literals"
           path: "TSF/tests/unit-literals.cpp"
+score:
+    Jonas-Kirchhoff: 0.9
 ---
 
 The service does not accept any other literal name.

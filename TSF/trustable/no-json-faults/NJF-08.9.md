@@ -17,6 +17,8 @@ references:
         - type: cpp_test
           name: "accept;bases"
           path: "TSF/tests/unit-numbers.cpp"
+score:
+    Jonas-Kirchhoff: 0.6
 ---
 
-The service does not accept any base exceeding 10 in ist standard representation.
+The service does not accept any base exceeding 10 in its standard representation.

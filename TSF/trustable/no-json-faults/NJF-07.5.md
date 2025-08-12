@@ -16,6 +16,8 @@ references:
         - type: cpp_test
           name: "Unicode;escaped utf-16 surrogates"
           path: "TSF/tests/unit-strings.cpp"
+score:
+    Jonas-Kirchhoff: 0.85
 ---
 
 The service accepts UTF-16 surrogate pairs.

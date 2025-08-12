@@ -17,14 +17,9 @@ references:
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/y_array_empty.json"
             - "/nst_json_testsuite2/test_parsing/y_array_arraysWithSpaces.json"
-            - "/nst_json_testsuite2/test_parsing/y_array_empty-string.json"
           description: "Checks that the empty array [] is accepted."
-        - type: JSON_testsuite
-          name: "nst's JSONTestSuite (2);test_parsing;y"
-          path: "tests/src/unit-testsuites.cpp"
-          test_suite_paths:
-            - "/nst_json_testsuite2/test_parsing/y_array_ending_with_newline.json"
-          description: ""
+score:
+    Jonas-Kirchhoff: 0.95
 ---
 
 The service accepts the empty array.

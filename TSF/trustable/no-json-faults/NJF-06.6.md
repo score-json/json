@@ -17,6 +17,8 @@ references:
             - "/json.org/4.json"
             - "/json.org/5.json"
           description: "Checks that various nested objects are accepted."
+score:
+    Jonas-Kirchhoff: 0.7
 ---
 
-The service accepts nested objects.
+The service accept the nested objects.

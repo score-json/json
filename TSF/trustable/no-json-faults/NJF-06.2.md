@@ -13,6 +13,8 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_structure_object_followed_by_closing_object.json"
             - "/nst_json_testsuite2/test_parsing/n_structure_object_unclosed_no_value.json"
           description: ""
+score:
+    Jonas-Kirchhoff: 0.7
 ---
 
 The service does not accept improperly bounded objects.

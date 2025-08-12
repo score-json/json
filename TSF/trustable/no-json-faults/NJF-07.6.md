@@ -51,6 +51,8 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_string_with_del_character.json"
             - "/nst_json_testsuite2/test_parsing/y_structure_lonely_string.json"
           description: "Checks that various non-empty valid strings are accepted."
+score:
+    Jonas-Kirchhoff: 0.7
 ---
 
-The service does accept non-empty strings.
+The service does accept the non-empty strings.

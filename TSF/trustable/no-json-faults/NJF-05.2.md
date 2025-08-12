@@ -32,6 +32,8 @@ references:
             - "/json.org/4.json"
             - "/json.org/5.json"
           description: "Checks that various valid arrays in combination with objects are accepted."
+score:
+    Jonas-Kirchhoff: 0.7
 ---
 
-The service accepts non-empty arrays.
+The service accepts the non-empty arrays.
