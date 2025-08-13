@@ -21,23 +21,23 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
     steps:
-    - name: compare labels
+    - name: Add labels from labels_bulk.json
       run: |
-        # Source repository (the one we're cloning labels FROM)
-        SOURCE_REPO="nlohmann/json"
+        # Path to the static JSON file
+        LABELS_FILE="/workspaces/json/.github/labels_bulk.json"
 
         # Dynamically determine the current repository (target repository)
         TARGET_REPO="${GITHUB_REPOSITORY}"
 
-        echo "Cloning labels from $SOURCE_REPO to $TARGET_REPO..."
+        echo "Cloning labels from ${LABELS_FILE} to $TARGET_REPO..."
 
-        # Fetch labels from the source repository
-        SOURCE_LABELS=$(gh label list --repo "$SOURCE_REPO" --json name,color,description --limit 1000)
+        # Load labels from the static JSON file
+        SOURCE_LABELS=$(cat "$LABELS_FILE")
 
         # Fetch labels from the target repository for comparison
         TARGET_LABELS=$(gh label list --repo "$TARGET_REPO" --json name --limit 1000)
 
-        # Loop through all labels in the source repository
+        # Loop through all labels in the static JSON file
         echo "$SOURCE_LABELS" | jq -c '.[]' | while read -r label; do
           LABEL_NAME=$(echo "$label" | jq -r '.name')
           LABEL_COLOR=$(echo "$label" | jq -r '.color')
