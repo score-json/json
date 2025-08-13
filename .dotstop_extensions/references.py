@@ -1,5 +1,6 @@
 from pathlib import Path
 from trudag.dotstop.core.reference.references import BaseReference
+from trudag.dotstop.core.reference.references import SourceSpanReference
 import requests
 
 # Constants
@@ -25,7 +26,7 @@ class CPPTestReference(BaseReference):
     """
     Represents a reference to a specific section within a C++ test file. The class
     assumes that the C++ test sections are defined using `SECTION("name")` or
-    `TEST_CASE("name")` syntax, where the section name can be nested using
+    # `TEST_CASE("name")` syntax, where the section name can be nested using
     colon-separated names (e.g., "testcase1:section1:section2"). We assume that the 
     section path is unique within the file.
     
@@ -326,3 +327,119 @@ class WebReference(BaseReference):
     def __str__(self) -> str:
         # this is used as a title in the trudag report
         return f"website: {self._url}"
+    
+class FunctionReference(SourceSpanReference):
+    """
+    Represents a reference to a function within a class in a hpp-file. This class assumes that
+    the hpp-file has the form 
+    ...
+    class xyz
+    {
+        ...
+        output function_name(input)
+        {
+            ...
+        }
+        ...
+    };
+    This is the layout that is followed by the hpp-files of nlohmann/json.
+
+    A specific function is identified by 
+        1. the hpp-file
+        2. the name of the class, whithin which our function is defined
+        3. (optionally) the number of prior definitions within the same class in case of overloaded functions;
+            by default, the first definition is used.
+    Since classes are in hpp-files of nlohmann/json uniquely identified by their name, this uniquely identifies a function.
+    """
+    def __init__(self, path: Path, name: str, overload = 1) -> None:
+        super.__init__(path,self.get_function_line_numbers(path,name,overload))
+        self._name = name
+        self._overload = overload
+
+    @classmethod
+    def type(cls) -> str:
+        return "function_reference"
+    
+    def get_function_line_numbers(self, path: Path, name: str, overload = 1) -> tuple[int, int]:
+        with open(self._path, 'r') as file:
+            lines = file.readlines()
+        function_start_line = self.get_function_start(name, lines, overload)
+        function_end_line = self.get_function_end(function_start_line, lines)
+        return (function_start_line, function_end_line)
+        
+
+    def get_function_start(self, lines: list[str]) -> int:
+        # Split name in class_name and function_name, 
+        # and check that both, and only both, parts of the name are found.
+        name_parts = self._name.split("::")
+        if len(name_parts) != 2:
+            raise ValueError(f"Name {self._name} does not have the form class_name::function_name")
+        # name_parts[0] is interpreted as class_name, 
+        # name_parts[1] is interpreted as function_name
+        in_class = False
+        class_starting_line = -1
+        sections = []
+        instance = 0
+        for line_number, line in enumerate(lines):
+            # first task: find literal string "class class_name" within a line
+            if not in_class:
+                if f"class {name_parts[0]}" in line:
+                    in_class = True
+                    class_starting_line = line_number
+                    continue
+                continue
+            # now we are within the class
+            # time to search for our function
+            if '{' in line:
+                for c in line:
+                    if c == '{':
+                        sections.append(1)
+                    if c == '}':
+                        try:
+                            sections.pop()
+                        except IndexError:
+                            raise ValueError(f"Fatal error: Could not resolve {self._name} in file {self._path}.")
+            # A function-declaration always contains the literal string " function_name("
+            # When this string is found within the indentation of the class itself,
+            # then it can be assumed that we have a function declaration.
+            # This is true in case of the hpp-files of nlohmann/json. 
+            if f" {name_parts[1]}(" in line and sections == [1]:
+                instance += 1
+                if instance == self._overload:
+                    return line_number
+            if "};" in line:
+                # then, we have reached the end of the class
+                break
+        if self._overload == 1:
+            raise ValueError(f"Could not locate 1st implementation of {self._name} in file {self._path}.")
+        elif self._overload == 2:
+            raise ValueError(f"Could not locate 2nd implementation of {self._name} in file {self._path}.")
+        elif self._overload == 3:
+            raise ValueError(f"Could not locate 3rd implementation of {self._name} in file {self._path}.")
+        else:
+            raise ValueError(f"Could not locate {self._overload}th implementation of {self._name} in file {self._path}.")
+    
+    def get_function_end(self, function_start: int, lines: list[str]) -> int:
+        found_start = False
+        sections = []
+        for line_number, line in enumerate(lines):
+            if line_number<function_start:
+                # skip ahead
+                continue
+            # Now, we have found the line, where the function declaration
+            # In nlohmann/json, the function body is written between a lonely { and a lonely }.
+            # First, we should search for the first lonely {
+            if '{' in line:
+                for c in line:
+                    if c == '{':
+                        sections.append(1)
+                    if c == '}':
+                        try:
+                            sections.pop()
+                        except IndexError:
+                            raise ValueError(f"Fatal error: Could not resolve {self._name} in file {self._path}.")
+            if not found_start and len(sections)>0:
+                found_start = True
+            if found_start and len(sections)==0:
+                return line_number
+        raise ValueError(f"Could not find end of function-body of {self._name} in file {self._path}.")
