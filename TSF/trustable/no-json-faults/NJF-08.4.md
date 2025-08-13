@@ -19,7 +19,7 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_number_real_pos_exponent.json"
           description: "Checks that various numbers with exponent are accepted."
 score:
-    Jonas-Kirchhoff: 0.7
+    Jonas-Kirchhoff: 0.9
 ---
 
-The service does accept e or E.
+The service does accept e or E for numbers with exponent within the bounds of double.

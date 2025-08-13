@@ -17,7 +17,7 @@ references:
           name: "accept;Leading zeroes"
           path: "TSF/tests/unit-numbers.cpp"
 score:
-    Jonas-Kirchhoff: 0.9
+    Jonas-Kirchhoff: 0.95
 ---
 
 The service does not accept leading zeroes.

@@ -29,6 +29,7 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_structure_true_in_array.json"
           description: ""
 score: 
+    Jonas-Kirchhoff: 0.7
 ---
 
 The service accepts the arrays with different types.

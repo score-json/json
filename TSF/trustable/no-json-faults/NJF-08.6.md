@@ -66,7 +66,7 @@ references:
           name: "accept;operators"
           path: "TSF/tests/unit-numbers.cpp"
 score:
-    Jonas-Kirchhoff: 0.7
+    Jonas-Kirchhoff: 0.8
 ---
 
 The service does not accept invalid syntax for numbers.
