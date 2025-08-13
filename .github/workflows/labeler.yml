@@ -33,7 +33,7 @@ jobs:
         echo "Cloning labels from ${LABELS_FILE} to $TARGET_REPO..."
 
         # Load labels from the static JSON file
-        SOURCE_LABELS=cat $("$LABELS_FILE")
+        SOURCE_LABELS=$(cat "$LABELS_FILE")
 
         # Fetch labels from the target repository for comparison
         TARGET_LABELS=$(gh label list --repo "$TARGET_REPO" --json name --limit 1000)
