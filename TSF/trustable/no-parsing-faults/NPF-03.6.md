@@ -5,6 +5,8 @@ references:
         - type: cpp_test
           name: "parser class - core;parse;string"
           path: "TSF/tests/unit-class_parser_core.cpp"
+score:
+    Jonas-Kirchhoff: 0.99
 ---
 
 The service parses the empty string.

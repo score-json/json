@@ -8,6 +8,8 @@ references:
         - type: cpp_test
           name: "parse;whitespace"
           path: "TSF/tests/unit-arrays.cpp"
+score:
+    Jonas-Kirchhoff: 0.8
 ---
 
 The service ignores leading and trailing whitespace for each value.

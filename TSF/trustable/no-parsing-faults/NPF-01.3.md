@@ -5,6 +5,8 @@ references:
         - type: cpp_test
           name: "parse;UTF-8;unexpected BOM"
           path: "TSF/tests/unit-byte_order_mark.cpp"
+score:
+    Jonas-Kirchhoff: 0.7
 ---
 
 The service does not parse UTF-8 byte order marks at any other place of the input and throws an exception.

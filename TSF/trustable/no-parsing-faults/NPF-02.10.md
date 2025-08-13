@@ -8,6 +8,8 @@ references:
         - type: cpp_test
           name: "parse;trailing zeroes"
           path: "TSF/tests/unit-numbers.cpp"
+score:
+    Jonas-Kirchhoff: 0.85
 ---
 
 The service ignores trailing zeroes after the decimal point.

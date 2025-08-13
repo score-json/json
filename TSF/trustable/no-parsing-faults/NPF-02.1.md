@@ -18,6 +18,8 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_number_negative_one.json"
             - "/nst_json_testsuite2/test_parsing/y_number_negative_zero.json"
           description: "Tests whether several numbers without exponent are parsed without throwing an exception."
+score:
+    Jonas-Kirchhoff: 0.9
 ---
 
-The service parses integers without exponent. 
+The service parses integers without exponent within the precision of int64_t. 

@@ -29,6 +29,8 @@ references:
         - type: cpp_test
           name: "Unicode (5/5);RFC 3629;UTF8-4 (xF4 x80-8F UTF8-tail UTF8-tail);well-formed"
           path: "tests/src/unit-unicode5.cpp"
+score:
+    Jonas-Kirchhoff: 0.8
 ---
 
 The service parses UTF-8 encoded data.
