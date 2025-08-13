@@ -22,5 +22,9 @@
   {
     "version": "test_documentation_workflow",
     "url": "https://score-json.github.io/json/test_documentation_workflow/"
+  },
+  {
+    "version": "pr-54",
+    "url": "https://score-json.github.io/json/pr-54/"
   }
 ]
