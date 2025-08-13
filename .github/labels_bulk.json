@@ -1,0 +1,217 @@
+[
+  {
+    "color": "fc2929",
+    "description": "",
+    "name": "kind: bug"
+  },
+  {
+    "color": "207de5",
+    "description": "",
+    "name": "kind: enhancement/improvement"
+  },
+  {
+    "color": "cc317c",
+    "description": "",
+    "name": "kind: question"
+  },
+  {
+    "color": "cccccc",
+    "description": "the issue is a duplicate; refer to the linked issue instead",
+    "name": "solution: duplicate"
+  },
+  {
+    "color": "e6e6e6",
+    "description": "the issue is not related to the library",
+    "name": "solution: invalid"
+  },
+  {
+    "color": "000000",
+    "description": "the issue will not be fixed (either it is impossible or deemed out of scope)",
+    "name": "solution: wontfix"
+  },
+  {
+    "color": "e11d21",
+    "description": "",
+    "name": "confirmed"
+  },
+  {
+    "color": "eb6420",
+    "description": "related to MSVC",
+    "name": "platform: visual studio"
+  },
+  {
+    "color": "fbca04",
+    "description": "please discuss the issue or vote for your favorite option",
+    "name": "state: please discuss"
+  },
+  {
+    "color": "fbca04",
+    "description": "the issue needs help to proceed",
+    "name": "state: help needed"
+  },
+  {
+    "color": "eb6420",
+    "description": "related to Android NDK",
+    "name": "platform: android"
+  },
+  {
+    "color": "0e8a16",
+    "description": "",
+    "name": "documentation"
+  },
+  {
+    "color": "eb6420",
+    "description": "related to MinGW",
+    "name": "platform: mingw"
+  },
+  {
+    "color": "00bb00",
+    "description": "a fix for the issue has been proposed and waits for confirmation",
+    "name": "solution: proposed fix"
+  },
+  {
+    "color": "5319e7",
+    "description": "BSON, CBOR, MessagePack, UBJSON",
+    "name": "aspect: binary formats"
+  },
+  {
+    "color": "eb6420",
+    "description": "related to Intel compiler",
+    "name": "platform: icc"
+  },
+  {
+    "color": "eb6420",
+    "description": "related to ARM architecture",
+    "name": "platform: arm"
+  },
+  {
+    "color": "999999",
+    "description": "the issue has not been updated in a while and will be closed automatically soon unless it is updated",
+    "name": "state: stale"
+  },
+  {
+    "color": "f9d0c4",
+    "description": "the author of the issue needs to provide more details",
+    "name": "state: needs more info"
+  },
+  {
+    "color": "FFFFFF",
+    "description": "",
+    "name": "pinned"
+  },
+  {
+    "color": "d4c5f9",
+    "description": "",
+    "name": "good first issue"
+  },
+  {
+    "color": "444444",
+    "description": "",
+    "name": "release item: :sparkles: new feature"
+  },
+  {
+    "color": "444444",
+    "description": "",
+    "name": "release item: :bug: bug fix"
+  },
+  {
+    "color": "444444",
+    "description": "",
+    "name": "release item: :zap: improvement"
+  },
+  {
+    "color": "444444",
+    "description": "",
+    "name": "release item: :hammer: further change"
+  },
+  {
+    "color": "444444",
+    "description": "",
+    "name": "release item: :fire: deprecation"
+  },
+  {
+    "color": "d665f2",
+    "description": "",
+    "name": "state: waiting for PR"
+  },
+  {
+    "color": "d1260f",
+    "description": "Security vulnerability detected by WhiteSource",
+    "name": "security vulnerability"
+  },
+  {
+    "color": "ed689f",
+    "description": "",
+    "name": "spam"
+  },
+  {
+    "color": "D4C5F9",
+    "description": "It would be great if someone could review the proposed changes.",
+    "name": "review needed"
+  },
+  {
+    "color": "006B75",
+    "description": "Please rebase your branch to origin/develop",
+    "name": "please rebase"
+  },
+  {
+    "color": "0C6E99",
+    "description": "",
+    "name": "state: blocked"
+  },
+  {
+    "color": "BFD4F2",
+    "description": "",
+    "name": "S"
+  },
+  {
+    "color": "BFD4F2",
+    "description": "",
+    "name": "M"
+  },
+  {
+    "color": "BFD4F2",
+    "description": "",
+    "name": "L"
+  },
+  {
+    "color": "93E0B0",
+    "description": "",
+    "name": "CI"
+  },
+  {
+    "color": "5A8E44",
+    "description": "",
+    "name": "tests"
+  },
+  {
+    "color": "563241",
+    "description": "",
+    "name": "CMake"
+  },
+  {
+    "color": "0366d6",
+    "description": "Pull requests that update a dependency file",
+    "name": "dependencies"
+  },
+  {
+    "color": "444444",
+    "description": "A feature that should be discussed for the next major release",
+    "name": "🔮 V4 candidate"
+  },
+  {
+    "color": "000000",
+    "description": "Pull requests that update GitHub Actions code",
+    "name": "github_actions"
+  },
+  {
+    "color": "2b67c6",
+    "description": "Pull requests that update Python code",
+    "name": "python"
+  },
+  {
+    "color": "623B7E",
+    "description": "we cannot reproduce the issue",
+    "name": "state: cannot reproduce"
+  }
+]
