@@ -24,7 +24,7 @@ jobs:
     - name: Add labels from labels_bulk.json
       run: |
         # Path to the static JSON file
-        LABELS_FILE="/workspaces/json/.github/labels_bulk.json"
+        LABELS_FILE="./.github/labels_bulk.json"
 
         # Dynamically determine the current repository (target repository)
         TARGET_REPO="${GITHUB_REPOSITORY}"
