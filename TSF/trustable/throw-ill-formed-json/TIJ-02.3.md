@@ -15,6 +15,8 @@ references:
         - type: cpp_test
           name: "parse;illegal literal numbers"
           path: "TSF/tests/unit-literals.cpp"
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service throws an exception on NaN, infinity.

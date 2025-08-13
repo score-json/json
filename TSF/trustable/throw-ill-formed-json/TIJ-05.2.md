@@ -21,6 +21,8 @@ references:
         - type: cpp_test
           name: "parse;names;literals"
           path: "TSF/tests/unit-objects.cpp"
+score:
+    Jonas-Kirchhoff: 0.9
 ---
 
 The service throws an exception if a non-string is used as name of any member.
