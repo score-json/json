@@ -25,7 +25,7 @@ jobs:
       run: |
       
         REPO_NAME=$(echo "${GITHUB_REPOSITORY}" | cut -d'/' -f2)
-        ls -l ${GITHUB_WORKSPACE}/.github/
+        ls -l ${GITHUB_WORKSPACE}/
         git ls-files .github/labels_bulk.json
 
         # Path to the static JSON file
