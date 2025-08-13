@@ -23,12 +23,12 @@ jobs:
     steps:
     - name: Add labels from labels_bulk.json
       run: |
-      
+        pwd
         REPO_NAME=$(echo "${GITHUB_REPOSITORY}" | cut -d'/' -f2)
         ls -l ${github_repository}/
 
         # Path to the static JSON file
-        LABELS_FILE="labels_bulk.json"
+        LABELS_FILE="/labels_bulk.json"
         # Dynamically determine the current repository (target repository)
         TARGET_REPO="${GITHUB_REPOSITORY}"
 
