@@ -26,13 +26,10 @@ jobs:
 
     - name: Add labels from labels_bulk.json
       run: |
-        pwd
-        REPO_NAME=$(echo "${GITHUB_REPOSITORY}" | cut -d'/' -f2)
-        ls -l ${github_repository}/
-
         # Path to the static JSON file
         LABELS_FILE=".github/labels_bulk.json"
-        # Dynamically determine the current repository (target repository)
+
+        # Determine the current repository (target repository)
         TARGET_REPO="${GITHUB_REPOSITORY}"
 
         echo "Cloning labels from ${LABELS_FILE} to $TARGET_REPO..."
