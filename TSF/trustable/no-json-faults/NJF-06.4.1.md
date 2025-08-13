@@ -28,7 +28,7 @@ references:
           name: "accept;names;strings;unicode"
           path: "TSF/tests/unit-objects.cpp"
         - type: cpp_test
-          name: "accept;names;strings;escaped UTF-16 surrogates"
+          name: "accept;names;strings;escaped utf-16 surrogates;well-formed"
           path: "TSF/tests/unit-objects.cpp"          
 score:
     Jonas-Kirchhoff: 0.9

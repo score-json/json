@@ -16,4 +16,4 @@ score:
     Jonas-Kirchhoff: 0.85
 ---
 
-The service rejects single escaped and unescaped, and paired unescaped UTF-16 surrogates.
+The service rejects single escaped and unescaped, and paired unescaped utf-16 surrogates;well-formed.
