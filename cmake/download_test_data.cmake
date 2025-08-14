@@ -1,4 +1,4 @@
-set(JSON_TEST_DATA_URL     https://github.com/score-json/json)
+set(JSON_TEST_DATA_URL     https://github.com/eclipse-score/inc_nlohmann_json)
 set(JSON_TEST_DATA_BRANCH json_test_data_version_3_1_0_mirror)
 
 # if variable is set, use test data from given directory rather than downloading them
