@@ -353,14 +353,14 @@ class FunctionReference(SourceSpanReference):
     """
 
     def __init__(self, name: str, path: str, overload = 1) -> None:
-        [a,b] = FunctionReference.get_function_line_numbers(Path(path),name,overload)
+        [start_line,end_line] = FunctionReference.get_function_line_numbers(Path(path),name,overload)
         # SourceSpanReference copies code from a start-character in a start-line 
         # up to an end-character in an end-line.
         # Here, we want every character in all lines between start- and end-line.
         # Therefore, we set the end-character to 1000, which could fail, if ever a
         # line with more than 1000 characters is copied.
-        # In nlohmann/json, no hpp-file has such a line.
-        super().__init__(Path(path),[[a,0],[b,1000]])
+        # In nlohmann/json, no hpp-file has such a line, so that the following works fine.
+        super().__init__(Path(path),[[start_line,0],[end_line,1000]])
         self._name = name
         self._overload = overload
 
