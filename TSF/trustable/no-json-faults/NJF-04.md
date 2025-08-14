@@ -29,6 +29,9 @@ references:
         - type: cpp_test
           name: "accept;illegal literals"
           path: "TSF/tests/unit-literals.cpp"
+        - type: function_reference
+          name: "lexer::scan_literal"
+          path: "include/nlohmann/detail/input/lexer.hpp"
 score:
     Jonas-Kirchhoff: 0.9
 ---
