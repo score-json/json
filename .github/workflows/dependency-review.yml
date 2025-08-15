@@ -33,12 +33,19 @@ jobs:
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@ce3cf9537a52e8119d91fd484ab5b8a807627bf8 # v4.6.0
 
-
-      - name: Generate dependency_review artifact
+      - name: Generate Dependency Review Artifact
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "Generating Dependency Review artifact..."
+          echo "Creating Dependency Review artifact..."
+
+          # Create the directory for the artifact
           mkdir -p dependency_review
-          echo "dependency review processed for ${{ inputs.artifact_id }}" > dependency_review/dependency_review.txt
+
+          echo "${{ steps.dependency-review.outputs.comment-content }}" > dependency_review/summary.html
+
+          # Single quotation marks are used to prevent JSON parsing issues
+          echo '${{ steps.dependency-review.outputs.dependency-changes }}' | jq '.' > dependency_review/dependency_changes.json
 
       - name: Upload dependency_review artifact
         uses: actions/upload-artifact@v4
