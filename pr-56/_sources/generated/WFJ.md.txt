@@ -1,0 +1,232 @@
+
+### WFJ-01 
+
+The service checks the well-formedness of the literal names.
+
+
+**Supported Requests:**
+
+- [JLEX-01](JLEX.md#jlex-01)
+
+**Supporting Items:**
+
+- [NJF-02](NJF.md#njf-02)
+- [NJF-03](NJF.md#njf-03)
+- [NJF-04](NJF.md#njf-04)
+- [NJF-01](NJF.md#njf-01)
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
+
+
+---
+
+### WFJ-02 
+
+The service checks the well-formedness of strings.
+
+
+**Supported Requests:**
+
+- [JLEX-01](JLEX.md#jlex-01)
+
+**Supporting Items:**
+
+- [NJF-07](NJF.md#njf-07)
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
+
+
+---
+
+### WFJ-03 
+
+The service checks the well-formedness of numbers.
+
+
+**Supported Requests:**
+
+- [JLEX-01](JLEX.md#jlex-01)
+
+**Supporting Items:**
+
+- [NJF-08](NJF.md#njf-08)
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
+
+
+---
+
+### WFJ-04 
+
+The service checks the well-formedness of array.
+
+
+**Supported Requests:**
+
+- [JLEX-01](JLEX.md#jlex-01)
+
+**Supporting Items:**
+
+- [NJF-05](NJF.md#njf-05)
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
+
+
+---
+
+### WFJ-05 
+
+The service checks the well-formedness of objects.
+
+
+**Supported Requests:**
+
+- [JLEX-01](JLEX.md#jlex-01)
+
+**Supporting Items:**
+
+- [NJF-06](NJF.md#njf-06)
+- [NJF-13](NJF.md#njf-13)
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
+
+
+---
+
+### WFJ-06 
+
+The service checks that a JSON value must be an object, array, number, or string, or one of the lowercase literal names false, null, or true
+
+
+**Supported Requests:**
+
+- [JLEX-01](JLEX.md#jlex-01)
+
+**Supporting Items:**
+
+_None_
+
+
+
+**References:**
+
+- `include/nlohmann/detail/input/lexer.hpp`
+
+
+```text
+include/nlohmann/detail/input/lexer.hpp
+```
+
+
+
+
+
+**Fallacies:**
+
+_None_
+
+
+---
+
+### WFJ-07 
+
+The service checks that JSON is only serialized using UTF-8.
+
+
+**Supported Requests:**
+
+- [JLEX-01](JLEX.md#jlex-01)
+
+**Supporting Items:**
+
+- [NJF-12](NJF.md#njf-12)
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
+
+
+---
+
+### WFJ-08 
+
+The service ignores byte order marks.
+
+
+**Supported Requests:**
+
+- [JLEX-01](JLEX.md#jlex-01)
+
+**Supporting Items:**
+
+- [NJF-14](NJF.md#njf-14)
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
