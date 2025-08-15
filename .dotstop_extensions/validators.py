@@ -1,27 +1,40 @@
-from typing import TypeAlias
+from typing import TypeAlias, Tuple, List
 import os
 import requests
 
 yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
-print(f"Current working directory in Python: {os.getcwd()}")
+def setup_environment_variables() -> dict[str, str]:
+    """
+    Retrieves and validates the necessary environment variables for GitHub workflows.
+    Raises a RuntimeError if any required variables are missing.
+    """
+    required_vars = ["GITHUB_TOKEN", "GITHUB_EVENT_NAME", "GITHUB_RUN_ID", "GITHUB_REPOSITORY", "GITHUB_SHA"]
+    environment = {var: os.getenv(var) for var in required_vars}
+    
+    missing_vars = [var for var, value in environment.items() if not value]
+    if missing_vars:
+        raise RuntimeError(f"Missing required environment variables: {', '.join(missing_vars)}")
+    
+    return environment
 
-def check_artifact_exists(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:    
-    github_token = os.getenv("GITHUB_TOKEN")
-    github_event_name = os.getenv("GITHUB_EVENT_NAME")
-    run_id = os.getenv("GITHUB_RUN_ID")
-    repository = os.getenv("GITHUB_REPOSITORY")  
+def check_artifact_exists(configuration: dict[str, yaml]) -> Tuple[float, List[Exception | Warning]]:    
+    # Setup environment variables using the helper function
+    env = setup_environment_variables()
+    
+    github_token = env["GITHUB_TOKEN"]
+    github_event_name = env["GITHUB_EVENT_NAME"]
+    run_id = env["GITHUB_RUN_ID"]
+    repository = env["GITHUB_REPOSITORY"]
+    sha = env["GITHUB_SHA"]
+    
     score = 0.0
 
-    # Determine number of expected workflows based on the event type
+    # Determine the number of expected workflows based on the event type
     if github_event_name != "pull_request" and configuration.get("dependency_review") is not None:
-        num_expected_workflows = len(configuration) - 1  # Dependency review excluded if not PR
+        num_expected_workflows = len(configuration) - 1  # Exclude dependency review if not a PR
     else: 
         num_expected_workflows = len(configuration)
-
-    # Ensure all required variables are available
-    if not github_token or not run_id or not repository:
-        raise RuntimeError("Missing required environment variables: GITHUB_TOKEN, GITHUB_RUN_ID, or GITHUB_REPOSITORY.")
 
     # GitHub API URL to list artifacts for the current workflow run
     url = f"https://api.github.com/repos/{repository}/actions/runs/{run_id}/artifacts"
@@ -45,27 +58,19 @@ def check_artifact_exists(configuration: dict[str, yaml]) -> tuple[float, list[E
 
     # Extract artifact names
     artifact_names = [artifact["name"] for artifact in artifacts]
-
-    # Print all items in artifact_names
-    print("Listing all artifact names:")
-    for name in artifact_names:
-        print(f"- {name}") 
         
     # Check if artifacts for each workflow exist    
-    for key,value in configuration.items():
+    for key, value in configuration.items():
         print(f"Checking workflow: {key},{value}")
-        artifact_id = str(value)+"-"+os.getenv("GITHUB_SHA")
+        artifact_id = f"{value}-{sha}"
 
         if artifact_id in artifact_names:
-            score = score + 1 / num_expected_workflows
+            score += 1 / num_expected_workflows
             print(f"Artifact for workflow {key} found. Current cumulative score: {score}")
         else: 
-            if (str(value) == "dependency_review") and (github_event_name != "pull_request"):
+            if str(value) == "dependency_review" and github_event_name != "pull_request":
                 print(f"Skipped dependency_review workflow for non-PR.")
             else:
                 print(f"Artifact for workflow {key} NOT found. Current cumulative score: {score}")
 
-    print(f"Total score: {score} out of 1.0")
     return (score, [])
-
-
