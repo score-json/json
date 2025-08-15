@@ -5,8 +5,20 @@ references:
         - type: cpp_test
           name: "accept;UTF-8;single BOM"
           path: "TSF/tests/unit-byte_order_mark.cpp"
+        - type: function_reference
+          name: "parser::accept"
+          path: "include/nlohmann/detail/input/parser.hpp"
+        - type: function_reference
+          name: "parser::sax_parse"
+          path: "include/nlohmann/detail/input/parser.hpp"
+        - type: function_reference
+          name: "parser::sax_parse_internal"
+          path: "include/nlohmann/detail/input/parser.hpp"
+        - type: function_reference
+          name: "lexer::scan"
+          path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff: 0.9
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service accepts a single UTF-8 byte order mark at the beginning of the input.
+The service accepts a single UTF-8 byte order mark in the first three characters of the input.

@@ -13,6 +13,18 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_structure_object_followed_by_closing_object.json"
             - "/nst_json_testsuite2/test_parsing/n_structure_object_unclosed_no_value.json"
           description: ""
+        - type: function_reference
+          name: "parser::accept"
+          path: "include/nlohmann/detail/input/parser.hpp"
+        - type: function_reference
+          name: "parser::sax_parse"
+          path: "include/nlohmann/detail/input/parser.hpp"
+        - type: function_reference
+          name: "parser::sax_parse_internal"
+          path: "include/nlohmann/detail/input/parser.hpp"
+        - type: function_reference
+          name: "lexer::scan"
+          path: "include/nlohmann/detail/input/lexer.hpp"
 score:
     Jonas-Kirchhoff: 0.85
 ---

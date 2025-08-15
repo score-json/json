@@ -65,8 +65,23 @@ references:
         - type: cpp_test
           name: "accept;operators"
           path: "TSF/tests/unit-numbers.cpp"
+        - type: function_reference
+          name: "parser::accept"
+          path: "include/nlohmann/detail/input/parser.hpp"
+        - type: function_reference
+          name: "parser::sax_parse"
+          path: "include/nlohmann/detail/input/parser.hpp"
+        - type: function_reference
+          name: "parser::sax_parse_internal"
+          path: "include/nlohmann/detail/input/parser.hpp"
+        - type: function_reference
+          name: "lexer::scan"
+          path: "include/nlohmann/detail/input/lexer.hpp"
+        - type: function_reference
+          name: "lexer::scan_number"
+          path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff: 0.8
+    Jonas-Kirchhoff: 0.9
 ---
 
 The service does not accept invalid syntax for numbers.

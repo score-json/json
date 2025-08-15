@@ -21,6 +21,21 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_object_string_unicode.json"
             - "/nst_json_testsuite2/test_parsing/y_object_with_newlines.json"      
           description: "Checks that various strings and numbers are accepted values."
+        - type: cpp_test
+          name: "accept;member separator"
+          path: "TSF/tests/unit-objects.cpp"
+        - type: function_reference
+          name: "parser::accept"
+          path: "include/nlohmann/detail/input/parser.hpp"
+        - type: function_reference
+          name: "parser::sax_parse"
+          path: "include/nlohmann/detail/input/parser.hpp"
+        - type: function_reference
+          name: "parser::sax_parse_internal"
+          path: "include/nlohmann/detail/input/parser.hpp"
+        - type: function_reference
+          name: "lexer::scan"
+          path: "include/nlohmann/detail/input/lexer.hpp"
 score:
     Jonas-Kirchhoff: 0.75
 ---

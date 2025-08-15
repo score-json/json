@@ -8,6 +8,18 @@ references:
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/n_array_colon_instead_of_comma.json"
           description: "Tests whether colon as value separator is rejected."
+        - type: function_reference
+          name: "parser::accept"
+          path: "include/nlohmann/detail/input/parser.hpp"
+        - type: function_reference
+          name: "parser::sax_parse"
+          path: "include/nlohmann/detail/input/parser.hpp"
+        - type: function_reference
+          name: "parser::sax_parse_internal"
+          path: "include/nlohmann/detail/input/parser.hpp"
+        - type: function_reference
+          name: "lexer::scan"
+          path: "include/nlohmann/detail/input/lexer.hpp"
 score:
     Jonas-Kirchhoff: 0.85
 ---

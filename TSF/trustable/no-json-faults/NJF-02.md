@@ -20,6 +20,9 @@ references:
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/y_structure_lonely_true.json"
           description: ""
+        - type: function_reference
+          name: "lexer::scan_literal"
+          path: "include/nlohmann/detail/input/lexer.hpp"
 score:
     Jonas-Kirchhoff: 1.0
 ---

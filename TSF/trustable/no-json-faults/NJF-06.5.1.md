@@ -20,6 +20,24 @@ references:
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/i_object_key_lone_2nd_surrogate.json"
           description: "Checks that string with invalid utf16 surrogate is rejected as name"
+        - type: cpp_test
+          name: "accept;member separator"
+          path: "TSF/tests/unit-objects.cpp"
+        - type: function_reference
+          name: "parser::accept"
+          path: "include/nlohmann/detail/input/parser.hpp"
+        - type: function_reference
+          name: "parser::sax_parse"
+          path: "include/nlohmann/detail/input/parser.hpp"
+        - type: function_reference
+          name: "parser::sax_parse_internal"
+          path: "include/nlohmann/detail/input/parser.hpp"
+        - type: function_reference
+          name: "lexer::scan"
+          path: "include/nlohmann/detail/input/lexer.hpp"
+        - type: function_reference
+          name: "lexer::scan_string"
+          path: "include/nlohmann/detail/input/lexer.hpp"
 score:
     Jonas-Kirchhoff: 0.8
 ---

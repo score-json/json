@@ -19,7 +19,7 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_array_arraysWithSpaces.json"
           description: "Checks that the empty array [] is accepted."
 score:
-    Jonas-Kirchhoff: 0.95
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service accepts the empty array.
