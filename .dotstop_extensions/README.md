@@ -9,7 +9,7 @@ For the `JSONTestsuiteReference` an example is:
 
 references:
 - type: JSON_testsuite
-  name: "compliance tests from json.org:expected failures"
+  name: "compliance tests from json.org;expected failures"
   path: "tests/src/unit-testsuites.cpp"
   test_suite_paths: 
     - "/json_tests/fail2.json"
@@ -26,7 +26,7 @@ For the `CPPTestReference` an example is:
 
 references:
 - type: cpp_test
-  name: "compliance tests from json.org:expected failures"
+  name: "compliance tests from json.org;expected failures"
   path: "tests/src/unit-testsuites.cpp"
 ---
 ```

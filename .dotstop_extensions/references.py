@@ -72,11 +72,11 @@ class CPPTestReference(BaseReference):
         Returns:
             Line index where the section starts (i.e. the line containing SECTION or TEST_CASE)
         """
-        section_names = self._name.split(':')
+        section_names = self._name.split(';')
         for line_number, line in enumerate(file_lines):
             # Check if current line contains a SECTION or TEST_CASE declaration matching the current first section name
-            section_pattern = f'SECTION("{section_names[0]}")'
-            test_case_pattern = f'TEST_CASE("{section_names[0]}")'
+            section_pattern = f'SECTION("{section_names[0]}"'
+            test_case_pattern = f'TEST_CASE("{section_names[0]}"'
             if section_pattern in line or test_case_pattern in line:
                 if len(section_names) == 1:
                     # If we only have one section name left, we found our target
@@ -85,7 +85,7 @@ class CPPTestReference(BaseReference):
                     # Remove the found section from the list and continue searching for nested sections
                     section_names.pop(0)
 
-        raise ValueError("Section start not found")
+        raise ValueError("Start of section "+self._name+" not found.")
     
     def find_section_end(self, file_lines: list[str], start_index: int):
         """
@@ -300,3 +300,29 @@ class JSONTestsuiteReference(CPPTestReference):
     def __str__(self) -> str:
         # this is used as a title in the trudag report
         return f"cpp-testsuite: [{', '.join(self._test_suite_paths)}]"
+    
+class WebReference(BaseReference):
+    """
+    Represents a reference to a website. 
+    This custom reference type is included as an example on https://codethinklabs.gitlab.io/trustable/trustable/trudag/references.html
+    and, for the most part, copied from there
+    """
+    def __init__(self, url: str) -> None:
+        self._url = url
+    
+    @classmethod
+    def type(cls) -> str:
+        return "website"
+    
+    @property
+    def content(self) -> bytes:
+        response = requests.get(self._url)
+        return response.text.encode('utf-8')
+    
+    def as_markdown(self, filepath: None | str = None) -> str:
+        return f"`{self._url}`"
+    
+    
+    def __str__(self) -> str:
+        # this is used as a title in the trudag report
+        return f"website: {self._url}"
