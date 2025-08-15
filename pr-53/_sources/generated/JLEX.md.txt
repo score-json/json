@@ -18,10 +18,6 @@ The JSON-Library provides a service to check the well-formedness of JSON data.
 - [WFJ-06](WFJ.md#wfj-06)
 - [WFJ-07](WFJ.md#wfj-07)
 - [WFJ-08](WFJ.md#wfj-08)
-- [WFJ-09](WFJ.md#wfj-09)
-- [WFJ-10](WFJ.md#wfj-10)
-- [WFJ-11](WFJ.md#wfj-11)
-- [WFJ-12](WFJ.md#wfj-12)
 
 
 
@@ -50,9 +46,9 @@ The JSON-Library provides a service to parse JSON data according to RFC8259.
 **Supporting Items:**
 
 - [PJD-01](PJD.md#pjd-01)
-- [PJD-02](PJD.md#pjd-02)
 - [PJD-03](PJD.md#pjd-03)
 - [PJD-04](PJD.md#pjd-04)
+- [AOU-20](AOU.md#aou-20)
 
 
 

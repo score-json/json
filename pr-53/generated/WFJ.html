@@ -427,13 +427,18 @@
                   
   <section id="wfj-01">
 <h1>WFJ-01<a class="headerlink" href="#wfj-01" title="Link to this heading">#</a></h1>
-<p>The service checks for the four primitive types (strings, numbers, booleans, null).</p>
+<p>The service checks the well-formedness of the literal names.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="JLEX.html#jlex-01"><span class="std std-ref">JLEX-01</span></a></p></li>
 </ul>
 <p><strong>Supporting Items:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="NJF.html#njf-02"><span class="std std-ref">NJF-02</span></a></p></li>
+<li><p><a class="reference internal" href="NJF.html#njf-03"><span class="std std-ref">NJF-03</span></a></p></li>
+<li><p><a class="reference internal" href="NJF.html#njf-04"><span class="std std-ref">NJF-04</span></a></p></li>
+<li><p><a class="reference internal" href="NJF.html#njf-01"><span class="std std-ref">NJF-01</span></a></p></li>
+</ul>
 <p><strong>References:</strong></p>
 <p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
@@ -442,13 +447,15 @@
 <hr class="docutils" />
 <section id="wfj-02">
 <h1>WFJ-02<a class="headerlink" href="#wfj-02" title="Link to this heading">#</a></h1>
-<p>The service checks for the two structured types (objects, arrays).</p>
+<p>The service checks the well-formedness of strings.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="JLEX.html#jlex-01"><span class="std std-ref">JLEX-01</span></a></p></li>
 </ul>
 <p><strong>Supporting Items:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="NJF.html#njf-07"><span class="std std-ref">NJF-07</span></a></p></li>
+</ul>
 <p><strong>References:</strong></p>
 <p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
@@ -457,14 +464,15 @@
 <hr class="docutils" />
 <section id="wfj-03">
 <h1>WFJ-03<a class="headerlink" href="#wfj-03" title="Link to this heading">#</a></h1>
-<p>The service checks the defined JSON grammar
-(six structural characters ([]{},:), strings, numbers, three literal names (true,false,null)).</p>
+<p>The service checks the well-formedness of numbers.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="JLEX.html#jlex-01"><span class="std std-ref">JLEX-01</span></a></p></li>
 </ul>
 <p><strong>Supporting Items:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="NJF.html#njf-08"><span class="std std-ref">NJF-08</span></a></p></li>
+</ul>
 <p><strong>References:</strong></p>
 <p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
@@ -473,13 +481,15 @@
 <hr class="docutils" />
 <section id="wfj-04">
 <h1>WFJ-04<a class="headerlink" href="#wfj-04" title="Link to this heading">#</a></h1>
-<p>The service checks that a JSON value must be an object, array, number, or string, or one of the lowercase literal names: false, null, or true.</p>
+<p>The service checks the well-formedness of array.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="JLEX.html#jlex-01"><span class="std std-ref">JLEX-01</span></a></p></li>
 </ul>
 <p><strong>Supporting Items:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="NJF.html#njf-05"><span class="std std-ref">NJF-05</span></a></p></li>
+</ul>
 <p><strong>References:</strong></p>
 <p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
@@ -488,13 +498,16 @@
 <hr class="docutils" />
 <section id="wfj-05">
 <h1>WFJ-05<a class="headerlink" href="#wfj-05" title="Link to this heading">#</a></h1>
-<p>The service checks that an object structure is represented as a pair of curly brackets surrounding zero or more name/value pairs (or members).</p>
+<p>The service checks the well-formedness of objects.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="JLEX.html#jlex-01"><span class="std std-ref">JLEX-01</span></a></p></li>
 </ul>
 <p><strong>Supporting Items:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="NJF.html#njf-06"><span class="std std-ref">NJF-06</span></a></p></li>
+<li><p><a class="reference internal" href="NJF.html#njf-13"><span class="std std-ref">NJF-13</span></a></p></li>
+</ul>
 <p><strong>References:</strong></p>
 <p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
@@ -503,7 +516,7 @@
 <hr class="docutils" />
 <section id="wfj-06">
 <h1>WFJ-06<a class="headerlink" href="#wfj-06" title="Link to this heading">#</a></h1>
-<p>The service checks that strings follow the standard described in RFC 8259 in section 7.</p>
+<p>The service checks that a JSON value must be an object, array, number, or string, or one of the lowercase literal names false, null, or true</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="JLEX.html#jlex-01"><span class="std std-ref">JLEX-01</span></a></p></li>
@@ -511,20 +524,27 @@
 <p><strong>Supporting Items:</strong></p>
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">include/nlohmann/detail/input/lexer.hpp</span></code></p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>include/nlohmann/detail/input/lexer.hpp
+</pre></div>
+</div>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 </section>
 <hr class="docutils" />
 <section id="wfj-07">
 <h1>WFJ-07<a class="headerlink" href="#wfj-07" title="Link to this heading">#</a></h1>
-<p>The service checks that an array structure is represented as square brackets surrounding zero or more values (or elements).</p>
+<p>The service checks that JSON is only serialized using UTF-8.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="JLEX.html#jlex-01"><span class="std std-ref">JLEX-01</span></a></p></li>
 </ul>
 <p><strong>Supporting Items:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="NJF.html#njf-12"><span class="std std-ref">NJF-12</span></a></p></li>
+</ul>
 <p><strong>References:</strong></p>
 <p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
@@ -533,73 +553,15 @@
 <hr class="docutils" />
 <section id="wfj-08">
 <h1>WFJ-08<a class="headerlink" href="#wfj-08" title="Link to this heading">#</a></h1>
-<p>The service checks that elements/ names/ values are separated by a single comma.</p>
+<p>The service ignores byte order marks.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="JLEX.html#jlex-01"><span class="std std-ref">JLEX-01</span></a></p></li>
 </ul>
 <p><strong>Supporting Items:</strong></p>
-<p><em>None</em></p>
-<p><strong>References:</strong></p>
-<p><em>None</em></p>
-<p><strong>Fallacies:</strong></p>
-<p><em>None</em></p>
-</section>
-<hr class="docutils" />
-<section id="wfj-09">
-<h1>WFJ-09<a class="headerlink" href="#wfj-09" title="Link to this heading">#</a></h1>
-<p>The service checks that numbers are represented in base 10 using decimal digits with an optional prefixed minus sign according to RFC8259.</p>
-<p><strong>Supported Requests:</strong></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="JLEX.html#jlex-01"><span class="std std-ref">JLEX-01</span></a></p></li>
+<li><p><a class="reference internal" href="NJF.html#njf-14"><span class="std std-ref">NJF-14</span></a></p></li>
 </ul>
-<p><strong>Supporting Items:</strong></p>
-<p><em>None</em></p>
-<p><strong>References:</strong></p>
-<p><em>None</em></p>
-<p><strong>Fallacies:</strong></p>
-<p><em>None</em></p>
-</section>
-<hr class="docutils" />
-<section id="wfj-10">
-<h1>WFJ-10<a class="headerlink" href="#wfj-10" title="Link to this heading">#</a></h1>
-<p>The service checks that strings are represented by the similar convention used in C programming languages.</p>
-<p><strong>Supported Requests:</strong></p>
-<ul class="simple">
-<li><p><a class="reference internal" href="JLEX.html#jlex-01"><span class="std std-ref">JLEX-01</span></a></p></li>
-</ul>
-<p><strong>Supporting Items:</strong></p>
-<p><em>None</em></p>
-<p><strong>References:</strong></p>
-<p><em>None</em></p>
-<p><strong>Fallacies:</strong></p>
-<p><em>None</em></p>
-</section>
-<hr class="docutils" />
-<section id="wfj-11">
-<h1>WFJ-11<a class="headerlink" href="#wfj-11" title="Link to this heading">#</a></h1>
-<p>The service checks that JSON is only serialized and deserialized using UTF-8.</p>
-<p><strong>Supported Requests:</strong></p>
-<ul class="simple">
-<li><p><a class="reference internal" href="JLEX.html#jlex-01"><span class="std std-ref">JLEX-01</span></a></p></li>
-</ul>
-<p><strong>Supporting Items:</strong></p>
-<p><em>None</em></p>
-<p><strong>References:</strong></p>
-<p><em>None</em></p>
-<p><strong>Fallacies:</strong></p>
-<p><em>None</em></p>
-</section>
-<hr class="docutils" />
-<section id="wfj-12">
-<h1>WFJ-12<a class="headerlink" href="#wfj-12" title="Link to this heading">#</a></h1>
-<p>The service provides implementations that parse JSON texts, which ignores the presence of a byte order mark rather than treating it as an error.</p>
-<p><strong>Supported Requests:</strong></p>
-<ul class="simple">
-<li><p><a class="reference internal" href="JLEX.html#jlex-01"><span class="std std-ref">JLEX-01</span></a></p></li>
-</ul>
-<p><strong>Supporting Items:</strong></p>
-<p><em>None</em></p>
 <p><strong>References:</strong></p>
 <p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
@@ -643,10 +605,6 @@
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#wfj-06">WFJ-06</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#wfj-07">WFJ-07</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#wfj-08">WFJ-08</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#wfj-09">WFJ-09</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#wfj-10">WFJ-10</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#wfj-11">WFJ-11</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#wfj-12">WFJ-12</a></li>
 </ul>
 
   </nav></div>

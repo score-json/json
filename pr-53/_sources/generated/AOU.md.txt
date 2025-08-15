@@ -118,6 +118,7 @@ Input is encoded as UTF-8 (as required by RFC8259) and in case other string form
 
 **Supported Requests:**
 
+- [PJD-03](PJD.md#pjd-03)
 - [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
@@ -511,6 +512,92 @@ The integrator ensures that monitoring data is systematically analyzed to detect
 **Supported Requests:**
 
 - [TA-ANALYSIS](TA.md#ta-analysis)
+
+**Supporting Items:**
+
+_None_
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
+
+
+---
+
+### AOU-20 
+
+The keys within each object are unique.
+
+
+**Supported Requests:**
+
+- [JLEX-02](JLEX.md#jlex-02)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
+
+**Supporting Items:**
+
+_None_
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
+
+
+---
+
+### AOU-21 
+
+Strings containing an escaped unpaired utf-16 surrogate character are invalid.
+
+
+**Supported Requests:**
+
+- [PJD-03](PJD.md#pjd-03)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
+
+**Supporting Items:**
+
+_None_
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
+
+
+---
+
+### AOU-22 
+
+Numbers are written in base 10.
+
+
+**Supported Requests:**
+
+- [NPF-02](NPF.md#npf-02)
 
 **Supporting Items:**
 

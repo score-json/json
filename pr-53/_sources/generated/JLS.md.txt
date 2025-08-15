@@ -29,7 +29,7 @@ _None_
 
 ### JLS-02 
 
-Fuzz testing is used to uncover edge cases and failure modes throughout development. (https://github.com/nlohmann/json/blob/develop/tests/fuzzing.md)
+Fuzz testing is used in the original nlohmann_json repository (https://github.com/nlohmann/json) to uncover edge cases and failure modes throughout development. (https://github.com/nlohmann/json/blob/develop/tests/fuzzing.md)
 
 
 **Supported Requests:**
@@ -44,7 +44,11 @@ _None_
 
 **References:**
 
-_None_
+- `website: https://introspector.oss-fuzz.com/project-profile?project=json`
+
+
+`https://introspector.oss-fuzz.com/project-profile?project=json`
+
 
 
 
@@ -627,7 +631,13 @@ The JSON library recognizes malformed JSON and returns an exception.
 
 **Supporting Items:**
 
-_None_
+- [NPF-07.2](NPF.md#npf-07.2)
+- [TIJ-01](TIJ.md#tij-01)
+- [TIJ-02](TIJ.md#tij-02)
+- [TIJ-03](TIJ.md#tij-03)
+- [TIJ-04](TIJ.md#tij-04)
+- [TIJ-05](TIJ.md#tij-05)
+- [TIJ-06](TIJ.md#tij-06)
 
 
 
