@@ -44,6 +44,9 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [AOU-17](AOU.md#aou-17) |  The integrator is responsible for identifying additional misbehaviours for the JSON library, defining appropriate mitigations, and ensuring that these mitigations are thoroughly validated. | 0.00 |
 | [AOU-18](AOU.md#aou-18) |  The integrator ensures monitoring data from deployed software is accurately captured, securely stored, and well-documented for analysis. | 0.00 |
 | [AOU-19](AOU.md#aou-19) |  The integrator ensures that monitoring data is systematically analyzed to detect trends and identify issues. | 0.00 |
+| [AOU-20](AOU.md#aou-20) |  The keys within each object are unique. | 0.00 |
+| [AOU-21](AOU.md#aou-21) |  Strings containing an escaped unpaired utf-16 surrogate character are invalid. | 0.00 |
+| [AOU-22](AOU.md#aou-22) |  Numbers are written in base 10. | 0.00 |
 
 ## Compliance for JLEX
 
@@ -57,7 +60,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | Item   | Summary | Score |
 |--------|---------|-------|
 | [JLS-01](JLS.md#jls-01) |  The JSON-library project CI executes on each pull request (opened, reopened, synchronized) the integration test suite, and failures in these runs are investigated by contributors. | 0.00 |
-| [JLS-02](JLS.md#jls-02) |  Fuzz testing is used to uncover edge cases and failure modes throughout development. (https://github.com/nlohmann/json/blob/develop/tests/fuzzing.md) | 0.00 |
+| [JLS-02](JLS.md#jls-02) |  Fuzz testing is used in the original nlohmann_json repository (https://github.com/nlohmann/json) to uncover edge cases and failure modes throughout development. (https://github.com/nlohmann/json/blob/develop/tests/fuzzing.md) | 0.00 |
 | [JLS-03](JLS.md#jls-03) |  Automated tests are reviewed by a Subject Matter Expert to verify they test the properties they claim to. | 0.00 |
 | [JLS-04](JLS.md#jls-04) |  The project runs dependabot on all code entering the main branch, blocking merges until all warnings are resolved. (https://github.com/score-json/json/blob/main/nlohmann_json/.github/dependabot.yml) | 0.00 |
 | [JLS-05](JLS.md#jls-05) |  The OSS nlohmann_json is widely used, actively maintained and uses github issues to track bugs and misbehaviours. | 0.00 |
@@ -81,6 +84,124 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [JLS-24](JLS.md#jls-24) |  The JSON library recognizes malformed JSON and returns an exception. | 0.00 |
 | [JLS-25](JLS.md#jls-25) |  Malicious code changes are mitigated by code reviews, adhering to Eclipse S-core contribution procedures and vigilance from the open-source community. | 0.00 |
 | [JLS-26](JLS.md#jls-26) |  Pipeline execution results are analyzed in the fork and the original nlohmann_json repository. | 0.00 |
+
+## Compliance for NJF
+
+| Item   | Summary | Score |
+|--------|---------|-------|
+| [NJF-01](NJF.md#njf-01) |  The service accepts the literal name null. | 0.00 |
+| [NJF-02](NJF.md#njf-02) |  The service accepts the literal name true. | 0.00 |
+| [NJF-03](NJF.md#njf-03) |  The service accepts the literal name false. | 0.00 |
+| [NJF-04](NJF.md#njf-04) |  The service does not accept any other literal name. | 0.00 |
+| [NJF-05](NJF.md#njf-05) |  The service accepts and rejects arrays according to RFC8259 §5. | 0.00 |
+| [NJF-05.1](NJF.md#njf-05.1) |  The service accepts the empty array. | 0.00 |
+| [NJF-05.2](NJF.md#njf-05.2) |  The service accepts non-empty arrays. | 0.00 |
+| [NJF-05.3](NJF.md#njf-05.3) |  The service accepts arrays with different types. | 0.00 |
+| [NJF-05.4](NJF.md#njf-05.4) |  The service does not accept improperly bounded arrays. | 0.00 |
+| [NJF-05.5](NJF.md#njf-05.5) |  The service does not accept arrays with improper values. | 0.00 |
+| [NJF-05.5_CONTEXT](NJF.md#njf-05.5_context) |  An improper value is either an empty value within a non-empty array or an inadmissible token according to RFC8259. | 0.00 |
+| [NJF-05.6](NJF.md#njf-05.6) |  The service accepts nested arrays. | 0.00 |
+| [NJF-05.7](NJF.md#njf-05.7) |  The service does only accept comma as value separator. | 0.00 |
+| [NJF-05.7.1](NJF.md#njf-05.7.1) |  The service does accept comma as value separator. | 0.00 |
+| [NJF-05.7.2](NJF.md#njf-05.7.2) |  The service does not accept any other value separator. | 0.00 |
+| [NJF-06](NJF.md#njf-06) |  The service accepts and rejects objects according to RFC8259 §4. | 0.00 |
+| [NJF-06.1](NJF.md#njf-06.1) |  The service accepts the empty object. | 0.00 |
+| [NJF-06.2](NJF.md#njf-06.2) |  The service does not accept improperly bounded objects. | 0.00 |
+| [NJF-06.3](NJF.md#njf-06.3) |  The service accepts non-empty objects. | 0.00 |
+| [NJF-06.4](NJF.md#njf-06.4) |  The admissible members of an object have the form name : value. | 0.00 |
+| [NJF-06.4.1](NJF.md#njf-06.4.1) |  The service accepts strings as names. | 0.00 |
+| [NJF-06.4.2](NJF.md#njf-06.4.2) |  The service does not accept any other token as name. | 0.00 |
+| [NJF-06.4.3](NJF.md#njf-06.4.3) |  The service does accept different types of values. | 0.00 |
+| [NJF-06.5](NJF.md#njf-06.5) |  The service does not accept objects with improper members. | 0.00 |
+| [NJF-06.5.1](NJF.md#njf-06.5.1) |  The service does not accept objects with improper name. | 0.00 |
+| [NJF-06.5.2](NJF.md#njf-06.5.2) |  The service does not accept objects with improper value. | 0.00 |
+| [NJF-06.5_CONTEXT](NJF.md#njf-06.5_context) |  An improper name is either not a string (i.e. any other token, or empty), or a string-candidate which does not fulfil the requirements of RFC8259. | 0.00 |
+| [NJF-06.6](NJF.md#njf-06.6) |  The service accepts nested objects. | 0.00 |
+| [NJF-06.7](NJF.md#njf-06.7) |  The service does only accept comma as member separator. | 0.00 |
+| [NJF-06.7.1](NJF.md#njf-06.7.1) |  The service accepts comma as member separator. | 0.00 |
+| [NJF-06.7.2](NJF.md#njf-06.7.2) |  The service does not accept any other member separator. | 0.00 |
+| [NJF-07](NJF.md#njf-07) |  The service accepts and rejects strings according to RFC8259 §7. | 0.00 |
+| [NJF-07.1](NJF.md#njf-07.1) |  The service does accept empty string. | 0.00 |
+| [NJF-07.2](NJF.md#njf-07.2) |  The service does not accept improperly bounded string. | 0.00 |
+| [NJF-07.3](NJF.md#njf-07.3) |  The service does not accept unescaped control characters. | 0.00 |
+| [NJF-07.4](NJF.md#njf-07.4) |  The service does accept escaped control characters. | 0.00 |
+| [NJF-07.5](NJF.md#njf-07.5) |  The service accepts UTF-16 surrogate pairs. | 0.00 |
+| [NJF-07.6](NJF.md#njf-07.6) |  The service does accept non-empty strings. | 0.00 |
+| [NJF-07.7](NJF.md#njf-07.7) |  The service does not accept escaped invalid characters. | 0.00 |
+| [NJF-07.8](NJF.md#njf-07.8) |  The service does not accept single unpaired utf-16 surrogates. | 0.00 |
+| [NJF-08](NJF.md#njf-08) |  The service accepts numbers according to RFC8259 §6. | 0.00 |
+| [NJF-08.1](NJF.md#njf-08.1) |  The service does accept integers. | 0.00 |
+| [NJF-08.2](NJF.md#njf-08.2) |  The service does accept integers according to IEEE 754 binary64. | 0.00 |
+| [NJF-08.3](NJF.md#njf-08.3) |  The service does not accept NaN, infinity. | 0.00 |
+| [NJF-08.4](NJF.md#njf-08.4) |  The service does accept e or E. | 0.00 |
+| [NJF-08.5](NJF.md#njf-08.5) |  The service does not accept cyrillic e u0415, u0436, nor exp. | 0.00 |
+| [NJF-08.6](NJF.md#njf-08.6) |  The service does not accept invalid syntax for numbers. | 0.00 |
+| [NJF-08.7](NJF.md#njf-08.7) |  The service does accept decimal points. | 0.00 |
+| [NJF-08.8](NJF.md#njf-08.8) |  The service does not accept leading zeroes. | 0.00 |
+| [NJF-08.9](NJF.md#njf-08.9) |  The service does not accept any base exceeding 10 in ist standard representation. | 0.00 |
+| [NJF-12](NJF.md#njf-12) |  The service decodes UTF-8 data. | 0.00 |
+| [NJF-12.1](NJF.md#njf-12.1) |  The service rejects malformed UTF-8 data. | 0.00 |
+| [NJF-12.2](NJF.md#njf-12.2) |  The service rejects "overlong sequences". | 0.00 |
+| [NJF-12.3](NJF.md#njf-12.3) |  The service rejects single and paired UTF-16 surrogates. | 0.00 |
+| [NJF-12.5](NJF.md#njf-12.5) |  The service accepts Non-Characters. | 0.00 |
+| [NJF-12.6](NJF.md#njf-12.6) |  The service accepts well-formed UTF-8 data. | 0.00 |
+| [NJF-13](NJF.md#njf-13) |  The service accepts JSON data consisting of combinations of the data types. | 0.00 |
+| [NJF-14](NJF.md#njf-14) |  The service accepts a single complete UTF-8 byte order mark at the beginning of the input only. | 0.00 |
+| [NJF-14.1](NJF.md#njf-14.1) |  The service accepts a single UTF-8 byte order mark at the beginning of the input. | 0.00 |
+| [NJF-14.2](NJF.md#njf-14.2) |  The service does not accept multiple UTF-8 byte order marks. | 0.00 |
+| [NJF-14.3](NJF.md#njf-14.3) |  The service does not accept incomplete or perturbed UTF-8 byte order marks. | 0.00 |
+| [NJF-14.4](NJF.md#njf-14.4) |  The service does not accept UTF-16 and UTF-32 byte order marks. | 0.00 |
+| [NJF-14.5](NJF.md#njf-14.5) |  The service does not accept UTF-8 byte order marks at any other place of the input. | 0.00 |
+
+## Compliance for NPF
+
+| Item   | Summary | Score |
+|--------|---------|-------|
+| [NPF-01](NPF.md#npf-01) |  The service ignores the presence of a byte order mark. | 0.00 |
+| [NPF-01.1](NPF.md#npf-01.1) |  The service ignores the presence of a single UTF-8 byte order mark. | 0.00 |
+| [NPF-01.2](NPF.md#npf-01.2) |  The service does not parse multiple UTF-8 byte order marks and throws an exception. | 0.00 |
+| [NPF-01.3](NPF.md#npf-01.3) |  The service does not parse UTF-8 byte order marks at any other place of the input and throws an exception. | 0.00 |
+| [NPF-01.4](NPF.md#npf-01.4) |  The service does not parse UTF-16 and UTF-32 byte order mark, and throws an exception. | 0.00 |
+| [NPF-01.5](NPF.md#npf-01.5) |  The service does not parse partial and perturbed UTF-8 byte order marks and throws an exception. | 0.00 |
+| [NPF-02](NPF.md#npf-02) |  The service parses numbers according to RFC8259. | 0.00 |
+| [NPF-02.1](NPF.md#npf-02.1) |  The service parses integers without exponent. | 0.00 |
+| [NPF-02.10](NPF.md#npf-02.10) |  The service ignores trailing zeroes after the decimal point. | 0.00 |
+| [NPF-02.11](NPF.md#npf-02.11) |  The service parses numbers outside the 64-bit double range without throwing an exception. | 0.00 |
+| [NPF-02.11_CONTEXT](NPF.md#npf-02.11_context) |  Although numbers are parsed without throwing an exception, they are not parsed accurately. | 0.00 |
+| [NPF-02.12](NPF.md#npf-02.12) |  The service ignores capitalisation of the exponent. | 0.00 |
+| [NPF-02.2](NPF.md#npf-02.2) |  The service parses integers with exponent. | 0.00 |
+| [NPF-02.3](NPF.md#npf-02.3) |  The service parses floating point values without exponent. | 0.00 |
+| [NPF-02.4](NPF.md#npf-02.4) |  The service parses floating point values with exponent. | 0.00 |
+| [NPF-02.5](NPF.md#npf-02.5) |  The service ignores leading zeroes in the exponent. | 0.00 |
+| [NPF-02.6](NPF.md#npf-02.6) |  The service parses integers within IEEE 754-2008 binary64. | 0.00 |
+| [NPF-02.7](NPF.md#npf-02.7) |  The service ignores leading and trailing whitespace. | 0.00 |
+| [NPF-02.8](NPF.md#npf-02.8) |  The service ignores one singular leading plus of the exponent. | 0.00 |
+| [NPF-02.9](NPF.md#npf-02.9) |  The service parses floating point numbers within IEEE 754-2008 binary64 standard. | 0.00 |
+| [NPF-03](NPF.md#npf-03) |  The service parses strings according to RFC8259. | 0.00 |
+| [NPF-03.1](NPF.md#npf-03.1) |  The service ignores leading and trailing whitespace. | 0.00 |
+| [NPF-03.2](NPF.md#npf-03.2) |  The service parses escaped characters in the basic multilingual plane. | 0.00 |
+| [NPF-03.3](NPF.md#npf-03.3) |  The service ignores capitalisation in escaped hexadecimal unicode. | 0.00 |
+| [NPF-03.4](NPF.md#npf-03.4) |  The service parses all unescaped utf-8 characters except quotation mark, reverse solidus and the control characters. | 0.00 |
+| [NPF-03.5](NPF.md#npf-03.5) |  The service parses \\, \\/, \\b,\\f, \\n, \\r, \\t and escaped quotation marks. | 0.00 |
+| [NPF-03.6](NPF.md#npf-03.6) |  The service parses the empty string. | 0.00 |
+| [NPF-03.7](NPF.md#npf-03.7) |  The service parses non-empty strings. | 0.00 |
+| [NPF-04](NPF.md#npf-04) |  The service parses literal names "true", "false" and "null" according to RFC8259. | 0.00 |
+| [NPF-04.1](NPF.md#npf-04.1) |  The service ignores leading and trailing whitespace. | 0.00 |
+| [NPF-04.2](NPF.md#npf-04.2) |  The service parses the literal name true. | 0.00 |
+| [NPF-04.3](NPF.md#npf-04.3) |  The service parses the literal name false. | 0.00 |
+| [NPF-04.4](NPF.md#npf-04.4) |  The service parses the literal name null. | 0.00 |
+| [NPF-05](NPF.md#npf-05) |  The service parses arrays according to RFC8259. | 0.00 |
+| [NPF-05.1](NPF.md#npf-05.1) |  The service ignores leading and trailing whitespace for each value. | 0.00 |
+| [NPF-05.2](NPF.md#npf-05.2) |  The service parses empty arrays. | 0.00 |
+| [NPF-05.3](NPF.md#npf-05.3) |  The service parses non-empty arrays. | 0.00 |
+| [NPF-06](NPF.md#npf-06) |  The service parses objects according to RFC8259. | 0.00 |
+| [NPF-06.1](NPF.md#npf-06.1) |  The service ignores leading and trailing whitespace for name and value of each member. | 0.00 |
+| [NPF-06.2](NPF.md#npf-06.2) |  The service parses duplicate names without error and reports the last member with that name only. | 0.00 |
+| [NPF-06.3](NPF.md#npf-06.3) |  The service parses empty objects. | 0.00 |
+| [NPF-06.4](NPF.md#npf-06.4) |  The service parses non-empty objects. | 0.00 |
+| [NPF-07](NPF.md#npf-07) |  The service parses well-formed UTF-8 encoded data only. | 0.00 |
+| [NPF-07.1](NPF.md#npf-07.1) |  The service parses UTF-8 encoded data. | 0.00 |
+| [NPF-07.2](NPF.md#npf-07.2) |  The service throws an exception on ill-formed UTF-8 data. | 0.00 |
 
 ## Compliance for PJD
 
@@ -112,6 +233,37 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [TA-UPDATES](TA.md#ta-updates) |  JSON-Library components, configurations and tools are updated under specified change and configuration management controls. | 0.00 |
 | [TA-VALIDATION](TA.md#ta-validation) |  All specified tests are executed repeatedly, under defined conditions in controlled environments, according to specified objectives. | 0.00 |
 
+## Compliance for TIJ
+
+| Item   | Summary | Score |
+|--------|---------|-------|
+| [TIJ-01](TIJ.md#tij-01) |  The parsing service throws an exception on ill-formed literal names. | 0.00 |
+| [TIJ-01.1](TIJ.md#tij-01.1) |  The service throws an exception on capitalised literal names. | 0.00 |
+| [TIJ-01.2](TIJ.md#tij-01.2) |  The service throws an exception on any other than the three literal names true, false, null. | 0.00 |
+| [TIJ-02](TIJ.md#tij-02) |  The parsing service throws an exception on ill-formed numbers. | 0.00 |
+| [TIJ-02.1](TIJ.md#tij-02.1) |  The service throws an exception on leading plus. | 0.00 |
+| [TIJ-02.2](TIJ.md#tij-02.2) |  The service throws an exception on leading zeroes. | 0.00 |
+| [TIJ-02.3](TIJ.md#tij-02.3) |  The service throws an exception on NaN, infinity. | 0.00 |
+| [TIJ-02.4](TIJ.md#tij-02.4) |  The service throws an exception on U+0415 and U+0436 instead of U+0045 or U+0065. | 0.00 |
+| [TIJ-02.5](TIJ.md#tij-02.5) |  The service throws an exception on invalid number syntax. | 0.00 |
+| [TIJ-03](TIJ.md#tij-03) |  The parsing service throws an exception on ill-formed strings. | 0.00 |
+| [TIJ-03.1](TIJ.md#tij-03.1) |  The service throws an exception on unescaped control characters. | 0.00 |
+| [TIJ-03.2](TIJ.md#tij-03.2) |  The service throws an exception on unpaired utf-16 surrogates. | 0.00 |
+| [TIJ-03.3](TIJ.md#tij-03.3) |  The service throws an exception on improperly bounded strings. | 0.00 |
+| [TIJ-03.4](TIJ.md#tij-03.4) |  The service throws an exception on escaped invalid characters. | 0.00 |
+| [TIJ-03.5](TIJ.md#tij-03.5) |  The service throws an exception on incorrect surrogate pairs. | 0.00 |
+| [TIJ-04](TIJ.md#tij-04) |  The parsing service throws an exception on ill-formed arrays. | 0.00 |
+| [TIJ-04.1](TIJ.md#tij-04.1) |  The service throws an exception on improperly bounded arrays. | 0.00 |
+| [TIJ-04.2](TIJ.md#tij-04.2) |  The service throws an exception on improper values within a properly bounded array. | 0.00 |
+| [TIJ-04.3](TIJ.md#tij-04.3) |  The service throws an exception on improper value separators. | 0.00 |
+| [TIJ-05](TIJ.md#tij-05) |  The parsing service throws an exception on ill-formed objects. | 0.00 |
+| [TIJ-05.1](TIJ.md#tij-05.1) |  The service throws an exception on improperly bounded objects. | 0.00 |
+| [TIJ-05.2](TIJ.md#tij-05.2) |  The service throws an exception if a non-string is used as name of any member. | 0.00 |
+| [TIJ-05.3](TIJ.md#tij-05.3) |  The service throws an exception if an improper string is used as name of any member. | 0.00 |
+| [TIJ-05.4](TIJ.md#tij-05.4) |  The service throws an exception if any member has an improper value. | 0.00 |
+| [TIJ-05.5](TIJ.md#tij-05.5) |  The service throws an exception on improper member separators. | 0.00 |
+| [TIJ-06](TIJ.md#tij-06) |  The service recognises ill-formed byte-order marks and throws an exception. | 0.00 |
+
 ## Compliance for TRUSTABLE
 
 | Item   | Summary | Score |
@@ -133,18 +285,14 @@ The contribution to the score of a parent item by a suspiciously linked child is
 
 | Item   | Summary | Score |
 |--------|---------|-------|
-| [WFJ-01](WFJ.md#wfj-01) |  The service checks for the four primitive types (strings, numbers, booleans, null). | 0.00 |
-| [WFJ-02](WFJ.md#wfj-02) |  The service checks for the two structured types (objects, arrays). | 0.00 |
-| [WFJ-03](WFJ.md#wfj-03) |  The service checks the defined JSON grammar (six structural characters ([]{},:), strings, numbers, three literal names (true,false,null)). | 0.00 |
-| [WFJ-04](WFJ.md#wfj-04) |  The service checks that a JSON value must be an object, array, number, or string, or one of the lowercase literal names: false, null, or true. | 0.00 |
-| [WFJ-05](WFJ.md#wfj-05) |  The service checks that an object structure is represented as a pair of curly brackets surrounding zero or more name/value pairs (or members). | 0.00 |
-| [WFJ-06](WFJ.md#wfj-06) |  The service checks that strings follow the standard described in RFC 8259 in section 7. | 0.00 |
-| [WFJ-07](WFJ.md#wfj-07) |  The service checks that an array structure is represented as square brackets surrounding zero or more values (or elements). | 0.00 |
-| [WFJ-08](WFJ.md#wfj-08) |  The service checks that elements/ names/ values are separated by a single comma. | 0.00 |
-| [WFJ-09](WFJ.md#wfj-09) |  The service checks that numbers are represented in base 10 using decimal digits with an optional prefixed minus sign according to RFC8259. | 0.00 |
-| [WFJ-10](WFJ.md#wfj-10) |  The service checks that strings are represented by the similar convention used in C programming languages. | 0.00 |
-| [WFJ-11](WFJ.md#wfj-11) |  The service checks that JSON is only serialized and deserialized using UTF-8. | 0.00 |
-| [WFJ-12](WFJ.md#wfj-12) |  The service provides implementations that parse JSON texts, which ignores the presence of a byte order mark rather than treating it as an error. | 0.00 |
+| [WFJ-01](WFJ.md#wfj-01) |  The service checks the well-formedness of the literal names. | 0.00 |
+| [WFJ-02](WFJ.md#wfj-02) |  The service checks the well-formedness of strings. | 0.00 |
+| [WFJ-03](WFJ.md#wfj-03) |  The service checks the well-formedness of numbers. | 0.00 |
+| [WFJ-04](WFJ.md#wfj-04) |  The service checks the well-formedness of array. | 0.00 |
+| [WFJ-05](WFJ.md#wfj-05) |  The service checks the well-formedness of objects. | 0.00 |
+| [WFJ-06](WFJ.md#wfj-06) |  The service checks that a JSON value must be an object, array, number, or string, or one of the lowercase literal names false, null, or true | 0.00 |
+| [WFJ-07](WFJ.md#wfj-07) |  The service checks that JSON is only serialized using UTF-8. | 0.00 |
+| [WFJ-08](WFJ.md#wfj-08) |  The service ignores byte order marks. | 0.00 |
 
 
 ---
@@ -152,6 +300,6 @@ The contribution to the score of a parent item by a suspiciously linked child is
 _Generated for: Software_
 
 * _Repository root: /home/runner/work/json/json_
-* _Commit SHA: 2a010ec67091fbb6bce77db061213bc2f66fc60a_
-* _Commit date/time: Wed Aug 13 18:00:28 2025_
-* _Commit tag: 2a010ec_
+* _Commit SHA: a0a822cee38fc8f3b1532a41a1f74562028583f4_
+* _Commit date/time: Fri Aug 15 07:55:43 2025_
+* _Commit tag: a0a822c_

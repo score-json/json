@@ -107,6 +107,8 @@ Constraints on adaptation and deployment of JSON-Library are specified.
 - [AOU-07](AOU.md#aou-07)
 - [AOU-14](AOU.md#aou-14)
 - [AOU-16](AOU.md#aou-16)
+- [AOU-20](AOU.md#aou-20)
+- [AOU-21](AOU.md#aou-21)
 
 
 

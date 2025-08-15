@@ -10,7 +10,7 @@ The service provides implementations that parses JSON texts, which ignores the p
 
 **Supporting Items:**
 
-_None_
+- [NPF-01](NPF.md#npf-01)
 
 
 
@@ -34,7 +34,7 @@ The service transforms a JSON text into a C++ representation using C++ container
 
 **Supported Requests:**
 
-- [JLEX-02](JLEX.md#jlex-02)
+- [PJD-03](PJD.md#pjd-03)
 
 **Supporting Items:**
 
@@ -66,7 +66,15 @@ The service parses all texts that conform to the JSON grammar.
 
 **Supporting Items:**
 
-_None_
+- [AOU-21](AOU.md#aou-21)
+- [AOU-05](AOU.md#aou-05)
+- [NPF-02](NPF.md#npf-02)
+- [NPF-04](NPF.md#npf-04)
+- [NPF-05](NPF.md#npf-05)
+- [NPF-06](NPF.md#npf-06)
+- [NPF-07](NPF.md#npf-07)
+- [NPF-03](NPF.md#npf-03)
+- [PJD-02](PJD.md#pjd-02)
 
 
 
