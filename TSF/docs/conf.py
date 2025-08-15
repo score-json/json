@@ -49,7 +49,7 @@ source_suffix = {
     '.md': 'markdown',
 }
 
-suppress_warnings = ['ref.warning', 'toc.not_included', 'myst.xref_missing', 'misc.highlighting_failure']
+suppress_warnings = ['ref.warning', 'toc.not_included', 'myst.xref_missing', 'myst.header', 'misc.highlighting_failure']
 
 exclude_patterns = [
     # The following entries are not required when building the documentation via 'bazel
