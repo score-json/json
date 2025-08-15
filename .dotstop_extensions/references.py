@@ -352,8 +352,8 @@ class FunctionReference(SourceSpanReference):
     Since classes are in hpp-files of nlohmann/json uniquely identified by their name, this uniquely identifies a function.
     """
 
-    def __init__(self, name: str, path: str, overload = 1) -> None:
-        [start_line,end_line] = FunctionReference.get_function_line_numbers(Path(path),name,overload)
+    def __init__(self, name: str, path: str, overload: str = "1") -> None:
+        [start_line,end_line] = FunctionReference.get_function_line_numbers(Path(path),name,int(overload))
         # SourceSpanReference copies code from a start-character in a start-line 
         # up to an end-character in an end-line.
         # Here, we want every character in all lines between start- and end-line.
@@ -362,7 +362,7 @@ class FunctionReference(SourceSpanReference):
         # In nlohmann/json, no hpp-file has such a line, so that the following works fine.
         super().__init__(Path(path),[[start_line,0],[end_line,1000]])
         self._name = name
-        self._overload = overload
+        self._overload = int(overload)
 
     def language(self):
         return "C++" 
@@ -413,6 +413,7 @@ class FunctionReference(SourceSpanReference):
         in_class = False
         sections = []
         instance = 0
+        amopen = []
         for line_number, line in enumerate(lines):
             # first task: find literal string "class class_name " within a line
             if not in_class:
@@ -422,6 +423,12 @@ class FunctionReference(SourceSpanReference):
                 continue
             # now we are within the class
             # time to search for our function
+            if "};" in line and len(sections)==0:
+                # then, we have reached the end of the class
+                break
+            # ignore all commented out lines
+            if line.strip().startswith("//"):
+                continue
             if '{' in line or '}' in line:
                 for c in line:
                     if c == '{':
@@ -439,9 +446,6 @@ class FunctionReference(SourceSpanReference):
                 instance += 1
                 if instance == overload:
                     return line_number
-            if "};" in line and len(sections)==1:
-                # then, we have reached the end of the class
-                break
         if not in_class:
             raise ValueError(f"Could not find class {name_parts[0]} in file {path}")
         if overload%10 == 1 and overload != 11:
