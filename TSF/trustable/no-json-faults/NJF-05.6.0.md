@@ -1,13 +1,7 @@
 ---
 level: 1.1
 normative: true
-references:
-        - type: JSON_testsuite
-          name: "compliance tests from json.org;expected passes"
-          path: "tests/src/unit-testsuites.cpp"
-          test_suite_paths:
-            - "/json_tests/pass2.json"
-          description: ""
+refernces:
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2);test_parsing;i -> y"
           path: "tests/src/unit-testsuites.cpp"
@@ -15,7 +9,7 @@ references:
             - "/nst_json_testsuite2/test_parsing/i_structure_500_nested_arrays.json"
           description: ""
 score:
-    Jonas-Kirchhoff: 0.95
+    Jonas-Kirchhoff: 0.975
 ---
 
-The service accepts nested arrays.
+The acceptance of nested arrays does not depend on the depth of nesting.

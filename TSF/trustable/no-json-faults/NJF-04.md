@@ -36,7 +36,7 @@ references:
           name: "lexer::scan_literal"
           path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff: 0.95
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service does not accept any other literal name.

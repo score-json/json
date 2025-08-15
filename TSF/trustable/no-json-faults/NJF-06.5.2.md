@@ -11,20 +11,8 @@ references:
         - type: cpp_test
           name: "accept;member separator"
           path: "TSF/tests/unit-objects.cpp"
-        - type: function_reference
-          name: "parser::accept"
-          path: "include/nlohmann/detail/input/parser.hpp"
-        - type: function_reference
-          name: "parser::sax_parse"
-          path: "include/nlohmann/detail/input/parser.hpp"
-        - type: function_reference
-          name: "parser::sax_parse_internal"
-          path: "include/nlohmann/detail/input/parser.hpp"
-        - type: function_reference
-          name: "lexer::scan"
-          path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff: 0.8
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service does not accept objects with improper value.
+If the service does not accept any value candidate as singleton, then the service does not accept the object candidate

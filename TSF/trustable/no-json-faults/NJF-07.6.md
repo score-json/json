@@ -51,23 +51,8 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_string_with_del_character.json"
             - "/nst_json_testsuite2/test_parsing/y_structure_lonely_string.json"
           description: "Checks that various non-empty valid strings are accepted."
-        - type: function_reference
-          name: "parser::accept"
-          path: "include/nlohmann/detail/input/parser.hpp"
-        - type: function_reference
-          name: "parser::sax_parse"
-          path: "include/nlohmann/detail/input/parser.hpp"
-        - type: function_reference
-          name: "parser::sax_parse_internal"
-          path: "include/nlohmann/detail/input/parser.hpp"
-        - type: function_reference
-          name: "lexer::scan"
-          path: "include/nlohmann/detail/input/lexer.hpp"
-        - type: function_reference
-          name: "lexer::scan_string"
-          path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff: 0.7
+    Jonas-Kirchhoff: 0.95
 ---
 
 The service does accept the non-empty strings.

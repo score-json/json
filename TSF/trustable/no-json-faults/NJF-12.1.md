@@ -6,7 +6,7 @@ references:
           name: "accept;malformed sequences"
           path: "TSF/tests/unit-strings.cpp"
 score:
-    Jonas-Kirchhoff: 0.8
+    Jonas-Kirchhoff: 0.9
 ---
 
 The service rejects malformed UTF-8 data.

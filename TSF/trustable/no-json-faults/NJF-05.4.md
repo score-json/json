@@ -37,7 +37,7 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_structure_unclosed_array_unfinished_true.json"
           description: ""
 score:
-    Jonas-Kirchhoff: 0.95
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service does not accept any improperly bounded arrays.

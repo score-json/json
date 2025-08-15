@@ -7,7 +7,7 @@ references:
           name: "accept;overlong sequences"
           path: "TSF/tests/unit-strings.cpp"
 score:
-    Jonas-Kirchhoff: 0.55
+    Jonas-Kirchhoff: 0.6
 ---
 
 The service rejects "overlong sequences".

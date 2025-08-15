@@ -18,7 +18,7 @@ void parser_helper(const std::string& input){
 
 std::string uint_to_utf8(const uint32_t& input){
     std::string temp = "\"";
-    // evil chat-gpt magic transforms i into utf-8 encoded unescaped character
+    // evil chat-gpt magic transforms input into utf-8 encoded unescaped character
     if (input <= 0x7F) {
         temp += static_cast<char>(input); // 1-byte (ASCII)
     } else if (input <= 0x7FF) {

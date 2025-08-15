@@ -16,7 +16,7 @@ references:
           name: "parser::sax_parse_internal"
           path: "include/nlohmann/detail/input/parser.hpp"
 score:
-    Jonas-Kirchhoff: 0.7
+    Jonas-Kirchhoff: 0.95
 ---
 
 The service accepts JSON data consisting of combinations of the data types.

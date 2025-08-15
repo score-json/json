@@ -13,7 +13,7 @@ references:
           name: "Unicode;unescaped unicode"
           path: "TSF/tests/unit-strings.cpp"
 score:
-    Jonas-Kirchhoff: 0.85
+    Jonas-Kirchhoff: 0.9
 ---
 
 The service rejects single escaped and unescaped, and paired unescaped utf-16 surrogates;well-formed.

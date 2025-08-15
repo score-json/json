@@ -18,23 +18,8 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_number_real_neg_exp.json"
             - "/nst_json_testsuite2/test_parsing/y_number_real_pos_exponent.json"
           description: "Checks that various numbers with exponent are accepted."
-        - type: function_reference
-          name: "parser::accept"
-          path: "include/nlohmann/detail/input/parser.hpp"
-        - type: function_reference
-          name: "parser::sax_parse"
-          path: "include/nlohmann/detail/input/parser.hpp"
-        - type: function_reference
-          name: "parser::sax_parse_internal"
-          path: "include/nlohmann/detail/input/parser.hpp"
-        - type: function_reference
-          name: "lexer::scan"
-          path: "include/nlohmann/detail/input/lexer.hpp"
-        - type: function_reference
-          name: "lexer::scan_number"
-          path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff: 0.9
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service does accept e or E for numbers with exponent within the bounds of double.

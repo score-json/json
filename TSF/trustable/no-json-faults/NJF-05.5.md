@@ -16,7 +16,7 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_array_just_minus.json"
           description: "Checks that various \"proper\" arrays with improper elements are rejected."
 score:
-    Jonas-Kirchhoff: 0.95
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service does not accept arrays with improper values.
