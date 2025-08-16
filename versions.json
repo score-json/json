@@ -8,10 +8,6 @@
     "url": "https://score-json.github.io/json/pr-48/"
   },
   {
-    "version": "pr-50",
-    "url": "https://score-json.github.io/json/pr-50/"
-  },
-  {
     "version": "pr-53",
     "url": "https://score-json.github.io/json/pr-53/"
   },
@@ -22,9 +18,5 @@
   {
     "version": "test_documentation_workflow",
     "url": "https://score-json.github.io/json/test_documentation_workflow/"
-  },
-  {
-    "version": "pr-56",
-    "url": "https://score-json.github.io/json/pr-56/"
   }
 ]
