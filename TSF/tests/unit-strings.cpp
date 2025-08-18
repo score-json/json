@@ -287,7 +287,7 @@ TEST_CASE("Unicode")
                 if (i<=0xDBFF){
                     for (uint32_t j = 0xDC00; j<=0xDFFF; j++){
                         temp += uint_to_utf8(j);
-                        CHECK(json::accept(temp));
+                        CHECK(!json::accept(temp));
                         CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
                     }
                 } 
