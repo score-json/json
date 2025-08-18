@@ -32,7 +32,7 @@ references:
 ```
 # Validators
 
-Validators are trudag tools used to validate any data that can be reduced to a floating point metric. The resulting scores are used as evidence for the validity of items in the Trustable Software graph.
+Validators are extensions of trudag, used to validate any data that can be reduced to a floating point metric. The resulting scores are used as evidence for the trustability of items in the trustable graph.
 
 ## check_artifact_exists
 
