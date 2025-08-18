@@ -24,11 +24,19 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_structure_capitalized_True.json"
           description: ""
         - type: cpp_test
+          name: "accept;unicode"
+          path: "TSF/tests/unit-literals.cpp"
+        - type: cpp_test
           name: "accept;capitalisation"
           path: "TSF/tests/unit-literals.cpp"
         - type: cpp_test
           name: "accept;illegal literals"
           path: "TSF/tests/unit-literals.cpp"
+        - type: function_reference
+          name: "lexer::scan_literal"
+          path: "include/nlohmann/detail/input/lexer.hpp"
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service does not accept any other literal name.

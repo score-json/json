@@ -8,6 +8,8 @@ references:
         - type: cpp_test
           name: "parser class - core;parse;string;escaped"
           path: "TSF/tests/unit-class_parser_core.cpp"
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service parses \\, \\/, \\b,\\f, \\n, \\r, \\t and escaped quotation marks.

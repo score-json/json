@@ -20,6 +20,11 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_number_real_neg_exp.json"
             - "/nst_json_testsuite2/test_parsing/y_number_real_pos_exponent.json"
           description: "Tests whether several numbers with exponent are parsed without throwing an exception."
+        - type: cpp_test
+          name: "parse;Precision"
+          path: "TSF/tests/unit-numbers.cpp"
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service parses integers with exponent. 
+The service parses integers with exponent within the precision of 64-bit double. 

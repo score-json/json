@@ -8,6 +8,11 @@ references:
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/n_object_bad_value.json"
           description: "Checks that the invalid literal \"truth\" as value is rejected."
+        - type: cpp_test
+          name: "accept;member separator"
+          path: "TSF/tests/unit-objects.cpp"
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service does not accept objects with improper value.
+If the service does not accept any value candidate as singleton, then the service does not accept the object candidate

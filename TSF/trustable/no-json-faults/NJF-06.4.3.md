@@ -21,6 +21,11 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_object_string_unicode.json"
             - "/nst_json_testsuite2/test_parsing/y_object_with_newlines.json"      
           description: "Checks that various strings and numbers are accepted values."
+        - type: cpp_test
+          name: "accept;member separator"
+          path: "TSF/tests/unit-objects.cpp"
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service does accept different types of values.
+If the service accepts the value-candidate as a singleton, then the value-candidate is accepted.

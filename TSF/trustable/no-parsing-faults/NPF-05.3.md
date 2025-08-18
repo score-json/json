@@ -20,6 +20,8 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_array_with_several_null.json"
             - "/nst_json_testsuite2/test_parsing/y_array_with_trailing_space.json"
           description: "Tests whether several non-empty arrays are parsed without exception"
+score:
+    Jonas-Kirchhoff: 0.95
 ---
 
 The service parses non-empty arrays.

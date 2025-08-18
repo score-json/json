@@ -6,6 +6,8 @@ references:
         - type: cpp_test
           name: "Unicode;escaped unicode"
           path: "TSF/tests/unit-strings.cpp"
+score:
+    Jonas-Kirchhoff: 0.9
 ---
 
 The service accepts well-formed UTF-8 data.

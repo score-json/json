@@ -5,6 +5,8 @@ references:
         - type: cpp_test
           name: "parser class - core;parse;object;nonempty object"
           path: "TSF/tests/unit-class_parser_core.cpp"
+score:
+    Jonas-Kirchhoff: 0.95
 ---
 
 The service parses non-empty objects.

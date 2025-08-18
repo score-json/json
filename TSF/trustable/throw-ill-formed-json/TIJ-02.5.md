@@ -63,7 +63,9 @@ references:
           path: "TSF/tests/unit-numbers.cpp"
         - type: cpp_test
           name: "parse;invalid whitespace"
-          path: "TSF/tests/unit-numbers.cpp"        
+          path: "TSF/tests/unit-numbers.cpp"     
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service throws an exception on invalid number syntax.

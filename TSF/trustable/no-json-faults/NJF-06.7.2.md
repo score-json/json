@@ -25,6 +25,8 @@ references:
         - type: cpp_test
           name: "accept;member separator"
           path: "TSF/tests/unit-objects.cpp"
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service does not accept any other member separator.

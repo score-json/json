@@ -17,6 +17,11 @@ references:
             - "/json.org/4.json"
             - "/json.org/5.json"
           description: "Checks that various nested objects are accepted."
+        - type: cpp_test
+          name: "accept;member separator"
+          path: "TSF/tests/unit-objects.cpp"
+score:
+    Jonas-Kirchhoff: 0.95
 ---
 
-The service accepts nested objects.
+The service accept the nested objects.

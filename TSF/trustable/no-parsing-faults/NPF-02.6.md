@@ -8,6 +8,8 @@ references:
         - type: cpp_test
           name: "parser class - core;parse;number;integers;over the edge cases"
           path: "TSF/tests/unit-class_parser_core.cpp"
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service parses integers within IEEE 754-2008 binary64.

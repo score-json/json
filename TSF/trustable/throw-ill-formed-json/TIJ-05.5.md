@@ -25,6 +25,8 @@ references:
         - type: cpp_test
           name: "parse;member separator"
           path: "TSF/tests/unit-objects.cpp"
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service throws an exception on improper member separators.

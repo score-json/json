@@ -29,7 +29,12 @@ references:
           path: "TSF/tests/unit-objects.cpp"
         - type: cpp_test
           name: "accept;names;strings;escaped UTF-16 surrogates"
-          path: "TSF/tests/unit-objects.cpp"          
+          path: "TSF/tests/unit-objects.cpp"        
+        - type: cpp_test
+          name: "accept;member separator"
+          path: "TSF/tests/unit-objects.cpp"  
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service accepts strings as names. 
+If the service recognises the name candidate as string, then it accepts the name candidate.

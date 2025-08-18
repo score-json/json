@@ -8,6 +8,8 @@ references:
         - type: cpp_test
           name: "deserialization;ignoring byte-order marks;BOM and content"
           path: "tests/src/unit-deserialization.cpp"
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service ignores the presence of a single UTF-8 byte order mark.
+The service ignores the presence of a single UTF-8 byte order mark at the very beginning of the input.

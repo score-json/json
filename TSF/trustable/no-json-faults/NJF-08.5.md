@@ -8,6 +8,8 @@ references:
         - type: cpp_test
           name: "accept;exponents;U+0436"
           path: "TSF/tests/unit-numbers.cpp"
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service does not accept cyrillic e u0415, u0436, nor exp.
+The service does not accept u0415 and u0436 (cyrillic e and E) as exponent signs in numbers with exponent.

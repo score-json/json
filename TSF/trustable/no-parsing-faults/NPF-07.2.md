@@ -113,6 +113,8 @@ references:
         - type: cpp_test
           name: "Unicode (5/5);RFC 3629;UTF8-4 (xF4 x80-8F UTF8-tail UTF8-tail);ill-formed: wrong fourth byte"
           path: "tests/src/unit-unicode5.cpp"
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service throws an exception on ill-formed UTF-8 data.

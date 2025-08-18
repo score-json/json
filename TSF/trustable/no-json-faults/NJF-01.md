@@ -4,7 +4,7 @@ normative: true
 references:
         - type: cpp_test
           path: "TSF/tests/unit-class_parser_core.cpp"
-          name: "parser class - core"
+          name: "parser class - core;accept;null"
         - type: JSON_testsuite
           name: "nst's JSONTestSuite;test_parsing;y"
           path: "tests/src/unit-testsuites.cpp"
@@ -17,6 +17,11 @@ references:
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/y_structure_lonely_null.json"
           description: ""
+        - type: function_reference
+          name: "lexer::scan_literal"
+          path: "include/nlohmann/detail/input/lexer.hpp"
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service accepts the literal name null. 

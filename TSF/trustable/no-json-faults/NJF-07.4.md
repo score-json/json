@@ -28,6 +28,8 @@ references:
         - type: cpp_test
           name: "Unicode;escaped unicode"
           path: "TSF/tests/unit-strings.cpp"
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service does accept escaped control characters.
+The service does accept the escaped control characters.

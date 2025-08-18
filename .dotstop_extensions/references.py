@@ -1,5 +1,6 @@
 from pathlib import Path
 from trudag.dotstop.core.reference.references import BaseReference
+from trudag.dotstop.core.reference.references import SourceSpanReference
 import requests
 
 # Constants
@@ -25,7 +26,7 @@ class CPPTestReference(BaseReference):
     """
     Represents a reference to a specific section within a C++ test file. The class
     assumes that the C++ test sections are defined using `SECTION("name")` or
-    `TEST_CASE("name")` syntax, where the section name can be nested using
+    # `TEST_CASE("name")` syntax, where the section name can be nested using
     colon-separated names (e.g., "testcase1:section1:section2"). We assume that the 
     section path is unique within the file.
     
@@ -326,3 +327,172 @@ class WebReference(BaseReference):
     def __str__(self) -> str:
         # this is used as a title in the trudag report
         return f"website: {self._url}"
+    
+class FunctionReference(SourceSpanReference):
+    """
+    Represents a reference to a function within a class in a hpp-file. This class assumes that
+    the hpp-file has the form 
+    ...
+    class xyz
+    {
+        ...
+        output function_name(input)
+        {
+            ...
+        }
+        ...
+    };
+    This is the layout that is followed by the hpp-files of nlohmann/json.
+
+    A specific function is identified by 
+        1. the hpp-file
+        2. the name of the class, whithin which our function is defined
+        3. (optionally) the number of prior definitions within the same class in case of overloaded functions;
+            by default, the first definition is used.
+    Since classes are in hpp-files of nlohmann/json uniquely identified by their name, this uniquely identifies a function.
+    """
+
+    def __init__(self, name: str, path: str, overload: str = "1") -> None:
+        [start_line,end_line] = FunctionReference.get_function_line_numbers(Path(path),name,int(overload))
+        # SourceSpanReference copies code from a start-character in a start-line 
+        # up to an end-character in an end-line.
+        # Here, we want every character in all lines between start- and end-line.
+        # Therefore, we set the end-character to 1000, which could fail, if ever a
+        # line with more than 1000 characters is copied.
+        # In nlohmann/json, no hpp-file has such a line, so that the following works fine.
+        super().__init__(Path(path),[[start_line,0],[end_line,1000]])
+        self._name = name
+        self._overload = int(overload)
+
+    def language(self):
+        return "C++" 
+    
+    @classmethod
+    def type(cls) -> str:
+        return "function_reference"
+    
+    def remove_leading_whitespace_preserve_indentation(self, text: str) -> str:
+        """
+        Remove leading whitespace from all lines while preserving relative indentation.
+        This is identical to CPPTestReference.remove_leading_whitespace_preserve_indentation
+        """
+        lines = text.split('\n')
+        lines = [line.replace('\t', ' ' * NUM_WHITESPACE_FOR_TAB) for line in lines]
+        ident_to_remove = len(lines[0]) - len(lines[0].lstrip())
+        
+        # Remove the baseline indentation from all lines
+        adjusted_lines = []
+        for line in lines:
+            if line.strip():  # Non-empty line
+                if not line.startswith(lines[0][:ident_to_remove]):
+                    # If the indentation is not >= than for the baseline, return the original text
+                    return text
+                adjusted_lines.append(line[ident_to_remove:] if len(line) >= ident_to_remove else line)
+            else:  # Empty line
+                adjusted_lines.append('')
+        
+        return '\n'.join(adjusted_lines)
+    
+    @staticmethod
+    def get_function_line_numbers(path: Path, name: str, overload = 1) -> tuple[int, int]:
+        with open(path, 'r') as file:
+            lines = file.readlines()
+        function_start_line = FunctionReference.get_function_start(path, name, lines, overload)
+        function_end_line = FunctionReference.get_function_end(path, name, function_start_line, lines)
+        return (function_start_line, function_end_line)
+        
+
+    def get_function_start(path: Path, name: str, lines: list[str], overload: int) -> int:
+        # Split name in class_name and function_name, 
+        # and check that both, and only both, parts of the name are found.
+        name_parts = name.split("::")
+        if len(name_parts) != 2:
+            raise ValueError(f"Name {name} does not have the form class_name::function_name")
+        # name_parts[0] is interpreted as class_name, 
+        # name_parts[1] is interpreted as function_name
+        in_class = False
+        sections = []
+        instance = 0
+        amopen = []
+        for line_number, line in enumerate(lines):
+            # first task: find literal string "class class_name " within a line
+            if not in_class:
+                if f"class {name_parts[0]} " in line or f"class {name_parts[0]}\n" in line:
+                    in_class = True
+                    continue
+                continue
+            # now we are within the class
+            # time to search for our function
+            if "};" in line and len(sections)==0:
+                # then, we have reached the end of the class
+                break
+            # ignore all commented out lines
+            if line.strip().startswith("//"):
+                continue
+            if '{' in line or '}' in line:
+                for c in line:
+                    if c == '{':
+                        sections.append(1)
+                    if c == '}':
+                        try:
+                            sections.pop()
+                        except IndexError:
+                            raise ValueError(f"Fatal error: Could not resolve {name} in file {path}.")
+            # A function-declaration always contains the literal string " function_name("
+            # When this string is found within the indentation of the class itself,
+            # then it can be assumed that we have a function declaration.
+            # This is true in case of the hpp-files of nlohmann/json. 
+            if f" {name_parts[1]}(" in line and len(sections) == 1:
+                instance += 1
+                if instance == overload:
+                    return line_number
+        if not in_class:
+            raise ValueError(f"Could not find class {name_parts[0]} in file {path}")
+        if overload%10 == 1 and overload != 11:
+            raise ValueError(f"Could not locate {overload}st implementation of {name_parts[1]} in file {path}.")
+        elif overload%10 == 2 and overload != 12:
+            raise ValueError(f"Could not locate {overload}nd implementation of {name} in file {path}.")
+        elif overload%10 == 3 and overload != 13:
+            raise ValueError(f"Could not locate {overload}rd implementation of {name} in file {path}.")
+        else:
+            raise ValueError(f"Could not locate {overload}th implementation of {name} in file {path}.")
+    
+    def get_function_end(path: Path, name: str, function_start: int, lines: list[str]) -> int:
+        found_start = False
+        sections = []
+        for line_number, line in enumerate(lines):
+            if line_number<function_start:
+                # skip ahead
+                continue
+            # Now, we have found the line, where the function declaration
+            # In nlohmann/json, the function body is written between a lonely { and a lonely }.
+            # First, we should search for the first lonely {
+            if '{' in line or '}' in line:
+                for c in line:
+                    if c == '{':
+                        sections.append(1)
+                    if c == '}':
+                        try:
+                            sections.pop()
+                        except IndexError:
+                            raise ValueError(f"Fatal error: Could not resolve {name} in file {path}.")
+            if not found_start and len(sections)>0:
+                found_start = True
+            if found_start and len(sections)==0:
+                return line_number
+        raise ValueError(f"Could not find end of function-body of {name} in file {path}.")
+
+    @property
+    def content(self) -> bytes:
+        # I don't think this needs to be further encoded, since it is encoded by super()
+        return self.code
+  
+
+    def as_markdown(self, filepath: None | str = None) -> str:
+        content = self.code.decode('utf-8')
+        content = self.remove_leading_whitespace_preserve_indentation(content)
+        return format_cpp_code_as_markdown(content)
+
+    def __str__(self) -> str:
+        # this is used as a title in the trudag report
+        return f"function: [{self._name}]\n({str(self.path)})"

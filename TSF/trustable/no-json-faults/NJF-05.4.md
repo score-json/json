@@ -5,6 +5,9 @@ references:
         - type: cpp_test
           name: "parser class - core;accept;parse errors (accept)"
           path: "TSF/tests/unit-class_parser_core.cpp"
+        - type: cpp_test
+          name: "accept;boundaries"
+          path: "TSF/tests/unit-arrays.cpp"
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2);test_parsing;n (previously overflowed)"
           path: "tests/src/unit-testsuites.cpp"
@@ -33,6 +36,8 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_structure_unclosed_array_unfinished_false.json"
             - "/nst_json_testsuite2/test_parsing/n_structure_unclosed_array_unfinished_true.json"
           description: ""
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service does not accept improperly bounded arrays.
+The service does not accept any improperly bounded arrays.

@@ -20,6 +20,11 @@ references:
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/i_object_key_lone_2nd_surrogate.json"
           description: "Checks that string with invalid utf16 surrogate is rejected as name"
+        - type: cpp_test
+          name: "accept;member separator"
+          path: "TSF/tests/unit-objects.cpp"
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service does not accept objects with improper name.
+If the service does not accept any name candidate as singleton, then the service does not accept the object candidate.

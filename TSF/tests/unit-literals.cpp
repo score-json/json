@@ -15,6 +15,12 @@ void parser_helper(const std::string& input){
 
 TEST_CASE("accept")
 {
+    SECTION("unicode")
+    {
+        CHECK(json::accept("\u0074\u0072\u0075\u0065")); // true
+        CHECK(json::accept("\u0066\u0061\u006c\u0073\u0065")); // false
+        CHECK(json::accept("\u006e\u0075\u006c\u006c"));
+    }
     // only lower case literal names true, null and false are allowed json tokens
     // any capital letter gives illegal token
     SECTION("capitalisation")

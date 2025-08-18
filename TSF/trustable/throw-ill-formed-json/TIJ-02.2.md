@@ -15,6 +15,8 @@ references:
         - type: cpp_test
           name: "parse;leading zeroes"
           path: "TSF/tests/unit-numbers.cpp"
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service throws an exception on leading zeroes.
