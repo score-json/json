@@ -8,6 +8,9 @@ references:
         - type: cpp_test
           name: "accept;whitespace;empty object"
           path: "TSF/tests/unit-objects.cpp"
+        - type: function_reference
+          name: "lexer::skip_whitespace"
+          path: "include/nlohmann/detail/input/lexer.hpp"
 score:
     Jonas-Kirchhoff: 1.0
 ---

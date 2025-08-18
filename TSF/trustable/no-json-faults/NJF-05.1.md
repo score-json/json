@@ -18,6 +18,9 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_array_empty.json"
             - "/nst_json_testsuite2/test_parsing/y_array_arraysWithSpaces.json"
           description: "Checks that the empty array [] is accepted."
+        - type: function_reference
+          name: "lexer::skip_whitespace"
+          path: "include/nlohmann/detail/input/lexer.hpp"
 score:
     Jonas-Kirchhoff: 1.0
 ---
