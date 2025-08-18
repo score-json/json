@@ -58,6 +58,12 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
+      - name: Upload Test Results Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit_tests_results
+          path: build/unit_tests_results/unit_tests_results.log
+
 
   ci_static_analysis_clang:
     runs-on: ubuntu-latest
