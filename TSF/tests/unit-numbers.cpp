@@ -29,7 +29,7 @@ TEST_CASE("accept")
         }
         SECTION("U+0436")
         {            
-            CHECK(json::accept("0\u0436123"));
+            CHECK(!json::accept("0\u0436123"));
             CHECK(!json::accept("123\u04360"));
             CHECK(!json::accept("0.123\u0436123"));
             CHECK(!json::accept("1.23\u0436123"));
@@ -92,7 +92,7 @@ TEST_CASE("accept")
             CHECK(!json::accept("1*1"));
             CHECK(!json::accept("1.45*5"));
             CHECK(!json::accept("154*23.76"));
-            CHECK(json::accept("1\u004545*3"));
+            CHECK(!json::accept("1\u004545*3"));
             CHECK(!json::accept("1\u006545*3"));
             CHECK(!json::accept("3*6\u004512"));
             CHECK(!json::accept("3*6\u006512"));
