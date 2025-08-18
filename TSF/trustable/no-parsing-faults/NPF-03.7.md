@@ -75,7 +75,7 @@ references:
           name: "lexer::scan_string"
           path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff: 0.7
+    Jonas-Kirchhoff: 0.95
 ---
 
 The service parses non-empty strings.

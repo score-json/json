@@ -24,7 +24,7 @@ references:
           name: "lexer::scan_number"
           path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff: 0.85
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service ignores trailing zeroes after the decimal point.

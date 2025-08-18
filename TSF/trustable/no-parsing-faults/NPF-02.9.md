@@ -24,7 +24,7 @@ references:
           name: "lexer::scan_number"
           path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff: 0.8
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service parses floating point numbers within IEEE 754-2008 binary64 standard.

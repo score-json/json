@@ -18,7 +18,7 @@ references:
           name: "lexer::scan"
           path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff: 0.7
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service does not parse UTF-16 and UTF-32 byte order mark instead of an UTF-8 byte order mark, and throws an exception.

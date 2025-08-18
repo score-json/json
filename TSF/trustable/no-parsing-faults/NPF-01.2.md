@@ -18,7 +18,7 @@ references:
           name: "lexer::scan"
           path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff:  0.95
+    Jonas-Kirchhoff:  1.0
 ---
 
 The service does not parse multiple UTF-8 byte order marks at the beginning of the input and throws an exception.

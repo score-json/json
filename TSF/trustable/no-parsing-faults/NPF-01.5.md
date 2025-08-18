@@ -27,7 +27,7 @@ references:
           name: "lexer::scan"
           path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff: 0.9
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service does not parse partial and perturbed UTF-8 byte order marks within the first three characters of the input and throws an exception.

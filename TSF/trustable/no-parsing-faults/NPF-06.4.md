@@ -18,7 +18,7 @@ references:
           name: "lexer::scan"
           path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff: 0.7
+    Jonas-Kirchhoff: 0.95
 ---
 
 The service parses non-empty objects.

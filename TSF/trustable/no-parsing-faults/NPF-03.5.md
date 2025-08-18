@@ -24,7 +24,7 @@ references:
           name: "lexer::scan_string"
           path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff: 0.95
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service parses \\, \\/, \\b,\\f, \\n, \\r, \\t and escaped quotation marks.

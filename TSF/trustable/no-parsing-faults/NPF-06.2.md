@@ -22,7 +22,7 @@ references:
           name: "lexer::scan"
           path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff: 0.6
+    Jonas-Kirchhoff: 0.9
 ---
 
 The service parses duplicate names without error and reports the last member with that name only.

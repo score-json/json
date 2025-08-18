@@ -30,7 +30,7 @@ references:
           name: "lexer::scan_string"
           path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff: 0.8
+    Jonas-Kirchhoff: 0.95
 ---
 
 The service parses all unescaped utf-8 characters except quotation mark, reverse solidus and the control characters.

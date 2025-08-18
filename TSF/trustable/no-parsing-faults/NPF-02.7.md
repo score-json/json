@@ -18,7 +18,7 @@ references:
           name: "lexer::scan"
           path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff: 0.8
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service ignores leading and trailing whitespace.

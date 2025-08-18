@@ -21,7 +21,7 @@ references:
           name: "lexer::scan_string"
           path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff: 0.9
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service ignores capitalisation in escaped hexadecimal unicode.

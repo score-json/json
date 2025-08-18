@@ -21,7 +21,7 @@ references:
           name: "lexer::scan_number"
           path: "include/nlohmann/detail/input/lexer.hpp"
 score:
-    Jonas-Kirchhoff: 0.75
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service ignores leading zeroes in the exponent.
