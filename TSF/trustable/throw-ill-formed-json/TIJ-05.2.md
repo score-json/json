@@ -22,7 +22,7 @@ references:
           name: "parse;names;literals"
           path: "TSF/tests/unit-objects.cpp"
 score:
-    Jonas-Kirchhoff: 0.9
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service throws an exception if a non-string is used as name of any member.

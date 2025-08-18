@@ -9,7 +9,7 @@ references:
           name: "Unicode;escaped utf-16 surrogates;ill-formed"
           path: "TSF/tests/unit-strings.cpp"
 score:
-    Jonas-Kirchhoff: 0.85
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service throws an exception on incorrect surrogate pairs.

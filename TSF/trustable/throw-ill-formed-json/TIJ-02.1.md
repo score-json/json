@@ -6,7 +6,7 @@ references:
           name: "parser class - core;parse;number;invalid numbers"
           path: "TSF/tests/unit-class_parser_core.cpp"
 score:
-    Jonas-Kirchhoff: 0.95
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service throws an exception on leading plus.

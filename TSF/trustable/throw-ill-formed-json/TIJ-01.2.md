@@ -24,7 +24,7 @@ references:
           name: "parse;illegal literals"
           path: "TSF/tests/unit-literals.cpp"
 score:
-    Jonas-Kirchhoff: 0.9
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service throws an exception on any other than the three literal names true, false, null.

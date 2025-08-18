@@ -6,7 +6,7 @@ references:
           name: "Unicode;unescaped unicode"
           path: "TSF/tests/unit-strings.cpp"
 score:
-    Jonas-Kirchhoff: 0.85
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service throws an exception on unpaired utf-16 surrogates.

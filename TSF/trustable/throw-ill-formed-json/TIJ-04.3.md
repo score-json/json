@@ -9,7 +9,7 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_array_colon_instead_of_comma.json"
           description: "Tests whether colon as value separator throws an exception."
 score:
-    Jonas-Kirchhoff: 0.9
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service throws an exception on improper value separators.

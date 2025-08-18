@@ -9,7 +9,7 @@ references:
           name: "parse;exponents;U+0436"
           path: "TSF/tests/unit-numbers.cpp"
 score:
-    Jonas-Kirchhoff: 0.9
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service throws an exception on U+0415 and U+0436 instead of U+0045 or U+0065.
