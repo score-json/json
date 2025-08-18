@@ -308,8 +308,9 @@ class WebReference(BaseReference):
     This custom reference type is included as an example on https://codethinklabs.gitlab.io/trustable/trustable/trudag/references.html
     and, for the most part, copied from there
     """
-    def __init__(self, url: str) -> None:
+    def __init__(self, url: str, description: str = "") -> None:
         self._url = url
+        self._description = description
     
     @classmethod
     def type(cls) -> str:
@@ -321,8 +322,11 @@ class WebReference(BaseReference):
         return response.text.encode('utf-8')
     
     def as_markdown(self, filepath: None | str = None) -> str:
-        return f"`{self._url}`"
-    
+        # If we did not add a description, nothing is printed
+        if (self._description == ""):
+            return f"`{self._url}`"
+        # else, we print the description below the url
+        return f"`{self._url}`\n"+make_md_bullet_point(self._description,1)    
     
     def __str__(self) -> str:
         # this is used as a title in the trudag report
