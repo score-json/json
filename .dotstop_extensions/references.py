@@ -74,8 +74,11 @@ class CPPTestReference(BaseReference):
             Line index where the section starts (i.e. the line containing SECTION or TEST_CASE)
         """
         section_names = self._name.split(';')
+        section_names = self._name.split(';')
         for line_number, line in enumerate(file_lines):
             # Check if current line contains a SECTION or TEST_CASE declaration matching the current first section name
+            section_pattern = f'SECTION("{section_names[0]}"'
+            test_case_pattern = f'TEST_CASE("{section_names[0]}"'
             section_pattern = f'SECTION("{section_names[0]}"'
             test_case_pattern = f'TEST_CASE("{section_names[0]}"'
             if section_pattern in line or test_case_pattern in line:
@@ -86,6 +89,7 @@ class CPPTestReference(BaseReference):
                     # Remove the found section from the list and continue searching for nested sections
                     section_names.pop(0)
 
+        raise ValueError("Start of section "+self._name+" not found.")
         raise ValueError("Start of section "+self._name+" not found.")
     
     def find_section_end(self, file_lines: list[str], start_index: int):
