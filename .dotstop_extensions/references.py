@@ -278,7 +278,9 @@ class JSONTestsuiteReference(CPPTestReference):
         )
 
     def as_markdown(self, filepath: None | str = None) -> str:
-        description = f"Description: {self._description}\n\n"
+        description = ""
+        if self._description!="": 
+            description = "Description: {self._description}\n\n"
 
         # we can not simply use the parent class's as_markdown method, because it does not filter out
         # the other test data lines, which are not relevant for the trudag report
@@ -308,8 +310,9 @@ class WebReference(BaseReference):
     This custom reference type is included as an example on https://codethinklabs.gitlab.io/trustable/trustable/trudag/references.html
     and, for the most part, copied from there
     """
-    def __init__(self, url: str) -> None:
+    def __init__(self, url: str, description: str = "") -> None:
         self._url = url
+        self._description = description
     
     @classmethod
     def type(cls) -> str:
@@ -317,12 +320,18 @@ class WebReference(BaseReference):
     
     @property
     def content(self) -> bytes:
-        response = requests.get(self._url)
-        return response.text.encode('utf-8')
+        # In the example, the text on the website is used.
+        # This does not work for constantly changing websites.
+        # Would the text be used, then the statement could never be reviewed.
+        # Therefore, the url is returned, which is sufficient for our purposes.
+        return self._url.encode('utf-8')
     
     def as_markdown(self, filepath: None | str = None) -> str:
-        return f"`{self._url}`"
-    
+        # If we did not add a description, nothing is printed
+        if (self._description == ""):
+            return f"`{self._url}`"
+        # else, we print the description below the url
+        return f"`{self._url}`\n"+make_md_bullet_point(self._description,1)    
     
     def __str__(self) -> str:
         # this is used as a title in the trudag report
