@@ -4,6 +4,13 @@ normative: true
 references:
         - type: website
           url: "https://introspector.oss-fuzz.com/project-profile?project=json"
+          description: "collects recent reports for fuzzing introspection of nlohmann/json with historical plots"
+evidences:
+        - type: https_response_time
+          configuration:
+                target_seconds: 2
+                urls:
+                    - "https://introspector.oss-fuzz.com/project-profile?project=json"
 score:
     Jonas-Kirchhoff: 1.0
 ---
