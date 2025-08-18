@@ -29,18 +29,6 @@ references:
         - type: cpp_test
           name: "Unicode (5/5);RFC 3629;UTF8-4 (xF4 x80-8F UTF8-tail UTF8-tail);well-formed"
           path: "tests/src/unit-unicode5.cpp"
-        - type: function_reference
-          name: "parser::parse"
-          path: "include/nlohmann/detail/input/parser.hpp"
-        - type: function_reference
-          name: "parser::sax_parse"
-          path: "include/nlohmann/detail/input/parser.hpp"
-        - type: function_reference
-          name: "parser::sax_parse_internal"
-          path: "include/nlohmann/detail/input/parser.hpp"
-        - type: function_reference
-          name: "lexer::scan"
-          path: "include/nlohmann/detail/input/lexer.hpp"
 score:
     Jonas-Kirchhoff: 1.0
 ---

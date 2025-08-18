@@ -20,18 +20,6 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_array_with_several_null.json"
             - "/nst_json_testsuite2/test_parsing/y_array_with_trailing_space.json"
           description: "Tests whether several non-empty arrays are parsed without exception"
-        - type: function_reference
-          name: "parser::parse"
-          path: "include/nlohmann/detail/input/parser.hpp"
-        - type: function_reference
-          name: "parser::sax_parse"
-          path: "include/nlohmann/detail/input/parser.hpp"
-        - type: function_reference
-          name: "parser::sax_parse_internal"
-          path: "include/nlohmann/detail/input/parser.hpp"
-        - type: function_reference
-          name: "lexer::scan"
-          path: "include/nlohmann/detail/input/lexer.hpp"
 score:
     Jonas-Kirchhoff: 0.95
 ---
