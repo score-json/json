@@ -30,3 +30,18 @@ references:
   path: "tests/src/unit-testsuites.cpp"
 ---
 ```
+# Validators
+
+Validators are extensions of trudag, used to validate any data that can be reduced to a floating point metric. The resulting scores are used as evidence for the trustability of items in the trustable graph.
+
+## check_artifact_exists
+
+The check_artifact_exists script validates the presence of artifacts from GitHub Actions workflows for the current SHA. The score is given based on the number of artifacts found vs the number of artifacts expected.
+
+The available configuration dict values for check_artifact_names are:
+  - `check_amalgamation`
+  - `codeql`
+  - `dependency_review`
+  - `labeler`
+  - `test_trudag_extensions`
+  - `ubuntu`
