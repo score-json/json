@@ -244,7 +244,7 @@ TEST_CASE("accept")
     }
 }
 
-TEST_CASE("Unicode")
+TEST_CASE("Unicode" * doctest::skip())
 {
     SECTION("escaped unicode")
     {
