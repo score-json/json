@@ -281,7 +281,7 @@ class JSONTestsuiteReference(CPPTestReference):
     def as_markdown(self, filepath: None | str = None) -> str:
         description = ""
         if self._description!="": 
-            description = "Description: {self._description}\n\n"
+            description = f"Description: {self._description}\n\n"
 
         # we can not simply use the parent class's as_markdown method, because it does not filter out
         # the other test data lines, which are not relevant for the trudag report
