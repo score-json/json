@@ -354,7 +354,7 @@ class WebContentReference(WebReference):
         return super().as_markdown(filepath)
     
     def __str__(self) -> str:
-        return super().__str__
+        return super().__str__()
 
 class TimeVaryingWebReference(WebReference):
     def __init__(self, url, description = "", changelog = "ChangeLog.md"):
