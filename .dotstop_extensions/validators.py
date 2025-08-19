@@ -1,4 +1,4 @@
-from typing import TypeAlias, Tuple, List
+from typing import TypeAlias, tuple, list
 import os
 import requests
 
@@ -18,7 +18,7 @@ def setup_environment_variables() -> dict[str, str]:
     
     return environment
 
-def check_artifact_exists(configuration: dict[str, yaml]) -> Tuple[float, List[Exception | Warning]]:    
+def check_artifact_exists(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:    
     # Setup environment variables using the helper function
     env = setup_environment_variables()
     
@@ -74,3 +74,5 @@ def check_artifact_exists(configuration: dict[str, yaml]) -> Tuple[float, List[E
                 print(f"Artifact for workflow {key} NOT found. Current cumulative score: {score}")
 
     return (score, [])
+
+
