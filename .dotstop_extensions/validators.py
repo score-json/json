@@ -115,25 +115,4 @@ def https_response_time(configuration: dict[str, yaml]) -> tuple[float, list[Exc
             scores.append(score)
             continue
         scores.append(0)
-    return(sum(scores)/len(scores),exceptions)
-
-def update_checker(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
-    """
-    Checks whether the current version of the main branch of the repository changes.
-    If this is not the case, then https_response_time is executed;
-    otherwise, the score 0.0 is returned, indicating that a re-review is necessary.
-    The expected configuration
-    """
-    target_hash = configuration.get("expected_hash", None)
-    branch = configuration.get("branch",None)
-    if not target_hash:
-        return (0.0, [ValueError("No expected hash specified for validator!")])
-    if not branch:
-        return (0.0, [ValueError("No branch specified for git rev-parse")])
-    result = subprocess.run(["git", "rev-parse", branch], capture_output=True, text=True)
-    if result.stderr != "":
-        return (0.0, [ValueError("Invalid branch!")])
-    if result.stdout.rstrip() == str(target_hash):
-        return https_response_time({k:configuration[k] for k in ("target_seconds","urls") if k in configuration})
-    return (0.0, [warnings.warn(f"Warning: Revision of branch {branch} changed! Please re-review trustability! New hash: {result.stdout.rstrip()}")])
-    
+    return(sum(scores)/len(scores),exceptions)   
