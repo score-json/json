@@ -2,6 +2,7 @@ from pathlib import Path
 from trudag.dotstop.core.reference.references import BaseReference
 from trudag.dotstop.core.reference.references import SourceSpanReference
 import requests
+import subprocess
 
 # Constants
 MAX_JSON_LINES_FOR_DISPLAY = 25
@@ -336,6 +337,28 @@ class WebReference(BaseReference):
     def __str__(self) -> str:
         # this is used as a title in the trudag report
         return f"website: {self._url}"
+    
+class TimeVaryingWebReference(WebReference):
+    def __init__(self, url, description = "", changelog = "ChangeLog.md"):
+        super().__init__(url, description)
+        self._changelog = changelog
+    
+    @classmethod
+    def type(cls) -> str:
+        return "project_website"
+
+    @property
+    def content(self) -> bytes:    
+        with open(self._changelog, 'r') as file:
+            lines = file.readlines()
+        lines.insert(0,self._url)
+        return '\n'.join(lines)
+    
+    def as_markdown(self, filepath: None | str = None) -> str:
+        return super().as_markdown(filepath)
+    
+    def __str__(self) -> str:
+        return super().__str__()
     
 class FunctionReference(SourceSpanReference):
     """
