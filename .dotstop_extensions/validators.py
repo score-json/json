@@ -22,7 +22,10 @@ def setup_environment_variables() -> dict[str, str]:
 
 def check_artifact_exists(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:    
     # Setup environment variables using the helper function
-    env = setup_environment_variables()
+    try:
+        env = setup_environment_variables()
+    except RuntimeError as e:
+        return (0,[e])
     
     github_token = env["GITHUB_TOKEN"]
     github_event_name = env["GITHUB_EVENT_NAME"]
