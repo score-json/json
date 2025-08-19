@@ -318,8 +318,7 @@ class WebReference(BaseReference):
     
     @property
     def content(self) -> bytes:
-        response = requests.get(self._url)
-        return response.text.encode('utf-8')
+        return self._url.encode('utf-8')
     
     def as_markdown(self, filepath: None | str = None) -> str:
         # If we did not add a description, nothing is printed
