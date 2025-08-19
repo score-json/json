@@ -18,6 +18,10 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_number_negative_one.json"
             - "/nst_json_testsuite2/test_parsing/y_number_negative_zero.json"
           description: "Tests whether several numbers without exponent are parsed without throwing an exception."
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service parses integers without exponent. 

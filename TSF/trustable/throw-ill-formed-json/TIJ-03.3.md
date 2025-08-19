@@ -14,6 +14,10 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_string_single_quote.json"
             - "/nst_json_testsuite2/test_parsing/n_string_single_string_no_double_quotes.json"
           description: "Tests whether several improperly bounded strings throw an exception."
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service throws an exception on improperly bounded strings.

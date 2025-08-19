@@ -15,6 +15,10 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_array_invalid_utf8.json"
             - "/nst_json_testsuite2/test_parsing/n_array_just_minus.json"
           description: "Checks that various \"proper\" arrays with improper elements throw an exception."
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service throws an exception on improper values within a properly bounded array.

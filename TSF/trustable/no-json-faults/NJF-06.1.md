@@ -8,6 +8,10 @@ references:
         - type: cpp_test
           name: "accept;whitespace;empty object"
           path: "TSF/tests/unit-objects.cpp"
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service accepts the empty object.

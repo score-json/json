@@ -15,6 +15,10 @@ references:
         - type: cpp_test
           name: "parse;illegal literal numbers"
           path: "TSF/tests/unit-literals.cpp"
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service throws an exception on NaN, infinity.

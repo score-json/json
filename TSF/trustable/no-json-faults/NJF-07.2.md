@@ -17,6 +17,10 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_string_single_quote.json"
             - "/nst_json_testsuite2/test_parsing/n_string_single_string_no_double_quotes.json"
           description: ""
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service does not accept improperly bounded string.

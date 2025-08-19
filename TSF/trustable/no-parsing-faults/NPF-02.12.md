@@ -5,6 +5,10 @@ references:
         - type: cpp_test
           name: "parse;exponents;Capitalisation"
           path: "TSF/tests/unit-numbers.cpp"
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service ignores capitalisation of the exponent.

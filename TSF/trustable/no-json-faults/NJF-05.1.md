@@ -25,6 +25,10 @@ references:
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/y_array_ending_with_newline.json"
           description: ""
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service accepts the empty array.

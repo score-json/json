@@ -9,6 +9,10 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_object_duplicated_key.json"
             - "/nst_json_testsuite2/test_parsing/y_object_duplicated_key_and_value.json"
           description: ""
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service parses duplicate names without error and reports the last member with that name only.

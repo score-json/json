@@ -20,6 +20,10 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_array_with_several_null.json"
             - "/nst_json_testsuite2/test_parsing/y_array_with_trailing_space.json"
           description: "Tests whether several non-empty arrays are parsed without exception"
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service parses non-empty arrays.

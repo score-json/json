@@ -65,6 +65,10 @@ references:
         - type: cpp_test
           name: "accept;operators"
           path: "TSF/tests/unit-numbers.cpp"
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service does not accept invalid syntax for numbers.

@@ -17,6 +17,10 @@ references:
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/y_structure_lonely_null.json"
           description: ""
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service accepts the literal name null. 

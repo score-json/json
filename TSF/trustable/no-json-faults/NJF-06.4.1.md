@@ -30,6 +30,10 @@ references:
         - type: cpp_test
           name: "accept;names;strings;escaped UTF-16 surrogates"
           path: "TSF/tests/unit-objects.cpp"          
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service accepts strings as names. 

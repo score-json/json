@@ -33,6 +33,10 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_structure_unclosed_array_unfinished_false.json"
             - "/nst_json_testsuite2/test_parsing/n_structure_unclosed_array_unfinished_true.json"
           description: ""
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service does not accept improperly bounded arrays.

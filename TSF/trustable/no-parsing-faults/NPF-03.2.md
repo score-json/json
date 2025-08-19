@@ -11,6 +11,10 @@ references:
         - type: cpp_test
           name: "Unicode (1/5);\\\\uxxxx sequences;correct sequences"
           path: "tests/src/unit-unicode1.cpp"
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service parses escaped characters in the basic multilingual plane.

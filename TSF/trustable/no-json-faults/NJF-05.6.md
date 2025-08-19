@@ -14,6 +14,10 @@ references:
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/i_structure_500_nested_arrays.json"
           description: ""
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service accepts nested arrays.

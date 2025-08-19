@@ -8,6 +8,10 @@ references:
         - type: cpp_test
           name: "parser class - core;parse;number;integers;over the edge cases"
           path: "TSF/tests/unit-class_parser_core.cpp"
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service parses integers within IEEE 754-2008 binary64.

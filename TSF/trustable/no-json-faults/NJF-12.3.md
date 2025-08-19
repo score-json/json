@@ -13,6 +13,10 @@ references:
         - type: cpp_test
           name: "Unicode;unescaped unicode"
           path: "TSF/tests/unit-strings.cpp"
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service rejects single and paired UTF-16 surrogates.

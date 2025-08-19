@@ -18,6 +18,10 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_number_real_neg_exp.json"
             - "/nst_json_testsuite2/test_parsing/y_number_real_pos_exponent.json"
           description: "Checks that various numbers with exponent are accepted."
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service does accept e or E.

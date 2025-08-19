@@ -8,6 +8,10 @@ references:
         - type: cpp_test
           name: "parse;whitespace"
           path: "TSF/tests/unit-arrays.cpp"
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service ignores leading and trailing whitespace for each value.

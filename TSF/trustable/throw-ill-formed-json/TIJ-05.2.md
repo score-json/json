@@ -21,6 +21,10 @@ references:
         - type: cpp_test
           name: "parse;names;literals"
           path: "TSF/tests/unit-objects.cpp"
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service throws an exception if a non-string is used as name of any member.

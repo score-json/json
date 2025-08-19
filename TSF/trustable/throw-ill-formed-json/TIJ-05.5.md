@@ -25,6 +25,10 @@ references:
         - type: cpp_test
           name: "parse;member separator"
           path: "TSF/tests/unit-objects.cpp"
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service throws an exception on improper member separators.

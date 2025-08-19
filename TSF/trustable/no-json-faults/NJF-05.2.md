@@ -32,6 +32,10 @@ references:
             - "/json.org/4.json"
             - "/json.org/5.json"
           description: "Checks that various valid arrays in combination with objects are accepted."
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service accepts non-empty arrays.

@@ -11,6 +11,10 @@ references:
         - type: cpp_test
           name: "compliance tests from json.org;expected failures"
           path: "tests/src/unit-testsuites.cpp"
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The admissible members of an object have the form name : value.

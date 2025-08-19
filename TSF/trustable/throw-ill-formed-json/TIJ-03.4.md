@@ -25,6 +25,10 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_string_invalid_unicode_escape.json"
             - "/nst_json_testsuite2/test_parsing/n_string_invalid_utf8_after_escape.json"
           description: "Tests whether various illegal control characters and utf-8 characters throw an exception."
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service throws an exception on escaped invalid characters.

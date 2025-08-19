@@ -20,6 +20,10 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_number_real_neg_exp.json"
             - "/nst_json_testsuite2/test_parsing/y_number_real_pos_exponent.json"
           description: "Tests whether several numbers with exponent are parsed without throwing an exception."
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service parses integers with exponent. 

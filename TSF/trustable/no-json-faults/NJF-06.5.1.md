@@ -20,6 +20,10 @@ references:
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/i_object_key_lone_2nd_surrogate.json"
           description: "Checks that string with invalid utf16 surrogate is rejected as name"
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service does not accept objects with improper name.

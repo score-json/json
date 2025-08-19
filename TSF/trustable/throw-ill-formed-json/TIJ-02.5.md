@@ -64,6 +64,10 @@ references:
         - type: cpp_test
           name: "parse;invalid whitespace"
           path: "TSF/tests/unit-numbers.cpp"        
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service throws an exception on invalid number syntax.

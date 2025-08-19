@@ -10,6 +10,10 @@ references:
           name: "compliance tests from nativejson-benchmark;strings"
           path: "tests/src/unit-testsuites.cpp"
             
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service does accept empty string.

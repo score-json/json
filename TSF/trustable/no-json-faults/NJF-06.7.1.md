@@ -17,6 +17,10 @@ references:
             - "/json.org/4.json"
             - "/json.org/5.json"
           description: "Checks that various arrays with more than one value are accepted."
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service accepts comma as member separator.

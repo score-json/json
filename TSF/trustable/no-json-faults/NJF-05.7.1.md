@@ -20,6 +20,10 @@ references:
           test_suite_paths:
             - "/json.org/5.json"
           description: ""
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service does accept comma as value separator.

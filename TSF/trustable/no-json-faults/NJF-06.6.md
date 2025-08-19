@@ -17,6 +17,10 @@ references:
             - "/json.org/4.json"
             - "/json.org/5.json"
           description: "Checks that various nested objects are accepted."
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service accepts nested objects.

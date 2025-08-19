@@ -14,6 +14,10 @@ references:
         - type: cpp_test
           name: "Unicode (1/5);error for incomplete/wrong BOM"
           path: "tests/src/unit-unicode1.cpp"
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service does not parse partial and perturbed UTF-8 byte order marks and throws an exception.

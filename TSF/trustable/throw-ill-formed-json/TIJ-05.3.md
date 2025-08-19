@@ -20,6 +20,10 @@ references:
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/i_object_key_lone_2nd_surrogate.json"
           description: "Checks that string with invalid utf16 surrogate as name throws an exception."
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service throws an exception if an improper string is used as name of any member.

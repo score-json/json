@@ -8,6 +8,10 @@ references:
         - type: cpp_test
           name: "regression tests 1;issue #360 - Loss of precision when serializing <double>"
           path: "tests/src/unit-regression1.cpp"
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service parses floating point numbers within IEEE 754-2008 binary64 standard.

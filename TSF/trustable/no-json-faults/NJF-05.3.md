@@ -28,6 +28,10 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_string_in_array_with_leading_space.json"
             - "/nst_json_testsuite2/test_parsing/y_structure_true_in_array.json"
           description: ""
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    ubuntu: "ubuntu"
 ---
 
 The service accepts arrays with different types.
