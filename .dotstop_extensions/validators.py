@@ -1,4 +1,4 @@
-from typing import TypeAlias, tuple, list
+from typing import TypeAlias
 import os
 import requests
 
