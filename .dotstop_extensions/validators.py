@@ -1,6 +1,8 @@
 from typing import TypeAlias, Tuple, List
 import os
 import requests
+import subprocess
+import warnings
 
 yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
@@ -18,7 +20,7 @@ def setup_environment_variables() -> dict[str, str]:
     
     return environment
 
-def check_artifact_exists(configuration: dict[str, yaml]) -> Tuple[float, List[Exception | Warning]]:    
+def check_artifact_exists(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:    
     # Setup environment variables using the helper function
     env = setup_environment_variables()
     
@@ -114,4 +116,24 @@ def https_response_time(configuration: dict[str, yaml]) -> tuple[float, list[Exc
             continue
         scores.append(0)
     return(sum(scores)/len(scores),exceptions)
+
+def update_checker(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    """
+    Checks whether the current version of the main branch of the repository changes.
+    If this is not the case, then https_response_time is executed;
+    otherwise, the score 0.0 is returned, indicating that a re-review is necessary.
+    The expected configuration
+    """
+    target_hash = configuration.get("expected_hash", None)
+    branch = configuration.get("branch",None)
+    if not target_hash:
+        return (0.0, [ValueError("No expected hash specified for validator!")])
+    if not branch:
+        return (0.0, [ValueError("No branch specified for git rev-parse")])
+    result = subprocess.run(["git", "rev-parse", branch], capture_output=True, text=True)
+    if result.stderr != "":
+        return (0.0, [ValueError("Invalid branch!")])
+    if result.stdout.rstrip() == str(target_hash):
+        return https_response_time({k:configuration[k] for k in ("target_seconds","urls") if k in configuration})
+    return (0.0, [warnings.warn(f"Warning: Revision of branch {branch} changed! Please re-review trustability! New hash: {result.stdout.rstrip()}")])
     
