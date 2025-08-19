@@ -53,6 +53,8 @@ references:
 ---
 ```
 
+A `WebContentReference` looks identical to a `WebReference` with `type: web_content` instead of `type: website`.
+
 For the `TimeVaryingWebReference`, examples of the possible configurations are:
 ```
 ---

@@ -338,6 +338,24 @@ class WebReference(BaseReference):
         # this is used as a title in the trudag report
         return f"website: {self._url}"
     
+class WebContentReference(WebReference):
+    def __init__(self, url, description = ""):
+        super().__init__(url, description)
+    
+    @classmethod
+    def type(cls):
+        return "web_content"
+
+    @property
+    def content(self) -> bytes:
+        return requests.get(self._url).text.encode('utf-8')
+    
+    def as_markdown(self, filepath: None | str = None) -> str:
+        return super().as_markdown(filepath)
+    
+    def __str__(self) -> str:
+        return super().__str__
+
 class TimeVaryingWebReference(WebReference):
     def __init__(self, url, description = "", changelog = "ChangeLog.md"):
         super().__init__(url, description)
