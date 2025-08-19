@@ -74,5 +74,3 @@ def check_artifact_exists(configuration: dict[str, yaml]) -> tuple[float, list[E
                 print(f"Artifact for workflow {key} NOT found. Current cumulative score: {score}")
 
     return (score, [])
-
-
