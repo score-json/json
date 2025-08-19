@@ -339,7 +339,7 @@ class WebReference(BaseReference):
         return f"website: {self._url}"
     
 class WebContentReference(WebReference):
-    def __init__(self, url, description = ""):
+    def __init__(self, url: str, description: str = "") -> None:
         super().__init__(url, description)
     
     @classmethod
@@ -370,7 +370,7 @@ class TimeVaryingWebReference(WebReference):
         with open(self._changelog, 'r') as file:
             lines = file.readlines()
         lines.insert(0,self._url)
-        return '\n'.join(lines)
+        return '\n'.join(lines).encode('utf-8')
     
     def as_markdown(self, filepath: None | str = None) -> str:
         return super().as_markdown(filepath)
