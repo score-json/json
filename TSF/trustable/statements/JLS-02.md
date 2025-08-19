@@ -7,7 +7,7 @@ references:
           description: "collects recent reports for fuzzing introspection of nlohmann/json with historical plots"
         - type: web_content
           url: "https://raw.githubusercontent.com/nlohmann/json/refs/heads/develop/.github/workflows/cifuzz.yml"
-          description: "Configuration file for Fuzz-Testing pipeline in the original nlohmann/json repository
+          description: "Configuration file for Fuzz-Testing pipeline in the original nlohmann/json repository"
 evidence:
         type: https_response_time
         configuration:
