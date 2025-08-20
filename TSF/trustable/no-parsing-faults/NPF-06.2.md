@@ -12,7 +12,13 @@ references:
 evidence:
   type: "check_artifact_exists"
   configuration:
-    ubuntu: "ubuntu"
+    check_amalgamation: exclude
+    codeql: exclude
+    dependency_review: exclude
+    labeler: exclude
+    publish_documentation: exclude
+    test_trudag_extensions: exclude
+    ubuntu: include
 ---
 
 The service parses duplicate names without error and reports the last member with that name only.

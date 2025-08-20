@@ -11,7 +11,13 @@ references:
 evidence:
   type: "check_artifact_exists"
   configuration:
-    ubuntu: "ubuntu"
+    check_amalgamation: exclude
+    codeql: exclude
+    dependency_review: exclude
+    labeler: exclude
+    publish_documentation: exclude
+    test_trudag_extensions: exclude
+    ubuntu: include
 ---
 
 The service ignores the presence of a single UTF-8 byte order mark.

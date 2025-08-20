@@ -11,7 +11,13 @@ references:
 evidence:
   type: "check_artifact_exists"
   configuration:
-    ubuntu: "ubuntu"
+    check_amalgamation: exclude
+    codeql: exclude
+    dependency_review: exclude
+    labeler: exclude
+    publish_documentation: exclude
+    test_trudag_extensions: exclude
+    ubuntu: include
 ---
 
 The service throws an exception on U+0415 and U+0436 instead of U+0045 or U+0065.
