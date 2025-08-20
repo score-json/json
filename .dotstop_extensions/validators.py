@@ -36,6 +36,11 @@ def check_artifact_exists(configuration: dict[str, yaml]) -> Tuple[float, List[E
 
     num_expected_workflows = sum(1 for value in configuration.values() if value == "include")
 
+    # If no workflows are expected, return a score of 1.0 with a warning
+    if num_expected_workflows == 0:
+        warning = Warning("No workflows to check, returning a score of 1.0.")
+        return (1.0, [warning])
+
     # GitHub API URL to list artifacts for the current workflow run
     url = f"https://api.github.com/repos/{repository}/actions/runs/{run_id}/artifacts"
 
