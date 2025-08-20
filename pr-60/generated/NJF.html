@@ -3288,7 +3288,42 @@
 <p><strong>Supporting Items:</strong></p>
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">cpp-testsuite:</span> <span class="pre">[/nst_json_testsuite2/test_parsing/i_structure_500_nested_arrays.json]</span></code></p>
+<ul class="simple">
+<li></li>
+<li><p>JSON Testsuite: /nst_json_testsuite2/test_parsing/i_structure_500_nested_arrays.json</p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>cpp-test: [nst’s JSONTestSuite (2);test_parsing;i -&gt; y]
+(tests/src/unit-testsuites.cpp)</p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">SECTION</span><span class="p">(</span><span class="s">&quot;i -&amp;gt; y&quot;</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">filename</span><span class="w"> </span><span class="o">:</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">TEST_DATA_DIRECTORY</span><span class="w"> </span><span class="s">&quot;/nst_json_testsuite2/test_parsing/i_structure_500_nested_arrays.json&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">CAPTURE</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
+<span class="w">        </span><span class="n">json</span><span class="w"> </span><span class="n">_</span><span class="p">;</span>
+<span class="w">        </span><span class="n">CHECK_NOTHROW</span><span class="p">(</span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json</span><span class="o">::</span><span class="n">parse</span><span class="p">(</span><span class="n">f</span><span class="p">));</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="nf">f2</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">json</span><span class="o">::</span><span class="n">accept</span><span class="p">(</span><span class="n">f2</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="w"> </span><span class="c1">// Note: Other test data lines have been filtered out for conciseness.</span>
+</pre></div>
+</div>
+</li>
+</ul>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 </section>
@@ -4933,64 +4968,9 @@
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">cpp-testsuite:</span> <span class="pre">[/json.org/1.json,</span> <span class="pre">/json.org/2.json,</span> <span class="pre">/json.org/3.json,</span> <span class="pre">/json.org/4.json,</span> <span class="pre">/json.org/5.json,</span> <span class="pre">/json.org/1.json,</span> <span class="pre">/json.org/2.json,</span> <span class="pre">/json.org/3.json,</span> <span class="pre">/json.org/4.json,</span> <span class="pre">/json.org/5.json]</span></code></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">cpp-testsuite:</span> <span class="pre">[/json.org/1.json,</span> <span class="pre">/json.org/2.json,</span> <span class="pre">/json.org/3.json,</span> <span class="pre">/json.org/4.json,</span> <span class="pre">/json.org/5.json]</span></code></p>
 <ul class="simple">
 <li><p>Description: Checks that various nested objects are accepted.</p></li>
-<li><p>JSON Testsuite: /json.org/1.json</p></li>
-</ul>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;glossary&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example glossary&quot;</span><span class="p">,</span>
-<span class="w">   	</span><span class="nt">&quot;GlossDiv&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">           </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;S&quot;</span><span class="p">,</span>
-<span class="w">   		</span><span class="nt">&quot;GlossList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;GlossEntry&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                   </span><span class="nt">&quot;ID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SGML&quot;</span><span class="p">,</span>
-<span class="w">   				</span><span class="nt">&quot;SortAs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SGML&quot;</span><span class="p">,</span>
-<span class="w">   				</span><span class="nt">&quot;GlossTerm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Standard Generalized Markup Language&quot;</span><span class="p">,</span>
-<span class="w">   				</span><span class="nt">&quot;Acronym&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SGML&quot;</span><span class="p">,</span>
-<span class="w">   				</span><span class="nt">&quot;Abbrev&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ISO 8879:1986&quot;</span><span class="p">,</span>
-<span class="w">   				</span><span class="nt">&quot;GlossDef&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                       </span><span class="nt">&quot;para&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A meta-markup language, used to create markup languages such as DocBook.&quot;</span><span class="p">,</span>
-<span class="w">   					</span><span class="nt">&quot;GlossSeeAlso&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;GML&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;XML&quot;</span><span class="p">]</span>
-<span class="w">                   </span><span class="p">},</span>
-<span class="w">   				</span><span class="nt">&quot;GlossSee&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;markup&quot;</span>
-<span class="w">               </span><span class="p">}</span>
-<span class="w">           </span><span class="p">}</span>
-<span class="w">       </span><span class="p">}</span>
-<span class="w">   </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>JSON Testsuite: /json.org/2.json</p></li>
-</ul>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;menu&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file&quot;</span><span class="p">,</span>
-<span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;File&quot;</span><span class="p">,</span>
-<span class="w"> </span><span class="nt">&quot;popup&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;menuitem&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">     </span><span class="p">{</span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;New&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;onclick&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CreateNewDoc()&quot;</span><span class="p">},</span>
-<span class="w">     </span><span class="p">{</span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Open&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;onclick&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OpenDoc()&quot;</span><span class="p">},</span>
-<span class="w">     </span><span class="p">{</span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Close&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;onclick&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CloseDoc()&quot;</span><span class="p">}</span>
-<span class="w">   </span><span class="p">]</span>
-<span class="w"> </span><span class="p">}</span>
-<span class="p">}}</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>JSON Testsuite: /json.org/3.json</p></li>
-</ul>
-<p><a class="reference external" href="https://raw.githubusercontent.com/nlohmann/json_test_data/master//json.org/3.json">Link to file</a> [Content too large - 26 lines]</p>
-<ul class="simple">
-<li><p>JSON Testsuite: /json.org/4.json</p></li>
-</ul>
-<p><a class="reference external" href="https://raw.githubusercontent.com/nlohmann/json_test_data/master//json.org/4.json">Link to file</a> [Content too large - 88 lines]</p>
-<ul class="simple">
-<li><p>JSON Testsuite: /json.org/5.json</p></li>
-</ul>
-<p><a class="reference external" href="https://raw.githubusercontent.com/nlohmann/json_test_data/master//json.org/5.json">Link to file</a> [Content too large - 27 lines]</p>
-<ul class="simple">
 <li><p>JSON Testsuite: /json.org/1.json</p></li>
 </ul>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -5157,64 +5137,9 @@
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">cpp-testsuite:</span> <span class="pre">[/json.org/1.json,</span> <span class="pre">/json.org/2.json,</span> <span class="pre">/json.org/3.json,</span> <span class="pre">/json.org/4.json,</span> <span class="pre">/json.org/5.json,</span> <span class="pre">/json.org/1.json,</span> <span class="pre">/json.org/2.json,</span> <span class="pre">/json.org/3.json,</span> <span class="pre">/json.org/4.json,</span> <span class="pre">/json.org/5.json]</span></code></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">cpp-testsuite:</span> <span class="pre">[/json.org/1.json,</span> <span class="pre">/json.org/2.json,</span> <span class="pre">/json.org/3.json,</span> <span class="pre">/json.org/4.json,</span> <span class="pre">/json.org/5.json]</span></code></p>
 <ul class="simple">
 <li><p>Description: Checks that various nested objects are accepted.</p></li>
-<li><p>JSON Testsuite: /json.org/1.json</p></li>
-</ul>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;glossary&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">       </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example glossary&quot;</span><span class="p">,</span>
-<span class="w">   	</span><span class="nt">&quot;GlossDiv&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">           </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;S&quot;</span><span class="p">,</span>
-<span class="w">   		</span><span class="nt">&quot;GlossList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;GlossEntry&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                   </span><span class="nt">&quot;ID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SGML&quot;</span><span class="p">,</span>
-<span class="w">   				</span><span class="nt">&quot;SortAs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SGML&quot;</span><span class="p">,</span>
-<span class="w">   				</span><span class="nt">&quot;GlossTerm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Standard Generalized Markup Language&quot;</span><span class="p">,</span>
-<span class="w">   				</span><span class="nt">&quot;Acronym&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SGML&quot;</span><span class="p">,</span>
-<span class="w">   				</span><span class="nt">&quot;Abbrev&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ISO 8879:1986&quot;</span><span class="p">,</span>
-<span class="w">   				</span><span class="nt">&quot;GlossDef&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                       </span><span class="nt">&quot;para&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A meta-markup language, used to create markup languages such as DocBook.&quot;</span><span class="p">,</span>
-<span class="w">   					</span><span class="nt">&quot;GlossSeeAlso&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;GML&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;XML&quot;</span><span class="p">]</span>
-<span class="w">                   </span><span class="p">},</span>
-<span class="w">   				</span><span class="nt">&quot;GlossSee&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;markup&quot;</span>
-<span class="w">               </span><span class="p">}</span>
-<span class="w">           </span><span class="p">}</span>
-<span class="w">       </span><span class="p">}</span>
-<span class="w">   </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>JSON Testsuite: /json.org/2.json</p></li>
-</ul>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;menu&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file&quot;</span><span class="p">,</span>
-<span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;File&quot;</span><span class="p">,</span>
-<span class="w"> </span><span class="nt">&quot;popup&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;menuitem&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">     </span><span class="p">{</span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;New&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;onclick&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CreateNewDoc()&quot;</span><span class="p">},</span>
-<span class="w">     </span><span class="p">{</span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Open&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;onclick&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OpenDoc()&quot;</span><span class="p">},</span>
-<span class="w">     </span><span class="p">{</span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Close&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;onclick&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CloseDoc()&quot;</span><span class="p">}</span>
-<span class="w">   </span><span class="p">]</span>
-<span class="w"> </span><span class="p">}</span>
-<span class="p">}}</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>JSON Testsuite: /json.org/3.json</p></li>
-</ul>
-<p><a class="reference external" href="https://raw.githubusercontent.com/nlohmann/json_test_data/master//json.org/3.json">Link to file</a> [Content too large - 26 lines]</p>
-<ul class="simple">
-<li><p>JSON Testsuite: /json.org/4.json</p></li>
-</ul>
-<p><a class="reference external" href="https://raw.githubusercontent.com/nlohmann/json_test_data/master//json.org/4.json">Link to file</a> [Content too large - 88 lines]</p>
-<ul class="simple">
-<li><p>JSON Testsuite: /json.org/5.json</p></li>
-</ul>
-<p><a class="reference external" href="https://raw.githubusercontent.com/nlohmann/json_test_data/master//json.org/5.json">Link to file</a> [Content too large - 27 lines]</p>
-<ul class="simple">
 <li><p>JSON Testsuite: /json.org/1.json</p></li>
 </ul>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>

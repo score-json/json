@@ -3419,7 +3419,45 @@ _None_
 
 **References:**
 
-_None_
+- `cpp-testsuite: [/nst_json_testsuite2/test_parsing/i_structure_500_nested_arrays.json]`
+
+
+	- 
+	- JSON Testsuite: /nst_json_testsuite2/test_parsing/i_structure_500_nested_arrays.json
+	
+	
+	 ```json
+	[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+	```
+	
+	
+	- cpp-test: [nst's JSONTestSuite (2);test_parsing;i -&gt; y]
+	(tests/src/unit-testsuites.cpp)
+	
+	
+	```cpp
+	SECTION("i -&gt; y")
+	{
+	    for (const auto* filename :
+	            {
+	                TEST_DATA_DIRECTORY "/nst_json_testsuite2/test_parsing/i_structure_500_nested_arrays.json",
+	            }
+	        )
+	    {
+	        CAPTURE(filename)
+	        std::ifstream f(filename);
+	        json _;
+	        CHECK_NOTHROW(_ = json::parse(f));
+	        std::ifstream f2(filename);
+	        CHECK(json::accept(f2));
+	    }
+	}
+	
+	
+	 // Note: Other test data lines have been filtered out for conciseness.
+	```
+	
+
 
 
 
@@ -5553,90 +5591,10 @@ _None_
 
 **References:**
 
-- `cpp-testsuite: [/json.org/1.json, /json.org/2.json, /json.org/3.json, /json.org/4.json, /json.org/5.json, /json.org/1.json, /json.org/2.json, /json.org/3.json, /json.org/4.json, /json.org/5.json]`
+- `cpp-testsuite: [/json.org/1.json, /json.org/2.json, /json.org/3.json, /json.org/4.json, /json.org/5.json]`
 
 
 	- Description: Checks that various nested objects are accepted.
-	
-	
-	- JSON Testsuite: /json.org/1.json
-	
-	
-	 ```json
-	{
-	    "glossary": {
-	        "title": "example glossary",
-			"GlossDiv": {
-	            "title": "S",
-				"GlossList": {
-	                "GlossEntry": {
-	                    "ID": "SGML",
-						"SortAs": "SGML",
-						"GlossTerm": "Standard Generalized Markup Language",
-						"Acronym": "SGML",
-						"Abbrev": "ISO 8879:1986",
-						"GlossDef": {
-	                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
-							"GlossSeeAlso": ["GML", "XML"]
-	                    },
-						"GlossSee": "markup"
-	                }
-	            }
-	        }
-	    }
-	}
-	
-	```
-	
-	
-	
-	
-	- JSON Testsuite: /json.org/2.json
-	
-	
-	 ```json
-	{"menu": {
-	  "id": "file",
-	  "value": "File",
-	  "popup": {
-	    "menuitem": [
-	      {"value": "New", "onclick": "CreateNewDoc()"},
-	      {"value": "Open", "onclick": "OpenDoc()"},
-	      {"value": "Close", "onclick": "CloseDoc()"}
-	    ]
-	  }
-	}}
-	
-	```
-	
-	
-	
-	
-	- JSON Testsuite: /json.org/3.json
-	
-	
-	 [Link to file](https://raw.githubusercontent.com/nlohmann/json_test_data/master//json.org/3.json) [Content too large - 26 lines]
-	
-	
-	
-	
-	
-	- JSON Testsuite: /json.org/4.json
-	
-	
-	 [Link to file](https://raw.githubusercontent.com/nlohmann/json_test_data/master//json.org/4.json) [Content too large - 88 lines]
-	
-	
-	
-	
-	
-	- JSON Testsuite: /json.org/5.json
-	
-	
-	 [Link to file](https://raw.githubusercontent.com/nlohmann/json_test_data/master//json.org/5.json) [Content too large - 27 lines]
-	
-	
-	
 	
 	
 	- JSON Testsuite: /json.org/1.json
@@ -5848,90 +5806,10 @@ _None_
 
 **References:**
 
-- `cpp-testsuite: [/json.org/1.json, /json.org/2.json, /json.org/3.json, /json.org/4.json, /json.org/5.json, /json.org/1.json, /json.org/2.json, /json.org/3.json, /json.org/4.json, /json.org/5.json]`
+- `cpp-testsuite: [/json.org/1.json, /json.org/2.json, /json.org/3.json, /json.org/4.json, /json.org/5.json]`
 
 
 	- Description: Checks that various nested objects are accepted.
-	
-	
-	- JSON Testsuite: /json.org/1.json
-	
-	
-	 ```json
-	{
-	    "glossary": {
-	        "title": "example glossary",
-			"GlossDiv": {
-	            "title": "S",
-				"GlossList": {
-	                "GlossEntry": {
-	                    "ID": "SGML",
-						"SortAs": "SGML",
-						"GlossTerm": "Standard Generalized Markup Language",
-						"Acronym": "SGML",
-						"Abbrev": "ISO 8879:1986",
-						"GlossDef": {
-	                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
-							"GlossSeeAlso": ["GML", "XML"]
-	                    },
-						"GlossSee": "markup"
-	                }
-	            }
-	        }
-	    }
-	}
-	
-	```
-	
-	
-	
-	
-	- JSON Testsuite: /json.org/2.json
-	
-	
-	 ```json
-	{"menu": {
-	  "id": "file",
-	  "value": "File",
-	  "popup": {
-	    "menuitem": [
-	      {"value": "New", "onclick": "CreateNewDoc()"},
-	      {"value": "Open", "onclick": "OpenDoc()"},
-	      {"value": "Close", "onclick": "CloseDoc()"}
-	    ]
-	  }
-	}}
-	
-	```
-	
-	
-	
-	
-	- JSON Testsuite: /json.org/3.json
-	
-	
-	 [Link to file](https://raw.githubusercontent.com/nlohmann/json_test_data/master//json.org/3.json) [Content too large - 26 lines]
-	
-	
-	
-	
-	
-	- JSON Testsuite: /json.org/4.json
-	
-	
-	 [Link to file](https://raw.githubusercontent.com/nlohmann/json_test_data/master//json.org/4.json) [Content too large - 88 lines]
-	
-	
-	
-	
-	
-	- JSON Testsuite: /json.org/5.json
-	
-	
-	 [Link to file](https://raw.githubusercontent.com/nlohmann/json_test_data/master//json.org/5.json) [Content too large - 27 lines]
-	
-	
-	
 	
 	
 	- JSON Testsuite: /json.org/1.json
