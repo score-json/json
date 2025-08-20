@@ -160,14 +160,7 @@ _None_
 
 **References:**
 
-- `include/nlohmann/detail/input/lexer.hpp`
-
-
-```text
-include/nlohmann/detail/input/lexer.hpp
-```
-
-
+_None_
 
 
 

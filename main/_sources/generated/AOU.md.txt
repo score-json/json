@@ -614,3 +614,138 @@ _None_
 **Fallacies:**
 
 _None_
+
+
+---
+
+### AOU-23 
+
+The input is complete and error-free.
+
+
+**Supported Requests:**
+
+
+**Supporting Items:**
+
+_None_
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
+
+
+---
+
+### AOU-24 
+
+The input does not change during reading.
+
+
+**Supported Requests:**
+
+
+**Supporting Items:**
+
+_None_
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
+
+
+---
+
+### AOU-25 
+
+The standard library is trustable.
+
+
+**Supported Requests:**
+
+
+**Supporting Items:**
+
+_None_
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
+
+
+---
+
+### AOU-26 
+
+No random faults occur.
+
+
+**Supported Requests:**
+
+
+**Supporting Items:**
+
+_None_
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
+
+
+---
+
+### AOU-27 
+
+If a change of the local mirror of nlohmann/json changes the trustability, then this change is noted in ChangeLog.md. 
+
+
+**Supported Requests:**
+
+
+**Supporting Items:**
+
+_None_
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_

@@ -557,6 +557,26 @@ The contribution to the score of a parent item by a suspiciously linked child is
 <td><p>Numbers are written in base 10.</p></td>
 <td><p>0.00</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-23"><span class="std std-ref">AOU-23</span></a></p></td>
+<td><p>The input is complete and error-free.</p></td>
+<td><p>0.00</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-24"><span class="std std-ref">AOU-24</span></a></p></td>
+<td><p>The input does not change during reading.</p></td>
+<td><p>0.00</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-25"><span class="std std-ref">AOU-25</span></a></p></td>
+<td><p>The standard library is trustable.</p></td>
+<td><p>0.00</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-26"><span class="std std-ref">AOU-26</span></a></p></td>
+<td><p>No random faults occur.</p></td>
+<td><p>0.00</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-27"><span class="std std-ref">AOU-27</span></a></p></td>
+<td><p>If a change of the local mirror of nlohmann/json changes the trustability, then this change is noted in ChangeLog.md.</p></td>
+<td><p>0.00</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -598,7 +618,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="JLS.html#jls-02"><span class="std std-ref">JLS-02</span></a></p></td>
-<td><p>Fuzz testing is used in the original nlohmann_json repository (https://github.com/nlohmann/json) to uncover edge cases and failure modes throughout development. (https://github.com/nlohmann/json/blob/develop/tests/fuzzing.md)</p></td>
+<td><p>Fuzz testing is used in the original nlohmann/json repository (https://github.com/nlohmann/json) to uncover edge cases and failure modes throughout development. (https://github.com/nlohmann/json/blob/develop/tests/fuzzing.md)</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="JLS.html#jls-03"><span class="std std-ref">JLS-03</span></a></p></td>
@@ -638,11 +658,11 @@ The contribution to the score of a parent item by a suspiciously linked child is
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="JLS.html#jls-12"><span class="std std-ref">JLS-12</span></a></p></td>
-<td><p>The S-Core change process management is followed. (https://eclipse-score.github.io/process_description/main/process_areas/change_management/index.html)</p></td>
+<td><p>The S-Core change process management is followed.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="JLS.html#jls-13"><span class="std std-ref">JLS-13</span></a></p></td>
-<td><p>The S-Core methodologies are followed. (https://eclipse-score.github.io/process_description/main/general_concepts/score_review_concept.html).</p></td>
+<td><p>The S-Core methodologies are followed.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="JLS.html#jls-14"><span class="std std-ref">JLS-14</span></a></p></td>
@@ -732,15 +752,15 @@ The contribution to the score of a parent item by a suspiciously linked child is
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-05.2"><span class="std std-ref">NJF-05.2</span></a></p></td>
-<td><p>The service accepts non-empty arrays.</p></td>
+<td><p>The service accepts the non-empty arrays.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-05.3"><span class="std std-ref">NJF-05.3</span></a></p></td>
-<td><p>The service accepts arrays with different types.</p></td>
+<td><p>If the service accepts every value candidate of a properly bounded array is accepted as singleton, then the service accepts the array.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-05.4"><span class="std std-ref">NJF-05.4</span></a></p></td>
-<td><p>The service does not accept improperly bounded arrays.</p></td>
+<td><p>The service does not accept any improperly bounded arrays.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-05.5"><span class="std std-ref">NJF-05.5</span></a></p></td>
@@ -755,68 +775,76 @@ The contribution to the score of a parent item by a suspiciously linked child is
 <td><p>The service accepts nested arrays.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-05.7"><span class="std std-ref">NJF-05.7</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-05.6.0"><span class="std std-ref">NJF-05.6.0</span></a></p></td>
+<td><p>The acceptance of nested arrays does not depend on the depth of nesting.</p></td>
+<td><p>0.00</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-05.7"><span class="std std-ref">NJF-05.7</span></a></p></td>
 <td><p>The service does only accept comma as value separator.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-05.7.1"><span class="std std-ref">NJF-05.7.1</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-05.7.1"><span class="std std-ref">NJF-05.7.1</span></a></p></td>
 <td><p>The service does accept comma as value separator.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-05.7.2"><span class="std std-ref">NJF-05.7.2</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-05.7.2"><span class="std std-ref">NJF-05.7.2</span></a></p></td>
 <td><p>The service does not accept any other value separator.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-06"><span class="std std-ref">NJF-06</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-06"><span class="std std-ref">NJF-06</span></a></p></td>
 <td><p>The service accepts and rejects objects according to RFC8259 §4.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-06.1"><span class="std std-ref">NJF-06.1</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-06.1"><span class="std std-ref">NJF-06.1</span></a></p></td>
 <td><p>The service accepts the empty object.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-06.2"><span class="std std-ref">NJF-06.2</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-06.2"><span class="std std-ref">NJF-06.2</span></a></p></td>
 <td><p>The service does not accept improperly bounded objects.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-06.3"><span class="std std-ref">NJF-06.3</span></a></p></td>
-<td><p>The service accepts non-empty objects.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-06.3"><span class="std std-ref">NJF-06.3</span></a></p></td>
+<td><p>The service accepts the non-empty objects.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-06.4"><span class="std std-ref">NJF-06.4</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-06.4"><span class="std std-ref">NJF-06.4</span></a></p></td>
 <td><p>The admissible members of an object have the form name : value.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-06.4.1"><span class="std std-ref">NJF-06.4.1</span></a></p></td>
-<td><p>The service accepts strings as names.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-06.4.1"><span class="std std-ref">NJF-06.4.1</span></a></p></td>
+<td><p>If the service recognises the name candidate as string, then it accepts the name candidate.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-06.4.2"><span class="std std-ref">NJF-06.4.2</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-06.4.2"><span class="std std-ref">NJF-06.4.2</span></a></p></td>
 <td><p>The service does not accept any other token as name.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-06.4.3"><span class="std std-ref">NJF-06.4.3</span></a></p></td>
-<td><p>The service does accept different types of values.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-06.4.3"><span class="std std-ref">NJF-06.4.3</span></a></p></td>
+<td><p>If the service accepts the value-candidate as a singleton, then the value-candidate is accepted.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-06.5"><span class="std std-ref">NJF-06.5</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-06.5"><span class="std std-ref">NJF-06.5</span></a></p></td>
 <td><p>The service does not accept objects with improper members.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-06.5.1"><span class="std std-ref">NJF-06.5.1</span></a></p></td>
-<td><p>The service does not accept objects with improper name.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-06.5.1"><span class="std std-ref">NJF-06.5.1</span></a></p></td>
+<td><p>If the service does not accept any name candidate as singleton, then the service does not accept the object candidate.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-06.5.2"><span class="std std-ref">NJF-06.5.2</span></a></p></td>
-<td><p>The service does not accept objects with improper value.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-06.5.2"><span class="std std-ref">NJF-06.5.2</span></a></p></td>
+<td><p>If the service does not accept any value candidate as singleton, then the service does not accept the object candidate.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-06.5_context"><span class="std std-ref">NJF-06.5_CONTEXT</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-06.5_context"><span class="std std-ref">NJF-06.5_CONTEXT</span></a></p></td>
 <td><p>An improper name is either not a string (i.e. any other token, or empty), or a string-candidate which does not fulfil the requirements of RFC8259.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-06.6"><span class="std std-ref">NJF-06.6</span></a></p></td>
-<td><p>The service accepts nested objects.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-06.6"><span class="std std-ref">NJF-06.6</span></a></p></td>
+<td><p>The service accept the nested objects.</p></td>
+<td><p>0.00</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-06.6.0"><span class="std std-ref">NJF-06.6.0</span></a></p></td>
+<td><p>The acceptance of nested arrays does not depend on the depth of nesting</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-06.7"><span class="std std-ref">NJF-06.7</span></a></p></td>
@@ -840,7 +868,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-07.2"><span class="std std-ref">NJF-07.2</span></a></p></td>
-<td><p>The service does not accept improperly bounded string.</p></td>
+<td><p>The service does not accept the improperly bounded strings.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-07.3"><span class="std std-ref">NJF-07.3</span></a></p></td>
@@ -848,7 +876,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-07.4"><span class="std std-ref">NJF-07.4</span></a></p></td>
-<td><p>The service does accept escaped control characters.</p></td>
+<td><p>The service does accept the escaped control characters.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-07.5"><span class="std std-ref">NJF-07.5</span></a></p></td>
@@ -856,7 +884,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-07.6"><span class="std std-ref">NJF-07.6</span></a></p></td>
-<td><p>The service does accept non-empty strings.</p></td>
+<td><p>The service does accept the non-empty strings.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-07.7"><span class="std std-ref">NJF-07.7</span></a></p></td>
@@ -867,96 +895,100 @@ The contribution to the score of a parent item by a suspiciously linked child is
 <td><p>The service does not accept single unpaired utf-16 surrogates.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-08"><span class="std std-ref">NJF-08</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-07.9"><span class="std std-ref">NJF-07.9</span></a></p></td>
+<td><p>The service does not accept unescaped UTF-16 surrogate pairs.</p></td>
+<td><p>0.00</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-08"><span class="std std-ref">NJF-08</span></a></p></td>
 <td><p>The service accepts numbers according to RFC8259 §6.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-08.1"><span class="std std-ref">NJF-08.1</span></a></p></td>
-<td><p>The service does accept integers.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-08.1"><span class="std std-ref">NJF-08.1</span></a></p></td>
+<td><p>The service does accept integers within the limits of 64-bit double.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-08.2"><span class="std std-ref">NJF-08.2</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-08.2"><span class="std std-ref">NJF-08.2</span></a></p></td>
 <td><p>The service does accept integers according to IEEE 754 binary64.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-08.3"><span class="std std-ref">NJF-08.3</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-08.3"><span class="std std-ref">NJF-08.3</span></a></p></td>
 <td><p>The service does not accept NaN, infinity.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-08.4"><span class="std std-ref">NJF-08.4</span></a></p></td>
-<td><p>The service does accept e or E.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-08.4"><span class="std std-ref">NJF-08.4</span></a></p></td>
+<td><p>The service does accept e or E for numbers with exponent within the bounds of double.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-08.5"><span class="std std-ref">NJF-08.5</span></a></p></td>
-<td><p>The service does not accept cyrillic e u0415, u0436, nor exp.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-08.5"><span class="std std-ref">NJF-08.5</span></a></p></td>
+<td><p>The service does not accept u0415 and u0436 (cyrillic e and E) as exponent signs in numbers with exponent.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-08.6"><span class="std std-ref">NJF-08.6</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-08.6"><span class="std std-ref">NJF-08.6</span></a></p></td>
 <td><p>The service does not accept invalid syntax for numbers.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-08.7"><span class="std std-ref">NJF-08.7</span></a></p></td>
-<td><p>The service does accept decimal points.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-08.7"><span class="std std-ref">NJF-08.7</span></a></p></td>
+<td><p>The service does accept decimal points in numbers within the bounds of double.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-08.8"><span class="std std-ref">NJF-08.8</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-08.8"><span class="std std-ref">NJF-08.8</span></a></p></td>
 <td><p>The service does not accept leading zeroes.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-08.9"><span class="std std-ref">NJF-08.9</span></a></p></td>
-<td><p>The service does not accept any base exceeding 10 in ist standard representation.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-08.9"><span class="std std-ref">NJF-08.9</span></a></p></td>
+<td><p>The service does not accept any base exceeding 10 in its standard representation.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-12"><span class="std std-ref">NJF-12</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-12"><span class="std std-ref">NJF-12</span></a></p></td>
 <td><p>The service decodes UTF-8 data.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-12.1"><span class="std std-ref">NJF-12.1</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-12.1"><span class="std std-ref">NJF-12.1</span></a></p></td>
 <td><p>The service rejects malformed UTF-8 data.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-12.2"><span class="std std-ref">NJF-12.2</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-12.2"><span class="std std-ref">NJF-12.2</span></a></p></td>
 <td><p>The service rejects “overlong sequences”.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-12.3"><span class="std std-ref">NJF-12.3</span></a></p></td>
-<td><p>The service rejects single and paired UTF-16 surrogates.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-12.3"><span class="std std-ref">NJF-12.3</span></a></p></td>
+<td><p>The service rejects single escaped and unescaped, and paired unescaped utf-16 surrogates;well-formed.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-12.5"><span class="std std-ref">NJF-12.5</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-12.5"><span class="std std-ref">NJF-12.5</span></a></p></td>
 <td><p>The service accepts Non-Characters.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-12.6"><span class="std std-ref">NJF-12.6</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-12.6"><span class="std std-ref">NJF-12.6</span></a></p></td>
 <td><p>The service accepts well-formed UTF-8 data.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-13"><span class="std std-ref">NJF-13</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-13"><span class="std std-ref">NJF-13</span></a></p></td>
 <td><p>The service accepts JSON data consisting of combinations of the data types.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-14"><span class="std std-ref">NJF-14</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-14"><span class="std std-ref">NJF-14</span></a></p></td>
 <td><p>The service accepts a single complete UTF-8 byte order mark at the beginning of the input only.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-14.1"><span class="std std-ref">NJF-14.1</span></a></p></td>
-<td><p>The service accepts a single UTF-8 byte order mark at the beginning of the input.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-14.1"><span class="std std-ref">NJF-14.1</span></a></p></td>
+<td><p>The service accepts a single UTF-8 byte order mark in the first three characters of the input.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-14.2"><span class="std std-ref">NJF-14.2</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-14.2"><span class="std std-ref">NJF-14.2</span></a></p></td>
 <td><p>The service does not accept multiple UTF-8 byte order marks.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-14.3"><span class="std std-ref">NJF-14.3</span></a></p></td>
-<td><p>The service does not accept incomplete or perturbed UTF-8 byte order marks.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-14.3"><span class="std std-ref">NJF-14.3</span></a></p></td>
+<td><p>The service does not accept incomplete or perturbed UTF-8 byte order marks within the first three characters of the input.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-14.4"><span class="std std-ref">NJF-14.4</span></a></p></td>
-<td><p>The service does not accept UTF-16 and UTF-32 byte order marks.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-14.4"><span class="std std-ref">NJF-14.4</span></a></p></td>
+<td><p>The service does not accept UTF-16 and UTF-32 byte order marks instead of the UTF-8 byte order mark.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="NJF.html#njf-14.5"><span class="std std-ref">NJF-14.5</span></a></p></td>
-<td><p>The service does not accept UTF-8 byte order marks at any other place of the input.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="NJF.html#njf-14.5"><span class="std std-ref">NJF-14.5</span></a></p></td>
+<td><p>The service does not accept UTF-8 byte order mark outside of a string and outside of the first three characters of the input.</p></td>
 <td><p>0.00</p></td>
 </tr>
 </tbody>
@@ -978,23 +1010,23 @@ The contribution to the score of a parent item by a suspiciously linked child is
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="NPF.html#npf-01.1"><span class="std std-ref">NPF-01.1</span></a></p></td>
-<td><p>The service ignores the presence of a single UTF-8 byte order mark.</p></td>
+<td><p>The service ignores the presence of a single UTF-8 byte order mark at the very beginning of the input.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="NPF.html#npf-01.2"><span class="std std-ref">NPF-01.2</span></a></p></td>
-<td><p>The service does not parse multiple UTF-8 byte order marks and throws an exception.</p></td>
+<td><p>The service does not parse multiple UTF-8 byte order marks at the beginning of the input and throws an exception.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="NPF.html#npf-01.3"><span class="std std-ref">NPF-01.3</span></a></p></td>
-<td><p>The service does not parse UTF-8 byte order marks at any other place of the input and throws an exception.</p></td>
+<td><p>The service does not parse UTF-8 byte order marks outside of a string and the first three characters of the input, and throws an exception.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="NPF.html#npf-01.4"><span class="std std-ref">NPF-01.4</span></a></p></td>
-<td><p>The service does not parse UTF-16 and UTF-32 byte order mark, and throws an exception.</p></td>
+<td><p>The service does not parse UTF-16 and UTF-32 byte order mark instead of an UTF-8 byte order mark, and throws an exception.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="NPF.html#npf-01.5"><span class="std std-ref">NPF-01.5</span></a></p></td>
-<td><p>The service does not parse partial and perturbed UTF-8 byte order marks and throws an exception.</p></td>
+<td><p>The service does not parse partial and perturbed UTF-8 byte order marks within the first three characters of the input and throws an exception.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="NPF.html#npf-02"><span class="std std-ref">NPF-02</span></a></p></td>
@@ -1002,7 +1034,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="NPF.html#npf-02.1"><span class="std std-ref">NPF-02.1</span></a></p></td>
-<td><p>The service parses integers without exponent.</p></td>
+<td><p>The service parses integers without exponent within the precision of int64_t.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="NPF.html#npf-02.10"><span class="std std-ref">NPF-02.10</span></a></p></td>
@@ -1010,7 +1042,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="NPF.html#npf-02.11"><span class="std std-ref">NPF-02.11</span></a></p></td>
-<td><p>The service parses numbers outside the 64-bit double range without throwing an exception.</p></td>
+<td><p>The service parses numbers within the 64-bit double range but outside of the double precision without throwing an exception.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="NPF.html#npf-02.11_context"><span class="std std-ref">NPF-02.11_CONTEXT</span></a></p></td>
@@ -1022,15 +1054,15 @@ The contribution to the score of a parent item by a suspiciously linked child is
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="NPF.html#npf-02.2"><span class="std std-ref">NPF-02.2</span></a></p></td>
-<td><p>The service parses integers with exponent.</p></td>
+<td><p>The service parses integers with exponent within the precision of 64-bit double.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="NPF.html#npf-02.3"><span class="std std-ref">NPF-02.3</span></a></p></td>
-<td><p>The service parses floating point values without exponent.</p></td>
+<td><p>The service parses floating point values without exponent within the precision of 64-bit double.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="NPF.html#npf-02.4"><span class="std std-ref">NPF-02.4</span></a></p></td>
-<td><p>The service parses floating point values with exponent.</p></td>
+<td><p>The service parses floating point values with exponent within the precision of 64-bit double.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="NPF.html#npf-02.5"><span class="std std-ref">NPF-02.5</span></a></p></td>
@@ -1488,9 +1520,9 @@ The contribution to the score of a parent item by a suspiciously linked child is
 <p><em>Generated for: Software</em></p>
 <ul class="simple">
 <li><p><em>Repository root: /home/runner/work/json/json</em></p></li>
-<li><p><em>Commit SHA: ff039c00266d544a76c4f52c17673d50e69f7a37</em></p></li>
-<li><p><em>Commit date/time: Wed Aug 20 17:20:35 2025</em></p></li>
-<li><p><em>Commit tag: ff039c0</em></p></li>
+<li><p><em>Commit SHA: ea046745ba1d19834cbaff7352bbad314c69cd25</em></p></li>
+<li><p><em>Commit date/time: Wed Aug 20 20:43:39 2025</em></p></li>
+<li><p><em>Commit tag: ea04674</em></p></li>
 </ul>
 </section>
 </section>

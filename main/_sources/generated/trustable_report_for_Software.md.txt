@@ -47,6 +47,11 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [AOU-20](AOU.md#aou-20) |  The keys within each object are unique. | 0.00 |
 | [AOU-21](AOU.md#aou-21) |  Strings containing an escaped unpaired utf-16 surrogate character are invalid. | 0.00 |
 | [AOU-22](AOU.md#aou-22) |  Numbers are written in base 10. | 0.00 |
+| [AOU-23](AOU.md#aou-23) |  The input is complete and error-free. | 0.00 |
+| [AOU-24](AOU.md#aou-24) |  The input does not change during reading. | 0.00 |
+| [AOU-25](AOU.md#aou-25) |  The standard library is trustable. | 0.00 |
+| [AOU-26](AOU.md#aou-26) |  No random faults occur. | 0.00 |
+| [AOU-27](AOU.md#aou-27) |  If a change of the local mirror of nlohmann/json changes the trustability, then this change is noted in ChangeLog.md. | 0.00 |
 
 ## Compliance for JLEX
 
@@ -60,7 +65,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | Item   | Summary | Score |
 |--------|---------|-------|
 | [JLS-01](JLS.md#jls-01) |  The JSON-library project CI executes on each pull request (opened, reopened, synchronized) the integration test suite, and failures in these runs are investigated by contributors. | 0.00 |
-| [JLS-02](JLS.md#jls-02) |  Fuzz testing is used in the original nlohmann_json repository (https://github.com/nlohmann/json) to uncover edge cases and failure modes throughout development. (https://github.com/nlohmann/json/blob/develop/tests/fuzzing.md) | 0.00 |
+| [JLS-02](JLS.md#jls-02) |  Fuzz testing is used in the original nlohmann/json repository (https://github.com/nlohmann/json) to uncover edge cases and failure modes throughout development. (https://github.com/nlohmann/json/blob/develop/tests/fuzzing.md) | 0.00 |
 | [JLS-03](JLS.md#jls-03) |  Automated tests are reviewed by a Subject Matter Expert to verify they test the properties they claim to. | 0.00 |
 | [JLS-04](JLS.md#jls-04) |  The project runs dependabot on all code entering the main branch, blocking merges until all warnings are resolved. (https://github.com/score-json/json/blob/main/nlohmann_json/.github/dependabot.yml) | 0.00 |
 | [JLS-05](JLS.md#jls-05) |  The OSS nlohmann_json is widely used, actively maintained and uses github issues to track bugs and misbehaviours. | 0.00 |
@@ -70,8 +75,8 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [JLS-09](JLS.md#jls-09) |  Scores are reasonably, systematically and repeatably accumulated. (TODO) | 0.00 |
 | [JLS-10](JLS.md#jls-10) |  Every release includes source code, build instructions, tests and attestations. (TODO: Test result summary) | 0.00 |
 | [JLS-11](JLS.md#jls-11) |  A score based on outstanding, fixed and mitigated faults is calculated based on github issues in nlohmann/json. (TODO) | 0.00 |
-| [JLS-12](JLS.md#jls-12) |  The S-Core change process management is followed. (https://eclipse-score.github.io/process_description/main/process_areas/change_management/index.html) | 0.00 |
-| [JLS-13](JLS.md#jls-13) |  The S-Core methodologies are followed. (https://eclipse-score.github.io/process_description/main/general_concepts/score_review_concept.html). | 0.00 |
+| [JLS-12](JLS.md#jls-12) |  The S-Core change process management is followed. | 0.00 |
+| [JLS-13](JLS.md#jls-13) |  The S-Core methodologies are followed. | 0.00 |
 | [JLS-14](JLS.md#jls-14) |  The builds are repeatable (i.e. different builds lead to the same SHA value). (TODO) | 0.00 |
 | [JLS-16](JLS.md#jls-16) |  A list of tests, which is extracted from the test execution, is provided, along with a list of test environments. (TODO) | 0.00 |
 | [JLS-17](JLS.md#jls-17) |  A github workflow calculates the fraction of expectations covered by tests (TODO). | 0.00 |
@@ -95,83 +100,86 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [NJF-04](NJF.md#njf-04) |  The service does not accept any other literal name. | 0.00 |
 | [NJF-05](NJF.md#njf-05) |  The service accepts and rejects arrays according to RFC8259 §5. | 0.00 |
 | [NJF-05.1](NJF.md#njf-05.1) |  The service accepts the empty array. | 0.00 |
-| [NJF-05.2](NJF.md#njf-05.2) |  The service accepts non-empty arrays. | 0.00 |
-| [NJF-05.3](NJF.md#njf-05.3) |  The service accepts arrays with different types. | 0.00 |
-| [NJF-05.4](NJF.md#njf-05.4) |  The service does not accept improperly bounded arrays. | 0.00 |
+| [NJF-05.2](NJF.md#njf-05.2) |  The service accepts the non-empty arrays. | 0.00 |
+| [NJF-05.3](NJF.md#njf-05.3) |  If the service accepts every value candidate of a properly bounded array is accepted as singleton, then the service accepts the array. | 0.00 |
+| [NJF-05.4](NJF.md#njf-05.4) |  The service does not accept any improperly bounded arrays. | 0.00 |
 | [NJF-05.5](NJF.md#njf-05.5) |  The service does not accept arrays with improper values. | 0.00 |
 | [NJF-05.5_CONTEXT](NJF.md#njf-05.5_context) |  An improper value is either an empty value within a non-empty array or an inadmissible token according to RFC8259. | 0.00 |
 | [NJF-05.6](NJF.md#njf-05.6) |  The service accepts nested arrays. | 0.00 |
+| [NJF-05.6.0](NJF.md#njf-05.6.0) |  The acceptance of nested arrays does not depend on the depth of nesting. | 0.00 |
 | [NJF-05.7](NJF.md#njf-05.7) |  The service does only accept comma as value separator. | 0.00 |
 | [NJF-05.7.1](NJF.md#njf-05.7.1) |  The service does accept comma as value separator. | 0.00 |
 | [NJF-05.7.2](NJF.md#njf-05.7.2) |  The service does not accept any other value separator. | 0.00 |
 | [NJF-06](NJF.md#njf-06) |  The service accepts and rejects objects according to RFC8259 §4. | 0.00 |
 | [NJF-06.1](NJF.md#njf-06.1) |  The service accepts the empty object. | 0.00 |
 | [NJF-06.2](NJF.md#njf-06.2) |  The service does not accept improperly bounded objects. | 0.00 |
-| [NJF-06.3](NJF.md#njf-06.3) |  The service accepts non-empty objects. | 0.00 |
+| [NJF-06.3](NJF.md#njf-06.3) |  The service accepts the non-empty objects. | 0.00 |
 | [NJF-06.4](NJF.md#njf-06.4) |  The admissible members of an object have the form name : value. | 0.00 |
-| [NJF-06.4.1](NJF.md#njf-06.4.1) |  The service accepts strings as names. | 0.00 |
+| [NJF-06.4.1](NJF.md#njf-06.4.1) |  If the service recognises the name candidate as string, then it accepts the name candidate. | 0.00 |
 | [NJF-06.4.2](NJF.md#njf-06.4.2) |  The service does not accept any other token as name. | 0.00 |
-| [NJF-06.4.3](NJF.md#njf-06.4.3) |  The service does accept different types of values. | 0.00 |
+| [NJF-06.4.3](NJF.md#njf-06.4.3) |  If the service accepts the value-candidate as a singleton, then the value-candidate is accepted. | 0.00 |
 | [NJF-06.5](NJF.md#njf-06.5) |  The service does not accept objects with improper members. | 0.00 |
-| [NJF-06.5.1](NJF.md#njf-06.5.1) |  The service does not accept objects with improper name. | 0.00 |
-| [NJF-06.5.2](NJF.md#njf-06.5.2) |  The service does not accept objects with improper value. | 0.00 |
+| [NJF-06.5.1](NJF.md#njf-06.5.1) |  If the service does not accept any name candidate as singleton, then the service does not accept the object candidate. | 0.00 |
+| [NJF-06.5.2](NJF.md#njf-06.5.2) |  If the service does not accept any value candidate as singleton, then the service does not accept the object candidate. | 0.00 |
 | [NJF-06.5_CONTEXT](NJF.md#njf-06.5_context) |  An improper name is either not a string (i.e. any other token, or empty), or a string-candidate which does not fulfil the requirements of RFC8259. | 0.00 |
-| [NJF-06.6](NJF.md#njf-06.6) |  The service accepts nested objects. | 0.00 |
+| [NJF-06.6](NJF.md#njf-06.6) |  The service accept the nested objects. | 0.00 |
+| [NJF-06.6.0](NJF.md#njf-06.6.0) |  The acceptance of nested arrays does not depend on the depth of nesting | 0.00 |
 | [NJF-06.7](NJF.md#njf-06.7) |  The service does only accept comma as member separator. | 0.00 |
 | [NJF-06.7.1](NJF.md#njf-06.7.1) |  The service accepts comma as member separator. | 0.00 |
 | [NJF-06.7.2](NJF.md#njf-06.7.2) |  The service does not accept any other member separator. | 0.00 |
 | [NJF-07](NJF.md#njf-07) |  The service accepts and rejects strings according to RFC8259 §7. | 0.00 |
 | [NJF-07.1](NJF.md#njf-07.1) |  The service does accept empty string. | 0.00 |
-| [NJF-07.2](NJF.md#njf-07.2) |  The service does not accept improperly bounded string. | 0.00 |
+| [NJF-07.2](NJF.md#njf-07.2) |  The service does not accept the improperly bounded strings. | 0.00 |
 | [NJF-07.3](NJF.md#njf-07.3) |  The service does not accept unescaped control characters. | 0.00 |
-| [NJF-07.4](NJF.md#njf-07.4) |  The service does accept escaped control characters. | 0.00 |
+| [NJF-07.4](NJF.md#njf-07.4) |  The service does accept the escaped control characters. | 0.00 |
 | [NJF-07.5](NJF.md#njf-07.5) |  The service accepts UTF-16 surrogate pairs. | 0.00 |
-| [NJF-07.6](NJF.md#njf-07.6) |  The service does accept non-empty strings. | 0.00 |
+| [NJF-07.6](NJF.md#njf-07.6) |  The service does accept the non-empty strings. | 0.00 |
 | [NJF-07.7](NJF.md#njf-07.7) |  The service does not accept escaped invalid characters. | 0.00 |
 | [NJF-07.8](NJF.md#njf-07.8) |  The service does not accept single unpaired utf-16 surrogates. | 0.00 |
+| [NJF-07.9](NJF.md#njf-07.9) |  The service does not accept unescaped UTF-16 surrogate pairs. | 0.00 |
 | [NJF-08](NJF.md#njf-08) |  The service accepts numbers according to RFC8259 §6. | 0.00 |
-| [NJF-08.1](NJF.md#njf-08.1) |  The service does accept integers. | 0.00 |
+| [NJF-08.1](NJF.md#njf-08.1) |  The service does accept integers within the limits of 64-bit double. | 0.00 |
 | [NJF-08.2](NJF.md#njf-08.2) |  The service does accept integers according to IEEE 754 binary64. | 0.00 |
 | [NJF-08.3](NJF.md#njf-08.3) |  The service does not accept NaN, infinity. | 0.00 |
-| [NJF-08.4](NJF.md#njf-08.4) |  The service does accept e or E. | 0.00 |
-| [NJF-08.5](NJF.md#njf-08.5) |  The service does not accept cyrillic e u0415, u0436, nor exp. | 0.00 |
+| [NJF-08.4](NJF.md#njf-08.4) |  The service does accept e or E for numbers with exponent within the bounds of double. | 0.00 |
+| [NJF-08.5](NJF.md#njf-08.5) |  The service does not accept u0415 and u0436 (cyrillic e and E) as exponent signs in numbers with exponent. | 0.00 |
 | [NJF-08.6](NJF.md#njf-08.6) |  The service does not accept invalid syntax for numbers. | 0.00 |
-| [NJF-08.7](NJF.md#njf-08.7) |  The service does accept decimal points. | 0.00 |
+| [NJF-08.7](NJF.md#njf-08.7) |  The service does accept decimal points in numbers within the bounds of double. | 0.00 |
 | [NJF-08.8](NJF.md#njf-08.8) |  The service does not accept leading zeroes. | 0.00 |
-| [NJF-08.9](NJF.md#njf-08.9) |  The service does not accept any base exceeding 10 in ist standard representation. | 0.00 |
+| [NJF-08.9](NJF.md#njf-08.9) |  The service does not accept any base exceeding 10 in its standard representation. | 0.00 |
 | [NJF-12](NJF.md#njf-12) |  The service decodes UTF-8 data. | 0.00 |
 | [NJF-12.1](NJF.md#njf-12.1) |  The service rejects malformed UTF-8 data. | 0.00 |
 | [NJF-12.2](NJF.md#njf-12.2) |  The service rejects "overlong sequences". | 0.00 |
-| [NJF-12.3](NJF.md#njf-12.3) |  The service rejects single and paired UTF-16 surrogates. | 0.00 |
+| [NJF-12.3](NJF.md#njf-12.3) |  The service rejects single escaped and unescaped, and paired unescaped utf-16 surrogates;well-formed. | 0.00 |
 | [NJF-12.5](NJF.md#njf-12.5) |  The service accepts Non-Characters. | 0.00 |
 | [NJF-12.6](NJF.md#njf-12.6) |  The service accepts well-formed UTF-8 data. | 0.00 |
 | [NJF-13](NJF.md#njf-13) |  The service accepts JSON data consisting of combinations of the data types. | 0.00 |
 | [NJF-14](NJF.md#njf-14) |  The service accepts a single complete UTF-8 byte order mark at the beginning of the input only. | 0.00 |
-| [NJF-14.1](NJF.md#njf-14.1) |  The service accepts a single UTF-8 byte order mark at the beginning of the input. | 0.00 |
+| [NJF-14.1](NJF.md#njf-14.1) |  The service accepts a single UTF-8 byte order mark in the first three characters of the input. | 0.00 |
 | [NJF-14.2](NJF.md#njf-14.2) |  The service does not accept multiple UTF-8 byte order marks. | 0.00 |
-| [NJF-14.3](NJF.md#njf-14.3) |  The service does not accept incomplete or perturbed UTF-8 byte order marks. | 0.00 |
-| [NJF-14.4](NJF.md#njf-14.4) |  The service does not accept UTF-16 and UTF-32 byte order marks. | 0.00 |
-| [NJF-14.5](NJF.md#njf-14.5) |  The service does not accept UTF-8 byte order marks at any other place of the input. | 0.00 |
+| [NJF-14.3](NJF.md#njf-14.3) |  The service does not accept incomplete or perturbed UTF-8 byte order marks within the first three characters of the input. | 0.00 |
+| [NJF-14.4](NJF.md#njf-14.4) |  The service does not accept UTF-16 and UTF-32 byte order marks instead of the UTF-8 byte order mark. | 0.00 |
+| [NJF-14.5](NJF.md#njf-14.5) |  The service does not accept UTF-8 byte order mark outside of a string and outside of the first three characters of the input. | 0.00 |
 
 ## Compliance for NPF
 
 | Item   | Summary | Score |
 |--------|---------|-------|
 | [NPF-01](NPF.md#npf-01) |  The service ignores the presence of a byte order mark. | 0.00 |
-| [NPF-01.1](NPF.md#npf-01.1) |  The service ignores the presence of a single UTF-8 byte order mark. | 0.00 |
-| [NPF-01.2](NPF.md#npf-01.2) |  The service does not parse multiple UTF-8 byte order marks and throws an exception. | 0.00 |
-| [NPF-01.3](NPF.md#npf-01.3) |  The service does not parse UTF-8 byte order marks at any other place of the input and throws an exception. | 0.00 |
-| [NPF-01.4](NPF.md#npf-01.4) |  The service does not parse UTF-16 and UTF-32 byte order mark, and throws an exception. | 0.00 |
-| [NPF-01.5](NPF.md#npf-01.5) |  The service does not parse partial and perturbed UTF-8 byte order marks and throws an exception. | 0.00 |
+| [NPF-01.1](NPF.md#npf-01.1) |  The service ignores the presence of a single UTF-8 byte order mark at the very beginning of the input. | 0.00 |
+| [NPF-01.2](NPF.md#npf-01.2) |  The service does not parse multiple UTF-8 byte order marks at the beginning of the input and throws an exception. | 0.00 |
+| [NPF-01.3](NPF.md#npf-01.3) |  The service does not parse UTF-8 byte order marks outside of a string and the first three characters of the input, and throws an exception. | 0.00 |
+| [NPF-01.4](NPF.md#npf-01.4) |  The service does not parse UTF-16 and UTF-32 byte order mark instead of an UTF-8 byte order mark, and throws an exception. | 0.00 |
+| [NPF-01.5](NPF.md#npf-01.5) |  The service does not parse partial and perturbed UTF-8 byte order marks within the first three characters of the input and throws an exception. | 0.00 |
 | [NPF-02](NPF.md#npf-02) |  The service parses numbers according to RFC8259. | 0.00 |
-| [NPF-02.1](NPF.md#npf-02.1) |  The service parses integers without exponent. | 0.00 |
+| [NPF-02.1](NPF.md#npf-02.1) |  The service parses integers without exponent within the precision of int64_t. | 0.00 |
 | [NPF-02.10](NPF.md#npf-02.10) |  The service ignores trailing zeroes after the decimal point. | 0.00 |
-| [NPF-02.11](NPF.md#npf-02.11) |  The service parses numbers outside the 64-bit double range without throwing an exception. | 0.00 |
+| [NPF-02.11](NPF.md#npf-02.11) |  The service parses numbers within the 64-bit double range but outside of the double precision without throwing an exception. | 0.00 |
 | [NPF-02.11_CONTEXT](NPF.md#npf-02.11_context) |  Although numbers are parsed without throwing an exception, they are not parsed accurately. | 0.00 |
 | [NPF-02.12](NPF.md#npf-02.12) |  The service ignores capitalisation of the exponent. | 0.00 |
-| [NPF-02.2](NPF.md#npf-02.2) |  The service parses integers with exponent. | 0.00 |
-| [NPF-02.3](NPF.md#npf-02.3) |  The service parses floating point values without exponent. | 0.00 |
-| [NPF-02.4](NPF.md#npf-02.4) |  The service parses floating point values with exponent. | 0.00 |
+| [NPF-02.2](NPF.md#npf-02.2) |  The service parses integers with exponent within the precision of 64-bit double. | 0.00 |
+| [NPF-02.3](NPF.md#npf-02.3) |  The service parses floating point values without exponent within the precision of 64-bit double. | 0.00 |
+| [NPF-02.4](NPF.md#npf-02.4) |  The service parses floating point values with exponent within the precision of 64-bit double. | 0.00 |
 | [NPF-02.5](NPF.md#npf-02.5) |  The service ignores leading zeroes in the exponent. | 0.00 |
 | [NPF-02.6](NPF.md#npf-02.6) |  The service parses integers within IEEE 754-2008 binary64. | 0.00 |
 | [NPF-02.7](NPF.md#npf-02.7) |  The service ignores leading and trailing whitespace. | 0.00 |
@@ -300,6 +308,6 @@ The contribution to the score of a parent item by a suspiciously linked child is
 _Generated for: Software_
 
 * _Repository root: /home/runner/work/json/json_
-* _Commit SHA: ff039c00266d544a76c4f52c17673d50e69f7a37_
-* _Commit date/time: Wed Aug 20 17:20:35 2025_
-* _Commit tag: ff039c0_
+* _Commit SHA: ea046745ba1d19834cbaff7352bbad314c69cd25_
+* _Commit date/time: Wed Aug 20 20:43:39 2025_
+* _Commit tag: ea04674_

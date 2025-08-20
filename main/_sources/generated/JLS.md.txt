@@ -29,7 +29,7 @@ _None_
 
 ### JLS-02 
 
-Fuzz testing is used in the original nlohmann_json repository (https://github.com/nlohmann/json) to uncover edge cases and failure modes throughout development. (https://github.com/nlohmann/json/blob/develop/tests/fuzzing.md)
+Fuzz testing is used in the original nlohmann/json repository (https://github.com/nlohmann/json) to uncover edge cases and failure modes throughout development. (https://github.com/nlohmann/json/blob/develop/tests/fuzzing.md)
 
 
 **Supported Requests:**
@@ -44,10 +44,19 @@ _None_
 
 **References:**
 
-- `website: https://introspector.oss-fuzz.com/project-profile?project=json`
+- `website: https://introspector.cdoss-fuzz.com/project-profile?project=json`
 
 
-`https://introspector.oss-fuzz.com/project-profile?project=json`
+`https://introspector.cdoss-fuzz.com/project-profile?project=json`
+	- collects recent reports for fuzzing introspection of nlohmann/json with historical plots
+
+
+- `website: https://raw.githubusercontent.com/nlohmann/json/refs/heads/develop/.github/workflows/cifuzz.yml`
+
+
+`https://raw.githubusercontent.com/nlohmann/json/refs/heads/develop/.github/workflows/cifuzz.yml`
+	- Configuration file for Fuzz-Testing pipeline in the original nlohmann/json repository
+
 
 
 
@@ -105,7 +114,45 @@ _None_
 
 **References:**
 
-_None_
+- `.github/dependabot.yml`
+
+
+````yaml
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+
+  - package-ecosystem: pip
+    directory: /docs/mkdocs
+    schedule:
+      interval: daily
+
+  - package-ecosystem: pip
+    directory: /tools/astyle
+    schedule:
+      interval: daily
+
+  - package-ecosystem: pip
+    directory: /tools/generate_natvis
+    schedule:
+      interval: daily
+
+  - package-ecosystem: pip
+    directory: /tools/serve_header
+    schedule:
+      interval: daily
+
+  - package-ecosystem: pip
+    directory: /cmake/requirements
+    schedule:
+      interval: daily
+
+````
+
+
 
 
 
@@ -133,7 +180,34 @@ _None_
 
 **References:**
 
-_None_
+- `website: https://github.com/nlohmann/json/issues`
+
+
+`https://github.com/nlohmann/json/issues`
+	- contains the collected github-issues for nlohmann/json
+
+
+- `website: https://github.com/nlohmann/json/graphs/commit-activity`
+
+
+`https://github.com/nlohmann/json/graphs/commit-activity`
+	- presents the commit activity of the past year
+
+
+- `website: https://github.com/nlohmann/json/graphs/contributors`
+
+
+`https://github.com/nlohmann/json/graphs/contributors`
+	- presents commits over time and per contributor
+
+
+- `website: https://github.com/nlohmann/json/forks?include=active&page=1&period=&sort_by=last_updated`
+
+
+`https://github.com/nlohmann/json/forks?include=active&page=1&period=&sort_by=last_updated`
+	- lists all forks of nlohmann/json by last updated
+
+
 
 
 
@@ -318,7 +392,7 @@ _None_
 
 ### JLS-12 
 
-The S-Core change process management is followed. (https://eclipse-score.github.io/process_description/main/process_areas/change_management/index.html)
+The S-Core change process management is followed.
 
 
 **Supported Requests:**
@@ -333,7 +407,13 @@ _None_
 
 **References:**
 
-_None_
+- `website: https://eclipse-score.github.io/process_description/main/process_areas/change_management/index.html`
+
+
+`https://eclipse-score.github.io/process_description/main/process_areas/change_management/index.html`
+	- Documentation of S-CORE change process management
+
+
 
 
 
@@ -346,7 +426,7 @@ _None_
 
 ### JLS-13 
 
-The S-Core methodologies are followed. (https://eclipse-score.github.io/process_description/main/general_concepts/score_review_concept.html).
+The S-Core methodologies are followed.
 
 
 **Supported Requests:**
@@ -361,7 +441,13 @@ _None_
 
 **References:**
 
-_None_
+- `website: https://eclipse-score.github.io/process_description/main/general_concepts/score_review_concept.html`
+
+
+`https://eclipse-score.github.io/process_description/main/general_concepts/score_review_concept.html`
+	- Documentation of S-CORE methodologies
+
+
 
 
 

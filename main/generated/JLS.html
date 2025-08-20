@@ -442,7 +442,7 @@
 <hr class="docutils" />
 <section id="jls-02">
 <h1>JLS-02<a class="headerlink" href="#jls-02" title="Link to this heading">#</a></h1>
-<p>Fuzz testing is used in the original nlohmann_json repository (https://github.com/nlohmann/json) to uncover edge cases and failure modes throughout development. (https://github.com/nlohmann/json/blob/develop/tests/fuzzing.md)</p>
+<p>Fuzz testing is used in the original nlohmann/json repository (https://github.com/nlohmann/json) to uncover edge cases and failure modes throughout development. (https://github.com/nlohmann/json/blob/develop/tests/fuzzing.md)</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-misbehaviours"><span class="std std-ref">TA-MISBEHAVIOURS</span></a></p></li>
@@ -451,9 +451,15 @@
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">website:</span> <span class="pre">https://introspector.oss-fuzz.com/project-profile?project=json</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">website:</span> <span class="pre">https://introspector.cdoss-fuzz.com/project-profile?project=json</span></code></p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">https://introspector.oss-fuzz.com/project-profile?project=json</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">https://introspector.cdoss-fuzz.com/project-profile?project=json</span></code>
+- collects recent reports for fuzzing introspection of nlohmann/json with historical plots</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">website:</span> <span class="pre">https://raw.githubusercontent.com/nlohmann/json/refs/heads/develop/.github/workflows/cifuzz.yml</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">https://raw.githubusercontent.com/nlohmann/json/refs/heads/develop/.github/workflows/cifuzz.yml</span></code>
+- Configuration file for Fuzz-Testing pipeline in the original nlohmann/json repository</p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 </section>
@@ -484,7 +490,42 @@
 <p><strong>Supporting Items:</strong></p>
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.github/dependabot.yml</span></code></p></li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">updates</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package-ecosystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github-actions</span>
+<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+<span class="w">    </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">daily</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package-ecosystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip</span>
+<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/docs/mkdocs</span>
+<span class="w">    </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">daily</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package-ecosystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip</span>
+<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tools/astyle</span>
+<span class="w">    </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">daily</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package-ecosystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip</span>
+<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tools/generate_natvis</span>
+<span class="w">    </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">daily</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package-ecosystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip</span>
+<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tools/serve_header</span>
+<span class="w">    </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">daily</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package-ecosystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip</span>
+<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/cmake/requirements</span>
+<span class="w">    </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">daily</span>
+</pre></div>
+</div>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 </section>
@@ -499,7 +540,26 @@
 <p><strong>Supporting Items:</strong></p>
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">website:</span> <span class="pre">https://github.com/nlohmann/json/issues</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">https://github.com/nlohmann/json/issues</span></code>
+- contains the collected github-issues for nlohmann/json</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">website:</span> <span class="pre">https://github.com/nlohmann/json/graphs/commit-activity</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">https://github.com/nlohmann/json/graphs/commit-activity</span></code>
+- presents the commit activity of the past year</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">website:</span> <span class="pre">https://github.com/nlohmann/json/graphs/contributors</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">https://github.com/nlohmann/json/graphs/contributors</span></code>
+- presents commits over time and per contributor</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">website:</span> <span class="pre">https://github.com/nlohmann/json/forks?include=active&amp;page=1&amp;period=&amp;sort_by=last_updated</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">https://github.com/nlohmann/json/forks?include=active&amp;page=1&amp;period=&amp;sort_by=last_updated</span></code>
+- lists all forks of nlohmann/json by last updated</p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 </section>
@@ -599,7 +659,7 @@
 <hr class="docutils" />
 <section id="jls-12">
 <h1>JLS-12<a class="headerlink" href="#jls-12" title="Link to this heading">#</a></h1>
-<p>The S-Core change process management is followed. (https://eclipse-score.github.io/process_description/main/process_areas/change_management/index.html)</p>
+<p>The S-Core change process management is followed.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-updates"><span class="std std-ref">TA-UPDATES</span></a></p></li>
@@ -607,14 +667,18 @@
 <p><strong>Supporting Items:</strong></p>
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">website:</span> <span class="pre">https://eclipse-score.github.io/process_description/main/process_areas/change_management/index.html</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">https://eclipse-score.github.io/process_description/main/process_areas/change_management/index.html</span></code>
+- Documentation of S-CORE change process management</p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 </section>
 <hr class="docutils" />
 <section id="jls-13">
 <h1>JLS-13<a class="headerlink" href="#jls-13" title="Link to this heading">#</a></h1>
-<p>The S-Core methodologies are followed. (https://eclipse-score.github.io/process_description/main/general_concepts/score_review_concept.html).</p>
+<p>The S-Core methodologies are followed.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-methodologies"><span class="std std-ref">TA-METHODOLOGIES</span></a></p></li>
@@ -622,7 +686,11 @@
 <p><strong>Supporting Items:</strong></p>
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">website:</span> <span class="pre">https://eclipse-score.github.io/process_description/main/general_concepts/score_review_concept.html</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">https://eclipse-score.github.io/process_description/main/general_concepts/score_review_concept.html</span></code>
+- Documentation of S-CORE methodologies</p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 </section>
