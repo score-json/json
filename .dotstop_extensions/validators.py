@@ -54,18 +54,18 @@ def check_artifact_exists(configuration: dict[str, yaml]) -> Tuple[float, List[E
 
     # Parse the JSON response
     data = response.json()
-    artifacts = data.get("artifacts", [])
+    artifacts_created_data = data.get("artifacts", [])
 
     # Extract artifact names
-    artifact_names = [artifact["name"] for artifact in artifacts]
+    artifacts_created = [artifact["name"] for artifact in artifacts_created_data]
         
     # Check if artifacts for each workflow exist    
     for key, value in configuration.items():
         if value == "include":
             print(f"Checking workflow: {key},{value}")
-            artifact_id = f"{key}-{sha}"
+            artifact_expected = f"{key}-{sha}"
 
-            if artifact_id in artifact_names:
+            if artifact_expected in artifacts_created:
                 score += 1 / num_expected_workflows
                 print(f"Artifact for workflow {key} found. Current cumulative score: {score}")
             else: 
