@@ -4525,7 +4525,7 @@ _None_
 	```
 	
 
-- `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_object_missing_colon.json, /nst_json_testsuite2/test_parsing/n_object_missing_semicolon.json, /nst_json_testsuite2/test_parsing/n_object_missing_semicolon.json]`
+- `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_object_missing_colon.json, /nst_json_testsuite2/test_parsing/n_object_missing_semicolon.json]`
 
 
 	- Description: Checks that the empty member separator is rejected.
@@ -4536,16 +4536,6 @@ _None_
 	
 	 ```json
 	{"a" b}
-	```
-	
-	
-	
-	
-	- JSON Testsuite: /nst_json_testsuite2/test_parsing/n_object_missing_semicolon.json
-	
-	
-	 ```json
-	{"a" "b"}
 	```
 	
 	
