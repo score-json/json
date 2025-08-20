@@ -1,7 +1,7 @@
 ---
 level: 1.1
 normative: true
-refernces:
+references:
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2);test_parsing;i -> y"
           path: "tests/src/unit-testsuites.cpp"
