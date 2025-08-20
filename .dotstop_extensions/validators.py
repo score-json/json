@@ -50,7 +50,7 @@ def check_artifact_exists(configuration: dict[str, yaml]) -> Tuple[float, List[E
 
     # Check for a successful response
     if response.status_code != 200:
-        return score, [RuntimeError(f"Failed to fetch artifacts: {response.status_code} - {response.text}")]
+        return (score, [RuntimeError(f"Failed to fetch artifacts: {response.status_code} - {response.text}")])
 
     # Parse the JSON response
     data = response.json()
