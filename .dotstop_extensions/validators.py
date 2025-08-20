@@ -114,7 +114,7 @@ def https_response_time(configuration: dict[str, yaml]) -> tuple[float, list[Exc
         if response.status_code == 200:
             # if target site is successfully called, check if it is reached within target seconds
             # recall that target/response.elapsed.microseconds>1/5, so score is accordingly refactored 
-            score = (min(target/response.elapsed.microseconds, 1.0)-0.2)*1.25
+            score = (min(1000000*target/response.elapsed.microseconds, 1.0)-0.2)*1.25
             scores.append(score)
             continue
         scores.append(0)
