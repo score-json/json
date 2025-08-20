@@ -17,6 +17,18 @@ references:
           path: "TSF/tests/unit-objects.cpp"
 score:
     Jonas-Kirchhoff: 0.95
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    check_amalgamation: exclude
+    codeql: exclude
+    dependency_review: exclude
+    labeler: exclude
+    publish_documentation: exclude
+    test_trudag_extensions: exclude
+    ubuntu: include
+score:
+    Jonas-Kirchhoff: 0.95
 ---
 
 The service accept the nested objects.
