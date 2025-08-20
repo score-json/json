@@ -541,4 +541,9 @@ TEST_CASE("parse")
         CHECK_THROWS_AS(parser_helper("-000000000000000000000000000000000000000000000000"),json::parse_error&);
         CHECK_THROWS_AS(parser_helper("-0000000000000000000000000000000000042"),json::parse_error&);
     }
+    SECTION("Precision")
+    {
+        CHECK(json::parse("1.7976931348623158e308").dump()=="1.7976931348623157e+308"); // maximum double value 
+        CHECK(json::parse("-1.7976931348623158e308").dump()=="-1.7976931348623157e+308"); // minimum double value
+    }
 }

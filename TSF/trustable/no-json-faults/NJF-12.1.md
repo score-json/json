@@ -1,7 +1,6 @@
 ---
 level: 1.1
 normative: true
-
 references:
         - type: cpp_test
           name: "accept;malformed sequences"
@@ -16,6 +15,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 0.9
 ---
 
 The service rejects malformed UTF-8 data.

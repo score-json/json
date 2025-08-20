@@ -15,6 +15,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service accepts a single UTF-8 byte order mark at the beginning of the input.
+The service accepts a single UTF-8 byte order mark in the first three characters of the input.

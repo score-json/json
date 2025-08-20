@@ -28,6 +28,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service does accept e or E.
+The service does accept e or E for numbers with exponent within the bounds of double.

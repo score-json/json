@@ -65,7 +65,7 @@ string get_json_from_candidate(string candidate){
     if (candidate.find("TEST_DATA_DIRECTORY")!=string::npos && regex_search(candidate,m,pattern)){
         return replace_tab_with_spaces(wrapper_for_trudag(m[1]));
     } else {
-        throw out_of_range("No TEST_DATA_DIRECTORY in candidate");
+        throw 0;
     }
 }
 
@@ -91,7 +91,7 @@ bool get_json_from_line(int line, ifstream& source, ofstream& target){
     string res;
     try {
         res = get_json_from_candidate(candidate);
-    } catch (const out_of_range& e) {
+    } catch (int i) {
         return false;
     }
     target << res;

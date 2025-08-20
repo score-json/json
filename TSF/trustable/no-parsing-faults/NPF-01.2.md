@@ -15,6 +15,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff:  1.0
 ---
 
-The service does not parse multiple UTF-8 byte order marks and throws an exception.
+The service does not parse multiple UTF-8 byte order marks at the beginning of the input and throws an exception.

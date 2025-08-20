@@ -17,6 +17,9 @@ references:
       test_suite_paths:
         - "/nst_json_testsuite2/test_parsing/y_structure_lonely_false.json"
       description: ""
+    - type: function_reference
+      name: "lexer::scan_literal"
+      path: "include/nlohmann/detail/input/lexer.hpp"
 evidence:
   type: "check_artifact_exists"
   configuration:
@@ -27,6 +30,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+sores:
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service accepts the literal name false.

@@ -16,6 +16,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service does accept integers.
+The service does accept integers within the limits of 64-bit double.

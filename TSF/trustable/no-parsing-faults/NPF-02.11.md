@@ -15,6 +15,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service parses numbers outside the 64-bit double range without throwing an exception.
+The service parses numbers within the 64-bit double range but outside of the double precision without throwing an exception.

@@ -18,6 +18,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service ignores the presence of a single UTF-8 byte order mark.
+The service ignores the presence of a single UTF-8 byte order mark at the very beginning of the input.

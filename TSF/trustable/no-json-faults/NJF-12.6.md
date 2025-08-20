@@ -16,6 +16,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 0.9
 ---
 
 The service accepts well-formed UTF-8 data.

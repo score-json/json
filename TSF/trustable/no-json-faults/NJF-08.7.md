@@ -16,6 +16,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service does accept decimal points.
+The service does accept decimal points in numbers within the bounds of double.

@@ -24,6 +24,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 0.95
 ---
 
 The service parses all unescaped utf-8 characters except quotation mark, reverse solidus and the control characters.
