@@ -20,7 +20,6 @@ references:
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/n_object_missing_colon.json"
             - "/nst_json_testsuite2/test_parsing/n_object_missing_semicolon.json"
-            - "/nst_json_testsuite2/test_parsing/n_object_missing_semicolon.json"
           description: "Checks that the empty member separator is rejected."
         - type: cpp_test
           name: "parse;member separator"
