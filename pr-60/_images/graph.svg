@@ -1090,7 +1090,7 @@
 <text text-anchor="middle" x="10937" y="-52.8" font-family="Open Sans" font-size="14.00">NJF&#45;06.5.2: If the service does not</text>
 <text text-anchor="middle" x="10937" y="-37.8" font-family="Open Sans" font-size="14.00">accept any value candidate as singleton,</text>
 <text text-anchor="middle" x="10937" y="-22.8" font-family="Open Sans" font-size="14.00">then the service does not accept</text>
-<text text-anchor="middle" x="10937" y="-7.8" font-family="Open Sans" font-size="14.00">the object candidate </text>
+<text text-anchor="middle" x="10937" y="-7.8" font-family="Open Sans" font-size="14.00">the object candidate. </text>
 </g>
 <!-- NJF&#45;06.5&#45;&gt;NJF&#45;06.5.2 -->
 <g id="edge44" class="edge">

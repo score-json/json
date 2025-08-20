@@ -76,7 +76,7 @@ The distribution of scores for all nodes across the graph.
     |0.6-0.7 {style="background-color:hsl(84.0, 100%, 40%)"} |2|
     |0.7-0.8 {style="background-color:hsl(96.0, 100%, 37%)"} |1|
     |0.8-0.9 {style="background-color:hsl(108.0, 100%, 33%)"} |0|
-    |0.9-1.0 {style="background-color:hsl(120.0, 100%, 30%)"} |109|
+    |0.9-1.0 {style="background-color:hsl(120.0, 100%, 30%)"} |108|
 ## Jonsa-Kirchhoff SME Score Distribution
 
 ![No Image](figs/Jonsa-Kirchhoff_hist.svg)
