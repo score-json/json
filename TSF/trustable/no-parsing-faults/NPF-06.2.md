@@ -19,6 +19,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 0.9
 ---
 
 The service parses duplicate names without error and reports the last member with that name only.

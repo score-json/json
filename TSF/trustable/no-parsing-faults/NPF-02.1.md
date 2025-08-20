@@ -28,6 +28,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service parses integers without exponent. 
+The service parses integers without exponent within the precision of int64_t. 

@@ -30,6 +30,67 @@ references:
   path: "tests/src/unit-testsuites.cpp"
 ---
 ```
+
+For the `WebReference`, an example is:
+```
+---
+...
+
+references:
+- type: website
+  url: "https://math.stackexchange.com/"
+---
+```
+An example of `WebReference` with non-empty description is
+```
+---
+...
+
+references:
+- type: website
+  url: "https://ncatlab.org/nlab/show/smooth+Serre-Swan+theorem"
+  description: "Wiki article on the smooth Serre-Swan theorem"
+---
+```
+
+A `WebContentReference` looks identical to a `WebReference` with `type: web_content` instead of `type: website`.
+
+For the `TimeVaryingWebReference`, examples of the possible configurations are:
+```
+---
+...
+
+references:
+- type: website
+  url: "https://math.stackexchange.com/"
+---
+```
+in case of an empty descritption,
+```
+---
+...
+
+references:
+- type: website
+  url: "https://ncatlab.org/nlab/show/smooth+Serre-Swan+theorem"
+  description: "Wiki article on the smooth Serre-Swan theorem"
+---
+```
+in case of a custom description, and
+```
+---
+...
+
+references:
+- type: website
+  url: "https://ncatlab.org/nlab/show/smooth+Serre-Swan+theorem"
+  description: "Wiki article on the smooth Serre-Swan theorem"
+  changelog: "../../graded_Serre_Swan.tex"
+---
+```
+in case of a custom changelog.
+
+
 # Validators
 
 Validators are extensions of trudag, used to validate any data that can be reduced to a floating point metric. The resulting scores are used as evidence for the trustability of items in the trustable graph.
@@ -51,3 +112,21 @@ The available configuration dict values for check_artifact_names are:
   - 'exclude'
 
 These indicate whether a certain artifact should be included as evidence for a Trustable graph item.
+
+## https_response_time
+
+The automatic validator https_response_time checks the responsiveness of a given website. The expected configuration is as in the example:
+```    
+evidence:
+    type: https_response_time    
+    configuration:
+        target_seconds: 2 # acceptable response time in seconds, integer or float
+        urls: # list of urls to be checked, list of strings
+            - "https://github.com/nlohmann/json/issues"
+            - "https://github.com/nlohmann/json/graphs/commit-activity"
+            - "https://github.com/nlohmann/json/forks?include=active&page=1&period=&sort_by=last_updated"
+```
+A response time of at least the five-fold of the acceptable response time is deemed inacceptable and gives an individual score of zero.
+Likewise inacceptable is a response code other than `200`, which gives an individual score of zero.
+
+The total score is the mean of the individual scores.

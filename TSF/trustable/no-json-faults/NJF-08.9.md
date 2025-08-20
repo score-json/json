@@ -27,6 +27,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 0.6
 ---
 
-The service does not accept any base exceeding 10 in ist standard representation.
+The service does not accept any base exceeding 10 in its standard representation.

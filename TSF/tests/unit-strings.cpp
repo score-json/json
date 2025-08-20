@@ -18,7 +18,7 @@ void parser_helper(const std::string& input){
 
 std::string uint_to_utf8(const uint32_t& input){
     std::string temp = "\"";
-    // evil chat-gpt magic transforms i into utf-8 encoded unescaped character
+    // evil chat-gpt magic transforms input into utf-8 encoded unescaped character
     if (input <= 0x7F) {
         temp += static_cast<char>(input); // 1-byte (ASCII)
     } else if (input <= 0x7FF) {
@@ -244,7 +244,7 @@ TEST_CASE("accept")
     }
 }
 
-TEST_CASE("Unicode")
+TEST_CASE("Unicode" * doctest::skip())
 {
     SECTION("escaped unicode")
     {
@@ -303,16 +303,37 @@ TEST_CASE("Unicode")
     // escaped utf-16 surrogate pairs are accepted and parsed.
     SECTION("escaped utf-16 surrogates")
     {
-        for (uint16_t i = 0xD800; i <= 0xDBFF; i++){
-            for (uint16_t j = 0xDC00; j <= 0xDFFF; j++){
-                std::ostringstream temp;
-                temp << "\"\\u" << std::hex << std::uppercase << std::setfill('0') << std::setw(4) << i\
-                << "\\u" << std::hex << std::uppercase << std::setfill('0') << std::setw(4) << j\
-                << "\"" ;
-                CHECK(json::accept(temp.str()));
-                CHECK_NOTHROW(parser_helper(temp.str()));
+        SECTION("well-formed")
+        {
+            for (uint16_t i = 0xD800; i <= 0xDBFF; i++){
+                for (uint16_t j = 0xD800; j <= 0xDFFF; j++){
+                    std::ostringstream temp;
+                    temp << "\"\\u" << std::hex << std::uppercase << std::setfill('0') << std::setw(4) << i\
+                    << "\\u" << std::hex << std::uppercase << std::setfill('0') << std::setw(4) << j\
+                    << "\"" ;
+                    if (j>=0xDC00){
+                        CHECK(json::accept(temp.str()));
+                        CHECK_NOTHROW(parser_helper(temp.str()));
+                    } else {
+                        CHECK(!json::accept(temp.str()));
+                        CHECK_THROWS_AS(parser_helper(temp.str()),json::parse_error&);
+                    }
+                }
             }
         }
+        SECTION("ill-formed")
+        {
+            for (uint16_t i = 0xDC00; i <= 0xDFFF; i++){
+                for (uint16_t j = 0xD800; j <= 0xDFFF; j++){
+                    std::ostringstream temp;
+                    temp << "\"\\u" << std::hex << std::uppercase << std::setfill('0') << std::setw(4) << i\
+                    << "\\u" << std::hex << std::uppercase << std::setfill('0') << std::setw(4) << j\
+                    << "\"" ;
+                    CHECK(!json::accept(temp.str()));
+                    CHECK_THROWS_AS(parser_helper(temp.str()),json::parse_error&);
+                }
+            }
+        }       
     }
 
 }

@@ -16,6 +16,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 0.95
 ---
 
 The service accepts JSON data consisting of combinations of the data types.

@@ -1,6 +1,8 @@
-from typing import TypeAlias
+from typing import TypeAlias, Tuple, List
 import os
 import requests
+import subprocess
+import warnings
 
 yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
@@ -20,7 +22,10 @@ def setup_environment_variables() -> dict[str, str]:
 
 def check_artifact_exists(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:    
     # Setup environment variables using the helper function
-    env = setup_environment_variables()
+    try:
+        env = setup_environment_variables()
+    except RuntimeError as e:
+        return (0,[e])
     
     github_token = env["GITHUB_TOKEN"]
     github_event_name = env["GITHUB_EVENT_NAME"]
@@ -73,3 +78,44 @@ def check_artifact_exists(configuration: dict[str, yaml]) -> tuple[float, list[E
             score += 1
 
     return (score/num_expected_workflows, [])
+
+
+def https_response_time(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    """
+    Validates the reachability of a website-reference.
+    This code is mostly copied from https://codethinklabs.gitlab.io/trustable/trustable/trudag/validators.html,
+    where this custom validator is presented as an example.
+
+    notable difference: target response time is given in seconds, since we only check if the website is reachable.
+    """
+    target = configuration.get("target_seconds", None)
+    urls = configuration.get("urls", None)
+    if not urls:
+        return (0.0, [ValueError("No url specified for https_response_time validator")])
+    if not target:
+        return (0.0, [ValueError("No target time specified for https_response_time validator")])
+    exceptions = []
+    scores = []
+    for url in urls:
+        try:
+            # in the reference website, an url comes together with https://
+            response = requests.get(url,timeout=5*target)
+        except requests.exceptions.ConnectionError as e:
+            print(f"Critical error: target site {url} could not be reached.")
+            exceptions.append(e)
+            scores.append(0)
+            continue
+        except requests.exceptions.ReadTimeout as e:
+            print(f"Error: target site {url} could not be reached within {5*target} seconds.")
+            exceptions.append(e)
+            scores.append(0)
+            continue
+        # check whether target site is successfully called
+        if response.status_code == 200:
+            # if target site is successfully called, check if it is reached within target seconds
+            # recall that target/response.elapsed.microseconds>1/5, so score is accordingly refactored 
+            score = (min(1000000*target/response.elapsed.microseconds, 1.0)-0.2)*1.25
+            scores.append(score)
+            continue
+        scores.append(0)
+    return(sum(scores)/len(scores),exceptions)   

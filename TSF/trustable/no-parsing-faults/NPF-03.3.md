@@ -15,6 +15,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service ignores capitalisation in escaped hexadecimal unicode.

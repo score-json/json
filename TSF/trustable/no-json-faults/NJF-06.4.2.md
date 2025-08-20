@@ -21,6 +21,9 @@ references:
         - type: cpp_test
           name: "accept;names;literals"
           path: "TSF/tests/unit-objects.cpp"
+        - type: cpp_test
+          name: "accept;member separator"
+          path: "TSF/tests/unit-objects.cpp"
 evidence:
   type: "check_artifact_exists"
   configuration:
@@ -31,6 +34,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service does not accept any other token as name.

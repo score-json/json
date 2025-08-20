@@ -14,11 +14,6 @@ references:
             - "/json.org/3.json"
             - "/json.org/4.json"
             - "/json.org/5.json"
-            - "/json.org/1.json"
-            - "/json.org/2.json"
-            - "/json.org/3.json"
-            - "/json.org/4.json"
-            - "/json.org/5.json"
           description: "Checks that various valid arrays in combination with objects are accepted."
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2);test_parsing;y"
@@ -38,6 +33,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score: 
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service accepts arrays with different types.
+If the service accepts every value candidate of a properly bounded array is accepted as singleton, then the service accepts the array.

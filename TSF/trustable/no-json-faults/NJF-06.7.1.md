@@ -17,6 +17,9 @@ references:
             - "/json.org/4.json"
             - "/json.org/5.json"
           description: "Checks that various arrays with more than one value are accepted."
+        - type: cpp_test
+          name: "accept;member separator"
+          path: "TSF/tests/unit-objects.cpp"
 evidence:
   type: "check_artifact_exists"
   configuration:
@@ -27,6 +30,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service accepts comma as member separator.

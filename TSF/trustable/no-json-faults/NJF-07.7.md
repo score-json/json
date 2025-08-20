@@ -25,6 +25,9 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_string_invalid_unicode_escape.json"
             - "/nst_json_testsuite2/test_parsing/n_string_invalid_utf8_after_escape.json"
           description: "Checks that various illegal control characters and utf-8 characters are rejected."
+        - type: cpp_test
+          name: "Unicode;escaped unicode"
+          path: "TSF/tests/unit-strings.cpp"
 evidence:
   type: "check_artifact_exists"
   configuration:
@@ -35,6 +38,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service does not accept escaped invalid characters.

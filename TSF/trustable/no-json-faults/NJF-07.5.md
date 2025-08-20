@@ -14,7 +14,7 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_string_accepted_surrogate_pairs.json"
           description: "Checks that single and multiple surrogates are accepted."
         - type: cpp_test
-          name: "Unicode;escaped utf-16 surrogates"
+          name: "Unicode;escaped utf-16 surrogates;well-formed"
           path: "TSF/tests/unit-strings.cpp"
 evidence:
   type: "check_artifact_exists"
@@ -26,6 +26,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
 The service accepts UTF-16 surrogate pairs.

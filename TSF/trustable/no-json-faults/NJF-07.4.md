@@ -38,6 +38,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service does accept escaped control characters.
+The service does accept the escaped control characters.

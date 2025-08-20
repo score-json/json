@@ -98,13 +98,13 @@ TEST_CASE("parse")
     {
         SECTION("UTF-16")
         {
-            CHECK_THROWS_AS(parser_helper("\xFE\xFF"),json::parse_error&);
-            CHECK_THROWS_AS(parser_helper("\xFF\xFE"),json::parse_error&);
+            CHECK_THROWS_AS(parser_helper("\xFE\xFF\"foo\""),json::parse_error&);
+            CHECK_THROWS_AS(parser_helper("\xFF\xFE\"foo\""),json::parse_error&);
         }
         SECTION("UTF-32")
         {
-            const std::string utf32bom1("\x00\x00\xFE\xFF", 4);
-            const std::string utf32bom2("\xFF\xFE\x00\x00", 4);
+            const std::string utf32bom1("\x00\x00\xFE\xFF\x30", 5);
+            const std::string utf32bom2("\xFF\xFE\x00\x00\x30", 5);
             CHECK_THROWS_AS(parser_helper(utf32bom1),json::parse_error&);
             CHECK_THROWS_AS(parser_helper(utf32bom2),json::parse_error&);
         }

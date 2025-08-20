@@ -2,7 +2,7 @@ import pytest
 import tempfile
 from pathlib import Path
 from unittest.mock import patch
-from references import CPPTestReference, JSONTestsuiteReference
+from references import CPPTestReference, JSONTestsuiteReference, FunctionReference
 
 
 @pytest.fixture
@@ -60,6 +60,32 @@ def sample_testsuite_test():
 }
 '''
 
+@pytest.fixture
+def sample_hpp_content():
+    """Sample content in the style of lexer.hpp"""
+    return '''template<typename BasicJsonType>
+class lexer_base
+{
+    // class body
+};
+
+template<typename BasicJsonType, typename InputAdapterType>
+class lexer : public lexer_base<BasicJsonType>
+{
+
+  private
+    bool dummy_function()
+    {
+        return my_function();
+    }
+
+    bool my_function()
+    {
+        // function body 
+    }
+};
+'''
+
 def create_temp_file(content, suffix='.txt'):
     """Helper method to create temporary files for testing."""
     with tempfile.NamedTemporaryFile(mode='w', suffix=suffix, delete=False) as f:
@@ -78,6 +104,13 @@ def temp_cpp_file(sample_cpp_content):
 def temp_cpp_file_with_testsuite(sample_testsuite_test):
     """Create a temporary C++ file with testsuite content."""
     temp_file = create_temp_file(sample_testsuite_test, '.cpp')
+    yield temp_file
+    temp_file.unlink()
+
+@pytest.fixture
+def temp_hpp_file(sample_hpp_content):
+    """Create a temporary .hpp file for testing."""
+    temp_file = create_temp_file(sample_hpp_content, '.hpp')
     yield temp_file
     temp_file.unlink()
 
@@ -529,3 +562,111 @@ def test_check_testsuite_file_is_used_by_cpp_test_missing_file():
         # Should raise ValueError for missing file
         with pytest.raises(ValueError, match="JSON testsuite json_tests/missing.json is not used in the C\\+\\+ test file"):
             JSONTestsuiteReference("test_section", "test.cpp", test_suite_paths, "Test description")
+    
+def test_get_function_start():
+    lines = [
+        'template<typename BasicJsonType>\n',
+        'class lexer_base\n',
+        '{\n',
+        '    // class body\n',
+        '};\n',
+        '\n',
+        'template<typename BasicJsonType, typename InputAdapterType>\n',
+        'class lexer : public lexer_base<BasicJsonType>\n',
+        '{\n',
+        '\n',
+        '  private\n',
+        '    bool dummy_function()\n',
+        '    {\n',
+        '        return my_function();\n',
+        '    }\n',
+        '\n',
+        '    bool my_function()\n',
+        '    {\n',
+        '        // function body \n',
+        '    }\n',
+        '};\n'
+    ]
+    assert FunctionReference.get_function_start("foo","lexer::my_function",lines,1) == 16
+
+def test_get_function_end():
+    lines = [
+        'template<typename BasicJsonType>\n',
+        'class lexer_base\n',
+        '{\n',
+        '    // class body\n',
+        '};\n',
+        '\n',
+        'template<typename BasicJsonType, typename InputAdapterType>\n',
+        'class lexer : public lexer_base<BasicJsonType>\n',
+        '{\n',
+        '\n',
+        '  private\n',
+        '    bool dummy_function()\n',
+        '    {\n',
+        '        return my_function();\n',
+        '    }\n',
+        '\n',
+        '    bool my_function()\n',
+        '    {\n',
+        '        // function body \n',
+        '    }\n',
+        '};\n'
+    ]
+    assert FunctionReference.get_function_end("foo","lexer::my_function",16,lines)==19
+    
+def test_get_function_start_with_multiple_overloads():
+    lines = [
+        'template<typename BasicJsonType>\n',
+        'class lexer_base\n',
+        '{\n',
+        '    // class body\n',
+        '};\n',
+        '\n',
+        'template<typename BasicJsonType, typename InputAdapterType>\n',
+        'class lexer : public lexer_base<BasicJsonType>\n',
+        '{\n',
+        '\n',
+        '  private\n',
+        '    bool dummy_function()\n',
+        '    {\n',
+        '        return my_function();\n',
+        '    }\n',
+        '\n',
+        '    bool my_function()\n',
+        '    {\n',
+        '        // function body \n',
+        '    }\n',
+        '\n',
+        '    void my_function()\n',
+        '    {\n',
+        '        // function body \n',
+        '    }\n',
+        '\n',
+        '    int my_function()\n',
+        '    {\n',
+        '        // function body \n',
+        '    }\n',
+        '};\n'
+    ]
+    assert FunctionReference.get_function_start("foo","lexer::my_function",lines,1) == 16
+    assert FunctionReference.get_function_start("foo","lexer::my_function",lines,2) == 21
+    assert FunctionReference.get_function_start("foo","lexer::my_function",lines,3) == 26
+    with pytest.raises(ValueError, match="Could not locate 4th implementation of lexer::my_function in file foo."):
+        FunctionReference.get_function_start("foo","lexer::my_function",lines,4)
+    with pytest.raises(ValueError, match="Could not locate 123rd implementation of lexer::my_function in file foo."):
+        FunctionReference.get_function_start("foo","lexer::my_function",lines,123)
+    with pytest.raises(ValueError, match="Could not locate 11th implementation of lexer::my_function in file foo."):
+        FunctionReference.get_function_start("foo","lexer::my_function",lines,11)
+
+def test_get_function_line_numbers(temp_hpp_file):
+    [a,b] = FunctionReference.get_function_line_numbers(str(temp_hpp_file),"lexer::my_function")
+    assert a == 16
+    assert b == 19
+
+def test_init_function_reference(temp_hpp_file):
+    ref = FunctionReference("lexer::my_function",str(temp_hpp_file))
+    assert ref.code == b"    bool my_function()\n    {\n        // function body \n    }\n"
+    assert ref._name == "lexer::my_function"
+    assert ref.path == temp_hpp_file
+    assert ref._overload == 1

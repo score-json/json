@@ -16,6 +16,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 0.6
 ---
 
 The service rejects "overlong sequences".

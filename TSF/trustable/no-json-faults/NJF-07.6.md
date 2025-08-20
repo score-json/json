@@ -61,6 +61,8 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
+score:
+    Jonas-Kirchhoff: 0.95
 ---
 
-The service does accept non-empty strings.
+The service does accept the non-empty strings.
