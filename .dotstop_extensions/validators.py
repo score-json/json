@@ -31,10 +31,15 @@ def check_artifact_exists(configuration: dict[str, yaml]) -> tuple[float, list[E
     score = 0.0
 
     # Determine the number of expected workflows based on the event type
-    if github_event_name != "pull_request" and configuration.get("dependency_review") is not None:
-        num_expected_workflows = len(configuration) - 1  # Exclude dependency review if not a PR
-    else: 
-        num_expected_workflows = len(configuration)
+    if github_event_name != "pull_request" and "dependency_review" in configuration:
+        configuration["dependency_review"] = "exclude"  # Exclude dependency review if not a PR
+
+    num_expected_workflows = sum(1 for value in configuration.values() if value == "include")
+
+    # If no workflows are expected, return a score of 1.0 with a warning
+    if num_expected_workflows == 0:
+        warning = Warning("No workflows to check, returning a score of 1.0.")
+        return (1.0, [warning])
 
     # GitHub API URL to list artifacts for the current workflow run
     url = f"https://api.github.com/repos/{repository}/actions/runs/{run_id}/artifacts"
@@ -50,27 +55,21 @@ def check_artifact_exists(configuration: dict[str, yaml]) -> tuple[float, list[E
 
     # Check for a successful response
     if response.status_code != 200:
-        raise RuntimeError(f"Failed to fetch artifacts: {response.status_code} - {response.text}")
+        return (score, [RuntimeError(f"Failed to fetch artifacts: {response.status_code} - {response.text}")])
 
     # Parse the JSON response
     data = response.json()
-    artifacts = data.get("artifacts", [])
+    artifacts_created_data = data.get("artifacts", [])
 
     # Extract artifact names
-    artifact_names = [artifact["name"] for artifact in artifacts]
-        
+    artifacts_created = [artifact["name"] for artifact in artifacts_created_data]
+
     # Check if artifacts for each workflow exist    
     for key, value in configuration.items():
-        print(f"Checking workflow: {key},{value}")
-        artifact_id = f"{value}-{sha}"
+        if value == "exclude":
+            continue  # Skip excluded workflows
+        artifact_expected = f"{key}-{sha}"
+        if artifact_expected in artifacts_created:
+            score += 1
 
-        if artifact_id in artifact_names:
-            score += 1 / num_expected_workflows
-            print(f"Artifact for workflow {key} found. Current cumulative score: {score}")
-        else: 
-            if str(value) == "dependency_review" and github_event_name != "pull_request":
-                print(f"Skipped dependency_review workflow for non-PR.")
-            else:
-                print(f"Artifact for workflow {key} NOT found. Current cumulative score: {score}")
-
-    return (score, [])
+    return (score/num_expected_workflows, [])

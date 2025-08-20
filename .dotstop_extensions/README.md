@@ -38,10 +38,16 @@ Validators are extensions of trudag, used to validate any data that can be reduc
 
 The check_artifact_exists script validates the presence of artifacts from GitHub Actions workflows for the current SHA. The score is given based on the number of artifacts found vs the number of artifacts expected.
 
-The available configuration dict values for check_artifact_names are:
+The available configuration dict keys for check_artifact_names are:
   - `check_amalgamation`
   - `codeql`
   - `dependency_review`
   - `labeler`
   - `test_trudag_extensions`
   - `ubuntu`
+
+The available configuration dict values for check_artifact_names are:
+  - 'include'
+  - 'exclude'
+
+These indicate whether a certain artifact should be included as evidence for a Trustable graph item.

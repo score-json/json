@@ -25,6 +25,16 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_string_invalid_unicode_escape.json"
             - "/nst_json_testsuite2/test_parsing/n_string_invalid_utf8_after_escape.json"
           description: "Checks that various illegal control characters and utf-8 characters are rejected."
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    check_amalgamation: exclude
+    codeql: exclude
+    dependency_review: exclude
+    labeler: exclude
+    publish_documentation: exclude
+    test_trudag_extensions: exclude
+    ubuntu: include
 ---
 
 The service does not accept escaped invalid characters.
