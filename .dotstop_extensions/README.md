@@ -124,3 +124,15 @@ A response time of at least the five-fold of the acceptable response time is dee
 Likewise inacceptable is a response code other than `200`, which gives an individual score of zero.
 
 The total score is the mean of the individual scores.
+
+# Data store interface
+## get_my_data()
+
+This interface is used to pull from the data store. Currently, it is only intended to record the history of scoring, so that the functionality to pull data is unused.
+
+## push_my_data()
+
+This function presents the interface of the data generated in the trudag-tool and an external permanent data storage solution. 
+As a proof of concept, an interface to an SQLite-database stored within a separate branch of the repository is implemented.
+This implementation is to be adapted by either an integrator or when the project is moved to eclipse-score/inc_nlohmann_json!
+Likewise, the publish_documentation.yml is to be adapted to reflect the changed data-storage-solution!
