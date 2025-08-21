@@ -99,13 +99,19 @@ Validators are extensions of trudag, used to validate any data that can be reduc
 
 The check_artifact_exists script validates the presence of artifacts from GitHub Actions workflows for the current SHA. The score is given based on the number of artifacts found vs the number of artifacts expected.
 
-The available configuration dict values for check_artifact_names are:
+The available configuration dict keys for check_artifact_names are:
   - `check_amalgamation`
   - `codeql`
   - `dependency_review`
   - `labeler`
   - `test_trudag_extensions`
   - `ubuntu`
+
+The available configuration dict values for check_artifact_names are:
+  - 'include'
+  - 'exclude'
+
+These indicate whether a certain artifact should be included as evidence for a Trustable graph item.
 
 ## https_response_time
 
@@ -124,15 +130,3 @@ A response time of at least the five-fold of the acceptable response time is dee
 Likewise inacceptable is a response code other than `200`, which gives an individual score of zero.
 
 The total score is the mean of the individual scores.
-
-# Data store interface
-## get_my_data()
-
-This interface is used to pull from the data store. Currently, it is only intended to record the history of scoring, so that the functionality to pull data is unused.
-
-## push_my_data()
-
-This function presents the interface of the data generated in the trudag-tool and an external permanent data storage solution. 
-As a proof of concept, an interface to an SQLite-database stored within a separate branch of the repository is implemented.
-This implementation is to be adapted by either an integrator or when the project is moved to eclipse-score/inc_nlohmann_json!
-Likewise, the publish_documentation.yml is to be adapted to reflect the changed data-storage-solution!

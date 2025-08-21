@@ -63,7 +63,17 @@ references:
           path: "TSF/tests/unit-numbers.cpp"
         - type: cpp_test
           name: "parse;invalid whitespace"
-          path: "TSF/tests/unit-numbers.cpp"     
+          path: "TSF/tests/unit-numbers.cpp"        
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    check_amalgamation: exclude
+    codeql: exclude
+    dependency_review: exclude
+    labeler: exclude
+    publish_documentation: exclude
+    test_trudag_extensions: exclude
+    ubuntu: include
 score:
     Jonas-Kirchhoff: 1.0
 ---

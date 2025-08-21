@@ -15,6 +15,16 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_array_invalid_utf8.json"
             - "/nst_json_testsuite2/test_parsing/n_array_just_minus.json"
           description: "Checks that various \"proper\" arrays with improper elements are rejected."
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    check_amalgamation: exclude
+    codeql: exclude
+    dependency_review: exclude
+    labeler: exclude
+    publish_documentation: exclude
+    test_trudag_extensions: exclude
+    ubuntu: include
 score:
     Jonas-Kirchhoff: 1.0
 ---

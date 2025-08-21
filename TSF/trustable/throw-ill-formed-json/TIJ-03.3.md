@@ -14,6 +14,16 @@ references:
             - "/nst_json_testsuite2/test_parsing/n_string_single_quote.json"
             - "/nst_json_testsuite2/test_parsing/n_string_single_string_no_double_quotes.json"
           description: "Tests whether several improperly bounded strings throw an exception."
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    check_amalgamation: exclude
+    codeql: exclude
+    dependency_review: exclude
+    labeler: exclude
+    publish_documentation: exclude
+    test_trudag_extensions: exclude
+    ubuntu: include
 score:
     Jonas-Kirchhoff: 1.0
 ---
