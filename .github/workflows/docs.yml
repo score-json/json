@@ -40,6 +40,9 @@ on:
         required: false
         default: "workflow"
 
+permissions:
+  contents: read
+  
 jobs:
   docs-build:
     name: Build Documentation

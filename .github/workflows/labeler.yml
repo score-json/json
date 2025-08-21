@@ -14,7 +14,7 @@ permissions:
 jobs:
   clone_missing_labels:
     permissions: 
-      contents: write
+      contents: read
       pull-requests: write
     runs-on: ubuntu-latest
     env:

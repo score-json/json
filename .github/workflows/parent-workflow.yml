@@ -9,14 +9,14 @@ on:
     - cron: '0 0 * * *' # Runs daily at midnight UTC
 
 permissions:
-  contents: write
-  pages: write
-  pull-requests: write
-  id-token: write
-  security-events: write
+  contents: read
 
 jobs:
   labeler:
+    permissions:
+      contents: read
+      pages: write
+      pull-requests: write
     name: Run Labeler Workflow
     uses: ./.github/workflows/labeler.yml
     with:
@@ -121,6 +121,12 @@ jobs:
           path: artifacts/
 
   publish_documentation_pr:
+    permissions:
+      contents: write
+      pages: write
+      pull-requests: write
+      id-token: write
+      security-events: read
     name: Run publish_documentation Workflow pr
     if: github.event_name == 'pull_request'
     needs: [collect_artifacts_pr]
@@ -129,6 +135,12 @@ jobs:
       artifact_id: "publish_documentation-${{ github.sha }}"
 
   publish_documentation_non_pr:
+    permissions:
+      contents: write
+      pages: write
+      pull-requests: write
+      id-token: write
+      security-events: read
     name: Run publish_documentation Workflow non pr
     if: github.event_name != 'pull_request'
     needs: [collect_artifacts_non_pr]
