@@ -35,6 +35,12 @@ def check_artifact_exists(configuration: dict[str, yaml]) -> tuple[float, list[E
     
     score = 0.0
 
+    # Validate configuration values
+    for key, value in configuration.items():
+        if value not in {"include", "exclude"}:  # Check if value is valid
+            warning = Warning(f"Invalid configuration value: '{value}' for key '{key}'. Valid values are 'include' or 'exclude'.")
+            return (0.0, [warning]) # If value is neither include nor exclude, return 0.0 with a warning
+
     # Determine the number of expected workflows based on the event type
     if github_event_name != "pull_request" and "dependency_review" in configuration:
         configuration["dependency_review"] = "exclude"  # Exclude dependency review if not a PR
