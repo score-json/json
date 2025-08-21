@@ -3,7 +3,8 @@ level: 1.1
 normative: true
 references:
         - type: website
-          url: "https://github.com/score-json/json/settings/branches"
+          url: https://github.com/score-json/json/settings/branches
+          description: "Branch protection policies"
 evidence:
   type: "check_artifact_exists"
   configuration:
