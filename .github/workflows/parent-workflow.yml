@@ -35,6 +35,9 @@ jobs:
       artifact_id: "test_trudag_extensions-${{ github.sha }}"
 
   codeql:
+    permissions:
+      contents: read
+      security-events: write
     name: Run Codeql analysis Workflow
     uses: ./.github/workflows/codeql-analysis.yml
     with:
