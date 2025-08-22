@@ -36,7 +36,6 @@ jobs:
 
   codeql:
     permissions:
-      contents: read
       security-events: write
     name: Run Codeql analysis Workflow
     uses: ./.github/workflows/codeql-analysis.yml
