@@ -12,11 +12,11 @@
     "url": "https://score-json.github.io/json/pr-55/"
   },
   {
-    "version": "test_documentation_workflow",
-    "url": "https://score-json.github.io/json/test_documentation_workflow/"
-  },
-  {
     "version": "pr-63",
     "url": "https://score-json.github.io/json/pr-63/"
+  },
+  {
+    "version": "test_documentation_workflow",
+    "url": "https://score-json.github.io/json/test_documentation_workflow/"
   }
 ]
