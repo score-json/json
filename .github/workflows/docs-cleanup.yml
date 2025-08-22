@@ -14,7 +14,7 @@
 name: Documentation Cleanup
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
