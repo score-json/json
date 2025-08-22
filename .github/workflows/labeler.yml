@@ -76,10 +76,29 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
       - name: Generate label artifact
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "Generating label artifact..."
           mkdir -p labeler
-          echo "Labels processed for ${{ inputs.artifact_id }}" > labeler/labeler.txt
+
+          echo "Workflow Name: Pull Request Labeler" > labeler/labeler.txt
+          echo "Artifact ID: ${{ inputs.artifact_id }}" >> labeler/labeler.txt
+
+          # Get PR number from GitHub context
+          PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+
+          # Fetch labels from the PR using GitHub API
+          LABELS=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/labels" | jq -r '.[].name' | xargs)
+
+          if [[ -n "$LABELS" ]]; then
+            echo "Labels Applied:" >> labeler/labeler.txt
+            echo "$LABELS" >> labeler/labeler.txt
+          else
+            echo "No labels were applied." >> labeler/labeler.txt
+          fi
 
       - name: Upload label artifact
         uses: actions/upload-artifact@v4
