@@ -14,15 +14,17 @@
 name: Documentation Cleanup
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
+  contents: read
 
 on:
   schedule:
     - cron: '0 0 * * *' # Runs every day at midnight UTC
 
 jobs:
+  permissions:
+    contents: write
+    pages: write
+    id-token: write
   docs-cleanup:
     uses: eclipse-score/cicd-workflows/.github/workflows/docs-cleanup.yml@main
     secrets:
