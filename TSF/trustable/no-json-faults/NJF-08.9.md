@@ -28,7 +28,7 @@ evidence:
     test_trudag_extensions: exclude
     ubuntu: include
 score:
-    Jonas-Kirchhoff: 0.6
+    Jonas-Kirchhoff: 1.0
 ---
 
-The service does not accept any base exceeding 10 in its standard representation.
+The service does not accept any other digit symbol than 0-9.
