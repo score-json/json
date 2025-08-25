@@ -24,6 +24,7 @@ jobs:
 
   check_amalgamation:
     name: Run Amalgamation Workflow
+    if: ${{ github.event_name == 'pull_request' }} # only run check_amalgamation for PRs
     uses: ./.github/workflows/check_amalgamation.yml
     with:
       artifact_id: "check_amalgamation-${{ github.sha }}"
@@ -52,7 +53,7 @@ jobs:
 
   dependency_review:
     name: Run dependency_review Workflow
-    if: ${{ github.event_name == 'pull_request' }} 
+    if: ${{ github.event_name == 'pull_request' }}  # only run dependency_review for PRs
     uses: ./.github/workflows/dependency-review.yml
     with:
       artifact_id: "dependency_review-${{ github.sha }}"
@@ -93,11 +94,11 @@ jobs:
   collect_artifacts_non_pr:
     name: "Collect Results & Deploy (Non-PR)"
     if: github.event_name != 'pull_request'
-    needs: [labeler, check_amalgamation, test_trudag_extensions, codeql, ubuntu]  # no dependency_review if non PR
+    needs: [labeler, test_trudag_extensions, codeql, ubuntu]  # no check_amalgamation or dependency_review if non PR
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [labeler, check_amalgamation, test_trudag_extensions, codeql, ubuntu]
+        target: [labeler, test_trudag_extensions, codeql, ubuntu]
 
     steps:
       - name: Checkout code
