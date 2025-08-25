@@ -6,7 +6,7 @@ import subprocess
 
 # Constants
 MAX_JSON_LINES_FOR_DISPLAY = 25
-TEST_DATA_REPO_URL = "https://raw.githubusercontent.com/nlohmann/json_test_data/master/"
+TEST_DATA_REPO_URL = "https://raw.githubusercontent.com/eclipse-score/inc_nlohmann_json/refs/heads/json_test_data_version_3_1_0_mirror/"
 NUM_WHITESPACE_FOR_TAB = 4
 
 def format_cpp_code_as_markdown(code: str) -> str:
