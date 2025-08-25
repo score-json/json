@@ -22,16 +22,13 @@ on:
         type: string
 
 permissions:
-  contents: write
-  pages: write
-  pull-requests: write
-  id-token: write
+  contents: read
 
 jobs:
   run-trudag:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
       pages: write
       pull-requests: write
       id-token: write
