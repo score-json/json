@@ -12,8 +12,7 @@ def get_my_data() -> list[dict]:
     return []
 
 def push_my_data(data: list[dict]):
-    # initialise data-base connection
-    connector = sqlite3.connect("TSF/TrustableScoring.db")
+    connector = sqlite3.connect("TSF/TemporaryTrustableScoring.db")
     connector.execute("PRAGMA foreign_keys = ON")
     cursor = connector.cursor()
     cursor.execute("CREATE TABLE IF NOT EXISTS commit_info(date INTEGER PRIMARY KEY, root TEXT, SHA TEXT, tag TEXT, job_id TEXT, schema_version INTEGER)")
@@ -29,24 +28,24 @@ def push_my_data(data: list[dict]):
     # check if current commit coincides with existing commit
     cursor.execute("SELECT MAX(date) AS recent_commit FROM commit_info")
     if datum == cursor.fetchone()[0]:
-        # remove duplicate
-        cursor.execute("DELETE FROM scores WHERE date=recent_commit")
-        cursor.execute("DELETE FROM commit_info WHERE date=recent_commit")
+        print("Only the most recent data for each commit are stored. Overwriting obsolete data ...")
     # write commit_info
     root = info.get("Repository root")
     sha = info.get("Commit SHA")
     tag = info.get("Commit tag")
     job_id = info.get("CI job id")
     schema_version = info.get("Schema version")
-    command = f"INSERT INTO commit_info VALUES('{datum}', '{root}', '{sha}', '{tag}', '{job_id}', '{schema_version}')"
+    command = f"INSERT OR REPLACE INTO commit_info VALUES('{datum}', '{root}', '{sha}', '{tag}', '{job_id}', '{schema_version}')"
     cursor.execute(command)
     connector.commit()
     # write scores
     for score in scores:
         id = score.get("id")
         numerical_score = score.get("score")
-        command = f"INSERT INTO scores VALUES('{id}', {numerical_score}, '{datum}')"
+        command = f"INSERT OR REPLACE INTO scores VALUES('{id}', {numerical_score}, '{datum}')"
         cursor.execute(command)
+    # don't forget to commit!
     connector.commit()
     # terminate data-base connection
     connector.close()
+    

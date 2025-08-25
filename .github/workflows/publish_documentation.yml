@@ -54,7 +54,7 @@ jobs:
         run: |
           TRUDAG_REPORT_FOLDER="TSF/docs/generated"
           mkdir -p "$TRUDAG_REPORT_FOLDER"
-          trudag publish --validate --output-dir "$TRUDAG_REPORT_FOLDER"
+          trudag publish --validate --output-dir "$TRUDAG_REPORT_FOLDER" --dump data_store
           trudag plot -o "$TRUDAG_REPORT_FOLDER/graph.svg"
           python TSF/scripts/clean_trudag_output.py
         env:
