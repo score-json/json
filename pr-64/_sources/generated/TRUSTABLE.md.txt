@@ -1,0 +1,40 @@
+
+### TRUSTABLE-SOFTWARE 
+
+This release of JSON-Library is Trustable.
+
+
+**Supported Requests:**
+
+
+**Supporting Items:**
+
+- [TT-CHANGES](TT.md#tt-changes)
+- [TT-CONFIDENCE](TT.md#tt-confidence)
+- [TT-CONSTRUCTION](TT.md#tt-construction)
+- [TT-EXPECTATIONS](TT.md#tt-expectations)
+- [TT-PROVENANCE](TT.md#tt-provenance)
+- [TT-RESULTS](TT.md#tt-results)
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
+
+**Graph:**
+
+![No Image](figs/TRUSTABLE-SOFTWARE.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TRUSTABLE-SOFTWARE|TT-CHANGES|TT-CONFIDENCE|TT-CONSTRUCTION|TT-EXPECTATIONS|TT-PROVENANCE|TT-RESULTS|
+    |-|-|-|-|-|-|-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-26 12:52:10.942321|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+
