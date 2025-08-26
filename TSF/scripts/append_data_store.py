@@ -22,11 +22,11 @@ score_rows = source_cursor.fetchall()
 if commit_info_rows:
     target_cursor.executemany("INSERT OR REPLACE INTO commit_info (date, root, SHA, tag, job_ID, schema_version) VALUES (?, ?, ?, ?, ?, ?)", commit_info_rows)
     # don't forget to save
-    connector.commit
+    connector.commit()
 if score_rows:
     target_cursor.executemany("INSERT OR REPLACE INTO scores (ID, score, date) VALUES (?, ?, ?)", score_rows)
     # don't forget to save!
-    connector.commit
+    connector.commit()
 # terminate connections
 connector.close()
 importer.close()
