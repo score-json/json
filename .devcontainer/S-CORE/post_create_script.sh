@@ -5,5 +5,5 @@ source .venv/bin/activate
 
 # Install trustable
 pip install --upgrade pip
-pip install trustable --index-url https://gitlab.com/api/v4/projects/66600816/packages/pypi/simple
+pip install git+https://gitlab.com/CodethinkLabs/trustable/trustable@cc6b72753e1202951d382f60ff08320f5a957c7b
 pip install pytest
