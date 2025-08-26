@@ -1,14 +1,14 @@
 import sqlite3
 
 # initialise connection to persistent storage
-connector = sqlite3.connect("TrustableScoring.db")
+connector = sqlite3.connect("TSF/TrustableScoring.db")
 connector.execute("PRAGMA foreign_keys = ON")
 target_cursor = connector.cursor()
 target_cursor.execute("CREATE TABLE IF NOT EXISTS commit_info(date INTEGER PRIMARY KEY, root TEXT, SHA TEXT, tag TEXT, job_id TEXT, schema_version INTEGER)")
 target_cursor.execute("CREATE TABLE IF NOT EXISTS scores(ID TEXT, score REAL, date INTEGER, PRIMARY KEY (ID, date), FOREIGN KEY(date) REFERENCES commit_info(date))")
 
 # initialise connection to temporary storage
-importer = sqlite3.connect("TemporaryTrustableScoring.db")
+importer = sqlite3.connect("TSF/TemporaryTrustableScoring.db")
 importer.execute("PRAGMA foreign_keys = ON")
 source_cursor = importer.cursor()
 
