@@ -22,10 +22,10 @@ on:
 
 jobs:
   docs-cleanup:
-  permissions:
-    contents: write
-    pages: write
-    id-token: write
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
     uses: eclipse-score/cicd-workflows/.github/workflows/docs-cleanup.yml@main
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
