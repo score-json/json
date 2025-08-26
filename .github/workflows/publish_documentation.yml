@@ -68,6 +68,9 @@ jobs:
           if ! git ls-tree --name-only origin/save_historical_data TSF/TrustableScoring.db | grep TSF/TrustableScoring.db; then
             mkdir -p TSF
             touch TSF/TrustableScoring.db
+            git add TSF/TrustableScoring.db
+            git commit -m "Initialise persistent data storage"
+            git push origin save_historical_data
           fi
           git checkout $branch_name
           git checkout save_historical_data -- TSF/TrustableScoring.db
