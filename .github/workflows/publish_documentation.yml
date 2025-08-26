@@ -59,6 +59,34 @@ jobs:
           python TSF/scripts/clean_trudag_output.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Get current branch name
+        id: get_branch
+        run: |
+          current_branch=${GITHUB_REF#refs/heads/} 
+          echo "branch_name=$current_branch" >> $GITHUB_ENV
+
+      - name: Switch to Target Branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch --all
+          git checkout save_historical_data || git checkout -b save_historical_data
+      
+      - name: use append-script of current branch
+        run: |
+          git checkout $branch_name -- add_stored_data.py
+          git checkout save_historical_data -- TrustableScoring.db
+      
+      - name: Append permanent storage
+        run: |
+          python3 add_stored_data.py
+
+      - name: Commit and Push the File to Target Branch
+        run: |
+          git add TrustableScoring.db
+          git commit -m "Append historical trustable scores"
+          git push origin save_historical_data
 
       - name: Upload trudag artifact
         uses: actions/upload-artifact@v4
