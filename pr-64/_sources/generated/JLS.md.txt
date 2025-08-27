@@ -954,7 +954,13 @@ _None_
 
 **References:**
 
-_None_
+- `website: https://github.com/eclipse-score/inc_nlohmann_json`
+
+
+`https://github.com/eclipse-score/inc_nlohmann_json`
+	- Start-page of the mirror of nlohmann/json within Eclipse S-CORE
+
+
 
 
 
