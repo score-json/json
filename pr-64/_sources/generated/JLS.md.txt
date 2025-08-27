@@ -31,14 +31,14 @@ on:
     - cron: '0 0 * * *' # Runs daily at midnight UTC
 
 permissions:
-  contents: write
-  pages: write
-  pull-requests: write
-  id-token: write
-  security-events: write
+  contents: read
 
 jobs:
   labeler:
+    permissions:
+      contents: read
+      pages: write
+      pull-requests: write
     name: Run Labeler Workflow
     uses: ./.github/workflows/labeler.yml
     with:
@@ -46,6 +46,7 @@ jobs:
 
   check_amalgamation:
     name: Run Amalgamation Workflow
+    if: ${{ github.event_name == 'pull_request' }} # only run check_amalgamation for PRs
     uses: ./.github/workflows/check_amalgamation.yml
     with:
       artifact_id: "check_amalgamation-${{ github.sha }}"
@@ -57,6 +58,9 @@ jobs:
       artifact_id: "test_trudag_extensions-${{ github.sha }}"
 
   codeql:
+    permissions:
+      contents: read
+      security-events: write
     name: Run Codeql analysis Workflow
     uses: ./.github/workflows/codeql-analysis.yml
     with:
@@ -71,7 +75,7 @@ jobs:
 
   dependency_review:
     name: Run dependency_review Workflow
-    if: ${{ github.event_name == 'pull_request' }} 
+    if: ${{ github.event_name == 'pull_request' }}  # only run dependency_review for PRs
     uses: ./.github/workflows/dependency-review.yml
     with:
       artifact_id: "dependency_review-${{ github.sha }}"
@@ -87,7 +91,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Check child workflow results 
         run: |
@@ -104,7 +108,7 @@ jobs:
           current_workflow: ${{ matrix.target }}
 
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
         with:
           name: "${{ matrix.target }}-${{ github.sha }}"
           path: artifacts/
@@ -112,15 +116,15 @@ jobs:
   collect_artifacts_non_pr:
     name: "Collect Results & Deploy (Non-PR)"
     if: github.event_name != 'pull_request'
-    needs: [labeler, check_amalgamation, test_trudag_extensions, codeql, ubuntu]  # no dependency_review if non PR
+    needs: [labeler, test_trudag_extensions, codeql, ubuntu]  # no check_amalgamation or dependency_review if non PR
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [labeler, check_amalgamation, test_trudag_extensions, codeql, ubuntu]
+        target: [labeler, test_trudag_extensions, codeql, ubuntu]
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Check child workflow results 
         run: |
@@ -137,12 +141,18 @@ jobs:
           current_workflow: ${{ matrix.target }}
 
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
         with:
           name: "${{ matrix.target }}-${{ github.sha }}"
           path: artifacts/
 
   publish_documentation_pr:
+    permissions:
+      contents: write
+      pages: write
+      pull-requests: write
+      id-token: write
+      security-events: read
     name: Run publish_documentation Workflow pr
     if: github.event_name == 'pull_request'
     needs: [collect_artifacts_pr]
@@ -151,6 +161,12 @@ jobs:
       artifact_id: "publish_documentation-${{ github.sha }}"
 
   publish_documentation_non_pr:
+    permissions:
+      contents: write
+      pages: write
+      pull-requests: write
+      id-token: write
+      security-events: read
     name: Run publish_documentation Workflow non pr
     if: github.event_name != 'pull_request'
     needs: [collect_artifacts_non_pr]
@@ -424,6 +440,8 @@ _None_
 
 
 `https://github.com/score-json/json/settings/branches`
+	- Branch protection policies
+
 
 
 
