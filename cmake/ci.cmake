@@ -87,7 +87,7 @@ add_custom_target(ci_test_gcc
         -DJSON_BuildTests=ON
         -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_gcc
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_gcc
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_gcc && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/gcc.log"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_gcc && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/gcc_junit.xml" --output-log "../my_logs/gcc_log.log" --verbose
     COMMENT "Compile and test with GCC using maximal warning flags"
 )
 
@@ -97,7 +97,7 @@ add_custom_target(ci_test_clang
         -DJSON_BuildTests=ON
         -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_clang
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_clang
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_clang && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/ci_test_clang.log"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_clang && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/ci_test_clang_junit.xml" --output-log "../my_logs/ci_test_clang_log.log" --verbose
     COMMENT "Compile and test with Clang using maximal warning flags"
 )
 
@@ -113,7 +113,7 @@ foreach(CXX_STANDARD 11 14 17 20 23 26)
             -DJSON_TestStandards=${CXX_STANDARD}
             -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_gcc_cxx${CXX_STANDARD}
         COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_gcc_cxx${CXX_STANDARD}
-        COMMAND cd ${PROJECT_BINARY_DIR}/build_gcc_cxx${CXX_STANDARD} && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/gcc-${CXX_STANDARD}.log"
+        COMMAND cd ${PROJECT_BINARY_DIR}/build_gcc_cxx${CXX_STANDARD} && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/gcc-${CXX_STANDARD}_junit.xml" --output-log "../my_logs/gcc-${CXX_STANDARD}_log.log" --verbose
         COMMENT "Compile and test with GCC for C++${CXX_STANDARD}"
     )
 
