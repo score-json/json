@@ -24,6 +24,7 @@ evidence:
                 urls:
                     - "https://github.com/nlohmann/json/issues"
                     - "https://github.com/nlohmann/json/graphs/commit-activity"
+                    - "https://github.com/nlohmann/json/graphs/contributors"
                     - "https://github.com/nlohmann/json/forks?include=active&page=1&period=&sort_by=last_updated"
                     - "https://github.com/nlohmann/json/pulse"
 score:
