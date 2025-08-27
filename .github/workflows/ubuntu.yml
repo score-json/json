@@ -268,11 +268,8 @@ jobs:
           echo "Generating ubuntu artifact..."
           mkdir -p ubuntu
           cd my_first_artifact
-          if [ -d "my_logs" ]; then
-            echo "Logging directory exists at the expected place."
-          else
-            echo "Logging directory does not exist at the expected place."
-          fi
+          ls -a
+          cd ..
           echo "ubuntu processed for ${{ inputs.artifact_id }}" > ubuntu/ubuntu.txt
 
       - name: Upload ubuntu artifact
