@@ -258,7 +258,7 @@ jobs:
       - name: Generate ubuntu artifact
         run: |
           echo "Generating ubuntu artifact..."
-          mkdir -p 
+          mkdir -p ubuntu
           cd build
           if [ -f "my_logs" ]; then
             echo "Logging directory exists at the expected place."
