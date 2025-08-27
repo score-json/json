@@ -71,12 +71,10 @@ def push_my_data(data: list[dict]):
     # extract data from data
     info = data[0].get("info")
     scores = data[0].get("scores")
-    print(info)
     # Currently, the commit date is stored as string.
     # Since the local timezone is used and for comparison, 
     # it would be better to have it as a unix-timestamp.
     datum_string = info.get("Commit date/time")
-    print(f"The current commit is from {datum_string}.")
     datum = int(datetime.strptime(datum_string, "%a %b %d %H:%M:%S %Y").timestamp())
     # check if current commit coincides with existing commit
     cursor.execute("SELECT MAX(date) AS recent_commit FROM commit_info")
