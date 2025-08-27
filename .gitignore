@@ -52,6 +52,7 @@ MODULE.bazel.lock
 user.bazelrc
 
 /temp
+/TSF/temp
 
 /TSF/docs/generated
 

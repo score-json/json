@@ -2,7 +2,6 @@ from pathlib import Path
 from trudag.dotstop.core.reference.references import BaseReference
 from trudag.dotstop.core.reference.references import SourceSpanReference
 import requests
-import subprocess
 
 # Constants
 MAX_JSON_LINES_FOR_DISPLAY = 25
