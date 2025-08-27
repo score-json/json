@@ -2,9 +2,6 @@ name: Parent Workflow
 
 on: 
   push: 
-    branches:
-      - main
-      - store_test_results
 
 permissions:
   contents: write
