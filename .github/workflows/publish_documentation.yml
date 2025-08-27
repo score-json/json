@@ -50,9 +50,10 @@ jobs:
       
       - name: Get current branch name
         id: get_branch
+        env:
+          GITHUB_REF: ${{ github.event.pull_request.head.ref }}
         run: |
-          current_branch=${{ github.event.pull_request.head.ref }}
-          echo "branch_name=$current_branch" >> $GITHUB_ENV
+          echo "branch_name=${GITHUB_REF}" >> $GITHUB_ENV
 
       - name: Fetch data storage branch
         run: |
