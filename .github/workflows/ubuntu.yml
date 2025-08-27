@@ -27,6 +27,8 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_test_gcc
+      - name:  Moin
+        run: echo "$PWD"
 
   # ci_infer:
   #   runs-on: ubuntu-latest
@@ -257,6 +259,7 @@ jobs:
     steps:
       - name: Generate ubuntu artifact
         run: |
+          echo "$PWD"
           echo "Generating ubuntu artifact..."
           mkdir -p ubuntu
           cd build
