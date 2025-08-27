@@ -61,7 +61,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git fetch --all
-          git checkout save_historical_data || git checkout -b save_historical_data
+          git checkout save_historical_data && git pull || git checkout -b save_historical_data
       
       - name: Load persistent data
         run: |
