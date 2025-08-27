@@ -87,7 +87,7 @@ add_custom_target(ci_test_gcc
         -DJSON_BuildTests=ON
         -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_gcc
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_gcc
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_gcc && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/test.log"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_gcc && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/${GCC_TOOL}_${GCC_CXXFLAGS}.log"
     COMMENT "Compile and test with GCC using maximal warning flags"
 )
 
