@@ -27,8 +27,11 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_test_gcc
-      - name:  Moin
-        run: echo "$PWD"
+      - name: Upload test report 
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci_test_gcc-artifact
+          path: build/my_logs/
 
   # ci_infer:
   #   runs-on: ubuntu-latest
