@@ -20,11 +20,20 @@ references:
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/n_object_missing_colon.json"
             - "/nst_json_testsuite2/test_parsing/n_object_missing_semicolon.json"
-            - "/nst_json_testsuite2/test_parsing/n_object_missing_semicolon.json"
           description: "Checks that the empty member separator is rejected."
         - type: cpp_test
           name: "parse;member separator"
           path: "TSF/tests/unit-objects.cpp"
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    check_amalgamation: exclude
+    codeql: exclude
+    dependency_review: exclude
+    labeler: exclude
+    publish_documentation: exclude
+    test_trudag_extensions: exclude
+    ubuntu: include
 score:
     Jonas-Kirchhoff: 1.0
 ---

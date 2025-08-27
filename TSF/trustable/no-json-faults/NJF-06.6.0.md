@@ -11,11 +11,6 @@ references:
             - "/json.org/3.json"
             - "/json.org/4.json"
             - "/json.org/5.json"
-            - "/json.org/1.json"
-            - "/json.org/2.json"
-            - "/json.org/3.json"
-            - "/json.org/4.json"
-            - "/json.org/5.json"
           description: "Checks that various nested objects are accepted."
         - type: cpp_test
           name: "accept;member separator"

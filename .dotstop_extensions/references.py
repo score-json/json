@@ -2,10 +2,11 @@ from pathlib import Path
 from trudag.dotstop.core.reference.references import BaseReference
 from trudag.dotstop.core.reference.references import SourceSpanReference
 import requests
+import subprocess
 
 # Constants
 MAX_JSON_LINES_FOR_DISPLAY = 25
-TEST_DATA_REPO_URL = "https://raw.githubusercontent.com/nlohmann/json_test_data/master/"
+TEST_DATA_REPO_URL = "https://raw.githubusercontent.com/eclipse-score/inc_nlohmann_json/refs/heads/json_test_data_version_3_1_0_mirror/"
 NUM_WHITESPACE_FOR_TAB = 4
 
 def format_cpp_code_as_markdown(code: str) -> str:
@@ -278,7 +279,9 @@ class JSONTestsuiteReference(CPPTestReference):
         )
 
     def as_markdown(self, filepath: None | str = None) -> str:
-        description = f"Description: {self._description}\n\n"
+        description = ""
+        if self._description!="": 
+            description = f"Description: {self._description}\n\n"
 
         # we can not simply use the parent class's as_markdown method, because it does not filter out
         # the other test data lines, which are not relevant for the trudag report
@@ -318,8 +321,11 @@ class WebReference(BaseReference):
     
     @property
     def content(self) -> bytes:
-        response = requests.get(self._url)
-        return response.text.encode('utf-8')
+        # In the example, the text on the website is used.
+        # This does not work for constantly changing websites.
+        # Would the text be used, then the statement could never be reviewed.
+        # Therefore, the url is returned, which is sufficient for our purposes.
+        return self._url.encode('utf-8')
     
     def as_markdown(self, filepath: None | str = None) -> str:
         # If we did not add a description, nothing is printed
@@ -331,6 +337,46 @@ class WebReference(BaseReference):
     def __str__(self) -> str:
         # this is used as a title in the trudag report
         return f"website: {self._url}"
+    
+class WebContentReference(WebReference):
+    def __init__(self, url: str, description: str = "") -> None:
+        super().__init__(url, description)
+    
+    @classmethod
+    def type(cls):
+        return "web_content"
+
+    @property
+    def content(self) -> bytes:
+        return requests.get(self._url).text.encode('utf-8')
+    
+    def as_markdown(self, filepath: None | str = None) -> str:
+        return super().as_markdown(filepath)
+    
+    def __str__(self) -> str:
+        return super().__str__()
+
+class TimeVaryingWebReference(WebReference):
+    def __init__(self, url, description = "", changelog = "ChangeLog.md"):
+        super().__init__(url, description)
+        self._changelog = changelog
+    
+    @classmethod
+    def type(cls) -> str:
+        return "project_website"
+
+    @property
+    def content(self) -> bytes:    
+        with open(self._changelog, 'r') as file:
+            lines = file.readlines()
+        lines.insert(0,self._url)
+        return '\n'.join(lines).encode('utf-8')
+    
+    def as_markdown(self, filepath: None | str = None) -> str:
+        return super().as_markdown(filepath)
+    
+    def __str__(self) -> str:
+        return super().__str__()
     
 class FunctionReference(SourceSpanReference):
     """

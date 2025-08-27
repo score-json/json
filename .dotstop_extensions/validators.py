@@ -1,6 +1,8 @@
 from typing import TypeAlias, Tuple, List
 import os
 import requests
+import subprocess
+import warnings
 
 yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
@@ -18,9 +20,12 @@ def setup_environment_variables() -> dict[str, str]:
     
     return environment
 
-def check_artifact_exists(configuration: dict[str, yaml]) -> Tuple[float, List[Exception | Warning]]:    
+def check_artifact_exists(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:    
     # Setup environment variables using the helper function
-    env = setup_environment_variables()
+    try:
+        env = setup_environment_variables()
+    except RuntimeError as e:
+        return (0,[e])
     
     github_token = env["GITHUB_TOKEN"]
     github_event_name = env["GITHUB_EVENT_NAME"]
@@ -31,10 +36,15 @@ def check_artifact_exists(configuration: dict[str, yaml]) -> Tuple[float, List[E
     score = 0.0
 
     # Determine the number of expected workflows based on the event type
-    if github_event_name != "pull_request" and configuration.get("dependency_review") is not None:
-        num_expected_workflows = len(configuration) - 1  # Exclude dependency review if not a PR
-    else: 
-        num_expected_workflows = len(configuration)
+    if github_event_name != "pull_request" and "dependency_review" in configuration:
+        configuration["dependency_review"] = "exclude"  # Exclude dependency review if not a PR
+
+    num_expected_workflows = sum(1 for value in configuration.values() if value == "include")
+
+    # If no workflows are expected, return a score of 1.0 with a warning
+    if num_expected_workflows == 0:
+        warning = Warning("No workflows to check, returning a score of 1.0.")
+        return (1.0, [warning])
 
     # GitHub API URL to list artifacts for the current workflow run
     url = f"https://api.github.com/repos/{repository}/actions/runs/{run_id}/artifacts"
@@ -50,30 +60,25 @@ def check_artifact_exists(configuration: dict[str, yaml]) -> Tuple[float, List[E
 
     # Check for a successful response
     if response.status_code != 200:
-        raise RuntimeError(f"Failed to fetch artifacts: {response.status_code} - {response.text}")
+        return (score, [RuntimeError(f"Failed to fetch artifacts: {response.status_code} - {response.text}")])
 
     # Parse the JSON response
     data = response.json()
-    artifacts = data.get("artifacts", [])
+    artifacts_created_data = data.get("artifacts", [])
 
     # Extract artifact names
-    artifact_names = [artifact["name"] for artifact in artifacts]
-        
+    artifacts_created = [artifact["name"] for artifact in artifacts_created_data]
+
     # Check if artifacts for each workflow exist    
     for key, value in configuration.items():
-        print(f"Checking workflow: {key},{value}")
-        artifact_id = f"{value}-{sha}"
+        if value == "exclude":
+            continue  # Skip excluded workflows
+        artifact_expected = f"{key}-{sha}"
+        if artifact_expected in artifacts_created:
+            score += 1
 
-        if artifact_id in artifact_names:
-            score += 1 / num_expected_workflows
-            print(f"Artifact for workflow {key} found. Current cumulative score: {score}")
-        else: 
-            if str(value) == "dependency_review" and github_event_name != "pull_request":
-                print(f"Skipped dependency_review workflow for non-PR.")
-            else:
-                print(f"Artifact for workflow {key} NOT found. Current cumulative score: {score}")
+    return (score/num_expected_workflows, [])
 
-    return (score, [])
 
 def https_response_time(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
     """
@@ -109,9 +114,8 @@ def https_response_time(configuration: dict[str, yaml]) -> tuple[float, list[Exc
         if response.status_code == 200:
             # if target site is successfully called, check if it is reached within target seconds
             # recall that target/response.elapsed.microseconds>1/5, so score is accordingly refactored 
-            score = (min(target/response.elapsed.microseconds, 1.0)-0.2)*1.25
+            score = (min(1000000*target/response.elapsed.microseconds, 1.0)-0.2)*1.25
             scores.append(score)
             continue
         scores.append(0)
-    return(sum(scores)/len(scores),exceptions)
-    
+    return(sum(scores)/len(scores),exceptions)   
