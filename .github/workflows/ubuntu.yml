@@ -24,7 +24,7 @@ jobs:
       - name: Get latest CMake and ninja
         uses: lukka/get-cmake@28983e0d3955dba2bb0a6810caae0c6cf268ec0c # v4.0.0
       - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+        run: cmake -S . -B build -DJSON_CI=On -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       - name: Build
         run: cmake --build build --target ci_test_gcc
       - name: Do shite
@@ -82,9 +82,9 @@ jobs:
         uses: lukka/get-cmake@28983e0d3955dba2bb0a6810caae0c6cf268ec0c # v4.0.0
       - name: Run CMake
       # The default C++ compiler in the docker image is clang++-14 which does not support all compiler flags
-        run: cmake -S . -B build -DJSON_CI=On -DCLANG_TOOL=clang++-20
+        run: cmake -S . -B build -DJSON_CI=On -DCLANG_TOOL=clang++-20 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       - name: Build
-        run: cmake --build build --target ${{ matrix.target }} -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+        run: cmake --build build --target ${{ matrix.target }}
       - name: Do shite
         run: |
           mv build/CMakeCache.txt build/my_logs/CMakeCache.txt
@@ -204,7 +204,7 @@ jobs:
       - name: Get latest CMake and ninja
         uses: lukka/get-cmake@28983e0d3955dba2bb0a6810caae0c6cf268ec0c # v4.0.0
       - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+        run: cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_test_gcc_cxx${{ matrix.standard }}
       - name: Do shite
