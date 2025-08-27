@@ -440,6 +440,8 @@
 <p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
+<p><strong>Graph:</strong></p>
+<p><em>No Historic Data Found</em></p>
 </section>
 <hr class="docutils" />
 <section id="pjd-02">
@@ -455,6 +457,8 @@
 <p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
+<p><strong>Graph:</strong></p>
+<p><em>No Historic Data Found</em></p>
 </section>
 <hr class="docutils" />
 <section id="pjd-03">
@@ -480,6 +484,8 @@
 <p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
+<p><strong>Graph:</strong></p>
+<p><em>No Historic Data Found</em></p>
 </section>
 <hr class="docutils" />
 <section id="pjd-04">
@@ -487,14 +493,122 @@
 <p>The service correctly parses 64-bit integers (exceeding the range defined in RFC8259).</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="JLEX.html#jlex-02"><span class="std std-ref">JLEX-02</span></a></p></li>
+<li><p><a class="reference internal" href="NPF.html#npf-02"><span class="std std-ref">NPF-02</span></a></p></li>
 </ul>
 <p><strong>Supporting Items:</strong></p>
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cpp-test:</span> <span class="pre">[parser</span> <span class="pre">class</span> <span class="pre">-</span> <span class="pre">core;parse;number;integers]</span> <span class="pre">(TSF/tests/unit-class_parser_core.cpp)</span></code></p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">SECTION</span><span class="p">(</span><span class="s">&quot;integers&quot;</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">SECTION</span><span class="p">(</span><span class="s">&quot;without exponent&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;-128&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mi">-128</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;-0&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mi">-0</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;128&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mi">128</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">SECTION</span><span class="p">(</span><span class="s">&quot;with exponent&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;0e1&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">0e1</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;0E1&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">0e1</span><span class="p">));</span>
+
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10000E-4&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10000e-4</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10000E-3&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10000e-3</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10000E-2&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10000e-2</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10000E-1&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10000e-1</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10000E0&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10000e0</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10000E1&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10000e1</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10000E2&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10000e2</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10000E3&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10000e3</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10000E4&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10000e4</span><span class="p">));</span>
+
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10000e-4&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10000e-4</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10000e-3&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10000e-3</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10000e-2&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10000e-2</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10000e-1&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10000e-1</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10000e0&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10000e0</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10000e1&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10000e1</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10000e2&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10000e2</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10000e3&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10000e3</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10000e4&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10000e4</span><span class="p">));</span>
+
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;-0e1&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">-0e1</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;-0E1&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">-0e1</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;-0E123&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">-0e123</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// numbers after exponent</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E0&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e0</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E1&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e1</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E2&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e2</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E3&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e3</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E4&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e4</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E5&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e5</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E6&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e6</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E7&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e7</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E8&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e8</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E9&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e9</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E+0&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e0</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E+1&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e1</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E+2&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e2</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E+3&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e3</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E+4&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e4</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E+5&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e5</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E+6&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e6</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E+7&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e7</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E+8&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e8</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E+9&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e9</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E-1&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e-1</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E-2&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e-2</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E-3&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e-3</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E-4&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e-4</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E-5&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e-5</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E-6&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e-6</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E-7&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e-7</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E-8&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e-8</span><span class="p">));</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;10E-9&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">json</span><span class="p">(</span><span class="mf">10e-9</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">SECTION</span><span class="p">(</span><span class="s">&quot;edge cases&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// From RFC8259, Section 6:</span>
+<span class="w">        </span><span class="c1">// Note that when such software is used, numbers that are</span>
+<span class="w">        </span><span class="c1">// integers and are in the range [-(2**53)+1, (2**53)-1]</span>
+<span class="w">        </span><span class="c1">// are interoperable in the sense that implementations will</span>
+<span class="w">        </span><span class="c1">// agree exactly on their numeric values.</span>
+
+<span class="w">        </span><span class="c1">// -(2**53)+1</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;-9007199254740991&quot;</span><span class="p">).</span><span class="n">get</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="kt">int64_t</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-9007199254740991</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// (2**53)-1</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;9007199254740991&quot;</span><span class="p">).</span><span class="n">get</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="kt">int64_t</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">9007199254740991</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">SECTION</span><span class="p">(</span><span class="s">&quot;over the edge cases&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// issue #178 - Integer conversion to unsigned (incorrect handling of 64-bit integers)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// While RFC8259, Section 6 specifies a preference for support</span>
+<span class="w">        </span><span class="c1">// for ranges in range of IEEE 754-2008 binary64 (double precision)</span>
+<span class="w">        </span><span class="c1">// this does not accommodate 64-bit integers without loss of accuracy.</span>
+<span class="w">        </span><span class="c1">// As 64-bit integers are now widely used in software, it is desirable</span>
+<span class="w">        </span><span class="c1">// to expand support to the full 64 bit (signed and unsigned) range</span>
+<span class="w">        </span><span class="c1">// i.e. -(2**63) -&amp;gt; (2**64)-1.</span>
+
+<span class="w">        </span><span class="c1">// -(2**63)    ** Note: compilers see negative literals as negated positive numbers (hence the -1))</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;-9223372036854775808&quot;</span><span class="p">).</span><span class="n">get</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="kt">int64_t</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-9223372036854775807</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// (2**63)-1</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;9223372036854775807&quot;</span><span class="p">).</span><span class="n">get</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="kt">int64_t</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">9223372036854775807</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// (2**64)-1</span>
+<span class="w">        </span><span class="n">CHECK</span><span class="p">(</span><span class="n">parser_helper</span><span class="p">(</span><span class="s">&quot;18446744073709551615&quot;</span><span class="p">).</span><span class="n">get</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="kt">uint64_t</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">18446744073709551615u</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
+<p><strong>Graph:</strong></p>
+<p><em>No Historic Data Found</em></p>
 </section>
 
 

@@ -28,6 +28,10 @@ _None_
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -110,6 +114,10 @@ SECTION("BOM and content")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -156,6 +164,10 @@ SECTION("multiple BOM")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -206,6 +218,10 @@ SECTION("unexpected BOM")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -258,6 +274,10 @@ SECTION("other BOM")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -444,6 +464,10 @@ SECTION("error for incomplete/wrong BOM")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -471,6 +495,7 @@ The service parses numbers according to RFC8259.
 - [NPF-02.10](NPF.md#npf-02.10)
 - [NPF-02.11](NPF.md#npf-02.11)
 - [NPF-02.12](NPF.md#npf-02.12)
+- [PJD-04](PJD.md#pjd-04)
 
 
 
@@ -818,6 +843,10 @@ scan_number_done:
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -962,6 +991,10 @@ SECTION("without exponent")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -1026,6 +1059,10 @@ SECTION("trailing zeroes")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -1108,32 +1145,9 @@ SECTION("issue #186 miloyip/nativejson-benchmark: floating-point parsing")
 
 _None_
 
+**Graph:**
 
----
-
-### NPF-02.11_CONTEXT 
-
-Although numbers are parsed without throwing an exception, they are not parsed accurately.
-
-
-**Supported Requests:**
-
-
-**Supporting Items:**
-
-_None_
-
-
-
-**References:**
-
-_None_
-
-
-
-**Fallacies:**
-
-_None_
+_No Historic Data Found_
 
 
 ---
@@ -1174,6 +1188,10 @@ SECTION("Capitalisation")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -1408,6 +1426,10 @@ SECTION("Precision")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -1546,6 +1568,10 @@ SECTION("integers")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -1666,6 +1692,10 @@ SECTION("issue #360 - Loss of precision when serializing &lt;double&gt;")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -1714,6 +1744,10 @@ SECTION("leading zeroes")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -1789,6 +1823,10 @@ SECTION("over the edge cases")  // issue #178 - Integer conversion to unsigned (
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -1863,6 +1901,10 @@ void skip_whitespace()
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -1905,6 +1947,10 @@ SECTION("leading plus")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -2138,6 +2184,10 @@ SECTION("issue #360 - Loss of precision when serializing &lt;double&gt;")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -2766,6 +2816,10 @@ token_type scan_string()
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -2838,6 +2892,10 @@ void skip_whitespace()
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -2995,6 +3053,10 @@ SECTION("correct sequences")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -3056,6 +3118,10 @@ SECTION("escaped unicode")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -3199,6 +3265,10 @@ SECTION("unescaped unicode")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -3300,6 +3370,10 @@ SECTION("escaped")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -3439,6 +3513,10 @@ SECTION("string")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -4060,6 +4138,10 @@ SECTION("7. Strings")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -4112,6 +4194,10 @@ token_type scan_literal(const char_type* literal_text, const std::size_t length,
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -4217,6 +4303,10 @@ void skip_whitespace()
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -4256,6 +4346,10 @@ SECTION("true")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -4297,6 +4391,10 @@ SECTION("false")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -4337,6 +4435,10 @@ SECTION("null")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -4366,6 +4468,10 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -4454,6 +4560,10 @@ void skip_whitespace()
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -4535,6 +4645,10 @@ SECTION("empty array")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -4717,6 +4831,10 @@ SECTION("nonempty array")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -4747,6 +4865,10 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -4827,6 +4949,10 @@ void skip_whitespace()
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -4904,6 +5030,10 @@ _None_
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -4945,6 +5075,10 @@ SECTION("empty object")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -4985,6 +5119,10 @@ SECTION("nonempty object")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -5013,6 +5151,10 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -5269,6 +5411,10 @@ SECTION("well-formed")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -6211,3 +6357,7 @@ SECTION("ill-formed: wrong fourth byte")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_

@@ -485,6 +485,10 @@ token_type scan()
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -501,7 +505,6 @@ The JSON-Library provides a service to parse JSON data according to RFC8259.
 
 - [PJD-01](PJD.md#pjd-01)
 - [PJD-03](PJD.md#pjd-03)
-- [PJD-04](PJD.md#pjd-04)
 - [AOU-20](AOU.md#aou-20)
 
 
@@ -1030,3 +1033,7 @@ token_type scan()
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_

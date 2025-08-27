@@ -25,6 +25,21 @@ _None_
 
 _None_
 
+**Graph:**
+
+![No Image](figs/TT-CHANGES.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TT-CHANGES|TA-FIXES|TA-UPDATES|
+    |-|-|-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+
+
 
 ---
 
@@ -53,6 +68,21 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+![No Image](figs/TT-CONFIDENCE.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TT-CONFIDENCE|TA-METHODOLOGIES|TA-CONFIDENCE|
+    |-|-|-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+
 
 
 ---
@@ -83,6 +113,21 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+![No Image](figs/TT-CONSTRUCTION.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TT-CONSTRUCTION|TA-RELEASES|TA-TESTS|TA-ITERATIONS|
+    |-|-|-|-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+
 
 
 ---
@@ -115,6 +160,21 @@ _None_
 
 _None_
 
+**Graph:**
+
+![No Image](figs/TT-EXPECTATIONS.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TT-EXPECTATIONS|TA-BEHAVIOURS|TA-MISBEHAVIOURS|TA-CONSTRAINTS|
+    |-|-|-|-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|
+
+
 
 ---
 
@@ -143,6 +203,21 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+![No Image](figs/TT-PROVENANCE.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TT-PROVENANCE|TA-SUPPLY_CHAIN|TA-INPUTS|
+    |-|-|-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+
 
 
 ---
@@ -173,3 +248,18 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+![No Image](figs/TT-RESULTS.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TT-RESULTS|TA-DATA|TA-ANALYSIS|TA-VALIDATION|
+    |-|-|-|-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|
+

@@ -135,6 +135,10 @@ token_type scan_literal(const char_type* literal_text, const std::size_t length,
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -377,6 +381,10 @@ token_type scan_literal(const char_type* literal_text, const std::size_t length,
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -515,6 +523,10 @@ token_type scan_literal(const char_type* literal_text, const std::size_t length,
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -1699,6 +1711,10 @@ token_type scan_literal(const char_type* literal_text, const std::size_t length,
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -1733,6 +1749,10 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -1880,6 +1900,10 @@ void skip_whitespace()
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -2196,6 +2220,10 @@ SECTION("nonempty array")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -2482,6 +2510,10 @@ SECTION("stream")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -2965,6 +2997,10 @@ SECTION("boundaries")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -3110,32 +3146,9 @@ _None_
 
 _None_
 
+**Graph:**
 
----
-
-### NJF-05.5_CONTEXT 
-
-An improper value is either an empty value within a non-empty array or an inadmissible token according to RFC8259.
-
-
-**Supported Requests:**
-
-
-**Supporting Items:**
-
-_None_
-
-
-
-**References:**
-
-_None_
-
-
-
-**Fallacies:**
-
-_None_
+_No Historic Data Found_
 
 
 ---
@@ -3239,6 +3252,10 @@ _None_
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -3305,6 +3322,10 @@ _None_
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -3333,6 +3354,10 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -3454,6 +3479,10 @@ _None_
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -3522,6 +3551,10 @@ _None_
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -3556,6 +3589,10 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -3631,6 +3668,10 @@ void skip_whitespace()
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -3745,6 +3786,10 @@ SECTION("case 15")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -3834,6 +3879,10 @@ SECTION("nonempty object")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -4345,6 +4394,10 @@ SECTION("expected failures")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -4641,6 +4694,10 @@ SECTION("member separator")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -4802,6 +4859,10 @@ SECTION("member separator")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -5017,6 +5078,10 @@ SECTION("member separator")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -5096,6 +5161,10 @@ The service does not accept objects with improper members.
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -5293,6 +5362,10 @@ SECTION("member separator")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -5382,34 +5455,9 @@ SECTION("member separator")
 
 _None_
 
+**Graph:**
 
----
-
-### NJF-06.5_CONTEXT 
-
-An improper name is either not a string (i.e. any other token, or empty), or a string-candidate which does not fulfil the requirements of RFC8259.
-
-An improper value is either empty or an inadmissible token according to RFC8259.
-
-
-**Supported Requests:**
-
-
-**Supporting Items:**
-
-_None_
-
-
-
-**References:**
-
-_None_
-
-
-
-**Fallacies:**
-
-_None_
+_No Historic Data Found_
 
 
 ---
@@ -5626,6 +5674,10 @@ SECTION("member separator")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -5841,6 +5893,10 @@ SECTION("member separator")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -5869,6 +5925,10 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -6165,6 +6225,10 @@ SECTION("member separator")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -6356,6 +6420,10 @@ SECTION("member separator")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -6986,6 +7054,10 @@ token_type scan_string()
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -7140,6 +7212,10 @@ SECTION("strings")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -7721,6 +7797,10 @@ SECTION("error cases")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -7802,6 +7882,10 @@ SECTION("errors")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -8117,6 +8201,10 @@ SECTION("escaped unicode")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -8269,6 +8357,10 @@ SECTION("well-formed")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -8811,6 +8903,10 @@ _None_
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -9101,6 +9197,10 @@ SECTION("escaped unicode")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -9162,6 +9262,10 @@ SECTION("escaped unicode")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -9226,6 +9330,10 @@ SECTION("unescaped unicode")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -9597,6 +9705,10 @@ scan_number_done:
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -9704,6 +9816,10 @@ SECTION("integers")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -9752,6 +9868,10 @@ SECTION("edge cases")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -10157,6 +10277,10 @@ SECTION("illegal literal numbers")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -10329,6 +10453,10 @@ SECTION("with exponent")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -10389,6 +10517,10 @@ SECTION("U+0436")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -11118,6 +11250,10 @@ SECTION("operators")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -11171,6 +11307,10 @@ SECTION("floating-point")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -11307,12 +11447,16 @@ SECTION("Leading zeroes")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
 ### NJF-08.9 
 
-The service does not accept any base exceeding 10 in its standard representation.
+The service does not accept any other digit symbol than 0-9.
 
 
 **Supported Requests:**
@@ -11515,6 +11659,10 @@ SECTION("bases")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -11546,6 +11694,10 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -11673,6 +11825,10 @@ SECTION("malformed sequences")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -11761,6 +11917,10 @@ SECTION("overlong sequences")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -11864,6 +12024,10 @@ SECTION("unescaped unicode")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -11991,6 +12155,10 @@ SECTION("unescaped unicode")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -12053,6 +12221,10 @@ SECTION("escaped unicode")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -12104,6 +12276,10 @@ SECTION("expected passes")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -12135,6 +12311,10 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -12182,6 +12362,10 @@ SECTION("single BOM")
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -12225,6 +12409,10 @@ SECTION("multiple BOM")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -12665,6 +12853,10 @@ token_type scan()
 
 _None_
 
+**Graph:**
+
+_No Historic Data Found_
+
 
 ---
 
@@ -12707,6 +12899,10 @@ SECTION("UTF-32")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -12755,3 +12951,7 @@ SECTION("unexpected BOM")
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_

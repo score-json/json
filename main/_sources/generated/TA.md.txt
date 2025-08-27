@@ -26,6 +26,21 @@ _None_
 
 _None_
 
+**Graph:**
+
+![No Image](figs/TA-ANALYSIS.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TA-ANALYSIS|
+    |-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+
+
 
 ---
 
@@ -55,6 +70,21 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+![No Image](figs/TA-BEHAVIOURS.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TA-BEHAVIOURS|
+    |-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+
 
 
 ---
@@ -86,6 +116,21 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+![No Image](figs/TA-CONFIDENCE.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TA-CONFIDENCE|
+    |-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|
+
 
 
 ---
@@ -122,6 +167,21 @@ _None_
 
 _None_
 
+**Graph:**
+
+![No Image](figs/TA-CONSTRAINTS.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TA-CONSTRAINTS|
+    |-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+
+
 
 ---
 
@@ -150,6 +210,21 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+![No Image](figs/TA-DATA.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TA-DATA|
+    |-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+
 
 
 ---
@@ -183,6 +258,21 @@ _None_
 
 _None_
 
+**Graph:**
+
+![No Image](figs/TA-FIXES.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TA-FIXES|
+    |-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|N/A|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|N/A|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|N/A|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|N/A|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|N/A|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|N/A|
+
+
 
 ---
 
@@ -210,6 +300,10 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+_No Historic Data Found_
 
 
 ---
@@ -240,6 +334,21 @@ _None_
 
 _None_
 
+**Graph:**
+
+![No Image](figs/TA-INPUTS.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TA-INPUTS|
+    |-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+
+
 
 ---
 
@@ -269,6 +378,21 @@ _None_
 
 _None_
 
+**Graph:**
+
+![No Image](figs/TA-ITERATIONS.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TA-ITERATIONS|
+    |-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+
+
 
 ---
 
@@ -297,6 +421,21 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+![No Image](figs/TA-METHODOLOGIES.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TA-METHODOLOGIES|
+    |-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+
 
 
 ---
@@ -329,6 +468,21 @@ _None_
 
 _None_
 
+**Graph:**
+
+![No Image](figs/TA-MISBEHAVIOURS.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TA-MISBEHAVIOURS|
+    |-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|N/A|
+
+
 
 ---
 
@@ -358,6 +512,21 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+![No Image](figs/TA-RELEASES.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TA-RELEASES|
+    |-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+
 
 
 ---
@@ -389,6 +558,21 @@ _None_
 
 _None_
 
+**Graph:**
+
+![No Image](figs/TA-SUPPLY_CHAIN.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TA-SUPPLY_CHAIN|
+    |-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+
+
 
 ---
 
@@ -417,6 +601,21 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+![No Image](figs/TA-TESTS.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TA-TESTS|
+    |-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+
 
 
 ---
@@ -448,6 +647,21 @@ _None_
 
 _None_
 
+**Graph:**
+
+![No Image](figs/TA-UPDATES.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TA-UPDATES|
+    |-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|N/A|
+
+
 
 ---
 
@@ -476,3 +690,18 @@ _None_
 **Fallacies:**
 
 _None_
+
+**Graph:**
+
+![No Image](figs/TA-VALIDATION.svg)
+
+??? example "Graph Data as Table"
+    |date-time|TA-VALIDATION|
+    |-|-|
+    |2025-08-26 12:04:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-26 15:38:44|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 10:29:06|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 13:23:16|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 14:20:48|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+    |2025-08-27 16:24:44.632811|0.00 {style="background-color:hsl(0.0, 100%, 65%)"}|N/A|N/A|
+

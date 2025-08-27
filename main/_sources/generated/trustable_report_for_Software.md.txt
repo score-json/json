@@ -104,7 +104,6 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [NJF-05.3](NJF.md#njf-05.3) |  If the service accepts every value candidate of a properly bounded array is accepted as singleton, then the service accepts the array. | 0.00 |
 | [NJF-05.4](NJF.md#njf-05.4) |  The service does not accept any improperly bounded arrays. | 0.00 |
 | [NJF-05.5](NJF.md#njf-05.5) |  The service does not accept arrays with improper values. | 0.00 |
-| [NJF-05.5_CONTEXT](NJF.md#njf-05.5_context) |  An improper value is either an empty value within a non-empty array or an inadmissible token according to RFC8259. | 0.00 |
 | [NJF-05.6](NJF.md#njf-05.6) |  The service accepts nested arrays. | 0.00 |
 | [NJF-05.6.0](NJF.md#njf-05.6.0) |  The acceptance of nested arrays does not depend on the depth of nesting. | 0.00 |
 | [NJF-05.7](NJF.md#njf-05.7) |  The service does only accept comma as value separator. | 0.00 |
@@ -121,7 +120,6 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [NJF-06.5](NJF.md#njf-06.5) |  The service does not accept objects with improper members. | 0.00 |
 | [NJF-06.5.1](NJF.md#njf-06.5.1) |  If the service does not accept any name candidate as singleton, then the service does not accept the object candidate. | 0.00 |
 | [NJF-06.5.2](NJF.md#njf-06.5.2) |  If the service does not accept any value candidate as singleton, then the service does not accept the object candidate. | 0.00 |
-| [NJF-06.5_CONTEXT](NJF.md#njf-06.5_context) |  An improper name is either not a string (i.e. any other token, or empty), or a string-candidate which does not fulfil the requirements of RFC8259. | 0.00 |
 | [NJF-06.6](NJF.md#njf-06.6) |  The service accept the nested objects. | 0.00 |
 | [NJF-06.6.0](NJF.md#njf-06.6.0) |  The acceptance of nested arrays does not depend on the depth of nesting | 0.00 |
 | [NJF-06.7](NJF.md#njf-06.7) |  The service does only accept comma as member separator. | 0.00 |
@@ -146,7 +144,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [NJF-08.6](NJF.md#njf-08.6) |  The service does not accept invalid syntax for numbers. | 0.00 |
 | [NJF-08.7](NJF.md#njf-08.7) |  The service does accept decimal points in numbers within the bounds of double. | 0.00 |
 | [NJF-08.8](NJF.md#njf-08.8) |  The service does not accept leading zeroes. | 0.00 |
-| [NJF-08.9](NJF.md#njf-08.9) |  The service does not accept any base exceeding 10 in its standard representation. | 0.00 |
+| [NJF-08.9](NJF.md#njf-08.9) |  The service does not accept any other digit symbol than 0-9. | 0.00 |
 | [NJF-12](NJF.md#njf-12) |  The service decodes UTF-8 data. | 0.00 |
 | [NJF-12.1](NJF.md#njf-12.1) |  The service rejects malformed UTF-8 data. | 0.00 |
 | [NJF-12.2](NJF.md#njf-12.2) |  The service rejects "overlong sequences". | 0.00 |
@@ -175,7 +173,6 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [NPF-02.1](NPF.md#npf-02.1) |  The service parses integers without exponent within the precision of int64_t. | 0.00 |
 | [NPF-02.10](NPF.md#npf-02.10) |  The service ignores trailing zeroes after the decimal point. | 0.00 |
 | [NPF-02.11](NPF.md#npf-02.11) |  The service parses numbers within the 64-bit double range but outside of the double precision without throwing an exception. | 0.00 |
-| [NPF-02.11_CONTEXT](NPF.md#npf-02.11_context) |  Although numbers are parsed without throwing an exception, they are not parsed accurately. | 0.00 |
 | [NPF-02.12](NPF.md#npf-02.12) |  The service ignores capitalisation of the exponent. | 0.00 |
 | [NPF-02.2](NPF.md#npf-02.2) |  The service parses integers with exponent within the precision of 64-bit double. | 0.00 |
 | [NPF-02.3](NPF.md#npf-02.3) |  The service parses floating point values without exponent within the precision of 64-bit double. | 0.00 |
@@ -308,6 +305,6 @@ The contribution to the score of a parent item by a suspiciously linked child is
 _Generated for: Software_
 
 * _Repository root: /home/runner/work/json/json_
-* _Commit SHA: dc1cd6a_
-* _Commit date/time: Wed Aug 27 15:05:11 2025_
-* _Commit tag: dc1cd6a3b58a0f0d7e3b55ee34300ca27973caca_
+* _Commit SHA: 6408daed_
+* _Commit date/time: Wed Aug 27 14:20:48 2025_
+* _Commit tag: v3.12.0-244-g6408daedfd6e40871b3f57c3635ceab55b6abebf_

@@ -443,6 +443,8 @@
 <p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
+<p><strong>Graph:</strong></p>
+<p><em>No Historic Data Found</em></p>
 </section>
 <hr class="docutils" />
 <section id="wfj-02">
@@ -460,6 +462,8 @@
 <p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
+<p><strong>Graph:</strong></p>
+<p><em>No Historic Data Found</em></p>
 </section>
 <hr class="docutils" />
 <section id="wfj-03">
@@ -477,6 +481,8 @@
 <p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
+<p><strong>Graph:</strong></p>
+<p><em>No Historic Data Found</em></p>
 </section>
 <hr class="docutils" />
 <section id="wfj-04">
@@ -494,6 +500,8 @@
 <p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
+<p><strong>Graph:</strong></p>
+<p><em>No Historic Data Found</em></p>
 </section>
 <hr class="docutils" />
 <section id="wfj-05">
@@ -512,6 +520,8 @@
 <p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
+<p><strong>Graph:</strong></p>
+<p><em>No Historic Data Found</em></p>
 </section>
 <hr class="docutils" />
 <section id="wfj-06">
@@ -524,9 +534,437 @@
 <p><strong>Supporting Items:</strong></p>
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[basic_json::accept]</span> <span class="pre">(include/nlohmann/json.hpp)</span></code></p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">accept</span><span class="p">(</span><span class="n">InputType</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">i</span><span class="p">,</span>
+<span class="w">                   </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">ignore_comments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">parser</span><span class="p">(</span><span class="n">detail</span><span class="o">::</span><span class="n">input_adapter</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">InputType</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;(</span><span class="n">i</span><span class="p">)),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">ignore_comments</span><span class="p">).</span><span class="n">accept</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[basic_json::accept]</span> <span class="pre">(include/nlohmann/json.hpp)</span></code></p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">accept</span><span class="p">(</span><span class="n">IteratorType</span><span class="w"> </span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="n">IteratorType</span><span class="w"> </span><span class="n">last</span><span class="p">,</span>
+<span class="w">                   </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">ignore_comments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">parser</span><span class="p">(</span><span class="n">detail</span><span class="o">::</span><span class="n">input_adapter</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">first</span><span class="p">),</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">last</span><span class="p">)),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">ignore_comments</span><span class="p">).</span><span class="n">accept</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[basic_json::accept]</span> <span class="pre">(include/nlohmann/json.hpp)</span></code></p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">JSON_HEDLEY_DEPRECATED_FOR</span><span class="p">(</span><span class="mf">3.8.0</span><span class="p">,</span><span class="w"> </span><span class="n">accept</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">len</span><span class="p">))</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">accept</span><span class="p">(</span><span class="n">detail</span><span class="o">::</span><span class="n">span_input_adapter</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">i</span><span class="p">,</span>
+<span class="w">                   </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">ignore_comments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">parser</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">get</span><span class="p">(),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">ignore_comments</span><span class="p">).</span><span class="n">accept</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[parser::accept]</span> <span class="pre">(include/nlohmann/detail/input/parser.hpp)</span></code></p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">accept</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">strict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">json_sax_acceptor</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">BasicJsonType</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">sax_acceptor</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">sax_parse</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sax_acceptor</span><span class="p">,</span><span class="w"> </span><span class="n">strict</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[parser::sax_parse]</span> <span class="pre">(include/nlohmann/detail/input/parser.hpp)</span></code></p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">sax_parse</span><span class="p">(</span><span class="n">SAX</span><span class="o">*</span><span class="w"> </span><span class="n">sax</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">strict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">detail</span><span class="o">::</span><span class="n">is_sax_static_asserts</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">SAX</span><span class="p">,</span><span class="w"> </span><span class="n">BasicJsonType</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sax_parse_internal</span><span class="p">(</span><span class="n">sax</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// strict mode: next byte must be EOF</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">strict</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">get_token</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">end_of_input</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">parse_error</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span>
+<span class="w">                                </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_token_string</span><span class="p">(),</span>
+<span class="w">                                </span><span class="n">parse_error</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span><span class="w"> </span><span class="n">exception_message</span><span class="p">(</span><span class="n">token_type</span><span class="o">::</span><span class="n">end_of_input</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[parser::sax_parse_internal]</span> <span class="pre">(include/nlohmann/detail/input/parser.hpp)</span></code></p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">sax_parse_internal</span><span class="p">(</span><span class="n">SAX</span><span class="o">*</span><span class="w"> </span><span class="n">sax</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// stack to remember the hierarchy of structured values we are parsing</span>
+<span class="w">    </span><span class="c1">// true = array; false = object</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="kt">bool</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">states</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// value to avoid a goto (see comment where set to true)</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">skip_to_state_evaluation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">skip_to_state_evaluation</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// invariant: get_token() was called before each iteration</span>
+<span class="w">            </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">last_token</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">token_type</span><span class="o">::</span><span class="no">begin_object</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="o">!</span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">start_object</span><span class="p">(</span><span class="n">detail</span><span class="o">::</span><span class="n">unknown_size</span><span class="p">())))</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+
+<span class="w">                    </span><span class="c1">// closing } -&amp;gt; we are done</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">get_token</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">end_object</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="o">!</span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">end_object</span><span class="p">()))</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+
+<span class="w">                    </span><span class="c1">// parse key</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="n">last_token</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">value_string</span><span class="p">))</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">parse_error</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span>
+<span class="w">                                                </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_token_string</span><span class="p">(),</span>
+<span class="w">                                                </span><span class="n">parse_error</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span><span class="w"> </span><span class="n">exception_message</span><span class="p">(</span><span class="n">token_type</span><span class="o">::</span><span class="n">value_string</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;object key&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">));</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="o">!</span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">key</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_string</span><span class="p">())))</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+
+<span class="w">                    </span><span class="c1">// parse separator (:)</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="n">get_token</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">name_separator</span><span class="p">))</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">parse_error</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span>
+<span class="w">                                                </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_token_string</span><span class="p">(),</span>
+<span class="w">                                                </span><span class="n">parse_error</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span><span class="w"> </span><span class="n">exception_message</span><span class="p">(</span><span class="n">token_type</span><span class="o">::</span><span class="n">name_separator</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;object separator&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">));</span>
+<span class="w">                    </span><span class="p">}</span>
+
+<span class="w">                    </span><span class="c1">// remember we are now inside an object</span>
+<span class="w">                    </span><span class="n">states</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+
+<span class="w">                    </span><span class="c1">// parse values</span>
+<span class="w">                    </span><span class="n">get_token</span><span class="p">();</span>
+<span class="w">                    </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">token_type</span><span class="o">::</span><span class="no">begin_array</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="o">!</span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">start_array</span><span class="p">(</span><span class="n">detail</span><span class="o">::</span><span class="n">unknown_size</span><span class="p">())))</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+
+<span class="w">                    </span><span class="c1">// closing ] -&amp;gt; we are done</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">get_token</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">end_array</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="o">!</span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">end_array</span><span class="p">()))</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+
+<span class="w">                    </span><span class="c1">// remember we are now inside an array</span>
+<span class="w">                    </span><span class="n">states</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+
+<span class="w">                    </span><span class="c1">// parse values (no need to call get_token)</span>
+<span class="w">                    </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">token_type</span><span class="o">::</span><span class="no">value_float</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_number_float</span><span class="p">();</span>
+
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="o">!</span><span class="n">std</span><span class="o">::</span><span class="n">isfinite</span><span class="p">(</span><span class="n">res</span><span class="p">)))</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">parse_error</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span>
+<span class="w">                                                </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_token_string</span><span class="p">(),</span>
+<span class="w">                                                </span><span class="n">out_of_range</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="mi">406</span><span class="p">,</span><span class="w"> </span><span class="n">concat</span><span class="p">(</span><span class="s">&quot;number overflow parsing &#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_token_string</span><span class="p">(),</span><span class="w"> </span><span class="sc">&#39;\&#39;&#39;</span><span class="p">),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">));</span>
+<span class="w">                    </span><span class="p">}</span>
+
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="o">!</span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">number_float</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_string</span><span class="p">())))</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">token_type</span><span class="o">::</span><span class="no">literal_false</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="o">!</span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">boolean</span><span class="p">(</span><span class="nb">false</span><span class="p">)))</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">token_type</span><span class="o">::</span><span class="no">literal_null</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="o">!</span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">null</span><span class="p">()))</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">token_type</span><span class="o">::</span><span class="no">literal_true</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="o">!</span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">boolean</span><span class="p">(</span><span class="nb">true</span><span class="p">)))</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">token_type</span><span class="o">::</span><span class="no">value_integer</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="o">!</span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">number_integer</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_number_integer</span><span class="p">())))</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">token_type</span><span class="o">::</span><span class="no">value_string</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="o">!</span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">string</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_string</span><span class="p">())))</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">token_type</span><span class="o">::</span><span class="no">value_unsigned</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="o">!</span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">number_unsigned</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_number_unsigned</span><span class="p">())))</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">token_type</span><span class="o">::</span><span class="no">parse_error</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="c1">// using &quot;uninitialized&quot; to avoid &quot;expected&quot; message</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">parse_error</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span>
+<span class="w">                                            </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_token_string</span><span class="p">(),</span>
+<span class="w">                                            </span><span class="n">parse_error</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span><span class="w"> </span><span class="n">exception_message</span><span class="p">(</span><span class="n">token_type</span><span class="o">::</span><span class="n">uninitialized</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">));</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">token_type</span><span class="o">::</span><span class="no">end_of_input</span><span class="p">:</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">().</span><span class="n">chars_read_total</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">parse_error</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span>
+<span class="w">                                                </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_token_string</span><span class="p">(),</span>
+<span class="w">                                                </span><span class="n">parse_error</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span>
+<span class="w">                                                        </span><span class="s">&quot;attempting to parse an empty input; check that your input string or stream contains the expected JSON&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">));</span>
+<span class="w">                    </span><span class="p">}</span>
+
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">parse_error</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span>
+<span class="w">                                            </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_token_string</span><span class="p">(),</span>
+<span class="w">                                            </span><span class="n">parse_error</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span><span class="w"> </span><span class="n">exception_message</span><span class="p">(</span><span class="n">token_type</span><span class="o">::</span><span class="n">literal_or_value</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">));</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">token_type</span><span class="o">::</span><span class="no">uninitialized</span><span class="p">:</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">token_type</span><span class="o">::</span><span class="no">end_array</span><span class="p">:</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">token_type</span><span class="o">::</span><span class="no">end_object</span><span class="p">:</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">token_type</span><span class="o">::</span><span class="no">name_separator</span><span class="p">:</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">token_type</span><span class="o">::</span><span class="no">value_separator</span><span class="p">:</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="no">token_type</span><span class="o">::</span><span class="no">literal_or_value</span><span class="p">:</span>
+<span class="w">                </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="c1">// the last token was unexpected</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">parse_error</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span>
+<span class="w">                                            </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_token_string</span><span class="p">(),</span>
+<span class="w">                                            </span><span class="n">parse_error</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span><span class="w"> </span><span class="n">exception_message</span><span class="p">(</span><span class="n">token_type</span><span class="o">::</span><span class="n">literal_or_value</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">));</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">skip_to_state_evaluation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// we reached this line after we successfully parsed a value</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">states</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// empty stack: we reached the end of the hierarchy: done</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">states</span><span class="p">.</span><span class="n">back</span><span class="p">())</span><span class="w">  </span><span class="c1">// array</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// comma -&amp;gt; next value</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">get_token</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">value_separator</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// parse a new value</span>
+<span class="w">                </span><span class="n">get_token</span><span class="p">();</span>
+<span class="w">                </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="c1">// closing ]</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_LIKELY</span><span class="p">(</span><span class="n">last_token</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">end_array</span><span class="p">))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="o">!</span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">end_array</span><span class="p">()))</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">                </span><span class="p">}</span>
+
+<span class="w">                </span><span class="c1">// We are done with this array. Before we can parse a</span>
+<span class="w">                </span><span class="c1">// new value, we need to evaluate the new state first.</span>
+<span class="w">                </span><span class="c1">// By setting skip_to_state_evaluation to false, we</span>
+<span class="w">                </span><span class="c1">// are effectively jumping to the beginning of this if.</span>
+<span class="w">                </span><span class="n">JSON_ASSERT</span><span class="p">(</span><span class="o">!</span><span class="n">states</span><span class="p">.</span><span class="n">empty</span><span class="p">());</span>
+<span class="w">                </span><span class="n">states</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+<span class="w">                </span><span class="n">skip_to_state_evaluation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">                </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">parse_error</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span>
+<span class="w">                                    </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_token_string</span><span class="p">(),</span>
+<span class="w">                                    </span><span class="n">parse_error</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span><span class="w"> </span><span class="n">exception_message</span><span class="p">(</span><span class="n">token_type</span><span class="o">::</span><span class="n">end_array</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;array&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// states.back() is false -&amp;gt; object</span>
+
+<span class="w">        </span><span class="c1">// comma -&amp;gt; next value</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">get_token</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">value_separator</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// parse key</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="n">get_token</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">value_string</span><span class="p">))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">parse_error</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span>
+<span class="w">                                        </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_token_string</span><span class="p">(),</span>
+<span class="w">                                        </span><span class="n">parse_error</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span><span class="w"> </span><span class="n">exception_message</span><span class="p">(</span><span class="n">token_type</span><span class="o">::</span><span class="n">value_string</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;object key&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">));</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="o">!</span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">key</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_string</span><span class="p">())))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="c1">// parse separator (:)</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="n">get_token</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">name_separator</span><span class="p">))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">parse_error</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span>
+<span class="w">                                        </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_token_string</span><span class="p">(),</span>
+<span class="w">                                        </span><span class="n">parse_error</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span><span class="w"> </span><span class="n">exception_message</span><span class="p">(</span><span class="n">token_type</span><span class="o">::</span><span class="n">name_separator</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;object separator&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">));</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="c1">// parse values</span>
+<span class="w">            </span><span class="n">get_token</span><span class="p">();</span>
+<span class="w">            </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// closing }</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::scan]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">token_type</span><span class="w"> </span><span class="nf">scan</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// initially, skip the BOM</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">position</span><span class="p">.</span><span class="n">chars_read_total</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">skip_bom</span><span class="p">())</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">error_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;invalid BOM; must be 0xEF 0xBB 0xBF if given&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">parse_error</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// read next character and ignore whitespace</span>
+<span class="w">    </span><span class="n">skip_whitespace</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// ignore comments</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">ignore_comments</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;/&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">scan_comment</span><span class="p">())</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">parse_error</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// skip following whitespace</span>
+<span class="w">        </span><span class="n">skip_whitespace</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// structural characters</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;[&#39;</span><span class="p">:</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">begin_array</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;]&#39;</span><span class="p">:</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">end_array</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;{&#39;</span><span class="p">:</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">begin_object</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;}&#39;</span><span class="p">:</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">end_object</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;:&#39;</span><span class="p">:</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">name_separator</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;,&#39;</span><span class="p">:</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">value_separator</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// literals</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;t&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">char_type</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">true_literal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="k">static_cast</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">char_type</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;(</span><span class="sc">&#39;t&#39;</span><span class="p">),</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">char_type</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;(</span><span class="sc">&#39;r&#39;</span><span class="p">),</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">char_type</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;(</span><span class="sc">&#39;u&#39;</span><span class="p">),</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">char_type</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;(</span><span class="sc">&#39;e&#39;</span><span class="p">)}};</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">scan_literal</span><span class="p">(</span><span class="n">true_literal</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">true_literal</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">literal_true</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;f&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">char_type</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">false_literal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="k">static_cast</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">char_type</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;(</span><span class="sc">&#39;f&#39;</span><span class="p">),</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">char_type</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;(</span><span class="sc">&#39;a&#39;</span><span class="p">),</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">char_type</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;(</span><span class="sc">&#39;l&#39;</span><span class="p">),</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">char_type</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;(</span><span class="sc">&#39;s&#39;</span><span class="p">),</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">char_type</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;(</span><span class="sc">&#39;e&#39;</span><span class="p">)}};</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">scan_literal</span><span class="p">(</span><span class="n">false_literal</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">false_literal</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">literal_false</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;n&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">char_type</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="w"> </span><span class="n">null_literal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="k">static_cast</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">char_type</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;(</span><span class="sc">&#39;n&#39;</span><span class="p">),</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">char_type</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;(</span><span class="sc">&#39;u&#39;</span><span class="p">),</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">char_type</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;(</span><span class="sc">&#39;l&#39;</span><span class="p">),</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">char_type</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;(</span><span class="sc">&#39;l&#39;</span><span class="p">)}};</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">scan_literal</span><span class="p">(</span><span class="n">null_literal</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">null_literal</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">literal_null</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// string</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;\&quot;&#39;</span><span class="p">:</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">scan_string</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// number</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;-&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;2&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;3&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;4&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;5&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;6&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;7&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;8&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;9&#39;</span><span class="p">:</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">scan_number</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// end of input (the null byte is needed when parsing from</span>
+<span class="w">        </span><span class="c1">// string literals)</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;\0&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">char_traits</span><span class="o">&amp;</span><span class="no">lt</span><span class="err">;</span><span class="no">char_type</span><span class="o">&amp;</span><span class="no">gt</span><span class="err">;</span><span class="o">::</span><span class="no">eof</span><span class="p">():</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">end_of_input</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// error</span>
+<span class="w">        </span><span class="k">default</span><span class="o">:</span>
+<span class="w">            </span><span class="n">error_message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;invalid literal&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">parse_error</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
+<p><strong>Graph:</strong></p>
+<p><em>No Historic Data Found</em></p>
 </section>
 <hr class="docutils" />
 <section id="wfj-07">
@@ -544,6 +982,8 @@
 <p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
+<p><strong>Graph:</strong></p>
+<p><em>No Historic Data Found</em></p>
 </section>
 <hr class="docutils" />
 <section id="wfj-08">
@@ -561,6 +1001,8 @@
 <p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
+<p><strong>Graph:</strong></p>
+<p><em>No Historic Data Found</em></p>
 </section>
 
 
