@@ -1,0 +1,5 @@
+pytest==8.4.1
+colorama>=0.4
+exceptiongroup>=1
+tomli>=1
+pip==25.2

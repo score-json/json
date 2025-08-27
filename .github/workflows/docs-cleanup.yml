@@ -26,6 +26,6 @@ jobs:
       contents: write
       pages: write
       id-token: write
-    uses: eclipse-score/cicd-workflows/.github/workflows/docs-cleanup.yml@main
+    uses: eclipse-score/cicd-workflows/.github/workflows/docs-cleanup.yml@a370c9723b2e935e940dcf0f0d8981f7aeb3b33f # main
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
