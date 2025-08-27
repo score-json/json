@@ -30,7 +30,7 @@ jobs:
       - name: Upload test report 
         uses: actions/upload-artifact@v4
         with:
-          name: ci_test_gcc-artifact
+          name: my_first_artifact
           path: build/my_logs/
 
   # ci_infer:
@@ -260,13 +260,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ci_test_gcc] #, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
     steps:
+      - name: Download all workflow artifacts
+        uses: actions/download-artifact@v4
       - name: Generate ubuntu artifact
         run: |
           echo "$PWD"
           echo "Generating ubuntu artifact..."
           mkdir -p ubuntu
-          cd build
-          if [ -f "my_logs" ]; then
+          cd my_first_artifact
+          if [ -d "my_logs" ]; then
             echo "Logging directory exists at the expected place."
           else
             echo "Logging directory does not exist at the expected place."
