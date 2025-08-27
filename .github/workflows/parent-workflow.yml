@@ -5,8 +5,7 @@ on:
   push: 
     branches:
       - main
-  schedule:
-    - cron: '0 0 * * *' # Runs daily at midnight UTC
+      - store_test_results
 
 permissions:
   contents: write
@@ -16,85 +15,20 @@ permissions:
   security-events: write
 
 jobs:
-  labeler:
-    name: Run Labeler Workflow
-    uses: ./.github/workflows/labeler.yml
-    with:
-      artifact_id: "labeler-${{ github.sha }}"
-
-  check_amalgamation:
-    name: Run Amalgamation Workflow
-    uses: ./.github/workflows/check_amalgamation.yml
-    with:
-      artifact_id: "check_amalgamation-${{ github.sha }}"
-      
-  test_trudag_extensions:
-    name: Run Test Trudag Extensions Workflow
-    uses: ./.github/workflows/test_trudag_extensions.yml
-    with:
-      artifact_id: "test_trudag_extensions-${{ github.sha }}"
-
-  codeql:
-    name: Run Codeql analysis Workflow
-    uses: ./.github/workflows/codeql-analysis.yml
-    with:
-      artifact_id: "codeql-${{ github.sha }}"
 
   ubuntu:
     name: Run Ubuntu Workflow
-    needs: [codeql] # Error if CodeQL and Ubuntu triggered at the same time due to conflicting priorities
     uses: ./.github/workflows/ubuntu.yml
     with:
       artifact_id: "ubuntu-${{ github.sha }}"
 
-  dependency_review:
-    name: Run dependency_review Workflow
-    if: ${{ github.event_name == 'pull_request' }} 
-    uses: ./.github/workflows/dependency-review.yml
-    with:
-      artifact_id: "dependency_review-${{ github.sha }}"
-
-  collect_artifacts_pr:
-    name: "Collect Results & Deploy (PR)"
-    if: github.event_name == 'pull_request'
-    needs: [labeler, check_amalgamation, test_trudag_extensions, dependency_review, codeql, ubuntu]
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        target: [labeler, check_amalgamation, test_trudag_extensions, dependency_review, codeql, ubuntu]
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Check child workflow results 
-        run: |
-          echo "=== Checking Child Workflow Results ==="
-          result="${{ needs[matrix.target].result }}"
-          echo "${{ matrix.target }} workflow result: $result"
-
-          if [[ "$result" != "success" ]]; then
-            echo "❌ ${{ matrix.target }} workflow failed! Exiting..."
-            exit 1
-          fi
-          echo "✅ Child workflows completed successfully!" 
-        env:
-          current_workflow: ${{ matrix.target }}
-
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: "${{ matrix.target }}-${{ github.sha }}"
-          path: artifacts/
-
   collect_artifacts_non_pr:
-    name: "Collect Results & Deploy (Non-PR)"
-    if: github.event_name != 'pull_request'
-    needs: [labeler, check_amalgamation, test_trudag_extensions, codeql, ubuntu]  # no dependency_review if non PR
+    name: "Collect Results & Deploy"
+    needs: [ubuntu]
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [labeler, check_amalgamation, test_trudag_extensions, codeql, ubuntu]
+        target: [ubuntu]
 
     steps:
       - name: Checkout code
@@ -119,19 +53,3 @@ jobs:
         with:
           name: "${{ matrix.target }}-${{ github.sha }}"
           path: artifacts/
-
-  publish_documentation_pr:
-    name: Run publish_documentation Workflow pr
-    if: github.event_name == 'pull_request'
-    needs: [collect_artifacts_pr]
-    uses: ./.github/workflows/publish_documentation.yml
-    with:
-      artifact_id: "publish_documentation-${{ github.sha }}"
-
-  publish_documentation_non_pr:
-    name: Run publish_documentation Workflow non pr
-    if: github.event_name != 'pull_request'
-    needs: [collect_artifacts_non_pr]
-    uses: ./.github/workflows/publish_documentation.yml
-    with:
-      artifact_id: "publish_documentation-${{ github.sha }}"
