@@ -29,7 +29,7 @@ RUN apt-get update && \
         curl \
         make \
         python3 \
-        python3-pip \
+        python3-pip=25.2 \
         python3-venv \
         pipx \
         locales \
