@@ -26,7 +26,7 @@ jobs:
       - name: Run CMake
         run: cmake -S . -B build -DJSON_CI=On
       - name: Build
-  #       run: cmake --build build --target ci_test_gcc
+        run: cmake --build build --target ci_test_gcc
 
   # ci_infer:
   #   runs-on: ubuntu-latest
