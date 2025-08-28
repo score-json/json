@@ -43,10 +43,10 @@ jobs:
       - name: Schade
         run: | 
           mkdir my_logs
+          ls -a
           cd my_logs
           touch Moin
           echo "Moin" >> Moin
-          ls -a
           exit 0
       - name: Upload test report 
         uses: actions/upload-artifact@v4
