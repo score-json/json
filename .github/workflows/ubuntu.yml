@@ -295,25 +295,25 @@ jobs:
           python3 ./TSF/scripts/capture_test_data.py
           echo "Hallo, Welt"
 
-  publish_test_data_failure:
-    runs-on: ubuntu-latest
-    needs: [ci_test_gcc, force_fail, ci_static_analysis_clang, ci_test_standards_gcc]
-    if: failure()
-    steps:
-      - name: Moin
-        run: echo "Moin, Welt"
+  # publish_test_data_failure:
+  #   runs-on: ubuntu-latest
+  #   needs: [ci_test_gcc, force_fail, ci_static_analysis_clang, ci_test_standards_gcc]
+  #   if: failure()
+  #   steps:
+  #     - name: Moin
+  #       run: echo "Moin, Welt"
 
-  publish_test_data_cancellation:
-    runs-on: ubuntu-latest
-    needs: [ci_test_gcc, force_fail, ci_static_analysis_clang, ci_test_standards_gcc]
-    if: cancelled()
-    steps:
-      - name: Moinsen
-        run: echo "Schade, eigentlich"
+  # publish_test_data_cancellation:
+  #   runs-on: ubuntu-latest
+  #   needs: [ci_test_gcc, force_fail, ci_static_analysis_clang, ci_test_standards_gcc]
+  #   if: cancelled()
+  #   steps:
+  #     - name: Moinsen
+  #       run: echo "Schade, eigentlich"
 
   ubuntu_artifact:
     runs-on: ubuntu-latest
-    needs: [ci_test_gcc] #, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
+    # needs: [ci_test_gcc] #, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
     steps:
       - name: Download all workflow artifacts
         uses: actions/download-artifact@v4
