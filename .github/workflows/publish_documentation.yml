@@ -64,7 +64,7 @@ jobs:
             git commit -m "Initialise persistent data storage"
             git push origin save_historical_data
           fi
-          git checkout main
+          git checkout ${{ github.event.repository.default_branch }}
           git checkout save_historical_data -- TSF/TrustableScoring.db
 
       - name: Generate trudag report
@@ -90,7 +90,7 @@ jobs:
       
       - name: Recover stash
         run: |
-          git checkout main
+          git checkout ${{ github.event.repository.default_branch }}
           git stash apply
 
       - name: Upload trudag artifact
