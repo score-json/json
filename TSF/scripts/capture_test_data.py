@@ -83,7 +83,7 @@ cursor.execute("CREATE TABLE IF NOT EXISTS workflow_info(repo TEXT, run_id INT, 
 # cursor.execute("CREATE TABLE IF NOT EXISTS test_results(name TEXT, execution_time REAL, Cpp_standard TEXT, passed_cases INT, failed_cases INT, skipped_cases INT, passed_assertions INT, failed_assertions INT)")
 
 # fill in metadata
-command = f"INSERT INTO workflow_info VALUES({environment.get('GITHUB_REPOSITORY')}, {environment.get('GITHUB_RUN_ID')}, {environment.get('GITHUB_RUN_ID')}, {sys.argv[1]})"
+command = f"INSERT INTO workflow_info VALUES('{environment.get('GITHUB_REPOSITORY')}', {environment.get('GITHUB_RUN_ID')}, {environment.get('GITHUB_RUN_ID')}, '{sys.argv[1]}')"
 cursor.execute(command)
 
 # terminate connection to database
