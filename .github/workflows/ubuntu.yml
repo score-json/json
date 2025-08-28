@@ -308,7 +308,7 @@ jobs:
           path: my_artifacts
       - name: Moin
         run: |
-          python3 TSF/scripts/capture_test_data.py
+          python3 TSF/scripts/capture_test_data.py success
           echo "Hallo, Welt"
 
   # publish_test_data_failure:
