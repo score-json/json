@@ -301,7 +301,7 @@ jobs:
         uses: actions/download-artifact@v4
       - name: Moin
         run: |
-          python3 ./TSF/scripts/capture_test_data.py
+          python3 TSF/scripts/capture_test_data.py
           echo "Hallo, Welt"
 
   # publish_test_data_failure:
