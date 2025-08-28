@@ -15,7 +15,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
   cancel-in-progress: true
 
-# jobs:
+jobs:
 #   ci_test_gcc:
 #     runs-on: ubuntu-latest
 #     container: gcc:14
