@@ -70,8 +70,9 @@ except RuntimeError as e:
 
 if os.path.exists("./my_artifacts"): print("Moin!")
 for root, dirs, files in os.walk("./my_artifacts/"):
-    print(root, "consumes", end=" ")
-    print(sum(os.path.getsize(os.path.join(root, name)) for name in files), end=" ")
+    print(root)
+    for dir in dirs: print(dir)
+    for file in files: print(file)
 
 # # initiate connection to database
 # connector = sqlite3.connect("TestResultData.db")
