@@ -24,7 +24,7 @@ jobs:
       - name: Get latest CMake and ninja
         uses: lukka/get-cmake@28983e0d3955dba2bb0a6810caae0c6cf268ec0c # v4.0.0
       - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+        run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_test_gcc
       - name: Do shite
@@ -36,7 +36,11 @@ jobs:
         with:
           name: my_first_artifact
           path: build/my_logs/
-
+  force_fail:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Schade
+        run: exit 1
   # ci_infer:
   #   runs-on: ubuntu-latest
   #   container: ghcr.io/nlohmann/json-ci:v2.4.0
@@ -82,7 +86,7 @@ jobs:
         uses: lukka/get-cmake@28983e0d3955dba2bb0a6810caae0c6cf268ec0c # v4.0.0
       - name: Run CMake
       # The default C++ compiler in the docker image is clang++-14 which does not support all compiler flags
-        run: cmake -S . -B build -DJSON_CI=On -DCLANG_TOOL=clang++-20 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+        run: cmake -S . -B build -DJSON_CI=On -DCLANG_TOOL=clang++-20
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
       - name: Do shite
@@ -204,7 +208,7 @@ jobs:
       - name: Get latest CMake and ninja
         uses: lukka/get-cmake@28983e0d3955dba2bb0a6810caae0c6cf268ec0c # v4.0.0
       - name: Run CMake
-        run: cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DJSON_CI=On
+        run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_test_gcc_cxx${{ matrix.standard }}
       - name: Do shite
@@ -277,6 +281,27 @@ jobs:
   #       run: cmake -S . -B build -DJSON_CI=On
   #     - name: Build
   #       run: cmake --build build --target ${{ matrix.target }}
+
+  publish_test_data_success:
+    runs-on: ubuntu-latest
+    if: success()
+    steps:
+      - name: Moin
+        run: echo "Hallo, Welt"
+
+  publish_test_data_failure:
+    runs-on: ubuntu-latest
+    if: failure()
+    steps:
+      - name: Moin
+        run: echo "Moin, Welt"
+
+  publish_test_data_cancellation:
+    runs-on: ubuntu-latest
+    if: cancelled()
+    steps:
+      - name: Moin
+        run: echo "Schade, eigentlich"
 
   ubuntu_artifact:
     runs-on: ubuntu-latest
