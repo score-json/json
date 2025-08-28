@@ -86,7 +86,7 @@ cursor.execute(command)
 connector.commit()
 
 # Load my artifacts
-root, dirs, files = os.walk("./my_artifacts/")
+[root, dirs, files] = os.walk("./my_artifacts/")
 sqlite_head = "INSERT INTO test_results VALUES"
 # We are only interested in .xml files
 failed_data = []
