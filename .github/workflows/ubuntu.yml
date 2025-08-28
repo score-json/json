@@ -294,7 +294,7 @@ jobs:
 
   publish_test_data_success:
     runs-on: ubuntu-latest
-    needs: [ci_test_standards_gcc]
+    needs: [force_fail]
     if: success()
     steps:
       - name: Download all workflow artifacts
