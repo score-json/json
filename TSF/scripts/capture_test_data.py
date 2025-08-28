@@ -69,6 +69,8 @@ except RuntimeError as e:
     raise RuntimeError("Critical error: Can not uniquely identify environment data! Aborting recording of data.")
 
 if os.path.exists("./my_artifacts"): print("Moin!")
+for entry in os.listdir("./my_artifacts"):
+    print(entry)
 
 # # initiate connection to database
 # connector = sqlite3.connect("TestResultData.db")
