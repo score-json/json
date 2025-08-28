@@ -47,12 +47,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y graphviz
           pip install git+https://gitlab.com/CodethinkLabs/trustable/trustable@cc6b72753e1202951d382f60ff08320f5a957c7b
-      
-      - name: Get current branch name
-        id: get_branch
-        run: |
-          current_branch=${{ github.event.pull_request.head.ref }}
-          echo "branch_name=$current_branch" >> $GITHUB_ENV
 
       - name: Fetch data storage branch
         run: |
@@ -70,7 +64,7 @@ jobs:
             git commit -m "Initialise persistent data storage"
             git push origin save_historical_data
           fi
-          git checkout $branch_name
+          git checkout ${{ github.event.repository.default_branch }}
           git checkout save_historical_data -- TSF/TrustableScoring.db
 
       - name: Generate trudag report
@@ -96,13 +90,13 @@ jobs:
       
       - name: Recover stash
         run: |
-          git checkout $branch_name
+          git checkout ${{ github.event.repository.default_branch }}
           git stash apply
 
       - name: Upload trudag artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: trudag-report-${{ github.event.pull_request.head.sha || github.sha }}
+          name: trudag-report-${{ github.sha }}
           path: TSF/docs/generated/
           if-no-files-found: error
           
