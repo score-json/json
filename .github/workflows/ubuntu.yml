@@ -37,11 +37,21 @@ jobs:
 #           name: my_first_artifact
 #           path: build/my_logs/
 
-#   force_fail:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Schade
-#         run: exit 1
+  force_fail:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Schade
+        run: | 
+          mkdir my_logs
+          cd my_logs
+          touch Moin
+          echo "Moin" >> Moin
+          exit 0
+      - name: Upload test report 
+        uses: actions/upload-artifact@v4
+        with:
+          name: my_first_artifact
+          path: my_logs/
   # ci_infer:
   #   runs-on: ubuntu-latest
   #   container: ghcr.io/nlohmann/json-ci:v2.4.0
@@ -198,29 +208,28 @@ jobs:
   #     - name: Build
   #       run: cmake --build build --target ci_test_compiler_default
 
-  ci_test_standards_gcc:
-    runs-on: ubuntu-latest
-    container: gcc:14.3
-    strategy:
-      matrix:
-        standard: [17] # [11, 14, 17, 20, 23, 26]
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - name: Get latest CMake and ninja
-        uses: lukka/get-cmake@28983e0d3955dba2bb0a6810caae0c6cf268ec0c # v4.0.0
-      - name: Run CMake
-        run: cmake -S . -B build -DJSON_CI=On
-      - name: Build
-        run: cmake --build build --target ci_test_gcc_cxx${{ matrix.standard }}
-      - name: Do shite
-        run: |
-          mv build/CMakeCache.txt build/my_logs/CMakeCache.txt
-          mv build/compile_commands.json build/my_logs/compile_commands.json
-      - name: Upload test report 
-        uses: actions/upload-artifact@v4
-        with:
-          name: my_threeandahalfth_artifact
-          path: build/my_logs/
+  # ci_test_standards_gcc:
+  #   runs-on: ubuntu-latest
+  #   container: gcc:14.3
+  #   strategy:
+  #     matrix:
+  #       standard: [17] # [11, 14, 17, 20, 23, 26]
+  #   steps:
+  #     - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+  #     - name: Get latest CMake and ninja
+  #       uses: lukka/get-cmake@28983e0d3955dba2bb0a6810caae0c6cf268ec0c # v4.0.0
+  #     - name: Run CMake
+  #       run: cmake -S . -B build -DJSON_CI=On
+  #     - name: Build
+  #       run: cmake --build build --target ci_test_gcc_cxx${{ matrix.standard }}
+  #     - name: Do shite
+  #       run: |
+  #         mv build/CMakeCache.txt build/my_logs/CMakeCache.txt
+  #     - name: Upload test report 
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: my_threeandahalfth_artifact
+  #         path: build/my_logs/
 
   # ci_test_standards_clang:
   #   runs-on: ubuntu-latest
