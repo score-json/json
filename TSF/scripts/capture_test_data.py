@@ -80,7 +80,7 @@ cursor.execute("CREATE TABLE IF NOT EXISTS test_results(timestamp INT, name TEXT
 
 # fill in metadata
 # BEACHTE: This script expects the status of the github workflow as argument
-command = f"INSERT INTO workflow_info VALUES('{environment.get('GITHUB_REPOSITORY')}', {environment.get('GITHUB_RUN_ID')}, {environment.get('GITHUB_RUN_ATTEMPT')}, '{sys.argv[1]}'"
+command = f"INSERT INTO workflow_info VALUES('{environment.get('GITHUB_REPOSITORY')}', {environment.get('GITHUB_RUN_ID')}, {environment.get('GITHUB_RUN_ATTEMPT')}, '{sys.argv[1]}')"
 cursor.execute(command)
 # Don't forget to save!
 connector.commit()
