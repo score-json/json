@@ -2,7 +2,7 @@ import sys
 import sqlite3
 import os.path
 
-os.path.isdir("./my_first_artifact")
+if os.path.isdir("./my_first_artifact"): print("Moin!")
 
 # connector = sqlite3.connect("TestResultData.db")
 # connector.execute("PRAGMA foreign_keys = ON")
