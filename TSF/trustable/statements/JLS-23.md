@@ -13,4 +13,4 @@ evidence:
                     - "https://github.com/eclipse-score/inc_nlohmann_json"
 ---
 
-The eclipse s-core organization mirrors the nlohmann_json library in a fork.
+The eclipse s-core organization mirrors the nlohmann/json library in a fork.
