@@ -69,7 +69,6 @@ def main():
        sys.exit('ERROR:' + sys.argv[0] + ' expects 1 command line argument which is the processing path. Instead ' + str(len(sys.argv) - 1) + ' arguments were passed.')
     else:
         input_path = sys.argv[1]
-    print(input_path)
 
     for root, _, files in os.walk(input_path):
         for file in files:
