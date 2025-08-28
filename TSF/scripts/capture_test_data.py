@@ -68,23 +68,21 @@ try:
 except RuntimeError as e:
     raise RuntimeError("Critical error: Can not uniquely identify environment data! Aborting recording of data.")
 
-if os.path.exists("./my_artifacts"): print("Moin!")
-for root, dirs, files in os.walk("./my_artifacts/"):
+for root, dirs, files in os.walk("./thy_artifacts/"):
     print(root)
     for dir in dirs: print(dir)
     for file in files: print(file)
 
-# # initiate connection to database
-# connector = sqlite3.connect("TestResultData.db")
-# connector.execute("PRAGMA foreign_keys = ON")
-# cursor = connector.cursor()
+# initiate connection to database
+connector = sqlite3.connect("TestResultData.db")
+connector.execute("PRAGMA foreign_keys = ON")
+cursor = connector.cursor()
 
-# # load expected tables
-# cursor.execute("CREATE TABLE IF NOT EXISTS workflow_info(repo TEXT, run_id INT, run_attempt, status TEXT CHECK(status IN ('successful', 'failed', 'cancelled')) DEFAULT 'failed')")
-# cursor.execute("CREATE TABLE IF NOT EXISTS test_results(name TEXT, execution_time REAL, Cpp_standard TEXT, passed_cases INT, failed_cases INT, skipped_cases INT, passed_assertions INT, failed_assertions INT)")
+# load expected tables
+cursor.execute("CREATE TABLE IF NOT EXISTS workflow_info(repo TEXT, run_id INT, run_attempt, status TEXT CHECK(status IN ('successful', 'failed', 'cancelled')) DEFAULT 'failed')")
+cursor.execute("CREATE TABLE IF NOT EXISTS test_results(name TEXT, execution_time REAL, Cpp_standard TEXT, passed_cases INT, failed_cases INT, skipped_cases INT, passed_assertions INT, failed_assertions INT)")
 
 
-
-# # terminate connection to database
-# connector.commit()
-# connector.close()
+# terminate connection to database
+connector.commit()
+connector.close()
