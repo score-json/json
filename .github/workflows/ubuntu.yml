@@ -75,7 +75,7 @@ jobs:
       - name: Upload test report 
         uses: actions/upload-artifact@v4
         with:
-          name: ci_static_analysis_ubuntu_artefact
+          name: ci_static_analysis_ubuntu_artefact_${{ matrix.target }}
           path: build/my_logs/
 
   ci_static_analysis_clang:
@@ -102,7 +102,7 @@ jobs:
       - name: Upload test report 
         uses: actions/upload-artifact@v4
         with:
-          name: ci_static_analysis_clang_artefact
+          name: ci_static_analysis_clang_artefact_${{ matrix.target }}
           path: build/my_logs/
 
   ci_cmake_options:
@@ -124,7 +124,7 @@ jobs:
       - name: Upload test report 
         uses: actions/upload-artifact@v4
         with:
-          name: ci_cmake_options_artefact
+          name: ci_cmake_options_artefact_${{ matrix.target }}
           path: build/my_logs/
 
   ci_test_coverage:
@@ -179,7 +179,7 @@ jobs:
       - name: Upload test report 
         uses: actions/upload-artifact@v4
         with:
-          name: ci_test_compilers_gcc_old_artefact
+          name: ci_test_compilers_gcc_old_artefact_${{ matrix.compiler }}
           path: build/my_logs/
 
   ci_test_compilers_gcc:
@@ -200,7 +200,7 @@ jobs:
       - name: Upload test report 
         uses: actions/upload-artifact@v4
         with:
-          name: ci_test_compilers_gcc_clang_artefact
+          name: ci_test_compilers_gcc_clang_artefact_${{ matrix.compiler }}
           path: build/my_logs/
 
   ci_test_compilers_clang:
@@ -225,7 +225,7 @@ jobs:
       - name: Upload test report 
         uses: actions/upload-artifact@v4
         with:
-          name: ci_test_compilers_clang_artefact
+          name: ci_test_compilers_clang_artefact_${{ matrix.compiler }}
           path: build/my_logs/
 
   ci_test_standards_gcc:
@@ -248,7 +248,7 @@ jobs:
       - name: Upload test report 
         uses: actions/upload-artifact@v4
         with:
-          name: ci_test_standards_gcc_artefact
+          name: ci_test_standards_gcc_artefact_${{ matrix.standard }}
           path: build/my_logs/
 
   ci_test_standards_clang:
@@ -275,7 +275,7 @@ jobs:
       - name: Upload test report 
         uses: actions/upload-artifact@v4
         with:
-          name: ci_test_standards_clang_artefact
+          name: ci_test_standards_clang_artefact_${{ matrix.stdlib }}_${{ matrix.standard }}
           path: build/my_logs/
 
   ci_cuda_example:
@@ -329,7 +329,7 @@ jobs:
       - name: Upload test report 
         uses: actions/upload-artifact@v4
         with:
-          name:   ci_test_documentation_artefact
+          name:   ci_test_documentation_artefact_${{ matrix.target }}
           path: build/my_logs/
 
   publish_test_data_success:
