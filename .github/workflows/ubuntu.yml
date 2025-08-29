@@ -324,7 +324,7 @@ jobs:
       - name: Get current branch name
         id: get_branch
         run: |
-          current_branch=${{ github.event.repository.default_branch }}
+          current_branch=${GITHUB_REF#refs/heads/}
           echo "branch_name=$current_branch" >> $GITHUB_ENV
 
       - name: Fetch data storage branch
