@@ -64,7 +64,7 @@ jobs:
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
       - name: Upload test report 
-        if: ${{ matrix.target != ci_reuse_compliance && matrix.target != ci_cpplint && matrix.target != ci_test_amalgamation && matrix.target != ci_cppcheck }}
+        if: ${{ matrix.target != 'ci_reuse_compliance' && matrix.target != 'ci_cpplint' && matrix.target != 'ci_test_amalgamation' && matrix.target != 'ci_cppcheck' }}
         uses: actions/upload-artifact@v4
         with:
           name: ci_static_analysis_ubuntu_artefact_${{ matrix.target }}
@@ -88,7 +88,7 @@ jobs:
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
       - name: Upload test report 
-        if: ${{ matrix.target != ci_clang_analyze && matrix.target != ci_single_binaries && matrix.target != ci_clang_tidy }}
+        if: ${{ matrix.target != 'ci_clang_analyze' && matrix.target != 'ci_single_binaries' && matrix.target != 'ci_clang_tidy' }}
         uses: actions/upload-artifact@v4
         with:
           name: ci_static_analysis_clang_artefact_${{ matrix.target }}
@@ -111,7 +111,7 @@ jobs:
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
       - name: Upload test report 
-        if: ${{ matrix.target != ci_cmake_flags }}
+        if: ${{ matrix.target != 'ci_cmake_flags' }}
         uses: actions/upload-artifact@v4
         with:
           name: ci_cmake_options_artefact_${{ matrix.target }}
