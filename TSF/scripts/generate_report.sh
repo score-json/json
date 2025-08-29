@@ -15,7 +15,7 @@ mkdir -p "$TSF_REPORT_FOLDER" # -p ensures no error if the folder already exists
 
 # generate TSF report
 echo "Generating TSF report in: $TSF_REPORT_FOLDER"
-trudag publish --validate --output-dir "$TSF_REPORT_FOLDER"
+trudag publish --validate --figures --output-dir "$TSF_REPORT_FOLDER" --dump data_store
 
 # generate TSF graph
 trudag plot -o "$TSF_REPORT_FOLDER/graph.svg"
