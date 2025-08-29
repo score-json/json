@@ -27,6 +27,11 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_test_gcc
+      - name: Upload test report 
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci_test_gcc_artefact
+          path: build/my_logs/
 
   ci_infer:
     runs-on: ubuntu-latest
@@ -58,6 +63,12 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
+      - name: Upload test report 
+        if: ${{ matrix.target != 'ci_reuse_compliance' && matrix.target != 'ci_cpplint' && matrix.target != 'ci_test_amalgamation' && matrix.target != 'ci_cppcheck' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci_static_analysis_ubuntu_artefact_${{ matrix.target }}
+          path: build/my_logs/
 
   ci_static_analysis_clang:
     runs-on: ubuntu-latest
@@ -76,6 +87,12 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On -DCLANG_TOOL=clang++-20
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
+      - name: Upload test report 
+        if: ${{ matrix.target != 'ci_clang_analyze' && matrix.target != 'ci_single_binaries' && matrix.target != 'ci_clang_tidy' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci_static_analysis_clang_artefact_${{ matrix.target }}
+          path: build/my_logs/
 
   ci_cmake_options:
     runs-on: ubuntu-latest
@@ -93,6 +110,12 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
+      - name: Upload test report 
+        if: ${{ matrix.target != 'ci_cmake_flags' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci_cmake_options_artefact_${{ matrix.target }}
+          path: build/my_logs/
 
   ci_test_coverage:
     runs-on: ubuntu-latest
@@ -125,6 +148,11 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ${{ github.workspace }}/build/json.info.filtered.noexcept
           fail-on-error: false # Do not fail the workflow if Coveralls fails
+      - name: Upload test report 
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci_test_coverage_artefact
+          path: build/my_logs/
 
   ci_test_compilers_gcc_old:
     runs-on: ubuntu-latest
@@ -138,6 +166,11 @@ jobs:
         run: CXX=g++-${{ matrix.compiler }} cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_test_compiler_g++-${{ matrix.compiler }}
+      - name: Upload test report 
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci_test_compilers_gcc_old_artefact_${{ matrix.compiler }}
+          path: build/my_logs/
 
   ci_test_compilers_gcc:
     runs-on: ubuntu-latest
@@ -154,6 +187,11 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_test_compiler_default
+      - name: Upload test report 
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci_test_compilers_gcc_clang_artefact_${{ matrix.compiler }}
+          path: build/my_logs/
 
   ci_test_compilers_clang:
     runs-on: ubuntu-latest
@@ -174,6 +212,11 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_test_compiler_default
+      - name: Upload test report 
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci_test_compilers_clang_artefact_${{ matrix.compiler }}
+          path: build/my_logs/
 
   ci_test_standards_gcc:
     runs-on: ubuntu-latest
@@ -189,6 +232,11 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_test_gcc_cxx${{ matrix.standard }}
+      - name: Upload test report 
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci_test_standards_gcc_artefact_${{ matrix.standard }}
+          path: build/my_logs/
 
   ci_test_standards_clang:
     runs-on: ubuntu-latest
@@ -211,6 +259,11 @@ jobs:
       - name: Build with libstdc++
         run: cmake --build build --target ci_test_clang_cxx${{ matrix.standard }}
         if: ${{ matrix.stdlib == 'libstdcxx' }}
+      - name: Upload test report 
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci_test_standards_clang_artefact_${{ matrix.stdlib }}_${{ matrix.standard }}
+          path: build/my_logs/
 
   ci_cuda_example:
     runs-on: ubuntu-latest
@@ -233,6 +286,11 @@ jobs:
         run: |
           . /opt/intel/oneapi/setvars.sh
           cmake --build build --target ci_icpc
+      - name: Upload test report 
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci_icpc_artefact
+          path: build/my_logs/
 
   ci_test_documentation:
     runs-on: ubuntu-latest
@@ -251,6 +309,180 @@ jobs:
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
 
+  publish_test_data_success:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    needs: [ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
+    if: success()
+    steps:
+      - name: Check out source (pushing branch)
+        uses: actions/checkout@v4
+      - name: Download all workflow artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: my_artifacts
+
+      - name: Get current branch name
+        id: get_branch
+        run: |
+          current_branch=${GITHUB_REF#refs/heads/}
+          echo "branch_name=$current_branch" >> $GITHUB_ENV
+
+      - name: Fetch data storage branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch --all
+          git checkout save_historical_data && git pull || git checkout -b save_historical_data
+      
+      - name: Load persistent data
+        run: |
+          if ! git ls-tree --name-only origin/save_historical_data TestResultData.db | grep TestResultData.db; then
+            touch TestResultData.db
+            git add TestResultData.db
+            git commit -m "Create persistent storage"
+            git push origin save_historical_data
+          fi
+          git checkout $branch_name
+          git checkout save_historical_data -- TestResultData.db
+
+      - name: append test data
+        run: |
+          python3 TSF/scripts/capture_test_data.py successful
+      
+      - name: Checkout data storage branch
+        run: |
+          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TestResultData.db)
+          git checkout save_historical_data
+
+      - name: Commit and Push persistent data
+        run: |
+          git add TestResultData.db
+          git commit -m "Hallo, Welt!"
+          git push origin save_historical_data
+      
+      - name: Recover stash
+        run: |
+          git checkout $branch_name
+          git stash apply
+
+  publish_test_data_failure:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    needs: [ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
+    if: failure()
+    steps:
+      - name: Check out source (pushing branch)
+        uses: actions/checkout@v4
+      - name: Download all workflow artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: my_artifacts
+
+      - name: Get current branch name
+        id: get_branch
+        run: |
+          current_branch=${GITHUB_REF#refs/heads/}
+          echo "branch_name=$current_branch" >> $GITHUB_ENV
+
+      - name: Fetch data storage branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch --all
+          git checkout save_historical_data && git pull || git checkout -b save_historical_data
+      
+      - name: Load persistent data
+        run: |
+          if ! git ls-tree --name-only origin/save_historical_data TestResultData.db | grep TestResultData.db; then
+            touch TestResultData.db
+            git add TestResultData.db
+            git commit -m "Create persistent storage"
+            git push origin save_historical_data
+          fi
+          git checkout $branch_name
+          git checkout save_historical_data -- TestResultData.db
+
+      - name: append test data
+        run: |
+          python3 TSF/scripts/capture_test_data.py failed
+      
+      - name: Checkout data storage branch
+        run: |
+          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TestResultData.db)
+          git checkout save_historical_data
+
+      - name: Commit and Push persistent data
+        run: |
+          git add TestResultData.db
+          git commit -m "Hallo, Welt!"
+          git push origin save_historical_data
+      
+      - name: Recover stash
+        run: |
+          git checkout $branch_name
+          git stash apply
+
+  publish_test_data_cancellation:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    needs: [ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
+    if: cancelled()
+    steps:
+      - name: Check out source (pushing branch)
+        uses: actions/checkout@v4
+      - name: Download all workflow artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: my_artifacts
+
+      - name: Get current branch name
+        id: get_branch
+        run: |
+          current_branch=${GITHUB_REF#refs/heads/}
+          echo "branch_name=$current_branch" >> $GITHUB_ENV
+
+      - name: Fetch data storage branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch --all
+          git checkout save_historical_data && git pull || git checkout -b save_historical_data
+      
+      - name: Load persistent data
+        run: |
+          if ! git ls-tree --name-only origin/save_historical_data TestResultData.db | grep TestResultData.db; then
+            touch TestResultData.db
+            git add TestResultData.db
+            git commit -m "Create persistent storage"
+            git push origin save_historical_data
+          fi
+          git checkout $branch_name
+          git checkout save_historical_data -- TestResultData.db
+
+      - name: append test data
+        run: |
+          python3 TSF/scripts/capture_test_data.py cancelled
+      
+      - name: Checkout data storage branch
+        run: |
+          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TestResultData.db)
+          git checkout save_historical_data
+
+      - name: Commit and Push persistent data
+        run: |
+          git add TestResultData.db
+          git commit -m "Hallo, Welt!"
+          git push origin save_historical_data
+      
+      - name: Recover stash
+        run: |
+          git checkout $branch_name
+          git stash apply
+
   ubuntu_artifact:
     runs-on: ubuntu-latest
     needs: [ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
@@ -262,7 +494,7 @@ jobs:
           echo "ubuntu processed for ${{ inputs.artifact_id }}" > ubuntu/ubuntu.txt
 
       - name: Upload ubuntu artifact
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.artifact_id }}
           path: ubuntu/
