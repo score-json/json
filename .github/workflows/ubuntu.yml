@@ -27,10 +27,6 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_test_gcc
-      - name: Do shite
-        run: |
-          mv build/CMakeCache.txt build/my_logs/CMakeCache.txt
-          mv build/compile_commands.json build/my_logs/compile_commands.json
       - name: Upload test report 
         uses: actions/upload-artifact@v4
         with:
@@ -95,10 +91,6 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On -DCLANG_TOOL=clang++-20
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
-      - name: Do shite
-        run: |
-          mv build/CMakeCache.txt build/my_logs/CMakeCache.txt
-          mv build/compile_commands.json build/my_logs/compile_commands.json
       - name: Upload test report 
         uses: actions/upload-artifact@v4
         with:
@@ -242,9 +234,6 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_test_gcc_cxx${{ matrix.standard }}
-      - name: Do shite
-        run: |
-          mv build/CMakeCache.txt build/my_logs/CMakeCache.txt
       - name: Upload test report 
         uses: actions/upload-artifact@v4
         with:
