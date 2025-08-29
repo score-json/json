@@ -91,8 +91,35 @@ connector.execute("PRAGMA foreign_keys = ON")
 cursor = connector.cursor()
 
 # load expected tables
-cursor.execute("CREATE TABLE IF NOT EXISTS workflow_info(repo TEXT, run_id INT, run_attempt INT, status TEXT CHECK(status IN ('successful', 'failed', 'cancelled')) DEFAULT 'failed', PRIMARY KEY(repo, run_id, run_attempt))")
-cursor.execute("CREATE TABLE IF NOT EXISTS test_results(timestamp INT, name TEXT, hostname TEXT, execution_time REAL, Compiler TEXT, Cpp_standard TEXT, passed_cases INT, failed_cases INT, skipped_cases INT, passed_assertions INT, failed_assertions INT, repo Text, run_id INT, run_attempt INT, PRIMARY KEY(name, timestamp, hostname), FOREIGN KEY(repo, run_id, run_attempt) REFERENCES workflow_info)")
+command = (
+    "CREATE TABLE IF NOT EXISTS workflow_info(",
+    "repo TEXT, ",                              # repository
+    "run_id INT, ",                             # ID of workflow run
+    "run_attempt INT, ",                        # Attempt-number of workflow run
+    "status TEXT",                              # Termination-status of workflow
+    "CHECK(status IN ('successful', 'failed', 'cancelled')) DEFAULT 'failed', ",
+    "PRIMARY KEY(repo, run_id, run_attempt))"
+)
+cursor.execute(''.join(command))
+command = (
+    "CREATE TABLE IF NOT EXISTS test_results(",
+    "timestamp INT, "                           # when the test-run was started
+    "name TEXT, ",                              # name of the test
+    "hostname TEXT, ",                          # hostname; this is just for the key
+    "execution_time REAL, ",                    # execution time in seconds
+    "Compiler TEXT, ",                          # compiler information
+    "Cpp_standard TEXT, ",                      # cpp-standard
+    "passed_cases INT, ",                       # number of passed test-cases
+    "failed_cases INT, ",                       # number of failed test-cases
+    "skipped_cases INT, ",                      # number if skipped test-cases
+    "passed_assertions INT, ",                  # number of passed assertions
+    "failed_assertions INT, ",                  # number of failed assertions
+    "repo TEXT, ",                              # repository
+    "run_id INT, ",                             # ID of workflow run
+    "run_attempt INT, ",                        # Attempt-number of workflow run
+    "PRIMARY KEY(name, timestamp, hostname), FOREIGN KEY(repo, run_id, run_attempt) REFERENCES workflow_info)"
+    )
+cursor.execute(''.join(command))
 
 # fill in metadata
 # BEACHTE: This script expects the status of the github workflow as argument
