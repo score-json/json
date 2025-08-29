@@ -27,23 +27,27 @@ def clean_test_case(testcase: str) -> tuple[str,str]:
     name, appendix = testcase.rsplit('_',1)
     return [name, "gnu++"+appendix.replace('cpp','')]
 
-def read_result_table(lines: list[str]) -> dict:
+def read_result_table(input: list[str]) -> dict:
     """
     This function expects console output <system-out> of doctest.
+    It is assumed that this has the following form
+        <system-out>[doctest] doctest version is "2.4.11"
+        [doctest] run with "--help" for options
+        ===============================================================================
+        [doctest] test cases:  1 |  1 passed | 0 failed | 0 skipped
+        [doctest] assertions: 45 | 45 passed | 0 failed |
+        [doctest] Status: SUCCESS!
+        </system-out>
     It extracts the number of passed/failed/skipped test cases, and passed/skipped assertions.
     """
     metadata = dict()
-    for line in lines:
-        if "test cases" in line:
-            data = re.findall(r'(\d+)\s+(passed|failed|skipped)\b', line)
-            metadata["passed test cases"] = int(data[0])
-            metadata["failed test cases"] = int(data[1])
-            metadata["skipped test cases"] = int(data[2])
-            continue
-        if "assertions" in line:
-            data = re.findall(r'(\d+)\s+(passed|failed)\b', line)
-            metadata["passed assertions"] = int(data[0])
-            metadata["failed assertions"] = int(data[1])
+    raw_data = next(input)
+    data = re.findall(r'(\d+)\s+(passed|failed|skipped)\b', raw_data)
+    metadata["passed test cases"] = int(data[0][0])
+    metadata["failed test cases"] = int(data[1][0])
+    metadata["skipped test cases"] = int(data[2][0])
+    metadata["passed assertions"] = int(data[3][0])
+    metadata["failed assertions"] = int(data[4][0])
     return metadata
 
 
@@ -57,7 +61,7 @@ def get_metadata(testcase: ET.Element) -> dict:
     metadata["name"] = name
     metadata["standard"] = standard
     metadata["execution time"] = float(testcase.get("time"))
-    metadata = metadata | read_result_table(testcase.find("system-out"))
+    metadata = metadata | read_result_table(testcase.find("system-out").itertext())
     return metadata
 
 def is_unit_test(testcase: ET.Element) -> bool:
@@ -66,7 +70,6 @@ def is_unit_test(testcase: ET.Element) -> bool:
 def get_all_xml_files(directory: str = '.') -> list[str]:
     result = []
     content = os.listdir(directory)
-    print(content)
     for entry in content:
         if os.path.isdir(directory+'/'+entry):
             print("Moin")
