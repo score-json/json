@@ -86,40 +86,39 @@ cursor.execute(command)
 connector.commit()
 
 # Load my artifacts
-[root, dirs, files] = next(os.walk("./my_artifacts/"))
-sqlite_head = "INSERT INTO test_results VALUES"
-# We are only interested in .xml files
 failed_data = []
-for junit_log in (file for file in files if file.endswith('.xml')):
-    tree = ET.parse(junit_log)
-    file_root = tree.getroot()
-    testsuite = next(file_root.iter('testsuite'), None)
-    if testsuite is None:
-        print(f"Error: Could not find testsuite data in {junit_log}.")
-        failed_data.append(junit_log)
-        continue
-    for testcase in (case for case in file_root.iter('testcase') if is_unit_test(case)):
-        metadata = get_metadata(testcase)
-        command = (
-            "INSERT INTO test_results VALUES(",
-             f"{int(datetime.fromisoformat(testsuite.get('timestamp')).timestamp())}, ",
-             f"'{metadata.get('name')}', ",
-             f"{metadata.get('execution time')}, ",
-             f"'{testsuite.get('name')}', ",
-             f"'{metadata.get('standard')}', ",
-             f"{metadata.get('passed test cases')}, ",
-             f"{metadata.get('failed test cases')}, ",
-             f"{metadata.get('skipped test cases')}, ",
-             f"{metadata.get('passed assertions')}, ",
-             f"{metadata.get('failed assertions')}, ",
-             f"'{environment.get('GITHUB_REPOSITORY')}', ",
-             f"{environment.get('GITHUB_RUN_ID')}, ",
-             f"{environment.get('GITHUB_RUN_ATTEMPT')}"
-             ")"
-        )
-        command = "".join(command)
-        cursor.execute(command)
-        connector.commit()
+for root, dirs, files in os.walk("./my_artifacts/"):
+    # We are only interested in .xml files
+    for junit_log in (file for file in files if file.endswith('.xml')):
+        tree = ET.parse(junit_log)
+        file_root = tree.getroot()
+        testsuite = next(file_root.iter('testsuite'), None)
+        if testsuite is None:
+            print(f"Error: Could not find testsuite data in {junit_log}.")
+            failed_data.append(junit_log)
+            continue
+        for testcase in (case for case in file_root.iter('testcase') if is_unit_test(case)):
+            metadata = get_metadata(testcase)
+            command = (
+                "INSERT INTO test_results VALUES(",
+                f"{int(datetime.fromisoformat(testsuite.get('timestamp')).timestamp())}, ",
+                f"'{metadata.get('name')}', ",
+                f"{metadata.get('execution time')}, ",
+                f"'{testsuite.get('name')}', ",
+                f"'{metadata.get('standard')}', ",
+                f"{metadata.get('passed test cases')}, ",
+                f"{metadata.get('failed test cases')}, ",
+                f"{metadata.get('skipped test cases')}, ",
+                f"{metadata.get('passed assertions')}, ",
+                f"{metadata.get('failed assertions')}, ",
+                f"'{environment.get('GITHUB_REPOSITORY')}', ",
+                f"{environment.get('GITHUB_RUN_ID')}, ",
+                f"{environment.get('GITHUB_RUN_ATTEMPT')}"
+                ")"
+            )
+            command = "".join(command)
+            cursor.execute(command)
+            connector.commit()
 
 # terminate connection to database
 connector.commit() # save, for good measure

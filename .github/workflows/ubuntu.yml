@@ -42,11 +42,6 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_infer
-      - name: Upload test report 
-        uses: actions/upload-artifact@v4
-        with:
-          name: ci_infer_artefact
-          path: build/my_logs/
 
   ci_static_analysis_ubuntu:
     runs-on: ubuntu-latest
@@ -69,6 +64,7 @@ jobs:
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
       - name: Upload test report 
+        if: ${{ matrix.target != ci_reuse_compliance && matrix.target != ci_cpplint && matrix.target != ci_test_amalgamation && matrix.target != ci_cppcheck }}
         uses: actions/upload-artifact@v4
         with:
           name: ci_static_analysis_ubuntu_artefact_${{ matrix.target }}
@@ -92,6 +88,7 @@ jobs:
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
       - name: Upload test report 
+        if: ${{ matrix.target != ci_clang_analyze && matrix.target != ci_single_binaries && matrix.target != ci_clang_tidy }}
         uses: actions/upload-artifact@v4
         with:
           name: ci_static_analysis_clang_artefact_${{ matrix.target }}
@@ -114,6 +111,7 @@ jobs:
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
       - name: Upload test report 
+        if: ${{ matrix.target != ci_cmake_flags }}
         uses: actions/upload-artifact@v4
         with:
           name: ci_cmake_options_artefact_${{ matrix.target }}
@@ -276,11 +274,6 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ci_cuda_example
-      - name: Upload test report 
-        uses: actions/upload-artifact@v4
-        with:
-          name: ci_cuda_example_artefact
-          path: build/my_logs/
 
   ci_icpc:
     runs-on: ubuntu-latest
@@ -315,11 +308,6 @@ jobs:
         run: cmake -S . -B build -DJSON_CI=On
       - name: Build
         run: cmake --build build --target ${{ matrix.target }}
-      - name: Upload test report 
-        uses: actions/upload-artifact@v4
-        with:
-          name:   ci_test_documentation_artefact_${{ matrix.target }}
-          path: build/my_logs/
 
   publish_test_data_success:
     runs-on: ubuntu-latest
