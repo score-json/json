@@ -52,7 +52,7 @@ jobs:
 
       - name: Generate trudag report
         run: |
-          TSF/scripts/generate_report.py
+          TSF/scripts/generate_report.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
