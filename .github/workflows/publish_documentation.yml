@@ -85,7 +85,7 @@ jobs:
       - name: Store persistent data
         run: |
           git add TSF/TrustableScoring.db
-          git commit -m "Append data storage"
+          git commit -m "Append data storage" || echo "Historical data already up to date."
           git push origin save_historical_data
       
       - name: Recover stash
