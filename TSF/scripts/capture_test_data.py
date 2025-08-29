@@ -92,7 +92,7 @@ cursor = connector.cursor()
 
 # load expected tables
 cursor.execute("CREATE TABLE IF NOT EXISTS workflow_info(repo TEXT, run_id INT, run_attempt INT, status TEXT CHECK(status IN ('successful', 'failed', 'cancelled')) DEFAULT 'failed', PRIMARY KEY(repo, run_id, run_attempt))")
-cursor.execute("CREATE TABLE IF NOT EXISTS test_results(timestamp INT, name TEXT, execution_time REAL, Compiler TEXT, Cpp_standard TEXT, passed_cases INT, failed_cases INT, skipped_cases INT, passed_assertions INT, failed_assertions INT, repo Text, run_id INT, run_attempt INT, PRIMARY KEY(name, timestamp), FOREIGN KEY(repo, run_id, run_attempt) REFERENCES workflow_info)")
+cursor.execute("CREATE TABLE IF NOT EXISTS test_results(timestamp INT, name TEXT, hostname TEXT, execution_time REAL, Compiler TEXT, Cpp_standard TEXT, passed_cases INT, failed_cases INT, skipped_cases INT, passed_assertions INT, failed_assertions INT, repo Text, run_id INT, run_attempt INT, PRIMARY KEY(name, timestamp, hostname), FOREIGN KEY(repo, run_id, run_attempt) REFERENCES workflow_info)")
 
 # fill in metadata
 # BEACHTE: This script expects the status of the github workflow as argument
@@ -120,6 +120,7 @@ for junit_log in junit_logs:
             "INSERT INTO test_results VALUES(",
             f"{int(datetime.fromisoformat(testsuite.get('timestamp')).timestamp())}, ",
             f"'{metadata.get('name')}', ",
+            f"'{testsuite.get('hostname')}', ",
             f"{metadata.get('execution time')}, ",
             f"'{testsuite.get('name')}', ",
             f"'{metadata.get('standard')}', ",
