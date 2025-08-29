@@ -107,6 +107,7 @@ junit_logs = get_all_xml_files("./my_artifacts/")
 
 #extract data
 for junit_log in junit_logs:
+    print("Hier")
     tree = ET.parse(junit_log)
     file_root = tree.getroot()
     testsuite = next(file_root.iter('testsuite'), None)
