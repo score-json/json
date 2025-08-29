@@ -72,7 +72,6 @@ def get_all_xml_files(directory: str = '.') -> list[str]:
     content = os.listdir(directory)
     for entry in content:
         if os.path.isdir(directory+'/'+entry):
-            print("Moin")
             result = result + get_all_xml_files(directory+'/'+entry)
         if entry.endswith('.xml'):
             file = directory+'/'+entry if directory != '.' else entry
