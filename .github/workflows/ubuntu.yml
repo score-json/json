@@ -382,10 +382,15 @@ jobs:
           path: my_artifacts
 
       - name: Get current branch name
-        id: get_branch
+        id: get_branch 
         run: |
-          current_branch=${GITHUB_REF#refs/heads/}
-          echo "branch_name=$current_branch" >> $GITHUB_ENV
+          if [[ "${{ startsWith(github.event_name, 'pull_request') }}" == "true" ]]; then
+            current_branch=${{ github.event.pull_request.head.ref }}
+            echo "branch_name=$current_branch" >> $GITHUB_ENV
+          else
+            current_branch=${GITHUB_REF#refs/heads/}
+            echo "branch_name=$current_branch" >> $GITHUB_ENV
+          fi
 
       - name: Fetch data storage branch
         run: |
