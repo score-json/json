@@ -1,6 +1,6 @@
 ---
 level: 1.1
-normative: true
+normative: false
 ---
 
 An improper name is either not a string (i.e. any other token, or empty), or a string-candidate which does not fulfil the requirements of RFC8259.

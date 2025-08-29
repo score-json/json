@@ -1,6 +1,5 @@
 # Set the base image with a default version
-ARG BASE_IMAGE=debian:12
-FROM ${BASE_IMAGE} AS builder
+FROM debian@sha256:731dd1380d6a8d170a695dbeb17fe0eade0e1c29f654cf0a3a07f372191c3f4b AS builder
 
 # Set noninteractive env for apt-get to avoid prompts
 ENV DEBIAN_FRONTEND=noninteractive
@@ -30,7 +29,7 @@ RUN apt-get update && \
         curl \
         make \
         python3 \
-        python3-pip \
+        python3-pip=23.0.1+dfsg-1 \
         python3-venv \
         pipx \
         locales \
@@ -48,9 +47,10 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
 ENV LANG=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 
+COPY ./S-CORE/requirements.txt ./S-CORE/requirements.txt
 RUN python3 -m venv venv && \
     . venv/bin/activate && \
-    pip install sphinx==8.2.3 sphinx-design sphinx-needs sphinxcontrib.plantuml
+    pip install --require-hashes -r ./S-CORE/requirements.txt
 
 # Specify default versions via update alternatives
 RUN update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-16 100 && \
@@ -87,5 +87,5 @@ RUN groupadd --gid $USER_GID $USERNAME \
 USER $USERNAME
 
 # Install trudag using pipx
-RUN pipx install trustable --index-url https://gitlab.com/api/v4/projects/66600816/packages/pypi/simple && \
+RUN pipx install git+https://gitlab.com/CodethinkLabs/trustable/trustable@cc6b72753e1202951d382f60ff08320f5a957c7b && \
     pipx ensurepath

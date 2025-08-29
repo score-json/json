@@ -30,7 +30,7 @@ evidence:
     publish_documentation: exclude
     test_trudag_extensions: exclude
     ubuntu: include
-sores:
+score:
     Jonas-Kirchhoff: 1.0
 ---
 
