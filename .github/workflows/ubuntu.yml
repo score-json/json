@@ -359,7 +359,7 @@ jobs:
       - name: Commit and Push persistent data
         run: |
           git add TestResultData.db
-          git commit -m "Hallo, Welt!"
+          git commit -m "Save test data" || echo "No test data to be saved"
           git push origin save_historical_data
       
       - name: Recover stash
@@ -417,7 +417,7 @@ jobs:
       - name: Commit and Push persistent data
         run: |
           git add TestResultData.db
-          git commit -m "Hallo, Welt!"
+          git commit -m "Save test data" || echo "No test data to be saved"
           git push origin save_historical_data
       
       - name: Recover stash
@@ -475,7 +475,7 @@ jobs:
       - name: Commit and Push persistent data
         run: |
           git add TestResultData.db
-          git commit -m "Hallo, Welt!"
+          git commit -m "Save test data" || echo "No test data to be saved"
           git push origin save_historical_data
       
       - name: Recover stash
