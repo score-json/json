@@ -42,8 +42,12 @@ def check_artifact_exists(configuration: dict[str, yaml]) -> tuple[float, list[E
             return (0.0, [warning]) # If value is neither include nor exclude, return 0.0 with a warning
 
     # Determine the number of expected workflows based on the event type
-    if github_event_name != "pull_request" and "dependency_review" in configuration:
+    if github_event_name != "pull_request":
         configuration["dependency_review"] = "exclude"  # Exclude dependency review if not a PR
+        configuration["check_amalgamation"] = "exclude"  # Exclude check amalgamation if not a PR
+
+    if github_event_name != "push":
+        configuration["publish_documentation"] = "exclude"  # Exclude publish documentation if not a push to main
 
     num_expected_workflows = sum(1 for value in configuration.values() if value == "include")
 
