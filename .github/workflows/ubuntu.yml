@@ -311,6 +311,8 @@ jobs:
 
   publish_test_data_success:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     needs: [ci_test_standards_clang] # [ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
     if: success()
     steps:
@@ -367,23 +369,119 @@ jobs:
 
   publish_test_data_failure:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     needs: [ci_test_standards_clang] # [ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
     if: failure()
     steps:
-      - name: Moin
+      - name: Check out source (pushing branch)
+        uses: actions/checkout@v4
+      - name: Download all workflow artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: my_artifacts
+
+      - name: Get current branch name
+        id: get_branch
         run: |
-          python3 TSF/scripts/capture_test_data.py successful
-          echo "Moin, Welt"
+          current_branch=${GITHUB_REF#refs/heads/}
+          echo "branch_name=$current_branch" >> $GITHUB_ENV
+
+      - name: Fetch data storage branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch --all
+          git checkout save_historical_data && git pull || git checkout -b save_historical_data
+      
+      - name: Load persistent data
+        run: |
+          if ! git ls-tree --name-only origin/save_historical_data TestResultData.db | grep TestResultData.db; then
+            touch TestResultData.db
+            git add TestResultData.db
+            git commit -m "Create persistent storage"
+            git push origin save_historical_data
+          fi
+          git checkout $branch_name
+          git checkout save_historical_data -- TestResultData.db
+
+      - name: append test data
+        run: |
+          python3 TSF/scripts/capture_test_data.py failed
+      
+      - name: Checkout data storage branch
+        run: |
+          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TestResultData.db)
+          git checkout save_historical_data
+
+      - name: Commit and Push persistent data
+        run: |
+          git add TestResultData.db
+          git commit -m "Hallo, Welt!"
+          git push origin save_historical_data
+      
+      - name: Recover stash
+        run: |
+          git checkout $branch_name
+          git stash apply
 
   publish_test_data_cancellation:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     needs: [ci_test_standards_clang] # [ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
     if: cancelled()
     steps:
-      - name: Moinsen
+      - name: Check out source (pushing branch)
+        uses: actions/checkout@v4
+      - name: Download all workflow artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: my_artifacts
+
+      - name: Get current branch name
+        id: get_branch
         run: |
-          python3 TSF/scripts/capture_test_data.py successful
-          echo "Schade, eigentlich"
+          current_branch=${GITHUB_REF#refs/heads/}
+          echo "branch_name=$current_branch" >> $GITHUB_ENV
+
+      - name: Fetch data storage branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch --all
+          git checkout save_historical_data && git pull || git checkout -b save_historical_data
+      
+      - name: Load persistent data
+        run: |
+          if ! git ls-tree --name-only origin/save_historical_data TestResultData.db | grep TestResultData.db; then
+            touch TestResultData.db
+            git add TestResultData.db
+            git commit -m "Create persistent storage"
+            git push origin save_historical_data
+          fi
+          git checkout $branch_name
+          git checkout save_historical_data -- TestResultData.db
+
+      - name: append test data
+        run: |
+          python3 TSF/scripts/capture_test_data.py cancelled
+      
+      - name: Checkout data storage branch
+        run: |
+          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TestResultData.db)
+          git checkout save_historical_data
+
+      - name: Commit and Push persistent data
+        run: |
+          git add TestResultData.db
+          git commit -m "Hallo, Welt!"
+          git push origin save_historical_data
+      
+      - name: Recover stash
+        run: |
+          git checkout $branch_name
+          git stash apply
 
   ubuntu_artifact:
     runs-on: ubuntu-latest
