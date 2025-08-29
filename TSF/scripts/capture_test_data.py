@@ -192,6 +192,8 @@ command = (
     f"run_attempt = {run_attempt}"
 )
 cur.execute(''.join(command))
+conn.commit()
+conn.close()
 
 # terminate connection to database
 connector.commit() # save, for good measure

@@ -485,12 +485,18 @@ jobs:
 
   ubuntu_artifact:
     runs-on: ubuntu-latest
-    needs: [ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
+    needs: [publish_test_data_success, publish_test_data_failure, publish_test_data_cancellation, ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
+    if: ${{ always && (publish_test_data_success.result == 'success' || publish_test_data_failure.result == 'success' || publish_test_data_cancellation.result == 'success') }}
     steps:
       - name: Generate ubuntu artifact
         run: |
           echo "Generating ubuntu artifact..."
           mkdir -p ubuntu
+          if [ -f TestResults.db ]; then
+            mv TestResults.db ubuntu/TestResults.db
+          else
+            echo "No test-results were captured."
+          fi
           echo "ubuntu processed for ${{ inputs.artifact_id }}" > ubuntu/ubuntu.txt
 
       - name: Upload ubuntu artifact
