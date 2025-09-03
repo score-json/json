@@ -7,6 +7,7 @@ references:
       description: "branch protection rule for main branch specifying that failures of any workflow prevent merge."
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 Pipeline execution results are analyzed in the fork and the original nlohmann/json repository.
