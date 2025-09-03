@@ -167,7 +167,6 @@ for junit_log in junit_logs:
 
 conn = sqlite3.connect("TestResults.db")
 cur = conn.cursor()
-cur.execute("ATTACH DATABASE 'TSF/TestResultData.db' AS source")
 command = (
     "CREATE TABLE IF NOT EXISTS test_results(",
     "name TEXT, ",                              # name of the test
@@ -178,10 +177,11 @@ command = (
     "failed_cases INT, ",                       # number of failed test-cases
     "skipped_cases INT, ",                      # number if skipped test-cases
     "passed_assertions INT, ",                  # number of passed assertions
-    "failed_assertions INT, ",                  # number of failed assertions
+    "failed_assertions INT",                  # number of failed assertions
     ")"
     )
 cur.execute(''.join(command))
+cur.execute("ATTACH DATABASE 'TSF/TestResultData.db' AS source")
 command = (
     "INSERT INTO test_results (name, execution_time, compiler, cpp_standard, passed_cases, failed_cases, skipped_cases, passed_assertions, failed_assertions)",
     "SELECT name, execution_time, compiler, cpp_standard, passed_cases, failed_cases, skipped_cases, passed_assertions, failed_assertions",
