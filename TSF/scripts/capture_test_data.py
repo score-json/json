@@ -182,16 +182,22 @@ command = (
     )
 cur.execute(''.join(command))
 cur.execute("ATTACH DATABASE 'TSF/TestResultData.db' AS source")
-command = (
-    "INSERT INTO test_results (name, execution_time, compiler, cpp_standard, passed_cases, failed_cases, skipped_cases, passed_assertions, failed_assertions)",
-    "SELECT name, execution_time, compiler, cpp_standard, passed_cases, failed_cases, skipped_cases, passed_assertions, failed_assertions",
-    "FROM source.test_results WHERE"
-    f"repo = '{repo}' AND"
-    f"run_id = {run_id} AND"
-    f"run_attempt = {run_attempt})"
-)
-cur.execute(''.join(command))
+command = """
+        INSERT INTO test_results (
+            name, execution_time, compiler, cpp_standard,
+            passed_cases, failed_cases, skipped_cases,
+            passed_assertions, failed_assertions
+        )
+        SELECT
+            name, execution_time, compiler, cpp_standard,
+            passed_cases, failed_cases, skipped_cases,
+            passed_assertions, failed_assertions
+        FROM source.test_results
+        WHERE repo = ? AND run_id = ? AND run_attempt = ?
+"""
+cur.execute(command, (repo, run_id, run_attempt))
 conn.commit()
+cur.execute("DETACH DATABASE source")
 conn.close()
 
 # terminate connection to database
