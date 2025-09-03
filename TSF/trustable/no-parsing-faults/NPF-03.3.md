@@ -17,6 +17,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 0.95
 ---
 
 The service ignores capitalisation in escaped hexadecimal unicode.
