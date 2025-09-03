@@ -19,4 +19,4 @@ score:
     Jonas-Kirchhoff: 0.975
 ---
 
-The acceptance of nested arrays does not depend on the depth of nesting
+The acceptance of nested objects does not depend on the depth of nesting.
