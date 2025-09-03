@@ -188,7 +188,7 @@ command = (
     "FROM source.test_results WHERE"
     f"repo = '{repo}' AND"
     f"run_id = {run_id} AND"
-    f"run_attempt = {run_attempt}"
+    f"run_attempt = {run_attempt})"
 )
 cur.execute(''.join(command))
 conn.commit()
