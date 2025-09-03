@@ -19,7 +19,8 @@ evidence:
     test_trudag_extensions: exclude
     ubuntu: include
 score:
-    Jonas-Kirchhoff: 0.95    
+    Jonas-Kirchhoff: 0.95
+    Erikhu1: 0.95
 ---
 
 The service accepts the non-empty objects.

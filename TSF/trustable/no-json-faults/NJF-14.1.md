@@ -17,6 +17,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
-The service accepts a single UTF-8 byte order mark in the first three characters of the input.
+If the service accepts an input containing no BOM, then it accepts a single UTF-8 byte order mark followed by that input.

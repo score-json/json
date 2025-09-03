@@ -35,6 +35,7 @@ evidence:
     ubuntu: include
 score: 
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
-If the service accepts every value candidate of a properly bounded array is accepted as singleton, then the service accepts the array.
+If every value candidate of a properly bounded array is accepted as singleton, then the service accepts the array.

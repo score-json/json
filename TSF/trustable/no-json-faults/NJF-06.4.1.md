@@ -45,6 +45,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 If the service recognises the name candidate as string, then it accepts the name candidate.

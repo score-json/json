@@ -16,6 +16,7 @@ references:
           path: "include/nlohmann/detail/input/lexer.hpp"
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 The service does accept the six structural characters.

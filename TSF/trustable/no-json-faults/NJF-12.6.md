@@ -18,6 +18,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 0.9
+    Erikhu1: 1.0
 ---
 
 The service accepts well-formed UTF-8 data.

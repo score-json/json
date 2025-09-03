@@ -15,8 +15,6 @@ references:
         - type: cpp_test
           name: "accept;member separator"
           path: "TSF/tests/unit-objects.cpp"
-score:
-    Jonas-Kirchhoff: 0.95
 evidence:
   type: "check_artifact_exists"
   configuration:
@@ -29,6 +27,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 0.95
+    Erikhu1: 0.95
 ---
 
 The service accept the nested objects.

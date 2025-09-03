@@ -18,6 +18,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 0.95
+    Erikhu1: 0.95
 ---
 
 The service accepts JSON data consisting of combinations of the data types.

@@ -10,6 +10,7 @@ references:
           description: ""
 score:
     Jonas-Kirchhoff: 0.975
+    Erikhu1: 0.9
 ---
 
 The acceptance of nested arrays does not depend on the depth of nesting.
