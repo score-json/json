@@ -1,9 +1,10 @@
 import os
 import re
+import sys
 
 # The trudag report is not in standard markdown format, so we need to clean it up.
 # This script will remove specific patterns from the markdown files in the current directory and its subdirectories
-
+# It requires 1 command line argument which is the root folder we want to be processed
 
 # List of regex patterns to remove only the matched part, not the whole line
 replace_by_empty_string_patterns = [
@@ -63,7 +64,13 @@ def clean_file(filepath):
         print(f"Cleaned: {filepath}")
 
 def main():
-    for root, _, files in os.walk('.'):
+    input_path = '.'
+    if(len(sys.argv) != 2):
+       sys.exit('ERROR:' + sys.argv[0] + ' expects 1 command line argument which is the processing path. Instead ' + str(len(sys.argv) - 1) + ' arguments were passed.')
+    else:
+        input_path = sys.argv[1]
+
+    for root, _, files in os.walk(input_path):
         for file in files:
             if file.endswith('.md'):
                 clean_file(os.path.join(root, file))
