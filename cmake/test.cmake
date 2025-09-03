@@ -1,5 +1,9 @@
 set(_json_test_cmake_list_file ${CMAKE_CURRENT_LIST_FILE})
 
+# adapt test-output size for data collection
+set(CTEST_CUSTOM_MAXIMUM_PASSED_TEST_OUTPUT_SIZE 0)
+set(CTEST_CUSTOM_MAXIMUM_FAILED_TEST_OUTPUT_SIZE 0)
+
 #############################################################################
 # download test data
 #############################################################################
