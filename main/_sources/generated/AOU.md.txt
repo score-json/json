@@ -1,7 +1,7 @@
 
 ### AOU-01 
 
-Problems with nlohmann_json's implementation identified during testing are reported to the upstream nlohmann_json project.
+Problems with nlohmann/json's implementation identified during testing are reported to the upstream nlohmann/json project.
 
 
 **Supported Requests:**
@@ -33,7 +33,7 @@ _No Historic Data Found_
 
 ### AOU-02 
 
-The build environment used for nlohmann_json in an integrating system is supplied with consistent dependencies.
+The build environment used for nlohmann/json in an integrating system is supplied with consistent dependencies.
 
 
 **Supported Requests:**
@@ -418,7 +418,7 @@ _No Historic Data Found_
 
 ### AOU-14 
 
-The JSON-library is built with tools from the provided matrix specification. (not yet provided)
+The nlohmann/json library is built with tools from the provided matrix specification. (not yet provided)
 
 
 **Supported Requests:**
@@ -514,7 +514,7 @@ _No Historic Data Found_
 
 ### AOU-17 
 
-The integrator is responsible for identifying additional misbehaviours for the JSON library, defining appropriate mitigations, and ensuring that these mitigations are thoroughly validated.
+The integrator is responsible for identifying additional misbehaviours for the nlohmann/json, defining appropriate mitigations, and ensuring that these mitigations are thoroughly validated.
 
 
 **Supported Requests:**

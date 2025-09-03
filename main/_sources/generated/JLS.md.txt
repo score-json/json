@@ -1,7 +1,7 @@
 
 ### JLS-01 
 
-The JSON-library project CI executes on each pull request (opened, reopened, synchronized) the integration test suite, and failures in these runs are investigated by contributors.
+The nlohmann/json library project CI executes on each pull request (opened, reopened, synchronized) the integration test suite, and failures in these runs are investigated by contributors.
 
 
 **Supported Requests:**
@@ -341,7 +341,7 @@ _No Historic Data Found_
 
 ### JLS-05 
 
-The OSS nlohmann_json is widely used, actively maintained and uses github issues to track bugs and misbehaviours.
+The OSS nlohmann/json is widely used, actively maintained and uses github issues to track bugs and misbehaviours.
 
 
 **Supported Requests:**
@@ -943,7 +943,7 @@ _No Historic Data Found_
 
 ### JLS-23 
 
-The eclipse s-core organization mirrors the nlohmann_json library in a fork.
+The Eclipse S-CORE organization mirrors the nlohmann/json project in a github fork.
 
 
 **Supported Requests:**
@@ -957,6 +957,13 @@ _None_
 
 
 **References:**
+
+- `website: https://github.com/nlohmann/json`
+
+
+`https://github.com/nlohmann/json`
+	- Start-page of the original nlohmann/json project
+
 
 - `website: https://github.com/eclipse-score/inc_nlohmann_json`
 
@@ -981,7 +988,7 @@ _No Historic Data Found_
 
 ### JLS-24 
 
-The JSON library recognizes malformed JSON and returns an exception.
+The nlohmann/json library recognizes malformed JSON and returns an exception.
 
 
 **Supported Requests:**
@@ -1051,7 +1058,7 @@ _No Historic Data Found_
 
 ### JLS-26 
 
-Pipeline execution results are analyzed in the fork and the original nlohmann_json repository.
+Pipeline execution results are analyzed in the fork and the original nlohmann/json repository.
 
 
 **Supported Requests:**
