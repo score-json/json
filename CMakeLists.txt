@@ -224,6 +224,9 @@ if(JSON_Install)
     include(CPack)
 endif()
 
-# to accurately capture test data, increase the size of the output.
+# to accurately capture test data, increase the size
 
-file(WRITE "${CMAKE_BINARY_DIR}/CTestCustom.cmake" "set(CTEST_CUSTOM_MAXIMUM_PASSED_TEST_OUTPUT_SIZE 0) set(CTEST_CUSTOM_MAXIMUM_FAILED_TEST_OUTPUT_SIZE 0)")
+file(WRITE "${CMAKE_BINARY_DIR}/CTestCustom.cmake" "
+set(CTEST_CUSTOM_MAXIMUM_PASSED_TEST_OUTPUT_SIZE 0)
+set(CTEST_CUSTOM_MAXIMUM_FAILED_TEST_OUTPUT_SIZE 0)
+")
