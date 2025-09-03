@@ -9,4 +9,4 @@ score:
     Jonas-Kirchhoff: 1.0
 ---
 
-Pipeline execution results are analyzed in the fork and the original nlohmann_json repository.
+Pipeline execution results are analyzed in the fork and the original nlohmann/json repository.

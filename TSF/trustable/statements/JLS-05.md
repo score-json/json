@@ -31,4 +31,4 @@ score:
     Jonas-Kirchhoff: 1.0
 ---
 
-The OSS nlohmann_json is widely used, actively maintained and uses github issues to track bugs and misbehaviours.
+The OSS nlohmann/json is widely used, actively maintained and uses github issues to track bugs and misbehaviours.
