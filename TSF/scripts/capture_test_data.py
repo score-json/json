@@ -95,7 +95,7 @@ command = (
     "repo TEXT, ",                              # repository
     "run_id INT, ",                             # ID of workflow run
     "run_attempt INT, ",                        # Attempt-number of workflow run
-    "status TEXT",                              # Termination-status of workflow
+    "status TEXT ",                              # Termination-status of workflow
     "CHECK(status IN ('successful', 'failed', 'cancelled')) DEFAULT 'failed', ",
     "PRIMARY KEY(repo, run_id, run_attempt))"
 )
