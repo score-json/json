@@ -72,7 +72,6 @@ def get_all_xml_files(directory: str = '.') -> list[str]:
     content = os.listdir(directory)
     for entry in content:
         if os.path.isdir(directory+'/'+entry):
-            print("Moinsen")
             result = result + get_all_xml_files(directory+'/'+entry)
         if entry.endswith('.xml'):
             file = directory+'/'+entry if directory != '.' else entry
@@ -86,17 +85,46 @@ except RuntimeError as e:
     raise RuntimeError("Critical error: Can not uniquely identify environment data! Aborting recording of data.")
 
 # initiate connection to database
-connector = sqlite3.connect("TestResultData.db")
+connector = sqlite3.connect("TSF/TestResultData.db")
 connector.execute("PRAGMA foreign_keys = ON")
 cursor = connector.cursor()
 
 # load expected tables
-cursor.execute("CREATE TABLE IF NOT EXISTS workflow_info(repo TEXT, run_id INT, run_attempt INT, status TEXT CHECK(status IN ('successful', 'failed', 'cancelled')) DEFAULT 'failed', PRIMARY KEY(repo, run_id, run_attempt))")
-cursor.execute("CREATE TABLE IF NOT EXISTS test_results(timestamp INT, name TEXT, hostname TEXT, execution_time REAL, Compiler TEXT, Cpp_standard TEXT, passed_cases INT, failed_cases INT, skipped_cases INT, passed_assertions INT, failed_assertions INT, repo Text, run_id INT, run_attempt INT, PRIMARY KEY(name, timestamp, hostname), FOREIGN KEY(repo, run_id, run_attempt) REFERENCES workflow_info)")
+command = (
+    "CREATE TABLE IF NOT EXISTS workflow_info(",
+    "repo TEXT, ",                              # repository
+    "run_id INT, ",                             # ID of workflow run
+    "run_attempt INT, ",                        # Attempt-number of workflow run
+    "status TEXT ",                              # Termination-status of workflow
+    "CHECK(status IN ('successful', 'failed', 'cancelled')) DEFAULT 'failed', ",
+    "PRIMARY KEY(repo, run_id, run_attempt))"
+)
+cursor.execute(''.join(command))
+command = (
+    "CREATE TABLE IF NOT EXISTS test_results(",
+    "timestamp INT, "                           # when the test-run was started
+    "name TEXT, ",                              # name of the test
+    "execution_time REAL, ",                    # execution time in seconds
+    "compiler TEXT, ",                          # compiler information
+    "cpp_standard TEXT, ",                      # cpp-standard
+    "passed_cases INT, ",                       # number of passed test-cases
+    "failed_cases INT, ",                       # number of failed test-cases
+    "skipped_cases INT, ",                      # number if skipped test-cases
+    "passed_assertions INT, ",                  # number of passed assertions
+    "failed_assertions INT, ",                  # number of failed assertions
+    "repo TEXT, ",                              # repository
+    "run_id INT, ",                             # ID of workflow run
+    "run_attempt INT, ",                        # Attempt-number of workflow run
+    "FOREIGN KEY(repo, run_id, run_attempt) REFERENCES workflow_info)"
+    )
+cursor.execute(''.join(command))
 
 # fill in metadata
 # BEACHTE: This script expects the status of the github workflow as argument
-command = f"INSERT INTO workflow_info VALUES('{environment.get('GITHUB_REPOSITORY')}', {environment.get('GITHUB_RUN_ID')}, {environment.get('GITHUB_RUN_ATTEMPT')}, '{sys.argv[1]}')"
+repo = environment.get('GITHUB_REPOSITORY')
+run_id = environment.get('GITHUB_RUN_ID')
+run_attempt = environment.get('GITHUB_RUN_ATTEMPT')
+command = f"INSERT INTO workflow_info VALUES('{repo}', {run_id}, {run_attempt}, '{sys.argv[1]}')"
 cursor.execute(command)
 # Don't forget to save!
 connector.commit()
@@ -107,7 +135,6 @@ junit_logs = get_all_xml_files("./my_artifacts/")
 
 #extract data
 for junit_log in junit_logs:
-    print(junit_log)
     tree = ET.parse(junit_log)
     file_root = tree.getroot()
     testsuite = next(file_root.iter('testsuite'), None)
@@ -121,7 +148,6 @@ for junit_log in junit_logs:
             "INSERT INTO test_results VALUES(",
             f"{int(datetime.fromisoformat(testsuite.get('timestamp')).timestamp())}, ",
             f"'{metadata.get('name')}', ",
-            f"'{testsuite.get('hostname')}', ",
             f"{metadata.get('execution time')}, ",
             f"'{testsuite.get('name')}', ",
             f"'{metadata.get('standard')}', ",
@@ -130,14 +156,43 @@ for junit_log in junit_logs:
             f"{metadata.get('skipped test cases')}, ",
             f"{metadata.get('passed assertions')}, ",
             f"{metadata.get('failed assertions')}, ",
-            f"'{environment.get('GITHUB_REPOSITORY')}', ",
-            f"{environment.get('GITHUB_RUN_ID')}, ",
-            f"{environment.get('GITHUB_RUN_ATTEMPT')}"
+            f"'{repo}', ",
+            f"{run_id}, ",
+            f"{run_attempt}"
             ")"
         )
         command = "".join(command)
         cursor.execute(command)
         connector.commit()
+
+conn = sqlite3.connect("TestResults.db")
+cur = conn.cursor()
+cur.execute("ATTACH DATABASE 'TSF/TestResultData.db' AS source")
+command = (
+    "CREATE TABLE IF NOT EXISTS test_results(",
+    "name TEXT, ",                              # name of the test
+    "execution_time REAL, ",                    # execution time in seconds
+    "compiler TEXT, ",                          # compiler information
+    "cpp_standard TEXT, ",                      # cpp-standard
+    "passed_cases INT, ",                       # number of passed test-cases
+    "failed_cases INT, ",                       # number of failed test-cases
+    "skipped_cases INT, ",                      # number if skipped test-cases
+    "passed_assertions INT, ",                  # number of passed assertions
+    "failed_assertions INT, ",                  # number of failed assertions
+    ")"
+    )
+cur.execute(''.join(command))
+command = (
+    "INSERT INTO test_results (name, execution_time, compiler, cpp_standard, passed_cases, failed_cases, skipped_cases, passed_assertions, failed_assertions)",
+    "SELECT name, execution_time, compiler, cpp_standard, passed_cases, failed_cases, skipped_cases, passed_assertions, failed_assertions",
+    "FROM source.test_results WHERE"
+    f"repo = '{repo}' AND"
+    f"run_id = {run_id} AND"
+    f"run_attempt = {run_attempt}"
+)
+cur.execute(''.join(command))
+conn.commit()
+conn.close()
 
 # terminate connection to database
 connector.commit() # save, for good measure
