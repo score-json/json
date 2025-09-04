@@ -27,4 +27,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service rejects single escaped and unescaped, and paired unescaped utf-16 surrogates;well-formed.
+The service rejects single escaped and unescaped, and paired unescaped utf-16 surrogates.
