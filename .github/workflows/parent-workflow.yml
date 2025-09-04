@@ -20,6 +20,23 @@ jobs:
     uses: ./.github/workflows/ubuntu.yml
     with:
       artifact_id: "ubuntu-${{ github.sha }}"
+      
+  experimental_workflow:
+    name: Run experimental workflow
+    needs: [ubuntu]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: "${{ matrix.target }}-${{ github.sha }}"
+          path: artifacts/
+
+      - name: stuffs'n'things
+        run: python3 ./TSF/experiment.py
 
   collect_artifacts_non_pr:
     name: "Collect Results & Deploy"
