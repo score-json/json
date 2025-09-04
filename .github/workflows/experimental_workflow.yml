@@ -24,7 +24,7 @@ jobs:
     name: moin
     runs-on: ubuntu-latest
     steps:
+      - name: Check out source (pushing branch)
+        uses: actions/checkout@v4
       - name: moinsen
-        run: |
-          cd ..
-          ls -a
+        run: python3 TSF/scripts/experiment.py
