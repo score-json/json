@@ -20,7 +20,7 @@ jobs:
     uses: ./.github/workflows/ubuntu.yml
     with:
       artifact_id: "ubuntu-${{ github.sha }}"
-    secrets: mein_geheimnis
+    secrets: inherit
       
   experimental_workflow:
     name: Run experimental workflow
@@ -28,7 +28,7 @@ jobs:
     uses: ./.github/workflows/experimental_workflow.yml
     with:
       artifact_id: "ubuntu-${{ github.sha }}"
-    secrets: mein_geheimnis
+    secrets: inherit
 
 
   collect_artifacts_non_pr:
