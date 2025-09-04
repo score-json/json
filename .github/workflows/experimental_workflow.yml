@@ -28,3 +28,5 @@ jobs:
         uses: actions/checkout@v4
       - name: moinsen
         run: python3 TSF/scripts/experiment.py
+      - name: lies mir was vor
+        run: ls 
