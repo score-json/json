@@ -22,6 +22,7 @@ jobs:
           ls -R artifacts
   moin:
     name: moin
+    needs: [consume]
     runs-on: ubuntu-latest
     steps:
       - name: Check out source (pushing branch)
