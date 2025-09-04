@@ -25,4 +25,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: moinsen
-        run: ls -a
+        run: |
+          cd ..
+          ls -a
