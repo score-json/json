@@ -17,6 +17,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 The service does not accept UTF-8 byte order mark outside of a string and outside of the first three characters of the input.

@@ -17,6 +17,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 The service does not accept multiple UTF-8 byte order marks.

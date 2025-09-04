@@ -63,6 +63,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 0.95
+    Erikhu1: 0.95
 ---
 
 The service does accept the non-empty strings.

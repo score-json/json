@@ -18,6 +18,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 The service does accept decimal points in numbers within the bounds of double.

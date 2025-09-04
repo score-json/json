@@ -23,6 +23,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 If the service does not accept any value candidate as singleton, then the service does not accept the object candidate.

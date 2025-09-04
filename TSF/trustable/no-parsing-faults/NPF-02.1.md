@@ -30,6 +30,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 The service parses integers without exponent within the precision of int64_t. 

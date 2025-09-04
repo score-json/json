@@ -21,6 +21,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 0.75
+    Erikhu1: 1.0
 ---
 
 The service accepts Non-Characters.

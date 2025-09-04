@@ -47,6 +47,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 0.95
 ---
 
 The service does not accept any other literal name.
