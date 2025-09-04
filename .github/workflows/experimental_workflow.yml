@@ -9,6 +9,17 @@ on:
         type: string
 
 jobs:
+  consume:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: artifacts/
+      - run: |
+          echo "Using artifact:"
+          ls -R artifacts
   moin:
     name: moin
     runs-on: ubuntu-latest

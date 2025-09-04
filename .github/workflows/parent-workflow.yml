@@ -20,23 +20,15 @@ jobs:
     uses: ./.github/workflows/ubuntu.yml
     with:
       artifact_id: "ubuntu-${{ github.sha }}"
+    secrets: mein_geheimnis
       
   experimental_workflow:
     name: Run experimental workflow
     needs: [ubuntu]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: "ubuntu-${{ github.sha }}"
-          path: artifacts/
-      
-      - name: run experiment
-        uses: ./.github/workflows/experimental_workflow.yml
+    uses: ./.github/workflows/experimental_workflow.yml
+    with:
+      artifact_id: "ubuntu-${{ github.sha }}"
+    secrets: mein_geheimnis
 
 
   collect_artifacts_non_pr:
