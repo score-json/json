@@ -20,6 +20,12 @@ jobs:
       - run: |
           echo "Using artifact??:"
           ls -R artifacts
+      - name: Check out source (pushing branch)
+        uses: actions/checkout@v4
+      - name: moinsen
+        run: python3 TSF/scripts/experiment.py
+      - name: lies mir was vor
+        run: ls 
   moin:
     name: moin
     needs: [consume]
