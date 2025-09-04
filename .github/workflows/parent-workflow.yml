@@ -34,9 +34,10 @@ jobs:
         with:
           name: "${{ matrix.target }}-${{ github.sha }}"
           path: artifacts/
+      
+      - name: run experiment
+        uses: ./.github/workflows/experimental_workflow.yml
 
-      - name: stuffs'n'things
-        run: python3 ./TSF/experiment.py
 
   collect_artifacts_non_pr:
     name: "Collect Results & Deploy"

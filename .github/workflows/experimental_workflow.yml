@@ -1,2 +1,9 @@
 name: experimental_workflow
 
+jobs:
+  moin:
+    name: moin
+    runs-on: ubuntu-latest
+    steps:
+      - name: moinsen
+        run: python3 ./TSF/experiment.py
