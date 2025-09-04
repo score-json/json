@@ -101,7 +101,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [NJF-05](NJF.md#njf-05) |  The service accepts and rejects arrays according to RFC8259 §5. | 0.00 |
 | [NJF-05.1](NJF.md#njf-05.1) |  The service accepts the empty array. | 0.00 |
 | [NJF-05.2](NJF.md#njf-05.2) |  The service accepts the non-empty arrays. | 0.00 |
-| [NJF-05.3](NJF.md#njf-05.3) |  If the service accepts every value candidate of a properly bounded array is accepted as singleton, then the service accepts the array. | 0.00 |
+| [NJF-05.3](NJF.md#njf-05.3) |  If every value candidate of a properly bounded array is accepted as singleton, then the service accepts the array. | 0.00 |
 | [NJF-05.4](NJF.md#njf-05.4) |  The service does not accept any improperly bounded arrays. | 0.00 |
 | [NJF-05.5](NJF.md#njf-05.5) |  The service does not accept arrays with improper values. | 0.00 |
 | [NJF-05.6](NJF.md#njf-05.6) |  The service accepts nested arrays. | 0.00 |
@@ -121,7 +121,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [NJF-06.5.1](NJF.md#njf-06.5.1) |  If the service does not accept any name candidate as singleton, then the service does not accept the object candidate. | 0.00 |
 | [NJF-06.5.2](NJF.md#njf-06.5.2) |  If the service does not accept any value candidate as singleton, then the service does not accept the object candidate. | 0.00 |
 | [NJF-06.6](NJF.md#njf-06.6) |  The service accept the nested objects. | 0.00 |
-| [NJF-06.6.0](NJF.md#njf-06.6.0) |  The acceptance of nested arrays does not depend on the depth of nesting | 0.00 |
+| [NJF-06.6.0](NJF.md#njf-06.6.0) |  The acceptance of nested objects does not depend on the depth of nesting. | 0.00 |
 | [NJF-06.7](NJF.md#njf-06.7) |  The service does only accept comma as member separator. | 0.00 |
 | [NJF-06.7.1](NJF.md#njf-06.7.1) |  The service accepts comma as member separator. | 0.00 |
 | [NJF-06.7.2](NJF.md#njf-06.7.2) |  The service does not accept any other member separator. | 0.00 |
@@ -148,12 +148,12 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [NJF-12](NJF.md#njf-12) |  The service decodes UTF-8 data. | 0.00 |
 | [NJF-12.1](NJF.md#njf-12.1) |  The service rejects malformed UTF-8 data. | 0.00 |
 | [NJF-12.2](NJF.md#njf-12.2) |  The service rejects "overlong sequences". | 0.00 |
-| [NJF-12.3](NJF.md#njf-12.3) |  The service rejects single escaped and unescaped, and paired unescaped utf-16 surrogates;well-formed. | 0.00 |
+| [NJF-12.3](NJF.md#njf-12.3) |  The service rejects single escaped and unescaped, and paired unescaped utf-16 surrogates. | 0.00 |
 | [NJF-12.5](NJF.md#njf-12.5) |  The service accepts Non-Characters. | 0.00 |
 | [NJF-12.6](NJF.md#njf-12.6) |  The service accepts well-formed UTF-8 data. | 0.00 |
 | [NJF-13](NJF.md#njf-13) |  The service accepts JSON data consisting of combinations of the data types. | 0.00 |
 | [NJF-14](NJF.md#njf-14) |  The service accepts a single complete UTF-8 byte order mark at the beginning of the input only. | 0.00 |
-| [NJF-14.1](NJF.md#njf-14.1) |  The service accepts a single UTF-8 byte order mark in the first three characters of the input. | 0.00 |
+| [NJF-14.1](NJF.md#njf-14.1) |  If the service accepts an input containing no BOM, then it accepts a single UTF-8 byte order mark followed by that input. | 0.00 |
 | [NJF-14.2](NJF.md#njf-14.2) |  The service does not accept multiple UTF-8 byte order marks. | 0.00 |
 | [NJF-14.3](NJF.md#njf-14.3) |  The service does not accept incomplete or perturbed UTF-8 byte order marks within the first three characters of the input. | 0.00 |
 | [NJF-14.4](NJF.md#njf-14.4) |  The service does not accept UTF-16 and UTF-32 byte order marks instead of the UTF-8 byte order mark. | 0.00 |
@@ -305,6 +305,6 @@ The contribution to the score of a parent item by a suspiciously linked child is
 _Generated for: Software_
 
 * _Repository root: /home/runner/work/json/json_
-* _Commit SHA: d9113dd5_
-* _Commit date/time: Wed Sep  3 12:15:58 2025_
-* _Commit tag: d9113dd5a00ccc7cc1d9f131148a12aa293649e3_
+* _Commit SHA: ee86d4a6_
+* _Commit date/time: Thu Sep  4 09:57:25 2025_
+* _Commit tag: ee86d4a613c73a5bcaa96711ea4d3d92a07fc576_

@@ -2229,7 +2229,7 @@ _No Historic Data Found_
 
 ### NJF-05.3 
 
-If the service accepts every value candidate of a properly bounded array is accepted as singleton, then the service accepts the array.
+If every value candidate of a properly bounded array is accepted as singleton, then the service accepts the array.
 
 
 **Supported Requests:**
@@ -5683,7 +5683,7 @@ _No Historic Data Found_
 
 ### NJF-06.6.0 
 
-The acceptance of nested arrays does not depend on the depth of nesting
+The acceptance of nested objects does not depend on the depth of nesting.
 
 
 **Supported Requests:**
@@ -11927,7 +11927,7 @@ _No Historic Data Found_
 
 ### NJF-12.3 
 
-The service rejects single escaped and unescaped, and paired unescaped utf-16 surrogates;well-formed.
+The service rejects single escaped and unescaped, and paired unescaped utf-16 surrogates.
 
 
 **Supported Requests:**
@@ -12321,7 +12321,7 @@ _No Historic Data Found_
 
 ### NJF-14.1 
 
-The service accepts a single UTF-8 byte order mark in the first three characters of the input.
+If the service accepts an input containing no BOM, then it accepts a single UTF-8 byte order mark followed by that input.
 
 
 **Supported Requests:**
