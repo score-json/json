@@ -4,7 +4,7 @@ on:
   push: 
     branches:
       - main
-      - store_test_results
+      - experimental
 
 permissions:
   contents: write
