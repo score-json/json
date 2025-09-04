@@ -35,6 +35,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 If the service does not accept any name candidate as singleton, then the service does not accept the object candidate.

@@ -18,6 +18,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 The service does accept integers within the limits of 64-bit double.

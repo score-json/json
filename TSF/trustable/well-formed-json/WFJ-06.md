@@ -28,6 +28,7 @@ references:
           path: "include/nlohmann/detail/input/lexer.hpp"
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 The service checks that a JSON value must be an object, array, number, or string, or one of the lowercase literal names false, null, or true

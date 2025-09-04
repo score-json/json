@@ -27,6 +27,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 The service throws an exception on improper values within a properly bounded array.

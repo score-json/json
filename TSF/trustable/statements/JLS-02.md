@@ -20,6 +20,7 @@ evidence:
                     - "https://storage.googleapis.com/oss-fuzz-introspector/json/inspector-report/20250824/fuzz_report.html"
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 Fuzz testing is used in the original nlohmann/json repository (https://github.com/nlohmann/json) to uncover edge cases and failure modes throughout development. (https://github.com/nlohmann/json/blob/develop/tests/fuzzing.md)

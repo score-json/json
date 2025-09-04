@@ -42,6 +42,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 The service throws an exception on improperly bounded arrays.
