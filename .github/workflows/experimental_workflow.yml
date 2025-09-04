@@ -25,4 +25,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: moinsen
-        run: python3 TSF/scripts/experiment.py
+        run: ls -a
