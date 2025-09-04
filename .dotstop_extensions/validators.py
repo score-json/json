@@ -1,8 +1,6 @@
 from typing import TypeAlias, Tuple, List
 import os
 import requests
-import subprocess
-import warnings
 
 yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
@@ -124,8 +122,15 @@ def https_response_time(configuration: dict[str, yaml]) -> tuple[float, list[Exc
         if response.status_code == 200:
             # if target site is successfully called, check if it is reached within target seconds
             # recall that target/response.elapsed.microseconds>1/5, so score is accordingly refactored 
-            score = (min(1000000*target/response.elapsed.microseconds, 1.0)-0.2)*1.25
+            score = (min(1e6*target/response.elapsed.microseconds, 1.0)-0.2)*1.25
             scores.append(score)
             continue
         scores.append(0)
-    return(sum(scores)/len(scores),exceptions)   
+    return(sum(scores)/len(scores),exceptions)
+
+
+def https_response_time(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    """
+    Validates whether a certain test-case fails, or not.
+    """
+    return (0.0,[])
