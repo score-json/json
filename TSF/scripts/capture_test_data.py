@@ -95,7 +95,7 @@ command = (
     "repo TEXT, ",                              # repository
     "run_id INT, ",                             # ID of workflow run
     "run_attempt INT, ",                        # Attempt-number of workflow run
-    "status TEXT ",                             # Termination-status of workflow
+    "status TEXT ",                              # Termination-status of workflow
     "CHECK(status IN ('successful', 'failed', 'cancelled')) DEFAULT 'failed', ",
     "PRIMARY KEY(repo, run_id, run_attempt))"
 )
@@ -165,34 +165,40 @@ for junit_log in junit_logs:
         cursor.execute(command)
         connector.commit()
 
-# conn = sqlite3.connect("TestResults.db")
-# cur = conn.cursor()
-# cur.execute("ATTACH DATABASE 'TSF/TestResultData.db' AS source")
-# command = (
-#     "CREATE TABLE IF NOT EXISTS test_results(",
-#     "name TEXT, ",                              # name of the test
-#     "execution_time REAL, ",                    # execution time in seconds
-#     "compiler TEXT, ",                          # compiler information
-#     "cpp_standard TEXT, ",                      # cpp-standard
-#     "passed_cases INT, ",                       # number of passed test-cases
-#     "failed_cases INT, ",                       # number of failed test-cases
-#     "skipped_cases INT, ",                      # number if skipped test-cases
-#     "passed_assertions INT, ",                  # number of passed assertions
-#     "failed_assertions INT",                    # number of failed assertions
-#     ")"
-#     )
-# cur.execute(''.join(command))
-# command = (
-#     "INSERT INTO test_results (name, execution_time, compiler, cpp_standard, passed_cases, failed_cases, skipped_cases, passed_assertions, failed_assertions)",
-#     "SELECT name, execution_time, compiler, cpp_standard, passed_cases, failed_cases, skipped_cases, passed_assertions, failed_assertions",
-#     "FROM source.test_results WHERE"
-#     f"repo = '{repo}' AND"
-#     f"run_id = {run_id} AND"
-#     f"run_attempt = {run_attempt}"
-# )
-# cur.execute(''.join(command))
-# conn.commit()
-# conn.close()
+conn = sqlite3.connect("TestResults.db")
+cur = conn.cursor()
+command = (
+    "CREATE TABLE IF NOT EXISTS test_results(",
+    "name TEXT, ",                              # name of the test
+    "execution_time REAL, ",                    # execution time in seconds
+    "compiler TEXT, ",                          # compiler information
+    "cpp_standard TEXT, ",                      # cpp-standard
+    "passed_cases INT, ",                       # number of passed test-cases
+    "failed_cases INT, ",                       # number of failed test-cases
+    "skipped_cases INT, ",                      # number if skipped test-cases
+    "passed_assertions INT, ",                  # number of passed assertions
+    "failed_assertions INT",                  # number of failed assertions
+    ")"
+    )
+cur.execute(''.join(command))
+cur.execute("ATTACH DATABASE 'TSF/TestResultData.db' AS source")
+command = """
+        INSERT INTO test_results (
+            name, execution_time, compiler, cpp_standard,
+            passed_cases, failed_cases, skipped_cases,
+            passed_assertions, failed_assertions
+        )
+        SELECT
+            name, execution_time, compiler, cpp_standard,
+            passed_cases, failed_cases, skipped_cases,
+            passed_assertions, failed_assertions
+        FROM source.test_results
+        WHERE repo = ? AND run_id = ? AND run_attempt = ?
+"""
+cur.execute(command, (repo, run_id, run_attempt))
+conn.commit()
+cur.execute("DETACH DATABASE source")
+conn.close()
 
 # terminate connection to database
 connector.commit() # save, for good measure
