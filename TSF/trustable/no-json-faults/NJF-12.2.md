@@ -18,6 +18,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 0.6
+    Erikhu1: 0.9
 ---
 
 The service rejects "overlong sequences".

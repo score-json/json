@@ -32,6 +32,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 0.95
+    Erikhu1: 1.0
 ---
 
 The service parses non-empty arrays.

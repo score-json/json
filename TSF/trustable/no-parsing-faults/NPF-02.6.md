@@ -20,6 +20,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 The service parses integers within IEEE 754-2008 binary64.

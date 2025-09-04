@@ -29,6 +29,7 @@ evidence:
                     - "https://github.com/nlohmann/json/pulse"
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 The OSS nlohmann/json is widely used, actively maintained and uses github issues to track bugs and misbehaviours.

@@ -17,6 +17,7 @@ references:
           path: "TSF/tests/unit-objects.cpp"
 score:
     Jonas-Kirchhoff: 0.975
+    Erikhu1: 0.95
 ---
 
 The acceptance of nested objects does not depend on the depth of nesting.

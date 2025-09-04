@@ -7,6 +7,7 @@ references:
           description: "Documentation of S-CORE methodologies"
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 The S-Core methodologies are followed.

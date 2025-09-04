@@ -7,6 +7,7 @@ references:
           description: "Documentation of S-CORE change process management"
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 The S-Core change process management is followed.

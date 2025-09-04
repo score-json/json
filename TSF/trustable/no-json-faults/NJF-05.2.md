@@ -39,6 +39,7 @@ evidence:
     ubuntu: include
 score:
     Jonas-Kirchhoff: 0.95
+    Erikhu1: 0.85
 ---
 
 The service accepts the non-empty arrays.

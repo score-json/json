@@ -9,6 +9,7 @@ references:
       description: "branch protection rule for main branch specifying that failures of tests prevent merge."
 score:
     Jonas-Kirchhoff: 1.0
+    Erikhu1: 1.0
 ---
 
 The nlohmann/json library project CI executes on each pull request (opened, reopened, synchronized) the integration test suite, and failures in these runs are investigated by contributors.
