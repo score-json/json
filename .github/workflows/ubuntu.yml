@@ -554,6 +554,7 @@ jobs:
         
       - name: Generate ubuntu artifact
         run: |
+          ls
           echo "Generating ubuntu artifact..."
           mkdir -p ubuntu
           if [ -f publish_data_artifact/TestResults.db ]; then
