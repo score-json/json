@@ -23,22 +23,22 @@ jobs:
       - name: moinsen
         run: exit 0
 
-  # ci_test_gcc:
-  #   runs-on: ubuntu-latest
-  #   container: gcc:14
-  #   steps:
-  #     - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-  #     - name: Get latest CMake and ninja
-  #       uses: lukka/get-cmake@28983e0d3955dba2bb0a6810caae0c6cf268ec0c # v4.0.0
-  #     - name: Run CMake
-  #       run: cmake -S . -B build -DJSON_CI=On
-  #     - name: Build
-  #       run: cmake --build build --target ci_test_gcc
-  #     - name: Upload test report 
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: ci_test_gcc_artefact
-  #         path: build/my_logs/
+  ci_test_gcc:
+    runs-on: ubuntu-latest
+    container: gcc:14
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Get latest CMake and ninja
+        uses: lukka/get-cmake@28983e0d3955dba2bb0a6810caae0c6cf268ec0c # v4.0.0
+      - name: Run CMake
+        run: cmake -S . -B build -DJSON_CI=On
+      - name: Build
+        run: cmake --build build --target ci_test_gcc
+      - name: Upload test report 
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci_test_gcc_artefact
+          path: build/my_logs/
 
   # ci_infer:
   #   runs-on: ubuntu-latest
@@ -320,7 +320,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    needs: [moin] # [ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
+    needs: [moin, ci_test_gcc] # [ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
     if: success()
     steps:
       - name: Check out source (pushing branch)
@@ -383,7 +383,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    needs: [moin] # [ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
+    needs: [moin, ci_test_gcc] # [ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
     if: failure()
     steps:
       - name: Check out source (pushing branch)
@@ -446,7 +446,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    needs: [moin] # [ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
+    needs: [moin, ci_test_gcc] # [ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
     if: cancelled()
     steps:
       - name: Check out source (pushing branch)
