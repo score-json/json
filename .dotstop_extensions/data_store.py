@@ -94,6 +94,10 @@ def push_my_data(data: list[dict]):
     for score in scores:
         id = score.get("id")
         numerical_score = score.get("score")
+        cursor.execute("SELECT COUNT(*) FROM scores WHERE date = ? AND ID = ?", (datum, id))
+        if cursor.fetchone()[0]>0:
+            cursor.execute("DELETE FROM scores WHERE date = ? AND ID = ?", (datum, id))
+            connector.commit()
         command = f"INSERT OR REPLACE INTO scores VALUES('{id}', {numerical_score}, '{datum}')"
         cursor.execute(command)
     # don't forget to commit!
