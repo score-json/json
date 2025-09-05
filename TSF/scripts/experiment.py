@@ -5,9 +5,14 @@ print("Hallo, Welt!")
 
 sha = os.getenv("GITHUB_SHA")
 ubuntu_artifact = f"./artifacts/ubuntu-{str(sha)}"
+print(ubuntu_artifact)
 if not os.path.exists(ubuntu_artifact):
     print("Satz mit x.")
 else:
+    os.system("cd artifacts/ubuntu-{str(sha)}")
+    os.system("ls")
+    os.system("cd ..")
+    os.system("echo 'nice try, meiner'")
     ubuntu_artifact += "/TestResults.db"
     table = "test_results"
     connector = sqlite3.connect(ubuntu_artifact)
