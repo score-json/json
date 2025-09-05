@@ -382,7 +382,8 @@ jobs:
       - name: Move test report
         run: |
           mkdir test_report
-          mv TSF/TestResults.db test_report/TestResults.db
+          ls -a
+          mv TestResults.db test_report/TestResults.db
 
       - name: Upload test report 
         uses: actions/upload-artifact@v4
