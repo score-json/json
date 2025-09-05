@@ -19,10 +19,10 @@ else:
     cursor = connector.cursor()
     # check whether our results can be accessed
     cursor.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (table,))
-    if not cursor.fetchone():
+    if cursor.fetchone() is None:
         # if not, it is not trustable
         print("Is Scheiße, wa?")
-    else:
+    elif True:
         # our result table can be read
         tests = ["moin", "test_class_lexer"]
         score = 0.0
