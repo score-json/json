@@ -38,4 +38,5 @@ jobs:
           ls
           cd artifacts
           ls
+          cd ..
           python3 TSF/scripts/experiment.py
