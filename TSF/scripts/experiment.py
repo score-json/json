@@ -30,7 +30,7 @@ else:
         warnings = []
         for test in tests:
             command = f"SELECT COUNT(*) FROM {table} WHERE name = ?"
-            if cursor.execute(command, (test)) is None:
+            if cursor.execute(command, (test)).fetchone() is None:
                 warnings.append(Warning(f"Could not find data for test {test}."))
                 continue
             command = f"""
