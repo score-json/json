@@ -1,6 +1,7 @@
 from typing import TypeAlias, Tuple, List
 import os
 import requests
+import sqlite3
 
 yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
@@ -129,8 +130,66 @@ def https_response_time(configuration: dict[str, yaml]) -> tuple[float, list[Exc
     return(sum(scores)/len(scores),exceptions)
 
 
-def https_response_time(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+def check_test_result(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
     """
     Validates whether a certain test-case fails, or not.
     """
-    return (0.0,[])
+    # get the test-names
+    tests = configuration.get("tests",None)
+    if tests is None:
+        return(1.0,Warning("Warning: No tests specified! Assuming absolute trustability!"))
+    # check whether the most recent test report is loaded
+    sha = os.getenv("GITHUB_SHA")
+    if not sha:
+        return (0.0, [RuntimeError("Can't get value GITHUB_SHA.")])
+    ubuntu_artifact = f"./artifacts/ubuntu-{str(sha)}"
+    # check whether ubuntu-artifact is loaded correctly
+    if not os.path.exists(ubuntu_artifact):
+        return (0.0 [RuntimeError("The artifact containing the test data was not loaded correctly.")])
+    # read optional argument -- database name for the test report -- if specified
+    database = configuration.get("database", None)
+    if database is None:
+        # default value "TestResults.db"
+        database = "TestResults.db"
+    # check whether database containing test-results does exist
+    ubuntu_artifact += "/"+database
+    if not os.path.exists(ubuntu_artifact):
+        return (0.0 [RuntimeError("The artifact containing the test data was not loaded correctly.")])
+    # Ubuntu artifact is loaded correctly and test-results can be accessed.
+    # read optional argument -- table name for the test report -- if specified
+    table = configuration.get("table", None)
+    if table is None:
+        # default value "test_results"
+        table = "test_results"
+    # establish connection to database
+    try:
+        connector = sqlite3.connect(ubuntu_artifact)
+        cursor = connector.cursor()
+        # check whether our results can be accessed
+        cursor.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (table,))
+        if not cursor.fetchone():
+            # if not, it is not trustable
+            return (0.0,[RuntimeError(f"Table {table} can not be loaded.")])
+        # our result table can be read
+        score = 0.0
+        expected_tests = len(tests)
+        warnings = []
+        for test in tests:
+            command = f"SELECT COUNT(*) FROM {table} WHERE name = ?"
+            if cursor.execute(command, (test)) is None:
+                warnings.append(Warning(f"Could not find data for test {test}."))
+                continue
+            command = f"""
+                        SELECT
+                            COALESCE(SUM(passed_cases), 0) AS total_passed,
+                            COALESCE(SUM(failed_cases), 0) AS total_failed
+                        FROM {table}
+                        WHERE name = ?
+                    """
+            passed, failed = cursor.execute(command, (test,)).fetchone()
+            score += float(passed)/((float(passed)+float(failed))*expected_tests)
+        #terminate database connection
+        connector.close()
+        return(score, warnings)
+    except:
+        return (0.0, [RuntimeError("Fatal error during database evaluation.")])    
