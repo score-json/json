@@ -35,4 +35,7 @@ jobs:
 
       - name: Do shite
         run: |
+          ls
+          cd artifacts
+          ls
           python3 TSF/scripts/experiment.py
