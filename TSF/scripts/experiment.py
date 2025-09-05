@@ -29,10 +29,12 @@ else:
         expected_tests = len(tests)
         warnings = []
         for test in tests:
+            print("Test")
             command = f"SELECT COUNT(*) FROM {table} WHERE name = ?"
             if cursor.execute(command, (test,)).fetchone() is None:
                 warnings.append(Warning(f"Could not find data for test {test}."))
                 continue
+            print("Collecting data ...")
             command = f"""
                         SELECT
                             COALESCE(SUM(passed_cases), 0) AS total_passed,
@@ -41,6 +43,10 @@ else:
                         WHERE name = ?
                     """
             passed, failed = cursor.execute(command, (test,)).fetchone()
-            score += float(passed)/((float(passed)+float(failed))*expected_tests)
+            all = float(passed)+float(failed)
+            if all == 0:
+                score += 1/expected_tests
+            else:
+                score += float(passed)/((float(passed)+float(failed))*expected_tests)
         print("Toll!")
         print(score)
