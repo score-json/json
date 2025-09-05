@@ -9,7 +9,7 @@ print(ubuntu_artifact)
 if not os.path.exists(ubuntu_artifact):
     print("Satz mit x.")
 else:
-    os.system("cd artifacts/ubuntu-{str(sha)}")
+    os.system(f"cd artifacts/ubuntu-{str(sha)}")
     os.system("ls")
     os.system("cd ..")
     os.system("echo 'nice try, meiner'")
