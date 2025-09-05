@@ -557,8 +557,8 @@ jobs:
           ls
           echo "Generating ubuntu artifact..."
           mkdir -p ubuntu
-          if [ -f publish_data_artifact/TestResults.db ]; then
-            mv publish_data_artifact/TestResults.db ubuntu/TestResults.db
+          if [ -f TestResults.db ]; then
+            mv TestResults.db ubuntu/TestResults.db
           else
             echo "No test-results were captured."
           fi
