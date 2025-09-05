@@ -22,7 +22,7 @@ else:
     if cursor.fetchone() is None:
         # if not, it is not trustable
         print("Is Scheiße, wa?")
-    elif True:
+    if True:
         # our result table can be read
         tests = ["moin", "test_class_lexer"]
         score = 0.0
