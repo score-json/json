@@ -316,7 +316,7 @@ jobs:
     needs: [ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
     if: success()
     steps:
-      - name: Check out source (pushing branch)
+      - name: Check out code
         uses: actions/checkout@v4
       - name: Download all workflow artifacts
         uses: actions/download-artifact@v4
@@ -343,14 +343,14 @@ jobs:
       
       - name: Load persistent data
         run: |
-          if ! git ls-tree --name-only origin/save_historical_data TestResultData.db | grep TestResultData.db; then
-            touch TestResultData.db
-            git add TestResultData.db
+          if ! git ls-tree --name-only origin/save_historical_data TSF/TestResultData.db | grep TSF/TestResultData.db; then
+            touch TSF/TestResultData.db
+            git add TSF/TestResultData.db
             git commit -m "Create persistent storage"
             git push origin save_historical_data
           fi
           git checkout $branch_name
-          git checkout save_historical_data -- TestResultData.db
+          git checkout save_historical_data -- TSF/TestResultData.db
 
       - name: append test data
         run: |
@@ -358,12 +358,12 @@ jobs:
       
       - name: Checkout data storage branch
         run: |
-          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TestResultData.db)
+          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/TestResultData.db)
           git checkout save_historical_data
 
       - name: Commit and Push persistent data
         run: |
-          git add TestResultData.db
+          git add TSF/TestResultData.db
           git commit -m "Save test data" || echo "No test data to be saved"
           git push origin save_historical_data
       
@@ -371,6 +371,18 @@ jobs:
         run: |
           git checkout $branch_name
           git stash apply
+      
+      - name: Move test report
+        run: |
+          mkdir test_report
+          mv TestResults.db test_report/TestResults.db
+
+      - name: Upload test report 
+        uses: actions/upload-artifact@v4
+        with:
+          name: publish_data_artifact
+          path: test_report/
+
 
   publish_test_data_failure:
     runs-on: ubuntu-latest
@@ -379,7 +391,7 @@ jobs:
     needs: [ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
     if: failure()
     steps:
-      - name: Check out source (pushing branch)
+      - name: Check out code
         uses: actions/checkout@v4
       - name: Download all workflow artifacts
         uses: actions/download-artifact@v4
@@ -406,14 +418,14 @@ jobs:
       
       - name: Load persistent data
         run: |
-          if ! git ls-tree --name-only origin/save_historical_data TestResultData.db | grep TestResultData.db; then
-            touch TestResultData.db
-            git add TestResultData.db
+          if ! git ls-tree --name-only origin/save_historical_data TSF/TestResultData.db | grep TSF/TestResultData.db; then
+            touch TSF/TestResultData.db
+            git add TSF/TestResultData.db
             git commit -m "Create persistent storage"
             git push origin save_historical_data
           fi
           git checkout $branch_name
-          git checkout save_historical_data -- TestResultData.db
+          git checkout save_historical_data -- TSF/TestResultData.db
 
       - name: append test data
         run: |
@@ -421,12 +433,12 @@ jobs:
       
       - name: Checkout data storage branch
         run: |
-          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TestResultData.db)
+          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/TestResultData.db)
           git checkout save_historical_data
 
       - name: Commit and Push persistent data
         run: |
-          git add TestResultData.db
+          git add TSF/TestResultData.db
           git commit -m "Save test data" || echo "No test data to be saved"
           git push origin save_historical_data
       
@@ -434,6 +446,18 @@ jobs:
         run: |
           git checkout $branch_name
           git stash apply
+      
+      - name: Move test report
+        run: |
+          mkdir test_report
+          mv TestResults.db test_report/TestResults.db
+
+      - name: Upload test report 
+        uses: actions/upload-artifact@v4
+        with:
+          name: publish_data_artifact
+          path: test_report/
+
 
   publish_test_data_cancellation:
     runs-on: ubuntu-latest
@@ -442,7 +466,7 @@ jobs:
     needs: [ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
     if: cancelled()
     steps:
-      - name: Check out source (pushing branch)
+      - name: Check out code
         uses: actions/checkout@v4
       - name: Download all workflow artifacts
         uses: actions/download-artifact@v4
@@ -469,14 +493,14 @@ jobs:
       
       - name: Load persistent data
         run: |
-          if ! git ls-tree --name-only origin/save_historical_data TestResultData.db | grep TestResultData.db; then
-            touch TestResultData.db
-            git add TestResultData.db
+          if ! git ls-tree --name-only origin/save_historical_data TSF/TestResultData.db | grep TSF/TestResultData.db; then
+            touch TSF/TestResultData.db
+            git add TSF/TestResultData.db
             git commit -m "Create persistent storage"
             git push origin save_historical_data
           fi
           git checkout $branch_name
-          git checkout save_historical_data -- TestResultData.db
+          git checkout save_historical_data -- TSF/TestResultData.db
 
       - name: append test data
         run: |
@@ -484,12 +508,12 @@ jobs:
       
       - name: Checkout data storage branch
         run: |
-          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TestResultData.db)
+          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/TestResultData.db)
           git checkout save_historical_data
 
       - name: Commit and Push persistent data
         run: |
-          git add TestResultData.db
+          git add TSF/TestResultData.db
           git commit -m "Save test data" || echo "No test data to be saved"
           git push origin save_historical_data
       
@@ -497,12 +521,29 @@ jobs:
         run: |
           git checkout $branch_name
           git stash apply
+      
+      - name: Move test report
+        run: |
+          mkdir test_report
+          mv TestResults.db test_report/TestResults.db
+
+      - name: Upload test report 
+        uses: actions/upload-artifact@v4
+        with:
+          name: publish_data_artifact
+          path: test_report/
+
 
   ubuntu_artifact:
     runs-on: ubuntu-latest
     needs: [publish_test_data_success, publish_test_data_failure, publish_test_data_cancellation, ci_test_gcc, ci_infer, ci_static_analysis_ubuntu, ci_static_analysis_clang, ci_cmake_options, ci_test_coverage, ci_test_compilers_gcc_old, ci_test_compilers_gcc, ci_test_compilers_clang, ci_test_standards_gcc, ci_test_standards_clang, ci_cuda_example, ci_icpc, ci_test_documentation]
     if: ${{ always() && (needs.publish_test_data_success.result == 'success' || needs.publish_test_data_failure.result == 'success' || needs.publish_test_data_cancellation.result == 'success') }}
     steps:
+      - name: Download test report
+        uses: actions/download-artifact@v4
+        with:
+          name: publish_data_artifact
+
       - name: Generate ubuntu artifact
         run: |
           echo "Generating ubuntu artifact..."
