@@ -32,3 +32,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y graphviz
           pip install git+https://gitlab.com/CodethinkLabs/trustable/trustable@cc6b72753e1202951d382f60ff08320f5a957c7b
+
+      - name: Do shite
+        run: |
+          python3 TSF/scripts/experiment.py
