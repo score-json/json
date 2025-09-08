@@ -7,7 +7,7 @@ references:
           description: "collects recent reports for fuzzing introspection of nlohmann/json with historical plots"
         - type: web_content
           url: https://storage.googleapis.com/oss-fuzz-introspector/json/inspector-report/20250824/fuzz_report.html
-          description: "persistent storage of fuzz-testing-report for nlohmann/json on 24.08.2025"
+          description: "persistent storage of fuzz-testing-report for nlohmann/json version 3.12.0 on 24.08.2025"
         - type: web_content
           url: "https://raw.githubusercontent.com/nlohmann/json/refs/heads/develop/.github/workflows/cifuzz.yml"
           description: "Configuration file for Fuzz-Testing pipeline in the original nlohmann/json repository"
