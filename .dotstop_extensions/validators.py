@@ -171,15 +171,19 @@ def check_test_result(configuration: dict[str, yaml]) -> tuple[float, list[Excep
             # if not, it is not trustable
             return (0.0,[RuntimeError(f"Table {table} can not be loaded.")])
         # our result table can be read
+        # initialise variables 
         score = 0.0
         expected_tests = len(tests)
         warnings = []
         for test in tests:
+            # check if data for test have been captured
             command = f"SELECT COUNT(*) FROM {table} WHERE name = ?"
             cnt = cursor.execute(command, (test)).fetchone()[0]
             if cnt is None or cnt == 0:
+                # no data found -> assign trustability 0 and inform user
                 warnings.append(Warning(f"Could not find data for test {test}."))
                 continue
+            # process data for test
             command = f"""
                         SELECT
                             COALESCE(SUM(passed_cases), 0) AS total_passed,
@@ -190,10 +194,18 @@ def check_test_result(configuration: dict[str, yaml]) -> tuple[float, list[Excep
             passed, failed = cursor.execute(command, (test,)).fetchone()
             all = float(passed)+float(failed)
             if all == 0:
+                # means that all test-cases have been skipped; could happen due to time-constraints
+                # and interrupted workflow.
+                # Assumption: A skipped test is trustable.
                 score += 1/expected_tests
+                warnings.append(Warning(f"All test cases of {test} were skipped."))
             else:
+                # at least one passed or failed test has been found
+                # observe that expected_tests = 0 if, and only if, tests = [], 
+                # in which case the for-loop is skipped
                 score += float(passed)/(all*expected_tests)
-        #terminate database connection
+        # terminate database connection 
+        # no commit necessary, since changes on database not intended
         connector.close()
         return(score, warnings)
     except:
