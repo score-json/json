@@ -176,7 +176,8 @@ def check_test_result(configuration: dict[str, yaml]) -> tuple[float, list[Excep
         warnings = []
         for test in tests:
             command = f"SELECT COUNT(*) FROM {table} WHERE name = ?"
-            if cursor.execute(command, (test)) is None:
+            cnt = cursor.execute(command, (test)).fetchone()[0]
+            if cnt is None or cnt == 0:
                 warnings.append(Warning(f"Could not find data for test {test}."))
                 continue
             command = f"""
