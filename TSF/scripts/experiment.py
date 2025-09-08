@@ -27,6 +27,8 @@ else:
         for test in tests:
             command = f"SELECT COUNT(*) FROM {table} WHERE name = ?"
             cnt = cursor.execute(command, (test,)).fetchone()
+            print(test)
+            print(cnt)
             if cnt is None or cnt == 0:
                 print("Moin")
                 warnings.append(Warning(f"Could not find data for test {test}."))
