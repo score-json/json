@@ -130,7 +130,7 @@ def https_response_time(configuration: dict[str, yaml]) -> tuple[float, list[Exc
     return(sum(scores)/len(scores),exceptions)
 
 
-def check_test_result(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+def check_test_results(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
     """
     Validates whether a certain test-case fails, or not.
     """
