@@ -35,8 +35,44 @@ jobs:
 
       - name: Do shite
         run: |
-          ls
-          cd artifacts
-          ls
-          cd ..
           python3 TSF/scripts/experiment.py
+
+      - name: Fetch data storage branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch --all
+          git checkout save_historical_data && git pull || git checkout -b save_historical_data
+      
+      - name: Load persistent data
+        run: |
+          if ! git ls-tree --name-only origin/save_historical_data TSF/TrustableScoring.db | grep TSF/TrustableScoring.db; then
+            mkdir -p TSF
+            touch TSF/TrustableScoring.db
+            git add TSF/TrustableScoring.db
+            git commit -m "Initialise persistent data storage"
+            git push origin save_historical_data
+          fi
+          git checkout ${{ github.event.repository.default_branch }}
+          git checkout save_historical_data -- TSF/TrustableScoring.db
+
+      - name: Generate trudag report
+        run: |
+          trudag score --dump data_store
+      
+      - name: Checkout data storage branch
+        run: |
+          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/TrustableScoring.db)
+          git checkout save_historical_data
+
+      - name: Store persistent data
+        run: |
+          git add TSF/TrustableScoring.db
+          git commit -m "Append data storage" || echo "Historical data already up to date."
+          git push origin save_historical_data
+      
+      - name: Recover stash
+        run: |
+          git checkout ${{ github.event.repository.default_branch }}
+          git stash apply
+      
