@@ -17,7 +17,7 @@ on:
   workflow_call:
     inputs:
       artifact_id:
-        description: 'Unique identifier for artifacts'
+        description: 'Unique identifier for artifacts to be loaded'
         required: true
         type: string
 
@@ -48,6 +48,10 @@ jobs:
           sudo apt-get install -y graphviz
           pip install git+https://gitlab.com/CodethinkLabs/trustable/trustable@cc6b72753e1202951d382f60ff08320f5a957c7b
 
+      - name: Remember the branch
+        id: vars
+        run: echo "branch=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
+
       - name: Fetch data storage branch
         run: |
           git config user.name "github-actions[bot]"
@@ -64,7 +68,7 @@ jobs:
             git commit -m "Initialise persistent data storage"
             git push origin save_historical_data
           fi
-          git checkout ${{ github.event.repository.default_branch }}
+          git checkout "${{ steps.vars.outputs.branch }}"
           git checkout save_historical_data -- TSF/TrustableScoring.db
 
       - name: Generate trudag report
@@ -86,7 +90,7 @@ jobs:
       
       - name: Recover stash
         run: |
-          git checkout ${{ github.event.repository.default_branch }}
+          git checkout "${{ steps.vars.outputs.branch }}"
           git stash apply
 
       - name: Upload trudag artifact

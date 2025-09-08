@@ -138,4 +138,4 @@ jobs:
     needs: [collect_artifacts_non_pr]
     uses: ./.github/workflows/publish_documentation.yml
     with:
-      artifact_id: "publish_documentation-${{ github.sha }}"
+      artifact_id: "ubuntu-${{ github.sha }}"
