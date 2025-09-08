@@ -7,7 +7,7 @@ sha = os.getenv("GITHUB_SHA")
 ubuntu_artifact = f"./artifacts/ubuntu-{str(sha)}"
 print(ubuntu_artifact)
 if not os.path.exists(ubuntu_artifact):
-    print("Satz mit x.")
+    print("Satz mit x, das war wohl nix.")
 else:
     ubuntu_artifact += "/TestResults.db"
     table = "test_results"
