@@ -28,6 +28,7 @@ else:
             command = f"SELECT COUNT(*) FROM {table} WHERE name = ?"
             cnt = cursor.execute(command, (test,)).fetchone()
             if cnt is None or cnt == 0:
+                print("Moin")
                 warnings.append(Warning(f"Could not find data for test {test}."))
                 continue
             command = f"""
@@ -42,6 +43,6 @@ else:
             if all == 0:
                 score += 1/expected_tests
             else:
-                score += float(passed)/((float(passed)+float(failed))*expected_tests)
+                score += float(passed)/(all*expected_tests)
         print("Toll!")
         print(score)
