@@ -187,7 +187,11 @@ def check_test_result(configuration: dict[str, yaml]) -> tuple[float, list[Excep
                         WHERE name = ?
                     """
             passed, failed = cursor.execute(command, (test,)).fetchone()
-            score += float(passed)/((float(passed)+float(failed))*expected_tests)
+            all = float(passed)+float(failed)
+            if all == 0:
+                score += 1/expected_tests
+            else:
+                score += float(passed)/(all*expected_tests)
         #terminate database connection
         connector.close()
         return(score, warnings)
