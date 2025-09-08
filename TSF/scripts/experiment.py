@@ -9,10 +9,6 @@ print(ubuntu_artifact)
 if not os.path.exists(ubuntu_artifact):
     print("Satz mit x.")
 else:
-    os.system(f"cd artifacts/ubuntu-{str(sha)}")
-    os.system("ls")
-    os.system("cd ..")
-    os.system("echo 'nice try, meiner'")
     ubuntu_artifact += "/TestResults.db"
     table = "test_results"
     connector = sqlite3.connect(ubuntu_artifact)
@@ -29,12 +25,11 @@ else:
         expected_tests = len(tests)
         warnings = []
         for test in tests:
-            print("Test")
             command = f"SELECT COUNT(*) FROM {table} WHERE name = ?"
-            if cursor.execute(command, (test,)).fetchone() is None:
+            cnt = cursor.execute(command, (test,)).fetchone()
+            if cnt is None or cnt == 0:
                 warnings.append(Warning(f"Could not find data for test {test}."))
                 continue
-            print("Collecting data ...")
             command = f"""
                         SELECT
                             COALESCE(SUM(passed_cases), 0) AS total_passed,
