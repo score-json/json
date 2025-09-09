@@ -50,7 +50,7 @@ Component Classification Strategy
   - Evidence requirements are mapped and analyzed for gaps, leading to possible code amendments or forks.
   - Questions concerning the library's behavior are systematically answered, providing coverage details and tracing requirements to standards like ISO.
 
-Find more descriptions on the ongoing process and requirements at 'Eclipse Process Description <https://eclipse-score.github.io/process_description/main/trustable/index.html>'.
+Find more descriptions on the ongoing process and requirements at `Eclipse Process Description <https://eclipse-score.github.io/process_description/main/trustable/index.html>`.
 
 Conclusion
 ----------

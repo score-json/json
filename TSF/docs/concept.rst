@@ -16,4 +16,4 @@
 Concept
 =================
 
-For the concept of the Trustable Software Framework (TSF), please refer to the 'Eclipse Process Description <https://eclipse-score.github.io/process_description/main/trustable/index.html>'
+For the concept of the Trustable Software Framework (TSF), please refer to the `Eclipse Process Description <https://eclipse-score.github.io/process_description/main/trustable/index.html>`.
