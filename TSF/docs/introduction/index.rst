@@ -37,7 +37,7 @@ Baselibs Project Context
 
 The integration effort is situated within the baselibs project, aimed at qualifying library performance and compliance with internal standards. As part of this project, the TSF process has been embedded into the score repository to generate and analyze evidence regarding software trustability.
 
-Overview of Current Meeting Minutes
+Component Classification Strategy
 -----------------------------------
 
 - **Process Overview**: The baselibs project is upholding the TSF to define guidelines and generate reliable evidence of compliance, analyzing specific requirements such as MISRA and functionality consistency.
@@ -50,7 +50,7 @@ Overview of Current Meeting Minutes
   - Evidence requirements are mapped and analyzed for gaps, leading to possible code amendments or forks.
   - Questions concerning the library's behavior are systematically answered, providing coverage details and tracing requirements to standards like ISO.
 
-Find more descriptions on the ongoing process and requirements at [Eclipse Process Description](https://eclipse-score.github.io/process_description/pr-27/trustable/index.html).
+Find more descriptions on the ongoing process and requirements at 'Eclipse Process Description <https://eclipse-score.github.io/process_description/main/trustable/index.html>'.
 
 Conclusion
 ----------
