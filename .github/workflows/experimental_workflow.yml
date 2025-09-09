@@ -89,19 +89,4 @@ jobs:
           name: trudag-report-${{ github.sha }}
           path: TSF/docs/generated/
           if-no-files-found: error
-          
-  build-docs:
-    needs: consume
-    # the eclipse-score/cicd-workflow docs.yml is adjusted to download the trudag report artifact before building the documentation
-    uses: ./.github/workflows/docs.yml
-    permissions:
-      contents: write
-      pages: write
-      pull-requests: write
-      id-token: write
-
-    with:
-      # the bazel-target depends on your repo specific docs_targets configuration (e.g. "suffix")Add commentMore actions
-      bazel-target: "//:docs -- --github_user=${{ github.repository_owner }} --github_repo=${{ github.event.repository.name }}"
-      retention-days: 3
       
