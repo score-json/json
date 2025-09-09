@@ -332,14 +332,21 @@ jobs:
 
       - name: Get current branch name
         id: get_branch
+        env:
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          PR_BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
+          GITHUB_REF_SAFE: ${{ github.ref }}
         run: |
-          if [[ "${{ startsWith(github.event_name, 'pull_request') }}" == "true" ]]; then
-            current_branch=${{ github.event.pull_request.head.ref }}
-            echo "branch_name=$current_branch" >> $GITHUB_ENV
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            # Use the branch from the pull request safely via environment variable
+            current_branch="$PR_BRANCH_NAME"
           else
-            current_branch=${GITHUB_REF#refs/heads/}
-            echo "branch_name=$current_branch" >> $GITHUB_ENV
+            # Remove the "refs/heads/" prefix from GITHUB_REF safely
+            current_branch="${GITHUB_REF_SAFE#refs/heads/}"
           fi
+ 
+          # Write the branch name to $GITHUB_ENV securely
+          echo "branch_name=${current_branch}" >> "$GITHUB_ENV"
 
       - name: Fetch data storage branch
         run: |
