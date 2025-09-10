@@ -17,7 +17,7 @@ on:
   workflow_call:
     inputs:
       artifact_id:
-        description: 'Unique identifier for artifacts'
+        description: 'Unique identifier for artifacts to be loaded'
         required: true
         type: string
 
@@ -48,6 +48,24 @@ jobs:
           sudo apt-get install -y graphviz
           pip install git+https://gitlab.com/CodethinkLabs/trustable/trustable@cc6b72753e1202951d382f60ff08320f5a957c7b
 
+      - name: Get current branch name
+        id: get_branch
+        env:
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          PR_BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
+          GITHUB_REF_SAFE: ${{ github.ref }}
+        run: |
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            # Use the branch from the pull request safely via environment variable
+            current_branch="$PR_BRANCH_NAME"
+          else
+            # Remove the "refs/heads/" prefix from GITHUB_REF safely
+            current_branch="${GITHUB_REF_SAFE#refs/heads/}"
+          fi
+ 
+          # Write the branch name to $GITHUB_ENV securely
+          echo "branch_name=${current_branch}" >> "$GITHUB_ENV"
+
       - name: Fetch data storage branch
         run: |
           git config user.name "github-actions[bot]"
@@ -64,7 +82,7 @@ jobs:
             git commit -m "Initialise persistent data storage"
             git push origin save_historical_data
           fi
-          git checkout ${{ github.event.repository.default_branch }}
+          git checkout $branch_name
           git checkout save_historical_data -- TSF/TrustableScoring.db
 
       - name: Generate trudag report
@@ -86,7 +104,7 @@ jobs:
       
       - name: Recover stash
         run: |
-          git checkout ${{ github.event.repository.default_branch }}
+          git checkout $branch_name
           git stash apply
 
       - name: Upload trudag artifact
