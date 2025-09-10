@@ -69,7 +69,11 @@ def is_unit_test(testcase: ET.Element) -> bool:
 
 def get_all_xml_files(directory: str = '.') -> list[str]:
     result = []
-    content = os.listdir(directory)
+    try:
+        content = os.listdir(directory)
+    except FileNotFoundError as e:
+        print(e)
+        return result
     for entry in content:
         if os.path.isdir(directory+'/'+entry):
             result = result + get_all_xml_files(directory+'/'+entry)
