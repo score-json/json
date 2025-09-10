@@ -35,4 +35,4 @@ This repository provides the aspired setup for projects using **C++** and **Baze
    introduction/index.rst
    concept.rst
    report.rst
-   Eclipse <https://projects.eclipse.org/projects/automotive.score>
+   Eclipse S-CORE Home-Page <https://projects.eclipse.org/projects/automotive.score>
