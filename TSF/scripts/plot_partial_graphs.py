@@ -12,7 +12,7 @@ def get_my_url(vertex: str, base_url: str, fuLl_graph: TrustableGraph) -> str:
     if vertex in fuLl_graph._graph.leaf_nodes():
         return base_url+"/generated/"+fuLl_graph.get_item(vertex).document+".html#"+vertex.lower()
     else:
-        return base_url+"_images/"+vertex+".svg"
+        return base_url+"/_images/"+vertex+".svg"
 
 def get_pydot_graph(vertices: list[str], edges: list[tuple[str,str]]) -> PydotGraph:
     graph = "digraph G {"
@@ -29,20 +29,27 @@ def get_subgraph(full_graph: TrustableGraph, vertices: list[str]) -> TrustableGr
     nodes = [full_graph.get_item(vertex) for vertex in vertices]
     return TrustableGraph(graph,nodes)
 
-def plot_all_single_layer_subgraphs(full_graph: TrustableGraph, path: list[str], base_url: str = ""):
+def plot_all_single_layer_subgraphs(full_graph: TrustableGraph, path: list[str], base_url: str = "") -> list[tuple[str,int]]:
+    result = []
     bud = path[-1]
     new_children = full_graph._graph.successors(bud)
     vertices = path+new_children
     my_graph = get_subgraph(full_graph,vertices)
     if len(new_children) > 0:
         plot_blank(my_graph,full_graph,base_url,"./TSF/docs/generated/"+bud+".svg")
+        result.append([bud,len(path)])
+        for child in new_children:
+            new_path = path + [child]
+            result = result + plot_all_single_layer_subgraphs(full_graph,new_path,base_url)
+    return result
+
+def write_documentation(plots: list[tuple[str,int]]):
+    sorted_plots = sorted(plots, key=lambda x: x[1])
+    for bud, length in sorted_plots:
         with open("./TSF/docs/trustable_graph.rst", "a", encoding="utf-8") as documentation:
             documentation.write("\n\n.. image:: generated/"+bud+".svg\n")
             documentation.write("\t:alt: Root of the trustable graph\n\t:width: 6000px\n\n")
             documentation.write("Trustable graph centered at "+bud)
-        for child in new_children:
-            new_path = path + [child]
-            plot_all_single_layer_subgraphs(full_graph,new_path,base_url)
 
 def plot_blank(graph: TrustableGraph, full_graph: TrustableGraph, base_url = "", name = "./graph.svg"):
     # format trustable graph for plotting purposes
@@ -100,7 +107,7 @@ This image presents the full trustable graph, in which each item links to its en
         # if the root is an orphaned node, discard it
         if root in leafs:
             continue
-        plot_all_single_layer_subgraphs(full_graph,[root],base_url)
+        write_documentation(plot_all_single_layer_subgraphs(full_graph,[root],base_url))
         
 
 # prepare the trustable graph as in trudag.plot.format_source_from_graph
