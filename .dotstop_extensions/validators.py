@@ -1,8 +1,7 @@
 from typing import TypeAlias, Tuple, List
 import os
 import requests
-import subprocess
-import warnings
+import sqlite3
 
 yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
@@ -124,8 +123,90 @@ def https_response_time(configuration: dict[str, yaml]) -> tuple[float, list[Exc
         if response.status_code == 200:
             # if target site is successfully called, check if it is reached within target seconds
             # recall that target/response.elapsed.microseconds>1/5, so score is accordingly refactored 
-            score = (min(1000000*target/response.elapsed.microseconds, 1.0)-0.2)*1.25
+            score = (min(1e6*target/response.elapsed.microseconds, 1.0)-0.2)*1.25
             scores.append(score)
             continue
         scores.append(0)
-    return(sum(scores)/len(scores),exceptions)   
+    return(sum(scores)/len(scores),exceptions)
+
+
+def check_test_results(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    """
+    Validates whether a certain test-case fails, or not.
+    """
+    # get the test-names
+    tests = configuration.get("tests",None)
+    if tests is None:
+        return(1.0, Warning("Warning: No tests specified! Assuming absolute trustability!"))
+    # check whether the most recent test report is loaded
+    sha = os.getenv("GITHUB_SHA")
+    if not sha:
+        return (0.0, [RuntimeError("Can't get value GITHUB_SHA.")])
+    ubuntu_artifact = f"./artifacts/ubuntu-{str(sha)}"
+    # check whether ubuntu-artifact is loaded correctly
+    if not os.path.exists(ubuntu_artifact):
+        return (0.0, [RuntimeError("The artifact containing the test data was not loaded correctly.")])
+    # read optional argument -- database name for the test report -- if specified
+    database = configuration.get("database", None)
+    if database is None:
+        # default value "TestResults.db"
+        database = "TestResults.db"
+    # check whether database containing test-results does exist
+    ubuntu_artifact += "/"+database
+    if not os.path.exists(ubuntu_artifact):
+        return (0.0, [RuntimeError("The artifact containing the test data was not loaded correctly.")])
+    # Ubuntu artifact is loaded correctly and test-results can be accessed.
+    # read optional argument -- table name for the test report -- if specified
+    table = configuration.get("table", None)
+    if table is None:
+        # default value "test_results"
+        table = "test_results"
+    # establish connection to database
+    try:
+        connector = sqlite3.connect(ubuntu_artifact)
+        cursor = connector.cursor()
+        # check whether our results can be accessed
+        cursor.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (table,))
+        if not cursor.fetchone():
+            # if not, it is not trustable
+            return (0.0, [RuntimeError(f"Table {table} can not be loaded.")])
+        # our result table can be read
+        # initialise variables 
+        score = 0.0
+        expected_tests = len(tests)
+        warnings = []
+        for test in tests:
+            # check if data for test have been captured
+            command = f"SELECT COUNT(*) FROM {table} WHERE name = ?"
+            cnt = cursor.execute(command, (test)).fetchone()[0]
+            if cnt is None or cnt == 0:
+                # no data found -> assign trustability 0 and inform user
+                warnings.append(Warning(f"Could not find data for test {test}."))
+                continue
+            # process data for test
+            command = f"""
+                        SELECT
+                            COALESCE(SUM(passed_cases), 0) AS total_passed,
+                            COALESCE(SUM(failed_cases), 0) AS total_failed
+                        FROM {table}
+                        WHERE name = ?
+                    """
+            passed, failed = cursor.execute(command, (test,)).fetchone()
+            all = float(passed)+float(failed)
+            if all == 0:
+                # means that all test-cases have been skipped; could happen due to time-constraints
+                # and interrupted workflow.
+                # Assumption: A skipped test is trustable.
+                score += 1/expected_tests
+                warnings.append(Warning(f"All test cases of {test} were skipped."))
+            else:
+                # at least one passed or failed test has been found
+                # observe that expected_tests = 0 if, and only if, tests = [], 
+                # in which case the for-loop is skipped
+                score += float(passed)/(all*expected_tests)
+        # terminate database connection 
+        # no commit necessary, since changes on database not intended
+        connector.close()
+        return(score, warnings)
+    except:
+        return (0.0, [RuntimeError("Fatal error during database evaluation.")])    
