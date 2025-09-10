@@ -46,6 +46,8 @@ jobs:
 
   ubuntu:
     name: Run Ubuntu Workflow
+    permissions:
+      contents: write
     needs: [codeql] # Error if CodeQL and Ubuntu triggered at the same time due to conflicting priorities
     uses: ./.github/workflows/ubuntu.yml
     with:
@@ -136,4 +138,4 @@ jobs:
     needs: [collect_artifacts_non_pr]
     uses: ./.github/workflows/publish_documentation.yml
     with:
-      artifact_id: "publish_documentation-${{ github.sha }}"
+      artifact_id: "ubuntu-${{ github.sha }}"
