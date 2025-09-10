@@ -73,7 +73,10 @@ def plot_blank(graph: TrustableGraph, full_graph: TrustableGraph, base_url = "",
                 pydot.quote_id_if_necessary(str(item))
             )[0]
             formatted_node.set("label", plt.break_line_at(item.header(), 20))
-            formatted_node.set("URL", get_my_url(str(item),base_url,full_graph))
+            if name != "./TSF/docs/generated/TRUSTABLE-SOFTWARE.svg" or str(item) != "TRUSTABLE-SOFTWARE":
+                formatted_node.set("URL", get_my_url(str(item),base_url,full_graph))
+            else:
+                formatted_node.set("URL", base_url+"/_images/graph.svg")    
             # Set target to avoid URLs opening within the image
             # formatted_node.set("target", "_top")
             for key, value in plt.NODE_STYLE.items():
