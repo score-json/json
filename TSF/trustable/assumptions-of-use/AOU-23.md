@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The input is complete and error-free.
+The integrator shall ensure that the data transmitted to nlohmann/json are complete and error-free.

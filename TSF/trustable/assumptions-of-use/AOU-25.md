@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The standard library is trustable.
+The behaviour of the C++ standard library is known, verified and validated.
