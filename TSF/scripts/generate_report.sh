@@ -25,6 +25,8 @@ if [ -f "$TSF_FOLDER/docs/trustable_graph.rst" ]; then
     rm "$TSF_FOLDER/docs/trustable_graph.rst"
     touch "$TSF_FOLDER/docs/trustable_graph.rst"
 fi
+# plot all partial graphs with links based on the url given in the first input
+# in the workflow publish_documentation.yml, this input is https://${OWNER_NAME}.github.io/${REPO_NAME}/main
 python3 "$TSF_SCRIPT_FOLDER/plot_partial_graphs.py" "$1"
 
 
