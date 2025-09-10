@@ -6,7 +6,7 @@ For each item of the trustable graph, the hash is calculated by trudag using:
    
 * its own name
 * the text of its own statement
-* the its normativity status
+* its normativity status
 * for every of its references, the *content* of that reference
 * for every of its fallacies, the description and content of the corresponding reference
 
@@ -77,7 +77,7 @@ references:
 
 ## WebContentReference
 
-The content of a `WebContentReference` is its content. This reference is intender to be utilised in case of *static* references, that should not vary in a short time-frame, and whose content is most important for the trustability of the statement. An example is a file located on a github repository, e.g.  `https://raw.githubusercontent.com/nlohmann/json/refs/heads/develop/.github/workflows/cifuzz.yml`
+The content of a `WebContentReference` is its content. This reference is intended to be utilised in case of *static* references, that should not vary in a short time-frame, and whose content is most important for the trustability of the statement. An example is a file located on a github repository, e.g.  `https://raw.githubusercontent.com/nlohmann/json/refs/heads/develop/.github/workflows/cifuzz.yml`
 
 A `WebContentReference` looks identical to a `WebReference` with `type: web_content` instead of `type: website`.
 
@@ -91,7 +91,7 @@ references:
   url: "https://math.stackexchange.com/"
 ---
 ```
-in case of an empty descritption, and
+in case of an empty description, and
 ```
 ---
 ...
