@@ -137,7 +137,7 @@ def check_test_results(configuration: dict[str, yaml]) -> tuple[float, list[Exce
     # get the test-names
     tests = configuration.get("tests",None)
     if tests is None:
-        return(1.0,Warning("Warning: No tests specified! Assuming absolute trustability!"))
+        return(1.0, Warning("Warning: No tests specified! Assuming absolute trustability!"))
     # check whether the most recent test report is loaded
     sha = os.getenv("GITHUB_SHA")
     if not sha:
@@ -145,7 +145,7 @@ def check_test_results(configuration: dict[str, yaml]) -> tuple[float, list[Exce
     ubuntu_artifact = f"./artifacts/ubuntu-{str(sha)}"
     # check whether ubuntu-artifact is loaded correctly
     if not os.path.exists(ubuntu_artifact):
-        return (0.0 [RuntimeError("The artifact containing the test data was not loaded correctly.")])
+        return (0.0, [RuntimeError("The artifact containing the test data was not loaded correctly.")])
     # read optional argument -- database name for the test report -- if specified
     database = configuration.get("database", None)
     if database is None:
@@ -154,7 +154,7 @@ def check_test_results(configuration: dict[str, yaml]) -> tuple[float, list[Exce
     # check whether database containing test-results does exist
     ubuntu_artifact += "/"+database
     if not os.path.exists(ubuntu_artifact):
-        return (0.0 [RuntimeError("The artifact containing the test data was not loaded correctly.")])
+        return (0.0, [RuntimeError("The artifact containing the test data was not loaded correctly.")])
     # Ubuntu artifact is loaded correctly and test-results can be accessed.
     # read optional argument -- table name for the test report -- if specified
     table = configuration.get("table", None)
@@ -169,7 +169,7 @@ def check_test_results(configuration: dict[str, yaml]) -> tuple[float, list[Exce
         cursor.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (table,))
         if not cursor.fetchone():
             # if not, it is not trustable
-            return (0.0,[RuntimeError(f"Table {table} can not be loaded.")])
+            return (0.0, [RuntimeError(f"Table {table} can not be loaded.")])
         # our result table can be read
         # initialise variables 
         score = 0.0
