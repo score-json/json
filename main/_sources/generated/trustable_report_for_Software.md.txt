@@ -50,7 +50,6 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [AOU-23](AOU.md#aou-23) |  The input is complete and error-free. | 0.00 |
 | [AOU-24](AOU.md#aou-24) |  The input does not change during reading. | 0.00 |
 | [AOU-25](AOU.md#aou-25) |  The standard library is trustable. | 0.00 |
-| [AOU-26](AOU.md#aou-26) |  No random faults occur. | 0.00 |
 | [AOU-27](AOU.md#aou-27) |  If a change of the local mirror of nlohmann/json changes the trustability, then this change is noted in ChangeLog.md. | 0.00 |
 
 ## Compliance for JLEX
@@ -305,6 +304,6 @@ The contribution to the score of a parent item by a suspiciously linked child is
 _Generated for: Software_
 
 * _Repository root: /home/runner/work/json/json_
-* _Commit SHA: ee86d4a6_
-* _Commit date/time: Thu Sep  4 09:57:25 2025_
-* _Commit tag: ee86d4a613c73a5bcaa96711ea4d3d92a07fc576_
+* _Commit SHA: 0ab5ba5b_
+* _Commit date/time: Wed Sep 10 07:48:09 2025_
+* _Commit tag: 0ab5ba5be1c19cd77fcd5bd5770db24038ce5cda_

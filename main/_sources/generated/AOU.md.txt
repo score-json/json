@@ -799,37 +799,6 @@ _No Historic Data Found_
 
 ---
 
-### AOU-26 
-
-No random faults occur.
-
-
-**Supported Requests:**
-
-
-**Supporting Items:**
-
-_None_
-
-
-
-**References:**
-
-_None_
-
-
-
-**Fallacies:**
-
-_None_
-
-**Graph:**
-
-_No Historic Data Found_
-
-
----
-
 ### AOU-27 
 
 If a change of the local mirror of nlohmann/json changes the trustability, then this change is noted in ChangeLog.md. 
