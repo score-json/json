@@ -98,13 +98,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
-      - name: Modify trudag report content
-        run: |
-          find TSF/docs/generated -type f -name "trudag-report-${{ github.sha }}" \
-            -exec sed -i \
-            -e 's/Compliance for TT/Compliance for Trustable Tenets/g' \
-            -e 's/Compliance for TA/Compliance for Trustable Assertions/g' {} +
-
       - name: Checkout data storage branch
         run: |
           git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/TrustableScoring.db)
