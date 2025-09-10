@@ -91,7 +91,7 @@ references:
   url: "https://math.stackexchange.com/"
 ---
 ```
-in case of an empty descritption,
+in case of an empty descritption, and
 ```
 ---
 ...
@@ -102,7 +102,7 @@ references:
   description: "Wiki article on the smooth Serre-Swan theorem"
 ---
 ```
-in case of a custom description, and
+in case of a custom description.
 
 ## TimeVaryingWebReference
 
@@ -120,7 +120,7 @@ references:
   changelog: "ideas/graded/graded_Serre_Swan.tex"
 ---
 ```
-where `description` and `changelog` are optional arguments
+where `description` and `changelog` are optional arguments.
 
 
 # Validators
