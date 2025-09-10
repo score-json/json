@@ -88,13 +88,13 @@ def plot_blank(graph: TrustableGraph, full_graph: TrustableGraph, base_url = "",
 
 def plot_orchestrator(full_graph: TrustableGraph, base_url: str = ""):
     # initialise the documentation
-    documentation_content = """
+    documentation_content = f"""
 .. _ta-analysis-subgraph:
 
 Trustable Graph
 ====================
 
-The trustable graph is the graphical representation of the argumentation.
+The trustable graph is the graphical representation of the argumentation. Each node represents a statement, and each arrow A \u2192 B represents the statement \"If A, then B\" or, more verbose, \"B supports A\". The comprehensive list of all statements together with their trustability scores can be found `here <{base_url}/generated/trustable_report_for_Software.html>`_. 
 
 .. image:: generated/graph.svg
    :alt: Trustable Graph
