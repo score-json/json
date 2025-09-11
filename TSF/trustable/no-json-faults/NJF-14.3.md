@@ -13,7 +13,7 @@ references:
         - type: function_reference
           name: "parser::sax_parse_internal"
           path: "include/nlohmann/detail/input/parser.hpp"
-          decscription: "function, which is called by parser::sax_parse"
+          description: "function, which is called by parser::sax_parse"
         - type: function_reference
           name: "lexer::scan"
           path: "include/nlohmann/detail/input/lexer.hpp"
