@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The build environment used for nlohmann/json in an integrating system is supplied with consistent dependencies.
+The integrator shall ensure that the build environment used for nlohmann/json is supplied with consistent dependencies in every integrating system.

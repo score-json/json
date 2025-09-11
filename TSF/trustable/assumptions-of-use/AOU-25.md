@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The behaviour of the C++ standard library is known, verified and validated.
+The integrator shall convince himself that the behaviour of the C++ standard library is known, verified and validated.
