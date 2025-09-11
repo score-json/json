@@ -427,7 +427,7 @@
                   
   <section id="jlex-01">
 <h1>JLEX-01<a class="headerlink" href="#jlex-01" title="Link to this heading">#</a></h1>
-<p>The JSON-Library provides a service to check the well-formedness of JSON data.</p>
+<p>The requirement regarding <a class="reference external" href="https://eclipse-score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__validation">JSON Validation</a> is fulfilled.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-behaviours"><span class="std std-ref">TA-BEHAVIOURS</span></a></p></li>
@@ -777,6 +777,28 @@
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="c1">// closing }</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_LIKELY</span><span class="p">(</span><span class="n">last_token</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">end_object</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="o">!</span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">end_object</span><span class="p">()))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="c1">// We are done with this object. Before we can parse a</span>
+<span class="w">            </span><span class="c1">// new value, we need to evaluate the new state first.</span>
+<span class="w">            </span><span class="c1">// By setting skip_to_state_evaluation to false, we</span>
+<span class="w">            </span><span class="c1">// are effectively jumping to the beginning of this if.</span>
+<span class="w">            </span><span class="n">JSON_ASSERT</span><span class="p">(</span><span class="o">!</span><span class="n">states</span><span class="p">.</span><span class="n">empty</span><span class="p">());</span>
+<span class="w">            </span><span class="n">states</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+<span class="w">            </span><span class="n">skip_to_state_evaluation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">            </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">parse_error</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span>
+<span class="w">                                </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_token_string</span><span class="p">(),</span>
+<span class="w">                                </span><span class="n">parse_error</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span><span class="w"> </span><span class="n">exception_message</span><span class="p">(</span><span class="n">token_type</span><span class="o">::</span><span class="n">end_object</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;object&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -879,7 +901,7 @@
 <hr class="docutils" />
 <section id="jlex-02">
 <h1>JLEX-02<a class="headerlink" href="#jlex-02" title="Link to this heading">#</a></h1>
-<p>The JSON-Library provides a service to parse JSON data according to RFC8259.</p>
+<p>The requirement regarding <a class="reference external" href="https://eclipse-score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__deserialization">JSON Deserialization</a> is fulfilled.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-behaviours"><span class="std std-ref">TA-BEHAVIOURS</span></a></p></li>
@@ -1285,6 +1307,28 @@
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="c1">// closing }</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_LIKELY</span><span class="p">(</span><span class="n">last_token</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">token_type</span><span class="o">::</span><span class="n">end_object</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">JSON_HEDLEY_UNLIKELY</span><span class="p">(</span><span class="o">!</span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">end_object</span><span class="p">()))</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="c1">// We are done with this object. Before we can parse a</span>
+<span class="w">            </span><span class="c1">// new value, we need to evaluate the new state first.</span>
+<span class="w">            </span><span class="c1">// By setting skip_to_state_evaluation to false, we</span>
+<span class="w">            </span><span class="c1">// are effectively jumping to the beginning of this if.</span>
+<span class="w">            </span><span class="n">JSON_ASSERT</span><span class="p">(</span><span class="o">!</span><span class="n">states</span><span class="p">.</span><span class="n">empty</span><span class="p">());</span>
+<span class="w">            </span><span class="n">states</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+<span class="w">            </span><span class="n">skip_to_state_evaluation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">            </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">sax</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">parse_error</span><span class="p">(</span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span>
+<span class="w">                                </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_token_string</span><span class="p">(),</span>
+<span class="w">                                </span><span class="n">parse_error</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="n">m_lexer</span><span class="p">.</span><span class="n">get_position</span><span class="p">(),</span><span class="w"> </span><span class="n">exception_message</span><span class="p">(</span><span class="n">token_type</span><span class="o">::</span><span class="n">end_object</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;object&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <ul class="simple">

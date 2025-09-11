@@ -56,8 +56,8 @@ The contribution to the score of a parent item by a suspiciously linked child is
 
 | Item   | Summary | Score |
 |--------|---------|-------|
-| [JLEX-01](JLEX.md#jlex-01) |  The JSON-Library provides a service to check the well-formedness of JSON data. | 0.00 |
-| [JLEX-02](JLEX.md#jlex-02) |  The JSON-Library provides a service to parse JSON data according to RFC8259. | 0.00 |
+| [JLEX-01](JLEX.md#jlex-01) |  The requirement regarding [JSON Validation](https://eclipse-score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__validation) is fulfilled. | 0.00 |
+| [JLEX-02](JLEX.md#jlex-02) |  The requirement regarding [JSON Deserialization](https://eclipse-score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__deserialization) is fulfilled. | 0.00 |
 
 ## Compliance for JLS
 
@@ -304,6 +304,6 @@ The contribution to the score of a parent item by a suspiciously linked child is
 _Generated for: Software_
 
 * _Repository root: /home/runner/work/json/json_
-* _Commit SHA: 0c0cf5a4_
-* _Commit date/time: Wed Sep 10 16:20:35 2025_
-* _Commit tag: 0c0cf5a410cdfd1f871960fbca9a844f6a0355c0_
+* _Commit SHA: f7318143_
+* _Commit date/time: Thu Sep 11 09:23:26 2025_
+* _Commit tag: f731814346d7719197398df1b5041a393c6408bd_
