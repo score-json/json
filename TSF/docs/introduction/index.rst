@@ -17,7 +17,7 @@
 Introduction
 ========================================================
 
-This document outlines the application of the Trustable Software Framework (TSF) to the JSON library developed by Niels Lohmann (`json <https://github.com/nlohmann/json>`_). The TSF aims to ensure software reliability and compliance by setting guidelines for evaluating various aspects of software development. Our focus here is the library's integration into the process score repository within the baselibs project. The ultimate goal is to certify the library as trustable based on stringent evaluation criteria involving rigorous testing, intuitive design, and seamless integration.
+This document outlines the application of the Trustable Software Framework (TSF) to the JSON library developed by Niels Lohmann (`json <https://github.com/nlohmann/json>`_). The TSF aims to ensure software reliability and compliance by setting guidelines for evaluating various aspects of software development. Our focus here is the library's integration into the baselibs repository within the S-CORE project. The ultimate goal is to certify the library as trustable based on stringent evaluation criteria involving rigorous testing, intuitive design, and seamless integration.
 
 Design Goals of the JSON Library
 --------------------------------
