@@ -5,14 +5,17 @@ references:
         - type: function_reference
           name: "basic_json::accept"
           path: "include/nlohmann/json.hpp"
+          description: ""
           overload: 1
         - type: function_reference
           name: "basic_json::accept"
           path: "include/nlohmann/json.hpp"
+          description: ""
           overload: 2
         - type: function_reference
           name: "basic_json::accept"
           path: "include/nlohmann/json.hpp"
+          description: ""
           overload: 3
         - type: function_reference
           name: "parser::accept"
