@@ -292,11 +292,12 @@ class JSONTestsuiteReference(CPPTestReference):
         cpp_test_title = super().__str__() + '\n\n'
 
         markdown_content = (
-            make_md_bullet_point(description) + 
             self.get_all_json_as_markdown() + 
             make_md_bullet_point(cpp_test_title) + 
             cpp_test_content
         )
+        if description != "":
+            markdown_content = make_md_bullet_point(description) + markdown_content
         # the markdown content is indented by one level to fit into the report markdown structure
         return add_indentation(markdown_content, 1)
 
@@ -401,7 +402,7 @@ class FunctionReference(SourceSpanReference):
     Since classes are in hpp-files of nlohmann/json uniquely identified by their name, this uniquely identifies a function.
     """
 
-    def __init__(self, name: str, path: str, overload: str = "1") -> None:
+    def __init__(self, name: str, path: str, description: str = "", overload: str = "1") -> None:
         [start_line,end_line] = FunctionReference.get_function_line_numbers(Path(path),name,int(overload))
         # SourceSpanReference copies code from a start-character in a start-line 
         # up to an end-character in an end-line.
@@ -412,6 +413,7 @@ class FunctionReference(SourceSpanReference):
         super().__init__(Path(path),[[start_line,0],[end_line,1000]])
         self._name = name
         self._overload = int(overload)
+        self._description = description
 
     def language(self):
         return "C++" 
@@ -543,7 +545,10 @@ class FunctionReference(SourceSpanReference):
     def as_markdown(self, filepath: None | str = None) -> str:
         content = self.code.decode('utf-8')
         content = self.remove_leading_whitespace_preserve_indentation(content)
-        return format_cpp_code_as_markdown(content)
+        content = format_cpp_code_as_markdown(content)
+        if self._description != "":
+            content = make_md_bullet_point(f"Description: {self._description}",1) + "\n\n" + content
+        return content
 
     def __str__(self) -> str:
         # this is used as a title in the trudag report

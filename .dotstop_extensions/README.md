@@ -49,6 +49,36 @@ references:
 ---
 ```
 
+## FunctionReference
+
+The content of a `FunctionReference` is given by the code inclusive all comments of a C++ function within a class in a specified file in the repository. The specific position, i.e. start- and end-line, of the code within that file is not part of the content.  
+
+For the `FunctionReference` an example is:
+```
+---
+...
+
+references:
+- type: function_reference
+  name: "basic_json::accept"
+  path: "include/nlohmann/json.hpp"
+---
+```
+
+Since functions may be overloaded, a `FunctionReference` can be initialised with an optional overload-parameter; additionally, it is possible to give a description. The full example is:
+```
+---
+...
+
+references:
+- type: function_reference
+  name: "basic_json::accept"
+  path: "include/nlohmann/json.hpp"
+  description: "the public interface of the `accept`-functionality of nlohmann/json"
+  overload: 2
+---
+```
+
 ## WebReference
 
 The content of a `WebReference` is its url. This reference is intended to be utilised in case that the content of the web-site is constantly changing (e.g. due to a clock being implemented somewhere on the site), but the reviewer is certain that the type of the content and it being supportive of the statement is fulfilled as long a the website is reachable. An example is `https://introspector.oss-fuzz.com/project-profile?project=json`, where the most recent fuzz-testing report for nlohmann/json is published.
