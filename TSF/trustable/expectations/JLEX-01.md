@@ -28,5 +28,4 @@ references:
           path: "include/nlohmann/detail/input/lexer.hpp"
 ---
 
-The JSON-Library provides a service to check the well-formedness of JSON data.
-
+The requirement regarding [JSON Validation](https://eclipse-score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__validation) is fulfilled.

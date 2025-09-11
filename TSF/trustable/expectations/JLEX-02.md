@@ -28,4 +28,4 @@ references:
           path: "include/nlohmann/detail/input/lexer.hpp"
 ---
 
-The JSON-Library provides a service to parse JSON data according to RFC8259.
+The requirement regarding [JSON Deserialization](https://eclipse-score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__deserialization) is fulfilled.
