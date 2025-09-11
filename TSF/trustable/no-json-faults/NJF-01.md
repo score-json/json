@@ -20,6 +20,7 @@ references:
         - type: function_reference
           name: "lexer::scan_literal"
           path: "include/nlohmann/detail/input/lexer.hpp"
+          description: "function to verify whether a candidate literal coincides with its expected value; here called with literal_text = ['n','u','l','l']."
 evidence:
   type: "check_artifact_exists"
   configuration:
