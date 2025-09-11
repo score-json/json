@@ -513,9 +513,12 @@ class FunctionReference(SourceSpanReference):
             if line_number<function_start:
                 # skip ahead
                 continue
-            # Now, we have found the line, where the function declaration
+            # Now, we have found the line, where the function declaration is located.
             # In nlohmann/json, the function body is written between a lonely { and a lonely }.
-            # First, we should search for the first lonely {
+            # First, we should search for the first lonely {.
+            # ignore all commented out lines
+            if line.strip().startswith("//"):
+                continue
             if '{' in line or '}' in line:
                 for c in line:
                     if c == '{':
