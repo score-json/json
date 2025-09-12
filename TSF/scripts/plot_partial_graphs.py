@@ -44,8 +44,8 @@ def plot_all_single_layer_subgraphs(full_graph: TrustableGraph, path: list[str],
 def write_documentation(plots: list[tuple[str,int]]):
     sorted_plots = sorted(plots, key=lambda x: x[1])
     for bud, length in sorted_plots:
-        with open("./TSF/docs/trustable_graph.rst", "a", encoding="utf-8") as documentation:
-            documentation.write("\n\n.. image:: generated/"+bud+".svg\n")
+        with open("./TSF/docs/generated/trustable_graph.rst", "a", encoding="utf-8") as documentation:
+            documentation.write("\n\n.. image:: "+bud+".svg\n")
             documentation.write("\t:alt: Root of the trustable graph\n\t:width: 6000px\n\n")
             documentation.write("Trustable graph centered at "+bud)
 
@@ -94,13 +94,13 @@ Trustable Graph
 
 The trustable graph is the graphical representation of the argumentation.
 
-.. image:: generated/graph.svg
+.. image:: graph.svg
    :alt: Trustable Graph
    :width: 6000px
 
 This image presents the full trustable graph, in which each item links to its entry in the documentation. Smaller scale representations of arguments, which are navigable among each other, can be found below. 
     """
-    with open("./TSF/docs/trustable_graph.rst", "a", encoding="utf-8") as documentation:
+    with open("./TSF/docs/generated/trustable_graph.rst", "a", encoding="utf-8") as documentation:
         documentation.write(documentation_content)
     roots = full_graph._graph.root_nodes()
     leafs = full_graph._graph.leaf_nodes()
