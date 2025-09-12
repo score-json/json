@@ -16,20 +16,4 @@
 Concept
 =================
 
-*The* `Trustable Software Framework (TSF) <https://codethinklabs.gitlab.io/trustable/trustable/index.html>`_
-*approach is designed for consideration of software where factors such as safety, security,
-performance, availability and reliability are considered critical. Broadly it asserts that any
-consideration of trust must be based on evidence.*
-
-The tenets and assertions defined in the Trustable Software Framework can be used to measure an (OSS) project trust score.
-To calculate the score link evidences to the Trustable Assertions (TA).
-
-
-.. figure:: tsf_overview.drawio.svg
-  :width: 100%
-  :align: center
-  :alt: TSF Overview
-
-  TSF Overview
-
-Source and further reading: `Trustable <https://eclipse-score.github.io/process_description/pr-27/trustable/index.html>`_
+For the concept of the Trustable Software Framework (TSF), please refer to the `Eclipse Process Description <https://eclipse-score.github.io/process_description/main/trustable/index.html>`_.

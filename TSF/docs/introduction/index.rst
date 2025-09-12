@@ -17,7 +17,7 @@
 Introduction
 ========================================================
 
-This document outlines the application of the Trustable Software Framework (TSF) to the JSON library developed by Niels Lohmann (`json <https://github.com/nlohmann/json>`_). The TSF aims to ensure software reliability and compliance by setting guidelines for evaluating various aspects of software development. Our focus here is the library's integration into the process score repository within the baselibs project. The ultimate goal is to certify the library as trustable based on stringent evaluation criteria involving rigorous testing, intuitive design, and seamless integration.
+This document outlines the application of the Trustable Software Framework (TSF) to the JSON library developed by Niels Lohmann (`json <https://github.com/nlohmann/json>`_). The TSF aims to ensure software reliability and compliance by setting guidelines for evaluating various aspects of software development. Our focus here is the library's integration into the baselibs repository within the S-CORE project. The ultimate goal is to certify the library as trustable based on stringent evaluation criteria involving rigorous testing, intuitive design, and seamless integration.
 
 Design Goals of the JSON Library
 --------------------------------
@@ -37,7 +37,7 @@ Baselibs Project Context
 
 The integration effort is situated within the baselibs project, aimed at qualifying library performance and compliance with internal standards. As part of this project, the TSF process has been embedded into the score repository to generate and analyze evidence regarding software trustability.
 
-Overview of Current Meeting Minutes
+Component Classification Strategy
 -----------------------------------
 
 - **Process Overview**: The baselibs project is upholding the TSF to define guidelines and generate reliable evidence of compliance, analyzing specific requirements such as MISRA and functionality consistency.
@@ -50,7 +50,7 @@ Overview of Current Meeting Minutes
   - Evidence requirements are mapped and analyzed for gaps, leading to possible code amendments or forks.
   - Questions concerning the library's behavior are systematically answered, providing coverage details and tracing requirements to standards like ISO.
 
-Find more descriptions on the ongoing process and requirements at [Eclipse Process Description](https://eclipse-score.github.io/process_description/pr-27/trustable/index.html).
+Find more descriptions on the ongoing process and requirements at `Eclipse Process Description <https://eclipse-score.github.io/process_description/main/trustable/index.html>`_.
 
 Conclusion
 ----------
