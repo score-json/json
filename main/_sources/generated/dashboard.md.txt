@@ -139,7 +139,7 @@ The distribution of scores for all nodes across the graph.
 |statements|226|
 |reviewed statements|4|
 |unreviewed statements|222|
-|orphaned statements|8|
+|orphaned statements|4|
 |statements with evidence|45|
 |evidence|164|
 |expectations|5|
