@@ -7,8 +7,6 @@ import trudag.plot as plt
 from pathlib import Path
 
 def get_my_url(vertex: str, base_url: str, full_graph: TrustableGraph) -> str:
-    # if vertex in full_graph._graph.root_nodes():
-    #     return base_url+"_images/graph.svg"
     if vertex in full_graph._graph.leaf_nodes():
         return base_url+"/generated/"+full_graph.get_item(vertex).document+".html#"+vertex.lower()
     else:
