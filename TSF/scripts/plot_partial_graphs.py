@@ -102,7 +102,6 @@ The trustable graph is the graphical representation of the argumentation.
 This image presents the full trustable graph, in which each item links to its entry in the documentation. Smaller scale representations of arguments, which are navigable among each other, can be found below. 
     """
     with open("./TSF/docs/generated/trustable_graph.rst", "a", encoding="utf-8") as documentation:
-    with open("./TSF/docs/generated/trustable_graph.rst", "a", encoding="utf-8") as documentation:
         documentation.write(documentation_content)
     roots = full_graph._graph.root_nodes()
     leafs = full_graph._graph.leaf_nodes()
