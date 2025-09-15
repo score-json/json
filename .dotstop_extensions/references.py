@@ -562,11 +562,8 @@ class ListOfTestCases(BaseReference):
         self._database = recent_result_database
         self._table =  recent_result_table
 
-    @classmethod
-    def type(cls) -> str:
-        return "list_of_test_cases"
-    
-    def compile_string(self, items: list[str]) -> str:
+    @staticmethod    
+    def compile_string(items: list[str]) -> str:
         # input: list of strings representing the structure of TEST_CASE, SECTION etc.,
         # e.g. items = ["lexer class", "scan", "literal names"]
         # output: the last item of the list, representing the most recent SECTION,
@@ -581,8 +578,8 @@ class ListOfTestCases(BaseReference):
             result += "* " + items[-1]
         return result
 
-
-    def extract_quotation(self, s: str) -> str:
+    @staticmethod    
+    def extract_quotation(s: str) -> str:
         # input: string containing at least one quoted substring, e.g. s = "my \"input\""
         # output: the first quoted substring of the input
         # throws error if no quoted substring can be found.
@@ -593,9 +590,9 @@ class ListOfTestCases(BaseReference):
         if second == -1:
             raise RuntimeError("Expected quotation marks; only one was detected.")
         return s[first + 1 : second]
-
-
-    def remove_and_count_indent(self, s: str) -> tuple[int, str]:
+    
+    @staticmethod
+    def remove_and_count_indent(s: str) -> tuple[int, str]:
         # input: string with possibly leading whitespace (space of horizontal tab)
         # output: the number of leading spaces and the string with leading whitespace removed;
         # tab counted as four spaces
@@ -610,6 +607,24 @@ class ListOfTestCases(BaseReference):
             i += 1
         return (cnt, s[i:])
 
+    @staticmethod
+    def head_of_list() -> str:
+        return """## List of all unit-tests with test environments
+
+This list contains all unit-tests possibly running in this project.
+These tests are compiled from the source-code, where the individual unit-tests are arranged in TEST_CASEs containing possibly nested SECTIONs.
+To reflect the structure of the nested sections, nested lists are utilised, where the top-level list represents the list of TEST_CASEs. 
+
+It should be noted that not all unit-tests in a test-file are executed with every compiler-configuration.
+"""
+    
+    @staticmethod
+    def transform_test_file_to_test_name(test_file: str) -> str:
+        return "test-"+"-".join((test_file.split('.')[0]).split('-')[1:])
+
+    @classmethod
+    def type(cls) -> str:
+        return "list_of_test_cases"
 
     def extract_test_structure(self, file_path: Path) -> str:
         # input: path to a file potentially containing unit-tests
@@ -653,17 +668,6 @@ class ListOfTestCases(BaseReference):
         # process extracted lines
         return ("\n".join(lines_out) + "\n") if lines_out else ""
 
-
-    def head_of_list(self) -> str:
-        return """## List of all unit-tests with test environments
-
-This list contains all unit-tests possibly running in this project.
-These tests are compiled from the source-code, where the individual unit-tests are arranged in TEST_CASEs containing possibly nested SECTIONs.
-To reflect the structure of the nested sections, nested lists are utilised, where the top-level list represents the list of TEST_CASEs. 
-
-It should be noted that not all unit-tests in a test-file are executed with every compiler-configuration.
-"""
-
     def extract_recent_test_environments(self) -> dict:
         fetched_data = dict()
         try:    
@@ -698,9 +702,6 @@ It should be noted that not all unit-tests in a test-file are executed with ever
             case_data["skip"] = [{"compiler": result[0], "standard": result[1], "skipped": result[2]} for result in results]
             fetched_data[case] = case_data
         return fetched_data
-    
-    def transform_test_file_to_test_name(self, test_file: str) -> str:
-        return "test-"+"-".join((test_file.split('.')[0]).split('-')[1:])
 
     def fetch_all_test_data(self, input: list[str]):
         # inputs: path(s) to directory potentially containing some test-data
