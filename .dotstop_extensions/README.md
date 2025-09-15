@@ -152,6 +152,37 @@ references:
 ```
 where `description` and `changelog` are optional arguments.
 
+## ListOfTestCases
+
+The content of a `ListOfTestCases` is given by the list of test-cases extracted from the unit-tests given in the files in the provided directories. 
+It is assumed that a unit-test is saved in a file with the name unit-xxx.cpp, and only those files are used to compile the list. 
+Further, it is assumed that a unit-test-file is structured as
+
+```
+...
+TEST_CASE("my test case")
+{
+    ...
+    SECTION("my section")
+    {
+        ...
+    }
+    ...
+}
+```
+
+and the structure regarding test-cases and (nested) sections of test-cases is extracted. The expected configuration is 
+
+```
+---
+...
+references:
+- type: list_of_test_cases
+  test_files:
+    - TSF/tests
+    - tests/src
+---
+```
 
 # Validators
 
