@@ -95,7 +95,6 @@ Trustable Graph
 The trustable graph is the graphical representation of the argumentation.
 
 .. image:: graph.svg
-.. image:: graph.svg
    :alt: Trustable Graph
    :width: 6000px
 
