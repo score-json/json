@@ -2,7 +2,7 @@ import pytest
 import tempfile
 from pathlib import Path
 from unittest.mock import patch
-from references import CPPTestReference, JSONTestsuiteReference, FunctionReference
+from references import CPPTestReference, JSONTestsuiteReference, FunctionReference, ListOfTestCases
 
 
 @pytest.fixture
@@ -670,3 +670,19 @@ def test_init_function_reference(temp_hpp_file):
     assert ref._name == "lexer::my_function"
     assert ref.path == temp_hpp_file
     assert ref._overload == 1
+
+def test_default_init_ListOfTestCases():
+    ref = ListOfTestCases(["file_1","file_2"])
+    assert ref._test_files == ["file_1","file_2"]
+    assert ref._database == "artifacts/TestResults.db"
+    assert ref._table == "test_results"
+
+def test_non_default_init_ListOfTestCases():
+    ref = ListOfTestCases(["file_1","file_2"],"my_database.db","my_fancy_table")
+    assert ref._test_files == ["file_1","file_2"]
+    assert ref._database == "my_database.db"
+    assert ref._table == "my_fancy_table"
+
+def test_compile_string():
+    with pytest.raises(RuntimeError):
+        ListOfTestCases.compile_string([])
