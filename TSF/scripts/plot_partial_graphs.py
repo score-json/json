@@ -34,7 +34,7 @@ def plot_all_single_layer_subgraphs(full_graph: TrustableGraph, path: list[str],
     vertices = path+new_children
     my_graph = get_subgraph(full_graph,vertices)
     if len(new_children) > 0:
-        plot_blank(my_graph,full_graph,base_url,"./TSF/docs/generated/"+bud+".svg")
+        plot_blank(my_graph,full_graph,base_url,"./TSF/docs/generated/custom_"+bud+"_graph.svg")
         result.append([bud,len(path)])
         for child in new_children:
             new_path = path + [child]
@@ -45,7 +45,7 @@ def write_documentation(plots: list[tuple[str,int]]):
     sorted_plots = sorted(plots, key=lambda x: x[1])
     for bud, length in sorted_plots:
         with open("./TSF/docs/generated/trustable_graph.rst", "a", encoding="utf-8") as documentation:
-            documentation.write("\n\n.. image:: "+bud+".svg\n")
+            documentation.write("\n\n.. image:: custom_"+bud+"_graph.svg\n")
             documentation.write("\t:alt: Root of the trustable graph\n\t:width: 6000px\n\n")
             documentation.write("Trustable graph centered at "+bud)
 
