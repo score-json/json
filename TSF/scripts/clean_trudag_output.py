@@ -64,10 +64,10 @@ def insert_line(filepath):
             updated_lines.append("This presents the compliance for the _Assumptions of Use_ (AOU) in tabular form.\n")
             modified = True
         if line.strip() == '## Compliance for JLEX':
-            updated_lines.append("This presents the compliance for the _Expectations_ (JLEX) in tabular form.\n")
+            updated_lines.append("This presents the compliance for the _JSON-Library Expectations_ (JLEX) in tabular form.\n")
             modified = True
         if line.strip() == '## Compliance for JLS':
-            updated_lines.append("This presents the compliance for the _Statements_ (JLS) in tabular form.\n")
+            updated_lines.append("This presents the compliance for the _JSON-Library Statements_ (JLS) in tabular form.\n")
             modified = True
         if line.strip() == '## Compliance for NJF':
             updated_lines.append("This presents the compliance for the _No JSON Faults_ (NJF) in tabular form.\n")
@@ -82,10 +82,10 @@ def insert_line(filepath):
             updated_lines.append("This presents the compliance for the _Trustable Assertions_ (TA) in tabular form.\n")
             modified = True
         if line.strip() == '## Compliance for TIJ':
-            updated_lines.append("This presents the compliance for the _Throw Ill Formed JSON_ (TIJ) in tabular form.\n")
+            updated_lines.append("This presents the compliance for the _Throw Ill-Formed JSON_ (TIJ) in tabular form.\n")
             modified = True
         if line.strip() == '## Compliance for TRUSTABLE':
-            updated_lines.append("This presents the compliance for _Trustable_ in tabular form.\n")
+            updated_lines.append("This presents the ultimate trustability score for nlohmann/json.\n")
             modified = True
         if line.strip() == '## Compliance for TT':
             updated_lines.append("This presents the compliance for the _Trustable Tenets_ (TT) in tabular form.\n")
