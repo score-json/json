@@ -13,349 +13,349 @@ The trustable graph is the graphical representation of the argumentation.
 This image presents the full trustable graph, in which each item links to its entry in the documentation. Smaller scale representations of arguments, which are navigable among each other, can be found below. 
     
 
-.. image:: TRUSTABLE-SOFTWARE.svg
+.. image:: custom_TRUSTABLE-SOFTWARE_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TRUSTABLE-SOFTWARE
 
-.. image:: TT-CHANGES.svg
+.. image:: custom_TT-CHANGES_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TT-CHANGES
 
-.. image:: TT-CONFIDENCE.svg
+.. image:: custom_TT-CONFIDENCE_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TT-CONFIDENCE
 
-.. image:: TT-CONSTRUCTION.svg
+.. image:: custom_TT-CONSTRUCTION_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TT-CONSTRUCTION
 
-.. image:: TT-EXPECTATIONS.svg
+.. image:: custom_TT-EXPECTATIONS_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TT-EXPECTATIONS
 
-.. image:: TT-PROVENANCE.svg
+.. image:: custom_TT-PROVENANCE_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TT-PROVENANCE
 
-.. image:: TT-RESULTS.svg
+.. image:: custom_TT-RESULTS_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TT-RESULTS
 
-.. image:: TA-FIXES.svg
+.. image:: custom_TA-FIXES_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TA-FIXES
 
-.. image:: TA-UPDATES.svg
+.. image:: custom_TA-UPDATES_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TA-UPDATES
 
-.. image:: TA-METHODOLOGIES.svg
+.. image:: custom_TA-METHODOLOGIES_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TA-METHODOLOGIES
 
-.. image:: TA-CONFIDENCE.svg
+.. image:: custom_TA-CONFIDENCE_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TA-CONFIDENCE
 
-.. image:: TA-RELEASES.svg
+.. image:: custom_TA-RELEASES_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TA-RELEASES
 
-.. image:: TA-TESTS.svg
+.. image:: custom_TA-TESTS_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TA-TESTS
 
-.. image:: TA-ITERATIONS.svg
+.. image:: custom_TA-ITERATIONS_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TA-ITERATIONS
 
-.. image:: TA-BEHAVIOURS.svg
+.. image:: custom_TA-BEHAVIOURS_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TA-BEHAVIOURS
 
-.. image:: TA-MISBEHAVIOURS.svg
+.. image:: custom_TA-MISBEHAVIOURS_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TA-MISBEHAVIOURS
 
-.. image:: TA-CONSTRAINTS.svg
+.. image:: custom_TA-CONSTRAINTS_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TA-CONSTRAINTS
 
-.. image:: TA-INDICATORS.svg
+.. image:: custom_TA-INDICATORS_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TA-INDICATORS
 
-.. image:: TA-SUPPLY_CHAIN.svg
+.. image:: custom_TA-SUPPLY_CHAIN_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TA-SUPPLY_CHAIN
 
-.. image:: TA-INPUTS.svg
+.. image:: custom_TA-INPUTS_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TA-INPUTS
 
-.. image:: TA-DATA.svg
+.. image:: custom_TA-DATA_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TA-DATA
 
-.. image:: TA-ANALYSIS.svg
+.. image:: custom_TA-ANALYSIS_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TA-ANALYSIS
 
-.. image:: TA-VALIDATION.svg
+.. image:: custom_TA-VALIDATION_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TA-VALIDATION
 
-.. image:: JLEX-01.svg
+.. image:: custom_JLEX-01_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at JLEX-01
 
-.. image:: JLEX-02.svg
+.. image:: custom_JLEX-02_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at JLEX-02
 
-.. image:: JLS-24.svg
+.. image:: custom_JLS-24_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at JLS-24
 
-.. image:: WFJ-01.svg
+.. image:: custom_WFJ-01_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at WFJ-01
 
-.. image:: WFJ-02.svg
+.. image:: custom_WFJ-02_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at WFJ-02
 
-.. image:: WFJ-03.svg
+.. image:: custom_WFJ-03_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at WFJ-03
 
-.. image:: WFJ-04.svg
+.. image:: custom_WFJ-04_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at WFJ-04
 
-.. image:: WFJ-05.svg
+.. image:: custom_WFJ-05_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at WFJ-05
 
-.. image:: WFJ-07.svg
+.. image:: custom_WFJ-07_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at WFJ-07
 
-.. image:: WFJ-08.svg
+.. image:: custom_WFJ-08_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at WFJ-08
 
-.. image:: PJD-01.svg
+.. image:: custom_PJD-01_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at PJD-01
 
-.. image:: PJD-03.svg
+.. image:: custom_PJD-03_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at PJD-03
 
-.. image:: TIJ-01.svg
+.. image:: custom_TIJ-01_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TIJ-01
 
-.. image:: TIJ-02.svg
+.. image:: custom_TIJ-02_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TIJ-02
 
-.. image:: TIJ-03.svg
+.. image:: custom_TIJ-03_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TIJ-03
 
-.. image:: TIJ-04.svg
+.. image:: custom_TIJ-04_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TIJ-04
 
-.. image:: TIJ-05.svg
+.. image:: custom_TIJ-05_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TIJ-05
 
-.. image:: TIJ-06.svg
+.. image:: custom_TIJ-06_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at TIJ-06
 
-.. image:: NJF-07.svg
+.. image:: custom_NJF-07_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at NJF-07
 
-.. image:: NJF-08.svg
+.. image:: custom_NJF-08_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at NJF-08
 
-.. image:: NJF-05.svg
+.. image:: custom_NJF-05_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at NJF-05
 
-.. image:: NJF-06.svg
+.. image:: custom_NJF-06_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at NJF-06
 
-.. image:: NJF-12.svg
+.. image:: custom_NJF-12_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at NJF-12
 
-.. image:: NJF-14.svg
+.. image:: custom_NJF-14_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at NJF-14
 
-.. image:: NPF-01.svg
+.. image:: custom_NPF-01_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at NPF-01
 
-.. image:: NPF-02.svg
+.. image:: custom_NPF-02_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at NPF-02
 
-.. image:: NPF-04.svg
+.. image:: custom_NPF-04_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at NPF-04
 
-.. image:: NPF-05.svg
+.. image:: custom_NPF-05_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at NPF-05
 
-.. image:: NPF-06.svg
+.. image:: custom_NPF-06_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at NPF-06
 
-.. image:: NPF-07.svg
+.. image:: custom_NPF-07_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at NPF-07
 
-.. image:: NPF-03.svg
+.. image:: custom_NPF-03_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at NPF-03
 
-.. image:: NJF-05.7.svg
+.. image:: custom_NJF-05.7_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at NJF-05.7
 
-.. image:: NJF-06.4.svg
+.. image:: custom_NJF-06.4_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at NJF-06.4
 
-.. image:: NJF-06.5.svg
+.. image:: custom_NJF-06.5_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 
 Trustable graph centered at NJF-06.5
 
-.. image:: NJF-06.7.svg
+.. image:: custom_NJF-06.7_graph.svg
 	:alt: Root of the trustable graph
 	:width: 6000px
 

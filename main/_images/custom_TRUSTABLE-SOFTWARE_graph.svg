@@ -12,7 +12,7 @@
 <!-- TRUSTABLE&#45;SOFTWARE -->
 <g id="node1" class="node">
 <title>TRUSTABLE&#45;SOFTWARE</title>
-<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
+<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/TRUSTABLE-SOFTWARE.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
 <polygon fill="none" stroke="black" points="819,-325 571,-325 571,-242 819,-242 819,-325"/>
 <text text-anchor="middle" x="695" y="-309.8" font-family="Open Sans" font-size="14.00">TRUSTABLE&#45;SOFTWARE: This</text>
 <text text-anchor="middle" x="695" y="-294.8" font-family="Open Sans" font-size="14.00">release of JSON&#45;Library</text>
