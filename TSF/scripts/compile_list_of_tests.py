@@ -16,6 +16,10 @@ from pathlib import Path
 # The aim of this program is to compile a list, which reflects the arrangement
 # as nesting of lists.
 
+FILE_OF_TEST_DATA = "TSF/List_of_all_tests.md"
+DIRECTORY_OF_NLOHMANN_TESTS = "tests/src"
+DIRECTORY_OF_TSF_CUSTOM_TESTS = "TSF/tests"
+
 def compile_string(items: list[str]) -> str:
     # input: list of strings representing the structure of TEST_CASE, SECTION etc.,
     # e.g. items = ["lexer class", "scan", "literal names"]
@@ -114,9 +118,10 @@ To reflect the structure of the nested sections, nested lists are utilised, wher
 It should be noted that not all unit-tests in a test-file are executed with every compiler-configuration.
 """
 
-def main():
-    # input: path to directory potentially containing some test-data
-    args = sys.argv[1:]
+def main(input: list[str]):
+    # inputs: path to file, and path(s) to directory potentially containing some test-data
+    target_path = input[0]
+    args = input[1:]
     extracted_test_data = []
     for arg in args:
         p = Path(arg)
@@ -127,15 +132,17 @@ def main():
                 if entry.is_file() and entry.suffix == ".cpp" and entry.name.startswith("unit-"):
                     extracted_test_data.append((entry.name,extract_test_structure(entry)))
     extracted_test_data.sort(key= lambda x: x[0])
-
-    with open("../List_of_all_tests.md", "w", encoding="utf-8") as target:
-        target.write(head_of_list())
-        for test_file, list_of_tests in extracted_test_data:
-            target.write(f"\n\n# List of tests in file {test_file}\n\n")
-            target.write(list_of_tests)
+    try: 
+        with open(target_path, "w", encoding="utf-8") as target:
+            target.write(head_of_list())
+            for test_file, list_of_tests in extracted_test_data:
+                target.write(f"\n\n# List of tests in file {test_file}\n\n")
+                target.write(list_of_tests)
+    except:
+        raise RuntimeError(f"Critical Error: unable to open target file {target_path}.")
 
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(main([FILE_OF_TEST_DATA, DIRECTORY_OF_NLOHMANN_TESTS, DIRECTORY_OF_TSF_CUSTOM_TESTS]))
