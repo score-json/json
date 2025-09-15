@@ -2,6 +2,7 @@ from pathlib import Path
 from trudag.dotstop.core.reference.references import BaseReference
 from trudag.dotstop.core.reference.references import SourceSpanReference
 import requests
+import sqlite3
 
 # Constants
 MAX_JSON_LINES_FOR_DISPLAY = 25
@@ -556,8 +557,10 @@ class FunctionReference(SourceSpanReference):
     
 class ListOfTestCases(BaseReference):
 
-    def __init__(self, test_files: list[str]) -> None:
+    def __init__(self, test_files: list[str], recent_result_database: str = "artifacts/TestResults.db", recent_result_table: str = "test_results") -> None:
         self._test_files = test_files
+        self._database = recent_result_database
+        self._table =  recent_result_table
 
     @classmethod
     def type(cls) -> str:
@@ -652,18 +655,57 @@ class ListOfTestCases(BaseReference):
 
 
     def head_of_list(self) -> str:
-        return """# List of all unit-tests
+        return """## List of all unit-tests with test environments
 
-    This list contains all unit-tests possibly running in this project.
-    These tests are compiled from the source-code, where the individual unit-tests are arranged in TEST_CASEs containing possibly nested SECTIONs.
-    To reflect the structure of the nested sections, nested lists are utilised, where the top-level list represents the list of TEST_CASEs. 
+This list contains all unit-tests possibly running in this project.
+These tests are compiled from the source-code, where the individual unit-tests are arranged in TEST_CASEs containing possibly nested SECTIONs.
+To reflect the structure of the nested sections, nested lists are utilised, where the top-level list represents the list of TEST_CASEs. 
 
-    It should be noted that not all unit-tests in a test-file are executed with every compiler-configuration.
-    """
+It should be noted that not all unit-tests in a test-file are executed with every compiler-configuration.
+"""
+
+    def extract_recent_test_environments(self) -> dict:
+        fetched_data = dict()
+        try:    
+            # initialise connection to test result database
+            connector = sqlite3.connect(self._database)
+            cursor = connector.cursor()
+            # verify that the expected table does exist
+            cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name = ?;",(self._table,))
+            if cursor.fetchone() is None: 
+                raise RuntimeError(f"Fatal Error: Could not find table {self._table} in database {self._database}.")
+        except sqlite3.Error as e:
+            raise RuntimeError(f"Fatal Error accessing database {self._database}: {e}")
+        # get all test-files from recent test executions
+        command = f"SELECT name FROM {self._table};"
+        cursor.execute(command)
+        raw_cases = cursor.fetchall()
+        cases = set([raw_case[0] for raw_case in raw_cases])
+        # for each test-file
+        for case in cases:
+            case_data = dict()
+            # get the test-environments
+            command = f"SELECT compiler, cpp_standard FROM {self._table} WHERE name = ? and skipped_cases == 0"
+            cursor.execute(command,(case,))
+            results = cursor.fetchall()
+            case_data["noskip"] = [{"compiler":result[0], "standard":result[1]} for result in results]
+            # some test-cases are skipped with certain environments
+            # It is unclear from the log, which cases are skipped;
+            # we leave this to the interested reader
+            command = f"SELECT compiler, cpp_standard, skipped_cases FROM {self._table} WHERE name = ? and skipped_cases != 0"
+            cursor.execute(command, (case,))
+            results = cursor.fetchall()
+            case_data["skip"] = [{"compiler": result[0], "standard": result[1], "skipped": result[2]} for result in results]
+            fetched_data[case] = case_data
+        return fetched_data
+    
+    def transform_test_file_to_test_name(self, test_file: str) -> str:
+        return "test-"+"-".join((test_file.split('.')[0]).split('-')[1:])
 
     def fetch_all_test_data(self, input: list[str]):
         # inputs: path(s) to directory potentially containing some test-data
         extracted_test_data = []
+        recent_test_data = self.extract_recent_test_environments()
         for arg in input:
             p = Path(arg)
             if p.is_file() and p.suffix == ".cpp" and p.name.startswith("unit-"):
@@ -675,9 +717,36 @@ class ListOfTestCases(BaseReference):
         extracted_test_data.sort(key= lambda x: x[0])
         result = self.head_of_list()
         for test_file, list_of_tests in extracted_test_data:
-            result += f"\n\n## List of tests in file {test_file}\n\n"
+            result += f"\n\n### List of tests in file {test_file}\n\n"
             result += list_of_tests
-
+            result += "\n\n"
+            if recent_test_data.get(self.transform_test_file_to_test_name(test_file), None) is None:
+                result += "Unfortunately, none of the following tests seems to have been executed. Very strange indeed!\n\n"
+            else:
+                if recent_test_data.get(self.transform_test_file_to_test_name(test_file)).get("noskip",None) is not None:
+                    if len(recent_test_data.get(self.transform_test_file_to_test_name(test_file)).get("noskip")) != 0:
+                        result  += "\nAll tests in this file were run in the following configurations:\n\n"
+                        for datum in recent_test_data.get(self.transform_test_file_to_test_name(test_file)).get("noskip"):
+                            result += "* "
+                            result += datum.get("compiler",None)
+                            result += " with standard "
+                            result += datum.get("standard",None)
+                            result += "\n"
+                if recent_test_data.get(self.transform_test_file_to_test_name(test_file)).get("skip",None) is not None:
+                    if len(recent_test_data.get(self.transform_test_file_to_test_name(test_file)).get("skip")) != 0:
+                        result += "\nIn the following configuration, however, some test-cases were skipped:\n\n"
+                        for datum in recent_test_data.get(self.transform_test_file_to_test_name(test_file)).get("skip"):
+                            result += "* "
+                            how_many = datum.get("skipped",None)
+                            result += str(how_many)
+                            if how_many == 1:
+                                result += " test case was skipped when using "
+                            else:
+                                result += " test cases were skipped when using "
+                            result += datum.get("compiler",None)
+                            result += " with standard "
+                            result += datum.get("standard",None)
+                            result += "\n"
         return result
     
     @property
