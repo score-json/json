@@ -100,18 +100,82 @@ jobs:
           TSF/scripts/generate_report.sh "https://${OWNER_NAME}.github.io/${REPO_NAME}/main"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+          sudo apt install gh -y
+
+      - name: Authenticate with GitHub CLI
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+
       - name: Checkout data storage branch
         run: |
           git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/TrustableScoring.db)
           git checkout save_historical_data
+          git pull
+
+      - name: Fetch open issues labelled as bug from nlohmann/json
+        id: fetch_issues
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+
+          # Define variables
+          REPO="nlohmann/json" # Target repository
+          OUTPUT_FILE="TSF/misbehaviours.md"
+
+          #all nlohmann/json labels
+          gh label list --repo "$REPO"
+
+          # Fetch all open issues from the nlohmann/json repository
+          gh issue list --repo "$REPO" --state open --limit 10000 --json number,title,state,createdAt,url,labels > raw_open_issues.json
+
+          # Fetch all closed issues with from the nlohmann/json repository
+          gh issue list --repo "$REPO" --state closed --limit 10000 --json number,title,state,createdAt,url,labels > raw_closed_issues.json
+
+          # Filter raw open issues for labels containing "bug" and convert to output .md file
+          jq -r '
+              map(select(.labels[]?.name | test("bug"; "i"))) |
+              map("### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n") |
+              .[]
+            ' raw_open_issues.json > $OUTPUT_FILE
+
+          # Filter raw closed issues for labels containing "bug", created after release date of nlohmann/json version in use, and convert to output .md file
+          jq -r '
+              map(select(.labels[]?.name | test("bug"; "i"))) |
+              map(select(.createdAt > "2025-04-11T00:00:00Z")) |  # Adjust date as needed, 2025-04-11 corresponds to release v3.12.0 of nlohmann/json
+              map("### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n") |
+              .[]
+            ' raw_closed_issues.json >> $OUTPUT_FILE
+
+          # Ensure the markdown file is created and not empty
+          if [ ! -s $OUTPUT_FILE ]; then
+            echo "# No open issues found with labels containing 'bug'" > $OUTPUT_FILE
+          fi
+
+          # Debug: Output generated markdown file
+          echo "Markdown file content:"
+          cat $OUTPUT_FILE
+
+          mkdir -p TSF
+
+          # Move the generated issues.md file to the TSF directory
+
+          # Add changes to Git
+          git add TSF/misbehaviours.md
+
+          # Commit changes (if there's anything new) and push to origin
+          git commit -m "Updated issues list" || echo "No changes to commit"
+          git push origin save_historical_data
 
       - name: Store persistent data
         run: |
           git add TSF/TrustableScoring.db
           git commit -m "Append data storage" || echo "Historical data already up to date."
           git push origin save_historical_data
-      
+
       - name: Recover stash
         run: |
           git checkout $branch_name
