@@ -141,7 +141,7 @@ jobs:
           # Add title to the output file
           echo "# Misbehaviours Report" > $OUTPUT_FILE
           echo "" >> $OUTPUT_FILE
-          echo "This report lists known misbehaviours or bugs of v3.12.0 of nlohmann/json." >> $OUTPUT_FILE
+          echo "This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json repository. The misbehaviours are compiled from github issues of the nlohmann/json repository, and links to each corresponding issue." >> $OUTPUT_FILE
           echo "" >> $OUTPUT_FILE
 
           # Add subtitle for open issues
