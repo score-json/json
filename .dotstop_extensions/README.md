@@ -6,7 +6,7 @@ For each item of the trustable graph, the hash is calculated by trudag using:
    
 * its own name
 * the text of its own statement
-* the its normativity status
+* its normativity status
 * for every of its references, the *content* of that reference
 * for every of its fallacies, the description and content of the corresponding reference
 
@@ -107,7 +107,7 @@ references:
 
 ## WebContentReference
 
-The content of a `WebContentReference` is its content. This reference is intender to be utilised in case of *static* references, that should not vary in a short time-frame, and whose content is most important for the trustability of the statement. An example is a file located on a github repository, e.g.  `https://raw.githubusercontent.com/nlohmann/json/refs/heads/develop/.github/workflows/cifuzz.yml`
+The content of a `WebContentReference` is its content. This reference is intended to be utilised in case of *static* references, that should not vary in a short time-frame, and whose content is most important for the trustability of the statement. An example is a file located on a github repository, e.g.  `https://raw.githubusercontent.com/nlohmann/json/refs/heads/develop/.github/workflows/cifuzz.yml`
 
 A `WebContentReference` looks identical to a `WebReference` with `type: web_content` instead of `type: website`.
 
@@ -117,7 +117,6 @@ For the `TimeVaryingWebReference`, examples of the possible configurations are:
 ...
 
 references:
-- type: web_content
 - type: web_content
   url: "https://math.stackexchange.com/"
 ---
@@ -129,7 +128,6 @@ in case of an empty description, and
 
 references:
 - type: web_content
-- type: web_content
   url: "https://ncatlab.org/nlab/show/smooth+Serre-Swan+theorem"
   description: "Wiki article on the smooth Serre-Swan theorem"
 ---
@@ -155,10 +153,8 @@ An example of the complete configuration for `TimeVaryingWebReference` is
 ...
 references:
 - type: project_website
-- type: project_website
   url: "https://ncatlab.org/nlab/show/smooth+Serre-Swan+theorem"
   description: "Wiki article on the smooth Serre-Swan theorem"
-  changelog: "ideas/graded/graded_Serre_Swan.tex"
   changelog: "ideas/graded/graded_Serre_Swan.tex"
 ---
 ```
