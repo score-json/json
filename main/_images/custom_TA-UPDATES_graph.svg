@@ -12,7 +12,7 @@
 <!-- TRUSTABLE&#45;SOFTWARE -->
 <g id="node1" class="node">
 <title>TRUSTABLE&#45;SOFTWARE</title>
-<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/TRUSTABLE-SOFTWARE.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
+<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
 <polygon fill="none" stroke="black" points="410.5,-794 162.5,-794 162.5,-711 410.5,-711 410.5,-794"/>
 <text text-anchor="middle" x="286.5" y="-778.8" font-family="Open Sans" font-size="14.00">TRUSTABLE&#45;SOFTWARE: This</text>
 <text text-anchor="middle" x="286.5" y="-763.8" font-family="Open Sans" font-size="14.00">release of JSON&#45;Library</text>
@@ -25,7 +25,7 @@
 <!-- TT&#45;CHANGES -->
 <g id="node6" class="node">
 <title>TT&#45;CHANGES</title>
-<g id="a_node6"><a xlink:href="https://score-json.github.io/json/main/_images/TT-CHANGES.svg" xlink:title="TT&#45;CHANGES: nlohmann/json\nlibrary is actively maintained,\nwith regular updates\nto dependencies, and\nchanges are verified\nto prevent regressions.\n">
+<g id="a_node6"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-CHANGES_graph.svg" xlink:title="TT&#45;CHANGES: nlohmann/json\nlibrary is actively maintained,\nwith regular updates\nto dependencies, and\nchanges are verified\nto prevent regressions.\n">
 <polygon fill="none" stroke="black" points="397.5,-567 175.5,-567 175.5,-469 397.5,-469 397.5,-567"/>
 <text text-anchor="middle" x="286.5" y="-551.8" font-family="Open Sans" font-size="14.00">TT&#45;CHANGES: nlohmann/json</text>
 <text text-anchor="middle" x="286.5" y="-536.8" font-family="Open Sans" font-size="14.00">library is actively maintained,</text>
@@ -80,7 +80,7 @@
 <!-- TA&#45;UPDATES -->
 <g id="node5" class="node">
 <title>TA&#45;UPDATES</title>
-<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/_images/TA-UPDATES.svg" xlink:title="TA&#45;UPDATES: nlohmann/json\nlibrary components, configurations\nand tools are updated\nunder specified change\nand configuration management\ncontrols. ">
+<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-UPDATES_graph.svg" xlink:title="TA&#45;UPDATES: nlohmann/json\nlibrary components, configurations\nand tools are updated\nunder specified change\nand configuration management\ncontrols. ">
 <polygon fill="none" stroke="black" points="416.5,-325 156.5,-325 156.5,-227 416.5,-227 416.5,-325"/>
 <text text-anchor="middle" x="286.5" y="-309.8" font-family="Open Sans" font-size="14.00">TA&#45;UPDATES: nlohmann/json</text>
 <text text-anchor="middle" x="286.5" y="-294.8" font-family="Open Sans" font-size="14.00">library components, configurations</text>

@@ -12,7 +12,7 @@
 <!-- TRUSTABLE&#45;SOFTWARE -->
 <g id="node1" class="node">
 <title>TRUSTABLE&#45;SOFTWARE</title>
-<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/TRUSTABLE-SOFTWARE.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
+<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
 <polygon fill="none" stroke="black" points="328.5,-824 80.5,-824 80.5,-741 328.5,-741 328.5,-824"/>
 <text text-anchor="middle" x="204.5" y="-808.8" font-family="Open Sans" font-size="14.00">TRUSTABLE&#45;SOFTWARE: This</text>
 <text text-anchor="middle" x="204.5" y="-793.8" font-family="Open Sans" font-size="14.00">release of JSON&#45;Library</text>
@@ -25,7 +25,7 @@
 <!-- TT&#45;CONSTRUCTION -->
 <g id="node5" class="node">
 <title>TT&#45;CONSTRUCTION</title>
-<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/_images/TT-CONSTRUCTION.svg" xlink:title="TT&#45;CONSTRUCTION: Tools\nare provided to build\nnlohmann/json library\nfrom trusted sources\n(also provided) with\nfull reproducibility.\n">
+<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-CONSTRUCTION_graph.svg" xlink:title="TT&#45;CONSTRUCTION: Tools\nare provided to build\nnlohmann/json library\nfrom trusted sources\n(also provided) with\nfull reproducibility.\n">
 <polygon fill="none" stroke="black" points="301.5,-597 107.5,-597 107.5,-499 301.5,-499 301.5,-597"/>
 <text text-anchor="middle" x="204.5" y="-581.8" font-family="Open Sans" font-size="14.00">TT&#45;CONSTRUCTION: Tools</text>
 <text text-anchor="middle" x="204.5" y="-566.8" font-family="Open Sans" font-size="14.00">are provided to build</text>
@@ -71,7 +71,7 @@
 <!-- TA&#45;TESTS -->
 <g id="node4" class="node">
 <title>TA&#45;TESTS</title>
-<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/TA-TESTS.svg" xlink:title="TA&#45;TESTS: All tests for\nnlohmann/json library,\nand its build and test\nenvironments, are constructed\nfrom controlled/mirrored\nsources and are reproducible,\nwith any exceptions documented.\n">
+<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-TESTS_graph.svg" xlink:title="TA&#45;TESTS: All tests for\nnlohmann/json library,\nand its build and test\nenvironments, are constructed\nfrom controlled/mirrored\nsources and are reproducible,\nwith any exceptions documented.\n">
 <polygon fill="none" stroke="black" points="330,-355 79,-355 79,-242 330,-242 330,-355"/>
 <text text-anchor="middle" x="204.5" y="-339.8" font-family="Open Sans" font-size="14.00">TA&#45;TESTS: All tests for</text>
 <text text-anchor="middle" x="204.5" y="-324.8" font-family="Open Sans" font-size="14.00">nlohmann/json library,</text>

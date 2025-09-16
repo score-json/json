@@ -12,7 +12,7 @@
 <!-- TRUSTABLE&#45;SOFTWARE -->
 <g id="node1" class="node">
 <title>TRUSTABLE&#45;SOFTWARE</title>
-<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/TRUSTABLE-SOFTWARE.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
+<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
 <polygon fill="none" stroke="black" points="695,-1218 447,-1218 447,-1135 695,-1135 695,-1218"/>
 <text text-anchor="middle" x="571" y="-1202.8" font-family="Open Sans" font-size="14.00">TRUSTABLE&#45;SOFTWARE: This</text>
 <text text-anchor="middle" x="571" y="-1187.8" font-family="Open Sans" font-size="14.00">release of JSON&#45;Library</text>
@@ -25,7 +25,7 @@
 <!-- TT&#45;EXPECTATIONS -->
 <g id="node6" class="node">
 <title>TT&#45;EXPECTATIONS</title>
-<g id="a_node6"><a xlink:href="https://score-json.github.io/json/main/_images/TT-EXPECTATIONS.svg" xlink:title="TT&#45;EXPECTATIONS: Documentation\nis provided, specifying\nwhat nlohmann/json library\nis expected to do, and\nwhat it must not do,\nand how this is verified.\n">
+<g id="a_node6"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-EXPECTATIONS_graph.svg" xlink:title="TT&#45;EXPECTATIONS: Documentation\nis provided, specifying\nwhat nlohmann/json library\nis expected to do, and\nwhat it must not do,\nand how this is verified.\n">
 <polygon fill="none" stroke="black" points="699.5,-991 442.5,-991 442.5,-893 699.5,-893 699.5,-991"/>
 <text text-anchor="middle" x="571" y="-975.8" font-family="Open Sans" font-size="14.00">TT&#45;EXPECTATIONS: Documentation</text>
 <text text-anchor="middle" x="571" y="-960.8" font-family="Open Sans" font-size="14.00">is provided, specifying</text>
@@ -45,7 +45,7 @@
 <!-- JLEX&#45;02 -->
 <g id="node2" class="node">
 <title>JLEX&#45;02</title>
-<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/_images/JLEX-02.svg" xlink:title="JLEX&#45;02: The requirement\nregarding [JSON Deserialization](https://eclipse&#45;score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__deserialization)\nis fulfilled. ">
+<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/_images/custom_JLEX-02_graph.svg" xlink:title="JLEX&#45;02: The requirement\nregarding [JSON Deserialization](https://eclipse&#45;score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__deserialization)\nis fulfilled. ">
 <polygon fill="none" stroke="black" points="1142,-507 0,-507 0,-454 1142,-454 1142,-507"/>
 <text text-anchor="middle" x="571" y="-491.8" font-family="Open Sans" font-size="14.00">JLEX&#45;02: The requirement</text>
 <text text-anchor="middle" x="571" y="-476.8" font-family="Open Sans" font-size="14.00">regarding [JSON Deserialization](https://eclipse&#45;score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__deserialization)</text>
@@ -56,7 +56,7 @@
 <!-- PJD&#45;01 -->
 <g id="node4" class="node">
 <title>PJD&#45;01</title>
-<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/PJD-01.svg" xlink:title="PJD&#45;01: The service provides\nimplementations that\nparses JSON texts, which\nignores the presence\nof a byte order mark\nrather than treating\nit as an error. ">
+<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/custom_PJD-01_graph.svg" xlink:title="PJD&#45;01: The service provides\nimplementations that\nparses JSON texts, which\nignores the presence\nof a byte order mark\nrather than treating\nit as an error. ">
 <polygon fill="none" stroke="black" points="678.5,-310 463.5,-310 463.5,-197 678.5,-197 678.5,-310"/>
 <text text-anchor="middle" x="571" y="-294.8" font-family="Open Sans" font-size="14.00">PJD&#45;01: The service provides</text>
 <text text-anchor="middle" x="571" y="-279.8" font-family="Open Sans" font-size="14.00">implementations that</text>
@@ -77,7 +77,7 @@
 <!-- NPF&#45;01 -->
 <g id="node3" class="node">
 <title>NPF&#45;01</title>
-<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/_images/NPF-01.svg" xlink:title="NPF&#45;01: The service ignores\nthe presence of a byte\norder mark. ">
+<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/_images/custom_NPF-01_graph.svg" xlink:title="NPF&#45;01: The service ignores\nthe presence of a byte\norder mark. ">
 <polygon fill="none" stroke="black" points="676.5,-53 465.5,-53 465.5,0 676.5,0 676.5,-53"/>
 <text text-anchor="middle" x="571" y="-37.8" font-family="Open Sans" font-size="14.00">NPF&#45;01: The service ignores</text>
 <text text-anchor="middle" x="571" y="-22.8" font-family="Open Sans" font-size="14.00">the presence of a byte</text>
@@ -94,7 +94,7 @@
 <!-- TA&#45;BEHAVIOURS -->
 <g id="node5" class="node">
 <title>TA&#45;BEHAVIOURS</title>
-<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/_images/TA-BEHAVIOURS.svg" xlink:title="TA&#45;BEHAVIOURS: Expected\nor required behaviours\nfor nlohmann/json library\nare identified, specified,\nverified and validated\nbased on analysis. ">
+<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-BEHAVIOURS_graph.svg" xlink:title="TA&#45;BEHAVIOURS: Expected\nor required behaviours\nfor nlohmann/json library\nare identified, specified,\nverified and validated\nbased on analysis. ">
 <polygon fill="none" stroke="black" points="673,-749 469,-749 469,-651 673,-651 673,-749"/>
 <text text-anchor="middle" x="571" y="-733.8" font-family="Open Sans" font-size="14.00">TA&#45;BEHAVIOURS: Expected</text>
 <text text-anchor="middle" x="571" y="-718.8" font-family="Open Sans" font-size="14.00">or required behaviours</text>

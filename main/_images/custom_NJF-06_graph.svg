@@ -12,7 +12,7 @@
 <!-- TRUSTABLE&#45;SOFTWARE -->
 <g id="node1" class="node">
 <title>TRUSTABLE&#45;SOFTWARE</title>
-<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/TRUSTABLE-SOFTWARE.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
+<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
 <polygon fill="none" stroke="black" points="957.5,-1370 709.5,-1370 709.5,-1287 957.5,-1287 957.5,-1370"/>
 <text text-anchor="middle" x="833.5" y="-1354.8" font-family="Open Sans" font-size="14.00">TRUSTABLE&#45;SOFTWARE: This</text>
 <text text-anchor="middle" x="833.5" y="-1339.8" font-family="Open Sans" font-size="14.00">release of JSON&#45;Library</text>
@@ -25,7 +25,7 @@
 <!-- TT&#45;EXPECTATIONS -->
 <g id="node13" class="node">
 <title>TT&#45;EXPECTATIONS</title>
-<g id="a_node13"><a xlink:href="https://score-json.github.io/json/main/_images/TT-EXPECTATIONS.svg" xlink:title="TT&#45;EXPECTATIONS: Documentation\nis provided, specifying\nwhat nlohmann/json library\nis expected to do, and\nwhat it must not do,\nand how this is verified.\n">
+<g id="a_node13"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-EXPECTATIONS_graph.svg" xlink:title="TT&#45;EXPECTATIONS: Documentation\nis provided, specifying\nwhat nlohmann/json library\nis expected to do, and\nwhat it must not do,\nand how this is verified.\n">
 <polygon fill="none" stroke="black" points="962,-1143 705,-1143 705,-1045 962,-1045 962,-1143"/>
 <text text-anchor="middle" x="833.5" y="-1127.8" font-family="Open Sans" font-size="14.00">TT&#45;EXPECTATIONS: Documentation</text>
 <text text-anchor="middle" x="833.5" y="-1112.8" font-family="Open Sans" font-size="14.00">is provided, specifying</text>
@@ -45,7 +45,7 @@
 <!-- JLEX&#45;01 -->
 <g id="node2" class="node">
 <title>JLEX&#45;01</title>
-<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/_images/JLEX-01.svg" xlink:title="JLEX&#45;01: The requirement\nregarding [JSON Validation](https://eclipse&#45;score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__validation)\nis fulfilled. ">
+<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/_images/custom_JLEX-01_graph.svg" xlink:title="JLEX&#45;01: The requirement\nregarding [JSON Validation](https://eclipse&#45;score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__validation)\nis fulfilled. ">
 <polygon fill="none" stroke="black" points="1371,-659 296,-659 296,-606 1371,-606 1371,-659"/>
 <text text-anchor="middle" x="833.5" y="-643.8" font-family="Open Sans" font-size="14.00">JLEX&#45;01: The requirement</text>
 <text text-anchor="middle" x="833.5" y="-628.8" font-family="Open Sans" font-size="14.00">regarding [JSON Validation](https://eclipse&#45;score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__validation)</text>
@@ -56,7 +56,7 @@
 <!-- WFJ&#45;05 -->
 <g id="node14" class="node">
 <title>WFJ&#45;05</title>
-<g id="a_node14"><a xlink:href="https://score-json.github.io/json/main/_images/WFJ-05.svg" xlink:title="WFJ&#45;05: The service checks\nthe well&#45;formedness of\nobjects. ">
+<g id="a_node14"><a xlink:href="https://score-json.github.io/json/main/_images/custom_WFJ-05_graph.svg" xlink:title="WFJ&#45;05: The service checks\nthe well&#45;formedness of\nobjects. ">
 <polygon fill="none" stroke="black" points="936.5,-462 730.5,-462 730.5,-409 936.5,-409 936.5,-462"/>
 <text text-anchor="middle" x="833.5" y="-446.8" font-family="Open Sans" font-size="14.00">WFJ&#45;05: The service checks</text>
 <text text-anchor="middle" x="833.5" y="-431.8" font-family="Open Sans" font-size="14.00">the well&#45;formedness of</text>
@@ -73,7 +73,7 @@
 <!-- NJF&#45;06 -->
 <g id="node3" class="node">
 <title>NJF&#45;06</title>
-<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/_images/NJF-06.svg" xlink:title="NJF&#45;06: The service accepts\nand rejects objects according\nto RFC8259 §4. ">
+<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/_images/custom_NJF-06_graph.svg" xlink:title="NJF&#45;06: The service accepts\nand rejects objects according\nto RFC8259 §4. ">
 <polygon fill="none" stroke="black" points="943,-265 724,-265 724,-212 943,-212 943,-265"/>
 <text text-anchor="middle" x="833.5" y="-249.8" font-family="Open Sans" font-size="14.00">NJF&#45;06: The service accepts</text>
 <text text-anchor="middle" x="833.5" y="-234.8" font-family="Open Sans" font-size="14.00">and rejects objects according</text>
@@ -134,7 +134,7 @@
 <!-- NJF&#45;06.4 -->
 <g id="node7" class="node">
 <title>NJF&#45;06.4</title>
-<g id="a_node7"><a xlink:href="https://score-json.github.io/json/main/_images/NJF-06.4.svg" xlink:title="NJF&#45;06.4: The admissible\nmembers of an object\nhave the form name :\nvalue. ">
+<g id="a_node7"><a xlink:href="https://score-json.github.io/json/main/_images/custom_NJF-06.4_graph.svg" xlink:title="NJF&#45;06.4: The admissible\nmembers of an object\nhave the form name :\nvalue. ">
 <polygon fill="none" stroke="black" points="825.5,-68 635.5,-68 635.5,0 825.5,0 825.5,-68"/>
 <text text-anchor="middle" x="730.5" y="-52.8" font-family="Open Sans" font-size="14.00">NJF&#45;06.4: The admissible</text>
 <text text-anchor="middle" x="730.5" y="-37.8" font-family="Open Sans" font-size="14.00">members of an object</text>
@@ -152,7 +152,7 @@
 <!-- NJF&#45;06.5 -->
 <g id="node8" class="node">
 <title>NJF&#45;06.5</title>
-<g id="a_node8"><a xlink:href="https://score-json.github.io/json/main/_images/NJF-06.5.svg" xlink:title="NJF&#45;06.5: The service\ndoes not accept objects\nwith improper members.\n">
+<g id="a_node8"><a xlink:href="https://score-json.github.io/json/main/_images/custom_NJF-06.5_graph.svg" xlink:title="NJF&#45;06.5: The service\ndoes not accept objects\nwith improper members.\n">
 <polygon fill="none" stroke="black" points="1031.5,-60.5 843.5,-60.5 843.5,-7.5 1031.5,-7.5 1031.5,-60.5"/>
 <text text-anchor="middle" x="937.5" y="-45.3" font-family="Open Sans" font-size="14.00">NJF&#45;06.5: The service</text>
 <text text-anchor="middle" x="937.5" y="-30.3" font-family="Open Sans" font-size="14.00">does not accept objects</text>
@@ -203,7 +203,7 @@
 <!-- NJF&#45;06.7 -->
 <g id="node11" class="node">
 <title>NJF&#45;06.7</title>
-<g id="a_node11"><a xlink:href="https://score-json.github.io/json/main/_images/NJF-06.7.svg" xlink:title="NJF&#45;06.7: The service\ndoes only accept comma\nas member separator.\n">
+<g id="a_node11"><a xlink:href="https://score-json.github.io/json/main/_images/custom_NJF-06.7_graph.svg" xlink:title="NJF&#45;06.7: The service\ndoes only accept comma\nas member separator.\n">
 <polygon fill="none" stroke="black" points="1683,-60.5 1494,-60.5 1494,-7.5 1683,-7.5 1683,-60.5"/>
 <text text-anchor="middle" x="1588.5" y="-45.3" font-family="Open Sans" font-size="14.00">NJF&#45;06.7: The service</text>
 <text text-anchor="middle" x="1588.5" y="-30.3" font-family="Open Sans" font-size="14.00">does only accept comma</text>
@@ -220,7 +220,7 @@
 <!-- TA&#45;BEHAVIOURS -->
 <g id="node12" class="node">
 <title>TA&#45;BEHAVIOURS</title>
-<g id="a_node12"><a xlink:href="https://score-json.github.io/json/main/_images/TA-BEHAVIOURS.svg" xlink:title="TA&#45;BEHAVIOURS: Expected\nor required behaviours\nfor nlohmann/json library\nare identified, specified,\nverified and validated\nbased on analysis. ">
+<g id="a_node12"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-BEHAVIOURS_graph.svg" xlink:title="TA&#45;BEHAVIOURS: Expected\nor required behaviours\nfor nlohmann/json library\nare identified, specified,\nverified and validated\nbased on analysis. ">
 <polygon fill="none" stroke="black" points="935.5,-901 731.5,-901 731.5,-803 935.5,-803 935.5,-901"/>
 <text text-anchor="middle" x="833.5" y="-885.8" font-family="Open Sans" font-size="14.00">TA&#45;BEHAVIOURS: Expected</text>
 <text text-anchor="middle" x="833.5" y="-870.8" font-family="Open Sans" font-size="14.00">or required behaviours</text>

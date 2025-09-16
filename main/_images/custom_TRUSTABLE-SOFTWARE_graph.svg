@@ -12,7 +12,7 @@
 <!-- TRUSTABLE&#45;SOFTWARE -->
 <g id="node1" class="node">
 <title>TRUSTABLE&#45;SOFTWARE</title>
-<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/TRUSTABLE-SOFTWARE.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
+<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
 <polygon fill="none" stroke="black" points="819,-325 571,-325 571,-242 819,-242 819,-325"/>
 <text text-anchor="middle" x="695" y="-309.8" font-family="Open Sans" font-size="14.00">TRUSTABLE&#45;SOFTWARE: This</text>
 <text text-anchor="middle" x="695" y="-294.8" font-family="Open Sans" font-size="14.00">release of JSON&#45;Library</text>
@@ -25,7 +25,7 @@
 <!-- TT&#45;CHANGES -->
 <g id="node2" class="node">
 <title>TT&#45;CHANGES</title>
-<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/_images/TT-CHANGES.svg" xlink:title="TT&#45;CHANGES: nlohmann/json\nlibrary is actively maintained,\nwith regular updates\nto dependencies, and\nchanges are verified\nto prevent regressions.\n">
+<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-CHANGES_graph.svg" xlink:title="TT&#45;CHANGES: nlohmann/json\nlibrary is actively maintained,\nwith regular updates\nto dependencies, and\nchanges are verified\nto prevent regressions.\n">
 <polygon fill="none" stroke="black" points="222,-98 0,-98 0,0 222,0 222,-98"/>
 <text text-anchor="middle" x="111" y="-82.8" font-family="Open Sans" font-size="14.00">TT&#45;CHANGES: nlohmann/json</text>
 <text text-anchor="middle" x="111" y="-67.8" font-family="Open Sans" font-size="14.00">library is actively maintained,</text>
@@ -45,7 +45,7 @@
 <!-- TT&#45;CONFIDENCE -->
 <g id="node3" class="node">
 <title>TT&#45;CONFIDENCE</title>
-<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/_images/TT-CONFIDENCE.svg" xlink:title="TT&#45;CONFIDENCE: Confidence\nin nlohmann/json library\nis achieved by measuring\nand analysing behaviour\nand evidence over time.\n">
+<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-CONFIDENCE_graph.svg" xlink:title="TT&#45;CONFIDENCE: Confidence\nin nlohmann/json library\nis achieved by measuring\nand analysing behaviour\nand evidence over time.\n">
 <polygon fill="none" stroke="black" points="458,-90.5 240,-90.5 240,-7.5 458,-7.5 458,-90.5"/>
 <text text-anchor="middle" x="349" y="-75.3" font-family="Open Sans" font-size="14.00">TT&#45;CONFIDENCE: Confidence</text>
 <text text-anchor="middle" x="349" y="-60.3" font-family="Open Sans" font-size="14.00">in nlohmann/json library</text>
@@ -64,7 +64,7 @@
 <!-- TT&#45;CONSTRUCTION -->
 <g id="node4" class="node">
 <title>TT&#45;CONSTRUCTION</title>
-<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/TT-CONSTRUCTION.svg" xlink:title="TT&#45;CONSTRUCTION: Tools\nare provided to build\nnlohmann/json library\nfrom trusted sources\n(also provided) with\nfull reproducibility.\n">
+<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-CONSTRUCTION_graph.svg" xlink:title="TT&#45;CONSTRUCTION: Tools\nare provided to build\nnlohmann/json library\nfrom trusted sources\n(also provided) with\nfull reproducibility.\n">
 <polygon fill="none" stroke="black" points="670,-98 476,-98 476,0 670,0 670,-98"/>
 <text text-anchor="middle" x="573" y="-82.8" font-family="Open Sans" font-size="14.00">TT&#45;CONSTRUCTION: Tools</text>
 <text text-anchor="middle" x="573" y="-67.8" font-family="Open Sans" font-size="14.00">are provided to build</text>
@@ -84,7 +84,7 @@
 <!-- TT&#45;EXPECTATIONS -->
 <g id="node5" class="node">
 <title>TT&#45;EXPECTATIONS</title>
-<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/_images/TT-EXPECTATIONS.svg" xlink:title="TT&#45;EXPECTATIONS: Documentation\nis provided, specifying\nwhat nlohmann/json library\nis expected to do, and\nwhat it must not do,\nand how this is verified.\n">
+<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-EXPECTATIONS_graph.svg" xlink:title="TT&#45;EXPECTATIONS: Documentation\nis provided, specifying\nwhat nlohmann/json library\nis expected to do, and\nwhat it must not do,\nand how this is verified.\n">
 <polygon fill="none" stroke="black" points="945.5,-98 688.5,-98 688.5,0 945.5,0 945.5,-98"/>
 <text text-anchor="middle" x="817" y="-82.8" font-family="Open Sans" font-size="14.00">TT&#45;EXPECTATIONS: Documentation</text>
 <text text-anchor="middle" x="817" y="-67.8" font-family="Open Sans" font-size="14.00">is provided, specifying</text>
@@ -104,7 +104,7 @@
 <!-- TT&#45;PROVENANCE -->
 <g id="node6" class="node">
 <title>TT&#45;PROVENANCE</title>
-<g id="a_node6"><a xlink:href="https://score-json.github.io/json/main/_images/TT-PROVENANCE.svg" xlink:title="TT&#45;PROVENANCE: All inputs\n(and attestations for\nclaims) for nlohmann/json\nlibrary are provided\nwith known provenance.\n">
+<g id="a_node6"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-PROVENANCE_graph.svg" xlink:title="TT&#45;PROVENANCE: All inputs\n(and attestations for\nclaims) for nlohmann/json\nlibrary are provided\nwith known provenance.\n">
 <polygon fill="none" stroke="black" points="1172.5,-90.5 963.5,-90.5 963.5,-7.5 1172.5,-7.5 1172.5,-90.5"/>
 <text text-anchor="middle" x="1068" y="-75.3" font-family="Open Sans" font-size="14.00">TT&#45;PROVENANCE: All inputs</text>
 <text text-anchor="middle" x="1068" y="-60.3" font-family="Open Sans" font-size="14.00">(and attestations for</text>
@@ -123,7 +123,7 @@
 <!-- TT&#45;RESULTS -->
 <g id="node7" class="node">
 <title>TT&#45;RESULTS</title>
-<g id="a_node7"><a xlink:href="https://score-json.github.io/json/main/_images/TT-RESULTS.svg" xlink:title="TT&#45;RESULTS: Evidence\nis provided to demonstrate\nthat nlohmann/json library\ndoes what it is supposed\nto do, and does not do\nwhat it must not do.\n">
+<g id="a_node7"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-RESULTS_graph.svg" xlink:title="TT&#45;RESULTS: Evidence\nis provided to demonstrate\nthat nlohmann/json library\ndoes what it is supposed\nto do, and does not do\nwhat it must not do.\n">
 <polygon fill="none" stroke="black" points="1395,-98 1191,-98 1191,0 1395,0 1395,-98"/>
 <text text-anchor="middle" x="1293" y="-82.8" font-family="Open Sans" font-size="14.00">TT&#45;RESULTS: Evidence</text>
 <text text-anchor="middle" x="1293" y="-67.8" font-family="Open Sans" font-size="14.00">is provided to demonstrate</text>

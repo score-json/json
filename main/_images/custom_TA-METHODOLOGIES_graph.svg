@@ -12,7 +12,7 @@
 <!-- TRUSTABLE&#45;SOFTWARE -->
 <g id="node1" class="node">
 <title>TRUSTABLE&#45;SOFTWARE</title>
-<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/TRUSTABLE-SOFTWARE.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
+<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
 <polygon fill="none" stroke="black" points="338,-809 90,-809 90,-726 338,-726 338,-809"/>
 <text text-anchor="middle" x="214" y="-793.8" font-family="Open Sans" font-size="14.00">TRUSTABLE&#45;SOFTWARE: This</text>
 <text text-anchor="middle" x="214" y="-778.8" font-family="Open Sans" font-size="14.00">release of JSON&#45;Library</text>
@@ -25,7 +25,7 @@
 <!-- TT&#45;CONFIDENCE -->
 <g id="node5" class="node">
 <title>TT&#45;CONFIDENCE</title>
-<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/_images/TT-CONFIDENCE.svg" xlink:title="TT&#45;CONFIDENCE: Confidence\nin nlohmann/json library\nis achieved by measuring\nand analysing behaviour\nand evidence over time.\n">
+<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-CONFIDENCE_graph.svg" xlink:title="TT&#45;CONFIDENCE: Confidence\nin nlohmann/json library\nis achieved by measuring\nand analysing behaviour\nand evidence over time.\n">
 <polygon fill="none" stroke="black" points="323,-582 105,-582 105,-499 323,-499 323,-582"/>
 <text text-anchor="middle" x="214" y="-566.8" font-family="Open Sans" font-size="14.00">TT&#45;CONFIDENCE: Confidence</text>
 <text text-anchor="middle" x="214" y="-551.8" font-family="Open Sans" font-size="14.00">in nlohmann/json library</text>
@@ -68,7 +68,7 @@
 <!-- TA&#45;METHODOLOGIES -->
 <g id="node4" class="node">
 <title>TA&#45;METHODOLOGIES</title>
-<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/TA-METHODOLOGIES.svg" xlink:title="TA&#45;METHODOLOGIES: Manual\nmethodologies applied\nfor nlohmann/json library\nby contributors, and\ntheir results, are managed\naccording to specified\nobjectives. ">
+<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-METHODOLOGIES_graph.svg" xlink:title="TA&#45;METHODOLOGIES: Manual\nmethodologies applied\nfor nlohmann/json library\nby contributors, and\ntheir results, are managed\naccording to specified\nobjectives. ">
 <polygon fill="none" stroke="black" points="325,-355 103,-355 103,-242 325,-242 325,-355"/>
 <text text-anchor="middle" x="214" y="-339.8" font-family="Open Sans" font-size="14.00">TA&#45;METHODOLOGIES: Manual</text>
 <text text-anchor="middle" x="214" y="-324.8" font-family="Open Sans" font-size="14.00">methodologies applied</text>

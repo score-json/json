@@ -12,7 +12,7 @@
 <!-- TRUSTABLE&#45;SOFTWARE -->
 <g id="node1" class="node">
 <title>TRUSTABLE&#45;SOFTWARE</title>
-<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/TRUSTABLE-SOFTWARE.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
+<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
 <polygon fill="none" stroke="black" points="862.5,-961 614.5,-961 614.5,-878 862.5,-878 862.5,-961"/>
 <text text-anchor="middle" x="738.5" y="-945.8" font-family="Open Sans" font-size="14.00">TRUSTABLE&#45;SOFTWARE: This</text>
 <text text-anchor="middle" x="738.5" y="-930.8" font-family="Open Sans" font-size="14.00">release of JSON&#45;Library</text>
@@ -25,7 +25,7 @@
 <!-- TT&#45;EXPECTATIONS -->
 <g id="node11" class="node">
 <title>TT&#45;EXPECTATIONS</title>
-<g id="a_node11"><a xlink:href="https://score-json.github.io/json/main/_images/TT-EXPECTATIONS.svg" xlink:title="TT&#45;EXPECTATIONS: Documentation\nis provided, specifying\nwhat nlohmann/json library\nis expected to do, and\nwhat it must not do,\nand how this is verified.\n">
+<g id="a_node11"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-EXPECTATIONS_graph.svg" xlink:title="TT&#45;EXPECTATIONS: Documentation\nis provided, specifying\nwhat nlohmann/json library\nis expected to do, and\nwhat it must not do,\nand how this is verified.\n">
 <polygon fill="none" stroke="black" points="867,-734 610,-734 610,-636 867,-636 867,-734"/>
 <text text-anchor="middle" x="738.5" y="-718.8" font-family="Open Sans" font-size="14.00">TT&#45;EXPECTATIONS: Documentation</text>
 <text text-anchor="middle" x="738.5" y="-703.8" font-family="Open Sans" font-size="14.00">is provided, specifying</text>
@@ -45,7 +45,7 @@
 <!-- JLS&#45;24 -->
 <g id="node2" class="node">
 <title>JLS&#45;24</title>
-<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/_images/JLS-24.svg" xlink:title="JLS&#45;24: The nlohmann/json\nlibrary recognizes malformed\nJSON and returns an exception.\n">
+<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/_images/custom_JLS-24_graph.svg" xlink:title="JLS&#45;24: The nlohmann/json\nlibrary recognizes malformed\nJSON and returns an exception.\n">
 <polygon fill="none" stroke="black" points="856,-250 621,-250 621,-197 856,-197 856,-250"/>
 <text text-anchor="middle" x="738.5" y="-234.8" font-family="Open Sans" font-size="14.00">JLS&#45;24: The nlohmann/json</text>
 <text text-anchor="middle" x="738.5" y="-219.8" font-family="Open Sans" font-size="14.00">library recognizes malformed</text>
@@ -73,7 +73,7 @@
 <!-- TIJ&#45;01 -->
 <g id="node5" class="node">
 <title>TIJ&#45;01</title>
-<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/_images/TIJ-01.svg" xlink:title="TIJ&#45;01: The parsing service\nthrows an exception on\nill&#45;formed literal names.\n">
+<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TIJ-01_graph.svg" xlink:title="TIJ&#45;01: The parsing service\nthrows an exception on\nill&#45;formed literal names.\n">
 <polygon fill="none" stroke="black" points="399.5,-53 197.5,-53 197.5,0 399.5,0 399.5,-53"/>
 <text text-anchor="middle" x="298.5" y="-37.8" font-family="Open Sans" font-size="14.00">TIJ&#45;01: The parsing service</text>
 <text text-anchor="middle" x="298.5" y="-22.8" font-family="Open Sans" font-size="14.00">throws an exception on</text>
@@ -90,7 +90,7 @@
 <!-- TIJ&#45;02 -->
 <g id="node6" class="node">
 <title>TIJ&#45;02</title>
-<g id="a_node6"><a xlink:href="https://score-json.github.io/json/main/_images/TIJ-02.svg" xlink:title="TIJ&#45;02: The parsing service\nthrows an exception on\nill&#45;formed numbers. ">
+<g id="a_node6"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TIJ-02_graph.svg" xlink:title="TIJ&#45;02: The parsing service\nthrows an exception on\nill&#45;formed numbers. ">
 <polygon fill="none" stroke="black" points="619.5,-53 417.5,-53 417.5,0 619.5,0 619.5,-53"/>
 <text text-anchor="middle" x="518.5" y="-37.8" font-family="Open Sans" font-size="14.00">TIJ&#45;02: The parsing service</text>
 <text text-anchor="middle" x="518.5" y="-22.8" font-family="Open Sans" font-size="14.00">throws an exception on</text>
@@ -107,7 +107,7 @@
 <!-- TIJ&#45;03 -->
 <g id="node7" class="node">
 <title>TIJ&#45;03</title>
-<g id="a_node7"><a xlink:href="https://score-json.github.io/json/main/_images/TIJ-03.svg" xlink:title="TIJ&#45;03: The parsing service\nthrows an exception on\nill&#45;formed strings. ">
+<g id="a_node7"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TIJ-03_graph.svg" xlink:title="TIJ&#45;03: The parsing service\nthrows an exception on\nill&#45;formed strings. ">
 <polygon fill="none" stroke="black" points="839.5,-53 637.5,-53 637.5,0 839.5,0 839.5,-53"/>
 <text text-anchor="middle" x="738.5" y="-37.8" font-family="Open Sans" font-size="14.00">TIJ&#45;03: The parsing service</text>
 <text text-anchor="middle" x="738.5" y="-22.8" font-family="Open Sans" font-size="14.00">throws an exception on</text>
@@ -124,7 +124,7 @@
 <!-- TIJ&#45;04 -->
 <g id="node8" class="node">
 <title>TIJ&#45;04</title>
-<g id="a_node8"><a xlink:href="https://score-json.github.io/json/main/_images/TIJ-04.svg" xlink:title="TIJ&#45;04: The parsing service\nthrows an exception on\nill&#45;formed arrays. ">
+<g id="a_node8"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TIJ-04_graph.svg" xlink:title="TIJ&#45;04: The parsing service\nthrows an exception on\nill&#45;formed arrays. ">
 <polygon fill="none" stroke="black" points="1059.5,-53 857.5,-53 857.5,0 1059.5,0 1059.5,-53"/>
 <text text-anchor="middle" x="958.5" y="-37.8" font-family="Open Sans" font-size="14.00">TIJ&#45;04: The parsing service</text>
 <text text-anchor="middle" x="958.5" y="-22.8" font-family="Open Sans" font-size="14.00">throws an exception on</text>
@@ -141,7 +141,7 @@
 <!-- TIJ&#45;05 -->
 <g id="node9" class="node">
 <title>TIJ&#45;05</title>
-<g id="a_node9"><a xlink:href="https://score-json.github.io/json/main/_images/TIJ-05.svg" xlink:title="TIJ&#45;05: The parsing service\nthrows an exception on\nill&#45;formed objects. ">
+<g id="a_node9"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TIJ-05_graph.svg" xlink:title="TIJ&#45;05: The parsing service\nthrows an exception on\nill&#45;formed objects. ">
 <polygon fill="none" stroke="black" points="1279.5,-53 1077.5,-53 1077.5,0 1279.5,0 1279.5,-53"/>
 <text text-anchor="middle" x="1178.5" y="-37.8" font-family="Open Sans" font-size="14.00">TIJ&#45;05: The parsing service</text>
 <text text-anchor="middle" x="1178.5" y="-22.8" font-family="Open Sans" font-size="14.00">throws an exception on</text>
@@ -158,7 +158,7 @@
 <!-- TIJ&#45;06 -->
 <g id="node10" class="node">
 <title>TIJ&#45;06</title>
-<g id="a_node10"><a xlink:href="https://score-json.github.io/json/main/_images/TIJ-06.svg" xlink:title="TIJ&#45;06: The service recognises\nill&#45;formed byte&#45;order\nmarks and throws an exception.\n">
+<g id="a_node10"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TIJ-06_graph.svg" xlink:title="TIJ&#45;06: The service recognises\nill&#45;formed byte&#45;order\nmarks and throws an exception.\n">
 <polygon fill="none" stroke="black" points="1537.5,-53 1297.5,-53 1297.5,0 1537.5,0 1537.5,-53"/>
 <text text-anchor="middle" x="1417.5" y="-37.8" font-family="Open Sans" font-size="14.00">TIJ&#45;06: The service recognises</text>
 <text text-anchor="middle" x="1417.5" y="-22.8" font-family="Open Sans" font-size="14.00">ill&#45;formed byte&#45;order</text>
@@ -175,7 +175,7 @@
 <!-- TA&#45;MISBEHAVIOURS -->
 <g id="node4" class="node">
 <title>TA&#45;MISBEHAVIOURS</title>
-<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/TA-MISBEHAVIOURS.svg" xlink:title="TA&#45;MISBEHAVIOURS: Prohibited\nmisbehaviours for nlohmann/json\nlibrary are identified,\nand mitigations are specified,\nverified and validated\nbased on analysis. ">
+<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-MISBEHAVIOURS_graph.svg" xlink:title="TA&#45;MISBEHAVIOURS: Prohibited\nmisbehaviours for nlohmann/json\nlibrary are identified,\nand mitigations are specified,\nverified and validated\nbased on analysis. ">
 <polygon fill="none" stroke="black" points="863.5,-492 613.5,-492 613.5,-394 863.5,-394 863.5,-492"/>
 <text text-anchor="middle" x="738.5" y="-476.8" font-family="Open Sans" font-size="14.00">TA&#45;MISBEHAVIOURS: Prohibited</text>
 <text text-anchor="middle" x="738.5" y="-461.8" font-family="Open Sans" font-size="14.00">misbehaviours for nlohmann/json</text>

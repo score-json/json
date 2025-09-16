@@ -12,7 +12,7 @@
 <!-- TRUSTABLE&#45;SOFTWARE -->
 <g id="node1" class="node">
 <title>TRUSTABLE&#45;SOFTWARE</title>
-<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/TRUSTABLE-SOFTWARE.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
+<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
 <polygon fill="none" stroke="black" points="434,-779 186,-779 186,-696 434,-696 434,-779"/>
 <text text-anchor="middle" x="310" y="-763.8" font-family="Open Sans" font-size="14.00">TRUSTABLE&#45;SOFTWARE: This</text>
 <text text-anchor="middle" x="310" y="-748.8" font-family="Open Sans" font-size="14.00">release of JSON&#45;Library</text>
@@ -25,7 +25,7 @@
 <!-- TT&#45;RESULTS -->
 <g id="node6" class="node">
 <title>TT&#45;RESULTS</title>
-<g id="a_node6"><a xlink:href="https://score-json.github.io/json/main/_images/TT-RESULTS.svg" xlink:title="TT&#45;RESULTS: Evidence\nis provided to demonstrate\nthat nlohmann/json library\ndoes what it is supposed\nto do, and does not do\nwhat it must not do.\n">
+<g id="a_node6"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-RESULTS_graph.svg" xlink:title="TT&#45;RESULTS: Evidence\nis provided to demonstrate\nthat nlohmann/json library\ndoes what it is supposed\nto do, and does not do\nwhat it must not do.\n">
 <polygon fill="none" stroke="black" points="412,-552 208,-552 208,-454 412,-454 412,-552"/>
 <text text-anchor="middle" x="310" y="-536.8" font-family="Open Sans" font-size="14.00">TT&#45;RESULTS: Evidence</text>
 <text text-anchor="middle" x="310" y="-521.8" font-family="Open Sans" font-size="14.00">is provided to demonstrate</text>
@@ -82,7 +82,7 @@
 <!-- TA&#45;ANALYSIS -->
 <g id="node5" class="node">
 <title>TA&#45;ANALYSIS</title>
-<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/_images/TA-ANALYSIS.svg" xlink:title="TA&#45;ANALYSIS: Collected\ndata from tests and monitoring\nof deployed software\nis analysed according\nto specified objectives.\n">
+<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-ANALYSIS_graph.svg" xlink:title="TA&#45;ANALYSIS: Collected\ndata from tests and monitoring\nof deployed software\nis analysed according\nto specified objectives.\n">
 <polygon fill="none" stroke="black" points="426.5,-310 193.5,-310 193.5,-227 426.5,-227 426.5,-310"/>
 <text text-anchor="middle" x="310" y="-294.8" font-family="Open Sans" font-size="14.00">TA&#45;ANALYSIS: Collected</text>
 <text text-anchor="middle" x="310" y="-279.8" font-family="Open Sans" font-size="14.00">data from tests and monitoring</text>

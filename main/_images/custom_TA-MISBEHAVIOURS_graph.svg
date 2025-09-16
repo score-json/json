@@ -12,7 +12,7 @@
 <!-- TRUSTABLE&#45;SOFTWARE -->
 <g id="node1" class="node">
 <title>TRUSTABLE&#45;SOFTWARE</title>
-<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/TRUSTABLE-SOFTWARE.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
+<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
 <polygon fill="none" stroke="black" points="857,-839 609,-839 609,-756 857,-756 857,-839"/>
 <text text-anchor="middle" x="733" y="-823.8" font-family="Open Sans" font-size="14.00">TRUSTABLE&#45;SOFTWARE: This</text>
 <text text-anchor="middle" x="733" y="-808.8" font-family="Open Sans" font-size="14.00">release of JSON&#45;Library</text>
@@ -25,7 +25,7 @@
 <!-- TT&#45;EXPECTATIONS -->
 <g id="node7" class="node">
 <title>TT&#45;EXPECTATIONS</title>
-<g id="a_node7"><a xlink:href="https://score-json.github.io/json/main/_images/TT-EXPECTATIONS.svg" xlink:title="TT&#45;EXPECTATIONS: Documentation\nis provided, specifying\nwhat nlohmann/json library\nis expected to do, and\nwhat it must not do,\nand how this is verified.\n">
+<g id="a_node7"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-EXPECTATIONS_graph.svg" xlink:title="TT&#45;EXPECTATIONS: Documentation\nis provided, specifying\nwhat nlohmann/json library\nis expected to do, and\nwhat it must not do,\nand how this is verified.\n">
 <polygon fill="none" stroke="black" points="861.5,-612 604.5,-612 604.5,-514 861.5,-514 861.5,-612"/>
 <text text-anchor="middle" x="733" y="-596.8" font-family="Open Sans" font-size="14.00">TT&#45;EXPECTATIONS: Documentation</text>
 <text text-anchor="middle" x="733" y="-581.8" font-family="Open Sans" font-size="14.00">is provided, specifying</text>
@@ -76,7 +76,7 @@
 <!-- JLS&#45;24 -->
 <g id="node4" class="node">
 <title>JLS&#45;24</title>
-<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/JLS-24.svg" xlink:title="JLS&#45;24: The nlohmann/json\nlibrary recognizes malformed\nJSON and returns an exception.\n">
+<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/custom_JLS-24_graph.svg" xlink:title="JLS&#45;24: The nlohmann/json\nlibrary recognizes malformed\nJSON and returns an exception.\n">
 <polygon fill="none" stroke="black" points="1062.5,-90.5 827.5,-90.5 827.5,-37.5 1062.5,-37.5 1062.5,-90.5"/>
 <text text-anchor="middle" x="945" y="-75.3" font-family="Open Sans" font-size="14.00">JLS&#45;24: The nlohmann/json</text>
 <text text-anchor="middle" x="945" y="-60.3" font-family="Open Sans" font-size="14.00">library recognizes malformed</text>
@@ -102,7 +102,7 @@
 <!-- TA&#45;MISBEHAVIOURS -->
 <g id="node6" class="node">
 <title>TA&#45;MISBEHAVIOURS</title>
-<g id="a_node6"><a xlink:href="https://score-json.github.io/json/main/_images/TA-MISBEHAVIOURS.svg" xlink:title="TA&#45;MISBEHAVIOURS: Prohibited\nmisbehaviours for nlohmann/json\nlibrary are identified,\nand mitigations are specified,\nverified and validated\nbased on analysis. ">
+<g id="a_node6"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-MISBEHAVIOURS_graph.svg" xlink:title="TA&#45;MISBEHAVIOURS: Prohibited\nmisbehaviours for nlohmann/json\nlibrary are identified,\nand mitigations are specified,\nverified and validated\nbased on analysis. ">
 <polygon fill="none" stroke="black" points="858,-370 608,-370 608,-272 858,-272 858,-370"/>
 <text text-anchor="middle" x="733" y="-354.8" font-family="Open Sans" font-size="14.00">TA&#45;MISBEHAVIOURS: Prohibited</text>
 <text text-anchor="middle" x="733" y="-339.8" font-family="Open Sans" font-size="14.00">misbehaviours for nlohmann/json</text>

@@ -12,7 +12,7 @@
 <!-- TRUSTABLE&#45;SOFTWARE -->
 <g id="node1" class="node">
 <title>TRUSTABLE&#45;SOFTWARE</title>
-<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/TRUSTABLE-SOFTWARE.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
+<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
 <polygon fill="none" stroke="black" points="332,-537 84,-537 84,-454 332,-454 332,-537"/>
 <text text-anchor="middle" x="208" y="-521.8" font-family="Open Sans" font-size="14.00">TRUSTABLE&#45;SOFTWARE: This</text>
 <text text-anchor="middle" x="208" y="-506.8" font-family="Open Sans" font-size="14.00">release of JSON&#45;Library</text>
@@ -25,7 +25,7 @@
 <!-- TT&#45;PROVENANCE -->
 <g id="node4" class="node">
 <title>TT&#45;PROVENANCE</title>
-<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/TT-PROVENANCE.svg" xlink:title="TT&#45;PROVENANCE: All inputs\n(and attestations for\nclaims) for nlohmann/json\nlibrary are provided\nwith known provenance.\n">
+<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-PROVENANCE_graph.svg" xlink:title="TT&#45;PROVENANCE: All inputs\n(and attestations for\nclaims) for nlohmann/json\nlibrary are provided\nwith known provenance.\n">
 <polygon fill="none" stroke="black" points="312.5,-310 103.5,-310 103.5,-227 312.5,-227 312.5,-310"/>
 <text text-anchor="middle" x="208" y="-294.8" font-family="Open Sans" font-size="14.00">TT&#45;PROVENANCE: All inputs</text>
 <text text-anchor="middle" x="208" y="-279.8" font-family="Open Sans" font-size="14.00">(and attestations for</text>
@@ -44,7 +44,7 @@
 <!-- TA&#45;INPUTS -->
 <g id="node2" class="node">
 <title>TA&#45;INPUTS</title>
-<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/_images/TA-INPUTS.svg" xlink:title="TA&#45;INPUTS: All inputs\nto nlohmann/json library\nare assessed, to identify\npotential risks and issues.\n">
+<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-INPUTS_graph.svg" xlink:title="TA&#45;INPUTS: All inputs\nto nlohmann/json library\nare assessed, to identify\npotential risks and issues.\n">
 <polygon fill="none" stroke="black" points="198,-75.5 0,-75.5 0,-7.5 198,-7.5 198,-75.5"/>
 <text text-anchor="middle" x="99" y="-60.3" font-family="Open Sans" font-size="14.00">TA&#45;INPUTS: All inputs</text>
 <text text-anchor="middle" x="99" y="-45.3" font-family="Open Sans" font-size="14.00">to nlohmann/json library</text>
@@ -56,7 +56,7 @@
 <!-- TA&#45;SUPPLY_CHAIN -->
 <g id="node3" class="node">
 <title>TA&#45;SUPPLY_CHAIN</title>
-<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/_images/TA-SUPPLY_CHAIN.svg" xlink:title="TA&#45;SUPPLY_CHAIN: All\nsources for nlohmann/json\nlibrary and tools are\nmirrored in our controlled\nenvironment. ">
+<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-SUPPLY_CHAIN_graph.svg" xlink:title="TA&#45;SUPPLY_CHAIN: All\nsources for nlohmann/json\nlibrary and tools are\nmirrored in our controlled\nenvironment. ">
 <polygon fill="none" stroke="black" points="417.5,-83 216.5,-83 216.5,0 417.5,0 417.5,-83"/>
 <text text-anchor="middle" x="317" y="-67.8" font-family="Open Sans" font-size="14.00">TA&#45;SUPPLY_CHAIN: All</text>
 <text text-anchor="middle" x="317" y="-52.8" font-family="Open Sans" font-size="14.00">sources for nlohmann/json</text>

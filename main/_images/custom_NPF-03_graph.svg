@@ -12,7 +12,7 @@
 <!-- TRUSTABLE&#45;SOFTWARE -->
 <g id="node1" class="node">
 <title>TRUSTABLE&#45;SOFTWARE</title>
-<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/TRUSTABLE-SOFTWARE.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
+<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
 <polygon fill="none" stroke="black" points="864.5,-1400 616.5,-1400 616.5,-1317 864.5,-1317 864.5,-1400"/>
 <text text-anchor="middle" x="740.5" y="-1384.8" font-family="Open Sans" font-size="14.00">TRUSTABLE&#45;SOFTWARE: This</text>
 <text text-anchor="middle" x="740.5" y="-1369.8" font-family="Open Sans" font-size="14.00">release of JSON&#45;Library</text>
@@ -25,7 +25,7 @@
 <!-- TT&#45;EXPECTATIONS -->
 <g id="node13" class="node">
 <title>TT&#45;EXPECTATIONS</title>
-<g id="a_node13"><a xlink:href="https://score-json.github.io/json/main/_images/TT-EXPECTATIONS.svg" xlink:title="TT&#45;EXPECTATIONS: Documentation\nis provided, specifying\nwhat nlohmann/json library\nis expected to do, and\nwhat it must not do,\nand how this is verified.\n">
+<g id="a_node13"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-EXPECTATIONS_graph.svg" xlink:title="TT&#45;EXPECTATIONS: Documentation\nis provided, specifying\nwhat nlohmann/json library\nis expected to do, and\nwhat it must not do,\nand how this is verified.\n">
 <polygon fill="none" stroke="black" points="869,-1173 612,-1173 612,-1075 869,-1075 869,-1173"/>
 <text text-anchor="middle" x="740.5" y="-1157.8" font-family="Open Sans" font-size="14.00">TT&#45;EXPECTATIONS: Documentation</text>
 <text text-anchor="middle" x="740.5" y="-1142.8" font-family="Open Sans" font-size="14.00">is provided, specifying</text>
@@ -45,7 +45,7 @@
 <!-- JLEX&#45;02 -->
 <g id="node2" class="node">
 <title>JLEX&#45;02</title>
-<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/_images/JLEX-02.svg" xlink:title="JLEX&#45;02: The requirement\nregarding [JSON Deserialization](https://eclipse&#45;score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__deserialization)\nis fulfilled. ">
+<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/_images/custom_JLEX-02_graph.svg" xlink:title="JLEX&#45;02: The requirement\nregarding [JSON Deserialization](https://eclipse&#45;score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__deserialization)\nis fulfilled. ">
 <polygon fill="none" stroke="black" points="1311.5,-689 169.5,-689 169.5,-636 1311.5,-636 1311.5,-689"/>
 <text text-anchor="middle" x="740.5" y="-673.8" font-family="Open Sans" font-size="14.00">JLEX&#45;02: The requirement</text>
 <text text-anchor="middle" x="740.5" y="-658.8" font-family="Open Sans" font-size="14.00">regarding [JSON Deserialization](https://eclipse&#45;score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__deserialization)</text>
@@ -56,7 +56,7 @@
 <!-- PJD&#45;03 -->
 <g id="node11" class="node">
 <title>PJD&#45;03</title>
-<g id="a_node11"><a xlink:href="https://score-json.github.io/json/main/_images/PJD-03.svg" xlink:title="PJD&#45;03: The service parses\nall texts that conform\nto the JSON grammar.\n">
+<g id="a_node11"><a xlink:href="https://score-json.github.io/json/main/_images/custom_PJD-03_graph.svg" xlink:title="PJD&#45;03: The service parses\nall texts that conform\nto the JSON grammar.\n">
 <polygon fill="none" stroke="black" points="842,-492 639,-492 639,-439 842,-439 842,-492"/>
 <text text-anchor="middle" x="740.5" y="-476.8" font-family="Open Sans" font-size="14.00">PJD&#45;03: The service parses</text>
 <text text-anchor="middle" x="740.5" y="-461.8" font-family="Open Sans" font-size="14.00">all texts that conform</text>
@@ -73,7 +73,7 @@
 <!-- NPF&#45;03 -->
 <g id="node3" class="node">
 <title>NPF&#45;03</title>
-<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/_images/NPF-03.svg" xlink:title="NPF&#45;03: The service parses\nstrings according to\nRFC8259. ">
+<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/_images/custom_NPF-03_graph.svg" xlink:title="NPF&#45;03: The service parses\nstrings according to\nRFC8259. ">
 <polygon fill="none" stroke="black" points="843.5,-295 637.5,-295 637.5,-242 843.5,-242 843.5,-295"/>
 <text text-anchor="middle" x="740.5" y="-279.8" font-family="Open Sans" font-size="14.00">NPF&#45;03: The service parses</text>
 <text text-anchor="middle" x="740.5" y="-264.8" font-family="Open Sans" font-size="14.00">strings according to</text>
@@ -213,7 +213,7 @@
 <!-- TA&#45;BEHAVIOURS -->
 <g id="node12" class="node">
 <title>TA&#45;BEHAVIOURS</title>
-<g id="a_node12"><a xlink:href="https://score-json.github.io/json/main/_images/TA-BEHAVIOURS.svg" xlink:title="TA&#45;BEHAVIOURS: Expected\nor required behaviours\nfor nlohmann/json library\nare identified, specified,\nverified and validated\nbased on analysis. ">
+<g id="a_node12"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-BEHAVIOURS_graph.svg" xlink:title="TA&#45;BEHAVIOURS: Expected\nor required behaviours\nfor nlohmann/json library\nare identified, specified,\nverified and validated\nbased on analysis. ">
 <polygon fill="none" stroke="black" points="842.5,-931 638.5,-931 638.5,-833 842.5,-833 842.5,-931"/>
 <text text-anchor="middle" x="740.5" y="-915.8" font-family="Open Sans" font-size="14.00">TA&#45;BEHAVIOURS: Expected</text>
 <text text-anchor="middle" x="740.5" y="-900.8" font-family="Open Sans" font-size="14.00">or required behaviours</text>

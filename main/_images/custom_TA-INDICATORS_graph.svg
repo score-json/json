@@ -12,7 +12,7 @@
 <!-- TRUSTABLE&#45;SOFTWARE -->
 <g id="node1" class="node">
 <title>TRUSTABLE&#45;SOFTWARE</title>
-<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/TRUSTABLE-SOFTWARE.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
+<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
 <polygon fill="none" stroke="black" points="252.5,-779 4.5,-779 4.5,-696 252.5,-696 252.5,-779"/>
 <text text-anchor="middle" x="128.5" y="-763.8" font-family="Open Sans" font-size="14.00">TRUSTABLE&#45;SOFTWARE: This</text>
 <text text-anchor="middle" x="128.5" y="-748.8" font-family="Open Sans" font-size="14.00">release of JSON&#45;Library</text>
@@ -25,7 +25,7 @@
 <!-- TT&#45;EXPECTATIONS -->
 <g id="node4" class="node">
 <title>TT&#45;EXPECTATIONS</title>
-<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/TT-EXPECTATIONS.svg" xlink:title="TT&#45;EXPECTATIONS: Documentation\nis provided, specifying\nwhat nlohmann/json library\nis expected to do, and\nwhat it must not do,\nand how this is verified.\n">
+<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-EXPECTATIONS_graph.svg" xlink:title="TT&#45;EXPECTATIONS: Documentation\nis provided, specifying\nwhat nlohmann/json library\nis expected to do, and\nwhat it must not do,\nand how this is verified.\n">
 <polygon fill="none" stroke="black" points="257,-552 0,-552 0,-454 257,-454 257,-552"/>
 <text text-anchor="middle" x="128.5" y="-536.8" font-family="Open Sans" font-size="14.00">TT&#45;EXPECTATIONS: Documentation</text>
 <text text-anchor="middle" x="128.5" y="-521.8" font-family="Open Sans" font-size="14.00">is provided, specifying</text>
@@ -56,7 +56,7 @@
 <!-- TA&#45;INDICATORS -->
 <g id="node3" class="node">
 <title>TA&#45;INDICATORS</title>
-<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/_images/TA-INDICATORS.svg" xlink:title="TA&#45;INDICATORS: Advanced\nwarning indicators for\nmisbehaviours are identified,\nand monitoring mechanisms\nare specified, verified\nand validated based on\nanalysis. ">
+<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-INDICATORS_graph.svg" xlink:title="TA&#45;INDICATORS: Advanced\nwarning indicators for\nmisbehaviours are identified,\nand monitoring mechanisms\nare specified, verified\nand validated based on\nanalysis. ">
 <polygon fill="none" stroke="black" points="238,-310 19,-310 19,-197 238,-197 238,-310"/>
 <text text-anchor="middle" x="128.5" y="-294.8" font-family="Open Sans" font-size="14.00">TA&#45;INDICATORS: Advanced</text>
 <text text-anchor="middle" x="128.5" y="-279.8" font-family="Open Sans" font-size="14.00">warning indicators for</text>
