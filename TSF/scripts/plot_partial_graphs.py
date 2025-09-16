@@ -10,7 +10,7 @@ def get_my_url(vertex: str, base_url: str, full_graph: TrustableGraph) -> str:
     if vertex in full_graph._graph.leaf_nodes():
         return base_url+"/generated/"+full_graph.get_item(vertex).document+".html#"+vertex.lower()
     else:
-        return base_url+"/_images/"+vertex+".svg"
+        return base_url+"/_images/custom_"+vertex+"_graph.svg"
 
 def get_pydot_graph(vertices: list[str], edges: list[tuple[str,str]]) -> PydotGraph:
     graph = "digraph G {"
