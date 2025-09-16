@@ -118,15 +118,17 @@ For the `TimeVaryingWebReference`, examples of the possible configurations are:
 
 references:
 - type: web_content
+- type: web_content
   url: "https://math.stackexchange.com/"
 ---
 ```
-in case of an empty descritption, and
+in case of an empty description, and
 ```
 ---
 ...
 
 references:
+- type: web_content
 - type: web_content
   url: "https://ncatlab.org/nlab/show/smooth+Serre-Swan+theorem"
   description: "Wiki article on the smooth Serre-Swan theorem"
@@ -140,13 +142,23 @@ The content of a `TimeVaryingWebReference` is given by the content of a changelo
 
 An example of the complete configuration for `TimeVaryingWebReference` is
 
+in case of a custom description.
+
+## TimeVaryingWebReference
+
+The content of a `TimeVaryingWebReference` is given by the content of a changelog, whose default value is `ChangeLog.md`, which mirrors the changelog of nlohmann/json. This reference is intended for websites, whose content is constantly changing, so that a `WebContentReference` makes the item un-reviewable, but whose content at the time of an update influences the trustability. An example is `https://github.com/nlohmann/json/pulse/monthly`, which can be used to demonstrate that nlohmann/json is *up to the most recent version* under active development.
+
+An example of the complete configuration for `TimeVaryingWebReference` is
+
 ```
 ---
 ...
 references:
 - type: project_website
+- type: project_website
   url: "https://ncatlab.org/nlab/show/smooth+Serre-Swan+theorem"
   description: "Wiki article on the smooth Serre-Swan theorem"
+  changelog: "ideas/graded/graded_Serre_Swan.tex"
   changelog: "ideas/graded/graded_Serre_Swan.tex"
 ---
 ```
@@ -223,6 +235,26 @@ A response time of at least the five-fold of the acceptable response time is dee
 Likewise inacceptable is a response code other than `200`, which gives an individual score of zero.
 
 The total score is the mean of the individual scores.
+
+## check_test_results
+
+The automatic validator `check_test_results` is intended to evaluate the database `TestResults.db` which is generated in the Ubuntu-Workflow, and which contains the test-report of the most recent workflow run. This database is temporary, and, contrary to `TSF/TestResultData.db`, which is persistently stored on the branch `save_historical_data`, not persistently stored.
+
+The expected configuration is given as follows:
+
+```
+evidence:
+    type: check_test_results
+    configuration:
+        tests: # list of test-files 
+            - test-class_lexer
+            - test-unicode1
+            - test-strings
+        database: TestResults.db # optional argument, default: TestResults.db; path to test-result database from project root
+        table: test_results # optional argument, default: test_results; name of table in database
+```
+
+For each test specified in test-files, the number of passed and failed test-cases is calculated, while the number of skipped test-cases is ignored. The score of each test is then the ratio of passed test-cases compared to all non-skipped test-cases; the total score is the mean of the individual scores.
 
 ## check_test_results
 

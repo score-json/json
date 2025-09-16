@@ -21,10 +21,12 @@ trudag publish --validate --figures --output-dir "$TSF_REPORT_FOLDER" --dump dat
 trudag plot -o "$TSF_REPORT_FOLDER/graph.svg" --url "$1/generated"
 
 # cleanup previously generated content if exists
-if [ -f "$TSF_FOLDER/docs/trustable_graph.rst" ]; then
-    rm "$TSF_FOLDER/docs/trustable_graph.rst"
-    touch "$TSF_FOLDER/docs/trustable_graph.rst"
+if [ -f "$TSF_REPORT_FOLDER/trustable_graph.rst" ]; then
+    rm "$TSF_REPORT_FOLDER/trustable_graph.rst"
+    touch "$TSF_REPORT_FOLDER/trustable_graph.rst"
 fi
+# plot all partial graphs with links based on the url given in the first input
+# in the workflow publish_documentation.yml, this input is https://${OWNER_NAME}.github.io/${REPO_NAME}/main
 python3 "$TSF_SCRIPT_FOLDER/plot_partial_graphs.py" "$1"
 
 

@@ -22,5 +22,5 @@ Report
    :caption: Report
    :glob:
 
-   trustable_graph.rst
+   generated/trustable_graph.rst
    generated/trustable_report_for_Software.md
