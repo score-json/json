@@ -6,9 +6,9 @@ TSF_FOLDER="$TSF_SCRIPT_FOLDER/.."
 TSF_REPORT_FOLDER="$TSF_FOLDER/docs/generated"
 
 # cleanup previously generated content if exists
-# if [ -d "$TSF_REPORT_FOLDER" ]; then
-#     rm -Rf "$TSF_REPORT_FOLDER"
-# fi
+if [ -d "$TSF_REPORT_FOLDER" ]; then
+    rm -Rf "$TSF_REPORT_FOLDER"
+fi
 
 # create output folder
 mkdir -p "$TSF_REPORT_FOLDER" # -p ensures no error if the folder already exists
