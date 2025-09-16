@@ -126,13 +126,16 @@ jobs:
           REPO="nlohmann/json" # Target repository
           OUTPUT_FILE="TSF/misbehaviours.md"
 
-          #all nlohmann/json labels
-          gh label list --repo "$REPO"
+          # Check if the target repository is reachable
+          if ! gh repo view "$REPO" --json name -q .name; then
+            echo "Could not reach the target repository ($REPO). Aborting workflow."
+            exit 1
+          fi
 
-          # Fetch all open issues from the nlohmann/json repository
+          # Fetch open issues from the nlohmann/json repository
           gh issue list --repo "$REPO" --state open --limit 10000 --json number,title,state,createdAt,url,labels > raw_open_issues.json
 
-          # Fetch all closed issues with from the nlohmann/json repository
+          # Fetch closed issues from the nlohmann/json repository
           gh issue list --repo "$REPO" --state closed --limit 10000 --json number,title,state,createdAt,url,labels > raw_closed_issues.json
 
           # Filter raw open issues for labels containing "bug" and convert to output .md file
@@ -150,23 +153,10 @@ jobs:
               .[]
             ' raw_closed_issues.json >> $OUTPUT_FILE
 
-          # Ensure the markdown file is created and not empty
-          if [ ! -s $OUTPUT_FILE ]; then
-            echo "# No open issues found with labels containing 'bug'" > $OUTPUT_FILE
-          fi
-
-          # Debug: Output generated markdown file
-          echo "Markdown file content:"
-          cat $OUTPUT_FILE
-
           mkdir -p TSF
 
-          # Move the generated issues.md file to the TSF directory
-
-          # Add changes to Git
+          # Push misbehaviours file to save_historical_data branch
           git add TSF/misbehaviours.md
-
-          # Commit changes (if there's anything new) and push to origin
           git commit -m "Updated issues list" || echo "No changes to commit"
           git push origin save_historical_data
 
