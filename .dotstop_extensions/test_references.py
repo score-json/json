@@ -686,3 +686,23 @@ def test_non_default_init_ListOfTestCases():
 def test_compile_string():
     with pytest.raises(RuntimeError):
         ListOfTestCases.compile_string([])
+
+def test_remove_and_count_indent():
+    assert ListOfTestCases.remove_and_count_indent("Hallo")== (0,"Hallo")
+    assert ListOfTestCases.remove_and_count_indent(" Hallo") == (1,"Hallo")
+    assert ListOfTestCases.remove_and_count_indent("\t Hallo Welt \t\t") == (5,"Hallo Welt \t\t")
+
+def test_extract_quotation():
+    assert ListOfTestCases.extract_quotation("\"Hallo\" Welt") == "Hallo"
+    assert ListOfTestCases.extract_quotation("This is quite \"exciting\", isn't it.") == "exciting"
+    assert ListOfTestCases.extract_quotation("\"Hallo\" \"Welt\"") == "Hallo"
+
+def test_extract_faulty_quotation():
+    with pytest.raises(RuntimeError, match=r"Expected quotation mark; none were detected."):
+        ListOfTestCases.extract_quotation("Hallo Welt")
+    with pytest.raises(RuntimeError, match=r"Expected quotation marks; only one was detected."):
+        ListOfTestCases.extract_quotation("Hallo \"Welt")
+
+def test_transform_test_file_to_test_name():
+    assert ListOfTestCases.transform_test_file_to_test_name("unit-dummy-test.cpp") == "test-dummy-test"
+    assert ListOfTestCases.transform_test_file_to_test_name("unit-dummy_test.cpp") == "test-dummy_test"
