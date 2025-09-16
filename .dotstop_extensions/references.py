@@ -1,6 +1,7 @@
 from pathlib import Path
 from trudag.dotstop.core.reference.references import BaseReference
 from trudag.dotstop.core.reference.references import SourceSpanReference
+from trudag.dotstop.core.reference.references import LocalFileReference
 import requests
 
 # Constants
