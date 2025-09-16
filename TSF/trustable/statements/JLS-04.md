@@ -2,7 +2,7 @@
 level: 1.1
 normative: true
 references:
-        - type: file
+        - type: verbose_file
           path: ".github/workflows/dependency-review.yml"
           description: "The workflow scans PRs for dependency changes and vulnerabilities."
 evidence:
