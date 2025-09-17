@@ -1,6 +1,7 @@
 from pathlib import Path
 from trudag.dotstop.core.reference.references import BaseReference
 from trudag.dotstop.core.reference.references import SourceSpanReference
+from trudag.dotstop.core.reference.references import LocalFileReference
 import requests
 import sqlite3
 
@@ -761,3 +762,30 @@ It should be noted that not all unit-tests in a test-file are executed with ever
     def __str__(self) -> str:
         # this is used as a title in the trudag report
         return "List of all unit-tests"
+    
+class VerboseFileReference(LocalFileReference):
+    def __init__(self, path: str, description: str = "", **kwargs) -> None:
+        self._path = Path(path)
+        self._description = description
+   
+    @classmethod
+    def type(cls) -> str:
+        return "verbose_file"
+ 
+    @property    
+    def content(self) -> bytes:
+        if not self._path.is_file():
+            raise ReferenceError(
+                f"Cannot get non-existent or non-regular file {self._path}"
+            )
+        with self._path.open("rb") as reference_content:
+            return reference_content.read()
+       
+    def as_markdown(self, filepath: None | str = None) -> str:
+        result = super().as_markdown()
+        if self._description != "":
+            result += make_md_bullet_point(f"Description: {self._description}\n\n")
+        return result
+   
+    def __str__(self) -> str:
+        return str(self._path)  

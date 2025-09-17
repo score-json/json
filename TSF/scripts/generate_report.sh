@@ -32,4 +32,4 @@ python3 "$TSF_SCRIPT_FOLDER/plot_partial_graphs.py" "$1"
 
 # cleanup TSF report content from trudag unwanted artifacts
 echo "Cleaning up TSF report from trudag unwanted artifacts"
-python "$TSF_SCRIPT_FOLDER/clean_trudag_output.py" "$TSF_REPORT_FOLDER"
+python3 "$TSF_SCRIPT_FOLDER/clean_trudag_output.py" "$TSF_REPORT_FOLDER"

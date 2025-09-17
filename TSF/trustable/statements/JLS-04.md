@@ -2,11 +2,22 @@
 level: 1.1
 normative: true
 references:
-        - type: file
-          path: ".github/dependabot.yml"
+        - type: verbose_file
+          path: ".github/workflows/dependency-review.yml"
+          description: "The workflow scans PRs for dependency changes and vulnerabilities."
+evidence:
+  type: "check_artifact_exists"
+  configuration:
+    check_amalgamation: exclude
+    codeql: exclude
+    dependency_review: include
+    labeler: exclude
+    publish_documentation: exclude
+    test_trudag_extensions: exclude
+    ubuntu: exclude
 score:
     Jonas-Kirchhoff: 1.0
     Erikhu1: 1.0
 ---
 
-The project runs dependabot on all code entering the main branch, blocking merges until all warnings are resolved. (https://github.com/score-json/json/blob/main/nlohmann_json/.github/dependabot.yml)
+External dependencies are checked for potential security vulnerabilities with each pull request to main. Merging is blocked until all warnings are resolved.
