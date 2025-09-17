@@ -51,6 +51,52 @@ def remove_invalid_markdown_start(lines: list[str]) -> list[str]:
             return lines[3:]
     return lines
 
+def insert_line(filepath):
+    """Insert a new line '### Compliance for Trustable Tenets' after '## Compliance for TT' in the file."""
+    with open(filepath, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+
+    modified = False
+    updated_lines = []
+    for line in lines:
+        updated_lines.append(line)
+        if line.strip() == '## Compliance for AOU':
+            updated_lines.append("This presents the compliance for the _Assumptions of Use_ (AOU) in tabular form.\n")
+            modified = True
+        if line.strip() == '## Compliance for JLEX':
+            updated_lines.append("This presents the compliance for the _JSON-Library Expectations_ (JLEX) in tabular form.\n")
+            modified = True
+        if line.strip() == '## Compliance for JLS':
+            updated_lines.append("This presents the compliance for the _JSON-Library Statements_ (JLS) in tabular form.\n")
+            modified = True
+        if line.strip() == '## Compliance for NJF':
+            updated_lines.append("This presents the compliance for the _No JSON Faults_ (NJF) in tabular form.\n")
+            modified = True
+        if line.strip() == '## Compliance for NPF':
+            updated_lines.append("This presents the compliance for the _No Parsing Faults_ (NPF) in tabular form.\n")
+            modified = True
+        if line.strip() == '## Compliance for PJD':
+            updated_lines.append("This presents the compliance for the _Parse JSON Data_ (PJD) in tabular form.\n")
+            modified = True
+        if line.strip() == '## Compliance for TA':
+            updated_lines.append("This presents the compliance for the _Trustable Assertions_ (TA) in tabular form.\n")
+            modified = True
+        if line.strip() == '## Compliance for TIJ':
+            updated_lines.append("This presents the compliance for the _Throw Ill-Formed JSON_ (TIJ) in tabular form.\n")
+            modified = True
+        if line.strip() == '## Compliance for TRUSTABLE':
+            updated_lines.append("This presents the ultimate trustability score for nlohmann/json.\n")
+            modified = True
+        if line.strip() == '## Compliance for TT':
+            updated_lines.append("This presents the compliance for the _Trustable Tenets_ (TT) in tabular form.\n")
+            modified = True
+        if line.strip() == '## Compliance for WFJ':
+            updated_lines.append("This presents the compliance for _Well Formed JSON_ (WFJ) in tabular form.\n")
+            modified = True
+    if modified:
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.writelines(updated_lines)
+
 def clean_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as f:
         lines = f.readlines()
@@ -74,6 +120,7 @@ def main():
         for file in files:
             if file.endswith('.md'):
                 clean_file(os.path.join(root, file))
+                insert_line(os.path.join(root, file))
 
 if __name__ == "__main__":
     main()
