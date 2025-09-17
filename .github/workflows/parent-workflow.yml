@@ -134,6 +134,20 @@ jobs:
       id-token: write
       security-events: read
     name: Run publish_documentation Workflow
+    if: github.event_name == 'pull_request'            # Publish documentation should only run on push to main
+    needs: [collect_artifacts_pr]
+    uses: ./.github/workflows/test_publication.yml
+    with:
+      artifact_id: "ubuntu-${{ github.sha }}"
+
+  publish_documentation:
+    permissions:
+      contents: write
+      pages: write
+      pull-requests: write
+      id-token: write
+      security-events: read
+    name: Run publish_documentation Workflow
     if: github.event_name == 'push'            # Publish documentation should only run on push to main
     needs: [collect_artifacts_non_pr]
     uses: ./.github/workflows/publish_documentation.yml
