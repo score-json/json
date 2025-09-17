@@ -48,7 +48,7 @@ jobs:
         with:
           python-version: '3.11.2'
 
-      # trudag version 2025.7.23
+      # trudag version 2025.8.5
       - name: Install trudag and dependencies
         run: |
           sudo apt-get update
