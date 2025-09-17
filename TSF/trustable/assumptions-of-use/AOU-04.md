@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-Exceptions are properly handled or turned off.
+The integrator shall ensure that exceptions are properly handled or turned off, whenever nlohmann/json is used.

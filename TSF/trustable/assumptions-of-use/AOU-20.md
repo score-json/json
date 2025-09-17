@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The keys within each object are unique.
+The integrator shall ensure that the keys within an object are unique, whenever an object is parsed by nlohmann/json.

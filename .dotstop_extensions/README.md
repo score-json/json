@@ -49,6 +49,36 @@ references:
 ---
 ```
 
+## FunctionReference
+
+The content of a `FunctionReference` is given by the code inclusive all comments of a C++ function within a class in a specified file in the repository. The specific position, i.e. start- and end-line, of the code within that file is not part of the content.  
+
+For the `FunctionReference` an example is:
+```
+---
+...
+
+references:
+- type: function_reference
+  name: "basic_json::accept"
+  path: "include/nlohmann/json.hpp"
+---
+```
+
+Since functions may be overloaded, a `FunctionReference` can be initialised with an optional overload-parameter; additionally, it is possible to give a description. The full example is:
+```
+---
+...
+
+references:
+- type: function_reference
+  name: "basic_json::accept"
+  path: "include/nlohmann/json.hpp"
+  description: "the public interface of the `accept`-functionality of nlohmann/json"
+  overload: 2
+---
+```
+
 ## WebReference
 
 The content of a `WebReference` is its url. This reference is intended to be utilised in case that the content of the web-site is constantly changing (e.g. due to a clock being implemented somewhere on the site), but the reviewer is certain that the type of the content and it being supportive of the statement is fulfilled as long a the website is reachable. An example is `https://introspector.oss-fuzz.com/project-profile?project=json`, where the most recent fuzz-testing report for nlohmann/json is published.
@@ -110,6 +140,14 @@ The content of a `TimeVaryingWebReference` is given by the content of a changelo
 
 An example of the complete configuration for `TimeVaryingWebReference` is
 
+in case of a custom description.
+
+## TimeVaryingWebReference
+
+The content of a `TimeVaryingWebReference` is given by the content of a changelog, whose default value is `ChangeLog.md`, which mirrors the changelog of nlohmann/json. This reference is intended for websites, whose content is constantly changing, so that a `WebContentReference` makes the item un-reviewable, but whose content at the time of an update influences the trustability. An example is `https://github.com/nlohmann/json/pulse/monthly`, which can be used to demonstrate that nlohmann/json is *up to the most recent version* under active development.
+
+An example of the complete configuration for `TimeVaryingWebReference` is
+
 ```
 ---
 ...
@@ -122,6 +160,37 @@ references:
 ```
 where `description` and `changelog` are optional arguments.
 
+## ListOfTestCases
+
+The content of a `ListOfTestCases` is given by the list of test-cases extracted from the unit-tests given in the files in the provided directories. 
+It is assumed that a unit-test is saved in a file with the name unit-xxx.cpp, and only those files are used to compile the list. 
+Further, it is assumed that a unit-test-file is structured as
+
+```
+...
+TEST_CASE("my test case")
+{
+    ...
+    SECTION("my section")
+    {
+        ...
+    }
+    ...
+}
+```
+
+and the structure regarding test-cases and (nested) sections of test-cases is extracted. The expected configuration is 
+
+```
+---
+...
+references:
+- type: list_of_test_cases
+  test_files:
+    - TSF/tests
+    - tests/src
+---
+```
 
 # Validators
 
@@ -162,6 +231,26 @@ A response time of at least the five-fold of the acceptable response time is dee
 Likewise inacceptable is a response code other than `200`, which gives an individual score of zero.
 
 The total score is the mean of the individual scores.
+
+## check_test_results
+
+The automatic validator `check_test_results` is intended to evaluate the database `TestResults.db` which is generated in the Ubuntu-Workflow, and which contains the test-report of the most recent workflow run. This database is temporary, and, contrary to `TSF/TestResultData.db`, which is persistently stored on the branch `save_historical_data`, not persistently stored.
+
+The expected configuration is given as follows:
+
+```
+evidence:
+    type: check_test_results
+    configuration:
+        tests: # list of test-files 
+            - test-class_lexer
+            - test-unicode1
+            - test-strings
+        database: TestResults.db # optional argument, default: TestResults.db; path to test-result database from project root
+        table: test_results # optional argument, default: test_results; name of table in database
+```
+
+For each test specified in test-files, the number of passed and failed test-cases is calculated, while the number of skipped test-cases is ignored. The score of each test is then the ratio of passed test-cases compared to all non-skipped test-cases; the total score is the mean of the individual scores.
 
 ## check_test_results
 
