@@ -168,8 +168,6 @@ jobs:
               .[]
             ' raw_closed_issues.json >> $OUTPUT_FILE
 
-          mkdir -p TSF
-
           # Push misbehaviours file to save_historical_data branch
           git add TSF/misbehaviours.md
           git commit -m "Updated issues list" || echo "No changes to commit"

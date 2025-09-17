@@ -63,3 +63,60 @@ jobs:
           TSF/scripts/generate_report.sh "https://${OWNER_NAME}.github.io/${REPO_NAME}/main"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+          sudo apt install gh -y
+
+      - name: Fetch open issues labelled as bug from nlohmann/json
+        id: fetch_issues
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+
+          # Define variables
+          REPO="nlohmann/json" # Target repository
+          OUTPUT_FILE="TSF/misbehaviours.md"
+
+          # Check if the target repository is reachable
+          if ! gh repo view "$REPO" --json name -q .name; then
+            echo "Could not reach the target repository ($REPO). Aborting workflow."
+            exit 1
+          fi
+
+          # Fetch open issues from the nlohmann/json repository
+          gh issue list --repo "$REPO" --state open --limit 10000 --json number,title,state,createdAt,url,labels > raw_open_issues.json
+
+          # Fetch closed issues from the nlohmann/json repository
+          gh issue list --repo "$REPO" --state closed --limit 10000 --json number,title,state,createdAt,url,labels > raw_closed_issues.json
+
+          # Add title to the output file
+          echo "# Misbehaviours Report" > $OUTPUT_FILE
+          echo "" >> $OUTPUT_FILE
+          echo "This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json repository. The misbehaviours are compiled from github issues of the nlohmann/json repository, and link to each corresponding issue." >> $OUTPUT_FILE
+          echo "" >> $OUTPUT_FILE
+
+          # Add subtitle for open issues
+          echo "## Open Issues" >> $OUTPUT_FILE
+          echo "" >> $OUTPUT_FILE
+
+          # Filter raw open issues for labels containing "bug" and convert to output .md file
+          jq -r '
+              map(select(.labels[]?.name | test("bug"; "i"))) |
+              map("### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n") |
+              .[]
+            ' raw_open_issues.json >> $OUTPUT_FILE
+
+          # Add subtitle for closed issues
+          echo "" >> $OUTPUT_FILE
+          echo "## Closed Issues (since v3.12.0)" >> $OUTPUT_FILE
+          echo "" >> $OUTPUT_FILE
+
+          # Filter raw closed issues for labels containing "bug", created after release date of nlohmann/json version in use, and convert to output .md file
+          jq -r '
+              map(select(.labels[]?.name | test("bug"; "i"))) |
+              map(select(.createdAt > "2025-04-11T00:00:00Z")) |  # Adjust date as needed, 2025-04-11 corresponds to release v3.12.0 of nlohmann/json
+              map("### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n") |
+              .[]
+            ' raw_closed_issues.json >> $OUTPUT_FILE
