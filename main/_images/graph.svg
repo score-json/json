@@ -13,11 +13,11 @@
 <g id="node1" class="node">
 <title>TT&#45;CHANGES</title>
 <g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/generated/TT.html#tt-changes" xlink:title="TT&#45;CHANGES: nlohmann/json library\nis actively maintained, with regular\nupdates to dependencies, and changes\nare verified to prevent regressions.\n" target="_top">
-<polygon fill="none" stroke="black" points="3115.5,-789.5 2825.5,-789.5 2825.5,-721.5 3115.5,-721.5 3115.5,-789.5"/>
-<text text-anchor="middle" x="2970.5" y="-774.3" font-family="Open Sans" font-size="14.00">TT&#45;CHANGES: nlohmann/json library</text>
-<text text-anchor="middle" x="2970.5" y="-759.3" font-family="Open Sans" font-size="14.00">is actively maintained, with regular</text>
-<text text-anchor="middle" x="2970.5" y="-744.3" font-family="Open Sans" font-size="14.00">updates to dependencies, and changes</text>
-<text text-anchor="middle" x="2970.5" y="-729.3" font-family="Open Sans" font-size="14.00">are verified to prevent regressions.</text>
+<polygon fill="none" stroke="black" points="3501.5,-789.5 3211.5,-789.5 3211.5,-721.5 3501.5,-721.5 3501.5,-789.5"/>
+<text text-anchor="middle" x="3356.5" y="-774.3" font-family="Open Sans" font-size="14.00">TT&#45;CHANGES: nlohmann/json library</text>
+<text text-anchor="middle" x="3356.5" y="-759.3" font-family="Open Sans" font-size="14.00">is actively maintained, with regular</text>
+<text text-anchor="middle" x="3356.5" y="-744.3" font-family="Open Sans" font-size="14.00">updates to dependencies, and changes</text>
+<text text-anchor="middle" x="3356.5" y="-729.3" font-family="Open Sans" font-size="14.00">are verified to prevent regressions.</text>
 </a>
 </g>
 </g>
@@ -25,47 +25,47 @@
 <g id="node172" class="node">
 <title>TA&#45;FIXES</title>
 <g id="a_node172"><a xlink:href="https://score-json.github.io/json/main/generated/TA.html#ta-fixes" xlink:title="TA&#45;FIXES: Known bugs or misbehaviours\nare analysed and triaged, and critical\nfixes or mitigations are implemented\nor applied. " target="_top">
-<polygon fill="none" stroke="black" points="2400,-670.5 2101,-670.5 2101,-602.5 2400,-602.5 2400,-670.5"/>
-<text text-anchor="middle" x="2250.5" y="-655.3" font-family="Open Sans" font-size="14.00">TA&#45;FIXES: Known bugs or misbehaviours</text>
-<text text-anchor="middle" x="2250.5" y="-640.3" font-family="Open Sans" font-size="14.00">are analysed and triaged, and critical</text>
-<text text-anchor="middle" x="2250.5" y="-625.3" font-family="Open Sans" font-size="14.00">fixes or mitigations are implemented</text>
-<text text-anchor="middle" x="2250.5" y="-610.3" font-family="Open Sans" font-size="14.00">or applied. </text>
+<polygon fill="none" stroke="black" points="2786,-670.5 2487,-670.5 2487,-602.5 2786,-602.5 2786,-670.5"/>
+<text text-anchor="middle" x="2636.5" y="-655.3" font-family="Open Sans" font-size="14.00">TA&#45;FIXES: Known bugs or misbehaviours</text>
+<text text-anchor="middle" x="2636.5" y="-640.3" font-family="Open Sans" font-size="14.00">are analysed and triaged, and critical</text>
+<text text-anchor="middle" x="2636.5" y="-625.3" font-family="Open Sans" font-size="14.00">fixes or mitigations are implemented</text>
+<text text-anchor="middle" x="2636.5" y="-610.3" font-family="Open Sans" font-size="14.00">or applied. </text>
 </a>
 </g>
 </g>
 <!-- TT&#45;CHANGES&#45;&gt;TA&#45;FIXES -->
 <g id="edge1" class="edge">
 <title>TT&#45;CHANGES&#45;&gt;TA&#45;FIXES</title>
-<path fill="none" stroke="black" d="M2825.23,-730.89C2704.95,-711.35 2534.26,-683.61 2410.17,-663.45"/>
-<polygon fill="black" stroke="black" points="2410.62,-659.97 2400.19,-661.82 2409.5,-666.88 2410.62,-659.97"/>
+<path fill="none" stroke="black" d="M3211.23,-730.89C3090.95,-711.35 2920.26,-683.61 2796.17,-663.45"/>
+<polygon fill="black" stroke="black" points="2796.62,-659.97 2786.19,-661.82 2795.5,-666.88 2796.62,-659.97"/>
 </g>
 <!-- TA&#45;UPDATES -->
 <g id="node181" class="node">
 <title>TA&#45;UPDATES</title>
 <g id="a_node181"><a xlink:href="https://score-json.github.io/json/main/generated/TA.html#ta-updates" xlink:title="TA&#45;UPDATES: nlohmann/json library\ncomponents, configurations and tools\nare updated under specified change\nand configuration management controls.\n" target="_top">
-<polygon fill="none" stroke="black" points="3120.5,-670.5 2820.5,-670.5 2820.5,-602.5 3120.5,-602.5 3120.5,-670.5"/>
-<text text-anchor="middle" x="2970.5" y="-655.3" font-family="Open Sans" font-size="14.00">TA&#45;UPDATES: nlohmann/json library</text>
-<text text-anchor="middle" x="2970.5" y="-640.3" font-family="Open Sans" font-size="14.00">components, configurations and tools</text>
-<text text-anchor="middle" x="2970.5" y="-625.3" font-family="Open Sans" font-size="14.00">are updated under specified change</text>
-<text text-anchor="middle" x="2970.5" y="-610.3" font-family="Open Sans" font-size="14.00">and configuration management controls.</text>
+<polygon fill="none" stroke="black" points="3506.5,-670.5 3206.5,-670.5 3206.5,-602.5 3506.5,-602.5 3506.5,-670.5"/>
+<text text-anchor="middle" x="3356.5" y="-655.3" font-family="Open Sans" font-size="14.00">TA&#45;UPDATES: nlohmann/json library</text>
+<text text-anchor="middle" x="3356.5" y="-640.3" font-family="Open Sans" font-size="14.00">components, configurations and tools</text>
+<text text-anchor="middle" x="3356.5" y="-625.3" font-family="Open Sans" font-size="14.00">are updated under specified change</text>
+<text text-anchor="middle" x="3356.5" y="-610.3" font-family="Open Sans" font-size="14.00">and configuration management controls.</text>
 </a>
 </g>
 </g>
 <!-- TT&#45;CHANGES&#45;&gt;TA&#45;UPDATES -->
 <g id="edge2" class="edge">
 <title>TT&#45;CHANGES&#45;&gt;TA&#45;UPDATES</title>
-<path fill="none" stroke="black" d="M2970.5,-721.29C2970.5,-708.81 2970.5,-694.44 2970.5,-681.16"/>
-<polygon fill="black" stroke="black" points="2974,-680.8 2970.5,-670.8 2967,-680.8 2974,-680.8"/>
+<path fill="none" stroke="black" d="M3356.5,-721.29C3356.5,-708.81 3356.5,-694.44 3356.5,-681.16"/>
+<polygon fill="black" stroke="black" points="3360,-680.8 3356.5,-670.8 3353,-680.8 3360,-680.8"/>
 </g>
 <!-- AOU&#45;01 -->
 <g id="node2" class="node">
 <title>AOU&#45;01</title>
 <g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/generated/AOU.html#aou-01" xlink:title="AOU&#45;01: Problems with nlohmann/json&#39;s\nimplementation identified during\ntesting are reported to the upstream\nnlohmann/json project. " target="_top">
-<polygon fill="none" stroke="black" points="2244.5,-544 1948.5,-544 1948.5,-476 2244.5,-476 2244.5,-544"/>
-<text text-anchor="middle" x="2096.5" y="-528.8" font-family="Open Sans" font-size="14.00">AOU&#45;01: Problems with nlohmann/json&#39;s</text>
-<text text-anchor="middle" x="2096.5" y="-513.8" font-family="Open Sans" font-size="14.00">implementation identified during</text>
-<text text-anchor="middle" x="2096.5" y="-498.8" font-family="Open Sans" font-size="14.00">testing are reported to the upstream</text>
-<text text-anchor="middle" x="2096.5" y="-483.8" font-family="Open Sans" font-size="14.00">nlohmann/json project. </text>
+<polygon fill="none" stroke="black" points="2630.5,-544 2334.5,-544 2334.5,-476 2630.5,-476 2630.5,-544"/>
+<text text-anchor="middle" x="2482.5" y="-528.8" font-family="Open Sans" font-size="14.00">AOU&#45;01: Problems with nlohmann/json&#39;s</text>
+<text text-anchor="middle" x="2482.5" y="-513.8" font-family="Open Sans" font-size="14.00">implementation identified during</text>
+<text text-anchor="middle" x="2482.5" y="-498.8" font-family="Open Sans" font-size="14.00">testing are reported to the upstream</text>
+<text text-anchor="middle" x="2482.5" y="-483.8" font-family="Open Sans" font-size="14.00">nlohmann/json project. </text>
 </a>
 </g>
 </g>
@@ -163,11 +163,11 @@
 <g id="node11" class="node">
 <title>AOU&#45;10</title>
 <g id="a_node11"><a xlink:href="https://score-json.github.io/json/main/generated/AOU.html#aou-10" xlink:title="AOU&#45;10: The integrator is required\nto evaluate the provided evidence\nfor TA&#45;FIXES and supplement it where\nnecessary. " target="_top">
-<polygon fill="none" stroke="black" points="2544,-544 2263,-544 2263,-476 2544,-476 2544,-544"/>
-<text text-anchor="middle" x="2403.5" y="-528.8" font-family="Open Sans" font-size="14.00">AOU&#45;10: The integrator is required</text>
-<text text-anchor="middle" x="2403.5" y="-513.8" font-family="Open Sans" font-size="14.00">to evaluate the provided evidence</text>
-<text text-anchor="middle" x="2403.5" y="-498.8" font-family="Open Sans" font-size="14.00">for TA&#45;FIXES and supplement it where</text>
-<text text-anchor="middle" x="2403.5" y="-483.8" font-family="Open Sans" font-size="14.00">necessary. </text>
+<polygon fill="none" stroke="black" points="2930,-544 2649,-544 2649,-476 2930,-476 2930,-544"/>
+<text text-anchor="middle" x="2789.5" y="-528.8" font-family="Open Sans" font-size="14.00">AOU&#45;10: The integrator is required</text>
+<text text-anchor="middle" x="2789.5" y="-513.8" font-family="Open Sans" font-size="14.00">to evaluate the provided evidence</text>
+<text text-anchor="middle" x="2789.5" y="-498.8" font-family="Open Sans" font-size="14.00">for TA&#45;FIXES and supplement it where</text>
+<text text-anchor="middle" x="2789.5" y="-483.8" font-family="Open Sans" font-size="14.00">necessary. </text>
 </a>
 </g>
 </g>
@@ -472,8 +472,8 @@
 <!-- JLEX&#45;01&#45;&gt;WFJ&#45;07 -->
 <g id="edge9" class="edge">
 <title>JLEX&#45;01&#45;&gt;WFJ&#45;07</title>
-<path fill="none" stroke="black" d="M9825.73,-483.47C9736.95,-474.57 9634.06,-465.64 9540.5,-461 8099.59,-389.47 4490.3,-475.67 3048.5,-425 2885.7,-419.28 2699.39,-406.38 2572.85,-396.67"/>
-<polygon fill="black" stroke="black" points="2572.94,-393.17 2562.7,-395.89 2572.4,-400.15 2572.94,-393.17"/>
+<path fill="none" stroke="black" d="M9825.73,-483.47C9736.95,-474.57 9634.06,-465.64 9540.5,-461 8099.36,-389.46 4489.52,-475.75 3047.5,-425 2885.09,-419.28 2699.25,-406.4 2572.92,-396.69"/>
+<polygon fill="black" stroke="black" points="2573.03,-393.19 2562.79,-395.91 2572.49,-400.17 2573.03,-393.19"/>
 </g>
 <!-- WFJ&#45;08 -->
 <g id="node222" class="node">
@@ -584,12 +584,13 @@
 <!-- JLS&#45;04 -->
 <g id="node33" class="node">
 <title>JLS&#45;04</title>
-<g id="a_node33"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-04" xlink:title="JLS&#45;04: The project runs dependabot\non all code entering the main branch,\nblocking merges until all warnings\nare resolved. (https://github.com/score&#45;json/json/blob/main/nlohmann_json/.github/dependabot.yml)\n" target="_top">
-<polygon fill="none" stroke="black" points="3829.5,-544 3117.5,-544 3117.5,-476 3829.5,-476 3829.5,-544"/>
-<text text-anchor="middle" x="3473.5" y="-528.8" font-family="Open Sans" font-size="14.00">JLS&#45;04: The project runs dependabot</text>
-<text text-anchor="middle" x="3473.5" y="-513.8" font-family="Open Sans" font-size="14.00">on all code entering the main branch,</text>
-<text text-anchor="middle" x="3473.5" y="-498.8" font-family="Open Sans" font-size="14.00">blocking merges until all warnings</text>
-<text text-anchor="middle" x="3473.5" y="-483.8" font-family="Open Sans" font-size="14.00">are resolved. (https://github.com/score&#45;json/json/blob/main/nlohmann_json/.github/dependabot.yml)</text>
+<g id="a_node33"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-04" xlink:title="JLS&#45;04: External dependencies are\nchecked for potential security vulnerabilities\nwith each pull request to main. Merging\nis blocked until all warnings are\nresolved. " target="_top">
+<polygon fill="none" stroke="black" points="3829,-551.5 3504,-551.5 3504,-468.5 3829,-468.5 3829,-551.5"/>
+<text text-anchor="middle" x="3666.5" y="-536.3" font-family="Open Sans" font-size="14.00">JLS&#45;04: External dependencies are</text>
+<text text-anchor="middle" x="3666.5" y="-521.3" font-family="Open Sans" font-size="14.00">checked for potential security vulnerabilities</text>
+<text text-anchor="middle" x="3666.5" y="-506.3" font-family="Open Sans" font-size="14.00">with each pull request to main. Merging</text>
+<text text-anchor="middle" x="3666.5" y="-491.3" font-family="Open Sans" font-size="14.00">is blocked until all warnings are</text>
+<text text-anchor="middle" x="3666.5" y="-476.3" font-family="Open Sans" font-size="14.00">resolved. </text>
 </a>
 </g>
 </g>
@@ -597,11 +598,11 @@
 <g id="node34" class="node">
 <title>JLS&#45;05</title>
 <g id="a_node34"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-05" xlink:title="JLS&#45;05: The OSS nlohmann/json is\nwidely used, actively maintained\nand uses github issues to track bugs\nand misbehaviours. " target="_top">
-<polygon fill="none" stroke="black" points="1604.5,-544 1330.5,-544 1330.5,-476 1604.5,-476 1604.5,-544"/>
-<text text-anchor="middle" x="1467.5" y="-528.8" font-family="Open Sans" font-size="14.00">JLS&#45;05: The OSS nlohmann/json is</text>
-<text text-anchor="middle" x="1467.5" y="-513.8" font-family="Open Sans" font-size="14.00">widely used, actively maintained</text>
-<text text-anchor="middle" x="1467.5" y="-498.8" font-family="Open Sans" font-size="14.00">and uses github issues to track bugs</text>
-<text text-anchor="middle" x="1467.5" y="-483.8" font-family="Open Sans" font-size="14.00">and misbehaviours. </text>
+<polygon fill="none" stroke="black" points="1990.5,-544 1716.5,-544 1716.5,-476 1990.5,-476 1990.5,-544"/>
+<text text-anchor="middle" x="1853.5" y="-528.8" font-family="Open Sans" font-size="14.00">JLS&#45;05: The OSS nlohmann/json is</text>
+<text text-anchor="middle" x="1853.5" y="-513.8" font-family="Open Sans" font-size="14.00">widely used, actively maintained</text>
+<text text-anchor="middle" x="1853.5" y="-498.8" font-family="Open Sans" font-size="14.00">and uses github issues to track bugs</text>
+<text text-anchor="middle" x="1853.5" y="-483.8" font-family="Open Sans" font-size="14.00">and misbehaviours. </text>
 </a>
 </g>
 </g>
@@ -609,10 +610,10 @@
 <g id="node35" class="node">
 <title>JLS&#45;06</title>
 <g id="a_node35"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-06" xlink:title="JLS&#45;06: Changes to the code (main\nbranch) are applied only after code\nreview and passing of all pipelines.\n" target="_top">
-<polygon fill="none" stroke="black" points="2822.5,-536.5 2562.5,-536.5 2562.5,-483.5 2822.5,-483.5 2822.5,-536.5"/>
-<text text-anchor="middle" x="2692.5" y="-521.3" font-family="Open Sans" font-size="14.00">JLS&#45;06: Changes to the code (main</text>
-<text text-anchor="middle" x="2692.5" y="-506.3" font-family="Open Sans" font-size="14.00">branch) are applied only after code</text>
-<text text-anchor="middle" x="2692.5" y="-491.3" font-family="Open Sans" font-size="14.00">review and passing of all pipelines.</text>
+<polygon fill="none" stroke="black" points="3208.5,-536.5 2948.5,-536.5 2948.5,-483.5 3208.5,-483.5 3208.5,-536.5"/>
+<text text-anchor="middle" x="3078.5" y="-521.3" font-family="Open Sans" font-size="14.00">JLS&#45;06: Changes to the code (main</text>
+<text text-anchor="middle" x="3078.5" y="-506.3" font-family="Open Sans" font-size="14.00">branch) are applied only after code</text>
+<text text-anchor="middle" x="3078.5" y="-491.3" font-family="Open Sans" font-size="14.00">review and passing of all pipelines.</text>
 </a>
 </g>
 </g>
@@ -620,9 +621,9 @@
 <g id="node36" class="node">
 <title>JLS&#45;07</title>
 <g id="a_node36"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-07" xlink:title="JLS&#45;07: Main branch is protected,\ni.e. no direct commits are possible.\n" target="_top">
-<polygon fill="none" stroke="black" points="3100,-529 2841,-529 2841,-491 3100,-491 3100,-529"/>
-<text text-anchor="middle" x="2970.5" y="-513.8" font-family="Open Sans" font-size="14.00">JLS&#45;07: Main branch is protected,</text>
-<text text-anchor="middle" x="2970.5" y="-498.8" font-family="Open Sans" font-size="14.00">i.e. no direct commits are possible.</text>
+<polygon fill="none" stroke="black" points="3486,-529 3227,-529 3227,-491 3486,-491 3486,-529"/>
+<text text-anchor="middle" x="3356.5" y="-513.8" font-family="Open Sans" font-size="14.00">JLS&#45;07: Main branch is protected,</text>
+<text text-anchor="middle" x="3356.5" y="-498.8" font-family="Open Sans" font-size="14.00">i.e. no direct commits are possible.</text>
 </a>
 </g>
 </g>
@@ -663,11 +664,11 @@
 <g id="node40" class="node">
 <title>JLS&#45;11</title>
 <g id="a_node40"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-11" xlink:title="JLS&#45;11: A score based on outstanding,\nfixed and mitigated faults is calculated\nbased on github issues in nlohmann/json.\n(TODO) " target="_top">
-<polygon fill="none" stroke="black" points="1930,-544 1623,-544 1623,-476 1930,-476 1930,-544"/>
-<text text-anchor="middle" x="1776.5" y="-528.8" font-family="Open Sans" font-size="14.00">JLS&#45;11: A score based on outstanding,</text>
-<text text-anchor="middle" x="1776.5" y="-513.8" font-family="Open Sans" font-size="14.00">fixed and mitigated faults is calculated</text>
-<text text-anchor="middle" x="1776.5" y="-498.8" font-family="Open Sans" font-size="14.00">based on github issues in nlohmann/json.</text>
-<text text-anchor="middle" x="1776.5" y="-483.8" font-family="Open Sans" font-size="14.00">(TODO) </text>
+<polygon fill="none" stroke="black" points="2316,-544 2009,-544 2009,-476 2316,-476 2316,-544"/>
+<text text-anchor="middle" x="2162.5" y="-528.8" font-family="Open Sans" font-size="14.00">JLS&#45;11: A score based on outstanding,</text>
+<text text-anchor="middle" x="2162.5" y="-513.8" font-family="Open Sans" font-size="14.00">fixed and mitigated faults is calculated</text>
+<text text-anchor="middle" x="2162.5" y="-498.8" font-family="Open Sans" font-size="14.00">based on github issues in nlohmann/json.</text>
+<text text-anchor="middle" x="2162.5" y="-483.8" font-family="Open Sans" font-size="14.00">(TODO) </text>
 </a>
 </g>
 </g>
@@ -813,8 +814,8 @@
 <!-- JLS&#45;24&#45;&gt;NPF&#45;07.2 -->
 <g id="edge14" class="edge">
 <title>JLS&#45;24&#45;&gt;NPF&#45;07.2</title>
-<path fill="none" stroke="black" d="M24921.06,-356.97C24897.76,-350.96 24872.34,-345.33 24848.5,-342 24225.47,-254.87 24055.92,-397.4 23433.5,-306 23237.06,-277.15 23012.53,-204.23 22907.93,-167.84"/>
-<polygon fill="black" stroke="black" points="22909.09,-164.54 22898.49,-164.54 22906.78,-171.15 22909.09,-164.54"/>
+<path fill="none" stroke="black" d="M24921.06,-356.97C24897.76,-350.96 24872.34,-345.33 24848.5,-342 24225.91,-254.93 24056.5,-397.21 23434.5,-306 23237.74,-277.15 23012.82,-204.23 22908.04,-167.84"/>
+<polygon fill="black" stroke="black" points="22909.17,-164.53 22898.58,-164.54 22906.87,-171.14 22909.17,-164.53"/>
 </g>
 <!-- TIJ&#45;01 -->
 <g id="node183" class="node">
@@ -1380,33 +1381,33 @@
 <g id="node84" class="node">
 <title>NJF&#45;06.7.1</title>
 <g id="a_node84"><a xlink:href="https://score-json.github.io/json/main/generated/NJF.html#njf-06.7.1" xlink:title="NJF&#45;06.7.1: The service accepts comma\nas member separator. " target="_top">
-<polygon fill="none" stroke="black" points="10763.5,-53 10471.5,-53 10471.5,-15 10763.5,-15 10763.5,-53"/>
-<text text-anchor="middle" x="10617.5" y="-37.8" font-family="Open Sans" font-size="14.00">NJF&#45;06.7.1: The service accepts comma</text>
-<text text-anchor="middle" x="10617.5" y="-22.8" font-family="Open Sans" font-size="14.00">as member separator. </text>
+<polygon fill="none" stroke="black" points="10764.5,-53 10472.5,-53 10472.5,-15 10764.5,-15 10764.5,-53"/>
+<text text-anchor="middle" x="10618.5" y="-37.8" font-family="Open Sans" font-size="14.00">NJF&#45;06.7.1: The service accepts comma</text>
+<text text-anchor="middle" x="10618.5" y="-22.8" font-family="Open Sans" font-size="14.00">as member separator. </text>
 </a>
 </g>
 </g>
 <!-- NJF&#45;06.7&#45;&gt;NJF&#45;06.7.1 -->
 <g id="edge44" class="edge">
 <title>NJF&#45;06.7&#45;&gt;NJF&#45;06.7.1</title>
-<path fill="none" stroke="black" d="M10751.91,-126.42C10724.76,-107.95 10682.47,-79.19 10652.59,-58.86"/>
-<polygon fill="black" stroke="black" points="10654.36,-55.84 10644.13,-53.11 10650.43,-61.63 10654.36,-55.84"/>
+<path fill="none" stroke="black" d="M10752.08,-126.42C10725.1,-107.95 10683.07,-79.19 10653.37,-58.86"/>
+<polygon fill="black" stroke="black" points="10655.19,-55.87 10644.96,-53.11 10651.24,-61.64 10655.19,-55.87"/>
 </g>
 <!-- NJF&#45;06.7.2 -->
 <g id="node85" class="node">
 <title>NJF&#45;06.7.2</title>
 <g id="a_node85"><a xlink:href="https://score-json.github.io/json/main/generated/NJF.html#njf-06.7.2" xlink:title="NJF&#45;06.7.2: The service does not\naccept any other member separator.\n" target="_top">
-<polygon fill="none" stroke="black" points="11053,-53 10782,-53 10782,-15 11053,-15 11053,-53"/>
-<text text-anchor="middle" x="10917.5" y="-37.8" font-family="Open Sans" font-size="14.00">NJF&#45;06.7.2: The service does not</text>
-<text text-anchor="middle" x="10917.5" y="-22.8" font-family="Open Sans" font-size="14.00">accept any other member separator.</text>
+<polygon fill="none" stroke="black" points="11054,-53 10783,-53 10783,-15 11054,-15 11054,-53"/>
+<text text-anchor="middle" x="10918.5" y="-37.8" font-family="Open Sans" font-size="14.00">NJF&#45;06.7.2: The service does not</text>
+<text text-anchor="middle" x="10918.5" y="-22.8" font-family="Open Sans" font-size="14.00">accept any other member separator.</text>
 </a>
 </g>
 </g>
 <!-- NJF&#45;06.7&#45;&gt;NJF&#45;06.7.2 -->
 <g id="edge45" class="edge">
 <title>NJF&#45;06.7&#45;&gt;NJF&#45;06.7.2</title>
-<path fill="none" stroke="black" d="M10801.45,-126.42C10824.69,-108.11 10860.78,-79.68 10886.54,-59.39"/>
-<polygon fill="black" stroke="black" points="10888.82,-62.05 10894.51,-53.11 10884.49,-56.55 10888.82,-62.05"/>
+<path fill="none" stroke="black" d="M10801.62,-126.42C10825.02,-108.11 10861.37,-79.68 10887.32,-59.39"/>
+<polygon fill="black" stroke="black" points="10889.63,-62.03 10895.35,-53.11 10885.31,-56.51 10889.63,-62.03"/>
 </g>
 <!-- NJF&#45;07 -->
 <g id="node86" class="node">
@@ -1495,8 +1496,8 @@
 <!-- NJF&#45;07&#45;&gt;NJF&#45;07.5 -->
 <g id="edge50" class="edge">
 <title>NJF&#45;07&#45;&gt;NJF&#45;07.5</title>
-<path fill="none" stroke="black" d="M4598.45,-245.5C4569.52,-237.04 4533.47,-227.79 4500.5,-223 3995.77,-149.67 3857.92,-262.4 3353.5,-187 3325.17,-182.77 3294.53,-175.01 3268.45,-167.41"/>
-<polygon fill="black" stroke="black" points="3269.27,-164 3258.69,-164.51 3267.28,-170.72 3269.27,-164"/>
+<path fill="none" stroke="black" d="M4598.45,-245.5C4569.52,-237.04 4533.47,-227.79 4500.5,-223 3995.33,-149.62 3857.3,-262.89 3352.5,-187 3324.35,-182.77 3293.92,-175.01 3268.01,-167.41"/>
+<polygon fill="black" stroke="black" points="3268.9,-164.03 3258.32,-164.52 3266.9,-170.73 3268.9,-164.03"/>
 </g>
 <!-- NJF&#45;07.6 -->
 <g id="node92" class="node">
@@ -1924,9 +1925,9 @@
 <g id="node119" class="node">
 <title>NPF&#45;01</title>
 <g id="a_node119"><a xlink:href="https://score-json.github.io/json/main/generated/NPF.html#npf-01" xlink:title="NPF&#45;01: The service ignores the presence\nof a byte order mark. " target="_top">
-<polygon fill="none" stroke="black" points="23747,-283.5 23442,-283.5 23442,-245.5 23747,-245.5 23747,-283.5"/>
-<text text-anchor="middle" x="23594.5" y="-268.3" font-family="Open Sans" font-size="14.00">NPF&#45;01: The service ignores the presence</text>
-<text text-anchor="middle" x="23594.5" y="-253.3" font-family="Open Sans" font-size="14.00">of a byte order mark. </text>
+<polygon fill="none" stroke="black" points="23748,-283.5 23443,-283.5 23443,-245.5 23748,-245.5 23748,-283.5"/>
+<text text-anchor="middle" x="23595.5" y="-268.3" font-family="Open Sans" font-size="14.00">NPF&#45;01: The service ignores the presence</text>
+<text text-anchor="middle" x="23595.5" y="-253.3" font-family="Open Sans" font-size="14.00">of a byte order mark. </text>
 </a>
 </g>
 </g>
@@ -1945,8 +1946,8 @@
 <!-- NPF&#45;01&#45;&gt;NPF&#45;01.1 -->
 <g id="edge74" class="edge">
 <title>NPF&#45;01&#45;&gt;NPF&#45;01.1</title>
-<path fill="none" stroke="black" d="M23527.59,-245.44C23470.24,-229.96 23385.43,-207.04 23311.5,-187 23305.78,-185.45 23299.94,-183.87 23294.04,-182.26"/>
-<polygon fill="black" stroke="black" points="23294.63,-178.8 23284.06,-179.56 23292.8,-185.55 23294.63,-178.8"/>
+<path fill="none" stroke="black" d="M23528.35,-245.46C23470.8,-229.98 23385.68,-207.07 23311.5,-187 23305.78,-185.45 23299.94,-183.87 23294.04,-182.27"/>
+<polygon fill="black" stroke="black" points="23294.63,-178.81 23284.06,-179.57 23292.8,-185.56 23294.63,-178.81"/>
 </g>
 <!-- NPF&#45;01.2 -->
 <g id="node121" class="node">
@@ -1963,8 +1964,8 @@
 <!-- NPF&#45;01&#45;&gt;NPF&#45;01.2 -->
 <g id="edge75" class="edge">
 <title>NPF&#45;01&#45;&gt;NPF&#45;01.2</title>
-<path fill="none" stroke="black" d="M23573.86,-245.48C23555.85,-229.75 23529.08,-206.38 23506.08,-186.3"/>
-<polygon fill="black" stroke="black" points="23508.27,-183.57 23498.44,-179.63 23503.67,-188.84 23508.27,-183.57"/>
+<path fill="none" stroke="black" d="M23574.7,-245.48C23556.56,-229.75 23529.59,-206.38 23506.42,-186.3"/>
+<polygon fill="black" stroke="black" points="23508.57,-183.53 23498.72,-179.63 23503.99,-188.82 23508.57,-183.53"/>
 </g>
 <!-- NPF&#45;01.3 -->
 <g id="node122" class="node">
@@ -1981,8 +1982,8 @@
 <!-- NPF&#45;01&#45;&gt;NPF&#45;01.3 -->
 <g id="edge76" class="edge">
 <title>NPF&#45;01&#45;&gt;NPF&#45;01.3</title>
-<path fill="none" stroke="black" d="M23620.07,-245.48C23642.67,-229.55 23676.41,-205.77 23705.15,-185.51"/>
-<polygon fill="black" stroke="black" points="23707.34,-188.25 23713.5,-179.63 23703.31,-182.53 23707.34,-188.25"/>
+<path fill="none" stroke="black" d="M23620.92,-245.48C23643.38,-229.55 23676.91,-205.77 23705.48,-185.51"/>
+<polygon fill="black" stroke="black" points="23707.65,-188.27 23713.78,-179.63 23703.6,-182.56 23707.65,-188.27"/>
 </g>
 <!-- NPF&#45;01.4 -->
 <g id="node123" class="node">
@@ -1999,8 +2000,8 @@
 <!-- NPF&#45;01&#45;&gt;NPF&#45;01.4 -->
 <g id="edge77" class="edge">
 <title>NPF&#45;01&#45;&gt;NPF&#45;01.4</title>
-<path fill="none" stroke="black" d="M23671.93,-245.43C23736,-230.32 23829.33,-207.93 23910.5,-187 23916.59,-185.43 23922.82,-183.8 23929.11,-182.15"/>
-<polygon fill="black" stroke="black" points="23930.26,-185.46 23939.03,-179.52 23928.47,-178.7 23930.26,-185.46"/>
+<path fill="none" stroke="black" d="M23672.36,-245.49C23736.23,-230.36 23829.45,-207.93 23910.5,-187 23916.59,-185.43 23922.82,-183.8 23929.11,-182.14"/>
+<polygon fill="black" stroke="black" points="23930.26,-185.46 23939.03,-179.51 23928.47,-178.69 23930.26,-185.46"/>
 </g>
 <!-- NPF&#45;01.5 -->
 <g id="node124" class="node">
@@ -2018,7 +2019,7 @@
 <!-- NPF&#45;01&#45;&gt;NPF&#45;01.5 -->
 <g id="edge78" class="edge">
 <title>NPF&#45;01&#45;&gt;NPF&#45;01.5</title>
-<path fill="none" stroke="black" d="M23721.97,-245.5C23774.45,-238.25 23835.86,-229.97 23891.5,-223 24028.04,-205.89 24066.38,-213.42 24204.62,-187.28"/>
+<path fill="none" stroke="black" d="M23722.54,-245.49C23774.84,-238.24 23836.05,-229.96 23891.5,-223 24028.04,-205.86 24066.38,-213.42 24204.62,-187.28"/>
 <polygon fill="black" stroke="black" points="24205.59,-190.66 24214.75,-185.34 24204.27,-183.79 24205.59,-190.66"/>
 </g>
 <!-- NPF&#45;02 -->
@@ -2624,8 +2625,8 @@
 <!-- PJD&#45;01&#45;&gt;NPF&#45;01 -->
 <g id="edge113" class="edge">
 <title>PJD&#45;01&#45;&gt;NPF&#45;01</title>
-<path fill="none" stroke="black" d="M21773.91,-349.45C21788.88,-346.53 21803.97,-343.95 21818.5,-342 22194.13,-291.52 22291.85,-322.3 22670.5,-306 22937.11,-294.52 23246.97,-280.88 23431.57,-272.72"/>
-<polygon fill="black" stroke="black" points="23431.8,-276.21 23441.63,-272.27 23431.49,-269.22 23431.8,-276.21"/>
+<path fill="none" stroke="black" d="M21773.91,-349.45C21788.88,-346.53 21803.97,-343.95 21818.5,-342 22194.13,-291.52 22291.85,-322.29 22670.5,-306 22937.59,-294.51 23248.06,-280.86 23432.81,-272.7"/>
+<polygon fill="black" stroke="black" points="23433.04,-276.19 23442.87,-272.25 23432.73,-269.2 23433.04,-276.19"/>
 </g>
 <!-- PJD&#45;02 -->
 <g id="node164" class="node">
@@ -2874,32 +2875,32 @@
 <!-- TA&#45;FIXES&#45;&gt;AOU&#45;01 -->
 <g id="edge144" class="edge">
 <title>TA&#45;FIXES&#45;&gt;AOU&#45;01</title>
-<path fill="none" stroke="black" d="M2209.64,-602.46C2189.97,-586.56 2166.24,-567.38 2145.6,-550.69"/>
-<polygon fill="black" stroke="black" points="2147.53,-547.76 2137.56,-544.19 2143.13,-553.2 2147.53,-547.76"/>
+<path fill="none" stroke="black" d="M2595.64,-602.46C2575.97,-586.56 2552.24,-567.38 2531.6,-550.69"/>
+<polygon fill="black" stroke="black" points="2533.53,-547.76 2523.56,-544.19 2529.13,-553.2 2533.53,-547.76"/>
 </g>
 <!-- TA&#45;FIXES&#45;&gt;AOU&#45;10 -->
 <g id="edge147" class="edge">
 <title>TA&#45;FIXES&#45;&gt;AOU&#45;10</title>
-<path fill="none" stroke="black" d="M2291.1,-602.46C2310.64,-586.56 2334.22,-567.38 2354.72,-550.69"/>
-<polygon fill="black" stroke="black" points="2357.16,-553.22 2362.71,-544.19 2352.75,-547.79 2357.16,-553.22"/>
+<path fill="none" stroke="black" d="M2677.1,-602.46C2696.64,-586.56 2720.22,-567.38 2740.72,-550.69"/>
+<polygon fill="black" stroke="black" points="2743.16,-553.22 2748.71,-544.19 2738.75,-547.79 2743.16,-553.22"/>
 </g>
 <!-- TA&#45;FIXES&#45;&gt;JLS&#45;04 -->
 <g id="edge145" class="edge">
 <title>TA&#45;FIXES&#45;&gt;JLS&#45;04</title>
-<path fill="none" stroke="black" d="M2400.05,-624.11C2571.58,-610.6 2861.16,-586.42 3109.5,-559 3146.58,-554.91 3185.72,-550.18 3224.06,-545.31"/>
-<polygon fill="black" stroke="black" points="3224.83,-548.74 3234.31,-544.01 3223.95,-541.8 3224.83,-548.74"/>
+<path fill="none" stroke="black" d="M2786.24,-625.52C2995.21,-611.01 3363.51,-583.19 3495.5,-559 3503.78,-557.48 3512.25,-555.74 3520.76,-553.84"/>
+<polygon fill="black" stroke="black" points="3521.79,-557.2 3530.76,-551.55 3520.23,-550.37 3521.79,-557.2"/>
 </g>
 <!-- TA&#45;FIXES&#45;&gt;JLS&#45;05 -->
 <g id="edge143" class="edge">
 <title>TA&#45;FIXES&#45;&gt;JLS&#45;05</title>
-<path fill="none" stroke="black" d="M2100.75,-625.93C1970.76,-615.63 1778.1,-595.56 1613.5,-559 1598.76,-555.73 1583.4,-551.55 1568.41,-547.04"/>
-<polygon fill="black" stroke="black" points="1569.22,-543.62 1558.63,-544.03 1567.16,-550.31 1569.22,-543.62"/>
+<path fill="none" stroke="black" d="M2486.75,-625.93C2356.76,-615.63 2164.1,-595.56 1999.5,-559 1984.76,-555.73 1969.4,-551.55 1954.41,-547.04"/>
+<polygon fill="black" stroke="black" points="1955.22,-543.62 1944.63,-544.03 1953.16,-550.31 1955.22,-543.62"/>
 </g>
 <!-- TA&#45;FIXES&#45;&gt;JLS&#45;11 -->
 <g id="edge146" class="edge">
 <title>TA&#45;FIXES&#45;&gt;JLS&#45;11</title>
-<path fill="none" stroke="black" d="M2110.43,-602.47C2056.82,-589.46 1995.19,-574.04 1939.5,-559 1925.5,-555.22 1910.87,-551.12 1896.36,-546.97"/>
-<polygon fill="black" stroke="black" points="1896.92,-543.49 1886.35,-544.08 1894.99,-550.21 1896.92,-543.49"/>
+<path fill="none" stroke="black" d="M2496.43,-602.47C2442.82,-589.46 2381.19,-574.04 2325.5,-559 2311.5,-555.22 2296.87,-551.12 2282.36,-546.97"/>
+<polygon fill="black" stroke="black" points="2282.92,-543.49 2272.35,-544.08 2280.99,-550.21 2282.92,-543.49"/>
 </g>
 <!-- TA&#45;INDICATORS -->
 <g id="node173" class="node">
@@ -2939,8 +2940,8 @@
 <!-- TA&#45;INPUTS&#45;&gt;JLS&#45;04 -->
 <g id="edge149" class="edge">
 <title>TA&#45;INPUTS&#45;&gt;JLS&#45;04</title>
-<path fill="none" stroke="black" d="M4124.89,-612.88C4004.86,-594.11 3832.18,-567.1 3694.78,-545.61"/>
-<polygon fill="black" stroke="black" points="3694.95,-542.09 3684.53,-544.01 3693.87,-549.01 3694.95,-542.09"/>
+<path fill="none" stroke="black" d="M4124.64,-613.37C4040.68,-599.65 3933.16,-580.56 3838.5,-559 3831.54,-557.41 3824.44,-555.73 3817.28,-553.97"/>
+<polygon fill="black" stroke="black" points="3818.04,-550.55 3807.49,-551.52 3816.34,-557.34 3818.04,-550.55"/>
 </g>
 <!-- TA&#45;ITERATIONS -->
 <g id="node175" class="node">
@@ -3115,20 +3116,20 @@
 <!-- TA&#45;UPDATES&#45;&gt;JLS&#45;06 -->
 <g id="edge167" class="edge">
 <title>TA&#45;UPDATES&#45;&gt;JLS&#45;06</title>
-<path fill="none" stroke="black" d="M2896.73,-602.46C2853.96,-583.31 2800.53,-559.38 2759.05,-540.81"/>
-<polygon fill="black" stroke="black" points="2760.41,-537.58 2749.86,-536.69 2757.55,-543.97 2760.41,-537.58"/>
+<path fill="none" stroke="black" d="M3282.73,-602.46C3239.96,-583.31 3186.53,-559.38 3145.05,-540.81"/>
+<polygon fill="black" stroke="black" points="3146.41,-537.58 3135.86,-536.69 3143.55,-543.97 3146.41,-537.58"/>
 </g>
 <!-- TA&#45;UPDATES&#45;&gt;JLS&#45;07 -->
 <g id="edge168" class="edge">
 <title>TA&#45;UPDATES&#45;&gt;JLS&#45;07</title>
-<path fill="none" stroke="black" d="M2970.5,-602.46C2970.5,-582.74 2970.5,-557.96 2970.5,-539.16"/>
-<polygon fill="black" stroke="black" points="2974,-539.14 2970.5,-529.14 2967,-539.14 2974,-539.14"/>
+<path fill="none" stroke="black" d="M3356.5,-602.46C3356.5,-582.74 3356.5,-557.96 3356.5,-539.16"/>
+<polygon fill="black" stroke="black" points="3360,-539.14 3356.5,-529.14 3353,-539.14 3360,-539.14"/>
 </g>
 <!-- TA&#45;UPDATES&#45;&gt;JLS&#45;12 -->
 <g id="edge169" class="edge">
 <title>TA&#45;UPDATES&#45;&gt;JLS&#45;12</title>
-<path fill="none" stroke="black" d="M3120.76,-633.46C3295.17,-628.52 3590.56,-612.19 3838.5,-559 3867.42,-552.8 3898.62,-542.29 3924.03,-532.68"/>
-<polygon fill="black" stroke="black" points="3925.39,-535.91 3933.47,-529.05 3922.88,-529.37 3925.39,-535.91"/>
+<path fill="none" stroke="black" d="M3506.62,-618.64C3602.43,-606.17 3728.8,-586.55 3838.5,-559 3866.3,-552.02 3896.45,-541.85 3921.45,-532.66"/>
+<polygon fill="black" stroke="black" points="3922.97,-535.83 3931.12,-529.07 3920.53,-529.27 3922.97,-535.83"/>
 </g>
 <!-- TA&#45;VALIDATION -->
 <g id="node182" class="node">
@@ -3518,8 +3519,8 @@
 <!-- TRUSTABLE&#45;SOFTWARE&#45;&gt;TT&#45;CHANGES -->
 <g id="edge196" class="edge">
 <title>TRUSTABLE&#45;SOFTWARE&#45;&gt;TT&#45;CHANGES</title>
-<path fill="none" stroke="black" d="M7208.92,-862.56C6560.38,-846.33 3811.44,-777.54 3125.88,-760.39"/>
-<polygon fill="black" stroke="black" points="3125.77,-756.88 3115.69,-760.13 3125.6,-763.88 3125.77,-756.88"/>
+<path fill="none" stroke="black" d="M7208.99,-862.58C6818.14,-852.82 5667.27,-823.8 4711.5,-797 4277.01,-784.82 3764.18,-769.13 3512.2,-761.34"/>
+<polygon fill="black" stroke="black" points="3511.98,-757.83 3501.87,-761.02 3511.76,-764.83 3511.98,-757.83"/>
 </g>
 <!-- TT&#45;CONFIDENCE -->
 <g id="node210" class="node">

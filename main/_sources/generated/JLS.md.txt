@@ -272,7 +272,7 @@ _No Historic Data Found_
 
 ### JLS-04 
 
-The project runs dependabot on all code entering the main branch, blocking merges until all warnings are resolved. (https://github.com/score-json/json/blob/main/nlohmann_json/.github/dependabot.yml)
+External dependencies are checked for potential security vulnerabilities with each pull request to main. Merging is blocked until all warnings are resolved.
 
 
 **Supported Requests:**
@@ -288,43 +288,62 @@ _None_
 
 **References:**
 
-- `.github/dependabot.yml`
+- `.github/workflows/dependency-review.yml`
 
 
 ````yaml
-version: 2
-updates:
-  - package-ecosystem: github-actions
-    directory: /
-    schedule:
-      interval: daily
+# Dependency Review Action
+#
+# This Action will scan dependency manifest files that change as part of a Pull Request,
+# surfacing known-vulnerable versions of the packages declared or updated in the PR.
+# Once installed, if the workflow run is marked as required,
+# PRs introducing known-vulnerable packages will be blocked from merging.
+#
+# Source repository: https://github.com/actions/dependency-review-action
+name: 'Dependency Review'
 
-  - package-ecosystem: pip
-    directory: /docs/mkdocs
-    schedule:
-      interval: daily
+on:  
+  workflow_call:
+    inputs:
+      artifact_id:
+        description: 'Unique identifier for artifacts'
+        required: true
+        type: string
 
-  - package-ecosystem: pip
-    directory: /tools/astyle
-    schedule:
-      interval: daily
+permissions:
+  contents: read
 
-  - package-ecosystem: pip
-    directory: /tools/generate_natvis
-    schedule:
-      interval: daily
+jobs:
+  dependency-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@c6295a65d1254861815972266d5933fd6e532bdf # v2.11.1
+        with:
+          egress-policy: audit
 
-  - package-ecosystem: pip
-    directory: /tools/serve_header
-    schedule:
-      interval: daily
+      - name: 'Checkout Repository'
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@ce3cf9537a52e8119d91fd484ab5b8a807627bf8 # v4.6.0
 
-  - package-ecosystem: pip
-    directory: /cmake/requirements
-    schedule:
-      interval: daily
+
+      - name: Generate dependency_review artifact
+        run: |
+          echo "Generating Dependency Review artifact..."
+          mkdir -p dependency_review
+          echo "dependency review processed for ${{ inputs.artifact_id }}" &gt; dependency_review/dependency_review.txt
+
+      - name: Upload dependency_review artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: ${{ inputs.artifact_id }}
+          path: dependency_review/
 
 ````
+- Description: The workflow scans PRs for dependency changes and vulnerabilities.
+
+
 
 
 

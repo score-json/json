@@ -22,6 +22,7 @@ The score of unreviewed items is always set to zero.
 Suspect links are indicated by italics.
 The contribution to the score of a parent item by a suspiciously linked child is always zero, regardless of the child's own score.
 ## Compliance for AOU
+This presents the compliance for the _Assumptions of Use_ (AOU) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -53,6 +54,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [AOU-27](AOU.md#aou-27) |  If a change of the local mirror of nlohmann/json changes the trustability, then this change is noted in ChangeLog.md. | 0.00 |
 
 ## Compliance for JLEX
+This presents the compliance for the _JSON-Library Expectations_ (JLEX) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -60,13 +62,14 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [JLEX-02](JLEX.md#jlex-02) |  The requirement regarding [JSON Deserialization](https://eclipse-score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__deserialization) is fulfilled. | 0.00 |
 
 ## Compliance for JLS
+This presents the compliance for the _JSON-Library Statements_ (JLS) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
 | [JLS-01](JLS.md#jls-01) |  The nlohmann/json library project CI executes on each pull request (opened, reopened, synchronized) the integration test suite, and failures in these runs are investigated by contributors. | 0.00 |
 | [JLS-02](JLS.md#jls-02) |  Fuzz testing is used in the original nlohmann/json repository (https://github.com/nlohmann/json) to uncover edge cases and failure modes throughout development. (https://github.com/nlohmann/json/blob/develop/tests/fuzzing.md) | 0.00 |
 | [JLS-03](JLS.md#jls-03) |  Automated tests are reviewed by a Subject Matter Expert to verify they test the properties they claim to. | 0.00 |
-| [JLS-04](JLS.md#jls-04) |  The project runs dependabot on all code entering the main branch, blocking merges until all warnings are resolved. (https://github.com/score-json/json/blob/main/nlohmann_json/.github/dependabot.yml) | 0.00 |
+| [JLS-04](JLS.md#jls-04) |  External dependencies are checked for potential security vulnerabilities with each pull request to main. Merging is blocked until all warnings are resolved. | 0.00 |
 | [JLS-05](JLS.md#jls-05) |  The OSS nlohmann/json is widely used, actively maintained and uses github issues to track bugs and misbehaviours. | 0.00 |
 | [JLS-06](JLS.md#jls-06) |  Changes to the code (main branch) are applied only after code review and passing of all pipelines. | 0.00 |
 | [JLS-07](JLS.md#jls-07) |  Main branch is protected, i.e. no direct commits are possible. | 0.00 |
@@ -90,6 +93,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [JLS-26](JLS.md#jls-26) |  Pipeline execution results are analyzed in the fork and the original nlohmann/json repository. | 0.00 |
 
 ## Compliance for NJF
+This presents the compliance for the _No JSON Faults_ (NJF) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -159,6 +163,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [NJF-14.5](NJF.md#njf-14.5) |  The service does not accept UTF-8 byte order mark outside of a string and outside of the first three characters of the input. | 0.00 |
 
 ## Compliance for NPF
+This presents the compliance for the _No Parsing Faults_ (NPF) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -208,6 +213,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [NPF-07.2](NPF.md#npf-07.2) |  The service throws an exception on ill-formed UTF-8 data. | 0.00 |
 
 ## Compliance for PJD
+This presents the compliance for the _Parse JSON Data_ (PJD) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -217,6 +223,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [PJD-04](PJD.md#pjd-04) |  The service correctly parses 64-bit integers (exceeding the range defined in RFC8259). | 0.00 |
 
 ## Compliance for TA
+This presents the compliance for the _Trustable Assertions_ (TA) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -238,6 +245,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [TA-VALIDATION](TA.md#ta-validation) |  All specified tests are executed repeatedly, under defined conditions in controlled environments, according to specified objectives. | 0.00 |
 
 ## Compliance for TIJ
+This presents the compliance for the _Throw Ill-Formed JSON_ (TIJ) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -269,12 +277,14 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [TIJ-06](TIJ.md#tij-06) |  The service recognises ill-formed byte-order marks and throws an exception. | 0.00 |
 
 ## Compliance for TRUSTABLE
+This presents the ultimate trustability score for nlohmann/json.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
 | [TRUSTABLE-SOFTWARE](TRUSTABLE.md#trustable-software) |  This release of JSON-Library also reffered in the documentation as nlohmann/json library is Trustable. | 0.00 |
 
 ## Compliance for TT
+This presents the compliance for the _Trustable Tenets_ (TT) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -286,6 +296,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [TT-RESULTS](TT.md#tt-results) |  Evidence is provided to demonstrate that nlohmann/json library does what it is supposed to do, and does not do what it must not do. | 0.00 |
 
 ## Compliance for WFJ
+This presents the compliance for _Well Formed JSON_ (WFJ) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -304,6 +315,6 @@ The contribution to the score of a parent item by a suspiciously linked child is
 _Generated for: Software_
 
 * _Repository root: /home/runner/work/json/json_
-* _Commit SHA: 90dd357f0b852ea5e01294045645e07e2dfae7cf_
-* _Commit date/time: Tue Sep 16 15:15:09 2025_
-* _Commit tag: 90dd357_
+* _Commit SHA: 989f18fc3ac819823d7de7b7b22ee9ba86ac2cc8_
+* _Commit date/time: Wed Sep 17 09:31:47 2025_
+* _Commit tag: 989f18f_
