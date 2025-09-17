@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-Problems with nlohmann/json's implementation identified during testing are reported to the upstream nlohmann/json project.
+The integrator shall report problems with nlohmann/json's implementation to the upstream nlohmann/json project whenever a problem is detected.

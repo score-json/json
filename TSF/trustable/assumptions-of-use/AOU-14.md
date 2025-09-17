@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The nlohmann/json library is built with tools from the provided matrix specification. (not yet provided)
+The integrator shall ensure that nlohmann/json library is built with tools from the provided matrix specification, whenever nlohmann/json is used. (not yet provided)
