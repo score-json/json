@@ -126,7 +126,7 @@ jobs:
           name: "${{ matrix.target }}-${{ github.sha }}"
           path: artifacts/
 
-  publish_documentation:
+  test_publish_documentation:
     permissions:
       contents: write
       pages: write
