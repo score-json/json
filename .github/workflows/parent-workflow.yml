@@ -122,16 +122,8 @@ jobs:
 
   publish_documentation_pr:
     name: Run publish_documentation Workflow pr
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'push' && github.ref_name == 'main'
     needs: [collect_artifacts_pr]
-    uses: ./.github/workflows/publish_documentation.yml
-    with:
-      artifact_id: "publish_documentation-${{ github.sha }}"
-
-  publish_documentation_non_pr:
-    name: Run publish_documentation Workflow non pr
-    if: github.event_name != 'pull_request'
-    needs: [collect_artifacts_non_pr]
     uses: ./.github/workflows/publish_documentation.yml
     with:
       artifact_id: "publish_documentation-${{ github.sha }}"
