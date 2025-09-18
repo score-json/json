@@ -3,7 +3,7 @@ import sqlite3
 import os
 import xml.etree.ElementTree as ET
 import re
-from datetime import datetime
+from datetime import datetime, timezone
 
 def setup_environment_variables() -> dict[str, str]:
     # Retrieves and validates the necessary environment variables for GitHub workflows.
@@ -132,7 +132,8 @@ cursor.execute(''.join(command))
 repo = environment.get('GITHUB_REPOSITORY')
 run_id = environment.get('GITHUB_RUN_ID')
 run_attempt = environment.get('GITHUB_RUN_ATTEMPT')
-command = f"INSERT INTO workflow_info VALUES('{repo}', {run_id}, {run_attempt}, '{sys.argv[1]}')"
+time = int(datetime.now(timezone.utc).timestamp())
+command = f"INSERT INTO workflow_info VALUES('{repo}', {run_id}, {run_attempt}, '{sys.argv[1]}', {time})"
 cursor.execute(command)
 # Don't forget to save!
 connector.commit()
