@@ -6,10 +6,8 @@ import re
 from datetime import datetime
 
 def setup_environment_variables() -> dict[str, str]:
-    """
-    Retrieves and validates the necessary environment variables for GitHub workflows.
-    Raises a RuntimeError if any required variables are missing.
-    """
+    # Retrieves and validates the necessary environment variables for GitHub workflows.
+    # Raises a RuntimeError if any required variables are missing.
     required_vars = ["GITHUB_RUN_ID", "GITHUB_REPOSITORY", "GITHUB_RUN_ATTEMPT"]
     environment = {var: os.getenv(var) for var in required_vars}
     
@@ -20,10 +18,8 @@ def setup_environment_variables() -> dict[str, str]:
     return environment
 
 def clean_test_case(testcase: str) -> tuple[str,str]:
-    """
-    This function expects a testcase of the form "testcase_name_cppxx".
-    It returns the tuple ["testcase_name","gnu++xx"].
-    """
+    # This function expects a testcase of the form "testcase_name_cppxx".
+    # It returns the tuple ["testcase_name","gnu++xx"].
     name, appendix = testcase.rsplit('_',1)
     return [name, "gnu++"+appendix.replace('cpp','')]
 
@@ -52,22 +48,25 @@ def read_result_table(input: list[str]) -> dict:
 
 
 def get_metadata(testcase: ET.Element) -> dict:
-    """
-    This function expects a testcase extracted from a junit xml-file as input
-    """
+    # expects testcase extracted from a junit xml-file as input
+    # extracts the data interesting to us
     metadata = dict()
+    # from name both name of the test and C++ standard can be extracted
     unsplit_name = testcase.get("name")
     name, standard = clean_test_case(unsplit_name)
     metadata["name"] = name
     metadata["standard"] = standard
     metadata["execution time"] = float(testcase.get("time"))
+    # results are not as easily extracted but must be processed further
     metadata = metadata | read_result_table(testcase.find("system-out").itertext())
     return metadata
 
 def is_unit_test(testcase: ET.Element) -> bool:
+    # crude test if the element belongs to a unit-test
     return "_cpp" in testcase.get('name')
 
 def get_all_xml_files(directory: str = '.') -> list[str]:
+    # search the folder containing all the artifacts and list the paths of expected test-reports
     result = []
     try:
         content = os.listdir(directory)
@@ -81,6 +80,10 @@ def get_all_xml_files(directory: str = '.') -> list[str]:
             file = directory+'/'+entry if directory != '.' else entry
             result.append(file)
     return result
+
+##########################
+# Below starts the script.
+##########################
 
 # get environment variables
 try:
@@ -99,8 +102,9 @@ command = (
     "repo TEXT, ",                              # repository
     "run_id INT, ",                             # ID of workflow run
     "run_attempt INT, ",                        # Attempt-number of workflow run
-    "status TEXT ",                              # Termination-status of workflow
+    "status TEXT ",                             # Termination-status of workflow                                         
     "CHECK(status IN ('successful', 'failed', 'cancelled')) DEFAULT 'failed', ",
+    "time INT, ",                               # the time that is associated to this workflow run
     "PRIMARY KEY(repo, run_id, run_attempt))"
 )
 cursor.execute(''.join(command))
@@ -165,12 +169,18 @@ for junit_log in junit_logs:
             f"{run_attempt}"
             ")"
         )
-        command = "".join(command)
+        command = ''.join(command)
         cursor.execute(command)
         connector.commit()
 
+# storage space on the github is limited.
+
+# finally, most recent test data are stored separately
+
+# initialise database connection
 conn = sqlite3.connect("TestResults.db")
 cur = conn.cursor()
+# add the expected table
 command = (
     "CREATE TABLE IF NOT EXISTS test_results(",
     "name TEXT, ",                              # name of the test
@@ -185,6 +195,7 @@ command = (
     ")"
     )
 cur.execute(''.join(command))
+# copy most recent data from persistent data storage
 cur.execute("ATTACH DATABASE 'TSF/TestResultData.db' AS source")
 command = """
         INSERT INTO test_results (
@@ -201,9 +212,14 @@ command = """
 """
 cur.execute(command, (repo, run_id, run_attempt))
 conn.commit()
+# detach persistent database
 cur.execute("DETACH DATABASE source")
+# terminate connection to temporary database
+# don't forget to commit the changes
+conn.commit()
 conn.close()
 
-# terminate connection to database
-connector.commit() # save, for good measure
+# terminate connection to persistent database
+# don't forget to commit the changes again, for good measure
+connector.commit()
 connector.close()
