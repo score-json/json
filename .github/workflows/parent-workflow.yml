@@ -133,8 +133,8 @@ jobs:
       pull-requests: write
       id-token: write
       security-events: read
-    name: Run publish_documentation Workflow
-    if: github.event_name == 'pull_request'            # Publish documentation should only run on push to main
+    name: Test publish_documentation Workflow
+    if: github.event_name == 'pull_request'            # Whenever on Pull-request, test publication
     needs: [collect_artifacts_pr]
     uses: ./.github/workflows/test_publication.yml
     with:
