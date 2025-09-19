@@ -171,7 +171,7 @@ if __name__ == "__main__":
     run_id = environment.get('GITHUB_RUN_ID')
     run_attempt = environment.get('GITHUB_RUN_ATTEMPT')
     time = int(datetime.now(timezone.utc).timestamp())
-    command = f"INSERT INTO workflow_info VALUES('?',?,?,'?',?)"
+    command = f"INSERT INTO workflow_info VALUES(?,?,?,?,?)"
     cursor.execute(command,(repo, run_id, run_attempt, status, time))
     # Don't forget to save!
     connector.commit()
