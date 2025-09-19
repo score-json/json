@@ -364,17 +364,20 @@ jobs:
           python3 TSF/scripts/capture_test_data.py successful
       
       - name: Checkout data storage branch
+        if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref_name == 'main')
         run: |
           git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/TestResultData.db)
           git checkout save_historical_data
 
       - name: Commit and Push persistent data
+        if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref_name == 'main')
         run: |
           git add TSF/TestResultData.db
           git commit -m "Save test data" || echo "No test data to be saved"
           git push origin save_historical_data
       
       - name: Recover stash
+        if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref_name == 'main')
         run: |
           git checkout $branch_name
           git stash apply
@@ -446,17 +449,20 @@ jobs:
           python3 TSF/scripts/capture_test_data.py failed
       
       - name: Checkout data storage branch
+        if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref_name == 'main')
         run: |
           git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/TestResultData.db)
           git checkout save_historical_data
 
       - name: Commit and Push persistent data
+        if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref_name == 'main')
         run: |
           git add TSF/TestResultData.db
           git commit -m "Save test data" || echo "No test data to be saved"
           git push origin save_historical_data
       
       - name: Recover stash
+        if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref_name == 'main')
         run: |
           git checkout $branch_name
           git stash apply
@@ -528,17 +534,20 @@ jobs:
           python3 TSF/scripts/capture_test_data.py cancelled
       
       - name: Checkout data storage branch
+        if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref_name == 'main')
         run: |
           git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/TestResultData.db)
           git checkout save_historical_data
 
       - name: Commit and Push persistent data
+        if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref_name == 'main')
         run: |
           git add TSF/TestResultData.db
           git commit -m "Save test data" || echo "No test data to be saved"
           git push origin save_historical_data
       
       - name: Recover stash
+        if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref_name == 'main')
         run: |
           git checkout $branch_name
           git stash apply

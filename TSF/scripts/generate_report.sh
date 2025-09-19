@@ -15,10 +15,10 @@ mkdir -p "$TSF_REPORT_FOLDER" # -p ensures no error if the folder already exists
 
 # generate TSF report
 echo "Generating TSF report in: $TSF_REPORT_FOLDER"
-trudag publish --validate --figures --output-dir "$TSF_REPORT_FOLDER" --dump data_store
+trudag publish --validate --figures --output-dir "$TSF_REPORT_FOLDER" --dump data_store || exit 1
 
 # generate TSF graph
-trudag plot -o "$TSF_REPORT_FOLDER/graph.svg" --url "$1/generated"
+trudag plot -o "$TSF_REPORT_FOLDER/graph.svg" --url "$1/generated" || exit 1
 
 # cleanup previously generated content if exists
 if [ -f "$TSF_REPORT_FOLDER/trustable_graph.rst" ]; then
@@ -27,7 +27,7 @@ if [ -f "$TSF_REPORT_FOLDER/trustable_graph.rst" ]; then
 fi
 # plot all partial graphs with links based on the url given in the first input
 # in the workflow publish_documentation.yml, this input is https://${OWNER_NAME}.github.io/${REPO_NAME}/main
-python3 "$TSF_SCRIPT_FOLDER/plot_partial_graphs.py" "$1"
+python3 "$TSF_SCRIPT_FOLDER/plot_partial_graphs.py" "$1" ||exit 1
 
 
 # cleanup TSF report content from trudag unwanted artifacts
