@@ -71,12 +71,10 @@ def push_my_data(data: list[dict]):
     # extract data from data
     info = data[0].get("info")
     scores = data[0].get("scores")
-    print(info)
     # Currently, the commit date is stored as string.
     # Since the local timezone is used and for comparison, 
     # it would be better to have it as a unix-timestamp.
     datum_string = info.get("Commit date/time")
-    print(f"The current commit is from {datum_string}.")
     datum = int(datetime.strptime(datum_string, "%a %b %d %H:%M:%S %Y").timestamp())
     # check if current commit coincides with existing commit
     cursor.execute("SELECT MAX(date) AS recent_commit FROM commit_info")
@@ -96,6 +94,10 @@ def push_my_data(data: list[dict]):
     for score in scores:
         id = score.get("id")
         numerical_score = score.get("score")
+        cursor.execute("SELECT COUNT(*) FROM scores WHERE date = ? AND ID = ?", (datum, id))
+        if cursor.fetchone()[0]>0:
+            cursor.execute("DELETE FROM scores WHERE date = ? AND ID = ?", (datum, id))
+            connector.commit()
         command = f"INSERT OR REPLACE INTO scores VALUES('{id}', {numerical_score}, '{datum}')"
         cursor.execute(command)
     # don't forget to commit!
