@@ -92,6 +92,15 @@ def get_all_xml_files(directory: str = '.') -> list[str]:
 
 if __name__ == "__main__":
 
+    # check if argument was delivered
+    if len(sys.argv != 2):
+        raise RuntimeError("Expected status of workflow as argument. Aborting!")
+    # expected argument: status of workflow
+    # check if the argument has the expected form
+    status = sys.argv[1]
+    if status not in ["successful", "failed", "cancelled"]:
+        raise RuntimeError("The input does not match the expected format! Permissible are 'successful', 'failed' and 'cancelled'. Aborting!")
+
     # get environment variables
     try:
         environment = setup_environment_variables()
@@ -157,13 +166,13 @@ if __name__ == "__main__":
         saved_test_data = int(cursor.fetchone()[0])
 
     # fill in metadata
-    # BEACHTE: This script expects the status of the github workflow as argument
+    # OBSERVE: This script expects the status of the github workflow as argument
     repo = environment.get('GITHUB_REPOSITORY')
     run_id = environment.get('GITHUB_RUN_ID')
     run_attempt = environment.get('GITHUB_RUN_ATTEMPT')
     time = int(datetime.now(timezone.utc).timestamp())
-    command = f"INSERT INTO workflow_info VALUES('{repo}', {run_id}, {run_attempt}, '{sys.argv[1]}', {time})"
-    cursor.execute(command)
+    command = f"INSERT INTO workflow_info VALUES('?',?,?,'?',?)"
+    cursor.execute(command,(repo, run_id, run_attempt, status, time))
     # Don't forget to save!
     connector.commit()
 
