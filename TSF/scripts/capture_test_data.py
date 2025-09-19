@@ -93,7 +93,7 @@ def get_all_xml_files(directory: str = '.') -> list[str]:
 if __name__ == "__main__":
 
     # check if argument was delivered
-    if len(sys.argv != 2):
+    if len(sys.argv) != 2:
         raise RuntimeError("Expected status of workflow as argument. Aborting!")
     # expected argument: status of workflow
     # check if the argument has the expected form
