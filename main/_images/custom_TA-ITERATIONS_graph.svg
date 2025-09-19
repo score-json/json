@@ -12,7 +12,7 @@
 <!-- TRUSTABLE&#45;SOFTWARE -->
 <g id="node1" class="node">
 <title>TRUSTABLE&#45;SOFTWARE</title>
-<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
+<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n" target="_top">
 <polygon fill="none" stroke="black" points="319,-779 71,-779 71,-696 319,-696 319,-779"/>
 <text text-anchor="middle" x="195" y="-763.8" font-family="Open Sans" font-size="14.00">TRUSTABLE&#45;SOFTWARE: This</text>
 <text text-anchor="middle" x="195" y="-748.8" font-family="Open Sans" font-size="14.00">release of JSON&#45;Library</text>
@@ -25,7 +25,7 @@
 <!-- TT&#45;CONSTRUCTION -->
 <g id="node5" class="node">
 <title>TT&#45;CONSTRUCTION</title>
-<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-CONSTRUCTION_graph.svg" xlink:title="TT&#45;CONSTRUCTION: Tools\nare provided to build\nnlohmann/json library\nfrom trusted sources\n(also provided) with\nfull reproducibility.\n">
+<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-CONSTRUCTION_graph.svg" xlink:title="TT&#45;CONSTRUCTION: Tools\nare provided to build\nnlohmann/json library\nfrom trusted sources\n(also provided) with\nfull reproducibility.\n" target="_top">
 <polygon fill="none" stroke="black" points="292,-552 98,-552 98,-454 292,-454 292,-552"/>
 <text text-anchor="middle" x="195" y="-536.8" font-family="Open Sans" font-size="14.00">TT&#45;CONSTRUCTION: Tools</text>
 <text text-anchor="middle" x="195" y="-521.8" font-family="Open Sans" font-size="14.00">are provided to build</text>
@@ -45,7 +45,7 @@
 <!-- JLS&#45;10 -->
 <g id="node2" class="node">
 <title>JLS&#45;10</title>
-<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-10" xlink:title="JLS&#45;10: Every release\nincludes source code,\nbuild instructions, tests\nand attestations. (TODO:\nTest result summary)\n">
+<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-10" xlink:title="JLS&#45;10: Every release\nincludes source code,\nbuild instructions, tests\nand attestations. (TODO:\nTest result summary)\n" target="_top">
 <polygon fill="none" stroke="black" points="188,-83 0,-83 0,0 188,0 188,-83"/>
 <text text-anchor="middle" x="94" y="-67.8" font-family="Open Sans" font-size="14.00">JLS&#45;10: Every release</text>
 <text text-anchor="middle" x="94" y="-52.8" font-family="Open Sans" font-size="14.00">includes source code,</text>
@@ -58,7 +58,7 @@
 <!-- JLS&#45;19 -->
 <g id="node3" class="node">
 <title>JLS&#45;19</title>
-<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-19" xlink:title="JLS&#45;19: All components,\ndependencies and tools\nare listed in a manifest.\n">
+<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-19" xlink:title="JLS&#45;19: All components,\ndependencies and tools\nare listed in a manifest.\n" target="_top">
 <polygon fill="none" stroke="black" points="388,-68 206,-68 206,-15 388,-15 388,-68"/>
 <text text-anchor="middle" x="297" y="-52.8" font-family="Open Sans" font-size="14.00">JLS&#45;19: All components,</text>
 <text text-anchor="middle" x="297" y="-37.8" font-family="Open Sans" font-size="14.00">dependencies and tools</text>
@@ -69,7 +69,7 @@
 <!-- TA&#45;ITERATIONS -->
 <g id="node4" class="node">
 <title>TA&#45;ITERATIONS</title>
-<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-ITERATIONS_graph.svg" xlink:title="TA&#45;ITERATIONS: All constructed\niterations of nlohmann/json\nlibrary include source\ncode, build instructions,\ntests, results and attestations.\n">
+<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-ITERATIONS_graph.svg" xlink:title="TA&#45;ITERATIONS: All constructed\niterations of nlohmann/json\nlibrary include source\ncode, build instructions,\ntests, results and attestations.\n" target="_top">
 <polygon fill="none" stroke="black" points="312,-310 78,-310 78,-227 312,-227 312,-310"/>
 <text text-anchor="middle" x="195" y="-294.8" font-family="Open Sans" font-size="14.00">TA&#45;ITERATIONS: All constructed</text>
 <text text-anchor="middle" x="195" y="-279.8" font-family="Open Sans" font-size="14.00">iterations of nlohmann/json</text>

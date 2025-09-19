@@ -173,7 +173,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
-    Eclipse
+    Eclipse S-CORE Home-Page
   </a>
 </li>
 
@@ -311,7 +311,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
-    Eclipse
+    Eclipse S-CORE Home-Page
   </a>
 </li>
 
@@ -795,11 +795,14 @@
 <li><p><a class="reference internal" href="#npf-02.10"><span class="std std-ref">NPF-02.10</span></a></p></li>
 <li><p><a class="reference internal" href="#npf-02.11"><span class="std std-ref">NPF-02.11</span></a></p></li>
 <li><p><a class="reference internal" href="#npf-02.12"><span class="std std-ref">NPF-02.12</span></a></p></li>
-<li><p><a class="reference internal" href="PJD.html#pjd-04"><span class="std std-ref">PJD-04</span></a></p></li>
 </ul>
 <p><strong>References:</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::scan_number]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::scan_number]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p>
+<ul>
+<li><p>Description: function, which parses numbers into C++ number-types and verifies <em>en passant</em> that these numbers are in accordance with RFC8259</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="n">token_type</span><span class="w"> </span><span class="nf">scan_number</span><span class="p">()</span><span class="w">  </span><span class="c1">// lgtm [cpp/use-of-goto] `goto` is used in this function to implement the number-parsing state machine described above. By design, any finite input will eventually reach the &quot;done&quot; state or return token_type::parse_error. In each intermediate state, 1 byte of the input is appended to the token_buffer vector, and only the already initialized variables token_buffer, number_type, and error_message are manipulated.</span>
 <span class="w">    </span><span class="p">{</span>
@@ -1905,7 +1908,11 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::skip_whitespace]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::skip_whitespace]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p>
+<ul>
+<li><p>Description: function, which skips admissible whitespace during reading</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">skip_whitespace</span><span class="p">()</span>
 <span class="p">{</span>
@@ -2184,7 +2191,11 @@
 </ul>
 <p><strong>References:</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::scan_string]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::scan_string]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p>
+<ul>
+<li><p>Description: function, which parses strings into C++ std::string and verifies <em>en passant</em> that these strings are in accordance with RFC8259</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">token_type</span><span class="w"> </span><span class="nf">scan_string</span><span class="p">()</span>
 <span class="p">{</span>
@@ -2815,7 +2826,11 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::skip_whitespace]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::skip_whitespace]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p>
+<ul>
+<li><p>Description: function, which skips admissible whitespace during reading</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">skip_whitespace</span><span class="p">()</span>
 <span class="p">{</span>
@@ -3037,7 +3052,6 @@
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">cpp-testsuite:</span> <span class="pre">[/json_nlohmann_tests/all_unicode.json]</span></code></p>
 <ul class="simple">
-<li></li>
 <li><p>JSON Testsuite: /json_nlohmann_tests/all_unicode.json</p></li>
 </ul>
 <p><a class="reference external" href="https://raw.githubusercontent.com/eclipse-score/inc_nlohmann_json/refs/heads/json_test_data_version_3_1_0_mirror//json_nlohmann_tests/all_unicode.json">Link to file</a> [Content too large - 1112068 lines]</p>
@@ -3776,7 +3790,11 @@
 </ul>
 <p><strong>References:</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::scan_literal]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::scan_literal]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p>
+<ul>
+<li><p>Description: function to scan a literal candidate, compare it to its expected value and return the corresponding C++ literal</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">token_type</span><span class="w"> </span><span class="nf">scan_literal</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">char_type</span><span class="o">*</span><span class="w"> </span><span class="n">literal_text</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">,</span>
 <span class="w">                        </span><span class="n">token_type</span><span class="w"> </span><span class="n">return_type</span><span class="p">)</span>
@@ -3867,7 +3885,11 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::skip_whitespace]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::skip_whitespace]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p>
+<ul>
+<li><p>Description: function, which skips admissible whitespace during reading</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">skip_whitespace</span><span class="p">()</span>
 <span class="p">{</span>
@@ -4027,7 +4049,11 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::skip_whitespace]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::skip_whitespace]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p>
+<ul>
+<li><p>Description: function, which skips admissible whitespace during reading</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">skip_whitespace</span><span class="p">()</span>
 <span class="p">{</span>
@@ -4290,7 +4316,11 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::skip_whitespace]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::skip_whitespace]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p>
+<ul>
+<li><p>Description: function, which skips admissible whitespace during reading</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">skip_whitespace</span><span class="p">()</span>
 <span class="p">{</span>
@@ -4321,7 +4351,6 @@
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">cpp-testsuite:</span> <span class="pre">[/nst_json_testsuite2/test_parsing/y_object_duplicated_key.json,</span> <span class="pre">/nst_json_testsuite2/test_parsing/y_object_duplicated_key_and_value.json]</span></code></p>
 <ul class="simple">
-<li></li>
 <li><p>JSON Testsuite: /nst_json_testsuite2/test_parsing/y_object_duplicated_key.json</p></li>
 </ul>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;a&quot;</span><span class="p">:</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="nt">&quot;a&quot;</span><span class="p">:</span><span class="s2">&quot;c&quot;</span><span class="p">}</span>

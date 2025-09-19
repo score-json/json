@@ -12,7 +12,7 @@
 <!-- TRUSTABLE&#45;SOFTWARE -->
 <g id="node1" class="node">
 <title>TRUSTABLE&#45;SOFTWARE</title>
-<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
+<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n" target="_top">
 <polygon fill="none" stroke="black" points="450,-1173 202,-1173 202,-1090 450,-1090 450,-1173"/>
 <text text-anchor="middle" x="326" y="-1157.8" font-family="Open Sans" font-size="14.00">TRUSTABLE&#45;SOFTWARE: This</text>
 <text text-anchor="middle" x="326" y="-1142.8" font-family="Open Sans" font-size="14.00">release of JSON&#45;Library</text>
@@ -25,7 +25,7 @@
 <!-- TT&#45;EXPECTATIONS -->
 <g id="node8" class="node">
 <title>TT&#45;EXPECTATIONS</title>
-<g id="a_node8"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-EXPECTATIONS_graph.svg" xlink:title="TT&#45;EXPECTATIONS: Documentation\nis provided, specifying\nwhat nlohmann/json library\nis expected to do, and\nwhat it must not do,\nand how this is verified.\n">
+<g id="a_node8"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-EXPECTATIONS_graph.svg" xlink:title="TT&#45;EXPECTATIONS: Documentation\nis provided, specifying\nwhat nlohmann/json library\nis expected to do, and\nwhat it must not do,\nand how this is verified.\n" target="_top">
 <polygon fill="none" stroke="black" points="454.5,-946 197.5,-946 197.5,-848 454.5,-848 454.5,-946"/>
 <text text-anchor="middle" x="326" y="-930.8" font-family="Open Sans" font-size="14.00">TT&#45;EXPECTATIONS: Documentation</text>
 <text text-anchor="middle" x="326" y="-915.8" font-family="Open Sans" font-size="14.00">is provided, specifying</text>
@@ -45,7 +45,7 @@
 <!-- JLS&#45;24 -->
 <g id="node2" class="node">
 <title>JLS&#45;24</title>
-<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/_images/custom_JLS-24_graph.svg" xlink:title="JLS&#45;24: The nlohmann/json\nlibrary recognizes malformed\nJSON and returns an exception.\n">
+<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/_images/custom_JLS-24_graph.svg" xlink:title="JLS&#45;24: The nlohmann/json\nlibrary recognizes malformed\nJSON and returns an exception.\n" target="_top">
 <polygon fill="none" stroke="black" points="443.5,-462 208.5,-462 208.5,-409 443.5,-409 443.5,-462"/>
 <text text-anchor="middle" x="326" y="-446.8" font-family="Open Sans" font-size="14.00">JLS&#45;24: The nlohmann/json</text>
 <text text-anchor="middle" x="326" y="-431.8" font-family="Open Sans" font-size="14.00">library recognizes malformed</text>
@@ -56,7 +56,7 @@
 <!-- TIJ&#45;04 -->
 <g id="node4" class="node">
 <title>TIJ&#45;04</title>
-<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TIJ-04_graph.svg" xlink:title="TIJ&#45;04: The parsing service\nthrows an exception on\nill&#45;formed arrays. ">
+<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TIJ-04_graph.svg" xlink:title="TIJ&#45;04: The parsing service\nthrows an exception on\nill&#45;formed arrays. " target="_top">
 <polygon fill="none" stroke="black" points="427,-265 225,-265 225,-212 427,-212 427,-265"/>
 <text text-anchor="middle" x="326" y="-249.8" font-family="Open Sans" font-size="14.00">TIJ&#45;04: The parsing service</text>
 <text text-anchor="middle" x="326" y="-234.8" font-family="Open Sans" font-size="14.00">throws an exception on</text>
@@ -73,7 +73,7 @@
 <!-- TA&#45;MISBEHAVIOURS -->
 <g id="node3" class="node">
 <title>TA&#45;MISBEHAVIOURS</title>
-<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-MISBEHAVIOURS_graph.svg" xlink:title="TA&#45;MISBEHAVIOURS: Prohibited\nmisbehaviours for nlohmann/json\nlibrary are identified,\nand mitigations are specified,\nverified and validated\nbased on analysis. ">
+<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-MISBEHAVIOURS_graph.svg" xlink:title="TA&#45;MISBEHAVIOURS: Prohibited\nmisbehaviours for nlohmann/json\nlibrary are identified,\nand mitigations are specified,\nverified and validated\nbased on analysis. " target="_top">
 <polygon fill="none" stroke="black" points="451,-704 201,-704 201,-606 451,-606 451,-704"/>
 <text text-anchor="middle" x="326" y="-688.8" font-family="Open Sans" font-size="14.00">TA&#45;MISBEHAVIOURS: Prohibited</text>
 <text text-anchor="middle" x="326" y="-673.8" font-family="Open Sans" font-size="14.00">misbehaviours for nlohmann/json</text>
@@ -93,7 +93,7 @@
 <!-- TIJ&#45;04.1 -->
 <g id="node5" class="node">
 <title>TIJ&#45;04.1</title>
-<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/generated/TIJ.html#tij-04.1" xlink:title="TIJ&#45;04.1: The service\nthrows an exception on\nimproperly bounded arrays.\n">
+<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/generated/TIJ.html#tij-04.1" xlink:title="TIJ&#45;04.1: The service\nthrows an exception on\nimproperly bounded arrays.\n" target="_top">
 <polygon fill="none" stroke="black" points="210,-60.5 0,-60.5 0,-7.5 210,-7.5 210,-60.5"/>
 <text text-anchor="middle" x="105" y="-45.3" font-family="Open Sans" font-size="14.00">TIJ&#45;04.1: The service</text>
 <text text-anchor="middle" x="105" y="-30.3" font-family="Open Sans" font-size="14.00">throws an exception on</text>
@@ -110,7 +110,7 @@
 <!-- TIJ&#45;04.2 -->
 <g id="node6" class="node">
 <title>TIJ&#45;04.2</title>
-<g id="a_node6"><a xlink:href="https://score-json.github.io/json/main/generated/TIJ.html#tij-04.2" xlink:title="TIJ&#45;04.2: The service\nthrows an exception on\nimproper values within\na properly bounded array.\n">
+<g id="a_node6"><a xlink:href="https://score-json.github.io/json/main/generated/TIJ.html#tij-04.2" xlink:title="TIJ&#45;04.2: The service\nthrows an exception on\nimproper values within\na properly bounded array.\n" target="_top">
 <polygon fill="none" stroke="black" points="424,-68 228,-68 228,0 424,0 424,-68"/>
 <text text-anchor="middle" x="326" y="-52.8" font-family="Open Sans" font-size="14.00">TIJ&#45;04.2: The service</text>
 <text text-anchor="middle" x="326" y="-37.8" font-family="Open Sans" font-size="14.00">throws an exception on</text>
@@ -128,7 +128,7 @@
 <!-- TIJ&#45;04.3 -->
 <g id="node7" class="node">
 <title>TIJ&#45;04.3</title>
-<g id="a_node7"><a xlink:href="https://score-json.github.io/json/main/generated/TIJ.html#tij-04.3" xlink:title="TIJ&#45;04.3: The service\nthrows an exception on\nimproper value separators.\n">
+<g id="a_node7"><a xlink:href="https://score-json.github.io/json/main/generated/TIJ.html#tij-04.3" xlink:title="TIJ&#45;04.3: The service\nthrows an exception on\nimproper value separators.\n" target="_top">
 <polygon fill="none" stroke="black" points="646.5,-60.5 441.5,-60.5 441.5,-7.5 646.5,-7.5 646.5,-60.5"/>
 <text text-anchor="middle" x="544" y="-45.3" font-family="Open Sans" font-size="14.00">TIJ&#45;04.3: The service</text>
 <text text-anchor="middle" x="544" y="-30.3" font-family="Open Sans" font-size="14.00">throws an exception on</text>

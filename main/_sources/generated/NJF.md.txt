@@ -32,7 +32,6 @@ SECTION("null")
 - `cpp-testsuite: [/nst_json_testsuite/test_parsing/y_structure_lonely_null.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite/test_parsing/y_structure_lonely_null.json
 	
 	
@@ -69,7 +68,6 @@ SECTION("null")
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/y_structure_lonely_null.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite2/test_parsing/y_structure_lonely_null.json
 	
 	
@@ -107,6 +105,9 @@ SECTION("null")
 
 - `function: [lexer::scan_literal]
 (include/nlohmann/detail/input/lexer.hpp)`
+
+
+	- Description: function to verify whether a candidate literal coincides with its expected value; here called with literal_text = ['n','u','l','l'].
 
 
 ```cpp
@@ -278,7 +279,6 @@ SECTION("directly")
 - `cpp-testsuite: [/nst_json_testsuite/test_parsing/y_structure_lonely_true.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite/test_parsing/y_structure_lonely_true.json
 	
 	
@@ -315,7 +315,6 @@ SECTION("directly")
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/y_structure_lonely_true.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite2/test_parsing/y_structure_lonely_true.json
 	
 	
@@ -353,6 +352,9 @@ SECTION("directly")
 
 - `function: [lexer::scan_literal]
 (include/nlohmann/detail/input/lexer.hpp)`
+
+
+	- Description: function to verify whether a candidate literal coincides with its expected value; here called with literal_text = ['t','r','u','e'].
 
 
 ```cpp
@@ -421,7 +423,6 @@ SECTION("false")
 - `cpp-testsuite: [/nst_json_testsuite/test_parsing/y_structure_lonely_false.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite/test_parsing/y_structure_lonely_false.json
 	
 	
@@ -458,7 +459,6 @@ SECTION("false")
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/y_structure_lonely_false.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite2/test_parsing/y_structure_lonely_false.json
 	
 	
@@ -496,6 +496,9 @@ SECTION("false")
 
 - `function: [lexer::scan_literal]
 (include/nlohmann/detail/input/lexer.hpp)`
+
+
+	- Description: function to verify whether a candidate literal coincides with its expected value; here called with literal_text = ['f','a','l','s','e'].
 
 
 ```cpp
@@ -745,7 +748,6 @@ SECTION("parse errors (accept)")
 - `cpp-testsuite: [/nst_json_testsuite/test_parsing/n_incomplete_false.json, /nst_json_testsuite/test_parsing/n_incomplete_null.json, /nst_json_testsuite/test_parsing/n_incomplete_true.json, /nst_json_testsuite/test_parsing/n_structure_number_with_trailing_garbage.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite/test_parsing/n_incomplete_false.json
 	
 	
@@ -815,7 +817,6 @@ SECTION("parse errors (accept)")
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_incomplete_false.json, /nst_json_testsuite2/test_parsing/n_incomplete_null.json, /nst_json_testsuite2/test_parsing/n_incomplete_true.json, /nst_json_testsuite2/test_parsing/n_structure_capitalized_True.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite2/test_parsing/n_incomplete_false.json
 	
 	
@@ -1685,6 +1686,9 @@ SECTION("illegal literals")
 (include/nlohmann/detail/input/lexer.hpp)`
 
 
+	- Description: function to verify whether a candidate literal coincides with its expected value; only ever called with the three admissible expected values
+
+
 ```cpp
 token_type scan_literal(const char_type* literal_text, const std::size_t length,
                         token_type return_type)
@@ -1791,7 +1795,6 @@ SECTION("empty array")
 - `cpp-testsuite: [/nst_json_testsuite/test_parsing/y_array_empty.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite/test_parsing/y_array_empty.json
 	
 	
@@ -1879,6 +1882,9 @@ SECTION("empty array")
 
 - `function: [lexer::skip_whitespace]
 (include/nlohmann/detail/input/lexer.hpp)`
+
+
+	- Description: function, which skips admissible whitespace during reading
 
 
 ```cpp
@@ -2446,7 +2452,6 @@ SECTION("stream")
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/y_string_in_array.json, /nst_json_testsuite2/test_parsing/y_string_in_array_with_leading_space.json, /nst_json_testsuite2/test_parsing/y_structure_true_in_array.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite2/test_parsing/y_string_in_array.json
 	
 	
@@ -2769,7 +2774,6 @@ SECTION("boundaries")
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_structure_100000_opening_arrays.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite2/test_parsing/n_structure_100000_opening_arrays.json
 	
 	
@@ -2805,7 +2809,6 @@ SECTION("boundaries")
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_structure_close_unopened_array.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite2/test_parsing/n_structure_close_unopened_array.json
 	
 	
@@ -2844,7 +2847,6 @@ SECTION("boundaries")
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_structure_double_array.json, /nst_json_testsuite2/test_parsing/n_structure_end_array.json, /nst_json_testsuite2/test_parsing/n_structure_lone-invalid-utf-8.json, /nst_json_testsuite2/test_parsing/n_structure_open_array_apostrophe.json, /nst_json_testsuite2/test_parsing/n_structure_open_array_comma.json, /nst_json_testsuite2/test_parsing/n_structure_open_array_open_object.json, /nst_json_testsuite2/test_parsing/n_structure_open_object_close_array.json, /nst_json_testsuite2/test_parsing/n_structure_unclosed_array.json, /nst_json_testsuite2/test_parsing/n_structure_unclosed_array_partial_null.json, /nst_json_testsuite2/test_parsing/n_structure_unclosed_array_unfinished_false.json, /nst_json_testsuite2/test_parsing/n_structure_unclosed_array_unfinished_true.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite2/test_parsing/n_structure_double_array.json
 	
 	
@@ -3173,7 +3175,6 @@ _None_
 - `cpp-testsuite: [/json_tests/pass2.json]`
 
 
-	- 
 	- JSON Testsuite: /json_tests/pass2.json
 	
 	
@@ -3209,7 +3210,6 @@ _None_
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/i_structure_500_nested_arrays.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite2/test_parsing/i_structure_500_nested_arrays.json
 	
 	
@@ -3279,7 +3279,6 @@ _None_
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/i_structure_500_nested_arrays.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite2/test_parsing/i_structure_500_nested_arrays.json
 	
 	
@@ -3423,7 +3422,6 @@ _None_
 - `cpp-testsuite: [/json.org/4.json]`
 
 
-	- 
 	- JSON Testsuite: /json.org/4.json
 	
 	
@@ -3449,7 +3447,6 @@ _None_
 - `cpp-testsuite: [/json.org/5.json]`
 
 
-	- 
 	- JSON Testsuite: /json.org/5.json
 	
 	
@@ -3649,6 +3646,9 @@ SECTION("empty object")
 (include/nlohmann/detail/input/lexer.hpp)`
 
 
+	- Description: function, which skips admissible whitespace during reading
+
+
 ```cpp
 void skip_whitespace()
 {
@@ -3721,7 +3721,6 @@ SECTION("case 15")
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_structure_comma_instead_of_closing_brace.json, /nst_json_testsuite2/test_parsing/n_structure_object_followed_by_closing_object.json, /nst_json_testsuite2/test_parsing/n_structure_object_unclosed_no_value.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite2/test_parsing/n_structure_comma_instead_of_closing_brace.json
 	
 	
@@ -6457,6 +6456,9 @@ The service accepts and rejects strings according to RFC8259 §7.
 (include/nlohmann/detail/input/lexer.hpp)`
 
 
+	- Description: function which scans a string and verifies *en passant* that the string is in accordance with RFC8259
+
+
 ```cpp
 token_type scan_string()
 {
@@ -7721,7 +7723,6 @@ SECTION("error cases")
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_string_no_quotes_with_bad_escape.json, /nst_json_testsuite2/test_parsing/n_string_single_doublequote.json, /nst_json_testsuite2/test_parsing/n_string_single_quote.json, /nst_json_testsuite2/test_parsing/n_string_single_string_no_double_quotes.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite2/test_parsing/n_string_no_quotes_with_bad_escape.json
 	
 	
@@ -9365,6 +9366,9 @@ The service accepts numbers according to RFC8259 §6.
 
 - `function: [lexer::scan_number]
 (include/nlohmann/detail/input/lexer.hpp)`
+
+
+	- Description: function, which scans numbers and verifies *en passant* that these number is in accordance with RFC8259
 
 
 ```cpp
@@ -11945,7 +11949,6 @@ _None_
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_structure_lone-invalid-utf-8.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite2/test_parsing/n_structure_lone-invalid-utf-8.json
 	
 	
@@ -12438,6 +12441,9 @@ _None_
 (include/nlohmann/detail/input/parser.hpp)`
 
 
+	- Description: function, which implements the service to check for well-formed json
+
+
 ```cpp
 bool accept(const bool strict = true)
 {
@@ -12450,6 +12456,9 @@ bool accept(const bool strict = true)
 
 - `function: [parser::sax_parse]
 (include/nlohmann/detail/input/parser.hpp)`
+
+
+	- Description: function, which is called by parser::accept
 
 
 ```cpp
@@ -12474,6 +12483,9 @@ bool sax_parse(SAX* sax, const bool strict = true)
 
 - `function: [parser::sax_parse_internal]
 (include/nlohmann/detail/input/parser.hpp)`
+
+
+	- Description: function, which is called by parser::sax_parse
 
 
 ```cpp
@@ -12774,6 +12786,9 @@ bool sax_parse_internal(SAX* sax)
 
 - `function: [lexer::scan]
 (include/nlohmann/detail/input/lexer.hpp)`
+
+
+	- Description: function, which is called by parser::sax_parse_internal to read input data
 
 
 ```cpp

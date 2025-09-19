@@ -173,7 +173,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
-    Eclipse
+    Eclipse S-CORE Home-Page
   </a>
 </li>
 
@@ -311,7 +311,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
-    Eclipse
+    Eclipse S-CORE Home-Page
   </a>
 </li>
 
@@ -427,7 +427,7 @@
                   
   <section id="aou-01">
 <h1>AOU-01<a class="headerlink" href="#aou-01" title="Link to this heading">#</a></h1>
-<p>Problems with nlohmann/json’s implementation identified during testing are reported to the upstream nlohmann/json project.</p>
+<p>The integrator shall report problems with nlohmann/json’s implementation to the upstream nlohmann/json project whenever a problem is detected.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-fixes"><span class="std std-ref">TA-FIXES</span></a></p></li>
@@ -444,7 +444,7 @@
 <hr class="docutils" />
 <section id="aou-02">
 <h1>AOU-02<a class="headerlink" href="#aou-02" title="Link to this heading">#</a></h1>
-<p>The build environment used for nlohmann/json in an integrating system is supplied with consistent dependencies.</p>
+<p>The integrator shall ensure that the build environment used for nlohmann/json is supplied with consistent dependencies in every integrating system.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-supply_chain"><span class="std std-ref">TA-SUPPLY_CHAIN</span></a></p></li>
@@ -461,7 +461,7 @@
 <hr class="docutils" />
 <section id="aou-03">
 <h1>AOU-03<a class="headerlink" href="#aou-03" title="Link to this heading">#</a></h1>
-<p>The integrator has integrator-controlled mirrors of the dependencies.</p>
+<p>The integrator ensures that integrator-controlled mirrors of the dependencies are persistently and accessibly stored as long as the library nlohmann/json is used.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-supply_chain"><span class="std std-ref">TA-SUPPLY_CHAIN</span></a></p></li>
@@ -478,7 +478,7 @@
 <hr class="docutils" />
 <section id="aou-04">
 <h1>AOU-04<a class="headerlink" href="#aou-04" title="Link to this heading">#</a></h1>
-<p>Exceptions are properly handled or turned off.</p>
+<p>The integrator shall ensure that exceptions are properly handled or turned off, whenever nlohmann/json is used.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-constraints"><span class="std std-ref">TA-CONSTRAINTS</span></a></p></li>
@@ -495,7 +495,7 @@
 <hr class="docutils" />
 <section id="aou-05">
 <h1>AOU-05<a class="headerlink" href="#aou-05" title="Link to this heading">#</a></h1>
-<p>Input is encoded as UTF-8 (as required by RFC8259) and in case other string formats are used, it is expected that the parse or dump function may throw an exception.</p>
+<p>The integrator shall ensure that input is encoded as UTF-8 (as required by RFC8259) and that exceptions thrown in case other string formats are used are properly handled</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="PJD.html#pjd-03"><span class="std std-ref">PJD-03</span></a></p></li>
@@ -513,7 +513,7 @@
 <hr class="docutils" />
 <section id="aou-06">
 <h1>AOU-06<a class="headerlink" href="#aou-06" title="Link to this heading">#</a></h1>
-<p>Brace initialization (e.g. json j{true};) is not used with the types basic_json, json, or ordered_json unless you want to create an object or array.</p>
+<p>The integrator shall ensure that brace initialization (e.g. json j{true};) is not used with the types basic_json, json, or ordered_json, unless an object or array is created.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-constraints"><span class="std std-ref">TA-CONSTRAINTS</span></a></p></li>
@@ -530,7 +530,7 @@
 <hr class="docutils" />
 <section id="aou-07">
 <h1>AOU-07<a class="headerlink" href="#aou-07" title="Link to this heading">#</a></h1>
-<p>If the input is no valid JSON, exceptions are expected during parsing with default parameters.</p>
+<p>The integrator shall ensure that exceptions, which are expected during parsing with default parameters, are properly handled whenever the input is no valid JSON.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-constraints"><span class="std std-ref">TA-CONSTRAINTS</span></a></p></li>
@@ -547,7 +547,7 @@
 <hr class="docutils" />
 <section id="aou-08">
 <h1>AOU-08<a class="headerlink" href="#aou-08" title="Link to this heading">#</a></h1>
-<p>The integrator ensures that all necessary source files and built tools are mirrored, e.g. using a built server without internet access.</p>
+<p>The integrator shall ensure that all necessary source files and built tools are mirrored, e.g. using a built server without internet access, as long as nlohmann/json is actively used.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-releases"><span class="std std-ref">TA-RELEASES</span></a></p></li>
@@ -564,7 +564,7 @@
 <hr class="docutils" />
 <section id="aou-09">
 <h1>AOU-09<a class="headerlink" href="#aou-09" title="Link to this heading">#</a></h1>
-<p>TA-INDICATORS falls within the responsibility of the integrator.</p>
+<p>The integrator shall ensure that advanced warning indicators for misbehaviours are identified, and monitoring mechanisms are specified, verified and validated based on analysis.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-indicators"><span class="std std-ref">TA-INDICATORS</span></a></p></li>
@@ -579,63 +579,15 @@
 <p><em>No Historic Data Found</em></p>
 </section>
 <hr class="docutils" />
-<section id="aou-10">
-<h1>AOU-10<a class="headerlink" href="#aou-10" title="Link to this heading">#</a></h1>
-<p>The integrator is required to evaluate the provided evidence for TA-FIXES and supplement it where necessary.</p>
-<p><strong>Supported Requests:</strong></p>
-<ul class="simple">
-<li><p><a class="reference internal" href="TA.html#ta-fixes"><span class="std std-ref">TA-FIXES</span></a></p></li>
-</ul>
-<p><strong>Supporting Items:</strong></p>
-<p><em>None</em></p>
-<p><strong>References:</strong></p>
-<p><em>None</em></p>
-<p><strong>Fallacies:</strong></p>
-<p><em>None</em></p>
-<p><strong>Graph:</strong></p>
-<p><em>No Historic Data Found</em></p>
-</section>
-<hr class="docutils" />
-<section id="aou-11">
-<h1>AOU-11<a class="headerlink" href="#aou-11" title="Link to this heading">#</a></h1>
-<p>The integrator is required to evaluate the provided evidence for TA-METHODOLOGIES and supplement it where necessary.</p>
-<p><strong>Supported Requests:</strong></p>
-<ul class="simple">
-<li><p><a class="reference internal" href="TA.html#ta-methodologies"><span class="std std-ref">TA-METHODOLOGIES</span></a></p></li>
-</ul>
-<p><strong>Supporting Items:</strong></p>
-<p><em>None</em></p>
-<p><strong>References:</strong></p>
-<p><em>None</em></p>
-<p><strong>Fallacies:</strong></p>
-<p><em>None</em></p>
-<p><strong>Graph:</strong></p>
-<p><em>No Historic Data Found</em></p>
-</section>
-<hr class="docutils" />
-<section id="aou-12">
-<h1>AOU-12<a class="headerlink" href="#aou-12" title="Link to this heading">#</a></h1>
-<p>The integrator is required to evaluate the provided evidence for TA-CONFIDENCE and supplement it where necessary.</p>
+<section id="aou-10-combined">
+<h1>AOU-10_COMBINED<a class="headerlink" href="#aou-10-combined" title="Link to this heading">#</a></h1>
+<p>The integrator shall evaluate the provided evidence and supplement it where necessary, whenever the trustability documentation of nlohmann/json is reviewed.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-confidence"><span class="std std-ref">TA-CONFIDENCE</span></a></p></li>
-</ul>
-<p><strong>Supporting Items:</strong></p>
-<p><em>None</em></p>
-<p><strong>References:</strong></p>
-<p><em>None</em></p>
-<p><strong>Fallacies:</strong></p>
-<p><em>None</em></p>
-<p><strong>Graph:</strong></p>
-<p><em>No Historic Data Found</em></p>
-</section>
-<hr class="docutils" />
-<section id="aou-13">
-<h1>AOU-13<a class="headerlink" href="#aou-13" title="Link to this heading">#</a></h1>
-<p>The integrator is required to evaluate the provided evidence for TA-INPUTS and supplement it where necessary.</p>
-<p><strong>Supported Requests:</strong></p>
-<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-fixes"><span class="std std-ref">TA-FIXES</span></a></p></li>
 <li><p><a class="reference internal" href="TA.html#ta-inputs"><span class="std std-ref">TA-INPUTS</span></a></p></li>
+<li><p><a class="reference internal" href="TA.html#ta-methodologies"><span class="std std-ref">TA-METHODOLOGIES</span></a></p></li>
 </ul>
 <p><strong>Supporting Items:</strong></p>
 <p><em>None</em></p>
@@ -649,7 +601,7 @@
 <hr class="docutils" />
 <section id="aou-14">
 <h1>AOU-14<a class="headerlink" href="#aou-14" title="Link to this heading">#</a></h1>
-<p>The nlohmann/json library is built with tools from the provided matrix specification. (not yet provided)</p>
+<p>The integrator shall ensure that nlohmann/json library is built with tools from the provided matrix specification, whenever nlohmann/json is used. (not yet provided)</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-constraints"><span class="std std-ref">TA-CONSTRAINTS</span></a></p></li>
@@ -666,7 +618,7 @@
 <hr class="docutils" />
 <section id="aou-15">
 <h1>AOU-15<a class="headerlink" href="#aou-15" title="Link to this heading">#</a></h1>
-<p>The integrator maintains mirrors for all code and tools utilized in testing.</p>
+<p>The integrator shall maintain mirrors for all code and tools utilized in testing as long as nlohmann/json is actively used.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-tests"><span class="std std-ref">TA-TESTS</span></a></p></li>
@@ -683,7 +635,7 @@
 <hr class="docutils" />
 <section id="aou-16">
 <h1>AOU-16<a class="headerlink" href="#aou-16" title="Link to this heading">#</a></h1>
-<p>The integrator uses C++ versions and compilers that are tested in the CI pipeline.</p>
+<p>The integrator shall use C++ versions and compilers that are tested in the CI pipeline, whenever nlohmann/json is used.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-constraints"><span class="std std-ref">TA-CONSTRAINTS</span></a></p></li>
@@ -700,7 +652,7 @@
 <hr class="docutils" />
 <section id="aou-17">
 <h1>AOU-17<a class="headerlink" href="#aou-17" title="Link to this heading">#</a></h1>
-<p>The integrator is responsible for identifying additional misbehaviours for the nlohmann/json, defining appropriate mitigations, and ensuring that these mitigations are thoroughly validated.</p>
+<p>The integrator shall identify misbehaviours for nlohmann/json, define appropriate mitigations, and ensure that these mitigations are thoroughly validated, whenever using nlohmann/json.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-misbehaviours"><span class="std std-ref">TA-MISBEHAVIOURS</span></a></p></li>
@@ -717,7 +669,7 @@
 <hr class="docutils" />
 <section id="aou-18">
 <h1>AOU-18<a class="headerlink" href="#aou-18" title="Link to this heading">#</a></h1>
-<p>The integrator ensures monitoring data from deployed software is accurately captured, securely stored, and well-documented for analysis.</p>
+<p>The integrator shall ensure that monitoring data from deployed software is accurately captured, securely stored, and well-documented for analysis, as long as nlohmann/json is actively used.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-data"><span class="std std-ref">TA-DATA</span></a></p></li>
@@ -734,7 +686,7 @@
 <hr class="docutils" />
 <section id="aou-19">
 <h1>AOU-19<a class="headerlink" href="#aou-19" title="Link to this heading">#</a></h1>
-<p>The integrator ensures that monitoring data is systematically analyzed to detect trends and identify issues.</p>
+<p>The integrator shall analyze monitoring data systematically to detect trends and identify issues, as long as nlohmann/json is actively used.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-analysis"><span class="std std-ref">TA-ANALYSIS</span></a></p></li>
@@ -751,7 +703,7 @@
 <hr class="docutils" />
 <section id="aou-20">
 <h1>AOU-20<a class="headerlink" href="#aou-20" title="Link to this heading">#</a></h1>
-<p>The keys within each object are unique.</p>
+<p>The integrator shall ensure that the keys within an object are unique, whenever an object is parsed by nlohmann/json.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="JLEX.html#jlex-02"><span class="std std-ref">JLEX-02</span></a></p></li>
@@ -769,7 +721,7 @@
 <hr class="docutils" />
 <section id="aou-21">
 <h1>AOU-21<a class="headerlink" href="#aou-21" title="Link to this heading">#</a></h1>
-<p>Strings containing an escaped unpaired utf-16 surrogate character are invalid.</p>
+<p>The integrator shall ensure that a string does not contain escaped unpaired utf-16 surrogate characters, and that exceptions are properly handled, whenever a string is to be parsed by nlohmann/json.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="PJD.html#pjd-03"><span class="std std-ref">PJD-03</span></a></p></li>
@@ -787,7 +739,7 @@
 <hr class="docutils" />
 <section id="aou-22">
 <h1>AOU-22<a class="headerlink" href="#aou-22" title="Link to this heading">#</a></h1>
-<p>Numbers are written in base 10.</p>
+<p>The integrator shall ensure that numbers are written in base 10, and that exceptions and misbehaviours in case that any other base is used are properly handled and mitigated, whenever a number is parsed by nlohmann/json.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="NPF.html#npf-02"><span class="std std-ref">NPF-02</span></a></p></li>
@@ -804,8 +756,12 @@
 <hr class="docutils" />
 <section id="aou-23">
 <h1>AOU-23<a class="headerlink" href="#aou-23" title="Link to this heading">#</a></h1>
-<p>The input is complete and error-free.</p>
+<p>The integrator shall ensure that data are complete and error-free, whenever they are transmitted to nlohmann/json.</p>
 <p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-behaviours"><span class="std std-ref">TA-BEHAVIOURS</span></a></p></li>
+<li><p><a class="reference internal" href="TA.html#ta-misbehaviours"><span class="std std-ref">TA-MISBEHAVIOURS</span></a></p></li>
+</ul>
 <p><strong>Supporting Items:</strong></p>
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
@@ -818,8 +774,12 @@
 <hr class="docutils" />
 <section id="aou-24">
 <h1>AOU-24<a class="headerlink" href="#aou-24" title="Link to this heading">#</a></h1>
-<p>The input does not change during reading.</p>
+<p>The integrator shall ensure that the data do not change during reading, whenever transmitted to nlohmann/json.</p>
 <p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-behaviours"><span class="std std-ref">TA-BEHAVIOURS</span></a></p></li>
+<li><p><a class="reference internal" href="TA.html#ta-misbehaviours"><span class="std std-ref">TA-MISBEHAVIOURS</span></a></p></li>
+</ul>
 <p><strong>Supporting Items:</strong></p>
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
@@ -832,8 +792,28 @@
 <hr class="docutils" />
 <section id="aou-25">
 <h1>AOU-25<a class="headerlink" href="#aou-25" title="Link to this heading">#</a></h1>
-<p>The standard library is trustable.</p>
+<p>The integrator shall convince himself that the behaviour of the C++ standard library is known, verified and validated.</p>
 <p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-behaviours"><span class="std std-ref">TA-BEHAVIOURS</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<p><strong>Graph:</strong></p>
+<p><em>No Historic Data Found</em></p>
+</section>
+<hr class="docutils" />
+<section id="aou-26">
+<h1>AOU-26<a class="headerlink" href="#aou-26" title="Link to this heading">#</a></h1>
+<p>The integrator shall convince himself that the misbehaviours of the C++ standard library and mitigations are known, verified and validated.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-misbehaviours"><span class="std std-ref">TA-MISBEHAVIOURS</span></a></p></li>
+</ul>
 <p><strong>Supporting Items:</strong></p>
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
@@ -846,7 +826,7 @@
 <hr class="docutils" />
 <section id="aou-27">
 <h1>AOU-27<a class="headerlink" href="#aou-27" title="Link to this heading">#</a></h1>
-<p>If a change of the local mirror of nlohmann/json changes the trustability, then this change is noted in ChangeLog.md.</p>
+<p>The integrator shall ensure that ChangeLog.md is updated whenever the local mirror of nlohmann/json is updated.</p>
 <p><strong>Supported Requests:</strong></p>
 <p><strong>Supporting Items:</strong></p>
 <p><em>None</em></p>
@@ -896,10 +876,7 @@
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-07">AOU-07</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-08">AOU-08</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-09">AOU-09</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-10">AOU-10</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-11">AOU-11</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-12">AOU-12</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-13">AOU-13</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-10-combined">AOU-10_COMBINED</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-14">AOU-14</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-15">AOU-15</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-16">AOU-16</a></li>
@@ -912,6 +889,7 @@
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-23">AOU-23</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-24">AOU-24</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-25">AOU-25</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-26">AOU-26</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aou-27">AOU-27</a></li>
 </ul>
 

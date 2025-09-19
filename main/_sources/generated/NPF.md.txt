@@ -495,7 +495,6 @@ The service parses numbers according to RFC8259.
 - [NPF-02.10](NPF.md#npf-02.10)
 - [NPF-02.11](NPF.md#npf-02.11)
 - [NPF-02.12](NPF.md#npf-02.12)
-- [PJD-04](PJD.md#pjd-04)
 
 
 
@@ -503,6 +502,9 @@ The service parses numbers according to RFC8259.
 
 - `function: [lexer::scan_number]
 (include/nlohmann/detail/input/lexer.hpp)`
+
+
+	- Description: function, which parses numbers into C++ number-types and verifies *en passant* that these numbers are in accordance with RFC8259
 
 
 ```cpp
@@ -1881,6 +1883,9 @@ SECTION("whitespace")
 (include/nlohmann/detail/input/lexer.hpp)`
 
 
+	- Description: function, which skips admissible whitespace during reading
+
+
 ```cpp
 void skip_whitespace()
 {
@@ -2217,6 +2222,9 @@ The service parses strings according to RFC8259.
 
 - `function: [lexer::scan_string]
 (include/nlohmann/detail/input/lexer.hpp)`
+
+
+	- Description: function, which parses strings into C++ std::string and verifies *en passant* that these strings are in accordance with RFC8259
 
 
 ```cpp
@@ -2873,6 +2881,9 @@ SECTION("whitespace")
 (include/nlohmann/detail/input/lexer.hpp)`
 
 
+	- Description: function, which skips admissible whitespace during reading
+
+
 ```cpp
 void skip_whitespace()
 {
@@ -3161,7 +3172,6 @@ SECTION("7. Strings")
 - `cpp-testsuite: [/json_nlohmann_tests/all_unicode.json]`
 
 
-	- 
 	- JSON Testsuite: /json_nlohmann_tests/all_unicode.json
 	
 	
@@ -4169,6 +4179,9 @@ The service parses literal names "true", "false" and "null" according to RFC8259
 (include/nlohmann/detail/input/lexer.hpp)`
 
 
+	- Description: function to scan a literal candidate, compare it to its expected value and return the corresponding C++ literal
+
+
 ```cpp
 token_type scan_literal(const char_type* literal_text, const std::size_t length,
                         token_type return_type)
@@ -4281,6 +4294,9 @@ SECTION("whitespace")
 
 - `function: [lexer::skip_whitespace]
 (include/nlohmann/detail/input/lexer.hpp)`
+
+
+	- Description: function, which skips admissible whitespace during reading
 
 
 ```cpp
@@ -4538,6 +4554,9 @@ SECTION("whitespace")
 
 - `function: [lexer::skip_whitespace]
 (include/nlohmann/detail/input/lexer.hpp)`
+
+
+	- Description: function, which skips admissible whitespace during reading
 
 
 ```cpp
@@ -4929,6 +4948,9 @@ SECTION("example from #529")
 (include/nlohmann/detail/input/lexer.hpp)`
 
 
+	- Description: function, which skips admissible whitespace during reading
+
+
 ```cpp
 void skip_whitespace()
 {
@@ -4976,7 +4998,6 @@ _None_
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/y_object_duplicated_key.json, /nst_json_testsuite2/test_parsing/y_object_duplicated_key_and_value.json]`
 
 
-	- 
 	- JSON Testsuite: /nst_json_testsuite2/test_parsing/y_object_duplicated_key.json
 	
 	

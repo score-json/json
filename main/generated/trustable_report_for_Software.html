@@ -174,7 +174,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
-    Eclipse
+    Eclipse S-CORE Home-Page
   </a>
 </li>
 
@@ -310,7 +310,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
-    Eclipse
+    Eclipse S-CORE Home-Page
   </a>
 </li>
 
@@ -470,107 +470,99 @@ The contribution to the score of a parent item by a suspiciously linked child is
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-01"><span class="std std-ref">AOU-01</span></a></p></td>
-<td><p>Problems with nlohmann/json’s implementation identified during testing are reported to the upstream nlohmann/json project.</p></td>
+<td><p>The integrator shall report problems with nlohmann/json’s implementation to the upstream nlohmann/json project whenever a problem is detected.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-02"><span class="std std-ref">AOU-02</span></a></p></td>
-<td><p>The build environment used for nlohmann/json in an integrating system is supplied with consistent dependencies.</p></td>
+<td><p>The integrator shall ensure that the build environment used for nlohmann/json is supplied with consistent dependencies in every integrating system.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-03"><span class="std std-ref">AOU-03</span></a></p></td>
-<td><p>The integrator has integrator-controlled mirrors of the dependencies.</p></td>
+<td><p>The integrator ensures that integrator-controlled mirrors of the dependencies are persistently and accessibly stored as long as the library nlohmann/json is used.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-04"><span class="std std-ref">AOU-04</span></a></p></td>
-<td><p>Exceptions are properly handled or turned off.</p></td>
+<td><p>The integrator shall ensure that exceptions are properly handled or turned off, whenever nlohmann/json is used.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-05"><span class="std std-ref">AOU-05</span></a></p></td>
-<td><p>Input is encoded as UTF-8 (as required by RFC8259) and in case other string formats are used, it is expected that the parse or dump function may throw an exception.</p></td>
+<td><p>The integrator shall ensure that input is encoded as UTF-8 (as required by RFC8259) and that exceptions thrown in case other string formats are used are properly handled</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-06"><span class="std std-ref">AOU-06</span></a></p></td>
-<td><p>Brace initialization (e.g. json j{true};) is not used with the types basic_json, json, or ordered_json unless you want to create an object or array.</p></td>
+<td><p>The integrator shall ensure that brace initialization (e.g. json j{true};) is not used with the types basic_json, json, or ordered_json, unless an object or array is created.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-07"><span class="std std-ref">AOU-07</span></a></p></td>
-<td><p>If the input is no valid JSON, exceptions are expected during parsing with default parameters.</p></td>
+<td><p>The integrator shall ensure that exceptions, which are expected during parsing with default parameters, are properly handled whenever the input is no valid JSON.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-08"><span class="std std-ref">AOU-08</span></a></p></td>
-<td><p>The integrator ensures that all necessary source files and built tools are mirrored, e.g. using a built server without internet access.</p></td>
+<td><p>The integrator shall ensure that all necessary source files and built tools are mirrored, e.g. using a built server without internet access, as long as nlohmann/json is actively used.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-09"><span class="std std-ref">AOU-09</span></a></p></td>
-<td><p>TA-INDICATORS falls within the responsibility of the integrator.</p></td>
+<td><p>The integrator shall ensure that advanced warning indicators for misbehaviours are identified, and monitoring mechanisms are specified, verified and validated based on analysis.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-10"><span class="std std-ref">AOU-10</span></a></p></td>
-<td><p>The integrator is required to evaluate the provided evidence for TA-FIXES and supplement it where necessary.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-10_combined"><span class="std std-ref">AOU-10_COMBINED</span></a></p></td>
+<td><p>The integrator shall evaluate the provided evidence and supplement it where necessary, whenever the trustability documentation of nlohmann/json is reviewed.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-11"><span class="std std-ref">AOU-11</span></a></p></td>
-<td><p>The integrator is required to evaluate the provided evidence for TA-METHODOLOGIES and supplement it where necessary.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-14"><span class="std std-ref">AOU-14</span></a></p></td>
+<td><p>The integrator shall ensure that nlohmann/json library is built with tools from the provided matrix specification, whenever nlohmann/json is used. (not yet provided)</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-12"><span class="std std-ref">AOU-12</span></a></p></td>
-<td><p>The integrator is required to evaluate the provided evidence for TA-CONFIDENCE and supplement it where necessary.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-15"><span class="std std-ref">AOU-15</span></a></p></td>
+<td><p>The integrator shall maintain mirrors for all code and tools utilized in testing as long as nlohmann/json is actively used.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-13"><span class="std std-ref">AOU-13</span></a></p></td>
-<td><p>The integrator is required to evaluate the provided evidence for TA-INPUTS and supplement it where necessary.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-16"><span class="std std-ref">AOU-16</span></a></p></td>
+<td><p>The integrator shall use C++ versions and compilers that are tested in the CI pipeline, whenever nlohmann/json is used.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-14"><span class="std std-ref">AOU-14</span></a></p></td>
-<td><p>The nlohmann/json library is built with tools from the provided matrix specification. (not yet provided)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-17"><span class="std std-ref">AOU-17</span></a></p></td>
+<td><p>The integrator shall identify misbehaviours for nlohmann/json, define appropriate mitigations, and ensure that these mitigations are thoroughly validated, whenever using nlohmann/json.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-15"><span class="std std-ref">AOU-15</span></a></p></td>
-<td><p>The integrator maintains mirrors for all code and tools utilized in testing.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-18"><span class="std std-ref">AOU-18</span></a></p></td>
+<td><p>The integrator shall ensure that monitoring data from deployed software is accurately captured, securely stored, and well-documented for analysis, as long as nlohmann/json is actively used.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-16"><span class="std std-ref">AOU-16</span></a></p></td>
-<td><p>The integrator uses C++ versions and compilers that are tested in the CI pipeline.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-19"><span class="std std-ref">AOU-19</span></a></p></td>
+<td><p>The integrator shall analyze monitoring data systematically to detect trends and identify issues, as long as nlohmann/json is actively used.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-17"><span class="std std-ref">AOU-17</span></a></p></td>
-<td><p>The integrator is responsible for identifying additional misbehaviours for the nlohmann/json, defining appropriate mitigations, and ensuring that these mitigations are thoroughly validated.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-20"><span class="std std-ref">AOU-20</span></a></p></td>
+<td><p>The integrator shall ensure that the keys within an object are unique, whenever an object is parsed by nlohmann/json.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-18"><span class="std std-ref">AOU-18</span></a></p></td>
-<td><p>The integrator ensures monitoring data from deployed software is accurately captured, securely stored, and well-documented for analysis.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-21"><span class="std std-ref">AOU-21</span></a></p></td>
+<td><p>The integrator shall ensure that a string does not contain escaped unpaired utf-16 surrogate characters, and that exceptions are properly handled, whenever a string is to be parsed by nlohmann/json.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-19"><span class="std std-ref">AOU-19</span></a></p></td>
-<td><p>The integrator ensures that monitoring data is systematically analyzed to detect trends and identify issues.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-22"><span class="std std-ref">AOU-22</span></a></p></td>
+<td><p>The integrator shall ensure that numbers are written in base 10, and that exceptions and misbehaviours in case that any other base is used are properly handled and mitigated, whenever a number is parsed by nlohmann/json.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-20"><span class="std std-ref">AOU-20</span></a></p></td>
-<td><p>The keys within each object are unique.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-23"><span class="std std-ref">AOU-23</span></a></p></td>
+<td><p>The integrator shall ensure that data are complete and error-free, whenever they are transmitted to nlohmann/json.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-21"><span class="std std-ref">AOU-21</span></a></p></td>
-<td><p>Strings containing an escaped unpaired utf-16 surrogate character are invalid.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-24"><span class="std std-ref">AOU-24</span></a></p></td>
+<td><p>The integrator shall ensure that the data do not change during reading, whenever transmitted to nlohmann/json.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-22"><span class="std std-ref">AOU-22</span></a></p></td>
-<td><p>Numbers are written in base 10.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-25"><span class="std std-ref">AOU-25</span></a></p></td>
+<td><p>The integrator shall convince himself that the behaviour of the C++ standard library is known, verified and validated.</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-23"><span class="std std-ref">AOU-23</span></a></p></td>
-<td><p>The input is complete and error-free.</p></td>
-<td><p>0.00</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-24"><span class="std std-ref">AOU-24</span></a></p></td>
-<td><p>The input does not change during reading.</p></td>
-<td><p>0.00</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-25"><span class="std std-ref">AOU-25</span></a></p></td>
-<td><p>The standard library is trustable.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="AOU.html#aou-26"><span class="std std-ref">AOU-26</span></a></p></td>
+<td><p>The integrator shall convince himself that the misbehaviours of the C++ standard library and mitigations are known, verified and validated.</p></td>
 <td><p>0.00</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="AOU.html#aou-27"><span class="std std-ref">AOU-27</span></a></p></td>
-<td><p>If a change of the local mirror of nlohmann/json changes the trustability, then this change is noted in ChangeLog.md.</p></td>
+<td><p>The integrator shall ensure that ChangeLog.md is updated whenever the local mirror of nlohmann/json is updated.</p></td>
 <td><p>0.00</p></td>
 </tr>
 </tbody>
@@ -1514,9 +1506,9 @@ The contribution to the score of a parent item by a suspiciously linked child is
 <p><em>Generated for: Software</em></p>
 <ul class="simple">
 <li><p><em>Repository root: /home/runner/work/json/json</em></p></li>
-<li><p><em>Commit SHA: 989f18fc3ac819823d7de7b7b22ee9ba86ac2cc8</em></p></li>
-<li><p><em>Commit date/time: Wed Sep 17 09:31:47 2025</em></p></li>
-<li><p><em>Commit tag: 989f18f</em></p></li>
+<li><p><em>Commit SHA: ef2b50d8112f76c7812b1f77a6c501a358a52756</em></p></li>
+<li><p><em>Commit date/time: Fri Sep 19 12:26:04 2025</em></p></li>
+<li><p><em>Commit tag: ef2b50d</em></p></li>
 </ul>
 </section>
 </section>

@@ -12,7 +12,7 @@
 <!-- TRUSTABLE&#45;SOFTWARE -->
 <g id="node1" class="node">
 <title>TRUSTABLE&#45;SOFTWARE</title>
-<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
+<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n" target="_top">
 <polygon fill="none" stroke="black" points="376,-839 128,-839 128,-756 376,-756 376,-839"/>
 <text text-anchor="middle" x="252" y="-823.8" font-family="Open Sans" font-size="14.00">TRUSTABLE&#45;SOFTWARE: This</text>
 <text text-anchor="middle" x="252" y="-808.8" font-family="Open Sans" font-size="14.00">release of JSON&#45;Library</text>
@@ -25,7 +25,7 @@
 <!-- TT&#45;RESULTS -->
 <g id="node5" class="node">
 <title>TT&#45;RESULTS</title>
-<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-RESULTS_graph.svg" xlink:title="TT&#45;RESULTS: Evidence\nis provided to demonstrate\nthat nlohmann/json library\ndoes what it is supposed\nto do, and does not do\nwhat it must not do.\n">
+<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-RESULTS_graph.svg" xlink:title="TT&#45;RESULTS: Evidence\nis provided to demonstrate\nthat nlohmann/json library\ndoes what it is supposed\nto do, and does not do\nwhat it must not do.\n" target="_top">
 <polygon fill="none" stroke="black" points="354,-612 150,-612 150,-514 354,-514 354,-612"/>
 <text text-anchor="middle" x="252" y="-596.8" font-family="Open Sans" font-size="14.00">TT&#45;RESULTS: Evidence</text>
 <text text-anchor="middle" x="252" y="-581.8" font-family="Open Sans" font-size="14.00">is provided to demonstrate</text>
@@ -45,7 +45,7 @@
 <!-- JLS&#45;01 -->
 <g id="node2" class="node">
 <title>JLS&#45;01</title>
-<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-01" xlink:title="JLS&#45;01: The nlohmann/json\nlibrary project CI executes\non each pull request\n(opened, reopened, synchronized)\nthe integration test\nsuite, and failures in\nthese runs are investigated\nby contributors. ">
+<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-01" xlink:title="JLS&#45;01: The nlohmann/json\nlibrary project CI executes\non each pull request\n(opened, reopened, synchronized)\nthe integration test\nsuite, and failures in\nthese runs are investigated\nby contributors. " target="_top">
 <polygon fill="none" stroke="black" points="254,-128 0,-128 0,0 254,0 254,-128"/>
 <text text-anchor="middle" x="127" y="-112.8" font-family="Open Sans" font-size="14.00">JLS&#45;01: The nlohmann/json</text>
 <text text-anchor="middle" x="127" y="-97.8" font-family="Open Sans" font-size="14.00">library project CI executes</text>
@@ -61,7 +61,7 @@
 <!-- JLS&#45;22 -->
 <g id="node3" class="node">
 <title>JLS&#45;22</title>
-<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-22" xlink:title="JLS&#45;22: The github workflow\nexecutes the unit tests\ndaily and saves the results\nas time&#45;series data.\n(TODO) ">
+<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-22" xlink:title="JLS&#45;22: The github workflow\nexecutes the unit tests\ndaily and saves the results\nas time&#45;series data.\n(TODO) " target="_top">
 <polygon fill="none" stroke="black" points="484,-105.5 272,-105.5 272,-22.5 484,-22.5 484,-105.5"/>
 <text text-anchor="middle" x="378" y="-90.3" font-family="Open Sans" font-size="14.00">JLS&#45;22: The github workflow</text>
 <text text-anchor="middle" x="378" y="-75.3" font-family="Open Sans" font-size="14.00">executes the unit tests</text>
@@ -74,7 +74,7 @@
 <!-- TA&#45;VALIDATION -->
 <g id="node4" class="node">
 <title>TA&#45;VALIDATION</title>
-<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-VALIDATION_graph.svg" xlink:title="TA&#45;VALIDATION: All specified\ntests are executed repeatedly,\nunder defined conditions\nin controlled environments,\naccording to specified\nobjectives. ">
+<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-VALIDATION_graph.svg" xlink:title="TA&#45;VALIDATION: All specified\ntests are executed repeatedly,\nunder defined conditions\nin controlled environments,\naccording to specified\nobjectives. " target="_top">
 <polygon fill="none" stroke="black" points="365.5,-370 138.5,-370 138.5,-272 365.5,-272 365.5,-370"/>
 <text text-anchor="middle" x="252" y="-354.8" font-family="Open Sans" font-size="14.00">TA&#45;VALIDATION: All specified</text>
 <text text-anchor="middle" x="252" y="-339.8" font-family="Open Sans" font-size="14.00">tests are executed repeatedly,</text>

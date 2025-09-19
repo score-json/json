@@ -12,7 +12,7 @@
 <!-- TRUSTABLE&#45;SOFTWARE -->
 <g id="node1" class="node">
 <title>TRUSTABLE&#45;SOFTWARE</title>
-<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n">
+<g id="a_node1"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TRUSTABLE-SOFTWARE_graph.svg" xlink:title="TRUSTABLE&#45;SOFTWARE: This\nrelease of JSON&#45;Library\nalso reffered in the\ndocumentation as nlohmann/json\nlibrary is Trustable.\n" target="_top">
 <polygon fill="none" stroke="black" points="740,-824 492,-824 492,-741 740,-741 740,-824"/>
 <text text-anchor="middle" x="616" y="-808.8" font-family="Open Sans" font-size="14.00">TRUSTABLE&#45;SOFTWARE: This</text>
 <text text-anchor="middle" x="616" y="-793.8" font-family="Open Sans" font-size="14.00">release of JSON&#45;Library</text>
@@ -25,7 +25,7 @@
 <!-- TT&#45;CHANGES -->
 <g id="node8" class="node">
 <title>TT&#45;CHANGES</title>
-<g id="a_node8"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-CHANGES_graph.svg" xlink:title="TT&#45;CHANGES: nlohmann/json\nlibrary is actively maintained,\nwith regular updates\nto dependencies, and\nchanges are verified\nto prevent regressions.\n">
+<g id="a_node8"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TT-CHANGES_graph.svg" xlink:title="TT&#45;CHANGES: nlohmann/json\nlibrary is actively maintained,\nwith regular updates\nto dependencies, and\nchanges are verified\nto prevent regressions.\n" target="_top">
 <polygon fill="none" stroke="black" points="727,-597 505,-597 505,-499 727,-499 727,-597"/>
 <text text-anchor="middle" x="616" y="-581.8" font-family="Open Sans" font-size="14.00">TT&#45;CHANGES: nlohmann/json</text>
 <text text-anchor="middle" x="616" y="-566.8" font-family="Open Sans" font-size="14.00">library is actively maintained,</text>
@@ -45,33 +45,37 @@
 <!-- AOU&#45;01 -->
 <g id="node2" class="node">
 <title>AOU&#45;01</title>
-<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/generated/AOU.html#aou-01" xlink:title="AOU&#45;01: Problems with\nnlohmann/json&#39;s implementation\nidentified during testing\nare reported to the upstream\nnlohmann/json project.\n">
-<polygon fill="none" stroke="black" points="244,-98 0,-98 0,-15 244,-15 244,-98"/>
-<text text-anchor="middle" x="122" y="-82.8" font-family="Open Sans" font-size="14.00">AOU&#45;01: Problems with</text>
-<text text-anchor="middle" x="122" y="-67.8" font-family="Open Sans" font-size="14.00">nlohmann/json&#39;s implementation</text>
-<text text-anchor="middle" x="122" y="-52.8" font-family="Open Sans" font-size="14.00">identified during testing</text>
-<text text-anchor="middle" x="122" y="-37.8" font-family="Open Sans" font-size="14.00">are reported to the upstream</text>
-<text text-anchor="middle" x="122" y="-22.8" font-family="Open Sans" font-size="14.00">nlohmann/json project.</text>
+<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/generated/AOU.html#aou-01" xlink:title="AOU&#45;01: The integrator\nshall report problems\nwith nlohmann/json&#39;s\nimplementation to the\nupstream nlohmann/json project\nwhenever a problem is\ndetected. " target="_top">
+<polygon fill="none" stroke="black" points="242,-113 0,-113 0,0 242,0 242,-113"/>
+<text text-anchor="middle" x="121" y="-97.8" font-family="Open Sans" font-size="14.00">AOU&#45;01: The integrator</text>
+<text text-anchor="middle" x="121" y="-82.8" font-family="Open Sans" font-size="14.00">shall report problems</text>
+<text text-anchor="middle" x="121" y="-67.8" font-family="Open Sans" font-size="14.00">with nlohmann/json&#39;s</text>
+<text text-anchor="middle" x="121" y="-52.8" font-family="Open Sans" font-size="14.00">implementation to the</text>
+<text text-anchor="middle" x="121" y="-37.8" font-family="Open Sans" font-size="14.00">upstream nlohmann/json project</text>
+<text text-anchor="middle" x="121" y="-22.8" font-family="Open Sans" font-size="14.00">whenever a problem is</text>
+<text text-anchor="middle" x="121" y="-7.8" font-family="Open Sans" font-size="14.00">detected. </text>
 </a>
 </g>
 </g>
-<!-- AOU&#45;10 -->
+<!-- AOU&#45;10_COMBINED -->
 <g id="node3" class="node">
-<title>AOU&#45;10</title>
-<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/generated/AOU.html#aou-10" xlink:title="AOU&#45;10: The integrator\nis required to evaluate\nthe provided evidence\nfor TA&#45;FIXES and supplement\nit where necessary. ">
-<polygon fill="none" stroke="black" points="483.5,-98 262.5,-98 262.5,-15 483.5,-15 483.5,-98"/>
-<text text-anchor="middle" x="373" y="-82.8" font-family="Open Sans" font-size="14.00">AOU&#45;10: The integrator</text>
-<text text-anchor="middle" x="373" y="-67.8" font-family="Open Sans" font-size="14.00">is required to evaluate</text>
-<text text-anchor="middle" x="373" y="-52.8" font-family="Open Sans" font-size="14.00">the provided evidence</text>
-<text text-anchor="middle" x="373" y="-37.8" font-family="Open Sans" font-size="14.00">for TA&#45;FIXES and supplement</text>
-<text text-anchor="middle" x="373" y="-22.8" font-family="Open Sans" font-size="14.00">it where necessary. </text>
+<title>AOU&#45;10_COMBINED</title>
+<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/generated/AOU.html#aou-10_combined" xlink:title="AOU&#45;10_COMBINED: The\nintegrator shall evaluate\nthe provided evidence\nand supplement it where\nnecessary, whenever the\ntrustability documentation\nof nlohmann/json is reviewed.\n" target="_top">
+<polygon fill="none" stroke="black" points="484,-113 260,-113 260,0 484,0 484,-113"/>
+<text text-anchor="middle" x="372" y="-97.8" font-family="Open Sans" font-size="14.00">AOU&#45;10_COMBINED: The</text>
+<text text-anchor="middle" x="372" y="-82.8" font-family="Open Sans" font-size="14.00">integrator shall evaluate</text>
+<text text-anchor="middle" x="372" y="-67.8" font-family="Open Sans" font-size="14.00">the provided evidence</text>
+<text text-anchor="middle" x="372" y="-52.8" font-family="Open Sans" font-size="14.00">and supplement it where</text>
+<text text-anchor="middle" x="372" y="-37.8" font-family="Open Sans" font-size="14.00">necessary, whenever the</text>
+<text text-anchor="middle" x="372" y="-22.8" font-family="Open Sans" font-size="14.00">trustability documentation</text>
+<text text-anchor="middle" x="372" y="-7.8" font-family="Open Sans" font-size="14.00">of nlohmann/json is reviewed.</text>
 </a>
 </g>
 </g>
 <!-- JLS&#45;04 -->
 <g id="node4" class="node">
 <title>JLS&#45;04</title>
-<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-04" xlink:title="JLS&#45;04: External dependencies\nare checked for potential\nsecurity vulnerabilities\nwith each pull request\nto main. Merging is blocked\nuntil all warnings are\nresolved. ">
+<g id="a_node4"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-04" xlink:title="JLS&#45;04: External dependencies\nare checked for potential\nsecurity vulnerabilities\nwith each pull request\nto main. Merging is blocked\nuntil all warnings are\nresolved. " target="_top">
 <polygon fill="none" stroke="black" points="730,-113 502,-113 502,0 730,0 730,-113"/>
 <text text-anchor="middle" x="616" y="-97.8" font-family="Open Sans" font-size="14.00">JLS&#45;04: External dependencies</text>
 <text text-anchor="middle" x="616" y="-82.8" font-family="Open Sans" font-size="14.00">are checked for potential</text>
@@ -86,7 +90,7 @@
 <!-- JLS&#45;05 -->
 <g id="node5" class="node">
 <title>JLS&#45;05</title>
-<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-05" xlink:title="JLS&#45;05: The OSS nlohmann/json\nis widely used, actively\nmaintained and uses github\nissues to track bugs\nand misbehaviours. ">
+<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-05" xlink:title="JLS&#45;05: The OSS nlohmann/json\nis widely used, actively\nmaintained and uses github\nissues to track bugs\nand misbehaviours. " target="_top">
 <polygon fill="none" stroke="black" points="984,-98 748,-98 748,-15 984,-15 984,-98"/>
 <text text-anchor="middle" x="866" y="-82.8" font-family="Open Sans" font-size="14.00">JLS&#45;05: The OSS nlohmann/json</text>
 <text text-anchor="middle" x="866" y="-67.8" font-family="Open Sans" font-size="14.00">is widely used, actively</text>
@@ -99,7 +103,7 @@
 <!-- JLS&#45;11 -->
 <g id="node6" class="node">
 <title>JLS&#45;11</title>
-<g id="a_node6"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-11" xlink:title="JLS&#45;11: A score based\non outstanding, fixed\nand mitigated faults\nis calculated based on\ngithub issues in nlohmann/json.\n(TODO) ">
+<g id="a_node6"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-11" xlink:title="JLS&#45;11: A score based\non outstanding, fixed\nand mitigated faults\nis calculated based on\ngithub issues in nlohmann/json.\n(TODO) " target="_top">
 <polygon fill="none" stroke="black" points="1241.5,-105.5 1002.5,-105.5 1002.5,-7.5 1241.5,-7.5 1241.5,-105.5"/>
 <text text-anchor="middle" x="1122" y="-90.3" font-family="Open Sans" font-size="14.00">JLS&#45;11: A score based</text>
 <text text-anchor="middle" x="1122" y="-75.3" font-family="Open Sans" font-size="14.00">on outstanding, fixed</text>
@@ -113,7 +117,7 @@
 <!-- TA&#45;FIXES -->
 <g id="node7" class="node">
 <title>TA&#45;FIXES</title>
-<g id="a_node7"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-FIXES_graph.svg" xlink:title="TA&#45;FIXES: Known bugs\nor misbehaviours are\nanalysed and triaged,\nand critical fixes or\nmitigations are implemented\nor applied. ">
+<g id="a_node7"><a xlink:href="https://score-json.github.io/json/main/_images/custom_TA-FIXES_graph.svg" xlink:title="TA&#45;FIXES: Known bugs\nor misbehaviours are\nanalysed and triaged,\nand critical fixes or\nmitigations are implemented\nor applied. " target="_top">
 <polygon fill="none" stroke="black" points="724,-355 508,-355 508,-257 724,-257 724,-355"/>
 <text text-anchor="middle" x="616" y="-339.8" font-family="Open Sans" font-size="14.00">TA&#45;FIXES: Known bugs</text>
 <text text-anchor="middle" x="616" y="-324.8" font-family="Open Sans" font-size="14.00">or misbehaviours are</text>
@@ -127,14 +131,14 @@
 <!-- TA&#45;FIXES&#45;&gt;AOU&#45;01 -->
 <g id="edge3" class="edge">
 <title>TA&#45;FIXES&#45;&gt;AOU&#45;01</title>
-<path fill="none" stroke="black" d="M520.17,-256.99C431.01,-212.32 299.16,-146.26 211.95,-102.56"/>
-<polygon fill="black" stroke="black" points="213.37,-99.36 202.86,-98.01 210.23,-105.62 213.37,-99.36"/>
+<path fill="none" stroke="black" d="M519.97,-256.99C440.41,-217.21 326.92,-160.46 241.31,-117.65"/>
+<polygon fill="black" stroke="black" points="242.83,-114.5 232.33,-113.16 239.7,-120.77 242.83,-114.5"/>
 </g>
-<!-- TA&#45;FIXES&#45;&gt;AOU&#45;10 -->
+<!-- TA&#45;FIXES&#45;&gt;AOU&#45;10_COMBINED -->
 <g id="edge6" class="edge">
-<title>TA&#45;FIXES&#45;&gt;AOU&#45;10</title>
-<path fill="none" stroke="black" d="M568.86,-256.99C525.93,-213.27 462.89,-149.05 420.01,-105.38"/>
-<polygon fill="black" stroke="black" points="422.28,-102.69 412.77,-98.01 417.28,-107.6 422.28,-102.69"/>
+<title>TA&#45;FIXES&#45;&gt;AOU&#45;10_COMBINED</title>
+<path fill="none" stroke="black" d="M568.67,-256.99C530.28,-218.05 475.87,-162.86 434.01,-120.4"/>
+<polygon fill="black" stroke="black" points="436.39,-117.83 426.88,-113.16 431.4,-122.74 436.39,-117.83"/>
 </g>
 <!-- TA&#45;FIXES&#45;&gt;JLS&#45;04 -->
 <g id="edge4" class="edge">

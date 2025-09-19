@@ -26,32 +26,30 @@ This presents the compliance for the _Assumptions of Use_ (AOU) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
-| [AOU-01](AOU.md#aou-01) |  Problems with nlohmann/json's implementation identified during testing are reported to the upstream nlohmann/json project. | 0.00 |
-| [AOU-02](AOU.md#aou-02) |  The build environment used for nlohmann/json in an integrating system is supplied with consistent dependencies. | 0.00 |
-| [AOU-03](AOU.md#aou-03) |  The integrator has integrator-controlled mirrors of the dependencies. | 0.00 |
-| [AOU-04](AOU.md#aou-04) |  Exceptions are properly handled or turned off. | 0.00 |
-| [AOU-05](AOU.md#aou-05) |  Input is encoded as UTF-8 (as required by RFC8259) and in case other string formats are used, it is expected that the parse or dump function may throw an exception. | 0.00 |
-| [AOU-06](AOU.md#aou-06) |  Brace initialization (e.g. json j{true};) is not used with the types basic_json, json, or ordered_json unless you want to create an object or array. | 0.00 |
-| [AOU-07](AOU.md#aou-07) |  If the input is no valid JSON, exceptions are expected during parsing with default parameters. | 0.00 |
-| [AOU-08](AOU.md#aou-08) |  The integrator ensures that all necessary source files and built tools are mirrored, e.g. using a built server without internet access. | 0.00 |
-| [AOU-09](AOU.md#aou-09) |  TA-INDICATORS falls within the responsibility of the integrator. | 0.00 |
-| [AOU-10](AOU.md#aou-10) |  The integrator is required to evaluate the provided evidence for TA-FIXES and supplement it where necessary. | 0.00 |
-| [AOU-11](AOU.md#aou-11) |  The integrator is required to evaluate the provided evidence for TA-METHODOLOGIES and supplement it where necessary. | 0.00 |
-| [AOU-12](AOU.md#aou-12) |  The integrator is required to evaluate the provided evidence for TA-CONFIDENCE and supplement it where necessary. | 0.00 |
-| [AOU-13](AOU.md#aou-13) |  The integrator is required to evaluate the provided evidence for TA-INPUTS and supplement it where necessary. | 0.00 |
-| [AOU-14](AOU.md#aou-14) |  The nlohmann/json library is built with tools from the provided matrix specification. (not yet provided) | 0.00 |
-| [AOU-15](AOU.md#aou-15) |  The integrator maintains mirrors for all code and tools utilized in testing. | 0.00 |
-| [AOU-16](AOU.md#aou-16) |  The integrator uses C++ versions and compilers that are tested in the CI pipeline. | 0.00 |
-| [AOU-17](AOU.md#aou-17) |  The integrator is responsible for identifying additional misbehaviours for the nlohmann/json, defining appropriate mitigations, and ensuring that these mitigations are thoroughly validated. | 0.00 |
-| [AOU-18](AOU.md#aou-18) |  The integrator ensures monitoring data from deployed software is accurately captured, securely stored, and well-documented for analysis. | 0.00 |
-| [AOU-19](AOU.md#aou-19) |  The integrator ensures that monitoring data is systematically analyzed to detect trends and identify issues. | 0.00 |
-| [AOU-20](AOU.md#aou-20) |  The keys within each object are unique. | 0.00 |
-| [AOU-21](AOU.md#aou-21) |  Strings containing an escaped unpaired utf-16 surrogate character are invalid. | 0.00 |
-| [AOU-22](AOU.md#aou-22) |  Numbers are written in base 10. | 0.00 |
-| [AOU-23](AOU.md#aou-23) |  The input is complete and error-free. | 0.00 |
-| [AOU-24](AOU.md#aou-24) |  The input does not change during reading. | 0.00 |
-| [AOU-25](AOU.md#aou-25) |  The standard library is trustable. | 0.00 |
-| [AOU-27](AOU.md#aou-27) |  If a change of the local mirror of nlohmann/json changes the trustability, then this change is noted in ChangeLog.md. | 0.00 |
+| [AOU-01](AOU.md#aou-01) |  The integrator shall report problems with nlohmann/json's implementation to the upstream nlohmann/json project whenever a problem is detected. | 0.00 |
+| [AOU-02](AOU.md#aou-02) |  The integrator shall ensure that the build environment used for nlohmann/json is supplied with consistent dependencies in every integrating system. | 0.00 |
+| [AOU-03](AOU.md#aou-03) |  The integrator ensures that integrator-controlled mirrors of the dependencies are persistently and accessibly stored as long as the library nlohmann/json is used. | 0.00 |
+| [AOU-04](AOU.md#aou-04) |  The integrator shall ensure that exceptions are properly handled or turned off, whenever nlohmann/json is used. | 0.00 |
+| [AOU-05](AOU.md#aou-05) |  The integrator shall ensure that input is encoded as UTF-8 (as required by RFC8259) and that exceptions thrown in case other string formats are used are properly handled | 0.00 |
+| [AOU-06](AOU.md#aou-06) |  The integrator shall ensure that brace initialization (e.g. json j{true};) is not used with the types basic_json, json, or ordered_json, unless an object or array is created. | 0.00 |
+| [AOU-07](AOU.md#aou-07) |  The integrator shall ensure that exceptions, which are expected during parsing with default parameters, are properly handled whenever the input is no valid JSON. | 0.00 |
+| [AOU-08](AOU.md#aou-08) |  The integrator shall ensure that all necessary source files and built tools are mirrored, e.g. using a built server without internet access, as long as nlohmann/json is actively used. | 0.00 |
+| [AOU-09](AOU.md#aou-09) |  The integrator shall ensure that advanced warning indicators for misbehaviours are identified, and monitoring mechanisms are specified, verified and validated based on analysis. | 0.00 |
+| [AOU-10_COMBINED](AOU.md#aou-10_combined) |  The integrator shall evaluate the provided evidence and supplement it where necessary, whenever the trustability documentation of nlohmann/json is reviewed. | 0.00 |
+| [AOU-14](AOU.md#aou-14) |  The integrator shall ensure that nlohmann/json library is built with tools from the provided matrix specification, whenever nlohmann/json is used. (not yet provided) | 0.00 |
+| [AOU-15](AOU.md#aou-15) |  The integrator shall maintain mirrors for all code and tools utilized in testing as long as nlohmann/json is actively used. | 0.00 |
+| [AOU-16](AOU.md#aou-16) |  The integrator shall use C++ versions and compilers that are tested in the CI pipeline, whenever nlohmann/json is used. | 0.00 |
+| [AOU-17](AOU.md#aou-17) |  The integrator shall identify misbehaviours for nlohmann/json, define appropriate mitigations, and ensure that these mitigations are thoroughly validated, whenever using nlohmann/json. | 0.00 |
+| [AOU-18](AOU.md#aou-18) |  The integrator shall ensure that monitoring data from deployed software is accurately captured, securely stored, and well-documented for analysis, as long as nlohmann/json is actively used. | 0.00 |
+| [AOU-19](AOU.md#aou-19) |  The integrator shall analyze monitoring data systematically to detect trends and identify issues, as long as nlohmann/json is actively used. | 0.00 |
+| [AOU-20](AOU.md#aou-20) |  The integrator shall ensure that the keys within an object are unique, whenever an object is parsed by nlohmann/json. | 0.00 |
+| [AOU-21](AOU.md#aou-21) |  The integrator shall ensure that a string does not contain escaped unpaired utf-16 surrogate characters, and that exceptions are properly handled, whenever a string is to be parsed by nlohmann/json. | 0.00 |
+| [AOU-22](AOU.md#aou-22) |  The integrator shall ensure that numbers are written in base 10, and that exceptions and misbehaviours in case that any other base is used are properly handled and mitigated, whenever a number is parsed by nlohmann/json. | 0.00 |
+| [AOU-23](AOU.md#aou-23) |  The integrator shall ensure that data are complete and error-free, whenever they are transmitted to nlohmann/json. | 0.00 |
+| [AOU-24](AOU.md#aou-24) |  The integrator shall ensure that the data do not change during reading, whenever transmitted to nlohmann/json. | 0.00 |
+| [AOU-25](AOU.md#aou-25) |  The integrator shall convince himself that the behaviour of the C++ standard library is known, verified and validated. | 0.00 |
+| [AOU-26](AOU.md#aou-26) |  The integrator shall convince himself that the misbehaviours of the C++ standard library and mitigations are known, verified and validated. | 0.00 |
+| [AOU-27](AOU.md#aou-27) |  The integrator shall ensure that ChangeLog.md is updated whenever the local mirror of nlohmann/json is updated. | 0.00 |
 
 ## Compliance for JLEX
 This presents the compliance for the _JSON-Library Expectations_ (JLEX) in tabular form.
@@ -315,6 +313,6 @@ This presents the compliance for _Well Formed JSON_ (WFJ) in tabular form.
 _Generated for: Software_
 
 * _Repository root: /home/runner/work/json/json_
-* _Commit SHA: 989f18fc3ac819823d7de7b7b22ee9ba86ac2cc8_
-* _Commit date/time: Wed Sep 17 09:31:47 2025_
-* _Commit tag: 989f18f_
+* _Commit SHA: ef2b50d8112f76c7812b1f77a6c501a358a52756_
+* _Commit date/time: Fri Sep 19 12:26:04 2025_
+* _Commit tag: ef2b50d_

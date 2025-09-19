@@ -110,7 +110,6 @@ The service correctly parses 64-bit integers (exceeding the range defined in RFC
 
 **Supported Requests:**
 
-- [NPF-02](NPF.md#npf-02)
 
 **Supporting Items:**
 

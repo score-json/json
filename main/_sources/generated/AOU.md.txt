@@ -1,7 +1,7 @@
 
 ### AOU-01 
 
-Problems with nlohmann/json's implementation identified during testing are reported to the upstream nlohmann/json project.
+The integrator shall report problems with nlohmann/json's implementation to the upstream nlohmann/json project whenever a problem is detected.
 
 
 **Supported Requests:**
@@ -33,7 +33,7 @@ _No Historic Data Found_
 
 ### AOU-02 
 
-The build environment used for nlohmann/json in an integrating system is supplied with consistent dependencies.
+The integrator shall ensure that the build environment used for nlohmann/json is supplied with consistent dependencies in every integrating system.
 
 
 **Supported Requests:**
@@ -65,7 +65,7 @@ _No Historic Data Found_
 
 ### AOU-03 
 
-The integrator has integrator-controlled mirrors of the dependencies.
+The integrator ensures that integrator-controlled mirrors of the dependencies are persistently and accessibly stored as long as the library nlohmann/json is used.
 
 
 **Supported Requests:**
@@ -97,7 +97,7 @@ _No Historic Data Found_
 
 ### AOU-04 
 
-Exceptions are properly handled or turned off.
+The integrator shall ensure that exceptions are properly handled or turned off, whenever nlohmann/json is used.
 
 
 **Supported Requests:**
@@ -129,7 +129,7 @@ _No Historic Data Found_
 
 ### AOU-05 
 
-Input is encoded as UTF-8 (as required by RFC8259) and in case other string formats are used, it is expected that the parse or dump function may throw an exception.
+The integrator shall ensure that input is encoded as UTF-8 (as required by RFC8259) and that exceptions thrown in case other string formats are used are properly handled
 
 
 **Supported Requests:**
@@ -162,7 +162,7 @@ _No Historic Data Found_
 
 ### AOU-06 
 
-Brace initialization (e.g. json j{true};) is not used with the types basic_json, json, or ordered_json unless you want to create an object or array.
+The integrator shall ensure that brace initialization (e.g. json j{true};) is not used with the types basic_json, json, or ordered_json, unless an object or array is created.
 
 
 **Supported Requests:**
@@ -194,7 +194,7 @@ _No Historic Data Found_
 
 ### AOU-07 
 
-If the input is no valid JSON, exceptions are expected during parsing with default parameters.
+The integrator shall ensure that exceptions, which are expected during parsing with default parameters, are properly handled whenever the input is no valid JSON.
 
 
 **Supported Requests:**
@@ -226,7 +226,7 @@ _No Historic Data Found_
 
 ### AOU-08 
 
-The integrator ensures that all necessary source files and built tools are mirrored, e.g. using a built server without internet access.
+The integrator shall ensure that all necessary source files and built tools are mirrored, e.g. using a built server without internet access, as long as nlohmann/json is actively used.
 
 
 **Supported Requests:**
@@ -258,7 +258,7 @@ _No Historic Data Found_
 
 ### AOU-09 
 
-TA-INDICATORS falls within the responsibility of the integrator.
+The integrator shall ensure that advanced warning indicators for misbehaviours are identified, and monitoring mechanisms are specified, verified and validated based on analysis.
 
 
 **Supported Requests:**
@@ -288,110 +288,17 @@ _No Historic Data Found_
 
 ---
 
-### AOU-10 
+### AOU-10_COMBINED 
 
-The integrator is required to evaluate the provided evidence for TA-FIXES and supplement it where necessary.
-
-
-**Supported Requests:**
-
-- [TA-FIXES](TA.md#ta-fixes)
-
-**Supporting Items:**
-
-_None_
-
-
-
-**References:**
-
-_None_
-
-
-
-**Fallacies:**
-
-_None_
-
-**Graph:**
-
-_No Historic Data Found_
-
-
----
-
-### AOU-11 
-
-The integrator is required to evaluate the provided evidence for TA-METHODOLOGIES and supplement it where necessary.
-
-
-**Supported Requests:**
-
-- [TA-METHODOLOGIES](TA.md#ta-methodologies)
-
-**Supporting Items:**
-
-_None_
-
-
-
-**References:**
-
-_None_
-
-
-
-**Fallacies:**
-
-_None_
-
-**Graph:**
-
-_No Historic Data Found_
-
-
----
-
-### AOU-12 
-
-The integrator is required to evaluate the provided evidence for TA-CONFIDENCE and supplement it where necessary.
+The integrator shall evaluate the provided evidence and supplement it where necessary, whenever the trustability documentation of nlohmann/json is reviewed.
 
 
 **Supported Requests:**
 
 - [TA-CONFIDENCE](TA.md#ta-confidence)
-
-**Supporting Items:**
-
-_None_
-
-
-
-**References:**
-
-_None_
-
-
-
-**Fallacies:**
-
-_None_
-
-**Graph:**
-
-_No Historic Data Found_
-
-
----
-
-### AOU-13 
-
-The integrator is required to evaluate the provided evidence for TA-INPUTS and supplement it where necessary.
-
-
-**Supported Requests:**
-
+- [TA-FIXES](TA.md#ta-fixes)
 - [TA-INPUTS](TA.md#ta-inputs)
+- [TA-METHODOLOGIES](TA.md#ta-methodologies)
 
 **Supporting Items:**
 
@@ -418,7 +325,7 @@ _No Historic Data Found_
 
 ### AOU-14 
 
-The nlohmann/json library is built with tools from the provided matrix specification. (not yet provided)
+The integrator shall ensure that nlohmann/json library is built with tools from the provided matrix specification, whenever nlohmann/json is used. (not yet provided)
 
 
 **Supported Requests:**
@@ -450,7 +357,7 @@ _No Historic Data Found_
 
 ### AOU-15 
 
-The integrator maintains mirrors for all code and tools utilized in testing.
+The integrator shall maintain mirrors for all code and tools utilized in testing as long as nlohmann/json is actively used.
 
 
 **Supported Requests:**
@@ -482,7 +389,7 @@ _No Historic Data Found_
 
 ### AOU-16 
 
-The integrator uses C++ versions and compilers that are tested in the CI pipeline.
+The integrator shall use C++ versions and compilers that are tested in the CI pipeline, whenever nlohmann/json is used.
 
 
 **Supported Requests:**
@@ -514,7 +421,7 @@ _No Historic Data Found_
 
 ### AOU-17 
 
-The integrator is responsible for identifying additional misbehaviours for the nlohmann/json, defining appropriate mitigations, and ensuring that these mitigations are thoroughly validated.
+The integrator shall identify misbehaviours for nlohmann/json, define appropriate mitigations, and ensure that these mitigations are thoroughly validated, whenever using nlohmann/json.
 
 
 **Supported Requests:**
@@ -546,7 +453,7 @@ _No Historic Data Found_
 
 ### AOU-18 
 
-The integrator ensures monitoring data from deployed software is accurately captured, securely stored, and well-documented for analysis.
+The integrator shall ensure that monitoring data from deployed software is accurately captured, securely stored, and well-documented for analysis, as long as nlohmann/json is actively used.
 
 
 **Supported Requests:**
@@ -578,7 +485,7 @@ _No Historic Data Found_
 
 ### AOU-19 
 
-The integrator ensures that monitoring data is systematically analyzed to detect trends and identify issues.
+The integrator shall analyze monitoring data systematically to detect trends and identify issues, as long as nlohmann/json is actively used.
 
 
 **Supported Requests:**
@@ -610,7 +517,7 @@ _No Historic Data Found_
 
 ### AOU-20 
 
-The keys within each object are unique.
+The integrator shall ensure that the keys within an object are unique, whenever an object is parsed by nlohmann/json.
 
 
 **Supported Requests:**
@@ -643,7 +550,7 @@ _No Historic Data Found_
 
 ### AOU-21 
 
-Strings containing an escaped unpaired utf-16 surrogate character are invalid.
+The integrator shall ensure that a string does not contain escaped unpaired utf-16 surrogate characters, and that exceptions are properly handled, whenever a string is to be parsed by nlohmann/json.
 
 
 **Supported Requests:**
@@ -676,7 +583,7 @@ _No Historic Data Found_
 
 ### AOU-22 
 
-Numbers are written in base 10.
+The integrator shall ensure that numbers are written in base 10, and that exceptions and misbehaviours in case that any other base is used are properly handled and mitigated, whenever a number is parsed by nlohmann/json.
 
 
 **Supported Requests:**
@@ -708,11 +615,13 @@ _No Historic Data Found_
 
 ### AOU-23 
 
-The input is complete and error-free.
+The integrator shall ensure that data are complete and error-free, whenever they are transmitted to nlohmann/json.
 
 
 **Supported Requests:**
 
+- [TA-BEHAVIOURS](TA.md#ta-behaviours)
+- [TA-MISBEHAVIOURS](TA.md#ta-misbehaviours)
 
 **Supporting Items:**
 
@@ -739,11 +648,13 @@ _No Historic Data Found_
 
 ### AOU-24 
 
-The input does not change during reading.
+The integrator shall ensure that the data do not change during reading, whenever transmitted to nlohmann/json.
 
 
 **Supported Requests:**
 
+- [TA-BEHAVIOURS](TA.md#ta-behaviours)
+- [TA-MISBEHAVIOURS](TA.md#ta-misbehaviours)
 
 **Supporting Items:**
 
@@ -770,11 +681,44 @@ _No Historic Data Found_
 
 ### AOU-25 
 
-The standard library is trustable.
+The integrator shall convince himself that the behaviour of the C++ standard library is known, verified and validated.
 
 
 **Supported Requests:**
 
+- [TA-BEHAVIOURS](TA.md#ta-behaviours)
+
+**Supporting Items:**
+
+_None_
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
+
+**Graph:**
+
+_No Historic Data Found_
+
+
+---
+
+### AOU-26 
+
+The integrator shall convince himself that the misbehaviours of the C++ standard library and mitigations are known, verified and validated.
+
+
+**Supported Requests:**
+
+- [TA-MISBEHAVIOURS](TA.md#ta-misbehaviours)
 
 **Supporting Items:**
 
@@ -801,7 +745,7 @@ _No Historic Data Found_
 
 ### AOU-27 
 
-If a change of the local mirror of nlohmann/json changes the trustability, then this change is noted in ChangeLog.md. 
+ The integrator shall ensure that ChangeLog.md is updated whenever the local mirror of nlohmann/json is updated. 
 
 
 **Supported Requests:**

@@ -184,6 +184,9 @@ _None_
 (include/nlohmann/json.hpp)`
 
 
+	- Description: the public interface of the `accept`-functionality of nlohmann/json for single inputs
+
+
 ```cpp
 static bool accept(InputType&& i,
                    const bool ignore_comments = false)
@@ -198,6 +201,9 @@ static bool accept(InputType&& i,
 (include/nlohmann/json.hpp)`
 
 
+	- Description: the public interface of the `accept`-functionality of nlohmann/json for iterator inputs
+
+
 ```cpp
 static bool accept(IteratorType first, IteratorType last,
                    const bool ignore_comments = false)
@@ -210,6 +216,9 @@ static bool accept(IteratorType first, IteratorType last,
 
 - `function: [basic_json::accept]
 (include/nlohmann/json.hpp)`
+
+
+	- Description: the public interface of the `accept`-functionality of nlohmann/json for input buffer
 
 
 ```cpp
@@ -227,6 +236,9 @@ static bool accept(detail::span_input_adapter&& i,
 (include/nlohmann/detail/input/parser.hpp)`
 
 
+	- Description: the internal `accept`-functionality called by basic_json::accept
+
+
 ```cpp
 bool accept(const bool strict = true)
 {
@@ -239,6 +251,9 @@ bool accept(const bool strict = true)
 
 - `function: [parser::sax_parse]
 (include/nlohmann/detail/input/parser.hpp)`
+
+
+	- Description: called by parser::accept
 
 
 ```cpp
@@ -263,6 +278,9 @@ bool sax_parse(SAX* sax, const bool strict = true)
 
 - `function: [parser::sax_parse_internal]
 (include/nlohmann/detail/input/parser.hpp)`
+
+
+	- Description: called by parser::sax_parse
 
 
 ```cpp
@@ -563,6 +581,9 @@ bool sax_parse_internal(SAX* sax)
 
 - `function: [lexer::scan]
 (include/nlohmann/detail/input/lexer.hpp)`
+
+
+	- Description: scans input, called in parser::sax_parse_internal
 
 
 ```cpp

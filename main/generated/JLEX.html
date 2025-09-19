@@ -173,7 +173,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
-    Eclipse
+    Eclipse S-CORE Home-Page
   </a>
 </li>
 
@@ -311,7 +311,7 @@
 
 <li class="nav-item ">
   <a class="nav-link nav-external" href="https://projects.eclipse.org/projects/automotive.score">
-    Eclipse
+    Eclipse S-CORE Home-Page
   </a>
 </li>
 
@@ -445,7 +445,11 @@
 </ul>
 <p><strong>References:</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[basic_json::accept]</span> <span class="pre">(include/nlohmann/json.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[basic_json::accept]</span> <span class="pre">(include/nlohmann/json.hpp)</span></code></p>
+<ul>
+<li><p>Description: the public interface of the <code class="docutils literal notranslate"><span class="pre">accept</span></code>-functionality of nlohmann/json for single inputs</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">accept</span><span class="p">(</span><span class="n">InputType</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">i</span><span class="p">,</span>
 <span class="w">                   </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">ignore_comments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span>
@@ -455,7 +459,11 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[basic_json::accept]</span> <span class="pre">(include/nlohmann/json.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[basic_json::accept]</span> <span class="pre">(include/nlohmann/json.hpp)</span></code></p>
+<ul>
+<li><p>Description: the public interface of the <code class="docutils literal notranslate"><span class="pre">accept</span></code>-functionality of nlohmann/json for iterator inputs</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">accept</span><span class="p">(</span><span class="n">IteratorType</span><span class="w"> </span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="n">IteratorType</span><span class="w"> </span><span class="n">last</span><span class="p">,</span>
 <span class="w">                   </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">ignore_comments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span>
@@ -465,7 +473,11 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[basic_json::accept]</span> <span class="pre">(include/nlohmann/json.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[basic_json::accept]</span> <span class="pre">(include/nlohmann/json.hpp)</span></code></p>
+<ul>
+<li><p>Description: the public interface of the <code class="docutils literal notranslate"><span class="pre">accept</span></code>-functionality of nlohmann/json for input buffer</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">JSON_HEDLEY_DEPRECATED_FOR</span><span class="p">(</span><span class="mf">3.8.0</span><span class="p">,</span><span class="w"> </span><span class="n">accept</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">len</span><span class="p">))</span>
 <span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">accept</span><span class="p">(</span><span class="n">detail</span><span class="o">::</span><span class="n">span_input_adapter</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">i</span><span class="p">,</span>
@@ -476,7 +488,11 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[parser::accept]</span> <span class="pre">(include/nlohmann/detail/input/parser.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[parser::accept]</span> <span class="pre">(include/nlohmann/detail/input/parser.hpp)</span></code></p>
+<ul>
+<li><p>Description: the internal <code class="docutils literal notranslate"><span class="pre">accept</span></code>-functionality called by basic_json::accept</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">accept</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">strict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">)</span>
 <span class="p">{</span>
@@ -486,7 +502,11 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[parser::sax_parse]</span> <span class="pre">(include/nlohmann/detail/input/parser.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[parser::sax_parse]</span> <span class="pre">(include/nlohmann/detail/input/parser.hpp)</span></code></p>
+<ul>
+<li><p>Description: called by parser::accept</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">sax_parse</span><span class="p">(</span><span class="n">SAX</span><span class="o">*</span><span class="w"> </span><span class="n">sax</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">strict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">)</span>
 <span class="p">{</span>
@@ -506,7 +526,11 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[parser::sax_parse_internal]</span> <span class="pre">(include/nlohmann/detail/input/parser.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[parser::sax_parse_internal]</span> <span class="pre">(include/nlohmann/detail/input/parser.hpp)</span></code></p>
+<ul>
+<li><p>Description: called by parser::sax_parse</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">sax_parse_internal</span><span class="p">(</span><span class="n">SAX</span><span class="o">*</span><span class="w"> </span><span class="n">sax</span><span class="p">)</span>
 <span class="p">{</span>
@@ -802,7 +826,11 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::scan]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::scan]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p>
+<ul>
+<li><p>Description: scans input, called in parser::sax_parse_internal</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">token_type</span><span class="w"> </span><span class="nf">scan</span><span class="p">()</span>
 <span class="p">{</span>
@@ -914,7 +942,11 @@
 </ul>
 <p><strong>References:</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[basic_json::parse]</span> <span class="pre">(include/nlohmann/json.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[basic_json::parse]</span> <span class="pre">(include/nlohmann/json.hpp)</span></code></p>
+<ul>
+<li><p>Description: the public interface of the <code class="docutils literal notranslate"><span class="pre">parse</span></code>-functionality of nlohmann/json for single inputs</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">basic_json</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="n">InputType</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">i</span><span class="p">,</span>
 <span class="w">                        </span><span class="n">parser_callback_t</span><span class="w"> </span><span class="n">cb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span>
@@ -928,7 +960,11 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[basic_json::parse]</span> <span class="pre">(include/nlohmann/json.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[basic_json::parse]</span> <span class="pre">(include/nlohmann/json.hpp)</span></code></p>
+<ul>
+<li><p>Description: the public interface of the <code class="docutils literal notranslate"><span class="pre">parse</span></code>-functionality of nlohmann/json for iterator inputs</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">basic_json</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="n">IteratorType</span><span class="w"> </span><span class="n">first</span><span class="p">,</span>
 <span class="w">                        </span><span class="n">IteratorType</span><span class="w"> </span><span class="n">last</span><span class="p">,</span>
@@ -943,7 +979,11 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[basic_json::parse]</span> <span class="pre">(include/nlohmann/json.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[basic_json::parse]</span> <span class="pre">(include/nlohmann/json.hpp)</span></code></p>
+<ul>
+<li><p>Description: the public interface of the <code class="docutils literal notranslate"><span class="pre">parse</span></code>-functionality of nlohmann/json for input buffer</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">JSON_HEDLEY_DEPRECATED_FOR</span><span class="p">(</span><span class="mf">3.8.0</span><span class="p">,</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">len</span><span class="p">))</span>
 <span class="k">static</span><span class="w"> </span><span class="n">basic_json</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="n">detail</span><span class="o">::</span><span class="n">span_input_adapter</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">i</span><span class="p">,</span>
@@ -958,7 +998,11 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[parser::parse]</span> <span class="pre">(include/nlohmann/detail/input/parser.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[parser::parse]</span> <span class="pre">(include/nlohmann/detail/input/parser.hpp)</span></code></p>
+<ul>
+<li><p>Description: the internal <code class="docutils literal notranslate"><span class="pre">parse</span></code>-functionality called by basic_json::parse</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">strict</span><span class="p">,</span><span class="w"> </span><span class="n">BasicJsonType</span><span class="o">&amp;</span><span class="w"> </span><span class="n">result</span><span class="p">)</span>
 <span class="p">{</span>
@@ -1016,7 +1060,11 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[parser::sax_parse]</span> <span class="pre">(include/nlohmann/detail/input/parser.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[parser::sax_parse]</span> <span class="pre">(include/nlohmann/detail/input/parser.hpp)</span></code></p>
+<ul>
+<li><p>Description: called by parser::parse</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">sax_parse</span><span class="p">(</span><span class="n">SAX</span><span class="o">*</span><span class="w"> </span><span class="n">sax</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">strict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">)</span>
 <span class="p">{</span>
@@ -1036,7 +1084,11 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[parser::sax_parse_internal]</span> <span class="pre">(include/nlohmann/detail/input/parser.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[parser::sax_parse_internal]</span> <span class="pre">(include/nlohmann/detail/input/parser.hpp)</span></code></p>
+<ul>
+<li><p>Description: called by parser::sax_parse</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">sax_parse_internal</span><span class="p">(</span><span class="n">SAX</span><span class="o">*</span><span class="w"> </span><span class="n">sax</span><span class="p">)</span>
 <span class="p">{</span>
@@ -1332,7 +1384,11 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::scan]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function:</span> <span class="pre">[lexer::scan]</span> <span class="pre">(include/nlohmann/detail/input/lexer.hpp)</span></code></p>
+<ul>
+<li><p>Description: scans input, called in parser::sax_parse_internal</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">token_type</span><span class="w"> </span><span class="nf">scan</span><span class="p">()</span>
 <span class="p">{</span>
