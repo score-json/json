@@ -104,7 +104,7 @@ command = (
     "run_attempt INT, ",                        # Attempt-number of workflow run
     "status TEXT ",                             # Termination-status of workflow                                         
     "CHECK(status IN ('successful', 'failed', 'cancelled')) DEFAULT 'failed', ",
-#    "time INT, ",                               # the time that is associated to this workflow run
+    "time INT, ",                               # the time that is associated to this workflow run
     "PRIMARY KEY(repo, run_id, run_attempt))"
 )
 cursor.execute(''.join(command))
@@ -132,8 +132,8 @@ cursor.execute(''.join(command))
 repo = environment.get('GITHUB_REPOSITORY')
 run_id = environment.get('GITHUB_RUN_ID')
 run_attempt = environment.get('GITHUB_RUN_ATTEMPT')
-# time = int(datetime.now(timezone.utc).timestamp())
-command = f"INSERT INTO workflow_info VALUES('{repo}', {run_id}, {run_attempt}, '{sys.argv[1]}')" #, {time})"
+time = int(datetime.now(timezone.utc).timestamp())
+command = f"INSERT INTO workflow_info VALUES('{repo}', {run_id}, {run_attempt}, '{sys.argv[1]}', {time})"
 cursor.execute(command)
 # Don't forget to save!
 connector.commit()
