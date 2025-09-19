@@ -46,11 +46,10 @@ cursor = connector.cursor()
 cursor.execute("SELECT * FROM workflow_info")
 rows = cursor.fetchall()
 for row in rows:
-    # t = int(datetime.fromisoformat(from_rest_api(row[0],row[1])).timestamp())
-    # command = f"UPDATE workflow_info SET time = {t} WHERE repo = \"{row[0]}\" AND run_id = {str(row[1])} AND run_attempt = {str(row[2])}"
-    # cursor.execute(command)
-    # connector.commit()
-    print(row)
+    t = int(datetime.fromisoformat(from_rest_api(row[0],row[1])).timestamp())
+    command = f"UPDATE workflow_info SET time = {t} WHERE repo = \"{row[0]}\" AND run_id = {str(row[1])} AND run_attempt = {str(row[2])}"
+    cursor.execute(command)
+    connector.commit()
 
 connector.commit()
 connector.close()
