@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-TA-INDICATORS falls within the responsibility of the integrator.
+The integrator shall ensure that advanced warning indicators for misbehaviours are identified, and monitoring mechanisms are specified, verified and validated based on analysis.

@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The integrator ensures that monitoring data is systematically analyzed to detect trends and identify issues.
+The integrator shall analyze monitoring data systematically to detect trends and identify issues, as long as nlohmann/json is actively used.

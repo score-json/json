@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-If the input is no valid JSON, exceptions are expected during parsing with default parameters.
+The integrator shall ensure that exceptions, which are expected during parsing with default parameters, are properly handled whenever the input is no valid JSON.

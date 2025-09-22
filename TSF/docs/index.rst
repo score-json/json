@@ -26,7 +26,7 @@ This module is dedicated to implementing the Trustable Software Framework for th
 Overview
 --------
 
-This repository provides the aspired setup for projects using **C++** and **Bazel** as a build system.
+The core of this documentation is the *Trustable Compliance Report*, which may be found in `Report <report.html>`_ and which lists the supporting statements for the trustability of nlohmann/json together with their trustability score and the supporting artifacts. This report is augmented by the trustable graph, which is the graphical representation of the argumentation.
 
 .. toctree::
    :maxdepth: 1
@@ -35,4 +35,4 @@ This repository provides the aspired setup for projects using **C++** and **Baze
    introduction/index.rst
    concept.rst
    report.rst
-   Eclipse <https://projects.eclipse.org/projects/automotive.score>
+   Eclipse S-CORE Home-Page <https://projects.eclipse.org/projects/automotive.score>

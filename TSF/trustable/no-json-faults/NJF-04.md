@@ -35,6 +35,7 @@ references:
         - type: function_reference
           name: "lexer::scan_literal"
           path: "include/nlohmann/detail/input/lexer.hpp"
+          description: "function to verify whether a candidate literal coincides with its expected value; only ever called with the three admissible expected values"
 evidence:
   type: "check_artifact_exists"
   configuration:

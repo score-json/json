@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The integrator is responsible for identifying additional misbehaviours for the nlohmann/json, defining appropriate mitigations, and ensuring that these mitigations are thoroughly validated.
+The integrator shall identify misbehaviours for nlohmann/json, define appropriate mitigations, and ensure that these mitigations are thoroughly validated, whenever using nlohmann/json.

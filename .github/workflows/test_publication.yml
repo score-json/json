@@ -55,43 +55,6 @@ jobs:
           sudo apt-get install -y graphviz
           pip install git+https://gitlab.com/CodethinkLabs/trustable/trustable@9957f12171cb898d83df5ae708fdba0a38fece2e
 
-      - name: Get current branch name
-        id: get_branch
-        env:
-          GITHUB_EVENT_NAME: ${{ github.event_name }}
-          PR_BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
-          GITHUB_REF_SAFE: ${{ github.ref }}
-        run: |
-          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
-            # Use the branch from the pull request safely via environment variable
-            current_branch="$PR_BRANCH_NAME"
-          else
-            # Remove the "refs/heads/" prefix from GITHUB_REF safely
-            current_branch="${GITHUB_REF_SAFE#refs/heads/}"
-          fi
- 
-          # Write the branch name to $GITHUB_ENV securely
-          echo "branch_name=${current_branch}" >> "$GITHUB_ENV"
-
-      - name: Fetch data storage branch
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch --all
-          git checkout save_historical_data && git pull || git checkout -b save_historical_data
-      
-      - name: Load persistent data
-        run: |
-          if ! git ls-tree --name-only origin/save_historical_data TSF/TrustableScoring.db | grep TSF/TrustableScoring.db; then
-            mkdir -p TSF
-            touch TSF/TrustableScoring.db
-            git add TSF/TrustableScoring.db
-            git commit -m "Initialise persistent data storage"
-            git push origin save_historical_data
-          fi
-          git checkout $branch_name
-          git checkout save_historical_data -- TSF/TrustableScoring.db
-
       - name: Generate trudag report
         run: |
           REPO_FULL="${{ github.repository }}"
@@ -106,16 +69,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y jq
           sudo apt install gh -y
-
-      - name: Authenticate with GitHub CLI
-        run: |
-          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
-
-      - name: Checkout data storage branch
-        run: |
-          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/TrustableScoring.db)
-          git checkout save_historical_data
-          git pull
 
       - name: Fetch open issues labelled as bug from nlohmann/json
         id: fetch_issues
@@ -167,41 +120,3 @@ jobs:
               map("### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n") |
               .[]
             ' raw_closed_issues.json >> $OUTPUT_FILE
-
-          # Push misbehaviours file to save_historical_data branch
-          git add TSF/misbehaviours.md
-          git commit -m "Updated issues list" || echo "No changes to commit"
-          git push origin save_historical_data
-
-      - name: Store persistent data
-        run: |
-          git add TSF/TrustableScoring.db
-          git commit -m "Append data storage" || echo "Historical data already up to date."
-          git push origin save_historical_data
-
-      - name: Recover stash
-        run: |
-          git checkout $branch_name
-          git stash apply
-
-      - name: Upload trudag artifact
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
-        with:
-          name: trudag-report-${{ github.sha }}
-          path: TSF/docs/generated/
-          if-no-files-found: error
-          
-  build-docs:
-    needs: run-trudag
-    # the eclipse-score/cicd-workflow docs.yml is adjusted to download the trudag report artifact before building the documentation
-    uses: ./.github/workflows/docs.yml
-    permissions:
-      contents: write
-      pages: write
-      pull-requests: write
-      id-token: write
-
-    with:
-      # the bazel-target depends on your repo specific docs_targets configuration (e.g. "suffix")Add commentMore actions
-      bazel-target: "//:docs -- --github_user=${{ github.repository_owner }} --github_repo=${{ github.event.repository.name }}"
-      retention-days: 3
