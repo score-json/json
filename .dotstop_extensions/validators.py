@@ -210,3 +210,19 @@ def check_test_results(configuration: dict[str, yaml]) -> tuple[float, list[Exce
         return(score, warnings)
     except:
         return (0.0, [RuntimeError("Fatal error during database evaluation.")])    
+
+def file_exists(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    files = configuration.get("files",None)
+    if files is None:
+        return (1.0, [Warning("No files to check, assuming trustability")])
+    expected_files = len(files)
+    found_files = 0
+    exceptions = []
+    for file in files:
+        if not os.path.exists(file):
+            exceptions.append(RuntimeError("Critical Error: The path {file} does not exist."))
+        elif os.path.isdir(file):
+            exceptions.append(Warning(f"The path {file} links to a directory, but a file is expected."))
+        else:
+            found_files += 1 if os.path.isfile(file) and os.path.exists(file) else 0
+    return (found_files/expected_files, exceptions)
