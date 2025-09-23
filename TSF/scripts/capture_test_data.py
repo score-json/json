@@ -126,7 +126,7 @@ if __name__ == "__main__":
     cursor.execute(''.join(command))
     command = (
         "CREATE TABLE IF NOT EXISTS test_results(",
-        "timestamp INT, "                           # when the test-run was started
+        "timestamp INT, "   # NEEDS TO BE REMOVED!!!                        # when the test-run was started
         "name TEXT, ",                              # name of the test
         "execution_time REAL, ",                    # execution time in seconds
         "compiler TEXT, ",                          # compiler information
@@ -230,7 +230,7 @@ if __name__ == "__main__":
         "failed_cases INT, ",                       # number of failed test-cases
         "skipped_cases INT, ",                      # number if skipped test-cases
         "passed_assertions INT, ",                  # number of passed assertions
-        "failed_assertions INT",                  # number of failed assertions
+        "failed_assertions INT",                    # number of failed assertions
         ")"
         )
     cur.execute(''.join(command))
