@@ -192,6 +192,29 @@ references:
 ---
 ```
 
+## ItemReference
+
+To keep the documentation relatively slim, we have put references that could be used by all leaf nodes following a certain node into that particular node. 
+This inheritance of the references is clarified in the documentation by an `ItemReference`.
+In the final documentation in human-readable form, an ItemReference simply lists all items of which the references are inherited with hyperlinks.
+
+To also detect the inheritance of references in the content of the item, the content of an ItemReference is the combination of the content of all references of all linked items.
+The expected configuration is as follows
+
+```
+---
+...
+references:
+- type: item
+  items:
+    - ITEM-1
+    - ITEM-2
+    - ...
+---
+...
+```
+Here, the elements of the list `items` must be normative nodes of the trustable graph, otherwise an error is thrown.
+
 # Validators
 
 Validators are extensions of trudag, used to validate any data that can be reduced to a floating point metric. The resulting scores are used as evidence for the trustability of items in the trustable graph.

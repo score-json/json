@@ -549,7 +549,7 @@ class FunctionReference(SourceSpanReference):
         content = self.remove_leading_whitespace_preserve_indentation(content)
         content = format_cpp_code_as_markdown(content)
         if self._description != "":
-            content = make_md_bullet_point(f"Description: {self._description}",1) + "\n\n" + content
+            content = make_md_bullet_point(f"Description: {self._description}",1) + "\n\n" + add_indentation(content,1)
         return content
 
     def __str__(self) -> str:
@@ -789,3 +789,61 @@ class VerboseFileReference(LocalFileReference):
    
     def __str__(self) -> str:
         return str(self._path)  
+    
+class ItemReference(BaseReference):
+    def __init__(self, items: list[str]) -> None:
+        if len(items) == 0:
+            raise RuntimeError("Error: Can't initialise empty ItemReference.")
+        self._items = items
+    
+    @classmethod
+    def type(cls) -> str:
+        return "item"
+    
+    @staticmethod
+    def get_markdown_link(item: str) -> str:
+        first_part = item.split("-")[0]
+        return f"see [here]({first_part}.md#{item.lower()}) to find {item}"
+    
+    @staticmethod
+    def get_reference_contents(items: list[str]) -> bytes:
+        # lazy import as to not create circular import
+        from trudag.dotstop.core.graph.graph_factory import build_trustable_graph
+        # build trustable graph
+        trustable_graph = build_trustable_graph(Path('.dotstop.dot'),Path('.'))
+        contents = []
+        for item in items:
+            # check whether the item is valid
+            if item not in trustable_graph._graph.nodes():
+                raise RuntimeError(f"Critical Error: The item {item} can not be located within the trustable graph.")
+            # get the item
+            trustable_item = trustable_graph.get_item(item)
+            if not trustable_item.normative:
+                raise RuntimeError(f"Error: The item {item} must be normative to be included in the references.")
+            # get the contents of their references
+            for reference in trustable_item.references():
+                contents.append(reference.content)
+        return b"".join(contents) if len(contents) != 0 else b"None"
+
+    @property
+    def content(self) -> bytes:
+        return ItemReference.get_reference_contents(self._items)
+    
+    def as_markdown(self, filepath: None | str = None) -> str:
+        result = ""
+        for item in self._items:
+            result += make_md_bullet_point(ItemReference.get_markdown_link(item),1)
+        return result
+    
+    def __str__(self):
+        title = "this item also refers to the references of "
+        if len(self._items) == 1:
+            title += "item "
+        else:
+            title += "items "
+        title += ", ".join(self._items)
+        return title
+    
+
+        
+
