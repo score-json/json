@@ -198,7 +198,9 @@ To keep the documentation relatively slim, we have put references that could be 
 This inheritance of the references is clarified in the documentation by an `ItemReference`.
 In the final documentation in human-readable form, an ItemReference simply lists all items of which the references are inherited with hyperlinks.
 
-To also detect the inheritance of references in the content of the item, the content of an ItemReference is the combination of the content of all references of all linked items.
+To also detect the inheritance of references in the content of the item, the content of an ItemReference is the combination of the sha's stored in the .dotstop.dot file of all linked items.
+Therefore, if any reference of any of the linked items changes, then the linked item becomes automatically invalidated.
+When it is asserted that the references are still fitting, then the sha is expected to change, which automatically invalidates the item, thereby detecting the change of the references indirectly and with delay.
 The expected configuration is as follows
 
 ```

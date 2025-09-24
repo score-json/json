@@ -2,6 +2,7 @@ from pathlib import Path
 from trudag.dotstop.core.reference.references import BaseReference
 from trudag.dotstop.core.reference.references import SourceSpanReference
 from trudag.dotstop.core.reference.references import LocalFileReference
+import pydot
 import requests
 import sqlite3
 
@@ -807,23 +808,16 @@ class ItemReference(BaseReference):
     
     @staticmethod
     def get_reference_contents(items: list[str]) -> bytes:
-        # lazy import as to not create circular import
-        from trudag.dotstop.core.graph.graph_factory import build_trustable_graph
-        # build trustable graph
-        trustable_graph = build_trustable_graph(Path('.dotstop.dot'),Path('.'))
+        # graph = pydot.graph_from_dot_file(".dotstop.dot")[0]
+        lines = open(".dotstop.dot","r").read().split("\n")
         contents = []
         for item in items:
             # check whether the item is valid
-            if item not in trustable_graph._graph.nodes():
-                raise RuntimeError(f"Critical Error: The item {item} can not be located within the trustable graph.")
-            # get the item
-            trustable_item = trustable_graph.get_item(item)
-            if not trustable_item.normative:
-                raise RuntimeError(f"Error: The item {item} must be normative to be included in the references.")
-            # get the contents of their references
-            for reference in trustable_item.references():
-                contents.append(reference.content)
-        return b"".join(contents) if len(contents) != 0 else b"None"
+            content = [line for line in lines if line.startswith(f"\"{item}\" [")]
+            if len(content) != 1:
+                raise RuntimeError(f"Error: The item {item} is not contained in the trustable graph")
+            contents.append(content[0].encode("utf-8"))
+        return b"".join(contents) if len(contents)!=0 else b"No external references"
 
     @property
     def content(self) -> bytes:
