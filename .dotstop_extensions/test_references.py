@@ -674,7 +674,7 @@ def test_init_function_reference(temp_hpp_file):
 def test_default_init_ListOfTestCases():
     ref = ListOfTestCases(["file_1","file_2"])
     assert ref._test_files == ["file_1","file_2"]
-    assert ref._database == "artifacts/TestResults.db"
+    assert ref._database == "artifacts/MemoryEfficientTestResults.db"
     assert ref._table == "test_results"
 
 def test_non_default_init_ListOfTestCases():
