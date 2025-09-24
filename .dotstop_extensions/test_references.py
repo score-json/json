@@ -2,7 +2,7 @@ import pytest
 import tempfile
 from pathlib import Path
 from unittest.mock import patch
-from references import CPPTestReference, JSONTestsuiteReference, FunctionReference, ListOfTestCases
+from references import CPPTestReference, JSONTestsuiteReference, FunctionReference, ListOfTestCases, ItemReference
 
 
 @pytest.fixture
@@ -706,3 +706,11 @@ def test_extract_faulty_quotation():
 def test_transform_test_file_to_test_name():
     assert ListOfTestCases.transform_test_file_to_test_name("unit-dummy-test.cpp") == "test-dummy-test"
     assert ListOfTestCases.transform_test_file_to_test_name("unit-dummy_test.cpp") == "test-dummy_test"
+
+def test_faulty_init_ItemReference():
+    with pytest.raises(RuntimeError, match = r"Error: Can't initialise empty ItemReference."):
+        item_reference = ItemReference([])
+
+def test_init_ItemReference():
+    item_reference = ItemReference(["Hallo","Welt"])
+    assert item_reference._items == ["Hallo","Welt"]
