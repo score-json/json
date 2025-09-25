@@ -23,4 +23,5 @@ Report
    :glob:
 
    generated/trustable_graph.rst
+   context_diagram.rst
    generated/trustable_report_for_Software.md
