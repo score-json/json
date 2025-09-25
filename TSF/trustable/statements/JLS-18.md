@@ -11,7 +11,8 @@ references:
 evidence:
     type: file_exists
     configuration:
-        - "./artifacts/TestResults.db"
+        files: 
+            - "./artifacts/TestResults.db"
 score:
     Jonas-Kirchhoff: 0.75
 ---
