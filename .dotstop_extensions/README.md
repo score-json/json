@@ -194,13 +194,15 @@ references:
 
 ## ItemReference
 
-To keep the documentation relatively slim, we have put references that could be used by all leaf nodes following a certain node into that particular node. 
-This inheritance of the references is clarified in the documentation by an `ItemReference`.
+Some references support every (directly or indirectly) supporting item of an item. 
+Instead of repeating these references in each supporting item, these references are listed in the supported item.
+The inheritance of the references is then clarified in the documentation by an `ItemReference`.
 In the final documentation in human-readable form, an ItemReference simply lists all items of which the references are inherited with hyperlinks.
 
-To also detect the inheritance of references in the content of the item, the content of an ItemReference is the combination of the sha's stored in the .dotstop.dot file of all linked items.
-Therefore, if any reference of any of the linked items changes, then the linked item becomes automatically invalidated.
-When it is asserted that the references are still fitting, then the sha is expected to change, which automatically invalidates the item, thereby detecting the change of the references indirectly and with delay.
+To detect the inheritance of references in the content of the supporting items, the content of an ItemReference is the combination of the sha's stored in the .dotstop.dot file of the listed supported items.
+If any reference of any of the listed supported items changes, then its sha changes and the review-status of the item becomes false.
+After successful re-review, the review-status of the supported items is re-set to true, so that the new sha is stored in the .dotstop.dot file.
+This automatically sets the review-status of the supporting items, which inherit the references, to false, thereby triggering a re-review of these.
 The expected configuration is as follows
 
 ```
