@@ -808,7 +808,6 @@ class ItemReference(BaseReference):
     
     @staticmethod
     def get_reference_contents(items: list[str]) -> bytes:
-        # graph = pydot.graph_from_dot_file(".dotstop.dot")[0]
         lines = open(".dotstop.dot","r").read().split("\n")
         contents = []
         for item in items:
