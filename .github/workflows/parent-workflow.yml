@@ -28,16 +28,46 @@ jobs:
     uses: ./.github/workflows/check_amalgamation.yml
     with:
       artifact_id: "check_amalgamation-${{ github.sha }}"
-    
+      
+  test_trudag_extensions:
+    name: Run Test Trudag Extensions Workflow
+    uses: ./.github/workflows/test_trudag_extensions.yml
+    with:
+      artifact_id: "test_trudag_extensions-${{ github.sha }}"
+
+  codeql:
+    permissions:
+      contents: read
+      security-events: write
+    name: Run Codeql analysis Workflow
+    uses: ./.github/workflows/codeql-analysis.yml
+    with:
+      artifact_id: "codeql-${{ github.sha }}"
+
+  ubuntu:
+    name: Run Ubuntu Workflow
+    permissions:
+      contents: write
+    needs: [codeql] # Error if CodeQL and Ubuntu triggered at the same time due to conflicting priorities
+    uses: ./.github/workflows/ubuntu.yml
+    with:
+      artifact_id: "ubuntu-${{ github.sha }}"
+
+  dependency_review:
+    name: Run dependency_review Workflow
+    if: ${{ github.event_name == 'pull_request' }}  # only run dependency_review for PRs
+    uses: ./.github/workflows/dependency-review.yml
+    with:
+      artifact_id: "dependency_review-${{ github.sha }}"
 
   collect_artifacts_pr:
     name: "Collect Results & Deploy (PR)"
     if: github.event_name == 'pull_request'
-    needs: [labeler, check_amalgamation]
+    needs: [labeler, check_amalgamation, test_trudag_extensions, dependency_review, codeql, ubuntu]
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [labeler, check_amalgamation]
+        target: [labeler, check_amalgamation, test_trudag_extensions, dependency_review, codeql, ubuntu]
 
     steps:
       - name: Checkout code
@@ -66,11 +96,11 @@ jobs:
   collect_artifacts_non_pr:
     name: "Collect Results & Deploy (Non-PR)"
     if: github.event_name != 'pull_request'
-    needs: [labeler]  # no check_amalgamation or dependency_review if non PR
+    needs: [labeler, test_trudag_extensions, codeql, ubuntu]  # no check_amalgamation or dependency_review if non PR
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [labeler]
+        target: [labeler, test_trudag_extensions, codeql, ubuntu]
 
     steps:
       - name: Checkout code
@@ -95,6 +125,20 @@ jobs:
         with:
           name: "${{ matrix.target }}-${{ github.sha }}"
           path: artifacts/
+
+  test_publish_documentation:
+    permissions:
+      contents: write
+      pages: write
+      pull-requests: write
+      id-token: write
+      security-events: read
+    name: Test publish_documentation Workflow
+    if: github.event_name == 'pull_request'            # Whenever on Pull-request, test publication
+    needs: [collect_artifacts_pr]
+    uses: ./.github/workflows/test_publication.yml
+    with:
+      artifact_id: "ubuntu-${{ github.sha }}"
 
   publish_documentation:
     permissions:
