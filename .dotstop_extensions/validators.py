@@ -224,5 +224,5 @@ def file_exists(configuration: dict[str, yaml]) -> tuple[float, list[Exception |
         elif os.path.isdir(file):
             exceptions.append(Warning(f"The path {file} links to a directory, but a file is expected."))
         else:
-            found_files += 1 if os.path.isfile(file) and os.path.exists(file) else 0
+            found_files += 1 if os.path.isfile(file) else 0
     return (found_files/expected_files, exceptions)
