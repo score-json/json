@@ -1,7 +1,6 @@
 from pathlib import Path
 from trudag.dotstop.core.reference.references import BaseReference
 from trudag.dotstop.core.reference.references import SourceSpanReference
-from trudag.dotstop.core.reference.references import LocalFileReference
 import requests
 import sqlite3
 
@@ -763,7 +762,9 @@ It should be noted that not all unit-tests in a test-file are executed with ever
         # this is used as a title in the trudag report
         return "List of all unit-tests"
     
-class VerboseFileReference(LocalFileReference):
+from trudag.dotstop.core.reference.references import LocalFileReference as LFR
+
+class VerboseFileReference(LFR):
     def __init__(self, path: str, description: str = "", **kwargs) -> None:
         self._path = Path(path)
         self._description = description
@@ -789,6 +790,8 @@ class VerboseFileReference(LocalFileReference):
    
     def __str__(self) -> str:
         return str(self._path)  
+
+del LFR
     
 class ItemReference(BaseReference):
     def __init__(self, items: list[str]) -> None:
