@@ -113,7 +113,7 @@ def find_most_recent_results(target: str, name: str, cpp_standard: str, database
         return [] 
     repo, run_id, run_attempt = result
     cursor.execute("""
-                    SELECT passed_cases, failed_cases, skipped_cases, passed_assertions, skipped_assertions 
+                    SELECT passed_cases, failed_cases, skipped_cases, passed_assertions, failed_assertions 
                     FROM test_results WHERE
                     ctest_target = ? AND name = ? AND cpp_standard = ? AND repo = ? AND run_id = ? AND run_attempt = ?
                     """, (target,name,cpp_standard,repo,run_id,run_attempt))
