@@ -92,7 +92,7 @@ def get_ctest_target(log_name: str) -> str:
     log = log_name.split('/')[-1]
     return log.removesuffix("_junit.xml")
 
-def find_most_recent_results(target: str, name: str, cpp_standard: str, database: sqlite3.Connection) -> list[int]:
+def find_most_recent_results(target: str, name: str, compiler: str, cpp_standard: str, database: sqlite3.Connection) -> list[int]:
     cursor = database.cursor()
     cursor.execute("""
                     WITH combination AS (
@@ -101,12 +101,12 @@ def find_most_recent_results(target: str, name: str, cpp_standard: str, database
                         workflow_info.repo = test_results.repo 
                         AND workflow_info.run_id = test_results.run_id 
                         AND workflow_info.run_attempt = test_results.run_attempt
-                        WHERE test_results.ctest_target = ? AND test_results.name = ? AND test_results.cpp_standard = ?
+                        WHERE test_results.ctest_target = ? AND test_results.compiler = ? AND test_results.name = ? AND test_results.cpp_standard = ?
                     )
                     SELECT repo, run_id, run_attempt FROM combination
                     ORDER BY time DESC, run_id DESC, run_attempt DESC
                     LIMIT 1;
-                    """,(target,name,cpp_standard))
+                    """,(target,name,compiler,cpp_standard))
     result = cursor.fetchone()
     if result is None:
         # if no recent run is found, data need to be stored
@@ -115,8 +115,8 @@ def find_most_recent_results(target: str, name: str, cpp_standard: str, database
     cursor.execute("""
                     SELECT passed_cases, failed_cases, skipped_cases, passed_assertions, failed_assertions 
                     FROM test_results WHERE
-                    ctest_target = ? AND name = ? AND cpp_standard = ? AND repo = ? AND run_id = ? AND run_attempt = ?
-                    """, (target,name,cpp_standard,repo,run_id,run_attempt))
+                    ctest_target = ? AND name = ? AND compiler = ? AND cpp_standard = ? AND repo = ? AND run_id = ? AND run_attempt = ?
+                    """, (target,name,compiler,cpp_standard,repo,run_id,run_attempt))
     result = cursor.fetchone()
     return [] if result is None else list(result)
 
@@ -176,7 +176,7 @@ if __name__ == "__main__":
         "repo TEXT, ",                              # repository
         "run_id INT, ",                             # ID of workflow run
         "run_attempt INT, ",                        # Attempt-number of workflow run
-        "PRIMARY KEY(ctest_target, name, cpp_standard), "
+        "PRIMARY KEY(ctest_target, name, cpp_standard, compiler), "
         "FOREIGN KEY(repo, run_id, run_attempt) REFERENCES workflow_info);"
         )
     connector.execute(''.join(command))
@@ -230,13 +230,19 @@ if __name__ == "__main__":
         for testcase in (case for case in file_root.iter('testcase') if is_unit_test(case)):
             metadata = get_metadata(testcase)
             target = get_ctest_target(junit_log)
+            compiler = testsuite.get('name')
+            more_compiler_info = [case for case in file_root.iter('testcase') if case.get("name") == "cmake_target_include_directories_configure"]
+            if len(more_compiler_info) != 0:
+                compiler_information = more_compiler_info[0]
+                information = list(compiler_information.find("system-out").itertext())[0].split('\n')[0]
+                compiler = information.replace("-- The CXX compiler identification is ","")
             name = metadata.get('name')
             cpp_standard = metadata.get('standard')
             data = (
                         target,
                         name,
                         metadata.get('execution time'), 
-                        testsuite.get('name'), 
+                        compiler, 
                         cpp_standard, 
                         metadata.get('passed test cases'), 
                         metadata.get('failed test cases'), 
@@ -247,7 +253,7 @@ if __name__ == "__main__":
             command ="INSERT INTO test_results VALUES(?,?,?,?,?,?,?,?,?,?);"
             cur.execute(command, data)
             conn.commit()
-            most_recently_stored_results = find_most_recent_results(target,name,cpp_standard,connector)
+            most_recently_stored_results = find_most_recent_results(target,name,compiler,cpp_standard,connector)
             current_results = [metadata.get('passed test cases'),metadata.get('failed test cases'),metadata.get('skipped test cases'),metadata.get('passed assertions'),metadata.get('failed assertions')]
             if (len(most_recently_stored_results) != 5) or any(most_recently_stored_results[i]!=current_results[i] for i in range(0,5)):
                 data = data + (repo, run_id, run_attempt)
