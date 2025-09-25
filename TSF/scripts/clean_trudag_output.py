@@ -50,7 +50,7 @@ def remove_invalid_markdown_start(lines: list[str]) -> list[str]:
     return lines
 
 def insert_line(filepath):
-    """Insert a new line explaining the abbreviation after '## Compliance for ABBR' in the trustable report."""
+    """Insert a new line explaining the abbreviation ABBR in '## Compliance for ABBR' in the trustable report."""
     with open(filepath, 'r', encoding='utf-8') as f:
         lines = f.readlines()
 
