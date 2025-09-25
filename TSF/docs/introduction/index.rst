@@ -52,6 +52,15 @@ Component Classification Strategy
 
 Find more descriptions on the ongoing process and requirements at `Eclipse Process Description <https://eclipse-score.github.io/process_description/main/trustable/index.html>`_.
 
+Limitations of this documentation
+---------------------------------
+
+The present documentation covers a small part of the functionalities of Niels Lohmann's JSON library only, due to the integration into the baselibs project.
+In the latter, it is intended to utilize the JSON library for the purpose of parsing JSON data into a user-datatype.
+The underlying standard, which defines the syntax of JSON data and the necessary parsing capabilities, is given in `RFC8259 <https://doi.org/10.17487/RFC8259>`_.
+Therefore, this documentation asserts the trustability of the capabilities of the library to recognize ill-formed JSON data according to RFC8259 and parse well-formed JSON data.
+In particular, the capabilities (and inabilities) according to different JSON formats, e.g. `RFC6902 <https://doi.org/10.17487/RFC6902>`_, `RFC7396 <https://doi.org/10.17487/RFC7396>`_, `RFC7493 <https://doi.org/10.17487/RFC7493>`_, `RFC7049 <https://doi.org/10.17487/RFC7049>`_ and `RFC8949 <https://doi.org/10.17487/RFC8949>`_ are not covered in this documentation.
+
 
 Context Diagram
 -----------------------------------
@@ -65,4 +74,4 @@ The aim of this context diagram is to provide a high-level overview of the JSON 
 Conclusion
 ----------
 
-The application of the Trustable Software Framework to version 3.12.0 of Niels Lohmann's JSON library involves a comprehensive assessment to ensure it meets our high-level requirements for external software. Key actions include formalizing necessary functionalities, addressing feature requests from SCORE, and integrating trustable evidence into a coherent project workflow. The library is maintained with stringent quality checks and evidence generation processes, illustrating a commitment to high standards and the practicality required for certifiable software projects.
+The application of the Trustable Software Framework to Niels Lohmann's JSON library (version 3.12.0) involves a comprehensive assessment to ensure it meets our high-level requirements for external software. Key actions include formalizing necessary functionalities, addressing feature requests from SCORE, and integrating trustable evidence into a coherent project workflow. The library is maintained with stringent quality checks and evidence generation processes, illustrating a commitment to high standards and the practicality required for certifiable software projects.
