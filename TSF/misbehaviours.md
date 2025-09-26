@@ -4,6 +4,11 @@ This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json re
 
 ## Open Issues
 
+### [#4925](https://github.com/nlohmann/json/issues/4925)
+- **Title:** Assertion error when converting to and from BJdata
+- **State:** OPEN
+- **Created At:** 2025-09-19T18:41:56Z
+
 ### [#4916](https://github.com/nlohmann/json/issues/4916)
 - **Title:** Constructing array from C++20 ranges view does not work
 - **State:** OPEN
