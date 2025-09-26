@@ -499,6 +499,7 @@ class FunctionReference(SourceSpanReference):
                     if instance == overload:
                         start_line = line_number
                         found_start = True
+                        sections.pop()
             else:
                 if '{' in line or '}' in line:
                     for c in line:
