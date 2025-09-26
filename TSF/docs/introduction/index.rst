@@ -17,7 +17,7 @@
 Introduction
 ========================================================
 
-This document outlines the application of the Trustable Software Framework (TSF) to the `JSON library <https://github.com/nlohmann/json>`_ (version 3.12.0) developed by Niels Lohmann. The TSF aims to ensure software reliability and compliance by setting guidelines for evaluating various aspects of software development. Our focus here is the library's integration into the baselibs repository within the S-CORE project. The ultimate goal is to certify the library as trustable based on stringent evaluation criteria involving rigorous testing, intuitive design, and seamless integration.
+This document outlines the application of the Trustable Software Framework (TSF) to version 3.12.0 of the JSON library developed by Niels Lohmann (`json <https://github.com/nlohmann/json>`_). The TSF aims to ensure software reliability and compliance by setting guidelines for evaluating various aspects of software development. Our focus here is the library's integration into the baselibs repository within the S-CORE project. The ultimate goal is to certify the library as trustable based on stringent evaluation criteria involving rigorous testing, intuitive design, and seamless integration.
 
 Design Goals of the JSON Library
 --------------------------------
@@ -51,6 +51,16 @@ Component Classification Strategy
   - Questions concerning the library's behavior are systematically answered, providing coverage details and tracing requirements to standards like ISO.
 
 Find more descriptions on the ongoing process and requirements at `Eclipse Process Description <https://eclipse-score.github.io/process_description/main/trustable/index.html>`_.
+
+
+Context Diagram
+-----------------------------------
+
+The aim of this context diagram is to provide a high-level overview of the JSON library's interactions with external entities in its environment. It illustrates the boundaries and expected interfaces of the JSON library within its operational context as assumed by this documentation.
+
+.. image:: context_diagram.svg
+   :alt: Context Diagram
+   :width: 1100px
 
 Conclusion
 ----------
