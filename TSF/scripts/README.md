@@ -4,7 +4,17 @@ The following scripts are used in the automatic compilation of the trustable rep
 
 ## capture_test_data.py
 
-The python-script [capture_test_data.py](capture_test_data.py) runs at the end of the [ubuntu-workflow](../../.github/workflows/ubuntu.yml). It collects and combines the test-results that were collected in the individual jobs, appends the persistent test data storage and generates a database containing the results of the most recent tests only. Since storage space on the github is limited, the storage of test data is limited to two weeks only. It must be noted that this implementation is only intended as a temporary proof of concept!
+The python-script [capture_test_data.py](capture_test_data.py) is intended to run at the end of the [ubuntu-workflow](../../.github/workflows/ubuntu.yml). It collects and combines the test-results that were collected in the individual jobs, appends the persistent test data storage and generates a database containing the results of the most recent tests only. Since storage space on the github is limited, the storage of test data is limited to two weeks only. It must be noted that this implementation is only intended as a temporary proof of concept!
+
+## capture_test_data_memory_sensitive.py
+
+The python script [capture_test_data_memory_sensitive.py](capture_test_data_memory_sensitive.py) is an alternative to [capture_test_data.py](capture_test_data.py), which is more memory sensitive. 
+Instead of capturing the full test-data, a first snapshot of the data is captured, which is then updated whenever a relevant change is detected.
+
+The characterisation of "relevant change" follows the following heuristic argumentation: 
+
+* The execution time of each test is of lesser interest, therefore it is not continuously updated.
+* A test is uniquely identified by the columns ctest_target, name and cpp_standard.
 
 ## clean_trudag_report.py
 

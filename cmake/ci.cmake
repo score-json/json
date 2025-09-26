@@ -87,7 +87,7 @@ add_custom_target(ci_test_gcc
         -DJSON_BuildTests=ON
         -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_gcc
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_gcc
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_gcc && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/gcc_junit.xml"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_gcc && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/ci_test_gcc_junit.xml"
     COMMENT "Compile and test with GCC using maximal warning flags"
 )
 
@@ -113,7 +113,7 @@ foreach(CXX_STANDARD 11 14 17 20 23 26)
             -DJSON_TestStandards=${CXX_STANDARD}
             -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_gcc_cxx${CXX_STANDARD}
         COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_gcc_cxx${CXX_STANDARD}
-        COMMAND cd ${PROJECT_BINARY_DIR}/build_gcc_cxx${CXX_STANDARD} && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/gcc-${CXX_STANDARD}_junit.xml"
+        COMMAND cd ${PROJECT_BINARY_DIR}/build_gcc_cxx${CXX_STANDARD} && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/ci_test_gcc_cxx${CXX_STANDARD}_junit.xml"
         COMMENT "Compile and test with GCC for C++${CXX_STANDARD}"
     )
 
@@ -124,7 +124,7 @@ foreach(CXX_STANDARD 11 14 17 20 23 26)
             -DJSON_TestStandards=${CXX_STANDARD}
             -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_clang_cxx${CXX_STANDARD}
         COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_clang_cxx${CXX_STANDARD}
-        COMMAND cd ${PROJECT_BINARY_DIR}/build_clang_cxx${CXX_STANDARD} && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/clang-${CXX_STANDARD}_junit.xml"
+        COMMAND cd ${PROJECT_BINARY_DIR}/build_clang_cxx${CXX_STANDARD} && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/ci_test_clang_cxx${CXX_STANDARD}_junit.xml"
         COMMENT "Compile and test with Clang for C++${CXX_STANDARD}"
     )
 
@@ -137,7 +137,7 @@ foreach(CXX_STANDARD 11 14 17 20 23 26)
             -DCMAKE_EXE_LINKER_FLAGS="-lc++abi"
             -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_clang_cxx${CXX_STANDARD}
         COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_clang_cxx${CXX_STANDARD}
-        COMMAND cd ${PROJECT_BINARY_DIR}/build_clang_cxx${CXX_STANDARD} && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/clang_libc-${CXX_STANDARD}_junit.xml"
+        COMMAND cd ${PROJECT_BINARY_DIR}/build_clang_cxx${CXX_STANDARD} && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/ci_test_clang_libcxx_cxx${CXX_STANDARD}_junit.xml"
         COMMENT "Compile and test with Clang for C++${CXX_STANDARD} (libc++)"
     )
 endforeach()
@@ -152,7 +152,7 @@ add_custom_target(ci_test_noexceptions
     -DJSON_BuildTests=ON -DCMAKE_CXX_FLAGS=-DJSON_NOEXCEPTION -DDOCTEST_TEST_FILTER=--no-throw
     -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_noexceptions
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_noexceptions
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_noexceptions && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/no_exceptions_junit.xml"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_noexceptions && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/ci_test_noexceptions_junit.xml"
     COMMENT "Compile and test with exceptions switched off"
 )
 
@@ -166,7 +166,7 @@ add_custom_target(ci_test_noimplicitconversions
     -DJSON_BuildTests=ON -DJSON_ImplicitConversions=OFF
     -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_noimplicitconversions
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_noimplicitconversions
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_noimplicitconversions && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/no_implicit_conversions_junit.xml"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_noimplicitconversions && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/ci_test_noimplicitconversions_junit.xml"
     COMMENT "Compile and test with implicit conversions switched off"
 )
 
@@ -180,7 +180,7 @@ add_custom_target(ci_test_diagnostics
     -DJSON_BuildTests=ON -DJSON_Diagnostics=ON
     -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_diagnostics
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_diagnostics
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_diagnostics && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/improved_diagnostics_junit.xml"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_diagnostics && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/ci_test_diagnostics_junit.xml"
     COMMENT "Compile and test with improved diagnostics enabled"
 )
 
@@ -194,7 +194,7 @@ add_custom_target(ci_test_diagnostic_positions
     -DJSON_BuildTests=ON -DJSON_Diagnostic_Positions=ON
     -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_diagnostic_positions
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_diagnostic_positions
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_diagnostic_positions && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/diagnostic_positions_junit.xml"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_diagnostic_positions && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/ci_test_diagnostic_positions_junit.xml"
     COMMENT "Compile and test with diagnostic positions enabled"
 )
 
@@ -208,7 +208,7 @@ add_custom_target(ci_test_legacycomparison
     -DJSON_BuildTests=ON -DJSON_LegacyDiscardedValueComparison=ON
     -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_legacycomparison
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_legacycomparison
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_legacycomparison && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/legacy_support_junit.xml"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_legacycomparison && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/ci_test_legacycomparison_junit.xml"
     COMMENT "Compile and test with legacy discarded value comparison enabled"
 )
 
@@ -223,7 +223,7 @@ add_custom_target(ci_test_noglobaludls
     -DCMAKE_CXX_FLAGS=-DJSON_TEST_NO_GLOBAL_UDLS
     -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_noglobaludls
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_noglobaludls
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_noglobaludls && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/noglobaludls_junit.xml"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_noglobaludls && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/ci_test_noglobaludls_junit.xml"
     COMMENT "Compile and test with global UDLs disabled"
 )
 
@@ -237,14 +237,14 @@ add_custom_target(ci_test_coverage
         -DJSON_BuildTests=ON
         -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_coverage
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_coverage
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_coverage && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/test_coverage_1_junit.xml"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_coverage && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/ci_test_coverage_1_junit.xml"
 
     COMMAND CXX=g++ ${CMAKE_COMMAND}
         -DCMAKE_BUILD_TYPE=Debug -GNinja -DCMAKE_CXX_FLAGS="-m32;--coverage;-fprofile-arcs;-ftest-coverage"
         -DJSON_BuildTests=ON -DJSON_32bitTest=ONLY
         -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_coverage32
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_coverage32
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_coverage32 && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/test_coverage_2_junit.xml"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_coverage32 && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/ci_test_coverage_2_junit.xml"
 
     COMMAND ${LCOV_TOOL} --directory . --capture --output-file json.info --rc branch_coverage=1 --rc geninfo_unexecuted_blocks=1 --ignore-errors mismatch --ignore-errors unused
     COMMAND ${LCOV_TOOL} -e json.info ${SRC_FILES} --output-file json.info.filtered --rc branch_coverage=1 --ignore-errors unused
@@ -266,7 +266,7 @@ add_custom_target(ci_test_clang_sanitizer
         -DJSON_BuildTests=ON
         -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_clang_sanitizer
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_clang_sanitizer
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_clang_sanitizer && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/sanitiser_junit.xml"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_clang_sanitizer && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/ci_test_clang_sanitizer_junit.xml"
     COMMENT "Compile and test with sanitizers"
 )
 
@@ -317,7 +317,7 @@ add_custom_target(ci_test_single_header
         -DJSON_BuildTests=ON -DJSON_MultipleHeaders=OFF -DJSON_FastTests=ON
         -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_single_header
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_single_header
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_single_header && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/single_header_junit.xml"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_single_header && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/ci_test_single_header_junit.xml"
     COMMENT "Compile and test single-header version"
 )
 
@@ -331,7 +331,7 @@ add_custom_target(ci_test_valgrind
         -DJSON_BuildTests=ON -DJSON_Valgrind=ON
         -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_valgrind
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_valgrind
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_valgrind && ${CMAKE_CTEST_COMMAND} -L valgrind --parallel ${N} --output-on-failure --output-junit "../my_logs/valgrind_junit.xml"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_valgrind && ${CMAKE_CTEST_COMMAND} -L valgrind --parallel ${N} --output-on-failure --output-junit "../my_logs/ci_test_valgrind_junit.xml"
     COMMENT "Compile and test with Valgrind"
 )
 
@@ -460,7 +460,7 @@ add_custom_target(ci_offline_testdata
         -DJSON_BuildTests=ON -DJSON_FastTests=ON -DJSON_TestDataDirectory=${PROJECT_BINARY_DIR}/build_offline_testdata/test_data/json_test_data
         -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_offline_testdata
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_offline_testdata
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_offline_testdata && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/with_downloaded_test_data_junit.xml"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_offline_testdata && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure --output-junit "../my_logs/ci_offline_testdata_junit.xml"
     COMMENT "Check code with previously downloaded test data"
 )
 
@@ -477,7 +477,7 @@ add_custom_target(ci_non_git_tests
         -DJSON_BuildTests=ON -DJSON_FastTests=ON
         -S${PROJECT_BINARY_DIR}/build_non_git_tests/sources -B${PROJECT_BINARY_DIR}/build_non_git_tests
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_non_git_tests
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_non_git_tests && ${CMAKE_CTEST_COMMAND} --parallel ${N} -LE git_required --output-on-failure --output-junit "../my_logs/non_git_tests_junit.xml"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_non_git_tests && ${CMAKE_CTEST_COMMAND} --parallel ${N} -LE git_required --output-on-failure --output-junit "../my_logs/ci_non_git_tests_junit.xml"
     COMMENT "Check code when project was not checked out from Git"
 )
 
@@ -491,7 +491,7 @@ add_custom_target(ci_reproducible_tests
         -DJSON_BuildTests=ON -DJSON_FastTests=ON
         -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_reproducible_tests
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_reproducible_tests
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_reproducible_tests && ${CMAKE_CTEST_COMMAND} --parallel ${N} -LE not_reproducible --output-on-failure --output-junit "../my_logs/reproducible_tests_junit.xml"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_reproducible_tests && ${CMAKE_CTEST_COMMAND} --parallel ${N} -LE not_reproducible --output-on-failure --output-junit "../my_logs/ci_reproducible_tests_junit.xml"
     COMMENT "Check code and exclude tests that change installed files"
 )
 
@@ -629,7 +629,7 @@ foreach(COMPILER g++-4.8 g++-4.9 g++-5 g++-6 g++-7 g++-8 g++-9 g++-10 g++-11 cla
                 -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_compiler_${COMPILER}
                 ${ADDITIONAL_FLAGS}
             COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_compiler_${COMPILER}
-            COMMAND cd ${PROJECT_BINARY_DIR}/build_compiler_${COMPILER} && ${CMAKE_CTEST_COMMAND} --parallel ${N} --exclude-regex "test-unicode" --output-on-failure --output-junit "../my_logs/compiler_${COMPILER}_junit.xml"
+            COMMAND cd ${PROJECT_BINARY_DIR}/build_compiler_${COMPILER} && ${CMAKE_CTEST_COMMAND} --parallel ${N} --exclude-regex "test-unicode" --output-on-failure --output-junit "../my_logs/ci_test_compiler_${COMPILER}_junit.xml"
             COMMENT "Compile and test with ${COMPILER}"
         )
     endif()
@@ -643,7 +643,7 @@ add_custom_target(ci_test_compiler_default
         -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_compiler_default
         ${ADDITIONAL_FLAGS}
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_compiler_default --parallel ${N}
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_compiler_default && ${CMAKE_CTEST_COMMAND} --parallel ${N} --exclude-regex "test-unicode" -LE git_required --output-on-failure --output-junit "../my_logs/default_compiler_junit.xml"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_compiler_default && ${CMAKE_CTEST_COMMAND} --parallel ${N} --exclude-regex "test-unicode" -LE git_required --output-on-failure --output-junit "../my_logs/ci_test_compiler_default_junit.xml"
     COMMENT "Compile and test with default C++ compiler"
 )
 
@@ -670,7 +670,7 @@ add_custom_target(ci_icpc
         -DJSON_BuildTests=ON -DJSON_FastTests=ON
         -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_icpc
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_icpc
-    COMMAND cd ${PROJECT_BINARY_DIR}/build_icpc && ${CMAKE_CTEST_COMMAND} --parallel ${N} --exclude-regex "test-unicode" --output-on-failure --output-junit "../my_logs/intel_compiler_junit.xml"
+    COMMAND cd ${PROJECT_BINARY_DIR}/build_icpc && ${CMAKE_CTEST_COMMAND} --parallel ${N} --exclude-regex "test-unicode" --output-on-failure --output-junit "../my_logs/ci_icpc_junit.xml"
     COMMENT "Compile and test with ICPC"
 )
 
