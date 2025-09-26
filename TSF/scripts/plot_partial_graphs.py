@@ -1,5 +1,6 @@
 import sys
 import pydot
+import warnings
 import graphviz as gz
 from trudag.dotstop.core.graph import TrustableGraph, PydotGraph
 import trudag.dotstop.core.graph.graph_factory as factory
@@ -152,12 +153,21 @@ def plot_orchestrator(full_graph: TrustableGraph, base_url: str = ""):
             continue
         write_documentation(plot_all_single_layer_subgraphs(full_graph,[root],base_url))
 
+def main(base_url: str):
+    # build trustable graph from .dotstop.dot
+    full_trustable_graph = factory.build_trustable_graph(Path('.dotstop.dot'),Path('.'))
+
+    # base_url is expected as argument from console execution
+    plot_orchestrator(full_trustable_graph,base_url)
+
 ##########################
 # Below starts the script.
 ##########################
 
-# build trustable graph from .dotstop.dot
-full_trustable_graph = factory.build_trustable_graph(Path('.dotstop.dot'),Path('.'))
-
-# base_url is expected as argument from console execution
-plot_orchestrator(full_trustable_graph,sys.argv[1])
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        base_url = ""
+        warnings.warn("No base-url was transmitted. Hyperlinks amongst the partial graphs might be broken.")
+    else:
+        base_url = sys.argv[1]
+    main(base_url)
