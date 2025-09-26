@@ -61,13 +61,12 @@
 <!-- JLS&#45;22 -->
 <g id="node3" class="node">
 <title>JLS&#45;22</title>
-<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-22" xlink:title="JLS&#45;22: The github workflow\nexecutes the unit tests\ndaily and saves the results\nas time&#45;series data.\n(TODO) " target="_top">
-<polygon fill="none" stroke="black" points="484,-105.5 272,-105.5 272,-22.5 484,-22.5 484,-105.5"/>
-<text text-anchor="middle" x="378" y="-90.3" font-family="Open Sans" font-size="14.00">JLS&#45;22: The github workflow</text>
-<text text-anchor="middle" x="378" y="-75.3" font-family="Open Sans" font-size="14.00">executes the unit tests</text>
-<text text-anchor="middle" x="378" y="-60.3" font-family="Open Sans" font-size="14.00">daily and saves the results</text>
-<text text-anchor="middle" x="378" y="-45.3" font-family="Open Sans" font-size="14.00">as time&#45;series data.</text>
-<text text-anchor="middle" x="378" y="-30.3" font-family="Open Sans" font-size="14.00">(TODO) </text>
+<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-22" xlink:title="JLS&#45;22: The github workflow\nexecutes the unit tests\ndaily and saves the results\nas time&#45;series data.\n" target="_top">
+<polygon fill="none" stroke="black" points="484,-98 272,-98 272,-30 484,-30 484,-98"/>
+<text text-anchor="middle" x="378" y="-82.8" font-family="Open Sans" font-size="14.00">JLS&#45;22: The github workflow</text>
+<text text-anchor="middle" x="378" y="-67.8" font-family="Open Sans" font-size="14.00">executes the unit tests</text>
+<text text-anchor="middle" x="378" y="-52.8" font-family="Open Sans" font-size="14.00">daily and saves the results</text>
+<text text-anchor="middle" x="378" y="-37.8" font-family="Open Sans" font-size="14.00">as time&#45;series data.</text>
 </a>
 </g>
 </g>
@@ -94,8 +93,8 @@
 <!-- TA&#45;VALIDATION&#45;&gt;JLS&#45;22 -->
 <g id="edge3" class="edge">
 <title>TA&#45;VALIDATION&#45;&gt;JLS&#45;22</title>
-<path fill="none" stroke="black" d="M275.85,-271.74C298.07,-226.75 331.07,-159.97 353.51,-114.57"/>
-<polygon fill="black" stroke="black" points="356.69,-116.02 357.98,-105.51 350.42,-112.92 356.69,-116.02"/>
+<path fill="none" stroke="black" d="M275.85,-271.74C299.29,-224.29 334.73,-152.58 357.1,-107.3"/>
+<polygon fill="black" stroke="black" points="360.37,-108.57 361.66,-98.06 354.1,-105.47 360.37,-108.57"/>
 </g>
 <!-- TT&#45;RESULTS&#45;&gt;TA&#45;VALIDATION -->
 <g id="edge4" class="edge">

@@ -83,13 +83,12 @@
 <!-- JLS&#45;20 -->
 <g id="node5" class="node">
 <title>JLS&#45;20</title>
-<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-20" xlink:title="JLS&#45;20: A github workflow\nsaves the history of\nscores in the trustable\ngraph to derive trends.\n(TODO) " target="_top">
-<polygon fill="none" stroke="black" points="883,-98 687,-98 687,-15 883,-15 883,-98"/>
-<text text-anchor="middle" x="785" y="-82.8" font-family="Open Sans" font-size="14.00">JLS&#45;20: A github workflow</text>
-<text text-anchor="middle" x="785" y="-67.8" font-family="Open Sans" font-size="14.00">saves the history of</text>
-<text text-anchor="middle" x="785" y="-52.8" font-family="Open Sans" font-size="14.00">scores in the trustable</text>
-<text text-anchor="middle" x="785" y="-37.8" font-family="Open Sans" font-size="14.00">graph to derive trends.</text>
-<text text-anchor="middle" x="785" y="-22.8" font-family="Open Sans" font-size="14.00">(TODO) </text>
+<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-20" xlink:title="JLS&#45;20: A github workflow\nsaves the history of\nscores in the trustable\ngraph to derive trends.\n" target="_top">
+<polygon fill="none" stroke="black" points="883,-90.5 687,-90.5 687,-22.5 883,-22.5 883,-90.5"/>
+<text text-anchor="middle" x="785" y="-75.3" font-family="Open Sans" font-size="14.00">JLS&#45;20: A github workflow</text>
+<text text-anchor="middle" x="785" y="-60.3" font-family="Open Sans" font-size="14.00">saves the history of</text>
+<text text-anchor="middle" x="785" y="-45.3" font-family="Open Sans" font-size="14.00">scores in the trustable</text>
+<text text-anchor="middle" x="785" y="-30.3" font-family="Open Sans" font-size="14.00">graph to derive trends.</text>
 </a>
 </g>
 </g>
@@ -126,8 +125,8 @@
 <!-- TA&#45;CONFIDENCE&#45;&gt;JLS&#45;20 -->
 <g id="edge5" class="edge">
 <title>TA&#45;CONFIDENCE&#45;&gt;JLS&#45;20</title>
-<path fill="none" stroke="black" d="M492.49,-256.94C551.3,-216.84 650.77,-149.02 717.16,-103.75"/>
-<polygon fill="black" stroke="black" points="719.2,-106.6 725.49,-98.07 715.26,-100.82 719.2,-106.6"/>
+<path fill="none" stroke="black" d="M492.49,-256.94C554.53,-214.64 661.8,-141.5 727.77,-96.52"/>
+<polygon fill="black" stroke="black" points="730.11,-99.16 736.4,-90.64 726.16,-93.38 730.11,-99.16"/>
 </g>
 <!-- TT&#45;CONFIDENCE&#45;&gt;TA&#45;CONFIDENCE -->
 <g id="edge6" class="edge">

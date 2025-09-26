@@ -61,11 +61,11 @@
 <!-- JLS&#45;18 -->
 <g id="node3" class="node">
 <title>JLS&#45;18</title>
-<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-18" xlink:title="JLS&#45;18: Results from\ntests are accurately\ncaptured. (TODO) " target="_top">
+<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-18" xlink:title="JLS&#45;18: Results from\ntests are accurately\ncaptured. " target="_top">
 <polygon fill="none" stroke="black" points="400,-90.5 243,-90.5 243,-37.5 400,-37.5 400,-90.5"/>
 <text text-anchor="middle" x="321.5" y="-75.3" font-family="Open Sans" font-size="14.00">JLS&#45;18: Results from</text>
 <text text-anchor="middle" x="321.5" y="-60.3" font-family="Open Sans" font-size="14.00">tests are accurately</text>
-<text text-anchor="middle" x="321.5" y="-45.3" font-family="Open Sans" font-size="14.00">captured. (TODO) </text>
+<text text-anchor="middle" x="321.5" y="-45.3" font-family="Open Sans" font-size="14.00">captured. </text>
 </a>
 </g>
 </g>

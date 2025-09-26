@@ -22,7 +22,6 @@ The score of unreviewed items is always set to zero.
 Suspect links are indicated by italics.
 The contribution to the score of a parent item by a suspiciously linked child is always zero, regardless of the child's own score.
 ## Compliance for AOU
-This presents the compliance for the _Assumptions of Use_ (AOU) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -52,7 +51,6 @@ This presents the compliance for the _Assumptions of Use_ (AOU) in tabular form.
 | [AOU-27](AOU.md#aou-27) |  The integrator shall ensure that ChangeLog.md is updated whenever the local mirror of nlohmann/json is updated. | 0.00 |
 
 ## Compliance for JLEX
-This presents the compliance for the _JSON-Library Expectations_ (JLEX) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -60,7 +58,6 @@ This presents the compliance for the _JSON-Library Expectations_ (JLEX) in tabul
 | [JLEX-02](JLEX.md#jlex-02) |  The requirement regarding [JSON Deserialization](https://eclipse-score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__deserialization) is fulfilled. | 0.00 |
 
 ## Compliance for JLS
-This presents the compliance for the _JSON-Library Statements_ (JLS) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -80,18 +77,17 @@ This presents the compliance for the _JSON-Library Statements_ (JLS) in tabular 
 | [JLS-14](JLS.md#jls-14) |  The builds are repeatable (i.e. different builds lead to the same SHA value). (TODO) | 0.00 |
 | [JLS-16](JLS.md#jls-16) |  A list of tests, which is extracted from the test execution, is provided, along with a list of test environments. (TODO) | 0.00 |
 | [JLS-17](JLS.md#jls-17) |  A github workflow calculates the fraction of expectations covered by tests (TODO). | 0.00 |
-| [JLS-18](JLS.md#jls-18) |  Results from tests are accurately captured. (TODO) | 0.00 |
+| [JLS-18](JLS.md#jls-18) |  Results from tests are accurately captured. | 0.00 |
 | [JLS-19](JLS.md#jls-19) |  All components, dependencies and tools are listed in a manifest. | 0.00 |
-| [JLS-20](JLS.md#jls-20) |  A github workflow saves the history of scores in the trustable graph to derive trends. (TODO) | 0.00 |
+| [JLS-20](JLS.md#jls-20) |  A github workflow saves the history of scores in the trustable graph to derive trends. | 0.00 |
 | [JLS-21](JLS.md#jls-21) |  A score is calculated based on the number of mirrored and unmirrored things. (TODO) | 0.00 |
-| [JLS-22](JLS.md#jls-22) |  The github workflow executes the unit tests daily and saves the results as time-series data. (TODO) | 0.00 |
+| [JLS-22](JLS.md#jls-22) |  The github workflow executes the unit tests daily and saves the results as time-series data. | 0.00 |
 | [JLS-23](JLS.md#jls-23) |  The Eclipse S-CORE organization mirrors the nlohmann/json project in a github fork. | 0.00 |
 | [JLS-24](JLS.md#jls-24) |  The nlohmann/json library recognizes malformed JSON and returns an exception. | 0.00 |
 | [JLS-25](JLS.md#jls-25) |  Malicious code changes are mitigated by code reviews, adhering to Eclipse S-core contribution procedures and vigilance from the open-source community. | 0.00 |
 | [JLS-26](JLS.md#jls-26) |  Pipeline execution results are analyzed in the fork and the original nlohmann/json repository. | 0.00 |
 
 ## Compliance for NJF
-This presents the compliance for the _No JSON Faults_ (NJF) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -161,7 +157,6 @@ This presents the compliance for the _No JSON Faults_ (NJF) in tabular form.
 | [NJF-14.5](NJF.md#njf-14.5) |  The service does not accept UTF-8 byte order mark outside of a string and outside of the first three characters of the input. | 0.00 |
 
 ## Compliance for NPF
-This presents the compliance for the _No Parsing Faults_ (NPF) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -211,7 +206,6 @@ This presents the compliance for the _No Parsing Faults_ (NPF) in tabular form.
 | [NPF-07.2](NPF.md#npf-07.2) |  The service throws an exception on ill-formed UTF-8 data. | 0.00 |
 
 ## Compliance for PJD
-This presents the compliance for the _Parse JSON Data_ (PJD) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -221,7 +215,6 @@ This presents the compliance for the _Parse JSON Data_ (PJD) in tabular form.
 | [PJD-04](PJD.md#pjd-04) |  The service correctly parses 64-bit integers (exceeding the range defined in RFC8259). | 0.00 |
 
 ## Compliance for TA
-This presents the compliance for the _Trustable Assertions_ (TA) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -243,7 +236,6 @@ This presents the compliance for the _Trustable Assertions_ (TA) in tabular form
 | [TA-VALIDATION](TA.md#ta-validation) |  All specified tests are executed repeatedly, under defined conditions in controlled environments, according to specified objectives. | 0.00 |
 
 ## Compliance for TIJ
-This presents the compliance for the _Throw Ill-Formed JSON_ (TIJ) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -275,14 +267,12 @@ This presents the compliance for the _Throw Ill-Formed JSON_ (TIJ) in tabular fo
 | [TIJ-06](TIJ.md#tij-06) |  The service recognises ill-formed byte-order marks and throws an exception. | 0.00 |
 
 ## Compliance for TRUSTABLE
-This presents the ultimate trustability score for nlohmann/json.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
 | [TRUSTABLE-SOFTWARE](TRUSTABLE.md#trustable-software) |  This release of JSON-Library also reffered in the documentation as nlohmann/json library is Trustable. | 0.00 |
 
 ## Compliance for TT
-This presents the compliance for the _Trustable Tenets_ (TT) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -294,7 +284,6 @@ This presents the compliance for the _Trustable Tenets_ (TT) in tabular form.
 | [TT-RESULTS](TT.md#tt-results) |  Evidence is provided to demonstrate that nlohmann/json library does what it is supposed to do, and does not do what it must not do. | 0.00 |
 
 ## Compliance for WFJ
-This presents the compliance for _Well Formed JSON_ (WFJ) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -313,6 +302,6 @@ This presents the compliance for _Well Formed JSON_ (WFJ) in tabular form.
 _Generated for: Software_
 
 * _Repository root: /home/runner/work/json/json_
-* _Commit SHA: ef2b50d8112f76c7812b1f77a6c501a358a52756_
-* _Commit date/time: Fri Sep 19 12:26:04 2025_
-* _Commit tag: ef2b50d_
+* _Commit SHA: f699b0c4bd03f438de9f374020a32067e39b7bde_
+* _Commit date/time: Fri Sep 26 09:39:39 2025_
+* _Commit tag: f699b0c_
