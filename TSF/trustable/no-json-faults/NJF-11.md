@@ -2,6 +2,9 @@
 level: 1.1
 normative: true
 references:
+        - type: item
+          items:
+            - JLEX-01
         - type: function_reference
           name: "lexer::skip_whitespace"
           path: "include/nlohmann/detail/input/lexer.hpp"

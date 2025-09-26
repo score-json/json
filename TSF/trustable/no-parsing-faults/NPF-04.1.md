@@ -2,6 +2,10 @@
 level: 1.1
 normative: true
 references:
+        - type: item
+          items:
+            - JLEX-02
+            - NPF-04
         - type: cpp_test
           name: "parse;whitespace"
           path: "TSF/tests/unit-literals.cpp"

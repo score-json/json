@@ -2,6 +2,9 @@
 level: 1.1
 normative: true
 references:
+        - type: item
+          items:
+            - JLEX-01
         - type: cpp_test
           name: "deserialization;successful deserialization;stream"
           path: "tests/src/unit-deserialization.cpp"

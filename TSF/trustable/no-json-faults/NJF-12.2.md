@@ -3,6 +3,9 @@ level: 1.1
 normative: true
 
 references:
+        - type: item
+          items:
+            - JLEX-01
         - type: cpp_test
           name: "accept;overlong sequences"
           path: "TSF/tests/unit-strings.cpp"
