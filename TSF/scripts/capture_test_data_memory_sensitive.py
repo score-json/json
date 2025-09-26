@@ -170,7 +170,7 @@ if __name__ == "__main__":
         "cpp_standard TEXT, ",                      # cpp-standard
         "passed_cases INT, ",                       # number of passed test-cases
         "failed_cases INT, ",                       # number of failed test-cases
-        "skipped_cases INT, ",                      # number if skipped test-cases
+        "skipped_cases INT, ",                      # number of skipped test-cases
         "passed_assertions INT, ",                  # number of passed assertions
         "failed_assertions INT, ",                  # number of failed assertions
         "repo TEXT, ",                              # repository
@@ -209,7 +209,7 @@ if __name__ == "__main__":
         "cpp_standard TEXT, ",                      # cpp-standard
         "passed_cases INT, ",                       # number of passed test-cases
         "failed_cases INT, ",                       # number of failed test-cases
-        "skipped_cases INT, ",                      # number if skipped test-cases
+        "skipped_cases INT, ",                      # number of skipped test-cases
         "passed_assertions INT, ",                  # number of passed assertions
         "failed_assertions INT",                    # number of failed assertions
         ")"

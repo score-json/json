@@ -126,14 +126,14 @@ if __name__ == "__main__":
     cursor.execute(''.join(command))
     command = (
         "CREATE TABLE IF NOT EXISTS test_results(",
-        "timestamp INT, "   # NEEDS TO BE REMOVED!!!                        # when the test-run was started
+        "timestamp INT, "                           # when the test-run was started
         "name TEXT, ",                              # name of the test
         "execution_time REAL, ",                    # execution time in seconds
         "compiler TEXT, ",                          # compiler information
         "cpp_standard TEXT, ",                      # cpp-standard
         "passed_cases INT, ",                       # number of passed test-cases
         "failed_cases INT, ",                       # number of failed test-cases
-        "skipped_cases INT, ",                      # number if skipped test-cases
+        "skipped_cases INT, ",                      # number of skipped test-cases
         "passed_assertions INT, ",                  # number of passed assertions
         "failed_assertions INT, ",                  # number of failed assertions
         "repo TEXT, ",                              # repository
@@ -228,7 +228,7 @@ if __name__ == "__main__":
         "cpp_standard TEXT, ",                      # cpp-standard
         "passed_cases INT, ",                       # number of passed test-cases
         "failed_cases INT, ",                       # number of failed test-cases
-        "skipped_cases INT, ",                      # number if skipped test-cases
+        "skipped_cases INT, ",                      # number of skipped test-cases
         "passed_assertions INT, ",                  # number of passed assertions
         "failed_assertions INT",                    # number of failed assertions
         ")"
