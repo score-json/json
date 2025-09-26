@@ -2,6 +2,7 @@ from typing import TypeAlias, Tuple, List
 import os
 import requests
 import sqlite3
+import hashlib
 
 yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
@@ -232,3 +233,28 @@ def file_exists(configuration: dict[str, yaml]) -> tuple[float, list[Exception |
         else:
             found_files += 1 if os.path.isfile(file) else 0
     return (found_files/expected_files, exceptions)
+
+def sha_checker(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    # get file of which the sha is to be calculated
+    file = configuration.get("binary", None)
+    # test input on validitiy
+    if file is None:
+        return (1.0, [Warning("No files to check the SHA-value for; assuming that everything is in order.")])
+    elif not isinstance(file, str):
+        # type-errors are not tolerated
+        raise TypeError("The value of \"binary\" must be a string")
+    # get the expected sha
+    expected_sha = configuration.get("sha", None)
+    # test input on validitiy
+    if expected_sha is None:
+        return (1.0, [Warning("No expected SHA-value transmitted; assuming everything is in order.")])
+    try: expected_sha = str(expected_sha) 
+    except: raise TypeError("Can't convert the value of \"sha\" to a string.")
+    score = 0.0
+    exceptions = []
+    try:
+        my_sha = hashlib.sha256(open(file,"rb").read()).hexdigest
+        score = 1.0 if str(my_sha) == expected_sha else 0.0
+    except:
+        exceptions.append(RuntimeError(f"Can't calculate the SHA-value of {file}"))
+    return (score, exceptions)
