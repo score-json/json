@@ -2,7 +2,7 @@ import pytest
 import tempfile
 from pathlib import Path
 from unittest.mock import patch
-from references import CPPTestReference, JSONTestsuiteReference, FunctionReference, ListOfTestCases
+from references import CPPTestReference, JSONTestsuiteReference, FunctionReference, ListOfTestCases, ItemReference
 
 
 @pytest.fixture
@@ -563,7 +563,7 @@ def test_check_testsuite_file_is_used_by_cpp_test_missing_file():
         with pytest.raises(ValueError, match="JSON testsuite json_tests/missing.json is not used in the C\\+\\+ test file"):
             JSONTestsuiteReference("test_section", "test.cpp", test_suite_paths, "Test description")
     
-def test_get_function_start():
+def test_get_function_boundaries():
     lines = [
         'template<typename BasicJsonType>\n',
         'class lexer_base\n',
@@ -587,35 +587,9 @@ def test_get_function_start():
         '    }\n',
         '};\n'
     ]
-    assert FunctionReference.get_function_start("foo","lexer::my_function",lines,1) == 16
-
-def test_get_function_end():
-    lines = [
-        'template<typename BasicJsonType>\n',
-        'class lexer_base\n',
-        '{\n',
-        '    // class body\n',
-        '};\n',
-        '\n',
-        'template<typename BasicJsonType, typename InputAdapterType>\n',
-        'class lexer : public lexer_base<BasicJsonType>\n',
-        '{\n',
-        '\n',
-        '  private\n',
-        '    bool dummy_function()\n',
-        '    {\n',
-        '        return my_function();\n',
-        '    }\n',
-        '\n',
-        '    bool my_function()\n',
-        '    {\n',
-        '        // function body \n',
-        '    }\n',
-        '};\n'
-    ]
-    assert FunctionReference.get_function_end("foo","lexer::my_function",16,lines)==19
+    assert FunctionReference.get_function_boundaries("foo","lexer::my_function",lines,1) == [16,19]
     
-def test_get_function_start_with_multiple_overloads():
+def test_get_function_boundaries_with_multiple_overloads():
     lines = [
         'template<typename BasicJsonType>\n',
         'class lexer_base\n',
@@ -649,15 +623,15 @@ def test_get_function_start_with_multiple_overloads():
         '    }\n',
         '};\n'
     ]
-    assert FunctionReference.get_function_start("foo","lexer::my_function",lines,1) == 16
-    assert FunctionReference.get_function_start("foo","lexer::my_function",lines,2) == 21
-    assert FunctionReference.get_function_start("foo","lexer::my_function",lines,3) == 26
+    assert FunctionReference.get_function_boundaries("foo","lexer::my_function",lines,1) == [16,19]
+    assert FunctionReference.get_function_boundaries("foo","lexer::my_function",lines,2) == [21,24]
+    assert FunctionReference.get_function_boundaries("foo","lexer::my_function",lines,3) == [26,29]
     with pytest.raises(ValueError, match="Could not locate 4th implementation of lexer::my_function in file foo."):
-        FunctionReference.get_function_start("foo","lexer::my_function",lines,4)
+        FunctionReference.get_function_boundaries("foo","lexer::my_function",lines,4)
     with pytest.raises(ValueError, match="Could not locate 123rd implementation of lexer::my_function in file foo."):
-        FunctionReference.get_function_start("foo","lexer::my_function",lines,123)
+        FunctionReference.get_function_boundaries("foo","lexer::my_function",lines,123)
     with pytest.raises(ValueError, match="Could not locate 11th implementation of lexer::my_function in file foo."):
-        FunctionReference.get_function_start("foo","lexer::my_function",lines,11)
+        FunctionReference.get_function_boundaries("foo","lexer::my_function",lines,11)
 
 def test_get_function_line_numbers(temp_hpp_file):
     [a,b] = FunctionReference.get_function_line_numbers(str(temp_hpp_file),"lexer::my_function")
@@ -706,3 +680,11 @@ def test_extract_faulty_quotation():
 def test_transform_test_file_to_test_name():
     assert ListOfTestCases.transform_test_file_to_test_name("unit-dummy-test.cpp") == "test-dummy-test"
     assert ListOfTestCases.transform_test_file_to_test_name("unit-dummy_test.cpp") == "test-dummy_test"
+
+def test_faulty_init_ItemReference():
+    with pytest.raises(RuntimeError, match = r"Error: Can't initialise empty ItemReference."):
+        item_reference = ItemReference([])
+
+def test_init_ItemReference():
+    item_reference = ItemReference(["Hallo","Welt"])
+    assert item_reference._items == ["Hallo","Welt"]
