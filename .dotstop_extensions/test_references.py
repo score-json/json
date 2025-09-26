@@ -3,6 +3,7 @@ import tempfile
 from pathlib import Path
 from unittest.mock import patch
 from references import CPPTestReference, JSONTestsuiteReference, FunctionReference, ListOfTestCases
+from validators import file_exists
 
 
 @pytest.fixture
@@ -706,3 +707,20 @@ def test_extract_faulty_quotation():
 def test_transform_test_file_to_test_name():
     assert ListOfTestCases.transform_test_file_to_test_name("unit-dummy-test.cpp") == "test-dummy-test"
     assert ListOfTestCases.transform_test_file_to_test_name("unit-dummy_test.cpp") == "test-dummy_test"
+
+def test_file_exists(tmp_path):
+    root = tmp_path / "direx"
+    root.mkdir()
+    path_1 = root / "subfolder"
+    path_1.mkdir()
+    path_1_1 = path_1 / "test.yml"
+    path_1_1.write_text("test")
+    path_2 = root / "script.py"
+    path_2.write_text("print(\"Hallo, Welt\")")
+    files = [str(path_1),str(path_1_1),"foo.bar",str(path_2)]
+
+    score, exceptions = file_exists({"files": files})
+
+    assert score == 2/4
+    assert any(isinstance(exception,Warning) for exception in exceptions)
+    assert any(isinstance(exception,RuntimeError) for exception in exceptions)
