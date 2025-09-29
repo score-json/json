@@ -558,7 +558,7 @@ class FunctionReference(SourceSpanReference):
     
 class ListOfTestCases(BaseReference):
 
-    def __init__(self, test_files: list[str], recent_result_database: str = "artifacts/TestResults.db", recent_result_table: str = "test_results") -> None:
+    def __init__(self, test_files: list[str], recent_result_database: str = "artifacts/MemoryEfficientTestResults.db", recent_result_table: str = "test_results") -> None:
         self._test_files = test_files
         self._database = recent_result_database
         self._table =  recent_result_table
