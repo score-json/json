@@ -590,6 +590,33 @@ def test_get_function_boundaries():
     ]
     assert FunctionReference.get_function_boundaries("foo","lexer::my_function",lines,1) == [16,19]
     
+def test_get_function_boundaries_with_multiline_declaration():
+    lines = [
+        'template<typename BasicJsonType>\n',
+        'class lexer_base\n',
+        '{\n',
+        '    // class body\n',
+        '};\n',
+        '\n',
+        'template<typename BasicJsonType, typename InputAdapterType>\n',
+        'class lexer : public lexer_base<BasicJsonType>\n',
+        '{\n',
+        '\n',
+        '  private\n',
+        '    bool dummy_function()\n',
+        '    {\n',
+        '        return my_function();\n',
+        '    }\n',
+        '\n',
+        '    bool my_function(int: foo,',
+        '                       bool: bar)\n',
+        '    {\n',
+        '        // function body \n',
+        '    }\n',
+        '};\n'
+    ]
+    assert FunctionReference.get_function_boundaries("foo","lexer::my_function",lines,1) == [16,20]
+    
 def test_get_function_boundaries_with_multiple_overloads():
     lines = [
         'template<typename BasicJsonType>\n',

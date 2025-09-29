@@ -465,12 +465,12 @@ class FunctionReference(SourceSpanReference):
         instance = 0
         start_line = 0
         found_start = False
+        in_body = False
         for line_number, line in enumerate(lines):
             # first task: find literal string "class class_name " within a line
             if not in_class:
                 if f"class {name_parts[0]} " in line or f"class {name_parts[0]}\n" in line:
                     in_class = True
-                    continue
                 continue
             # now we are within the class
             # time to search for our function
@@ -510,19 +510,19 @@ class FunctionReference(SourceSpanReference):
                                 sections.pop()
                             except IndexError:
                                 raise ValueError(f"Fatal error: Could not resolve {name} in file {path}.")
-                if not found_start and len(sections)>0:
-                    found_start = True
-                if found_start and len(sections)==0:
+                if not in_body and len(sections)>0:
+                    in_body = True
+                if in_body and len(sections)==0:
                     return [start_line,line_number]
         if not in_class:
             raise ValueError(f"Could not find class {name_parts[0]} in file {path}")
-        if overload%10 == 1 and overload != 11:
+        if not in_body and overload%10 == 1 and overload%100 != 11:
             raise ValueError(f"Could not locate {overload}st implementation of {name_parts[1]} in file {path}.")
-        elif overload%10 == 2 and overload != 12:
+        elif not in_body and overload%10 == 2 and overload%100 != 12:
             raise ValueError(f"Could not locate {overload}nd implementation of {name} in file {path}.")
-        elif overload%10 == 3 and overload != 13:
+        elif not in_body and overload%10 == 3 and overload%100 != 13:
             raise ValueError(f"Could not locate {overload}rd implementation of {name} in file {path}.")
-        elif not found_start:
+        elif not in_body:
             raise ValueError(f"Could not locate {overload}th implementation of {name} in file {path}.")
         else:
             raise ValueError(f"Could not find end of function-body of {name} in file {path}.")
