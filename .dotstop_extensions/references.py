@@ -516,13 +516,13 @@ class FunctionReference(SourceSpanReference):
                     return [start_line,line_number]
         if not in_class:
             raise ValueError(f"Could not find class {name_parts[0]} in file {path}")
-        if not in_body and overload%10 == 1 and overload%100 != 11:
+        if not found_start and overload%10 == 1 and overload%100 != 11:
             raise ValueError(f"Could not locate {overload}st implementation of {name_parts[1]} in file {path}.")
-        elif not in_body and overload%10 == 2 and overload%100 != 12:
+        elif not found_start and overload%10 == 2 and overload%100 != 12:
             raise ValueError(f"Could not locate {overload}nd implementation of {name} in file {path}.")
-        elif not in_body and overload%10 == 3 and overload%100 != 13:
+        elif not found_start and overload%10 == 3 and overload%100 != 13:
             raise ValueError(f"Could not locate {overload}rd implementation of {name} in file {path}.")
-        elif not in_body:
+        elif not found_start:
             raise ValueError(f"Could not locate {overload}th implementation of {name} in file {path}.")
         else:
             raise ValueError(f"Could not find end of function-body of {name} in file {path}.")
