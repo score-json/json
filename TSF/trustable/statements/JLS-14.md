@@ -1,6 +1,10 @@
 ---
 level: 1.1
 normative: true
+references:
+    - type: website
+      url: "https://github.com/nlohmann/json/discussions/4731"
+      description: "post of Niels Lohmann announcing the release of version 3.12.0 containing the SHA-value of single_include/nlohmann/json.hpp"
 evidence:
     type: sha_checker
     configuration:
@@ -9,5 +13,3 @@ evidence:
 ---
 
 The SHA value of the library in use coincides with the SHA value provided by Niels Lohmann for that version.
-
-OLD: The builds are repeatable (i.e. different builds lead to the same SHA value). (TODO)
