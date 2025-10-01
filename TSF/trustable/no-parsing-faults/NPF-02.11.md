@@ -20,4 +20,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service parses numbers within the 64-bit double range but outside of the double precision without throwing an exception.
+The service parses numbers within the 64-bit double range but outside of the double precision without throwing an exception and without guarantee of precision.
