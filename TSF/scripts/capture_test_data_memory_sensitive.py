@@ -176,7 +176,6 @@ if __name__ == "__main__":
         "repo TEXT, ",                              # repository
         "run_id INT, ",                             # ID of workflow run
         "run_attempt INT, ",                        # Attempt-number of workflow run
-        "PRIMARY KEY(ctest_target, name, cpp_standard, compiler), "
         "FOREIGN KEY(repo, run_id, run_attempt) REFERENCES workflow_info);"
         )
     connector.execute(''.join(command))
