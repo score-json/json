@@ -101,7 +101,7 @@ def find_most_recent_results(target: str, name: str, compiler: str, cpp_standard
                         workflow_info.repo = test_results.repo 
                         AND workflow_info.run_id = test_results.run_id 
                         AND workflow_info.run_attempt = test_results.run_attempt
-                        WHERE test_results.ctest_target = ? AND test_results.compiler = ? AND test_results.name = ? AND test_results.cpp_standard = ?
+                        WHERE test_results.ctest_target = ? AND test_results.name = ? AND test_results.compiler = ? AND test_results.cpp_standard = ?
                     )
                     SELECT repo, run_id, run_attempt FROM combination
                     ORDER BY time DESC, run_id DESC, run_attempt DESC
@@ -176,11 +176,17 @@ if __name__ == "__main__":
         "repo TEXT, ",                              # repository
         "run_id INT, ",                             # ID of workflow run
         "run_attempt INT, ",                        # Attempt-number of workflow run
-        "PRIMARY KEY(ctest_target, name, cpp_standard, compiler), "
         "FOREIGN KEY(repo, run_id, run_attempt) REFERENCES workflow_info);"
         )
     connector.execute(''.join(command))
     cursor = connector.cursor()
+
+    # Count number of rows as heuristic size-checker.
+    # In case that the update-check fails, and every result is stored, allow for approximately 26 complete results to be stored
+    cursor.execute("SELECT MAX(COALESCE((SELECT MAX(rowid) FROM workflow_info),0),COALESCE((SELECT MAX(rowid) FROM test_results),0));")
+    if cursor.fetchone()[0] > 1e5:
+        connector.close()
+        raise RuntimeError("The persistent data storage is too large! Please move persistent data to external storage.")
 
     # fill in metadata
     # OBSERVE: This script expects the status of the github workflow as argument
