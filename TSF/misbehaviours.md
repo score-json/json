@@ -4,6 +4,11 @@ This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json re
 
 ## Open Issues
 
+### [#4925](https://github.com/nlohmann/json/issues/4925)
+- **Title:** Assertion error when converting to and from BJdata
+- **State:** OPEN
+- **Created At:** 2025-09-19T18:41:56Z
+
 ### [#4916](https://github.com/nlohmann/json/issues/4916)
 - **Title:** Constructing array from C++20 ranges view does not work
 - **State:** OPEN
@@ -38,16 +43,6 @@ This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json re
 - **Title:** merge json : arrays not appended?
 - **State:** OPEN
 - **Created At:** 2025-06-22T12:34:48Z
-
-### [#4826](https://github.com/nlohmann/json/issues/4826)
-- **Title:** MSVC: warning C5260: for constexpr variables defined in to_chars.hpp
-- **State:** OPEN
-- **Created At:** 2025-06-18T10:19:55Z
-
-### [#4825](https://github.com/nlohmann/json/issues/4825)
-- **Title:** Template instantiation of nlohmann::basic_json<> fails on C++17
-- **State:** OPEN
-- **Created At:** 2025-06-18T08:45:26Z
 
 ### [#4813](https://github.com/nlohmann/json/issues/4813)
 - **Title:** json::update() with merge_objects==true may trigger JSON_ASSERT for some objects
@@ -211,6 +206,16 @@ This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json re
 - **Title:** Problems with std::optional
 - **State:** CLOSED
 - **Created At:** 2025-06-27T18:57:10Z
+
+### [#4826](https://github.com/nlohmann/json/issues/4826)
+- **Title:** MSVC: warning C5260: for constexpr variables defined in to_chars.hpp
+- **State:** CLOSED
+- **Created At:** 2025-06-18T10:19:55Z
+
+### [#4825](https://github.com/nlohmann/json/issues/4825)
+- **Title:** Template instantiation of nlohmann::basic_json<> fails on C++17
+- **State:** CLOSED
+- **Created At:** 2025-06-18T08:45:26Z
 
 ### [#4821](https://github.com/nlohmann/json/issues/4821)
 - **Title:** open parse adds extra array
