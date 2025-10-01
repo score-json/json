@@ -101,7 +101,7 @@ def find_most_recent_results(target: str, name: str, compiler: str, cpp_standard
                         workflow_info.repo = test_results.repo 
                         AND workflow_info.run_id = test_results.run_id 
                         AND workflow_info.run_attempt = test_results.run_attempt
-                        WHERE test_results.ctest_target = ? AND test_results.compiler = ? AND test_results.name = ? AND test_results.cpp_standard = ?
+                        WHERE test_results.ctest_target = ? AND test_results.name = ? AND test_results.compiler = ? AND test_results.cpp_standard = ?
                     )
                     SELECT repo, run_id, run_attempt FROM combination
                     ORDER BY time DESC, run_id DESC, run_attempt DESC
