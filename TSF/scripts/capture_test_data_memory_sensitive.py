@@ -181,6 +181,13 @@ if __name__ == "__main__":
     connector.execute(''.join(command))
     cursor = connector.cursor()
 
+    # Count number of rows as heuristic size-checker.
+    # In case that the update-check fails, and every result is stored, allow for approximately 26 complete results to be stored
+    cursor.execute("SELECT MAX(COALESCE((SELECT MAX(rowid) FROM workflow_info),0),COALESCE((SELECT MAX(rowid) FROM test_results),0));")
+    if cursor.fetchone()[0] > 1e5:
+        connector.close()
+        raise RuntimeError("The persistent data storage is too large! Please move persistent data to external storage.")
+
     # fill in metadata
     # OBSERVE: This script expects the status of the github workflow as argument
     repo = environment.get('GITHUB_REPOSITORY')
