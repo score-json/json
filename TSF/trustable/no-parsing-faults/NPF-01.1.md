@@ -2,6 +2,9 @@
 level: 1.1
 normative: true
 references:
+        - type: item
+          items:
+            - JLEX-02
         - type: cpp_test
           name: "Unicode (1/5);ignore byte-order-mark"
           path: "tests/src/unit-unicode1.cpp"
