@@ -39,11 +39,6 @@ This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json re
 - **State:** OPEN
 - **Created At:** 2025-07-04T10:02:34Z
 
-### [#4828](https://github.com/nlohmann/json/issues/4828)
-- **Title:** merge json : arrays not appended?
-- **State:** OPEN
-- **Created At:** 2025-06-22T12:34:48Z
-
 ### [#4813](https://github.com/nlohmann/json/issues/4813)
 - **Title:** json::update() with merge_objects==true may trigger JSON_ASSERT for some objects
 - **State:** OPEN
@@ -206,6 +201,11 @@ This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json re
 - **Title:** Problems with std::optional
 - **State:** CLOSED
 - **Created At:** 2025-06-27T18:57:10Z
+
+### [#4828](https://github.com/nlohmann/json/issues/4828)
+- **Title:** merge json : arrays not appended?
+- **State:** CLOSED
+- **Created At:** 2025-06-22T12:34:48Z
 
 ### [#4826](https://github.com/nlohmann/json/issues/4826)
 - **Title:** MSVC: warning C5260: for constexpr variables defined in to_chars.hpp
