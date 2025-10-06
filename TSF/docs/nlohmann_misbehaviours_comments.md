@@ -5,7 +5,7 @@ issue-id | comment
 4925 | Optimized binary arrays have to be explicitly enabled when parsing from BJdata; otherwise an exception is thrown.
 4916 | Version 3.12.0 of nlohmann::json does not contain a constructor accepting std::views.
 4903 | Defining the namespace "nlohmann" multiple times within the same project leads to an error.
-4901 | Using json::from_ubjson() on long nested inputs can lead to stack overflow.
+4901 | Using json::from_ubjson() (cf. [here](https://json.nlohmann.me/api/basic_json/from_ubjson/)) on long nested inputs can lead to stack overflow.
 4898 | Brace initialisation yields array, cf. [here](https://json.nlohmann.me/home/faq/#brace-initialization-yields-arrays).
 4864 | Using std::optional with nlohmann::json is broken in version 3.12.0, but shall be fixed in version 3.12.1.
 4842 | Instead of the provided allocator, the standard allocator is used in the non-recursive destructor.
