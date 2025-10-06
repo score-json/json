@@ -16,6 +16,17 @@ The characterisation of "relevant change" follows the following heuristic argume
 * The execution time of each test is of lesser interest, therefore it is not continuously updated.
 * A test is uniquely identified by the columns ctest_target, name and cpp_standard.
 
+Moreover, a size-check is performed on the persistent storage, using the following heuristic assumptions 
+
+* It is expected, that an update of a test-result only happens, when a test fails, which leads automatically to the failure of the pipeline, which should trigger a manual review by the maintainer, or failed before.
+* It is expected, that tests fail rarely, and in particular on average less than 10 different test-cases per workflow-run fail.
+* It is expected, that less than 1,000 workflow runs, where a record of the test-result is triggered, happen per year, since these are only triggered once daily and on each push to main.
+* It is expected, that a ten-year-record of test-results is sufficient for documentation purposes.
+
+In view of these assumptions, we limit the storage to approximately 100,000 test-results and 100,000 workflow-metadata, which guarantees *en passant* that github's file size limit of 100MB is respected.
+In the worst case that every recorded test result is detected as a relevant change, this restraint collects test-results from 27 workflows in total.
+Whenever either limit of 100,000 test-results and 100,000 workflow-metadata in the persistent data storage is violated, the script returns the error "The persistent data storage is too large! Please move persistent data to external storage.", thereby failing the workflow, which advises the maintainer to take up action.
+
 ## clean_trudag_report.py
 
 The python-script [clean_trudag_report.py](clean_trudag_report.py) runs at the end of generate_report.sh.
