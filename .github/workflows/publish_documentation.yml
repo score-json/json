@@ -155,6 +155,23 @@ jobs:
               .[]
             ' raw_open_issues.json >> $OUTPUT_FILE
 
+          jq -c '
+            .[]
+            | select(.labels[]?; .name | test("bug"; "i"))
+            | { n: .number
+              , md: "### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n"
+              }
+          ' raw_open_issues.json |
+          while IFS= read -r rec; do
+            num=$(jq -r '.n' <<< "$rec")
+            md=$(jq -r '.md' <<< "$rec")
+            py_out=$(python3 ./TSF/scripts/identify_nlohmann_issue.py "$num")
+            {
+              printf "%s\n" "$md"
+              printf "%s\n" "$py_out"
+            } >> "$OUTPUT_FILE"
+          done
+
           # Add subtitle for closed issues
           echo "" >> $OUTPUT_FILE
           echo "## Closed Issues (since v3.12.0)" >> $OUTPUT_FILE
