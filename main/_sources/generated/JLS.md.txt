@@ -8492,7 +8492,7 @@ if __name__ == "__main__":
         "run_attempt INT, ",                        # Attempt-number of workflow run
         "status TEXT ",                             # Termination-status of workflow                                         
         "CHECK(status IN ('successful', 'failed', 'cancelled')) DEFAULT 'failed', ",
-    "time INT, ",                               # the time that is associated to this workflow run
+        "time INT, ",                               # the time that is associated to this workflow run
         "PRIMARY KEY(repo, run_id, run_attempt))"
     )
     cursor.execute(''.join(command))
@@ -10656,7 +10656,7 @@ if __name__ == "__main__":
         "run_attempt INT, ",                        # Attempt-number of workflow run
         "status TEXT ",                             # Termination-status of workflow                                         
         "CHECK(status IN ('successful', 'failed', 'cancelled')) DEFAULT 'failed', ",
-    "time INT, ",                               # the time that is associated to this workflow run
+        "time INT, ",                               # the time that is associated to this workflow run
         "PRIMARY KEY(repo, run_id, run_attempt))"
     )
     cursor.execute(''.join(command))

@@ -10683,7 +10683,7 @@ To reflect the structure of the nested sections, nested lists are utilised, wher
         <span class="s2">&quot;run_attempt INT, &quot;</span><span class="p">,</span>                        <span class="c1"># Attempt-number of workflow run</span>
         <span class="s2">&quot;status TEXT &quot;</span><span class="p">,</span>                             <span class="c1"># Termination-status of workflow                                         </span>
         <span class="s2">&quot;CHECK(status IN (&#39;successful&#39;, &#39;failed&#39;, &#39;cancelled&#39;)) DEFAULT &#39;failed&#39;, &quot;</span><span class="p">,</span>
-    <span class="s2">&quot;time INT, &quot;</span><span class="p">,</span>                               <span class="c1"># the time that is associated to this workflow run</span>
+        <span class="s2">&quot;time INT, &quot;</span><span class="p">,</span>                               <span class="c1"># the time that is associated to this workflow run</span>
         <span class="s2">&quot;PRIMARY KEY(repo, run_id, run_attempt))&quot;</span>
     <span class="p">)</span>
     <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">command</span><span class="p">))</span>
@@ -12758,7 +12758,7 @@ To reflect the structure of the nested sections, nested lists are utilised, wher
         <span class="s2">&quot;run_attempt INT, &quot;</span><span class="p">,</span>                        <span class="c1"># Attempt-number of workflow run</span>
         <span class="s2">&quot;status TEXT &quot;</span><span class="p">,</span>                             <span class="c1"># Termination-status of workflow                                         </span>
         <span class="s2">&quot;CHECK(status IN (&#39;successful&#39;, &#39;failed&#39;, &#39;cancelled&#39;)) DEFAULT &#39;failed&#39;, &quot;</span><span class="p">,</span>
-    <span class="s2">&quot;time INT, &quot;</span><span class="p">,</span>                               <span class="c1"># the time that is associated to this workflow run</span>
+        <span class="s2">&quot;time INT, &quot;</span><span class="p">,</span>                               <span class="c1"># the time that is associated to this workflow run</span>
         <span class="s2">&quot;PRIMARY KEY(repo, run_id, run_attempt))&quot;</span>
     <span class="p">)</span>
     <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">command</span><span class="p">))</span>
