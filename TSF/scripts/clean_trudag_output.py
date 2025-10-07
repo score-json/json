@@ -112,7 +112,7 @@ def main():
             if file.endswith('.md'):
                 clean_file(os.path.join(root, file))
             # abbreviations are only explained in the main report
-            if file == "trustable_report_for_software.md":
+            if file == "trustable_report_for_Software.md":
                 insert_line(os.path.join(root, file))
 
 if __name__ == "__main__":
