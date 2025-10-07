@@ -22,6 +22,7 @@ The score of unreviewed items is always set to zero.
 Suspect links are indicated by italics.
 The contribution to the score of a parent item by a suspiciously linked child is always zero, regardless of the child's own score.
 ## Compliance for AOU
+This presents the compliance for the _Assumptions of Use_ (AOU) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -51,6 +52,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [AOU-27](AOU.md#aou-27) |  The integrator shall ensure that ChangeLog.md is updated whenever the local mirror of nlohmann/json is updated. | 0.00 |
 
 ## Compliance for JLEX
+This presents the compliance for the _JSON-Library Expectations_ (JLEX) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -58,6 +60,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [JLEX-02](JLEX.md#jlex-02) |  The requirement regarding [JSON Deserialization](https://eclipse-score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__deserialization) is fulfilled. | 0.00 |
 
 ## Compliance for JLS
+This presents the compliance for the _JSON-Library Statements_ (JLS) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -88,6 +91,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [JLS-26](JLS.md#jls-26) |  Pipeline execution results are analyzed in the fork and the original nlohmann/json repository. | 0.00 |
 
 ## Compliance for NJF
+This presents the compliance for the _No JSON Faults_ (NJF) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -157,6 +161,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [NJF-14.5](NJF.md#njf-14.5) |  The service does not accept UTF-8 byte order mark outside of a string and outside of the first three characters of the input. | 0.00 |
 
 ## Compliance for NPF
+This presents the compliance for the _No Parsing Faults_ (NPF) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -206,6 +211,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [NPF-07.2](NPF.md#npf-07.2) |  The service throws an exception on ill-formed UTF-8 data. | 0.00 |
 
 ## Compliance for PJD
+This presents the compliance for the _Parse JSON Data_ (PJD) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -215,6 +221,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [PJD-04](PJD.md#pjd-04) |  The service correctly parses 64-bit integers (exceeding the range defined in RFC8259). | 0.00 |
 
 ## Compliance for TA
+This presents the compliance for the _Trustable Assertions_ (TA) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -236,6 +243,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [TA-VALIDATION](TA.md#ta-validation) |  All specified tests are executed repeatedly, under defined conditions in controlled environments, according to specified objectives. | 0.00 |
 
 ## Compliance for TIJ
+This presents the compliance for the _Throw Ill-Formed JSON_ (TIJ) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -267,12 +275,14 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [TIJ-06](TIJ.md#tij-06) |  The service recognises ill-formed byte-order marks and throws an exception. | 0.00 |
 
 ## Compliance for TRUSTABLE
+This presents the ultimate trustability score for nlohmann/json.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
 | [TRUSTABLE-SOFTWARE](TRUSTABLE.md#trustable-software) |  This release of JSON-Library also reffered in the documentation as nlohmann/json library is Trustable. | 0.00 |
 
 ## Compliance for TT
+This presents the compliance for the _Trustable Tenets_ (TT) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -284,6 +294,7 @@ The contribution to the score of a parent item by a suspiciously linked child is
 | [TT-RESULTS](TT.md#tt-results) |  Evidence is provided to demonstrate that nlohmann/json library does what it is supposed to do, and does not do what it must not do. | 0.00 |
 
 ## Compliance for WFJ
+This presents the compliance for _Well Formed JSON_ (WFJ) in tabular form.
 
 | Item   | Summary | Score |
 |--------|---------|-------|
@@ -302,6 +313,6 @@ The contribution to the score of a parent item by a suspiciously linked child is
 _Generated for: Software_
 
 * _Repository root: /home/runner/work/json/json_
-* _Commit SHA: 05e624494a816810f81abc71bfa79b870586db55_
-* _Commit date/time: Mon Oct  6 15:13:57 2025_
-* _Commit tag: 05e6244_
+* _Commit SHA: 74f3891334fb882026b534d225af45ba67579072_
+* _Commit date/time: Tue Oct  7 17:09:21 2025_
+* _Commit tag: 74f3891_
