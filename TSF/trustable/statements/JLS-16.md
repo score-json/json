@@ -1,9 +1,14 @@
 ---
 references:
-    - type: list_of_test_cases
-      test_files:
-        - TSF/tests
-        - tests/src
+    - type: verbose_file
+      path: "./TSF/docs/list_of_test_environments.md"
+      comment: "The list of all test-cases together with their execution environments"
+evidence:
+    type: check_list_of_tests
+    configuration: 
+        sources:
+            - "./tests/src"
+            - "./TSF/tests"
 level: 1.1
 normative: true
 ---

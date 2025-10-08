@@ -2,8 +2,8 @@ import pytest
 import tempfile
 from pathlib import Path
 from unittest.mock import patch
+from references import CPPTestReference, JSONTestsuiteReference, FunctionReference, ItemReference
 from validators import file_exists
-from references import CPPTestReference, JSONTestsuiteReference, FunctionReference, ListOfTestCases, ItemReference
 
 
 @pytest.fixture
@@ -673,41 +673,13 @@ def test_init_function_reference(temp_hpp_file):
     assert ref.path == temp_hpp_file
     assert ref._overload == 1
 
-def test_default_init_ListOfTestCases():
-    ref = ListOfTestCases(["file_1","file_2"])
-    assert ref._test_files == ["file_1","file_2"]
-    assert ref._database == "artifacts/MemoryEfficientTestResults.db"
-    assert ref._table == "test_results"
+def test_faulty_init_ItemReference():
+    with pytest.raises(RuntimeError, match = r"Error: Can't initialise empty ItemReference."):
+        item_reference = ItemReference([])
 
-def test_non_default_init_ListOfTestCases():
-    ref = ListOfTestCases(["file_1","file_2"],"my_database.db","my_fancy_table")
-    assert ref._test_files == ["file_1","file_2"]
-    assert ref._database == "my_database.db"
-    assert ref._table == "my_fancy_table"
-
-def test_compile_string():
-    with pytest.raises(RuntimeError):
-        ListOfTestCases.compile_string([])
-
-def test_remove_and_count_indent():
-    assert ListOfTestCases.remove_and_count_indent("Hallo")== (0,"Hallo")
-    assert ListOfTestCases.remove_and_count_indent(" Hallo") == (1,"Hallo")
-    assert ListOfTestCases.remove_and_count_indent("\t Hallo Welt \t\t") == (5,"Hallo Welt \t\t")
-
-def test_extract_quotation():
-    assert ListOfTestCases.extract_quotation("\"Hallo\" Welt") == "Hallo"
-    assert ListOfTestCases.extract_quotation("This is quite \"exciting\", isn't it.") == "exciting"
-    assert ListOfTestCases.extract_quotation("\"Hallo\" \"Welt\"") == "Hallo"
-
-def test_extract_faulty_quotation():
-    with pytest.raises(RuntimeError, match=r"Expected quotation mark; none were detected."):
-        ListOfTestCases.extract_quotation("Hallo Welt")
-    with pytest.raises(RuntimeError, match=r"Expected quotation marks; only one was detected."):
-        ListOfTestCases.extract_quotation("Hallo \"Welt")
-
-def test_transform_test_file_to_test_name():
-    assert ListOfTestCases.transform_test_file_to_test_name("unit-dummy-test.cpp") == "test-dummy-test"
-    assert ListOfTestCases.transform_test_file_to_test_name("unit-dummy_test.cpp") == "test-dummy_test"
+def test_init_ItemReference():
+    item_reference = ItemReference(["Hallo","Welt"])
+    assert item_reference._items == ["Hallo","Welt"]
 
 def test_file_exists(tmp_path):
     root = tmp_path / "direx"
@@ -725,10 +697,3 @@ def test_file_exists(tmp_path):
     assert score == 2/4
     assert any(isinstance(exception,Warning) for exception in exceptions)
     assert any(isinstance(exception,RuntimeError) for exception in exceptions)
-def test_faulty_init_ItemReference():
-    with pytest.raises(RuntimeError, match = r"Error: Can't initialise empty ItemReference."):
-        item_reference = ItemReference([])
-
-def test_init_ItemReference():
-    item_reference = ItemReference(["Hallo","Welt"])
-    assert item_reference._items == ["Hallo","Welt"]
