@@ -64,7 +64,11 @@ tests/CMakeLists.txt
 .github/workflows/publish_documentation.yml
     This workflow is replaced with a completely customised version, which reflects the use of trudag and the integration into the Eclipse S-CORE organisation.
     Therefore, it is recommended to not change this workflow. 
-    In particular, the version of publish_documentation in the original repository nlohmann/json must not replace
+    In particular, the version of publish_documentation.yml in the original repository nlohmann/json must not replace the publish_documentation.yml of the present repository.
+
+.github/workflows/test_trudag_extensions.yml
+    This workflow is not present in the original nlohmann/json and must not be removed by the update.
+
 
 Other entries of .github/workflows
     For every workflow, it must be ensured that they are executed on workflow_call, only.
