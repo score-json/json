@@ -86,6 +86,40 @@ def get_all_xml_files(directory: str = '.') -> list[str]:
             result.append(file)
     return result
 
+def get_ctest_target(log_name: str) -> str:
+    # extracts name of ctest target from junit log
+    # log_name has the form "path/to/log/file/target_junit.xml", and target is expected
+    log = log_name.split('/')[-1]
+    return log.removesuffix("_junit.xml")
+
+def find_most_recent_results(target: str, name: str, compiler: str, cpp_standard: str, database: sqlite3.Connection) -> list[int]:
+    cursor = database.cursor()
+    cursor.execute("""
+                    WITH combination AS (
+                        SELECT workflow_info.repo, workflow_info.run_id, workflow_info.run_attempt, workflow_info.time
+                        FROM test_results INNER JOIN workflow_info ON
+                        workflow_info.repo = test_results.repo 
+                        AND workflow_info.run_id = test_results.run_id 
+                        AND workflow_info.run_attempt = test_results.run_attempt
+                        WHERE test_results.ctest_target = ? AND test_results.name = ? AND test_results.compiler = ? AND test_results.cpp_standard = ?
+                    )
+                    SELECT repo, run_id, run_attempt FROM combination
+                    ORDER BY time DESC, run_id DESC, run_attempt DESC
+                    LIMIT 1;
+                    """,(target,name,compiler,cpp_standard))
+    result = cursor.fetchone()
+    if result is None:
+        # if no recent run is found, data need to be stored
+        return [] 
+    repo, run_id, run_attempt = result
+    cursor.execute("""
+                    SELECT passed_cases, failed_cases, skipped_cases, passed_assertions, failed_assertions 
+                    FROM test_results WHERE
+                    ctest_target = ? AND name = ? AND compiler = ? AND cpp_standard = ? AND repo = ? AND run_id = ? AND run_attempt = ?
+                    """, (target,name,compiler,cpp_standard,repo,run_id,run_attempt))
+    result = cursor.fetchone()
+    return [] if result is None else list(result)
+
 ##########################
 # Below starts the script.
 ##########################
@@ -106,13 +140,15 @@ if __name__ == "__main__":
         environment = setup_environment_variables()
     except RuntimeError as e:
         raise RuntimeError("Critical error: Can not uniquely identify environment data! Aborting recording of data.")
+    
+    # Step 1: store metadata of workflow run persistently
 
     # initiate connection to database
-    connector = sqlite3.connect("TSF/TestResultData.db")
+    connector = sqlite3.connect("TSF/MemoryEfficientTestResultData.db")
     connector.execute("PRAGMA foreign_keys = ON")
-    cursor = connector.cursor()
 
     # load expected tables
+    # table workflow_info contains metadata of workflow and is updated every time
     command = (
         "CREATE TABLE IF NOT EXISTS workflow_info(",
         "repo TEXT, ",                              # repository
@@ -123,10 +159,11 @@ if __name__ == "__main__":
         "time INT, ",                               # the time that is associated to this workflow run
         "PRIMARY KEY(repo, run_id, run_attempt))"
     )
-    cursor.execute(''.join(command))
+    connector.execute(''.join(command))
+    # table test_results contains detailed results for each individual test
     command = (
         "CREATE TABLE IF NOT EXISTS test_results(",
-        "timestamp INT, "                           # when the test-run was started
+        "ctest_target TEXT, ",                      # name of the ctest target located in ci.cmake
         "name TEXT, ",                              # name of the test
         "execution_time REAL, ",                    # execution time in seconds
         "compiler TEXT, ",                          # compiler information
@@ -139,31 +176,17 @@ if __name__ == "__main__":
         "repo TEXT, ",                              # repository
         "run_id INT, ",                             # ID of workflow run
         "run_attempt INT, ",                        # Attempt-number of workflow run
-        "FOREIGN KEY(repo, run_id, run_attempt) REFERENCES workflow_info)"
+        "FOREIGN KEY(repo, run_id, run_attempt) REFERENCES workflow_info);"
         )
-    cursor.execute(''.join(command))
+    connector.execute(''.join(command))
+    cursor = connector.cursor()
 
-    # Due to storage space constraints, only most recent 100 test-results are stored.
-    # Heuristic calculations have demonstrated that this should ensure that
-    # the TestResultData.db is below 100MiB, which is github's hard file size limit.
-
-    cursor.execute("SELECT COUNT(*) FROM workflow_info")
-    saved_test_data = int(cursor.fetchone()[0])
-    while saved_test_data>=100:
-        # delete oldest saved data
-        cursor.execute("SELECT MIN(time) FROM workflow_info")
-        oldest_time = int(cursor.fetchone()[0])
-        cursor.execute("SELECT repo, run_id, run_attempt FROM workflow_info WHERE \"time\" = ?", (oldest_time,))
-        results = cursor.fetchall()
-        # Delete all data associated to all the oldest workflow runs 
-        for result in results:
-            # it is expected that there is only one result
-            cursor.execute("DELETE FROM test_results WHERE repo = \"?\" AND run_id = ? AND run_attempt = ?", (result[0],result[1],result[2]))
-            cursor.execute("DELETE FROM workflow_info WHERE repo = \"?\" AND run_id = ? AND run_attempt = ?", (result[0],result[1],result[2]))
-            connector.commit()
-        # don't forget to update!
-        cursor.execute("SELECT COUNT(*) FROM workflow_info")
-        saved_test_data = int(cursor.fetchone()[0])
+    # Count number of rows as heuristic size-checker.
+    # In case that the update-check fails, and every result is stored, allow for approximately 26 complete results to be stored
+    cursor.execute("SELECT MAX(COALESCE((SELECT MAX(rowid) FROM workflow_info),0),COALESCE((SELECT MAX(rowid) FROM test_results),0));")
+    if cursor.fetchone()[0] > 1e5:
+        connector.close()
+        raise RuntimeError("The persistent data storage is too large! Please move persistent data to external storage.")
 
     # fill in metadata
     # OBSERVE: This script expects the status of the github workflow as argument
@@ -171,57 +194,21 @@ if __name__ == "__main__":
     run_id = environment.get('GITHUB_RUN_ID')
     run_attempt = environment.get('GITHUB_RUN_ATTEMPT')
     time = int(datetime.now(timezone.utc).timestamp())
-    command = f"INSERT INTO workflow_info VALUES(?,?,?,?,?)"
+    command = "INSERT INTO workflow_info VALUES(?,?,?,?,?)"
     cursor.execute(command,(repo, run_id, run_attempt, status, time))
     # Don't forget to save!
     connector.commit()
-
-    # Load my artifacts
-    failed_data = []
-    junit_logs = get_all_xml_files("./my_artifacts/")
-
-    #extract data
-    for junit_log in junit_logs:
-        tree = ET.parse(junit_log)
-        file_root = tree.getroot()
-        testsuite = next(file_root.iter('testsuite'), None)
-        if testsuite is None:
-            print(f"Error: Could not find testsuite data in {junit_log}.")
-            failed_data.append(junit_log)
-            continue
-        for testcase in (case for case in file_root.iter('testcase') if is_unit_test(case)):
-            metadata = get_metadata(testcase)
-            command = (
-                "INSERT INTO test_results VALUES(",
-                f"{int(datetime.fromisoformat(testsuite.get('timestamp')).timestamp())}, ",
-                f"'{metadata.get('name')}', ",
-                f"{metadata.get('execution time')}, ",
-                f"'{testsuite.get('name')}', ",
-                f"'{metadata.get('standard')}', ",
-                f"{metadata.get('passed test cases')}, ",
-                f"{metadata.get('failed test cases')}, ",
-                f"{metadata.get('skipped test cases')}, ",
-                f"{metadata.get('passed assertions')}, ",
-                f"{metadata.get('failed assertions')}, ",
-                f"'{repo}', ",
-                f"{run_id}, ",
-                f"{run_attempt}"
-                ")"
-            )
-            command = ''.join(command)
-            cursor.execute(command)
-            connector.commit()
-
-    # storage space on the github is limited.
-
-    # finally, most recent test data are stored separately
-
+    
+    # Step 2: generate report of most recent test run and update persistent storage if necessary
+    
     # initialise database connection
-    conn = sqlite3.connect("TestResults.db")
+    conn = sqlite3.connect("MemoryEfficientTestResults.db")
     cur = conn.cursor()
     # add the expected table
+    # the table TestResults.test_results differs from TestResultData.test_results in that the metadata of the commit are not saved.
     command = (
         "CREATE TABLE IF NOT EXISTS test_results(",
+        "ctest_target TEXT, ",                      # name of the ctest target located in ci.cmake
         "name TEXT, ",                              # name of the test
         "execution_time REAL, ",                    # execution time in seconds
         "compiler TEXT, ",                          # compiler information
@@ -233,26 +220,53 @@ if __name__ == "__main__":
         "failed_assertions INT",                    # number of failed assertions
         ")"
         )
-    cur.execute(''.join(command))
-    # copy most recent data from persistent data storage
-    cur.execute("ATTACH DATABASE 'TSF/TestResultData.db' AS source")
-    command = """
-            INSERT INTO test_results (
-                name, execution_time, compiler, cpp_standard,
-                passed_cases, failed_cases, skipped_cases,
-                passed_assertions, failed_assertions
-            )
-            SELECT
-                name, execution_time, compiler, cpp_standard,
-                passed_cases, failed_cases, skipped_cases,
-                passed_assertions, failed_assertions
-            FROM source.test_results
-            WHERE repo = ? AND run_id = ? AND run_attempt = ?
-    """
-    cur.execute(command, (repo, run_id, run_attempt))
-    conn.commit()
-    # detach persistent database
-    cur.execute("DETACH DATABASE source")
+    conn.execute(''.join(command))
+
+    # Load my artifacts
+    junit_logs = get_all_xml_files("./my_artifacts/")
+
+    #extract data
+    for junit_log in junit_logs:
+        tree = ET.parse(junit_log)
+        file_root = tree.getroot()
+        testsuite = next(file_root.iter('testsuite'), None)
+        if testsuite is None:
+            print(f"Error: Could not find testsuite data in {junit_log}.")
+            continue
+        for testcase in (case for case in file_root.iter('testcase') if is_unit_test(case)):
+            metadata = get_metadata(testcase)
+            target = get_ctest_target(junit_log)
+            compiler = testsuite.get('name')
+            more_compiler_info = [case for case in file_root.iter('testcase') if case.get("name") == "cmake_target_include_directories_configure"]
+            if len(more_compiler_info) != 0:
+                compiler_information = more_compiler_info[0]
+                information = list(compiler_information.find("system-out").itertext())[0].split('\n')[0]
+                compiler = information.replace("-- The CXX compiler identification is ","")
+            name = metadata.get('name')
+            cpp_standard = metadata.get('standard')
+            data = (
+                        target,
+                        name,
+                        metadata.get('execution time'), 
+                        compiler, 
+                        cpp_standard, 
+                        metadata.get('passed test cases'), 
+                        metadata.get('failed test cases'), 
+                        metadata.get('skipped test cases'), 
+                        metadata.get('passed assertions'), 
+                        metadata.get('failed assertions')
+                    )
+            command ="INSERT INTO test_results VALUES(?,?,?,?,?,?,?,?,?,?);"
+            cur.execute(command, data)
+            conn.commit()
+            most_recently_stored_results = find_most_recent_results(target,name,compiler,cpp_standard,connector)
+            current_results = [metadata.get('passed test cases'),metadata.get('failed test cases'),metadata.get('skipped test cases'),metadata.get('passed assertions'),metadata.get('failed assertions')]
+            if (len(most_recently_stored_results) != 5) or any(most_recently_stored_results[i]!=current_results[i] for i in range(0,5)):
+                data = data + (repo, run_id, run_attempt)
+                command ="INSERT INTO test_results VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?);"
+                cursor.execute(command,data)
+
+                
     # terminate connection to temporary database
     # don't forget to commit the changes
     conn.commit()

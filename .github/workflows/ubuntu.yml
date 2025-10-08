@@ -350,29 +350,29 @@ jobs:
       
       - name: Load persistent data
         run: |
-          if ! git ls-tree --name-only origin/save_historical_data TSF/TestResultData.db | grep TSF/TestResultData.db; then
-            touch TSF/TestResultData.db
-            git add TSF/TestResultData.db
+          if ! git ls-tree --name-only origin/save_historical_data TSF/MemoryEfficientTestResultData.db | grep TSF/MemoryEfficientTestResultData.db; then
+            touch TSF/MemoryEfficientTestResultData.db
+            git add TSF/MemoryEfficientTestResultData.db
             git commit -m "Create persistent storage"
             git push origin save_historical_data
           fi
           git checkout $branch_name
-          git checkout save_historical_data -- TSF/TestResultData.db
+          git checkout save_historical_data -- TSF/MemoryEfficientTestResultData.db
 
       - name: append test data
         run: |
-          python3 TSF/scripts/capture_test_data.py successful
+          python3 TSF/scripts/capture_test_data_memory_sensitive.py successful
       
       - name: Checkout data storage branch
         if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref_name == 'main')
         run: |
-          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/TestResultData.db)
+          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/MemoryEfficientTestResultData.db)
           git checkout save_historical_data
 
       - name: Commit and Push persistent data
         if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref_name == 'main')
         run: |
-          git add TSF/TestResultData.db
+          git add TSF/MemoryEfficientTestResultData.db
           git commit -m "Save test data" || echo "No test data to be saved"
           git push origin save_historical_data
       
@@ -385,7 +385,7 @@ jobs:
       - name: Move test report
         run: |
           mkdir test_report
-          mv TestResults.db test_report/TestResults.db
+          mv MemoryEfficientTestResults.db test_report/MemoryEfficientTestResults.db
 
       - name: Upload test report 
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
@@ -435,29 +435,29 @@ jobs:
       
       - name: Load persistent data
         run: |
-          if ! git ls-tree --name-only origin/save_historical_data TSF/TestResultData.db | grep TSF/TestResultData.db; then
-            touch TSF/TestResultData.db
-            git add TSF/TestResultData.db
+          if ! git ls-tree --name-only origin/save_historical_data TSF/MemoryEfficientTestResultData.db | grep TSF/MemoryEfficientTestResultData.db; then
+            touch TSF/MemoryEfficientTestResultData.db
+            git add TSF/MemoryEfficientTestResultData.db
             git commit -m "Create persistent storage"
             git push origin save_historical_data
           fi
           git checkout $branch_name
-          git checkout save_historical_data -- TSF/TestResultData.db
+          git checkout save_historical_data -- TSF/MemoryEfficientTestResultData.db
 
       - name: append test data
         run: |
-          python3 TSF/scripts/capture_test_data.py failed
+          python3 TSF/scripts/capture_test_data_memory_sensitive.py failed
       
       - name: Checkout data storage branch
         if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref_name == 'main')
         run: |
-          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/TestResultData.db)
+          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/MemoryEfficientTestResultData.db)
           git checkout save_historical_data
 
       - name: Commit and Push persistent data
         if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref_name == 'main')
         run: |
-          git add TSF/TestResultData.db
+          git add TSF/MemoryEfficientTestResultData.db
           git commit -m "Save test data" || echo "No test data to be saved"
           git push origin save_historical_data
       
@@ -470,7 +470,7 @@ jobs:
       - name: Move test report
         run: |
           mkdir test_report
-          mv TestResults.db test_report/TestResults.db
+          mv MemoryEfficientTestResults.db test_report/MemoryEfficientTestResults.db
 
       - name: Upload test report 
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
@@ -520,29 +520,29 @@ jobs:
       
       - name: Load persistent data
         run: |
-          if ! git ls-tree --name-only origin/save_historical_data TSF/TestResultData.db | grep TSF/TestResultData.db; then
-            touch TSF/TestResultData.db
-            git add TSF/TestResultData.db
+          if ! git ls-tree --name-only origin/save_historical_data TSF/MemoryEfficientTestResultData.db | grep TSF/MemoryEfficientTestResultData.db; then
+            touch TSF/MemoryEfficientTestResultData.db
+            git add TSF/MemoryEfficientTestResultData.db
             git commit -m "Create persistent storage"
             git push origin save_historical_data
           fi
           git checkout $branch_name
-          git checkout save_historical_data -- TSF/TestResultData.db
+          git checkout save_historical_data -- TSF/MemoryEfficientTestResultData.db
 
       - name: append test data
         run: |
-          python3 TSF/scripts/capture_test_data.py cancelled
+          python3 TSF/scripts/capture_test_data_memory_sensitive.py cancelled
       
       - name: Checkout data storage branch
         if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref_name == 'main')
         run: |
-          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/TestResultData.db)
+          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/MemoryEfficientTestResultData.db)
           git checkout save_historical_data
 
       - name: Commit and Push persistent data
         if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref_name == 'main')
         run: |
-          git add TSF/TestResultData.db
+          git add TSF/MemoryEfficientTestResultData.db
           git commit -m "Save test data" || echo "No test data to be saved"
           git push origin save_historical_data
       
@@ -555,7 +555,7 @@ jobs:
       - name: Move test report
         run: |
           mkdir test_report
-          mv TestResults.db test_report/TestResults.db
+          mv MemoryEfficientTestResults.db test_report/MemoryEfficientTestResults.db
 
       - name: Upload test report 
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
@@ -578,8 +578,8 @@ jobs:
         run: |
           echo "Generating ubuntu artifact..."
           mkdir -p ubuntu
-          if [ -f TestResults.db ]; then
-            mv TestResults.db ubuntu/TestResults.db
+          if [ -f MemoryEfficientTestResults.db ]; then
+            mv MemoryEfficientTestResults.db ubuntu/MemoryEfficientTestResults.db
           else
             echo "No test-results were captured."
           fi
