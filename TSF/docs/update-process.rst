@@ -34,8 +34,11 @@ cmake/ci.cmake
     For this, the option --output-junit is set with output path "../my_logs/TARGETNAME_junit.xml", where TARGETNAME is replaced by the name of the respective cmake target; in case that this convention is insufficient to uniquely identify the logs, TARGETNAME is amended by a number.
     When updating, it must be ensured that these adaptations are preserved.
     Moreover, if the update introduces new cmake targets or new executions of ctest, it must be ensured, that the junit-log is generated and stored with a similar naming convention in the folder "../my_logs/".
-    Otherwise, it can not be ensured that the test data are accurately captured.  
+    Otherwise, it can not be ensured that the test data are accurately captured.
 
+cmake/download_test_data.cmake
+    This file is modified to ensure that the test-data are not downloaded from the original test-data repository, but instead from the copy of that repository within the Eclipse S-CORE organisation.
+    It must be ensured that this change is preserved.
 
 tests/CMakeLists.txt
     This file collects, in particular, the files containing the unit- and integration-tests in a list, which is given to cmake. 
@@ -81,6 +84,7 @@ Other entries of .github/workflows
     THIS REQUIRES A TAD MORE WORK THAN I WOULD LIKE.
 
 
+
 Necessary adaptations of the documentation
 ------------------------------------------
 
@@ -109,3 +113,17 @@ The scheduled github workflows are executed on the default branch, only.
 To guarantee compliance with the TSF, the unit- and integration-tests are run daily.
 Therefore, it must be ensured that the branch containing the most recent documented version of nlohmann/json is assigned as default branch.
 
+
+Recommended procedure
+=====================
+
+1. Create a new branch Schlagmichtot from the current version of nlohmann/json within Eclipse S-CORE
+2. Merge branch master from the original nlohmann/json into this branch, e.g. git checkout -b Schlagmichtot && git merge --no-commit nlohmann/master
+3. Confirm the deletion of cifuzz.yml, macos.yml and windows.yml.
+4. Resolve the merge conflict in publish-documentation.yml by rejecting the incoming changes, e.g. git checkout --ours publish-documentation.yml. Update the versions of the actions, if necessary.
+5. Resolve the potential merge conflict in codeql-analysis.yml to ensure that the artifacts are generated, i.e. the jobs Generate codeql artifact and Upload codeql artifact are retained. Update the versions of the actions, if necessary.
+6. Resolve the potential merge conflict in dependency-review.yml to ensure that the artifacts are generated, i.e. the jobs Generate dependency_review artifact and Upload dependency_review artifact are retained. Update the versions of the actions, if necessary.
+7. Resolve the potential merge conflict in ubuntu.yml following the above instructions. Update the versions of the actions, if necessary.
+8. Resolve the potential merge conflict in cmake/download_test_data.cmake
+9. Resolve the potential merge conflict in cmake/ci.cmake
+10. Carefully examine the atomatically merged changes.
