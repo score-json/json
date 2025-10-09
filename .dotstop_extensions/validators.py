@@ -141,7 +141,7 @@ def check_test_results(configuration: dict[str, yaml]) -> tuple[float, list[Exce
         return(1.0, Warning("Warning: No tests specified! Assuming absolute trustability!"))
     # check whether the most recent test report is loaded
     sha = os.getenv("GITHUB_SHA")
-    if not sha:
+    if sha is None:
         return (0.0, [RuntimeError("Can't get value GITHUB_SHA.")])
     ubuntu_artifact = f"./artifacts/ubuntu-{str(sha)}"
     # check whether ubuntu-artifact is loaded correctly
@@ -168,7 +168,7 @@ def check_test_results(configuration: dict[str, yaml]) -> tuple[float, list[Exce
         cursor = connector.cursor()
         # check whether our results can be accessed
         cursor.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (table,))
-        if not cursor.fetchone():
+        if cursor.fetchone() is None:
             # if not, it is not trustable
             return (0.0, [RuntimeError(f"Table {table} can not be loaded.")])
         # our result table can be read
