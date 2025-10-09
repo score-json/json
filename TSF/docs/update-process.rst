@@ -120,6 +120,7 @@ Default branch
 The scheduled github workflows are executed on the default branch, only. 
 To guarantee compliance with the TSF, the unit- and integration-tests are run daily.
 Therefore, it must be ensured that the branch containing the most recent documented version of nlohmann/json is assigned as default branch.
+Moreover, the branch protection rules of the new branch need to be adapted to mirror the ones of the branch containing the now old version.
 
 
 Recommended procedure
@@ -137,3 +138,4 @@ Based on the above observations, the following recommendations are derived.
 8. Carefully examine the atomatically merged changes. If no interference is to be expected, complete the merge.
 9. Adapt the documentation as described above.
 10. Generate the documentation and investigate any change in the trustable score.
+11. Set the branch json_version_X_XX_X to default and
