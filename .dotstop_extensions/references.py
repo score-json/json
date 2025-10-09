@@ -1,7 +1,6 @@
 from pathlib import Path
 from trudag.dotstop.core.reference.references import BaseReference
 from trudag.dotstop.core.reference.references import SourceSpanReference
-from trudag.dotstop.core.reference.references import LocalFileReference
 import requests
 import sqlite3
 
@@ -450,12 +449,10 @@ class FunctionReference(SourceSpanReference):
     def get_function_line_numbers(path: Path, name: str, overload = 1) -> tuple[int, int]:
         with open(path, 'r') as file:
             lines = file.readlines()
-        function_start_line = FunctionReference.get_function_start(path, name, lines, overload)
-        function_end_line = FunctionReference.get_function_end(path, name, function_start_line, lines)
-        return (function_start_line, function_end_line)
+        return FunctionReference.get_function_boundaries(path, name, lines, overload)
         
 
-    def get_function_start(path: Path, name: str, lines: list[str], overload: int) -> int:
+    def get_function_boundaries(path: Path, name: str, lines: list[str], overload: int) -> list[int]:
         # Split name in class_name and function_name, 
         # and check that both, and only both, parts of the name are found.
         name_parts = name.split("::")
@@ -466,77 +463,69 @@ class FunctionReference(SourceSpanReference):
         in_class = False
         sections = []
         instance = 0
-        amopen = []
+        start_line = 0
+        found_start = False
+        in_body = False
         for line_number, line in enumerate(lines):
             # first task: find literal string "class class_name " within a line
             if not in_class:
                 if f"class {name_parts[0]} " in line or f"class {name_parts[0]}\n" in line:
                     in_class = True
-                    continue
                 continue
             # now we are within the class
             # time to search for our function
+            # ignore all commented out lines
+            if line.strip().startswith("//"):
+                continue
             if "};" in line and len(sections)==0:
                 # then, we have reached the end of the class
                 break
-            # ignore all commented out lines
-            if line.strip().startswith("//"):
-                continue
-            if '{' in line or '}' in line:
-                for c in line:
-                    if c == '{':
-                        sections.append(1)
-                    if c == '}':
-                        try:
-                            sections.pop()
-                        except IndexError:
-                            raise ValueError(f"Fatal error: Could not resolve {name} in file {path}.")
-            # A function-declaration always contains the literal string " function_name("
-            # When this string is found within the indentation of the class itself,
-            # then it can be assumed that we have a function declaration.
-            # This is true in case of the hpp-files of nlohmann/json. 
-            if f" {name_parts[1]}(" in line and len(sections) == 1:
-                instance += 1
-                if instance == overload:
-                    return line_number
+            if not found_start:
+                if '{' in line or '}' in line:
+                    for c in line:
+                        if c == '{':
+                            sections.append(1)
+                        if c == '}':
+                            try:
+                                sections.pop()
+                            except IndexError:
+                                raise ValueError(f"Fatal error: Could not resolve {name} in file {path}.")
+                # A function-declaration always contains the literal string " function_name("
+                # When this string is found within the indentation of the class itself,
+                # then it can be assumed that we have a function declaration.
+                # This is true in case of the hpp-files of nlohmann/json. 
+                if f" {name_parts[1]}(" in line and len(sections) == 1:
+                    instance += 1
+                    if instance == overload:
+                        start_line = line_number
+                        found_start = True
+                        sections.pop()
+            else:
+                if '{' in line or '}' in line:
+                    for c in line:
+                        if c == '{':
+                            sections.append(1)
+                        if c == '}':
+                            try:
+                                sections.pop()
+                            except IndexError:
+                                raise ValueError(f"Fatal error: Could not resolve {name} in file {path}.")
+                if not in_body and len(sections)>0:
+                    in_body = True
+                if in_body and len(sections)==0:
+                    return [start_line,line_number]
         if not in_class:
             raise ValueError(f"Could not find class {name_parts[0]} in file {path}")
-        if overload%10 == 1 and overload != 11:
+        if not found_start and overload%10 == 1 and overload%100 != 11:
             raise ValueError(f"Could not locate {overload}st implementation of {name_parts[1]} in file {path}.")
-        elif overload%10 == 2 and overload != 12:
+        elif not found_start and overload%10 == 2 and overload%100 != 12:
             raise ValueError(f"Could not locate {overload}nd implementation of {name} in file {path}.")
-        elif overload%10 == 3 and overload != 13:
+        elif not found_start and overload%10 == 3 and overload%100 != 13:
             raise ValueError(f"Could not locate {overload}rd implementation of {name} in file {path}.")
-        else:
+        elif not found_start:
             raise ValueError(f"Could not locate {overload}th implementation of {name} in file {path}.")
-    
-    def get_function_end(path: Path, name: str, function_start: int, lines: list[str]) -> int:
-        found_start = False
-        sections = []
-        for line_number, line in enumerate(lines):
-            if line_number<function_start:
-                # skip ahead
-                continue
-            # Now, we have found the line, where the function declaration is located.
-            # In nlohmann/json, the function body is written between a lonely { and a lonely }.
-            # First, we should search for the first lonely {.
-            # ignore all commented out lines
-            if line.strip().startswith("//"):
-                continue
-            if '{' in line or '}' in line:
-                for c in line:
-                    if c == '{':
-                        sections.append(1)
-                    if c == '}':
-                        try:
-                            sections.pop()
-                        except IndexError:
-                            raise ValueError(f"Fatal error: Could not resolve {name} in file {path}.")
-            if not found_start and len(sections)>0:
-                found_start = True
-            if found_start and len(sections)==0:
-                return line_number
-        raise ValueError(f"Could not find end of function-body of {name} in file {path}.")
+        else:
+            raise ValueError(f"Could not find end of function-body of {name} in file {path}.")
 
     @property
     def content(self) -> bytes:
@@ -549,221 +538,16 @@ class FunctionReference(SourceSpanReference):
         content = self.remove_leading_whitespace_preserve_indentation(content)
         content = format_cpp_code_as_markdown(content)
         if self._description != "":
-            content = make_md_bullet_point(f"Description: {self._description}",1) + "\n\n" + content
+            content = make_md_bullet_point(f"Description: {self._description}",1) + "\n\n" + add_indentation(content,1)
         return content
 
     def __str__(self) -> str:
         # this is used as a title in the trudag report
         return f"function: [{self._name}]\n({str(self.path)})"
     
-class ListOfTestCases(BaseReference):
+from trudag.dotstop.core.reference.references import LocalFileReference as LFR
 
-    def __init__(self, test_files: list[str], recent_result_database: str = "artifacts/MemoryEfficientTestResults.db", recent_result_table: str = "test_results") -> None:
-        self._test_files = test_files
-        self._database = recent_result_database
-        self._table =  recent_result_table
-
-    @staticmethod    
-    def compile_string(items: list[str]) -> str:
-        # input: list of strings representing the structure of TEST_CASE, SECTION etc.,
-        # e.g. items = ["lexer class", "scan", "literal names"]
-        # output: the last item of the list, representing the most recent SECTION,
-        # indented as in the source code 
-        # throws error if input is empty
-        if len(items) == 0:
-            raise RuntimeError("Received empty structural list; nonempty list expected.")
-        result = ""
-        for _ in range(1, len(items)):
-            result += "    "
-        if items:
-            result += "* " + items[-1]
-        return result
-
-    @staticmethod    
-    def extract_quotation(s: str) -> str:
-        # input: string containing at least one quoted substring, e.g. s = "my \"input\""
-        # output: the first quoted substring of the input
-        # throws error if no quoted substring can be found.
-        first = s.find('"')
-        if first == -1:
-            raise RuntimeError("Expected quotation mark; none were detected.")
-        second = s.find('"', first + 1)
-        if second == -1:
-            raise RuntimeError("Expected quotation marks; only one was detected.")
-        return s[first + 1 : second]
-    
-    @staticmethod
-    def remove_and_count_indent(s: str) -> tuple[int, str]:
-        # input: string with possibly leading whitespace (space of horizontal tab)
-        # output: the number of leading spaces and the string with leading whitespace removed;
-        # tab counted as four spaces
-        cnt = 0
-        i = 0
-        n = len(s)
-        while i < n and (s[i] == " " or s[i] == "\t"):
-            if s[i] == " ":
-                cnt += 1
-            elif s[i] == "\t":
-                cnt += 4
-            i += 1
-        return (cnt, s[i:])
-
-    @staticmethod
-    def head_of_list() -> str:
-        return """## List of all unit-tests with test environments
-
-This list contains all unit-tests possibly running in this project.
-These tests are compiled from the source-code, where the individual unit-tests are arranged in TEST_CASEs containing possibly nested SECTIONs.
-To reflect the structure of the nested sections, nested lists are utilised, where the top-level list represents the list of TEST_CASEs. 
-
-It should be noted that not all unit-tests in a test-file are executed with every compiler-configuration.
-"""
-    
-    @staticmethod
-    def transform_test_file_to_test_name(test_file: str) -> str:
-        return "test-"+"-".join((test_file.split('.')[0]).split('-')[1:])
-
-    @classmethod
-    def type(cls) -> str:
-        return "list_of_test_cases"
-
-    def extract_test_structure(self, file_path: Path) -> str:
-        # input: path to a file potentially containing unit-tests
-        # output: the extracted arrangement of TEST_CASE and SECTION
-        # in the form of nested markdown lists
-
-        indent = 0 # the indent of the currently read line
-        current_indent = 0 # the indent of the last TEST_CASE or SECTION
-        current_path = [] # the current path
-        lines_out = [] # the collection of lines to be outputted
-
-        # open file_path as read-only, and process line by line
-        with file_path.open("r", encoding="utf-8", errors="replace") as source:
-            for line in source:
-                # count and remove leading whitespace
-                indent, trimmed = self.remove_and_count_indent(str(line))
-                
-                # check whether we have found a TEST_CASE
-                if trimmed.startswith("TEST_CASE(") or trimmed.startswith("TEST_CASE_TEMPLATE(") or trimmed.startswith("TEST_CASE_TEMPLATE_DEFINE("):
-                    # remember the current indent
-                    current_indent = indent
-                    # TEST_CASE is always the head of a new arrangement-structure
-                    # remove stored structure
-                    current_path.clear()
-                    # extract name of TEST_CASE and append path
-                    current_path.append(self.extract_quotation(trimmed))
-                    lines_out.append(self.compile_string(current_path))
-                
-                # check whether we have found a SECTION
-                if trimmed.startswith("SECTION("):
-                    # update path to reflect arrangement of current section
-                    while indent <= current_indent and current_path:
-                        current_path.pop()
-                        current_indent -= 4
-                    # remember the current indent
-                    current_indent = indent
-                    # extract name of SECTION and append path
-                    current_path.append(self.extract_quotation(trimmed))
-                    lines_out.append(self.compile_string(current_path))
-
-        # process extracted lines
-        return ("\n".join(lines_out) + "\n") if lines_out else ""
-
-    def extract_recent_test_environments(self) -> dict:
-        fetched_data = dict()
-        try:    
-            # initialise connection to test result database
-            connector = sqlite3.connect(self._database)
-            cursor = connector.cursor()
-            # verify that the expected table does exist
-            cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name = ?;",(self._table,))
-            if cursor.fetchone() is None: 
-                raise RuntimeError(f"Fatal Error: Could not find table {self._table} in database {self._database}.")
-        except sqlite3.Error as e:
-            raise RuntimeError(f"Fatal Error accessing database {self._database}: {e}")
-        # get all test-files from recent test executions
-        command = f"SELECT name FROM {self._table};"
-        cursor.execute(command)
-        raw_cases = cursor.fetchall()
-        cases = set([raw_case[0] for raw_case in raw_cases])
-        # for each test-file
-        for case in cases:
-            case_data = dict()
-            # get the test-environments
-            command = f"SELECT compiler, cpp_standard FROM {self._table} WHERE name = ? and skipped_cases == 0"
-            cursor.execute(command,(case,))
-            results = cursor.fetchall()
-            case_data["noskip"] = [{"compiler":result[0], "standard":result[1]} for result in results]
-            # some test-cases are skipped with certain environments
-            # It is unclear from the log, which cases are skipped;
-            # we leave this to the interested reader
-            command = f"SELECT compiler, cpp_standard, skipped_cases FROM {self._table} WHERE name = ? and skipped_cases != 0"
-            cursor.execute(command, (case,))
-            results = cursor.fetchall()
-            case_data["skip"] = [{"compiler": result[0], "standard": result[1], "skipped": result[2]} for result in results]
-            fetched_data[case] = case_data
-        return fetched_data
-
-    def fetch_all_test_data(self, input: list[str]):
-        # inputs: path(s) to directory potentially containing some test-data
-        extracted_test_data = []
-        recent_test_data = self.extract_recent_test_environments()
-        for arg in input:
-            p = Path(arg)
-            if p.is_file() and p.suffix == ".cpp" and p.name.startswith("unit-"):
-                extracted_test_data.append((p.name,self.extract_test_structure(p)))
-            elif p.is_dir():
-                for entry in p.rglob("*"):
-                    if entry.is_file() and entry.suffix == ".cpp" and entry.name.startswith("unit-"):
-                        extracted_test_data.append((entry.name,self.extract_test_structure(entry)))
-        extracted_test_data.sort(key= lambda x: x[0])
-        result = self.head_of_list()
-        for test_file, list_of_tests in extracted_test_data:
-            result += f"\n\n### List of tests in file {test_file}\n\n"
-            result += list_of_tests
-            result += "\n\n"
-            if recent_test_data.get(self.transform_test_file_to_test_name(test_file), None) is None:
-                result += "Unfortunately, none of the following tests seems to have been executed. Very strange indeed!\n\n"
-            else:
-                if recent_test_data.get(self.transform_test_file_to_test_name(test_file)).get("noskip",None) is not None:
-                    if len(recent_test_data.get(self.transform_test_file_to_test_name(test_file)).get("noskip")) != 0:
-                        result  += "\nAll tests in this file were run in the following configurations:\n\n"
-                        for datum in recent_test_data.get(self.transform_test_file_to_test_name(test_file)).get("noskip"):
-                            result += "* "
-                            result += datum.get("compiler",None)
-                            result += " with standard "
-                            result += datum.get("standard",None)
-                            result += "\n"
-                if recent_test_data.get(self.transform_test_file_to_test_name(test_file)).get("skip",None) is not None:
-                    if len(recent_test_data.get(self.transform_test_file_to_test_name(test_file)).get("skip")) != 0:
-                        result += "\nIn the following configuration, however, some test-cases were skipped:\n\n"
-                        for datum in recent_test_data.get(self.transform_test_file_to_test_name(test_file)).get("skip"):
-                            result += "* "
-                            how_many = datum.get("skipped",None)
-                            result += str(how_many)
-                            if how_many == 1:
-                                result += " test case was skipped when using "
-                            else:
-                                result += " test cases were skipped when using "
-                            result += datum.get("compiler",None)
-                            result += " with standard "
-                            result += datum.get("standard",None)
-                            result += "\n"
-        return result
-    
-    @property
-    def content(self) -> bytes:
-        # encoding is necessary since content will be hashed
-        return self.fetch_all_test_data(self._test_files).encode('utf-8')
-    
-    def as_markdown(self, filepath: None | str = None) -> str:
-        return self.content.decode('utf-8')
-
-    def __str__(self) -> str:
-        # this is used as a title in the trudag report
-        return "List of all unit-tests"
-    
-class VerboseFileReference(LocalFileReference):
+class VerboseFileReference(LFR):
     def __init__(self, path: str, description: str = "", **kwargs) -> None:
         self._path = Path(path)
         self._description = description
@@ -789,3 +573,55 @@ class VerboseFileReference(LocalFileReference):
    
     def __str__(self) -> str:
         return str(self._path)  
+
+del LFR
+    
+class ItemReference(BaseReference):
+    def __init__(self, items: list[str]) -> None:
+        if len(items) == 0:
+            raise RuntimeError("Error: Can't initialise empty ItemReference.")
+        self._items = items
+    
+    @classmethod
+    def type(cls) -> str:
+        return "item"
+    
+    @staticmethod
+    def get_markdown_link(item: str) -> str:
+        first_part = item.split("-")[0]
+        return f"see [here]({first_part}.md#{item.lower()}) to find {item}"
+    
+    @staticmethod
+    def get_reference_contents(items: list[str]) -> bytes:
+        lines = open(".dotstop.dot","r").read().split("\n")
+        contents = []
+        for item in items:
+            # check whether the item is valid
+            content = [line for line in lines if line.startswith(f"\"{item}\" [")]
+            if len(content) != 1:
+                raise RuntimeError(f"Error: The item {item} is not contained in the trustable graph")
+            contents.append(content[0].encode("utf-8"))
+        return b"".join(contents) if len(contents)!=0 else b"No external references"
+
+    @property
+    def content(self) -> bytes:
+        return ItemReference.get_reference_contents(self._items)
+    
+    def as_markdown(self, filepath: None | str = None) -> str:
+        result = ""
+        for item in self._items:
+            result += make_md_bullet_point(ItemReference.get_markdown_link(item),1)
+        return result
+    
+    def __str__(self):
+        title = "this item also refers to the references of "
+        if len(self._items) == 1:
+            title += "item "
+        else:
+            title += "items "
+        title += ", ".join(self._items)
+        return title
+    
+
+        
+

@@ -8,6 +8,7 @@ from pathlib import Path
 from capture_test_data import is_unit_test, get_metadata, clean_test_case, read_result_table, get_all_xml_files
 from plot_partial_graphs import get_pydot_graph, get_subgraph, get_my_url
 from clean_trudag_output import clean_line, remove_line, remove_invalid_markdown_start, clean_file
+from generate_list_of_tests import ListOfTestsGenerator
 
 def snapshot(root: Path):
     # Return a stable, content-based snapshot of the tree
@@ -356,4 +357,43 @@ def test_clean_file(mock_a_trudag_report,clean_trudag_output):
     report = (mock_a_trudag_report).read_text(encoding="utf-8")
     assert report == clean_trudag_output
 
+
+def test_default_init_ListOfTestsGenerator():
+    ref = ListOfTestsGenerator()
+    assert ref._test_files == ["./tests/src", "./TSF/tests"]
+    assert ref._database == "./artifacts/MemoryEfficientTestResults.db"
+    assert ref._table == "test_results"
+
+def test_variable_setting_ListOfTestCases():
+    ref = ListOfTestsGenerator()
+    ref.set_database("my_database.db")
+    ref.set_sources(["file_1","file_2"])
+    ref.set_table("my_fancy_table")
+    assert ref._test_files == ["file_1","file_2"]
+    assert ref._database == "my_database.db"
+    assert ref._table == "my_fancy_table"
+
+def test_compile_string():
+    with pytest.raises(RuntimeError):
+        ListOfTestsGenerator.compile_string([])
+
+def test_remove_and_count_indent():
+    assert ListOfTestsGenerator.remove_and_count_indent("Hallo")== (0,"Hallo")
+    assert ListOfTestsGenerator.remove_and_count_indent(" Hallo") == (1,"Hallo")
+    assert ListOfTestsGenerator.remove_and_count_indent("\t Hallo Welt \t\t") == (5,"Hallo Welt \t\t")
+
+def test_extract_quotation():
+    assert ListOfTestsGenerator.extract_quotation("\"Hallo\" Welt") == "Hallo"
+    assert ListOfTestsGenerator.extract_quotation("This is quite \"exciting\", isn't it.") == "exciting"
+    assert ListOfTestsGenerator.extract_quotation("\"Hallo\" \"Welt\"") == "Hallo"
+
+def test_extract_faulty_quotation():
+    with pytest.raises(RuntimeError, match=r"Expected quotation mark; none were detected."):
+        ListOfTestsGenerator.extract_quotation("Hallo Welt")
+    with pytest.raises(RuntimeError, match=r"Expected quotation marks; only one was detected."):
+        ListOfTestsGenerator.extract_quotation("Hallo \"Welt")
+
+def test_transform_test_file_to_test_name():
+    assert ListOfTestsGenerator.transform_test_file_to_test_name("unit-dummy-test.cpp") == "test-dummy-test"
+    assert ListOfTestsGenerator.transform_test_file_to_test_name("unit-dummy_test.cpp") == "test-dummy_test"
 

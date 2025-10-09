@@ -2,6 +2,9 @@
 level: 1.1
 normative: true
 references:
+        - type: item
+          items:
+            - JLEX-02
         - type: cpp_test
           name: "parse;other BOM"
           path: "TSF/tests/unit-byte_order_mark.cpp"

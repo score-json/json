@@ -46,7 +46,7 @@ The python-script [plot_partial_graphs.py](plot_partial_graphs.py) is used to ge
 These are then used to augment the full graph, which is, due to its size, quite hard to display, in the documentation.
 By the means of the links of the items, a more or less \"navigable\" version of the trustable graph is created, which displays a handful of items at a time, only.
 
-# Helper-scripts for offline testing
+# Helper-scripts for offline development
 
 ## fetch_json.cpp
 
@@ -55,6 +55,12 @@ The C++ script [fetch_json.cpp](fetch_json.cpp) is used to extract lists of path
 ## generate_documentation.sh
 
 The shell-script [generate_documentation.sh](generate_documentation.sh) generates a locally hosted version of the documentation, which is used for testing purposes.
+
+## generate_list_of_tests.py
+
+The python script [generate_list_of_tests.py](generate_list_of_tests.py) is used to generate the list_of_test_cases.md listing the expected test-cases with their execution environments.
+To run this script, the database `MemoryEfficientTestResults.db` must be downloaded from the artifact of the most recent successful ubuntu workflow, and placed in the folder `artifacts` in the root of the repository.
+Moreover, it must be ensured that this script is run from within the root of the repository, only. 
 
 ## generate_subgraph_plots.sh
 

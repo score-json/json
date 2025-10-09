@@ -3,6 +3,9 @@ level: 1.1
 normative: true
 
 references:
+        - type: item
+          items:
+            - JLEX-01
         - type: JSON_testsuite
           name: "nst's JSONTestSuite (2);test_parsing;n"
           path: "tests/src/unit-testsuites.cpp"

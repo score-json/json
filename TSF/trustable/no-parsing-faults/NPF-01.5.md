@@ -2,6 +2,9 @@
 level: 1.1
 normative: true
 references:
+        - type: item
+          items:
+            - JLEX-02
         - type: cpp_test
           name: "deserialization;ignoring byte-order marks;2 byte of BOM"
           path: "tests/src/unit-deserialization.cpp"

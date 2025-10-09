@@ -55,6 +55,8 @@ user.bazelrc
 /TSF/temp
 
 /TSF/docs/generated
+# temporary folder used for generation of list of test-results
+/artifacts
 
 /.venv
 
