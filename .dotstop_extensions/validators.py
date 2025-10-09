@@ -150,8 +150,8 @@ def check_test_results(configuration: dict[str, yaml]) -> tuple[float, list[Exce
     # read optional argument -- database name for the test report -- if specified
     database = configuration.get("database", None)
     if database is None:
-        # default value "TestResults.db"
-        database = "TestResults.db"
+        # default value "MemoryEfficientTestResults.db"
+        database = "MemoryEfficientTestResults.db"
     # check whether database containing test-results does exist
     ubuntu_artifact += "/"+database
     if not os.path.exists(ubuntu_artifact):
