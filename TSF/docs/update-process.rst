@@ -70,19 +70,19 @@ tests/CMakeLists.txt
     In particular, the version of publish_documentation.yml in the original repository nlohmann/json must not replace the publish_documentation.yml of the present repository.
 
 .github/workflows/test_trudag_extensions.yml
-    This workflow is not present in the original nlohmann/json and must not be removed by the update.
-
+    This workflow is not present in the original nlohmann/json and must not be removed, or modified (besides updating the versions of tools, if necessary) by the update.
 
 Other entries of .github/workflows
     For every workflow, it must be ensured that they are executed on workflow_call, only.
+    The workflows check_amalgamation, codeql, dependency_review, labeler and test_trudag_extensions generate an artifact, which must not be changed.
     New workflows should be carefully reviewed.
-    If it is determined that their execution within the project is beneficial, and that they do not interfere with, then they should be integrated within the parent workflow at an appropriate place.
-    If nlohmann deletes any of the currently executed workflows, in particular  check_amalgamation.yml, codeql.yml, dependency_review.yml, labeler.yml, test_trudag_extensions.yml and ubuntu.yml, then it is strongly recommended to keep the currently executed version, since the automatic validator check_artifact_exists depends on the existence of these workflows.
-    In case that it is determined that these workflows should be deleted also in the documented copy of nlohmann/json, then the validator check_artifact_exists and all its occurrences must be adapted accordingly. 
+    If it is determined that their execution within the project is beneficial, and that they do not interfere with, then they should be integrated within the parent workflow at an appropriate place. 
+    It is strongly recommended that the new workflow produces an artifact on success, and that the validator check_artifact_exists is adapted accordingly.
+    If nlohmann deletes any of the currently executed workflows, in particular check_amalgamation.yml, codeql.yml, dependency_review.yml, labeler.yml, test_trudag_extensions.yml and ubuntu.yml, then it is strongly recommended to keep the currently executed version, since the automatic validator check_artifact_exists depends on the existence of these workflows.
+    In case that it is determined that these workflows should be deleted also in the documented copy of nlohmann/json, then the validator check_artifact_exists and all its occurrences must be adapted accordingly.
 
-.github/workflows
-    THIS REQUIRES A TAD MORE WORK THAN I WOULD LIKE.
-
+changelog.md
+    It must be ensured that the changes of the update are properly described in the file Changelog.md.
 
 
 Necessary adaptations of the documentation
@@ -90,21 +90,29 @@ Necessary adaptations of the documentation
 
 The adaptations to the documentation have to be done both in the most recent as well as in the now outdated version of the documented library.
 
-JLS-26
+TSF/trustable/statements/JLS-26.md
     It must be ensured that the branch protection rules for the branch containing the most recent documentation are set accordingly, and that the reference of JLS-26 refers to the correct rules.
 
-JLS-14
+TSF/trustable/statements/JLS-14
     It must be ensured that the announcement post referring to the correct version is referenced.
     Furthermore, the sha-value of the evidence must be adapted to the one provided in that announcement post.
 
-JLS-07
+TSF/trustable/statements/JLS-07
     It must be ensured that the statement and reference refers to the branch protection rules of the correct branch. Of course, these branch protection rules must be enforced.
 
-JLS-06 
+TSF/trustable/statements/JLS-06 
     Analogously to JLS-07, it must be ensured that the correct branch is referred to and referenced.
 
-JLS-01
+TSF/trustable/statements/JLS-01
+    It must be ensured that this statement and its references are still 
+
+TSF/trustable/statements/JLS-01
     It must be ensured that the correct branch and branch protection rules are addressed, set and referenced.
+
+TSF/trustable/docs/introduction/index.rst
+    In this file, the version of nlohmann/json that is documented is explicitly mentioned at two places. 
+    This version must be updated.
+
 
 Default branch
 --------------
@@ -117,13 +125,11 @@ Therefore, it must be ensured that the branch containing the most recent documen
 Recommended procedure
 =====================
 
-1. Create a new branch Schlagmichtot from the current version of nlohmann/json within Eclipse S-CORE
-2. Merge branch master from the original nlohmann/json into this branch, e.g. git checkout -b Schlagmichtot && git merge --no-commit nlohmann/master
+1. Create a new branch json_version_X_XX_X from the current version of nlohmann/json within Eclipse S-CORE
+2. Merge branch master from the original nlohmann/json into this branch, e.g. ``git checkout -b json_version_X_XX_X && git merge --no-commit nlohmann/master``
 3. Confirm the deletion of cifuzz.yml, macos.yml and windows.yml.
-4. Resolve the merge conflict in publish-documentation.yml by rejecting the incoming changes, e.g. git checkout --ours publish-documentation.yml. Update the versions of the actions, if necessary.
-5. Resolve the potential merge conflict in codeql-analysis.yml to ensure that the artifacts are generated, i.e. the jobs Generate codeql artifact and Upload codeql artifact are retained. Update the versions of the actions, if necessary.
-6. Resolve the potential merge conflict in dependency-review.yml to ensure that the artifacts are generated, i.e. the jobs Generate dependency_review artifact and Upload dependency_review artifact are retained. Update the versions of the actions, if necessary.
-7. Resolve the potential merge conflict in ubuntu.yml following the above instructions. Update the versions of the actions, if necessary.
-8. Resolve the potential merge conflict in cmake/download_test_data.cmake
-9. Resolve the potential merge conflict in cmake/ci.cmake
+4. Resolve the potential merge conflict in publish-documentation.yml by rejecting the incoming changes, e.g. ``git checkout --ours .github/workflows/publish-documentation.yml && git add .github/workflows/publish-documentation.yml``.
+5. Resolve the potential merge conflicts in check_amalgamation.yml, codeql.yml, dependency_review.yml, labeler.yml, test_trudag_extensions.yml to ensure that the artifacts are generated, i.e. the jobs Generate XXX artifact and Upload XXX artifact are retained.
+6. Resolve the potential merge conflict in ubuntu.yml following the above instructions.
+7. Resolve the potential merge conflicts in cmake/download_test_data.cmake and cmake/ci.cmake
 10. Carefully examine the atomatically merged changes.
