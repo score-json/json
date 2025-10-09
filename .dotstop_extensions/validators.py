@@ -2,6 +2,12 @@ from typing import TypeAlias, Tuple, List
 import os
 import requests
 import sqlite3
+import sys
+
+current_dir = os.getcwd()
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
+
 from TSF.scripts.generate_list_of_tests import ListOfTestsGenerator
 
 yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
