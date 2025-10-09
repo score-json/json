@@ -3,7 +3,6 @@ import sqlite3
 
 class ListOfTestsGenerator:
 
-    @classmethod
     def __init__(self):
         self._database = "./artifacts/MemoryEfficientTestResults.db"
         self._table = "test_results"
