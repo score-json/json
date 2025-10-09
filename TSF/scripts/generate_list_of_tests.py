@@ -8,15 +8,12 @@ class ListOfTestsGenerator:
         self._table = "test_results"
         self._test_files = ["./tests/src", "./TSF/tests"]
     
-    @classmethod
     def set_database(self,db:str):
         self._database = db
         
-    @classmethod
     def set_table(self,table:str):
         self._table = table
         
-    @classmethod
     def set_sources(self,sources:list):
         self._test_files = sources
 
@@ -123,7 +120,6 @@ class ListOfTestsGenerator:
         # process extracted lines
         return ("\n".join(lines_out) + "\n") if lines_out else ""
 
-    @classmethod
     def extract_recent_test_environments(self) -> dict:
         fetched_data = dict()
         try:    
@@ -159,11 +155,10 @@ class ListOfTestsGenerator:
             fetched_data[case] = case_data
         return fetched_data
 
-    @classmethod
     def fetch_all_test_data(self):
         # inputs: path(s) to directory potentially containing some test-data
         extracted_test_data = []
-        recent_test_data = ListOfTestsGenerator.extract_recent_test_environments()
+        recent_test_data = self.extract_recent_test_environments()
         for arg in self._test_files:
             p = Path(arg)
             if p.is_file() and p.suffix == ".cpp" and p.name.startswith("unit-"):
