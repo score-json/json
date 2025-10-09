@@ -131,5 +131,7 @@ Recommended procedure
 4. Resolve the potential merge conflict in publish-documentation.yml by rejecting the incoming changes, e.g. ``git checkout --ours .github/workflows/publish-documentation.yml && git add .github/workflows/publish-documentation.yml``.
 5. Resolve the potential merge conflicts in check_amalgamation.yml, codeql.yml, dependency_review.yml, labeler.yml, test_trudag_extensions.yml to ensure that the artifacts are generated, i.e. the jobs Generate XXX artifact and Upload XXX artifact are retained.
 6. Resolve the potential merge conflict in ubuntu.yml following the above instructions.
-7. Resolve the potential merge conflicts in cmake/download_test_data.cmake and cmake/ci.cmake
-10. Carefully examine the atomatically merged changes.
+7. Resolve the potential merge conflicts in cmake/download_test_data.cmake and cmake/ci.cmake following the above instructions.
+8. Carefully examine the atomatically merged changes.
+9. Complete the merge.
+10. Generate the documentation and investigate any change in the trustable score.
