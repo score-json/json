@@ -125,6 +125,8 @@ Therefore, it must be ensured that the branch containing the most recent documen
 Recommended procedure
 =====================
 
+Based on the above observations, the following recommendations are derived.
+
 1. Create a new branch json_version_X_XX_X from the current version of nlohmann/json within Eclipse S-CORE
 2. Merge branch master from the original nlohmann/json into this branch, e.g. ``git checkout -b json_version_X_XX_X && git merge --no-commit nlohmann/master``
 3. Confirm the deletion of cifuzz.yml, macos.yml and windows.yml.
@@ -132,6 +134,6 @@ Recommended procedure
 5. Resolve the potential merge conflicts in check_amalgamation.yml, codeql.yml, dependency_review.yml, labeler.yml, test_trudag_extensions.yml to ensure that the artifacts are generated, i.e. the jobs Generate XXX artifact and Upload XXX artifact are retained.
 6. Resolve the potential merge conflict in ubuntu.yml following the above instructions.
 7. Resolve the potential merge conflicts in cmake/download_test_data.cmake and cmake/ci.cmake following the above instructions.
-8. Carefully examine the atomatically merged changes.
-9. Complete the merge.
+8. Carefully examine the atomatically merged changes. If no interference is to be expected, complete the merge.
+9. Adapt the documentation as described above.
 10. Generate the documentation and investigate any change in the trustable score.
