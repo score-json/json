@@ -201,6 +201,7 @@ class ListOfTestsGenerator:
                             result += datum.get("standard",None)
                             result += "\n"
         return result
+    
 if __name__ == "__main__":
     generator = ListOfTestsGenerator()
     with open("./TSF/docs/list_of_test_environments.md",'w') as f:
