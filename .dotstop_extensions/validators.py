@@ -136,24 +136,20 @@ def check_test_results(configuration: dict[str, yaml]) -> tuple[float, list[Exce
     Validates whether a certain test-case fails, or not.
     """
     # get the test-names
-    tests = configuration.get("tests",None)
-    if tests is None:
+    raw_tests = configuration.get("tests",None)
+    if raw_tests is None:
         return(1.0, Warning("Warning: No tests specified! Assuming absolute trustability!"))
-    # check whether the most recent test report is loaded
-    sha = os.getenv("GITHUB_SHA")
-    if sha is None:
-        return (0.0, [RuntimeError("Can't get value GITHUB_SHA.")])
-    ubuntu_artifact = f"./artifacts/ubuntu-{str(sha)}"
-    # check whether ubuntu-artifact is loaded correctly
-    if not os.path.exists(ubuntu_artifact):
-        return (0.0, [RuntimeError("The artifact containing the test data was not loaded correctly.")])
+    # process test-names
+    tests = []
+    for test in raw_tests:
+        tests.append(f"test-{str(test)}")
     # read optional argument -- database name for the test report -- if specified
     database = configuration.get("database", None)
     if database is None:
         # default value "MemoryEfficientTestResults.db"
         database = "MemoryEfficientTestResults.db"
     # check whether database containing test-results does exist
-    ubuntu_artifact += "/"+database
+    ubuntu_artifact = f"./artifacts/{database}"
     if not os.path.exists(ubuntu_artifact):
         return (0.0, [RuntimeError("The artifact containing the test data was not loaded correctly.")])
     # Ubuntu artifact is loaded correctly and test-results can be accessed.
