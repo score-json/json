@@ -261,5 +261,5 @@ def check_list_of_tests(configuration: dict[str, yaml]) -> tuple[float, list[Exc
                 return(1.0,[])
             else:
                 return(0.0,[Exception("The expected list of test-cases does not coincide with the fetched list.")])
-    except:
-        return(0.0,[Exception("An exception occurred when trying to compare the expected and the fetched list of tests.")])
+    except Exception as e:
+        return(0.0,[Exception(f"An exception occurred when trying to compare the expected and the fetched list of tests: {e}")])
