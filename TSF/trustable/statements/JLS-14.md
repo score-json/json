@@ -3,8 +3,8 @@ level: 1.1
 normative: true
 references:
     - type: website
-      url: "https://github.com/nlohmann/json/discussions/4731"
-      description: "post of Niels Lohmann announcing the release of version 3.12.0 containing the SHA-value of single_include/nlohmann/json.hpp"
+      url: "https://github.com/nlohmann/json/releases"
+      description: "release site of nlohmann/json containing the sha values"
 evidence:
     type: sha_checker
     configuration:
