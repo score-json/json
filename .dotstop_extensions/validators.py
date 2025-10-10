@@ -2,6 +2,7 @@ from typing import TypeAlias, Tuple, List
 import os
 import requests
 import sqlite3
+import hashlib
 
 yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
@@ -135,24 +136,20 @@ def check_test_results(configuration: dict[str, yaml]) -> tuple[float, list[Exce
     Validates whether a certain test-case fails, or not.
     """
     # get the test-names
-    tests = configuration.get("tests",None)
-    if tests is None:
+    raw_tests = configuration.get("tests",None)
+    if raw_tests is None:
         return(1.0, Warning("Warning: No tests specified! Assuming absolute trustability!"))
-    # check whether the most recent test report is loaded
-    sha = os.getenv("GITHUB_SHA")
-    if not sha:
-        return (0.0, [RuntimeError("Can't get value GITHUB_SHA.")])
-    ubuntu_artifact = f"./artifacts/ubuntu-{str(sha)}"
-    # check whether ubuntu-artifact is loaded correctly
-    if not os.path.exists(ubuntu_artifact):
-        return (0.0, [RuntimeError("The artifact containing the test data was not loaded correctly.")])
+    # process test-names
+    tests = []
+    for test in raw_tests:
+        tests.append(f"test-{str(test)}")
     # read optional argument -- database name for the test report -- if specified
     database = configuration.get("database", None)
     if database is None:
-        # default value "TestResults.db"
-        database = "TestResults.db"
+        # default value "MemoryEfficientTestResults.db"
+        database = "MemoryEfficientTestResults.db"
     # check whether database containing test-results does exist
-    ubuntu_artifact += "/"+database
+    ubuntu_artifact = f"./artifacts/{database}"
     if not os.path.exists(ubuntu_artifact):
         return (0.0, [RuntimeError("The artifact containing the test data was not loaded correctly.")])
     # Ubuntu artifact is loaded correctly and test-results can be accessed.
@@ -167,7 +164,7 @@ def check_test_results(configuration: dict[str, yaml]) -> tuple[float, list[Exce
         cursor = connector.cursor()
         # check whether our results can be accessed
         cursor.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (table,))
-        if not cursor.fetchone():
+        if cursor.fetchone() is None:
             # if not, it is not trustable
             return (0.0, [RuntimeError(f"Table {table} can not be loaded.")])
         # our result table can be read
@@ -232,3 +229,28 @@ def file_exists(configuration: dict[str, yaml]) -> tuple[float, list[Exception |
         else:
             found_files += 1 if os.path.isfile(file) else 0
     return (found_files/expected_files, exceptions)
+
+def sha_checker(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    # get file of which the sha is to be calculated
+    file = configuration.get("binary", None)
+    # test input on validitiy
+    if file is None:
+        return (1.0, [Warning("No files to check the SHA-value for; assuming that everything is in order.")])
+    elif not isinstance(file, str):
+        # type-errors are not tolerated
+        raise TypeError("The value of \"binary\" must be a string")
+    # get the expected sha
+    expected_sha = configuration.get("sha", None)
+    # test input on validitiy
+    if expected_sha is None:
+        return (1.0, [Warning("No expected SHA-value transmitted; assuming everything is in order.")])
+    try: expected_sha = str(expected_sha) 
+    except: raise TypeError("Can't convert the value of \"sha\" to a string.")
+    score = 0.0
+    exceptions = []
+    try:
+        my_sha = hashlib.sha256(open(file,"rb").read()).hexdigest
+        score = 1.0 if str(my_sha) == expected_sha else 0.0
+    except:
+        exceptions.append(RuntimeError(f"Can't calculate the SHA-value of {file}"))
+    return (score, exceptions)

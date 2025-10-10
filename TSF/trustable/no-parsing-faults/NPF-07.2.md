@@ -114,15 +114,13 @@ references:
           name: "Unicode (5/5);RFC 3629;UTF8-4 (xF4 x80-8F UTF8-tail UTF8-tail);ill-formed: wrong fourth byte"
           path: "tests/src/unit-unicode5.cpp"
 evidence:
-  type: "check_artifact_exists"
+  type: check_test_results
   configuration:
-    check_amalgamation: exclude
-    codeql: exclude
-    dependency_review: exclude
-    labeler: exclude
-    publish_documentation: exclude
-    test_trudag_extensions: exclude
-    ubuntu: include
+    tests: 
+        - unicode2
+        - unicode3
+        - unicode4
+        - unicode5
 score:
     Jonas-Kirchhoff: 1.0
     Erikhu1: 1.0

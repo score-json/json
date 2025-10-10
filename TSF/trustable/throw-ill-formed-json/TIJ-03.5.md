@@ -9,15 +9,11 @@ references:
           name: "Unicode;escaped utf-16 surrogates;ill-formed"
           path: "TSF/tests/unit-strings.cpp"
 evidence:
-  type: "check_artifact_exists"
+  type: check_test_results
   configuration:
-    check_amalgamation: exclude
-    codeql: exclude
-    dependency_review: exclude
-    labeler: exclude
-    publish_documentation: exclude
-    test_trudag_extensions: exclude
-    ubuntu: include
+    tests: 
+        - unicode1
+        - strings
 score:
     Jonas-Kirchhoff: 1.0
     Erikhu1: 1.0

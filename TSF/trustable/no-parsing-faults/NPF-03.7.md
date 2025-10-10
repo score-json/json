@@ -60,15 +60,11 @@ references:
             - "/nst_json_testsuite2/test_parsing/y_string_with_del_character.json"
           description: "Tests whether several non-empty strings are parsed without throwing an exception."
 evidence:
-  type: "check_artifact_exists"
+  type: check_test_results
   configuration:
-    check_amalgamation: exclude
-    codeql: exclude
-    dependency_review: exclude
-    labeler: exclude
-    publish_documentation: exclude
-    test_trudag_extensions: exclude
-    ubuntu: include
+    tests: 
+        - class_parser_core
+        - testsuites
 score:
     Jonas-Kirchhoff: 0.95
     Erikhu1: 1.0

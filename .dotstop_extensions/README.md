@@ -234,7 +234,7 @@ The total score is the mean of the individual scores.
 
 ## check_test_results
 
-The automatic validator `check_test_results` is intended to evaluate the database `TestResults.db` which is generated in the Ubuntu-Workflow, and which contains the test-report of the most recent workflow run. This database is temporary, and, contrary to `TSF/TestResultData.db`, which is persistently stored on the branch `save_historical_data`, not persistently stored.
+The automatic validator `check_test_results` is intended to evaluate the database `MemoryEfficientTestResults.db` which is generated in the Ubuntu-Workflow, and which contains the test-report of the most recent workflow run. This database is temporary, and, contrary to `TSF/MemoryEfficientTestResultData.db`, which is persistently stored on the branch `save_historical_data`, not persistently stored.
 
 The expected configuration is given as follows:
 
@@ -243,32 +243,14 @@ evidence:
     type: check_test_results
     configuration:
         tests: # list of test-files 
-            - test-class_lexer
-            - test-unicode1
-            - test-strings
-        database: TestResults.db # optional argument, default: TestResults.db; path to test-result database from project root
+            - class_lexer
+            - unicode1
+            - strings
+        database: MemoryEfficientTestResults.db # optional argument, default: MemoryEfficientTestResults.db; path to test-result database from project root
         table: test_results # optional argument, default: test_results; name of table in database
 ```
 
-For each test specified in test-files, the number of passed and failed test-cases is calculated, while the number of skipped test-cases is ignored. The score of each test is then the ratio of passed test-cases compared to all non-skipped test-cases; the total score is the mean of the individual scores.
-
-## check_test_results
-
-The automatic validator `check_test_results` is intended to evaluate the database `TestResults.db` which is generated in the Ubuntu-Workflow, and which contains the test-report of the most recent workflow run. This database is temporary, and, contrary to `TSF/TestResultData.db`, which is persistently stored on the branch `save_historical_data`, not persistently stored.
-
-The expected configuration is given as follows:
-
-```
-evidence:
-    type: check_test_results
-    configuration:
-        tests: # list of test-files 
-            - test-class_lexer
-            - test-unicode1
-            - test-strings
-        database: TestResults.db # optional argument, default: TestResults.db; path to test-result database from project root
-        table: test_results # optional argument, default: test_results; name of table in database
-```
+The test-files are called unit-FILE_NAME.cpp. In the configuration, FILE_NAME is expected only, i.e. without the leading unit- and without the file-extension.
 
 For each test specified in test-files, the number of passed and failed test-cases is calculated, while the number of skipped test-cases is ignored. The score of each test is then the ratio of passed test-cases compared to all non-skipped test-cases; the total score is the mean of the individual scores.
 

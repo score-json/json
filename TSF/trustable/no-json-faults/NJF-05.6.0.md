@@ -8,6 +8,11 @@ references:
           test_suite_paths:
             - "/nst_json_testsuite2/test_parsing/i_structure_500_nested_arrays.json"
           description: ""
+evidence:
+  type: check_test_results
+  configuration:
+    tests: 
+        - testsuites
 score:
     Jonas-Kirchhoff: 0.975
     Erikhu1: 0.9
