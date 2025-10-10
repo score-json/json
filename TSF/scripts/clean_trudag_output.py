@@ -10,6 +10,7 @@ import html
 # List of regex patterns to remove only the matched part, not the whole line
 replace_by_empty_string_patterns = [
     r"\{class[:=][^}]*\}",           # {class:...} or {class=...} with any attributes inside
+    r"\{style[:=][^}]*\}",           # {style:...} or {style=...} with any attributes inside
     r"\{\%[\s]*raw[\s]*\%\}",        # {% raw %}
     r"\{\%[\s]*endraw[\s]*\%\}",     # {% endraw %}
     r"#{1,3}\s*\{[^}]*\}",           # one to three # followed by {: ... }
