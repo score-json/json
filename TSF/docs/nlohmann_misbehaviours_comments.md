@@ -2,6 +2,7 @@ This file collects and comments the open known misbehaviours as identified in th
 
 issue-id | comment
 ---------|--------
+4946 | This issue does not apply to the use of nlohmann/json in Eclipse S-CORE. Compatibility with CMake < 3.5 has been removed from CMake as of [CMake 4.0+](https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html)
 4925 | This issue does not apply to the use of nlohmann/json in Eclipse S-CORE. Optimized binary arrays have to be explicitly enabled when parsing from BJdata; otherwise an exception is thrown.
 4916 | This issue does not apply to the use of nlohmann/json in Eclipse S-CORE. Version 3.12.0 of nlohmann::json does not contain a constructor accepting std::views.
 4903 | This issue does not apply to the use of nlohmann/json in Eclipse S-CORE. Defining the namespace "nlohmann" multiple times within the same project leads to an error.
