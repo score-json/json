@@ -1,6 +1,7 @@
 import os
 import re
 import sys
+import html
 
 # The trudag report is not in standard markdown format, so we need to clean it up.
 # This script will remove specific patterns from the markdown files in the current directory and its subdirectories
@@ -20,6 +21,7 @@ replace_by_empty_string_patterns = [
 remove_line_patterns = [
     r"localplugins\.CPPTestReference",  # Lines containing localplugins.CPPTestReference
     r'"Click to view reference"',       # "Click to view reference" lines
+    r'\?\?\? example',                     # Lines "??? example "Graph Data as Table"" are not needed
 ]
 
 
@@ -30,7 +32,7 @@ def clean_line(line):
     while any((re.search(pat,line) is not None) for pat in compiled_patterns_replace_by_empty_string):
         for pat in compiled_patterns_replace_by_empty_string:
             line = pat.sub("", line)
-    return line
+    return line.lstrip() if line.lstrip().startswith("|") else line
 
 def remove_line(line):
     return any((re.search(pat,line) is not None) for pat in compiled_patterns_remove_line)
