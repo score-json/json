@@ -5,9 +5,14 @@ def comment_nlohmann_misbehaviours(id: int) -> None:
         for line in f:
             # look for the issue id
             cols = line.split("|")
-            if cols[0].strip() == str(id) and len(cols)>1:
+            if cols[0].strip() == str(id) and len(cols)>2:
+                # Does the issue apply to us?
+                if cols[1].strip().capitalize == "NO":
+                    candidate = "This issue does not apply to the use of nlohmann/json in Eclipse S-CORE. "
+                else:
+                    candidate = ""
                 # read the candidate comment
-                candidate = cols[1].strip()
+                candidate += cols[2].strip()
                 # if there is something to comment, do it
                 if candidate != "":
                     print(f"- **Comment:** {candidate}")
