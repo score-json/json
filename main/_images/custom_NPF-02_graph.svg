@@ -143,22 +143,23 @@
 <!-- NPF&#45;02.11 -->
 <g id="node7" class="node">
 <title>NPF&#45;02.11</title>
-<g id="a_node7"><a xlink:href="https://score-json.github.io/json/main/generated/NPF.html#npf-02.11" xlink:title="NPF&#45;02.11: The service\nparses numbers within\nthe 64&#45;bit double range\nbut outside of the double\nprecision without throwing\nan exception. " target="_top">
-<polygon fill="none" stroke="black" points="856,-128 656,-128 656,-30 856,-30 856,-128"/>
-<text text-anchor="middle" x="756" y="-112.8" font-family="Open Sans" font-size="14.00">NPF&#45;02.11: The service</text>
-<text text-anchor="middle" x="756" y="-97.8" font-family="Open Sans" font-size="14.00">parses numbers within</text>
-<text text-anchor="middle" x="756" y="-82.8" font-family="Open Sans" font-size="14.00">the 64&#45;bit double range</text>
-<text text-anchor="middle" x="756" y="-67.8" font-family="Open Sans" font-size="14.00">but outside of the double</text>
-<text text-anchor="middle" x="756" y="-52.8" font-family="Open Sans" font-size="14.00">precision without throwing</text>
-<text text-anchor="middle" x="756" y="-37.8" font-family="Open Sans" font-size="14.00">an exception. </text>
+<g id="a_node7"><a xlink:href="https://score-json.github.io/json/main/generated/NPF.html#npf-02.11" xlink:title="NPF&#45;02.11: The service\nparses numbers within\nthe 64&#45;bit double range\nbut outside of the double\nprecision without throwing\nan exception and without\nguarantee of precision.\n" target="_top">
+<polygon fill="none" stroke="black" points="856,-135.5 656,-135.5 656,-22.5 856,-22.5 856,-135.5"/>
+<text text-anchor="middle" x="756" y="-120.3" font-family="Open Sans" font-size="14.00">NPF&#45;02.11: The service</text>
+<text text-anchor="middle" x="756" y="-105.3" font-family="Open Sans" font-size="14.00">parses numbers within</text>
+<text text-anchor="middle" x="756" y="-90.3" font-family="Open Sans" font-size="14.00">the 64&#45;bit double range</text>
+<text text-anchor="middle" x="756" y="-75.3" font-family="Open Sans" font-size="14.00">but outside of the double</text>
+<text text-anchor="middle" x="756" y="-60.3" font-family="Open Sans" font-size="14.00">precision without throwing</text>
+<text text-anchor="middle" x="756" y="-45.3" font-family="Open Sans" font-size="14.00">an exception and without</text>
+<text text-anchor="middle" x="756" y="-30.3" font-family="Open Sans" font-size="14.00">guarantee of precision.</text>
 </a>
 </g>
 </g>
 <!-- NPF&#45;02&#45;&gt;NPF&#45;02.11 -->
 <g id="edge14" class="edge">
 <title>NPF&#45;02&#45;&gt;NPF&#45;02.11</title>
-<path fill="none" stroke="black" d="M1300.97,-305.39C1189.67,-279.2 1008.94,-229.84 865,-158 851.34,-151.18 837.52,-142.73 824.52,-133.94"/>
-<polygon fill="black" stroke="black" points="826.32,-130.93 816.1,-128.12 822.34,-136.69 826.32,-130.93"/>
+<path fill="none" stroke="black" d="M1300.97,-305.39C1189.67,-279.2 1008.94,-229.84 865,-158 855.1,-153.06 845.11,-147.26 835.41,-141.09"/>
+<polygon fill="black" stroke="black" points="837.26,-138.12 826.98,-135.59 833.44,-143.99 837.26,-138.12"/>
 </g>
 <!-- NPF&#45;02.12 -->
 <g id="node8" class="node">

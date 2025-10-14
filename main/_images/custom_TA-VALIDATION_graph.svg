@@ -45,10 +45,10 @@
 <!-- JLS&#45;01 -->
 <g id="node2" class="node">
 <title>JLS&#45;01</title>
-<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-01" xlink:title="JLS&#45;01: The nlohmann/json\nlibrary project CI executes\non each pull request\n(opened, reopened, synchronized)\nthe integration test\nsuite, and failures in\nthese runs are investigated\nby contributors. " target="_top">
+<g id="a_node2"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-01" xlink:title="JLS&#45;01: The CI pipeline\nof the main branch executes\non each pull request\n(opened, reopened, synchronized)\nthe integration test\nsuite, and failures in\nthese runs are investigated\nby contributors. " target="_top">
 <polygon fill="none" stroke="black" points="254,-128 0,-128 0,0 254,0 254,-128"/>
-<text text-anchor="middle" x="127" y="-112.8" font-family="Open Sans" font-size="14.00">JLS&#45;01: The nlohmann/json</text>
-<text text-anchor="middle" x="127" y="-97.8" font-family="Open Sans" font-size="14.00">library project CI executes</text>
+<text text-anchor="middle" x="127" y="-112.8" font-family="Open Sans" font-size="14.00">JLS&#45;01: The CI pipeline</text>
+<text text-anchor="middle" x="127" y="-97.8" font-family="Open Sans" font-size="14.00">of the main branch executes</text>
 <text text-anchor="middle" x="127" y="-82.8" font-family="Open Sans" font-size="14.00">on each pull request</text>
 <text text-anchor="middle" x="127" y="-67.8" font-family="Open Sans" font-size="14.00">(opened, reopened, synchronized)</text>
 <text text-anchor="middle" x="127" y="-52.8" font-family="Open Sans" font-size="14.00">the integration test</text>

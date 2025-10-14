@@ -59,14 +59,13 @@
 <!-- JLS&#45;16 -->
 <g id="node3" class="node">
 <title>JLS&#45;16</title>
-<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-16" xlink:title="JLS&#45;16: A list of tests,\nwhich is extracted from\nthe test execution, is\nprovided, along with\na list of test environments.\n(TODO) " target="_top">
-<polygon fill="none" stroke="black" points="400,-98 197,-98 197,0 400,0 400,-98"/>
-<text text-anchor="middle" x="298.5" y="-82.8" font-family="Open Sans" font-size="14.00">JLS&#45;16: A list of tests,</text>
-<text text-anchor="middle" x="298.5" y="-67.8" font-family="Open Sans" font-size="14.00">which is extracted from</text>
-<text text-anchor="middle" x="298.5" y="-52.8" font-family="Open Sans" font-size="14.00">the test execution, is</text>
-<text text-anchor="middle" x="298.5" y="-37.8" font-family="Open Sans" font-size="14.00">provided, along with</text>
-<text text-anchor="middle" x="298.5" y="-22.8" font-family="Open Sans" font-size="14.00">a list of test environments.</text>
-<text text-anchor="middle" x="298.5" y="-7.8" font-family="Open Sans" font-size="14.00">(TODO) </text>
+<g id="a_node3"><a xlink:href="https://score-json.github.io/json/main/generated/JLS.html#jls-16" xlink:title="JLS&#45;16: A list of tests,\nwhich is extracted from\nthe test execution, is\nprovided, along with\na list of test environments.\n" target="_top">
+<polygon fill="none" stroke="black" points="400,-90.5 197,-90.5 197,-7.5 400,-7.5 400,-90.5"/>
+<text text-anchor="middle" x="298.5" y="-75.3" font-family="Open Sans" font-size="14.00">JLS&#45;16: A list of tests,</text>
+<text text-anchor="middle" x="298.5" y="-60.3" font-family="Open Sans" font-size="14.00">which is extracted from</text>
+<text text-anchor="middle" x="298.5" y="-45.3" font-family="Open Sans" font-size="14.00">the test execution, is</text>
+<text text-anchor="middle" x="298.5" y="-30.3" font-family="Open Sans" font-size="14.00">provided, along with</text>
+<text text-anchor="middle" x="298.5" y="-15.3" font-family="Open Sans" font-size="14.00">a list of test environments.</text>
 </a>
 </g>
 </g>
@@ -94,8 +93,8 @@
 <!-- TA&#45;TESTS&#45;&gt;JLS&#45;16 -->
 <g id="edge2" class="edge">
 <title>TA&#45;TESTS&#45;&gt;JLS&#45;16</title>
-<path fill="none" stroke="black" d="M217.06,-241.96C234.06,-201.89 256.94,-147.96 274.12,-107.46"/>
-<polygon fill="black" stroke="black" points="277.34,-108.83 278.03,-98.26 270.9,-106.1 277.34,-108.83"/>
+<path fill="none" stroke="black" d="M217.06,-241.96C235.13,-199.38 259.83,-141.14 277.28,-100.01"/>
+<polygon fill="black" stroke="black" points="280.54,-101.3 281.22,-90.72 274.1,-98.56 280.54,-101.3"/>
 </g>
 <!-- TT&#45;CONSTRUCTION&#45;&gt;TA&#45;TESTS -->
 <g id="edge4" class="edge">

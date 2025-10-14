@@ -770,3 +770,35 @@ _None_
 **Graph:**
 
 _No Historic Data Found_
+
+
+---
+
+### AOU-28 
+
+The integrator shall ensure that the known open bugs of nlohmann/json are regularly reviewed on their impact on the use of the documented version as long as the library is actively used.
+
+
+**Supported Requests:**
+
+- [TA-FIXES](TA.md#ta-fixes)
+
+**Supporting Items:**
+
+_None_
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
+
+**Graph:**
+
+_No Historic Data Found_

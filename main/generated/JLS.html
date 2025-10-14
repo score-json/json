@@ -427,7 +427,7 @@
                   
   <section id="jls-01">
 <h1>JLS-01<a class="headerlink" href="#jls-01" title="Link to this heading">#</a></h1>
-<p>The nlohmann/json library project CI executes on each pull request (opened, reopened, synchronized) the integration test suite, and failures in these runs are investigated by contributors.</p>
+<p>The CI pipeline of the main branch executes on each pull request (opened, reopened, synchronized) the integration test suite, and failures in these runs are investigated by contributors.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-validation"><span class="std std-ref">TA-VALIDATION</span></a></p></li>
@@ -862,7 +862,7 @@
 <hr class="docutils" />
 <section id="jls-11">
 <h1>JLS-11<a class="headerlink" href="#jls-11" title="Link to this heading">#</a></h1>
-<p>A score based on outstanding, fixed and mitigated faults is calculated based on github issues in nlohmann/json. (TODO)</p>
+<p>A score based on outstanding, fixed and mitigated faults is calculated based on github issues in nlohmann/json.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-fixes"><span class="std std-ref">TA-FIXES</span></a></p></li>
@@ -921,7 +921,7 @@
 <hr class="docutils" />
 <section id="jls-14">
 <h1>JLS-14<a class="headerlink" href="#jls-14" title="Link to this heading">#</a></h1>
-<p>The builds are repeatable (i.e. different builds lead to the same SHA value). (TODO)</p>
+<p>The SHA value of the library in use coincides with the SHA value provided by Niels Lohmann for that version.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-releases"><span class="std std-ref">TA-RELEASES</span></a></p></li>
@@ -929,7 +929,11 @@
 <p><strong>Supporting Items:</strong></p>
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">website:</span> <span class="pre">/nlohmann/json/tree/v3.12.0</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">/nlohmann/json/tree/v3.12.0</span></code>
+- release site of nlohmann/json containing the sha values</p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -938,7 +942,7 @@
 <hr class="docutils" />
 <section id="jls-16">
 <h1>JLS-16<a class="headerlink" href="#jls-16" title="Link to this heading">#</a></h1>
-<p>A list of tests, which is extracted from the test execution, is provided, along with a list of test environments. (TODO)</p>
+<p>A list of tests, which is extracted from the test execution, is provided, along with a list of test environments.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-tests"><span class="std std-ref">TA-TESTS</span></a></p></li>
@@ -10559,7 +10563,7 @@ To reflect the structure of the nested sections, nested lists are utilised, wher
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">TSF/scripts/capture_test_data.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TSF/scripts/capture_test_data_memory_sensitive.py</span></code></p></li>
 </ul>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
@@ -10649,6 +10653,40 @@ To reflect the structure of the nested sections, nested lists are utilised, wher
             <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">result</span>
 
+<span class="k">def</span><span class="w"> </span><span class="nf">get_ctest_target</span><span class="p">(</span><span class="n">log_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="c1"># extracts name of ctest target from junit log</span>
+    <span class="c1"># log_name has the form &quot;path/to/log/file/target_junit.xml&quot;, and target is expected</span>
+    <span class="n">log</span> <span class="o">=</span> <span class="n">log_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">log</span><span class="o">.</span><span class="n">removesuffix</span><span class="p">(</span><span class="s2">&quot;_junit.xml&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_most_recent_results</span><span class="p">(</span><span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">compiler</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cpp_standard</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">database</span><span class="p">:</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Connection</span><span class="p">)</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="n">cursor</span> <span class="o">=</span> <span class="n">database</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">                    WITH combination AS (</span>
+<span class="s2">                        SELECT workflow_info.repo, workflow_info.run_id, workflow_info.run_attempt, workflow_info.time</span>
+<span class="s2">                        FROM test_results INNER JOIN workflow_info ON</span>
+<span class="s2">                        workflow_info.repo = test_results.repo </span>
+<span class="s2">                        AND workflow_info.run_id = test_results.run_id </span>
+<span class="s2">                        AND workflow_info.run_attempt = test_results.run_attempt</span>
+<span class="s2">                        WHERE test_results.ctest_target = ? AND test_results.name = ? AND test_results.compiler = ? AND test_results.cpp_standard = ?</span>
+<span class="s2">                    )</span>
+<span class="s2">                    SELECT repo, run_id, run_attempt FROM combination</span>
+<span class="s2">                    ORDER BY time DESC, run_id DESC, run_attempt DESC</span>
+<span class="s2">                    LIMIT 1;</span>
+<span class="s2">                    &quot;&quot;&quot;</span><span class="p">,(</span><span class="n">target</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">compiler</span><span class="p">,</span><span class="n">cpp_standard</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># if no recent run is found, data need to be stored</span>
+        <span class="k">return</span> <span class="p">[]</span> 
+    <span class="n">repo</span><span class="p">,</span> <span class="n">run_id</span><span class="p">,</span> <span class="n">run_attempt</span> <span class="o">=</span> <span class="n">result</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">                    SELECT passed_cases, failed_cases, skipped_cases, passed_assertions, failed_assertions </span>
+<span class="s2">                    FROM test_results WHERE</span>
+<span class="s2">                    ctest_target = ? AND name = ? AND compiler = ? AND cpp_standard = ? AND repo = ? AND run_id = ? AND run_attempt = ?</span>
+<span class="s2">                    &quot;&quot;&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">compiler</span><span class="p">,</span><span class="n">cpp_standard</span><span class="p">,</span><span class="n">repo</span><span class="p">,</span><span class="n">run_id</span><span class="p">,</span><span class="n">run_attempt</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
 <span class="c1">##########################</span>
 <span class="c1"># Below starts the script.</span>
 <span class="c1">##########################</span>
@@ -10669,13 +10707,15 @@ To reflect the structure of the nested sections, nested lists are utilised, wher
         <span class="n">environment</span> <span class="o">=</span> <span class="n">setup_environment_variables</span><span class="p">()</span>
     <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Critical error: Can not uniquely identify environment data! Aborting recording of data.&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Step 1: store metadata of workflow run persistently</span>
 
     <span class="c1"># initiate connection to database</span>
-    <span class="n">connector</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;TSF/TestResultData.db&quot;</span><span class="p">)</span>
+    <span class="n">connector</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;TSF/MemoryEfficientTestResultData.db&quot;</span><span class="p">)</span>
     <span class="n">connector</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;PRAGMA foreign_keys = ON&quot;</span><span class="p">)</span>
-    <span class="n">cursor</span> <span class="o">=</span> <span class="n">connector</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 
     <span class="c1"># load expected tables</span>
+    <span class="c1"># table workflow_info contains metadata of workflow and is updated every time</span>
     <span class="n">command</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s2">&quot;CREATE TABLE IF NOT EXISTS workflow_info(&quot;</span><span class="p">,</span>
         <span class="s2">&quot;repo TEXT, &quot;</span><span class="p">,</span>                              <span class="c1"># repository</span>
@@ -10686,10 +10726,11 @@ To reflect the structure of the nested sections, nested lists are utilised, wher
         <span class="s2">&quot;time INT, &quot;</span><span class="p">,</span>                               <span class="c1"># the time that is associated to this workflow run</span>
         <span class="s2">&quot;PRIMARY KEY(repo, run_id, run_attempt))&quot;</span>
     <span class="p">)</span>
-    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">command</span><span class="p">))</span>
+    <span class="n">connector</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">command</span><span class="p">))</span>
+    <span class="c1"># table test_results contains detailed results for each individual test</span>
     <span class="n">command</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s2">&quot;CREATE TABLE IF NOT EXISTS test_results(&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;timestamp INT, &quot;</span>                           <span class="c1"># when the test-run was started</span>
+        <span class="s2">&quot;ctest_target TEXT, &quot;</span><span class="p">,</span>                      <span class="c1"># name of the ctest target located in ci.cmake</span>
         <span class="s2">&quot;name TEXT, &quot;</span><span class="p">,</span>                              <span class="c1"># name of the test</span>
         <span class="s2">&quot;execution_time REAL, &quot;</span><span class="p">,</span>                    <span class="c1"># execution time in seconds</span>
         <span class="s2">&quot;compiler TEXT, &quot;</span><span class="p">,</span>                          <span class="c1"># compiler information</span>
@@ -10702,31 +10743,17 @@ To reflect the structure of the nested sections, nested lists are utilised, wher
         <span class="s2">&quot;repo TEXT, &quot;</span><span class="p">,</span>                              <span class="c1"># repository</span>
         <span class="s2">&quot;run_id INT, &quot;</span><span class="p">,</span>                             <span class="c1"># ID of workflow run</span>
         <span class="s2">&quot;run_attempt INT, &quot;</span><span class="p">,</span>                        <span class="c1"># Attempt-number of workflow run</span>
-        <span class="s2">&quot;FOREIGN KEY(repo, run_id, run_attempt) REFERENCES workflow_info)&quot;</span>
+        <span class="s2">&quot;FOREIGN KEY(repo, run_id, run_attempt) REFERENCES workflow_info);&quot;</span>
         <span class="p">)</span>
-    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">command</span><span class="p">))</span>
+    <span class="n">connector</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">command</span><span class="p">))</span>
+    <span class="n">cursor</span> <span class="o">=</span> <span class="n">connector</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 
-    <span class="c1"># Due to storage space constraints, only most recent 100 test-results are stored.</span>
-    <span class="c1"># Heuristic calculations have demonstrated that this should ensure that</span>
-    <span class="c1"># the TestResultData.db is below 100MiB, which is github&#39;s hard file size limit.</span>
-
-    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT COUNT(*) FROM workflow_info&quot;</span><span class="p">)</span>
-    <span class="n">saved_test_data</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="k">while</span> <span class="n">saved_test_data</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span><span class="mi">100</span><span class="p">:</span>
-        <span class="c1"># delete oldest saved data</span>
-        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT MIN(time) FROM workflow_info&quot;</span><span class="p">)</span>
-        <span class="n">oldest_time</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT repo, run_id, run_attempt FROM workflow_info WHERE </span><span class="se">\&quot;</span><span class="s2">time</span><span class="se">\&quot;</span><span class="s2"> = ?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">oldest_time</span><span class="p">,))</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
-        <span class="c1"># Delete all data associated to all the oldest workflow runs </span>
-        <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
-            <span class="c1"># it is expected that there is only one result</span>
-            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DELETE FROM test_results WHERE repo = </span><span class="se">\&quot;</span><span class="s2">?</span><span class="se">\&quot;</span><span class="s2"> AND run_id = ? AND run_attempt = ?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
-            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DELETE FROM workflow_info WHERE repo = </span><span class="se">\&quot;</span><span class="s2">?</span><span class="se">\&quot;</span><span class="s2"> AND run_id = ? AND run_attempt = ?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
-            <span class="n">connector</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-        <span class="c1"># don&#39;t forget to update!</span>
-        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT COUNT(*) FROM workflow_info&quot;</span><span class="p">)</span>
-        <span class="n">saved_test_data</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="c1"># Count number of rows as heuristic size-checker.</span>
+    <span class="c1"># In case that the update-check fails, and every result is stored, allow for approximately 26 complete results to be stored</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT MAX(COALESCE((SELECT MAX(rowid) FROM workflow_info),0),COALESCE((SELECT MAX(rowid) FROM test_results),0));&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mf">1e5</span><span class="p">:</span>
+        <span class="n">connector</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;The persistent data storage is too large! Please move persistent data to external storage.&quot;</span><span class="p">)</span>
 
     <span class="c1"># fill in metadata</span>
     <span class="c1"># OBSERVE: This script expects the status of the github workflow as argument</span>
@@ -10734,57 +10761,21 @@ To reflect the structure of the nested sections, nested lists are utilised, wher
     <span class="n">run_id</span> <span class="o">=</span> <span class="n">environment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;GITHUB_RUN_ID&#39;</span><span class="p">)</span>
     <span class="n">run_attempt</span> <span class="o">=</span> <span class="n">environment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;GITHUB_RUN_ATTEMPT&#39;</span><span class="p">)</span>
     <span class="n">time</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
-    <span class="n">command</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;INSERT INTO workflow_info VALUES(?,?,?,?,?)&quot;</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO workflow_info VALUES(?,?,?,?,?)&quot;</span>
     <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">,(</span><span class="n">repo</span><span class="p">,</span> <span class="n">run_id</span><span class="p">,</span> <span class="n">run_attempt</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">time</span><span class="p">))</span>
     <span class="c1"># Don&#39;t forget to save!</span>
     <span class="n">connector</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-
-    <span class="c1"># Load my artifacts</span>
-    <span class="n">failed_data</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">junit_logs</span> <span class="o">=</span> <span class="n">get_all_xml_files</span><span class="p">(</span><span class="s2">&quot;./my_artifacts/&quot;</span><span class="p">)</span>
-
-    <span class="c1">#extract data</span>
-    <span class="k">for</span> <span class="n">junit_log</span> <span class="ow">in</span> <span class="n">junit_logs</span><span class="p">:</span>
-        <span class="n">tree</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">junit_log</span><span class="p">)</span>
-        <span class="n">file_root</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">getroot</span><span class="p">()</span>
-        <span class="n">testsuite</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">file_root</span><span class="o">.</span><span class="n">iter</span><span class="p">(</span><span class="s1">&#39;testsuite&#39;</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">testsuite</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: Could not find testsuite data in </span><span class="si">{</span><span class="n">junit_log</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
-            <span class="n">failed_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">junit_log</span><span class="p">)</span>
-            <span class="k">continue</span>
-        <span class="k">for</span> <span class="n">testcase</span> <span class="ow">in</span> <span class="p">(</span><span class="n">case</span> <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="n">file_root</span><span class="o">.</span><span class="n">iter</span><span class="p">(</span><span class="s1">&#39;testcase&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">is_unit_test</span><span class="p">(</span><span class="n">case</span><span class="p">)):</span>
-            <span class="n">metadata</span> <span class="o">=</span> <span class="n">get_metadata</span><span class="p">(</span><span class="n">testcase</span><span class="p">)</span>
-            <span class="n">command</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="s2">&quot;INSERT INTO test_results VALUES(&quot;</span><span class="p">,</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">testsuite</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;timestamp&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">timestamp</span><span class="p">())</span><span class="si">}</span><span class="s2">, &quot;</span><span class="p">,</span>
-                <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;, &quot;</span><span class="p">,</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;execution time&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">, &quot;</span><span class="p">,</span>
-                <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">testsuite</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;, &quot;</span><span class="p">,</span>
-                <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;standard&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;, &quot;</span><span class="p">,</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;passed test cases&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">, &quot;</span><span class="p">,</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;failed test cases&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">, &quot;</span><span class="p">,</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;skipped test cases&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">, &quot;</span><span class="p">,</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;passed assertions&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">, &quot;</span><span class="p">,</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;failed assertions&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">, &quot;</span><span class="p">,</span>
-                <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">repo</span><span class="si">}</span><span class="s2">&#39;, &quot;</span><span class="p">,</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">run_id</span><span class="si">}</span><span class="s2">, &quot;</span><span class="p">,</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">run_attempt</span><span class="si">}</span><span class="s2">&quot;</span>
-                <span class="s2">&quot;)&quot;</span>
-            <span class="p">)</span>
-            <span class="n">command</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
-            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
-            <span class="n">connector</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-
-    <span class="c1"># storage space on the github is limited.</span>
-
-    <span class="c1"># finally, most recent test data are stored separately</span>
-
+    
+    <span class="c1"># Step 2: generate report of most recent test run and update persistent storage if necessary</span>
+    
     <span class="c1"># initialise database connection</span>
-    <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;TestResults.db&quot;</span><span class="p">)</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;MemoryEfficientTestResults.db&quot;</span><span class="p">)</span>
     <span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
     <span class="c1"># add the expected table</span>
+    <span class="c1"># the table TestResults.test_results differs from TestResultData.test_results in that the metadata of the commit are not saved.</span>
     <span class="n">command</span> <span class="o">=</span> <span class="p">(</span>
         <span class="s2">&quot;CREATE TABLE IF NOT EXISTS test_results(&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ctest_target TEXT, &quot;</span><span class="p">,</span>                      <span class="c1"># name of the ctest target located in ci.cmake</span>
         <span class="s2">&quot;name TEXT, &quot;</span><span class="p">,</span>                              <span class="c1"># name of the test</span>
         <span class="s2">&quot;execution_time REAL, &quot;</span><span class="p">,</span>                    <span class="c1"># execution time in seconds</span>
         <span class="s2">&quot;compiler TEXT, &quot;</span><span class="p">,</span>                          <span class="c1"># compiler information</span>
@@ -10796,26 +10787,53 @@ To reflect the structure of the nested sections, nested lists are utilised, wher
         <span class="s2">&quot;failed_assertions INT&quot;</span><span class="p">,</span>                    <span class="c1"># number of failed assertions</span>
         <span class="s2">&quot;)&quot;</span>
         <span class="p">)</span>
-    <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">command</span><span class="p">))</span>
-    <span class="c1"># copy most recent data from persistent data storage</span>
-    <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;ATTACH DATABASE &#39;TSF/TestResultData.db&#39; AS source&quot;</span><span class="p">)</span>
-    <span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">            INSERT INTO test_results (</span>
-<span class="s2">                name, execution_time, compiler, cpp_standard,</span>
-<span class="s2">                passed_cases, failed_cases, skipped_cases,</span>
-<span class="s2">                passed_assertions, failed_assertions</span>
-<span class="s2">            )</span>
-<span class="s2">            SELECT</span>
-<span class="s2">                name, execution_time, compiler, cpp_standard,</span>
-<span class="s2">                passed_cases, failed_cases, skipped_cases,</span>
-<span class="s2">                passed_assertions, failed_assertions</span>
-<span class="s2">            FROM source.test_results</span>
-<span class="s2">            WHERE repo = ? AND run_id = ? AND run_attempt = ?</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-    <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="p">(</span><span class="n">repo</span><span class="p">,</span> <span class="n">run_id</span><span class="p">,</span> <span class="n">run_attempt</span><span class="p">))</span>
-    <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-    <span class="c1"># detach persistent database</span>
-    <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DETACH DATABASE source&quot;</span><span class="p">)</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">command</span><span class="p">))</span>
+
+    <span class="c1"># Load my artifacts</span>
+    <span class="n">junit_logs</span> <span class="o">=</span> <span class="n">get_all_xml_files</span><span class="p">(</span><span class="s2">&quot;./my_artifacts/&quot;</span><span class="p">)</span>
+
+    <span class="c1">#extract data</span>
+    <span class="k">for</span> <span class="n">junit_log</span> <span class="ow">in</span> <span class="n">junit_logs</span><span class="p">:</span>
+        <span class="n">tree</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">junit_log</span><span class="p">)</span>
+        <span class="n">file_root</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">getroot</span><span class="p">()</span>
+        <span class="n">testsuite</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">file_root</span><span class="o">.</span><span class="n">iter</span><span class="p">(</span><span class="s1">&#39;testsuite&#39;</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">testsuite</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: Could not find testsuite data in </span><span class="si">{</span><span class="n">junit_log</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="k">for</span> <span class="n">testcase</span> <span class="ow">in</span> <span class="p">(</span><span class="n">case</span> <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="n">file_root</span><span class="o">.</span><span class="n">iter</span><span class="p">(</span><span class="s1">&#39;testcase&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">is_unit_test</span><span class="p">(</span><span class="n">case</span><span class="p">)):</span>
+            <span class="n">metadata</span> <span class="o">=</span> <span class="n">get_metadata</span><span class="p">(</span><span class="n">testcase</span><span class="p">)</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">get_ctest_target</span><span class="p">(</span><span class="n">junit_log</span><span class="p">)</span>
+            <span class="n">compiler</span> <span class="o">=</span> <span class="n">testsuite</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+            <span class="n">more_compiler_info</span> <span class="o">=</span> <span class="p">[</span><span class="n">case</span> <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="n">file_root</span><span class="o">.</span><span class="n">iter</span><span class="p">(</span><span class="s1">&#39;testcase&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">case</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;cmake_target_include_directories_configure&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">more_compiler_info</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">compiler_information</span> <span class="o">=</span> <span class="n">more_compiler_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">information</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">compiler_information</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;system-out&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">itertext</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">compiler</span> <span class="o">=</span> <span class="n">information</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-- The CXX compiler identification is &quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+            <span class="n">cpp_standard</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;standard&#39;</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">target</span><span class="p">,</span>
+                        <span class="n">name</span><span class="p">,</span>
+                        <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;execution time&#39;</span><span class="p">),</span> 
+                        <span class="n">compiler</span><span class="p">,</span> 
+                        <span class="n">cpp_standard</span><span class="p">,</span> 
+                        <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;passed test cases&#39;</span><span class="p">),</span> 
+                        <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;failed test cases&#39;</span><span class="p">),</span> 
+                        <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;skipped test cases&#39;</span><span class="p">),</span> 
+                        <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;passed assertions&#39;</span><span class="p">),</span> 
+                        <span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;failed assertions&#39;</span><span class="p">)</span>
+                    <span class="p">)</span>
+            <span class="n">command</span> <span class="o">=</span><span class="s2">&quot;INSERT INTO test_results VALUES(?,?,?,?,?,?,?,?,?,?);&quot;</span>
+            <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+            <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="n">most_recently_stored_results</span> <span class="o">=</span> <span class="n">find_most_recent_results</span><span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">compiler</span><span class="p">,</span><span class="n">cpp_standard</span><span class="p">,</span><span class="n">connector</span><span class="p">)</span>
+            <span class="n">current_results</span> <span class="o">=</span> <span class="p">[</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;passed test cases&#39;</span><span class="p">),</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;failed test cases&#39;</span><span class="p">),</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;skipped test cases&#39;</span><span class="p">),</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;passed assertions&#39;</span><span class="p">),</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;failed assertions&#39;</span><span class="p">)]</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">most_recently_stored_results</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">any</span><span class="p">(</span><span class="n">most_recently_stored_results</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">!=</span><span class="n">current_results</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)):</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">data</span> <span class="o">+</span> <span class="p">(</span><span class="n">repo</span><span class="p">,</span> <span class="n">run_id</span><span class="p">,</span> <span class="n">run_attempt</span><span class="p">)</span>
+                <span class="n">command</span> <span class="o">=</span><span class="s2">&quot;INSERT INTO test_results VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?);&quot;</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">command</span><span class="p">,</span><span class="n">data</span><span class="p">)</span>
+
+                
     <span class="c1"># terminate connection to temporary database</span>
     <span class="c1"># don&#39;t forget to commit the changes</span>
     <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -11683,6 +11701,16 @@ To reflect the structure of the nested sections, nested lists are utilised, wher
 <span class="w">          </span><span class="no">sudo apt-get install -y graphviz</span>
 <span class="w">          </span><span class="no">pip install git+https://gitlab.com/CodethinkLabs/trustable/trustable@9957f12171cb898d83df5ae708fdba0a38fece2e</span>
 
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install tools</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">sudo apt-get update</span>
+<span class="w">          </span><span class="no">sudo apt-get install -y jq</span>
+<span class="w">          </span><span class="no">sudo apt install gh -y</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authenticate with GitHub CLI</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">echo &quot;${{ secrets.GITHUB_TOKEN }}&quot; | gh auth login --with-token</span>
+
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Get current branch name</span>
 <span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get_branch</span>
 <span class="w">        </span><span class="nt">env</span><span class="p">:</span>
@@ -11707,43 +11735,6 @@ To reflect the structure of the nested sections, nested lists are utilised, wher
 <span class="w">          </span><span class="no">git config user.email &quot;github-actions[bot]@users.noreply.github.com&quot;</span>
 <span class="w">          </span><span class="no">git fetch --all</span>
 <span class="w">          </span><span class="no">git checkout save_historical_data &amp;&amp; git pull || git checkout -b save_historical_data</span>
-<span class="w">      </span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Load persistent data</span>
-<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">if ! git ls-tree --name-only origin/save_historical_data TSF/TrustableScoring.db | grep TSF/TrustableScoring.db; then</span>
-<span class="w">            </span><span class="no">mkdir -p TSF</span>
-<span class="w">            </span><span class="no">touch TSF/TrustableScoring.db</span>
-<span class="w">            </span><span class="no">git add TSF/TrustableScoring.db</span>
-<span class="w">            </span><span class="no">git commit -m &quot;Initialise persistent data storage&quot;</span>
-<span class="w">            </span><span class="no">git push origin save_historical_data</span>
-<span class="w">          </span><span class="no">fi</span>
-<span class="w">          </span><span class="no">git checkout $branch_name</span>
-<span class="w">          </span><span class="no">git checkout save_historical_data -- TSF/TrustableScoring.db</span>
-
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Generate trudag report</span>
-<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">REPO_FULL=&quot;${{ github.repository }}&quot;</span>
-<span class="w">          </span><span class="no">REPO_NAME=&quot;${REPO_FULL#*/}&quot;</span>
-<span class="w">          </span><span class="no">OWNER_NAME=&quot;${REPO_FULL%%/*}&quot; </span>
-<span class="w">          </span><span class="no">TSF/scripts/generate_report.sh &quot;https://${OWNER_NAME}.github.io/${REPO_NAME}/main&quot;</span>
-<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">GITHUB_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
-
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install tools</span>
-<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">sudo apt-get update</span>
-<span class="w">          </span><span class="no">sudo apt-get install -y jq</span>
-<span class="w">          </span><span class="no">sudo apt install gh -y</span>
-
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authenticate with GitHub CLI</span>
-<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">echo &quot;${{ secrets.GITHUB_TOKEN }}&quot; | gh auth login --with-token</span>
-
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout data storage branch</span>
-<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">git stash push --include-untracked -- $(git status --porcelain | awk &#39;{print $2}&#39; | grep -v TSF/TrustableScoring.db)</span>
-<span class="w">          </span><span class="no">git checkout save_historical_data</span>
-<span class="w">          </span><span class="no">git pull</span>
 
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Fetch open issues labelled as bug from nlohmann/json</span>
 <span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fetch_issues</span>
@@ -11783,23 +11774,67 @@ To reflect the structure of the nested sections, nested lists are utilised, wher
 <span class="w">              </span><span class="no">.[]</span>
 <span class="w">            </span><span class="no">&#39; raw_open_issues.json &amp;gt;&amp;gt; $OUTPUT_FILE</span>
 
-<span class="w">          </span><span class="no"># Add subtitle for closed issues</span>
-<span class="w">          </span><span class="no">echo &quot;&quot; &amp;gt;&amp;gt; $OUTPUT_FILE</span>
-<span class="w">          </span><span class="no">echo &quot;## Closed Issues (since v3.12.0)&quot; &amp;gt;&amp;gt; $OUTPUT_FILE</span>
-<span class="w">          </span><span class="no">echo &quot;&quot; &amp;gt;&amp;gt; $OUTPUT_FILE</span>
+<span class="w">          </span><span class="no">jq -c &#39;</span>
+<span class="w">            </span><span class="no">.[]</span>
+<span class="p p-Indicator">|</span><span class="err"> select(.labels[]?; .name | test(&quot;bug&quot;; &quot;i&quot;))</span>
+<span class="p p-Indicator">|</span><span class="err"> { n: .number</span>
+<span class="w">              </span><span class="no">, md: &quot;### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n&quot;</span>
+<span class="w">              </span><span class="no">}</span>
+<span class="w">          </span><span class="s">&#39;</span><span class="nv"> </span><span class="s">raw_open_issues.json</span><span class="nv"> </span><span class="s">|</span>
+<span class="w">          </span><span class="s">while</span><span class="nv"> </span><span class="s">IFS=</span><span class="nv"> </span><span class="s">read</span><span class="nv"> </span><span class="s">-r</span><span class="nv"> </span><span class="s">rec;</span><span class="nv"> </span><span class="s">do</span>
+<span class="w">            </span><span class="s">num=$(jq</span><span class="nv"> </span><span class="s">-r</span><span class="nv"> </span><span class="s">&#39;</span><span class="l l-Scalar l-Scalar-Plain">.n&#39; &amp;lt;&amp;lt;&amp;lt; &quot;$rec&quot;)</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">md=$(jq -r &#39;.md&#39; &amp;lt;&amp;lt;&amp;lt; &quot;$rec&quot;)</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">py_out=$(python3 ./TSF/scripts/identify_nlohmann_issue.py &quot;$num&quot;)</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">{</span>
+<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">printf &quot;%s\n&quot; &quot;$md&quot;</span>
+<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">printf &quot;%s\n&quot; &quot;$py_out&quot;</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">} &amp;gt;&amp;gt; &quot;$OUTPUT_FILE&quot;</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">done</span>
 
-<span class="w">          </span><span class="no"># Filter raw closed issues for labels containing &quot;bug&quot;, created after release date of nlohmann/json version in use, and convert to output .md file</span>
-<span class="w">          </span><span class="no">jq -r &#39;</span>
-<span class="w">              </span><span class="no">map(select(.labels[]?.name | test(&quot;bug&quot;; &quot;i&quot;))) |</span>
-<span class="w">              </span><span class="no">map(select(.createdAt &amp;gt; &quot;2025-04-11T00:00:00Z&quot;)) |  # Adjust date as needed, 2025-04-11 corresponds to release v3.12.0 of nlohmann/json</span>
-<span class="w">              </span><span class="no">map(&quot;### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n&quot;) |</span>
-<span class="w">              </span><span class="no">.[]</span>
-<span class="w">            </span><span class="no">&#39; raw_closed_issues.json &amp;gt;&amp;gt; $OUTPUT_FILE</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain"># Add subtitle for closed issues</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;&quot; &amp;gt;&amp;gt; $OUTPUT_FILE</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;## Closed Issues (since v3.12.0)&quot; &amp;gt;&amp;gt; $OUTPUT_FILE</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;&quot; &amp;gt;&amp;gt; $OUTPUT_FILE</span>
 
-<span class="w">          </span><span class="no"># Push misbehaviours file to save_historical_data branch</span>
-<span class="w">          </span><span class="no">git add TSF/misbehaviours.md</span>
-<span class="w">          </span><span class="no">git commit -m &quot;Updated issues list&quot; || echo &quot;No changes to commit&quot;</span>
-<span class="w">          </span><span class="no">git push origin save_historical_data</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain"># Filter raw closed issues for labels containing &quot;bug&quot;, created after release date of nlohmann/json version in use, and convert to output .md file</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">jq -r &#39;</span>
+<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">map(select(.labels[]?.name | test(&quot;bug&quot;; &quot;i&quot;))) |</span>
+<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">map(select(.createdAt &amp;gt; &quot;2025-04-11T00:00:00Z&quot;)) |</span><span class="w">  </span><span class="c1"># Adjust date as needed, 2025-04-11 corresponds to release v3.12.0 of nlohmann/json</span>
+<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">map(&quot;### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n&quot;) |</span>
+<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">.[]</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">&#39; raw_closed_issues.json &amp;gt;&amp;gt; $OUTPUT_FILE</span>
+
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain"># Push misbehaviours file to save_historical_data branch</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">git add TSF/misbehaviours.md</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">git commit -m &quot;Updated issues list&quot; || echo &quot;No changes to commit&quot;</span>
+<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">git push origin save_historical_data &amp;&amp; git pull</span>
+<span class="w">      </span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Load persistent data</span>
+<span class="w w-Error">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">if ! git ls-tree --name-only origin/save_historical_data TSF/TrustableScoring.db | grep TSF/TrustableScoring.db; then</span>
+<span class="w">            </span><span class="no">mkdir -p TSF</span>
+<span class="w">            </span><span class="no">touch TSF/TrustableScoring.db</span>
+<span class="w">            </span><span class="no">git add TSF/TrustableScoring.db</span>
+<span class="w">            </span><span class="no">git commit -m &quot;Initialise persistent data storage&quot;</span>
+<span class="w">            </span><span class="no">git push origin save_historical_data</span>
+<span class="w">          </span><span class="no">fi</span>
+<span class="w">          </span><span class="no">git checkout $branch_name</span>
+<span class="w">          </span><span class="no">git checkout save_historical_data -- TSF/TrustableScoring.db</span>
+
+<span class="w w-Error">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Generate trudag report</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">REPO_FULL=&quot;${{ github.repository }}&quot;</span>
+<span class="w">          </span><span class="no">REPO_NAME=&quot;${REPO_FULL#*/}&quot;</span>
+<span class="w">          </span><span class="no">OWNER_NAME=&quot;${REPO_FULL%%/*}&quot; </span>
+<span class="w">          </span><span class="no">TSF/scripts/generate_report.sh &quot;https://${OWNER_NAME}.github.io/${REPO_NAME}/main&quot;</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">GITHUB_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout data storage branch</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">git stash push --include-untracked -- $(git status --porcelain | awk &#39;{print $2}&#39; | grep -v TSF/TrustableScoring.db)</span>
+<span class="w">          </span><span class="no">git checkout save_historical_data</span>
+<span class="w">          </span><span class="no">git pull</span>
 
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Store persistent data</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -11819,7 +11854,7 @@ To reflect the structure of the nested sections, nested lists are utilised, wher
 <span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TSF/docs/generated/</span>
 <span class="w">          </span><span class="nt">if-no-files-found</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">error</span>
 <span class="w">          </span>
-<span class="w">  </span><span class="nt">build-docs</span><span class="p">:</span>
+<span class="w w-Error">  </span><span class="nt">build-docs</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">run-trudag</span>
 <span class="w">    </span><span class="c1"># the eclipse-score/cicd-workflow docs.yml is adjusted to download the trudag report artifact before building the documentation</span>
 <span class="w">    </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./.github/workflows/docs.yml</span>

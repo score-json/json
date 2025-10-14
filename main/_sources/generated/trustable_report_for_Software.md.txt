@@ -50,6 +50,7 @@ This presents the compliance for the _Assumptions of Use_ (AOU) in tabular form.
 | [AOU-25](AOU.md#aou-25) |  The integrator shall convince himself that the behaviour of the C++ standard library is known, verified and validated. | 0.00 |
 | [AOU-26](AOU.md#aou-26) |  The integrator shall convince himself that the misbehaviours of the C++ standard library and mitigations are known, verified and validated. | 0.00 |
 | [AOU-27](AOU.md#aou-27) |  The integrator shall ensure that ChangeLog.md is updated whenever the local mirror of nlohmann/json is updated. | 0.00 |
+| [AOU-28](AOU.md#aou-28) |  The integrator shall ensure that the known open bugs of nlohmann/json are regularly reviewed on their impact on the use of the documented version as long as the library is actively used. | 0.00 |
 
 ## Compliance for JLEX
 This presents the compliance for the _JSON-Library Expectations_ (JLEX) in tabular form.
@@ -64,7 +65,7 @@ This presents the compliance for the _JSON-Library Statements_ (JLS) in tabular 
 
 | Item   | Summary | Score |
 |--------|---------|-------|
-| [JLS-01](JLS.md#jls-01) |  The nlohmann/json library project CI executes on each pull request (opened, reopened, synchronized) the integration test suite, and failures in these runs are investigated by contributors. | 0.00 |
+| [JLS-01](JLS.md#jls-01) |  The CI pipeline of the main branch executes on each pull request (opened, reopened, synchronized) the integration test suite, and failures in these runs are investigated by contributors. | 0.00 |
 | [JLS-02](JLS.md#jls-02) |  Fuzz testing is used in the original nlohmann/json repository (https://github.com/nlohmann/json) to uncover edge cases and failure modes throughout development. (https://github.com/nlohmann/json/blob/develop/tests/fuzzing.md) | 0.00 |
 | [JLS-03](JLS.md#jls-03) |  Automated tests are reviewed by a Subject Matter Expert to verify they test the properties they claim to. | 0.00 |
 | [JLS-04](JLS.md#jls-04) |  External dependencies are checked for potential security vulnerabilities with each pull request to main. Merging is blocked until all warnings are resolved. | 0.00 |
@@ -74,11 +75,11 @@ This presents the compliance for the _JSON-Library Statements_ (JLS) in tabular 
 | [JLS-08](JLS.md#jls-08) |  Each statement is scored based on SME reviews or automatic validation functions. (TODO) | 0.00 |
 | [JLS-09](JLS.md#jls-09) |  Scores are reasonably, systematically and repeatably accumulated. (TODO) | 0.00 |
 | [JLS-10](JLS.md#jls-10) |  Every release includes source code, build instructions, tests and attestations. (TODO: Test result summary) | 0.00 |
-| [JLS-11](JLS.md#jls-11) |  A score based on outstanding, fixed and mitigated faults is calculated based on github issues in nlohmann/json. (TODO) | 0.00 |
+| [JLS-11](JLS.md#jls-11) |  A score based on outstanding, fixed and mitigated faults is calculated based on github issues in nlohmann/json. | 0.00 |
 | [JLS-12](JLS.md#jls-12) |  The S-Core change process management is followed. | 0.00 |
 | [JLS-13](JLS.md#jls-13) |  The S-Core methodologies are followed. | 0.00 |
-| [JLS-14](JLS.md#jls-14) |  The builds are repeatable (i.e. different builds lead to the same SHA value). (TODO) | 0.00 |
-| [JLS-16](JLS.md#jls-16) |  A list of tests, which is extracted from the test execution, is provided, along with a list of test environments. (TODO) | 0.00 |
+| [JLS-14](JLS.md#jls-14) |  The SHA value of the library in use coincides with the SHA value provided by Niels Lohmann for that version. | 0.00 |
+| [JLS-16](JLS.md#jls-16) |  A list of tests, which is extracted from the test execution, is provided, along with a list of test environments. | 0.00 |
 | [JLS-17](JLS.md#jls-17) |  A github workflow calculates the fraction of expectations covered by tests (TODO). | 0.00 |
 | [JLS-18](JLS.md#jls-18) |  Results from tests are accurately captured. | 0.00 |
 | [JLS-19](JLS.md#jls-19) |  All components, dependencies and tools are listed in a manifest. | 0.00 |
@@ -174,7 +175,7 @@ This presents the compliance for the _No Parsing Faults_ (NPF) in tabular form.
 | [NPF-02](NPF.md#npf-02) |  The service parses numbers according to RFC8259. | 0.00 |
 | [NPF-02.1](NPF.md#npf-02.1) |  The service parses integers without exponent within the precision of int64_t. | 0.00 |
 | [NPF-02.10](NPF.md#npf-02.10) |  The service ignores trailing zeroes after the decimal point. | 0.00 |
-| [NPF-02.11](NPF.md#npf-02.11) |  The service parses numbers within the 64-bit double range but outside of the double precision without throwing an exception. | 0.00 |
+| [NPF-02.11](NPF.md#npf-02.11) |  The service parses numbers within the 64-bit double range but outside of the double precision without throwing an exception and without guarantee of precision. | 0.00 |
 | [NPF-02.12](NPF.md#npf-02.12) |  The service ignores capitalisation of the exponent. | 0.00 |
 | [NPF-02.2](NPF.md#npf-02.2) |  The service parses integers with exponent within the precision of 64-bit double. | 0.00 |
 | [NPF-02.3](NPF.md#npf-02.3) |  The service parses floating point values without exponent within the precision of 64-bit double. | 0.00 |
@@ -313,6 +314,6 @@ This presents the compliance for _Well Formed JSON_ (WFJ) in tabular form.
 _Generated for: Software_
 
 * _Repository root: /home/runner/work/json/json_
-* _Commit SHA: 74f3891334fb882026b534d225af45ba67579072_
-* _Commit date/time: Tue Oct  7 17:09:21 2025_
-* _Commit tag: 74f3891_
+* _Commit SHA: 8c92b8078a37185b4fa36db9f2b474394fc4b0be_
+* _Commit date/time: Tue Oct 14 18:05:11 2025_
+* _Commit tag: 8c92b80_
