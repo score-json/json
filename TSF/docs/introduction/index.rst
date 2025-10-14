@@ -17,7 +17,7 @@
 Introduction
 ========================================================
 
-This document outlines the application of the Trustable Software Framework (TSF) to version 3.12.0 of the JSON library developed by Niels Lohmann (`json <https://github.com/nlohmann/json>`_). The TSF aims to ensure software reliability and compliance by setting guidelines for evaluating various aspects of software development. Our focus here is the library's integration into the baselibs repository within the S-CORE project. The ultimate goal is to certify the library as trustable based on stringent evaluation criteria involving rigorous testing, intuitive design, and seamless integration.
+This document outlines the application of the Trustable Software Framework (TSF) to the `JSON library <https://github.com/nlohmann/json>`_ (version 3.12.0) developed by Niels Lohmann. The TSF aims to ensure software reliability and compliance by setting guidelines for evaluating various aspects of software development. Our focus here is the library's integration into the baselibs repository within the S-CORE project. The ultimate goal is to certify the library as trustable based on stringent evaluation criteria involving rigorous testing, intuitive design, and seamless integration.
 
 Design Goals of the JSON Library
 --------------------------------
@@ -55,4 +55,4 @@ Find more descriptions on the ongoing process and requirements at `Eclipse Proce
 Conclusion
 ----------
 
-The application of the Trustable Software Framework to version 3.12.0 of Niels Lohmann's JSON library involves a comprehensive assessment to ensure it meets our high-level requirements for external software. Key actions include formalizing necessary functionalities, addressing feature requests from SCORE, and integrating trustable evidence into a coherent project workflow. The library is maintained with stringent quality checks and evidence generation processes, illustrating a commitment to high standards and the practicality required for certifiable software projects.
+The application of the Trustable Software Framework to Niels Lohmann's JSON library (version 3.12.0) involves a comprehensive assessment to ensure it meets our high-level requirements for external software. Key actions include formalizing necessary functionalities, addressing feature requests from S-CORE, and integrating trustable evidence into a coherent project workflow. The library is maintained with stringent quality checks and evidence generation processes, illustrating a commitment to high standards and the practicality required for certifiable software projects.
