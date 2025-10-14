@@ -293,9 +293,9 @@ def check_issues(configuration: dict[str, yaml]) -> tuple[float, list[Exception 
         with open("raw_open_issues.json") as list_1:
             all_open_issues = json.load(list_1)
         relevant_open_issues = [all_open_issues[i].get("number",None) 
-                                    for i in range(0,len(all_closed_issues))
-                                        if len(all_closed_issues[i].get("labels",[]))!=0 
-                                        and (all_closed_issues[i].get("labels"))[0].get("name") == "kind: bug"
+                                    for i in range(0,len(all_open_issues))
+                                        if len(all_open_issues[i].get("labels",[]))!=0 
+                                        and (all_open_issues[i].get("labels"))[0].get("name") == "kind: bug"
                                 ]
     except:
         return(0.0, RuntimeError("The list of open issues could not be extracted."))
