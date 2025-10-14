@@ -4,6 +4,11 @@ This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json re
 
 ## Open Issues
 
+### [#4946](https://github.com/nlohmann/json/issues/4946)
+- **Title:** Failure with cmake 4.1
+- **State:** OPEN
+- **Created At:** 2025-10-08T13:54:22Z
+
 ### [#4925](https://github.com/nlohmann/json/issues/4925)
 - **Title:** Assertion error when converting to and from BJdata
 - **State:** OPEN
@@ -33,11 +38,6 @@ This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json re
 - **Title:** C++17 std::optional feature not enabled
 - **State:** OPEN
 - **Created At:** 2025-07-28T16:11:42Z
-
-### [#4842](https://github.com/nlohmann/json/issues/4842)
-- **Title:** json destructor does not use the provided allocator
-- **State:** OPEN
-- **Created At:** 2025-07-04T10:02:34Z
 
 ### [#4813](https://github.com/nlohmann/json/issues/4813)
 - **Title:** json::update() with merge_objects==true may trigger JSON_ASSERT for some objects
@@ -196,6 +196,11 @@ This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json re
 - **Title:** CONTRIBUTING.md does not mention required coding style or AStyle for contributors/reviewers
 - **State:** CLOSED
 - **Created At:** 2025-07-23T02:12:06Z
+
+### [#4842](https://github.com/nlohmann/json/issues/4842)
+- **Title:** json destructor does not use the provided allocator
+- **State:** CLOSED
+- **Created At:** 2025-07-04T10:02:34Z
 
 ### [#4834](https://github.com/nlohmann/json/issues/4834)
 - **Title:** Problems with std::optional
