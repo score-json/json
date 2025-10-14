@@ -1,4 +1,8 @@
-This file collects and comments the open known misbehaviours as identified in the [issues](https://github.com/nlohmann/json/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22kind%3A%20bug%22) on nlohmann/json.
+# List of known misbehaviours
+
+This file collects and comments the known misbehaviours opened after the release of version 3.12.0 as identified in the [issues](https://github.com/nlohmann/json/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22kind%3A%20bug%22) on nlohmann/json.
+
+## known open misbehaviours
 
 issue-id | applies to S-CORE | comment
 ---------|-------------------|--------
@@ -33,3 +37,39 @@ issue-id | applies to S-CORE | comment
 3106 | No | Setting JSON_DIAGNOSTICS was broken in version 3.10.4.
 2649 | No | This issue was observed in version 3.9.1; it appears fixed in version 3.12.0.
 2226 | No | std::tuple<const nlohmann::json&>::tuple(std::tuple<nlohmann::json&>&&) constructor creates a temporary object and a dangling reference. This issue still exists in version 3.12.0.
+
+## known misbehaviours closed since being opened
+
+issue-id | applies to S-CORE | comment
+---------|-------------------|--------
+4733 | No | Clang 11.0.x with libc++ fails to compile tests in C++20 mode due to incomplete char8_t support in std::filesystem::path. 
+4740 | No | Using std::optional with nlohmann::json is broken in version 3.12.0, but shall be fixed in version 3.12.1.
+4745 | No | Compiling version 3.12.0 with /std:c++ latest in Visual Studio 2022 17.12.7 raises compiler errors.
+4746 | No | If you do not use the single_include json.hpp as intended, then the library may not quite work as intended.
+4755 | No | The serialization of floating-point numbers is handled in two code paths. If number_float_t is double or long_double, then no issue arises.
+4756 | No | nlohmann::ordered_json::from_msgpack() does not work with buffer of type std::vector\<std::byte\> using Xcode 16.3 and C++20.
+4759 | No | Wrapping the library into a module fails due to `static` in lines 9832 and 3132.
+4762 | No | Default return value for type_name() is number, which makes some error messages more than cryptic.
+4778 | No | std::is_trivial is deprecated in C++26, using GCC 15.1.1 produces a deprecation warning.
+4780 | No | The conversion from JSON to std::optional does not work.
+4792 | No | C++20 support of NVHPC 25.5 is broken.
+4798 | No | The float value is encoded to msgpack as double if it contains float NaN or infinity.
+4804 | No | Trying to use json::from_cbor with a binary_t set to std::vector\<std::byte> will fail.
+4812 | No | Only binary formats like CBOR or MessagePack allow writing and reading binary values; no misbehaviour.
+4819 | No | This is a bug in gcc 14.2, which will not be suppressed by the library.
+4821 | No | Cf. https://json.nlohmann.me/home/faq/#brace-initialization-yields-arrays
+4825 | No | template class nlohmann::basic_json<>; leads to a compilation error "ambigious static_caststd::string" inside binary_writer::write_bjdata_ndarray.
+4826 | No | Issue closed due to inactivity.
+4828 | No | Cryptic issue with joining objects on keys, no minimal working example provided.
+4834 | No | Using std::optional with nlohmann::json is broken in version 3.12.0, but shall be fixed in version 3.12.1.
+4842 | No | The vector used to track nested objects and arrays is allocated with the standard allocators, but the issue expects a different allocator. This issue is not a critical bug.
+4852 | No | CONTRIBUTING.md does not mention the code style that is enforced for this project.
+4854 | No | nullptr as SAX handler is not explicitly handled, shall be fixed in 3.12.1.
+4863 | No | Shall be fixed in 3.12.1.
+4869 | No | The linkage of this [link](https://raw.githubusercontent.com/nlohmann/json/v3.11.3/single_include/nlohmann/json.hpp) pointed erroneously to version 3.12.0 for some time.
+4890 | No | If the coveralls service website is down, then the CI-pipeline fails by default.
+4892 | No | This feature request is obsolete.
+
+
+
+

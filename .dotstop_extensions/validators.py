@@ -3,6 +3,8 @@ import os
 import requests
 import sqlite3
 import hashlib
+import json
+from datetime import datetime, timezone
 
 yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
@@ -254,3 +256,69 @@ def sha_checker(configuration: dict[str, yaml]) -> tuple[float, list[Exception |
     except:
         exceptions.append(RuntimeError(f"Can't calculate the SHA-value of {file}"))
     return (score, exceptions)
+
+def check_issues(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    # get relevant release date
+    release_date = configuration.get("release_date",None)
+    if release_date is None:
+        return (0.0, RuntimeError("The release date of the most recent version of nlohmann/json is not specified."))
+    else:
+        try:
+            release_time = datetime.strptime(release_date,"%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc).timestamp()
+        except:
+            return(0.0, RuntimeError("The format of the release date is to be %Y-%m-%dT%H:%M:%SZ"))
+    # get path to static list of misbehaviours
+    raw_known_misbehaviours = configuration.get("list_of_known_misbehaviours",None)
+    # parse list of inapplicable misbehaviours
+    inapplicable_misbehaviours = []
+    if raw_known_misbehaviours is not None:
+        try:
+            # open the list of known misbehaviours
+            with open(raw_known_misbehaviours) as f:
+                lines = f.readlines()
+        except:
+            # if list can not be opened, assume that there is no list
+            lines = []
+        # parse list of known misbehaviours
+        for line in lines:
+            entries = line.split('|')
+            try:
+                id = int(entries[0])
+            except ValueError:
+                continue
+            if len(entries)>1 and entries[1].strip().capitalize=="NO":
+                inapplicable_misbehaviours.append(id)
+    # parse raw list of open misbehaviours
+    try:
+        with open("raw_open_issues.json") as list_1:
+            all_open_issues = json.load(list_1)
+        relevant_open_issues = [all_open_issues[i].get("number",None) 
+                                    for i in range(0,len(all_closed_issues))
+                                        if len(all_closed_issues[i].get("labels",[]))!=0 
+                                        and (all_closed_issues[i].get("labels"))[0].get("name") == "kind: bug"
+                                ]
+    except:
+        return(0.0, RuntimeError("The list of open issues could not be extracted."))
+    for issue in relevant_open_issues:
+        if issue not in inapplicable_misbehaviours and issue is not None:
+            return(0.0,[])  
+    # parse raw list of closed misbehaviours
+    try:
+        with open("raw_closed_issues.json") as list_2:
+            all_closed_issues = json.load(list_2)
+        relevant_closed_issues = [all_closed_issues[i].get("number",None) 
+                                    for i in range(0,len(all_closed_issues))
+                                        if len(all_closed_issues[i].get("labels",[]))!=0 
+                                        and (all_closed_issues[i].get("labels"))[0].get("name") == "kind: bug"
+                                        and datetime.strptime(all_closed_issues[i].get("createdAt","2000-01-01T00:00:00Z"),"%Y-%m-%dT%H:%M:%SZ")
+                                                                                  .replace(tzinfo=timezone.utc)
+                                                                                  .timestamp()
+                                            >=release_time
+                                ]
+    except:
+        return(0.0, RuntimeError("The list of closed issues could not be extracted."))
+    for issue in relevant_closed_issues:
+        if issue not in inapplicable_misbehaviours and issue is not None:
+            return(0.0,[])  
+    # If you are here, then there are no applicable misbehaviours.
+    return (1.0, [])
