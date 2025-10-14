@@ -251,7 +251,7 @@ def sha_checker(configuration: dict[str, yaml]) -> tuple[float, list[Exception |
     score = 0.0
     exceptions = []
     try:
-        my_sha = hashlib.sha256(open(file,"rb").read()).hexdigest
+        my_sha = hashlib.sha256(open(file,"rb").read()).hexdigest()
         score = 1.0 if str(my_sha) == expected_sha else 0.0
     except:
         exceptions.append(RuntimeError(f"Can't calculate the SHA-value of {file}"))
@@ -286,7 +286,7 @@ def check_issues(configuration: dict[str, yaml]) -> tuple[float, list[Exception 
                 id = int(entries[0])
             except ValueError:
                 continue
-            if len(entries)>1 and entries[1].strip().capitalize=="NO":
+            if len(entries)>1 and entries[1].strip().upper()=="NO":
                 inapplicable_misbehaviours.append(id)
     # parse raw list of open misbehaviours
     try:
