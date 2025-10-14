@@ -7,7 +7,7 @@ def comment_nlohmann_misbehaviours(id: int) -> None:
             cols = line.split("|")
             if cols[0].strip() == str(id) and len(cols)>2:
                 # Does the issue apply to us?
-                if cols[1].strip().capitalize == "NO":
+                if cols[1].strip().upper() == "NO":
                     candidate = "This issue does not apply to the use of nlohmann/json in Eclipse S-CORE. "
                 else:
                     candidate = ""
