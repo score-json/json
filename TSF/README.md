@@ -16,7 +16,7 @@ In order to fork this repository or set up any repository where the TSF document
     - Enable `Issues`
     
 - In `Settings` > `Branches` > `Add classic branch protection rule`: 
-    - Add "main" to the `Branch name pattern`
+    - Add "json_version_" to the `Branch name pattern`
     - Enable `Require a pull request before merging`
     - Enable `Require approvals`
     - Enable `Require review from Code Owners`
