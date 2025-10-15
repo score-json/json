@@ -27,7 +27,7 @@ on:
       workflow-version:
         description: "Version or branch to checkout"
         required: false
-        default: "main"
+        default: "main" # change to default
         type: string
       bazel-target:
         description: "The Bazel target to build (e.g., //docs:github_pages)"
@@ -117,9 +117,9 @@ jobs:
             echo "gh-pages branch does not exist. Creating it..."
             git clone --depth=1 "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" repo
             cd repo
-            git fetch origin main --depth=1
-            AUTHOR_NAME=$(git log origin/main -1 --pretty=format:'%an')
-            AUTHOR_EMAIL=$(git log origin/main -1 --pretty=format:'%ae')
+            git fetch origin main --depth=1                                   # change to default ????
+            AUTHOR_NAME=$(git log origin/main -1 --pretty=format:'%an')         # change to default ????
+            AUTHOR_EMAIL=$(git log origin/main -1 --pretty=format:'%ae')      # change to default ????
             git config user.name "$AUTHOR_NAME"
             git config user.email "$AUTHOR_EMAIL"
             echo "Using commit identity: $AUTHOR_NAME <$AUTHOR_EMAIL>"
@@ -132,8 +132,8 @@ jobs:
             touch versions.json
             echo "[" > versions.json
             echo "  {" >> versions.json
-            echo "    \"version\": \"main\"," >> versions.json
-            echo "    \"url\": \"https://${OWNER_NAME}.github.io/${REPO_NAME}/main/\"" >> versions.json
+            echo "    \"version\": \"main\"," >> versions.json            # change to default ????
+            echo "    \"url\": \"https://${OWNER_NAME}.github.io/${REPO_NAME}/main/\"" >> versions.json               # change to default ????
             echo "  }" >> versions.json
             echo "]" >> versions.json
 
@@ -142,11 +142,11 @@ jobs:
             echo '<html lang="en">' >> index.html
             echo '<head>' >> index.html
             echo '    <meta charset="UTF-8">' >> index.html
-            echo '    <meta http-equiv="refresh" content="0; URL=main/">' >> index.html
+            echo '    <meta http-equiv="refresh" content="0; URL=main/">' >> index.html               # change to default ????
             echo '    <title>Redirecting...</title>' >> index.html
             echo '</head>' >> index.html
             echo '<body>' >> index.html
-            echo '    <p>If you are not redirected, <a href="main/">click here</a>.</p>' >> index.html
+            echo '    <p>If you are not redirected, <a href="main/">click here</a>.</p>' >> index.html        # change to default ????
             echo '</body>' >> index.html
             echo '</html>' >> index.html
 

@@ -4,7 +4,7 @@ on:
   pull_request:
   push: 
     branches:
-      - main
+      - main  # change to default
   schedule:
     - cron: '0 0 * * *' # Runs daily at midnight UTC
 
@@ -148,7 +148,7 @@ jobs:
       id-token: write
       security-events: read
     name: Run publish_documentation Workflow
-    if: github.event_name == 'push'            # Publish documentation should only run on push to main
+    if: github.event_name == 'push'            # Publish documentation should only run on push to main # change to default 
     needs: [collect_artifacts_non_pr]
     uses: ./.github/workflows/publish_documentation.yml
     with:

@@ -4,7 +4,7 @@ normative: true
 references: 
     - type: verbose_file
       path: ./.github/workflows/parent-workflow.yml
-      description: "github workflow running on push to main and triggering the workflow publish_documentation"
+      description: "github workflow running on push to main and triggering the workflow publish_documentation" # change to default 
     - type: verbose_file
       path: ./.github/workflows/publish_documentation.yml
       description: "github workflow executing calculation and storage of trustable scores"
