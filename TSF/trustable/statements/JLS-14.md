@@ -3,7 +3,7 @@ level: 1.1
 normative: true
 references:
     - type: website
-      url: "/nlohmann/json/tree/v3.12.0"
+      url: "https://github.com/nlohmann/json/tree/v3.12.0"
       description: "release site of nlohmann/json containing the sha values"
 evidence:
     type: sha_checker
