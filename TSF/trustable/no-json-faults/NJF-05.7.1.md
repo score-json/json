@@ -24,15 +24,10 @@ references:
             - "/json.org/5.json"
           description: ""
 evidence:
-  type: "check_artifact_exists"
+  type: check_test_results
   configuration:
-    check_amalgamation: exclude
-    codeql: exclude
-    dependency_review: exclude
-    labeler: exclude
-    publish_documentation: exclude
-    test_trudag_extensions: exclude
-    ubuntu: include
+    tests: 
+        - testsuites
 score:
     Jonas-Kirchhoff: 1.0
     Erikhu1: 1.0

@@ -55,6 +55,16 @@ jobs:
           sudo apt-get install -y graphviz
           pip install git+https://gitlab.com/CodethinkLabs/trustable/trustable@9957f12171cb898d83df5ae708fdba0a38fece2e
 
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+          sudo apt install gh -y
+
+      - name: Authenticate with GitHub CLI
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+
       - name: Get current branch name
         id: get_branch
         env:
@@ -79,43 +89,6 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git fetch --all
           git checkout save_historical_data && git pull || git checkout -b save_historical_data
-      
-      - name: Load persistent data
-        run: |
-          if ! git ls-tree --name-only origin/save_historical_data TSF/TrustableScoring.db | grep TSF/TrustableScoring.db; then
-            mkdir -p TSF
-            touch TSF/TrustableScoring.db
-            git add TSF/TrustableScoring.db
-            git commit -m "Initialise persistent data storage"
-            git push origin save_historical_data
-          fi
-          git checkout $branch_name
-          git checkout save_historical_data -- TSF/TrustableScoring.db
-
-      - name: Generate trudag report
-        run: |
-          REPO_FULL="${{ github.repository }}"
-          REPO_NAME="${REPO_FULL#*/}"
-          OWNER_NAME="${REPO_FULL%%/*}" 
-          TSF/scripts/generate_report.sh "https://${OWNER_NAME}.github.io/${REPO_NAME}/main"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Install tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y jq
-          sudo apt install gh -y
-
-      - name: Authenticate with GitHub CLI
-        run: |
-          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
-
-      - name: Checkout data storage branch
-        run: |
-          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/TrustableScoring.db)
-          git checkout save_historical_data
-          git pull
 
       - name: Fetch open issues labelled as bug from nlohmann/json
         id: fetch_issues
@@ -155,6 +128,23 @@ jobs:
               .[]
             ' raw_open_issues.json >> $OUTPUT_FILE
 
+          jq -c '
+            .[]
+            | select(.labels[]?; .name | test("bug"; "i"))
+            | { n: .number
+              , md: "### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n"
+              }
+          ' raw_open_issues.json |
+          while IFS= read -r rec; do
+            num=$(jq -r '.n' <<< "$rec")
+            md=$(jq -r '.md' <<< "$rec")
+            py_out=$(python3 ./TSF/scripts/identify_nlohmann_issue.py "$num")
+            {
+              printf "%s\n" "$md"
+              printf "%s\n" "$py_out"
+            } >> "$OUTPUT_FILE"
+          done
+
           # Add subtitle for closed issues
           echo "" >> $OUTPUT_FILE
           echo "## Closed Issues (since v3.12.0)" >> $OUTPUT_FILE
@@ -171,7 +161,34 @@ jobs:
           # Push misbehaviours file to save_historical_data branch
           git add TSF/misbehaviours.md
           git commit -m "Updated issues list" || echo "No changes to commit"
-          git push origin save_historical_data
+          git push origin save_historical_data && git pull
+      
+      - name: Load persistent data
+        run: |
+          if ! git ls-tree --name-only origin/save_historical_data TSF/TrustableScoring.db | grep TSF/TrustableScoring.db; then
+            mkdir -p TSF
+            touch TSF/TrustableScoring.db
+            git add TSF/TrustableScoring.db
+            git commit -m "Initialise persistent data storage"
+            git push origin save_historical_data
+          fi
+          git checkout $branch_name
+          git checkout save_historical_data -- TSF/TrustableScoring.db
+
+      - name: Generate trudag report
+        run: |
+          REPO_FULL="${{ github.repository }}"
+          REPO_NAME="${REPO_FULL#*/}"
+          OWNER_NAME="${REPO_FULL%%/*}" 
+          TSF/scripts/generate_report.sh "https://${OWNER_NAME}.github.io/${REPO_NAME}/main"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout data storage branch
+        run: |
+          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/TrustableScoring.db)
+          git checkout save_historical_data
+          git pull
 
       - name: Store persistent data
         run: |

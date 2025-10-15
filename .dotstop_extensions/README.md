@@ -261,7 +261,7 @@ The total score is the mean of the individual scores.
 
 ## check_test_results
 
-The automatic validator `check_test_results` is intended to evaluate the database `TestResults.db` which is generated in the Ubuntu-Workflow, and which contains the test-report of the most recent workflow run. This database is temporary, and, contrary to `TSF/TestResultData.db`, which is persistently stored on the branch `save_historical_data`, not persistently stored.
+The automatic validator `check_test_results` is intended to evaluate the database `MemoryEfficientTestResults.db` which is generated in the ubuntu-Workflow, and which contains the test-report of the most recent workflow run. This database is temporary, and, contrary to `TSF/MemoryEfficientTestResultData.db`, which is persistently stored on the branch `save_historical_data`, not persistently stored.
 
 The expected configuration is given as follows:
 
@@ -270,34 +270,40 @@ evidence:
     type: check_test_results
     configuration:
         tests: # list of test-files 
-            - test-class_lexer
-            - test-unicode1
-            - test-strings
-        database: TestResults.db # optional argument, default: TestResults.db; path to test-result database from project root
+            - class_lexer
+            - unicode1
+            - strings
+        database: MemoryEfficientTestResults.db # optional argument, default: MemoryEfficientTestResults.db; path to test-result database from project root
         table: test_results # optional argument, default: test_results; name of table in database
 ```
 
+The test-files are called unit-FILE_NAME.cpp. In the configuration, FILE_NAME is expected only, i.e. without the leading unit- and without the file-extension.
+
 For each test specified in test-files, the number of passed and failed test-cases is calculated, while the number of skipped test-cases is ignored. The score of each test is then the ratio of passed test-cases compared to all non-skipped test-cases; the total score is the mean of the individual scores.
 
-## check_test_results
+## issue_checker
 
-The automatic validator `check_test_results` is intended to evaluate the database `TestResults.db` which is generated in the Ubuntu-Workflow, and which contains the test-report of the most recent workflow run. This database is temporary, and, contrary to `TSF/TestResultData.db`, which is persistently stored on the branch `save_historical_data`, not persistently stored.
+The automatic validator `check_issues` is intended to evaluate the json-lists `raw_open_issues.json` and `raw_closed_issues.json` and compare with the list of known issues of nlohmann/json labelled as bug opened since the release of the version of nlohmann/json that is documented. The json lists are generated in the publish_documentation-Workflow, and not persistently stored.
 
 The expected configuration is given as follows:
 
 ```
 evidence:
-    type: check_test_results
+    type: check_issues
     configuration:
-        tests: # list of test-files 
-            - test-class_lexer
-            - test-unicode1
-            - test-strings
-        database: TestResults.db # optional argument, default: TestResults.db; path to test-result database from project root
-        table: test_results # optional argument, default: test_results; name of table in database
+        release_date: "2025-04-11T00:00:00Z" # release date of the documented version in the format %Y-%m-%dT%H:%M:%SZ
+        list_of_known_misbehaviours: "./TSF/docs/nlohmann_misbehaviours_comments.md" # path to the list of known misbehaviours relative to the root of the repository 
+
 ```
 
-For each test specified in test-files, the number of passed and failed test-cases is calculated, while the number of skipped test-cases is ignored. The score of each test is then the ratio of passed test-cases compared to all non-skipped test-cases; the total score is the mean of the individual scores.
+In case that the release date is not specified using the expected format, or either of the `raw_open_issues.json` and `raw_closed_issues.json` can not be opened, then the score 0.0 is returned together with an error indicating the warning.
+
+The list of known misbehaviours collects the known issues labelled as bugs opened in nlohmann/json since the release of the version that is documented.
+These issues are collected in a table containing the issue-ID, an indication whether the issue applies to the usage of nlohmann/json within Eclipse S-CORE and a comment, which is printed into the list of known misbehaviours.
+From `raw_closed_issues.json`, all issue IDs are collected, which are labelled as bug and opened after the release_date; and from `raw_open_issues.json`, all issue IDs are collected.
+If for any of these IDs, it is not explicitly indicated in the list of known misbehaviours that this issue does not apply to Eclipse S-CORE, then the score 0.0 is returned.
+Otherwise, the score 1.0 is assigned.
+
 
 # Data store interface
 

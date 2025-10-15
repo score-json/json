@@ -31,15 +31,11 @@ references:
             - "/json.org/5.json"
           description: "Checks that various valid arrays in combination with objects are accepted."
 evidence:
-  type: "check_artifact_exists"
+  type: check_test_results
   configuration:
-    check_amalgamation: exclude
-    codeql: exclude
-    dependency_review: exclude
-    labeler: exclude
-    publish_documentation: exclude
-    test_trudag_extensions: exclude
-    ubuntu: include
+    tests: 
+        - class_parser_core
+        - testsuites
 score:
     Jonas-Kirchhoff: 0.95
     Erikhu1: 0.85

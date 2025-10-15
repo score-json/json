@@ -9,6 +9,9 @@ if current_dir not in sys.path:
     sys.path.insert(0, current_dir)
 
 from TSF.scripts.generate_list_of_tests import ListOfTestsGenerator
+import hashlib
+import json
+from datetime import datetime, timezone
 
 yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
@@ -142,24 +145,20 @@ def check_test_results(configuration: dict[str, yaml]) -> tuple[float, list[Exce
     Validates whether a certain test-case fails, or not.
     """
     # get the test-names
-    tests = configuration.get("tests",None)
-    if tests is None:
+    raw_tests = configuration.get("tests",None)
+    if raw_tests is None:
         return(1.0, Warning("Warning: No tests specified! Assuming absolute trustability!"))
-    # check whether the most recent test report is loaded
-    sha = os.getenv("GITHUB_SHA")
-    if not sha:
-        return (0.0, [RuntimeError("Can't get value GITHUB_SHA.")])
-    ubuntu_artifact = f"./artifacts/ubuntu-{str(sha)}"
-    # check whether ubuntu-artifact is loaded correctly
-    if not os.path.exists(ubuntu_artifact):
-        return (0.0, [RuntimeError("The artifact containing the test data was not loaded correctly.")])
+    # process test-names
+    tests = []
+    for test in raw_tests:
+        tests.append(f"test-{str(test)}")
     # read optional argument -- database name for the test report -- if specified
     database = configuration.get("database", None)
     if database is None:
-        # default value "TestResults.db"
-        database = "TestResults.db"
+        # default value "MemoryEfficientTestResults.db"
+        database = "MemoryEfficientTestResults.db"
     # check whether database containing test-results does exist
-    ubuntu_artifact += "/"+database
+    ubuntu_artifact = f"./artifacts/{database}"
     if not os.path.exists(ubuntu_artifact):
         return (0.0, [RuntimeError("The artifact containing the test data was not loaded correctly.")])
     # Ubuntu artifact is loaded correctly and test-results can be accessed.
@@ -174,7 +173,7 @@ def check_test_results(configuration: dict[str, yaml]) -> tuple[float, list[Exce
         cursor = connector.cursor()
         # check whether our results can be accessed
         cursor.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (table,))
-        if not cursor.fetchone():
+        if cursor.fetchone() is None:
             # if not, it is not trustable
             return (0.0, [RuntimeError(f"Table {table} can not be loaded.")])
         # our result table can be read
@@ -263,3 +262,94 @@ def check_list_of_tests(configuration: dict[str, yaml]) -> tuple[float, list[Exc
                 return(0.0,[Exception("The expected list of test-cases does not coincide with the fetched list.")])
     except:
         return(0.0,[Exception("An exception occurred when trying to compare the expected and the fetched list of tests.")])
+
+def sha_checker(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    # get file of which the sha is to be calculated
+    file = configuration.get("binary", None)
+    # test input on validitiy
+    if file is None:
+        return (1.0, [Warning("No files to check the SHA-value for; assuming that everything is in order.")])
+    elif not isinstance(file, str):
+        # type-errors are not tolerated
+        raise TypeError("The value of \"binary\" must be a string")
+    # get the expected sha
+    expected_sha = configuration.get("sha", None)
+    # test input on validitiy
+    if expected_sha is None:
+        return (1.0, [Warning("No expected SHA-value transmitted; assuming everything is in order.")])
+    try: expected_sha = str(expected_sha) 
+    except: raise TypeError("Can't convert the value of \"sha\" to a string.")
+    score = 0.0
+    exceptions = []
+    try:
+        my_sha = hashlib.sha256(open(file,"rb").read()).hexdigest()
+        score = 1.0 if str(my_sha) == expected_sha else 0.0
+    except:
+        exceptions.append(RuntimeError(f"Can't calculate the SHA-value of {file}"))
+    return (score, exceptions)
+
+def check_issues(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    # get relevant release date
+    release_date = configuration.get("release_date",None)
+    if release_date is None:
+        return (0.0, RuntimeError("The release date of the most recent version of nlohmann/json is not specified."))
+    else:
+        try:
+            release_time = datetime.strptime(release_date,"%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc).timestamp()
+        except:
+            return(0.0, RuntimeError("The format of the release date is to be %Y-%m-%dT%H:%M:%SZ"))
+    # get path to static list of misbehaviours
+    raw_known_misbehaviours = configuration.get("list_of_known_misbehaviours",None)
+    # parse list of inapplicable misbehaviours
+    inapplicable_misbehaviours = []
+    if raw_known_misbehaviours is not None:
+        try:
+            # open the list of known misbehaviours
+            with open(raw_known_misbehaviours) as f:
+                lines = f.readlines()
+        except:
+            # if list can not be opened, assume that there is no list
+            lines = []
+        # parse list of known misbehaviours
+        for line in lines:
+            entries = line.split('|')
+            try:
+                id = int(entries[0])
+            except ValueError:
+                continue
+            if len(entries)>1 and entries[1].strip().upper()=="NO":
+                inapplicable_misbehaviours.append(id)
+    # parse raw list of open misbehaviours
+    try:
+        with open("raw_open_issues.json") as list_1:
+            all_open_issues = json.load(list_1)
+        relevant_open_issues = [all_open_issues[i].get("number",None) 
+                                    for i in range(0,len(all_open_issues))
+                                        if len(all_open_issues[i].get("labels",[]))!=0 
+                                        and (all_open_issues[i].get("labels"))[0].get("name") == "kind: bug"
+                                ]
+    except:
+        return(0.0, RuntimeError("The list of open issues could not be extracted."))
+    for issue in relevant_open_issues:
+        if issue not in inapplicable_misbehaviours and issue is not None:
+            return(0.0,[])  
+    # parse raw list of closed misbehaviours
+    try:
+        with open("raw_closed_issues.json") as list_2:
+            all_closed_issues = json.load(list_2)
+        relevant_closed_issues = [all_closed_issues[i].get("number",None) 
+                                    for i in range(0,len(all_closed_issues))
+                                        if len(all_closed_issues[i].get("labels",[]))!=0 
+                                        and (all_closed_issues[i].get("labels"))[0].get("name") == "kind: bug"
+                                        and datetime.strptime(all_closed_issues[i].get("createdAt","2000-01-01T00:00:00Z"),"%Y-%m-%dT%H:%M:%SZ")
+                                                                                  .replace(tzinfo=timezone.utc)
+                                                                                  .timestamp()
+                                            >=release_time
+                                ]
+    except:
+        return(0.0, RuntimeError("The list of closed issues could not be extracted."))
+    for issue in relevant_closed_issues:
+        if issue not in inapplicable_misbehaviours and issue is not None:
+            return(0.0,[])  
+    # If you are here, then there are no applicable misbehaviours.
+    return (1.0, [])

@@ -18,6 +18,12 @@ references:
         - type: cpp_test
           name: "accept;member separator"
           path: "TSF/tests/unit-objects.cpp"
+evidence:
+  type: check_test_results
+  configuration:
+    tests: 
+        - objects
+        - testsuites
 score:
     Jonas-Kirchhoff: 0.975
     Erikhu1: 0.95

@@ -13,15 +13,11 @@ references:
           name: "regression tests 1;issue #360 - Loss of precision when serializing <double>"
           path: "tests/src/unit-regression1.cpp"
 evidence:
-  type: "check_artifact_exists"
+  type: check_test_results
   configuration:
-    check_amalgamation: exclude
-    codeql: exclude
-    dependency_review: exclude
-    labeler: exclude
-    publish_documentation: exclude
-    test_trudag_extensions: exclude
-    ubuntu: include
+    tests: 
+        - regression1
+        - testsuites
 score:
     Jonas-Kirchhoff: 1.0
     Erikhu1: 1.0

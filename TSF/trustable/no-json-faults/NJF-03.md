@@ -25,15 +25,11 @@ references:
       path: "include/nlohmann/detail/input/lexer.hpp"
       description: "function to verify whether a candidate literal coincides with its expected value; here called with literal_text = ['f','a','l','s','e']."
 evidence:
-  type: "check_artifact_exists"
+  type: check_test_results
   configuration:
-    check_amalgamation: exclude
-    codeql: exclude
-    dependency_review: exclude
-    labeler: exclude
-    publish_documentation: exclude
-    test_trudag_extensions: exclude
-    ubuntu: include
+    tests: 
+        - class_parser_core
+        - testsuites
 score:
     Jonas-Kirchhoff: 1.0
     Erikhu1: 1.0

@@ -9,6 +9,11 @@ references:
         - type: cpp_test
           name: "Unicode;unescaped unicode"
           path: "TSF/tests/unit-strings.cpp"
+evidence:
+  type: check_test_results
+  configuration:
+    tests: 
+        - strings
 score:
     Jonsa-Kirchhoff: 1.0
 ---

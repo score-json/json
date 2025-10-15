@@ -29,15 +29,12 @@ references:
           name: "accept;member separator"
           path: "TSF/tests/unit-objects.cpp"
 evidence:
-  type: "check_artifact_exists"
+  type: check_test_results
   configuration:
-    check_amalgamation: exclude
-    codeql: exclude
-    dependency_review: exclude
-    labeler: exclude
-    publish_documentation: exclude
-    test_trudag_extensions: exclude
-    ubuntu: include
+    tests: 
+        - class_parser_core
+        - testsuites
+        - objects
 score:
     Jonas-Kirchhoff: 1.0
     Erikhu1: 1.0

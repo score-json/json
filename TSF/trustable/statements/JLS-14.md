@@ -1,6 +1,15 @@
 ---
 level: 1.1
 normative: true
+references:
+    - type: website
+      url: "/nlohmann/json/tree/v3.12.0"
+      description: "release site of nlohmann/json containing the sha values"
+evidence:
+    type: sha_checker
+    configuration:
+        binary: "./single_include/nlohmann/json.hpp"
+        sha: "aaf127c04cb31c406e5b04a63f1ae89369fccde6d8fa7cdda1ed4f32dfc5de63"
 ---
 
-The builds are repeatable (i.e. different builds lead to the same SHA value). (TODO)
+The SHA value of the library in use coincides with the SHA value provided by Niels Lohmann for that version.
