@@ -4,6 +4,7 @@ from trudag.dotstop.core.reference.references import SourceSpanReference
 from trudag.dotstop.core.reference.references import LocalFileReference
 import requests
 import sqlite3
+import re
 
 # Constants
 MAX_JSON_LINES_FOR_DISPLAY = 25
@@ -789,3 +790,47 @@ class VerboseFileReference(LocalFileReference):
    
     def __str__(self) -> str:
         return str(self._path)  
+
+class NumberOfFailures(BaseReference):
+    def __init__(self, owner: str, repo: str, branch: str | None = None) -> None:
+        self._owner = owner
+        self._repo = repo
+        self._branch = branch
+    
+    @classmethod
+    def type(cls) -> str:
+        return "workflow_failures"
+    
+    @property
+    def content(self) -> bytes:
+        # build the url
+        url = f"https://github.com/{self._owner}/{self._repo}/actions?query=is%3Afailure"
+        if self._branch is not None:
+            url += "+branch%3A{self._branch}"
+        # ask the website
+        res = requests.get(url)
+        # if call is not successful, raise an error
+        if res.status_code != 200:
+            candidate = f"The url {url} is not reachable, so that the number of failed workflows can not be fetched!"
+            raise RuntimeError(candidate)
+        # otherwise fetch the number printed in the head of the table
+        m = re.search(r'(\d+)\s+workflow run results', res.text, flags=re.I)
+        if m is None:
+            candidate = f"The number of failed workflows can not be found, please check that the table head contains \"XX workflow run results\"!"
+            raise RuntimeError(candidate)
+        return m.group(1).encode('utf-8')
+    
+    def as_markdown(self, filepath: None | str = None) -> str:
+        # If we did not add a description, nothing is printed
+        if (self._description == ""):
+            return f"`{self._url}`"
+        # else, we print the description below the url
+        return f"`{self._url}`\n"+make_md_bullet_point(self._description,1)    
+    
+    def __str__(self) -> str:
+        # this is used as a title in the trudag report
+        if self._branch is not None:
+            result = f"failures on branch {self._branch} of {self._owner}/{self._repo}"
+        else:
+            result = f"failures on {self._owner}/{self._repo}"
+        return result

@@ -5,6 +5,8 @@ import sqlite3
 import hashlib
 import json
 from datetime import datetime, timezone
+import re
+import subprocess
 
 yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
@@ -322,3 +324,39 @@ def check_issues(configuration: dict[str, yaml]) -> tuple[float, list[Exception 
             return(0.0,[])  
     # If you are here, then there are no applicable misbehaviours.
     return (1.0, [])
+
+def did_workflows_fail(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    owner = configuration.get("owner",None)
+    if owner is None:
+        return (0.0, RuntimeError("The owner is not specified."))
+    repo = configuration.get("repo",None)
+    if repo is None:
+        return (0.0, RuntimeError("The repository is not specified."))
+    event = configuration.get("event","push")
+    url = f"https://github.com/{owner}/{repo}/actions?query=event%3A{event}+is%3Afailure"
+    branch = configuration.get("branch",None)
+    if branch is not None:
+        url += "+branch%3A{branch}"
+    res = requests.get(url)
+    if res.status_code != 200:
+        return (0.0, RuntimeError(f"The website {url} can not be successfully reached!"))
+    m = re.search(r'(\d+)\s+workflow run results', res.text, flags=re.I)
+    if m is None:
+        return (0.0, RuntimeError("The number of failed workflows can not be found."))
+    if m.group(1).strip() != "0":
+        return (0.0, Warning("There are failed workflows!"))
+    return (1.0, [])
+
+def is_branch_protected(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    branch = configuration.get("branch",None)
+    if branch is None:
+        return (0.0, RuntimeError("The branch is not specified."))
+    res = subprocess.run(["git", "diff", "--cached", "quiet"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
+    if res.returncode != 0:
+        raise RuntimeError("There are currently staged changes. Please unstage to proceed.")
+    try:
+        subprocess.run(["git","push","origin",f"HEAD:{branch}"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
+        return (0.0, RuntimeError(f"The branch {branch} is not protected!"))
+    except:
+        return (1.0, [])
+
