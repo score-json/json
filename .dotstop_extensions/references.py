@@ -821,11 +821,10 @@ class NumberOfFailures(BaseReference):
         return m.group(1).encode('utf-8')
     
     def as_markdown(self, filepath: None | str = None) -> str:
-        # If we did not add a description, nothing is printed
-        if (self._description == ""):
-            return f"`{self._url}`"
-        # else, we print the description below the url
-        return f"`{self._url}`\n"+make_md_bullet_point(self._description,1)    
+        if self._branch is not None:
+            return f"{self.content().decode('utf-8')} workflows failed on {self._owner}/{self._repo}"
+        else:
+            return f"{self.content().decode('utf-8')} workflows failed on branch {self._branch} of {self._owner}/{self._repo}"
     
     def __str__(self) -> str:
         # this is used as a title in the trudag report
