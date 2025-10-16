@@ -822,9 +822,9 @@ class NumberOfFailures(BaseReference):
     
     def as_markdown(self, filepath: None | str = None) -> str:
         if self._branch is not None:
-            return f"{self.content().decode('utf-8')} workflows failed on {self._owner}/{self._repo}"
+            return f"{self.content.decode('utf-8')} workflows failed on {self._owner}/{self._repo}"
         else:
-            return f"{self.content().decode('utf-8')} workflows failed on branch {self._branch} of {self._owner}/{self._repo}"
+            return f"{self.content.decode('utf-8')} workflows failed on branch {self._branch} of {self._owner}/{self._repo}"
     
     def __str__(self) -> str:
         # this is used as a title in the trudag report
