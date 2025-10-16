@@ -192,6 +192,26 @@ references:
 ---
 ```
 
+## NumberOfFailures
+
+This reference queries `https://github.com/{self._owner}/{self._repo}/actions?query=is%3Afailure+branch%3A{self._branch}` and collects the number of failed workflow runs as its content.
+Here, owner, repo and branch are the arguments given to the constructor of the reference.
+If no branch is specified, then all failures are collected, i.e. `https://github.com/{self._owner}/{self._repo}/actions?query=is%3Afailure` is queried.
+In case the website is un-reachable, or the github layout changes drastically so that the number of failed workflow runs does not exists at the expected location, an error is thrown.
+
+The expected configuration is 
+
+```
+---
+...
+references:
+- type: workflow_failures
+      owner: "eclipse-score"
+      repo: "inc_nlohmann_json"
+      branch: "json_version_3_12_0"
+---
+```
+
 # Validators
 
 Validators are extensions of trudag, used to validate any data that can be reduced to a floating point metric. The resulting scores are used as evidence for the trustability of items in the trustable graph.
