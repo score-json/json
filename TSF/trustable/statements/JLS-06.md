@@ -2,9 +2,10 @@
 level: 1.1
 normative: true
 references:
-        - type: website
-          url: https://github.com/score-json/json/settings/branches
-          description: "Branch protection policies"
+    - type: workflow_failures
+      owner: "score-json"
+      repo: "json"
+      branch: "main"
 evidence:
   type: "check_artifact_exists"
   configuration:

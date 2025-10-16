@@ -2,9 +2,9 @@
 level: 1.1
 normative: true
 references:
-    - type: web_content
-      url: https://github.com/score-json/json/settings/branch_protection_rules/65227858
-      description: "branch protection rule for main branch specifying that failures of any workflow prevent merge."
+    - type: workflow_failures
+      owner: "score-json"
+      repo: "json"
 score:
     Jonas-Kirchhoff: 1.0
     Erikhu1: 1.0

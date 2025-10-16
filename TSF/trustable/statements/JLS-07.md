@@ -1,10 +1,10 @@
 ---
 level: 1.1
 normative: true
-references:
-    - type: web_content
-      url: https://github.com/score-json/json/settings/branch_protection_rules/65227858
-      description: "branch protection rule for main branch specifying that failures of tests prevent merge."
+evidence:
+    type: is_branch_protected
+    configuration:
+        branch: main
 score:
     Jonas-Kirchhoff: 1.0
     Erikhu1: 1.0
