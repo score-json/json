@@ -306,13 +306,15 @@ The expected configuration is given as follows:
 
 ```
 evidence:
-    type: check_issues
+    type: did_workflows_fail
     configuration:
-        owner: eclipse-score # owner of the repository
-        repo: inc_nlohmann_json # name of the repository
-        branch: json_version_3_12_0 # name of the branch
-        action: push # optional, default is push
+        owner: "eclipse-score" # owner of the repository
+        repo: "inc_nlohmann_json" # name of the repository
+        branch: "json_version_3_12_0" # name of the branch
+        action: "push" # optional, default is push
 ```
+
+It is of utmost importance that the arguments come with quotation marks, otherwise, the update helper does not work as intended.
 
 ## is_branch_protected
 
@@ -324,10 +326,12 @@ The expected configuration is given as follows:
 
 ```
 evidence:
-    type: check_issues
+    type: is_branch_protected
     configuration:
-        branch: json_version_3_12_0 # name of the branch
+        branch: "json_version_3_12_0" # name of the branch
 ```
+
+It is of utmost importance that the arguments come with quotation marks, otherwise, the update helper does not work as intended.
 
 
 # Data store interface
