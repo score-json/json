@@ -2,7 +2,7 @@
 level: 1.1
 normative: true
 references:
-    - type: file
+    - type: checklist
       path: ./TSF/trustable/assertions/TA-Constraints.md
 ---
 
