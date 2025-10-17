@@ -1,7 +1,7 @@
-# Checklist for TA-CONSTRAINTS from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+#### Checklist for TA-CONSTRAINTS from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * Are the constraints grounded in realistic expectations, backed by real-world examples? <br>
-    Answer:  Yes, the constraints are NOICE
+    Answer:  Yes, the constraints are 
 * Do they effectively guide downstream consumers in expanding upon existing Statements? <br>
     Answer:  
 * Do they provide clear guidance for upstreams on reusing components with well-defined claims? <br>

@@ -1,4 +1,4 @@
-# Checklist for TA-INDICATORS from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+#### Checklist for TA-INDICATORS from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * How appropriate/thorough are the analyses that led to the indicators? <br>
     Answer:  There are no warning indicators for the none misbehaviours for the use of the library for parsing and verification of JSON data according to RFC8259.

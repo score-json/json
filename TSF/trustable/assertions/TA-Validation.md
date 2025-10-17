@@ -1,4 +1,4 @@
-# Checklist for TA-VALIDATION from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+#### Checklist for TA-VALIDATION from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 I DO NOT FEEL CONFIDENT TO ANSWER THIS!
 

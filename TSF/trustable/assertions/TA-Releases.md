@@ -1,4 +1,4 @@
-# Checklist for TA-RELEASES from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+#### Checklist for TA-RELEASES from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * How confident are we that all components are taken from within our controlled environment? <br>
     Answer:  This library does not take anything from outside of this repository.

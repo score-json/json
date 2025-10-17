@@ -1,4 +1,4 @@
-# Checklist for TA-SUPPLY_CHAIN from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+#### Checklist for TA-SUPPLY_CHAIN from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 *    Could there be other components, missed from the list? <br>
     Answer:  No.

@@ -1,4 +1,4 @@
-# Checklist for TA-ANALYSIS from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+#### Checklist for TA-ANALYSIS from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * What fraction of Expectations are covered by the test data? <br>
     Answer:  Every statement supporting both of the expectations is ultimately supported by a test, except for WFJ-06. For WFJ-06 it is impossible to provide a direct tests, since this is a statement on infinitely many cases. Indirect tests are provided by the rejection of ill-formed json data.

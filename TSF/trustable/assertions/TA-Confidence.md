@@ -1,4 +1,4 @@
-# Checklist for TA-CONFIDENCE from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+#### Checklist for TA-CONFIDENCE from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * What is the algorithm for combining/comparing the scores? <br>
     Answer:  It is the standard algorithm of trudag.

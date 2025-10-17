@@ -1,4 +1,4 @@
-# Checklist for TA-UPDATES from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+#### Checklist for TA-UPDATES from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * Where are the change and configuration management controls specified? <br>
     Answer:  WIP

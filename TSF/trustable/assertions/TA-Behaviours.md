@@ -1,4 +1,4 @@
-# Checklist for TA-BEHAVIOURS from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+#### Checklist for TA-BEHAVIOURS from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * How has the list of Expectations varied over time? <br>
     Answer: The list of expectations is taken from [here](https://eclipse-score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html), whose development can be retraced using git.

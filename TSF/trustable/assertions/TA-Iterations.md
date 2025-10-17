@@ -1,4 +1,4 @@
-# Checklist for TA-ITERATIONS from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+#### Checklist for TA-ITERATIONS from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * How much of the software is provided as binary only, expressed as a fraction of the BoM list? <br>
     Answer:  None.
