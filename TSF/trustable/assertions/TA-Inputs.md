@@ -2,33 +2,62 @@
 
 The single_include/nlohmann/json.hpp is the single and only component of the library.
 
-* Are there components that are not on the list? <br>
+* Are there components that are not on the list?
+
     Answer:  No.
-* Are there assessments for all components? <br>
+
+* Are there assessments for all components?
+
     Answer:  ?????
-* Has an assessment been done for the current version of the component? <br>
+
+* Has an assessment been done for the current version of the component?
+
     Answer:  ?????
-* Have sources of bug and/or vulnerability data been identified? <br>
+
+* Have sources of bug and/or vulnerability data been identified?
+
     Answer:  There are no bug and/or vulnerability data.
-* Have additional tests and/or Expectations been documented and linked to component assessment? <br>
+
+* Have additional tests and/or Expectations been documented and linked to component assessment?
+
     Answer:  ??????
-* Are component tests run when integrating new versions of components? <br>
+
+* Are component tests run when integrating new versions of components?
+
     Answer:  There are no further components.
-* Are there tools that are not on the list? <br>
+
+* Are there tools that are not on the list?
+
     Answer:  No.
-* Are there impact assessments for all tools? <br>
+
+* Are there impact assessments for all tools?
+
     Answer:  ??????
-* Have tools with high impact been qualified? <br>
+
+* Have tools with high impact been qualified?
+
     Answer: There are no tools with high impact.  
-* Were assessments or reviews done for the current tool versions? <br>
+
+* Were assessments or reviews done for the current tool versions?
+
     Answer:  ?????
-* Have additional tests and/or Expectations been documented and linked to tool assessments? <br>
+
+* Have additional tests and/or Expectations been documented and linked to tool assessments?
+
     Answer:  No.
-* Are tool tests run when integrating new versions of tools? <br>
+
+* Are tool tests run when integrating new versions of tools?
+
     Answer:  There are no tools.
-* Are tool and component tests included in release preparation? <br>
+
+* Are tool and component tests included in release preparation?
+
     Answer:  Yes, the tests of the library are included in the release.
-* Can patches be applied, and then upstreamed for long-term maintenance? <br>
+
+* Can patches be applied, and then upstreamed for long-term maintenance?
+
     Answer:  Yes, if ever a misbehaviour is found and patched, then a pull-request to the original nlohmann/json repository can be opened to upstream the changes.
-* Do all dependencies comply with acceptable licensing terms? <br>
+
+* Do all dependencies comply with acceptable licensing terms?
+
     Answer:  Yes.
