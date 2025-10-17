@@ -48,6 +48,26 @@ TEST_CASE("accept")
         // double check if rejection is not due to overflow
         CHECK_THROWS_AS(parser_helper(faulty_array.str()),json::parse_error&);
     }
+    SECTION("whitespace")
+    {
+        CHECK(json::accept(" [true] "));
+        CHECK(json::accept(" [true]\t"));
+        CHECK(json::accept(" [true]\n"));
+        CHECK(json::accept(" [true]\u000d"));
+        CHECK(json::accept("\t[true] "));
+        CHECK(json::accept("\t[true]\t"));
+        CHECK(json::accept("\t[true]\n"));
+        CHECK(json::accept("\t[true]\u000d"));
+        CHECK(json::accept("\n[true] "));
+        CHECK(json::accept("\n[true]\t"));
+        CHECK(json::accept("\n[true]\n"));
+        CHECK(json::accept("\n[true]\u000d"));
+        CHECK(json::accept("\u000d[true] "));
+        CHECK(json::accept("\u000d[true]\t"));
+        CHECK(json::accept("\u000d[true]\n"));
+        CHECK(json::accept("\u000d[true]\u000d"));
+        CHECK(json::accept(" \n\t\t\n   \t\u000d[true]  \n\n\n  \t\t\u000d  \n"));
+    }
 }
 
 TEST_CASE("parse")

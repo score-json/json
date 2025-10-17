@@ -243,6 +243,25 @@ TEST_CASE("accept")
             CHECK(!json::accept("\"\xfe\xfe\xff\xff\""));
         }
     }
+    SECTION("whitespace")
+    {
+        CHECK(json::accept(" \"foo\" "));
+        CHECK(json::accept(" \"foo\"\t"));
+        CHECK(json::accept(" \"foo\"\n"));
+        CHECK(json::accept(" \"foo\"\u000d"));
+        CHECK(json::accept("\t\"foo\" "));
+        CHECK(json::accept("\t\"foo\"\t"));
+        CHECK(json::accept("\t\"foo\"\n"));
+        CHECK(json::accept("\t\"foo\"\u000d"));
+        CHECK(json::accept("\n\"foo\" "));
+        CHECK(json::accept("\n\"foo\"\t"));
+        CHECK(json::accept("\n\"foo\"\n"));
+        CHECK(json::accept("\n\"foo\"\u000d"));
+        CHECK(json::accept("\u000d\"foo\" "));
+        CHECK(json::accept("\u000d\"foo\"\t"));
+        CHECK(json::accept("\u000d\"foo\"\n"));
+        CHECK(json::accept("\u000d\"foo\"\u000d"));
+    }
 }
 
 TEST_CASE("Unicode" * doctest::skip())
