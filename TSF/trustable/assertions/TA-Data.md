@@ -10,7 +10,7 @@
 
 * Are extensible data models implemented?
 
-    Answer:  The data are stored in a sqlite database.
+    Answer:  The data are stored in an sqlite database.
 
 * Is sensitive data handled correctly (broadcasted, stored, discarded, or anonymised) with appropriate encryption and redundancy?
 
@@ -34,7 +34,7 @@
 
 * Is data accessible only to intended parties?
 
-    Answer:  There are no unintended parties.
+    Answer:  Since the library is open source, there are no unintended parties.
 
 * Are any subsets of our data being published?
 

@@ -28,19 +28,19 @@ The single_include/nlohmann/json.hpp is the single and only component of the lib
 
 * Are there tools that are not on the list?
 
-    Answer:  No.
+    Answer:  The library does not use external tools, except for the tools provided by the C++ standard library.
 
 * Are there impact assessments for all tools?
 
-    Answer:  ??????
+    Answer:  ?????? The library does not use external tools for which an impact assessment has to be done.
 
 * Have tools with high impact been qualified?
 
-    Answer: There are no tools with high impact.  
+    Answer: There are no tools with high impact.
 
 * Were assessments or reviews done for the current tool versions?
 
-    Answer:  ?????
+    Answer:  ????? The library does not use external tools for which an impact assessment has to be done.
 
 * Have additional tests and/or Expectations been documented and linked to tool assessments?
 
@@ -48,7 +48,7 @@ The single_include/nlohmann/json.hpp is the single and only component of the lib
 
 * Are tool tests run when integrating new versions of tools?
 
-    Answer:  There are no tools.
+    Answer:  The library does not use external tools for which a new version needs to be integrated.
 
 * Are tool and component tests included in release preparation?
 
@@ -60,4 +60,4 @@ The single_include/nlohmann/json.hpp is the single and only component of the lib
 
 * Do all dependencies comply with acceptable licensing terms?
 
-    Answer:  Yes.
+    Answer:  Yes, the library is licensed under MIT License .

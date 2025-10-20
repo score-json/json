@@ -15,15 +15,15 @@
 
 * How many faults may be unrecorded (or incorrectly closed, or downplayed)?
 
-    Answer:  There may be none concerning the expectations.
+    Answer:  There may be none, at least when it concerns the expectations.
 
 * How do we collect lists of bugs and known vulnerabilities from components?
 
-    Answer:  We pull the list from the issues reported to nlohmann/json labelled as bug and open or opened since the last release.
+    Answer:  We pull the list from the issues reported to nlohmann/json labelled as bug and open or opened since the last release. This list is then stored using github, thereby enabling a traceability of the list.
 
 * How (and how often) do we check these lists for relevant bugs and known vulnerabilities?
 
-    Answer:  Whenever we generate the documentation, the list is pulled. If there is an issue previously unrecorded, then the maintainer is enticed to check this issue on applicability.
+    Answer:  Whenever we generate the documentation, the list is pulled. If there is an issue previously unrecorded, then the maintainer is encouraged by the change of the trustable score to check this issue on applicability.
 
 * How confident can we be that the lists are honestly maintained?
 
@@ -39,11 +39,11 @@
 
 * Could there be whole categories of bugs/vulnerabilities still undiscovered?
 
-    Answer:  There could be a mislabelling of issues, but it is unlikely that there are bugs or vulnerabilities not labelled as bug.
+    Answer:  There could be a mislabelling of issues, but it is unlikely that there are bugs or vulnerabilities not labelled as bug, instead it is likely that perceived issues due to a misunderstanding of how the library works are labelled as bug.
 
 * How effective is our triage/prioritisation? 
 
-    Answer:  UNKNOWN
+    Answer: ????? Since it is not intended to fix the library within S-CORE, but instead leave the development to the original nlohmann/json, there is no need to have a triage or prioritisation. 
 
 * How many components have never been updated? 
 
@@ -59,4 +59,4 @@
 
 * How confident are we that outstanding fixes do not address Misbehaviours?
 
-    Answer:  We are very confident that none of the outstanding fixes do not affect the no identified misbehaviours.
+    Answer: For all of the none identified misbehaviours, we are very confident that none of the outstanding fixes do not address them.

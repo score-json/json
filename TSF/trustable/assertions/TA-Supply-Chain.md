@@ -2,19 +2,19 @@
 
 *    Could there be other components, missed from the list?
 
-    Answer:  No.
+    Answer:  Since the library does not contain any external components, no.
 
 *    Does the list include all toolchain components?
 
-    Answer:  Yes.
+    Answer:  Since the library does not contain any external components, yes.
 
 *    Does the toolchain include a bootstrap?
 
-    Answer:  No.
+    Answer:  ???? No.
 
 *    Could the content of a mirrored project be compromised by an upstream change?
 
-    Answer:  No.
+    Answer:  Since the library does not contain any external components, no.
 
 *    Are mirrored projects up to date with the upstream project?
 

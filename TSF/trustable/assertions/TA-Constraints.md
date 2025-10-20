@@ -22,8 +22,8 @@
 
 * Have there been any documented misunderstandings from users, and are these visibly resolved?
 
-    Answer:  Yes, it is documented that the brace initialisation regularly leads to confusion.
+    Answer:  Yes, it is documented that the [brace initialisation](https://json.nlohmann.me/home/faq/) regularly leads to confusion, cf. [here](https://github.com/nlohmann/json/issues/4898).
 
 * Do external users actively keep up with updates, and are they properly notified of any changes?
 
-    Answer:  NO CLUE ??????
+    Answer:  External users of the library are not necessarily automatically notified of an update, and are neither assumed nor required to keep up to date. If the external user forks the github repository, however, then github shows automatically whenever the upstream changes.

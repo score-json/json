@@ -2,15 +2,15 @@
 
 * How appropriate/thorough are the analyses that led to the indicators?
 
-    Answer:  There are no warning indicators for the none misbehaviours for the use of the library for parsing and verification of JSON data according to RFC8259.
+    Answer:  Since no misbehaviours for the use of the library for parsing and verification of JSON data according to RFC8259 have been identified, no warning indicators are implemented.
 
 * How confident can we be that the list of indicators is comprehensive? 
 
-    Answer:  Since there are none, the list is not comprehensive at all.
+    Answer:  There are no warning indicators implemented, of which we are very confident.
 
 * Could there be whole categories of warning indicators still missing?
 
-    Answer:  Yes, there could. These warning indicators, however, should be implemented in the wrapper defining the interface between the library and the project using it.
+    Answer:  Yes, there could. Within S-CORE, however, any warning indicator that is not natively implemented within the original nlohmann/json should be implemented in the wrapper defining the interface between the library and the project using it.
 
 * How has the list of advance warning indicators varied over time?
 
@@ -26,7 +26,7 @@
 
 * Can we collect data for all indicators? 
 
-    Answer:  We do collect data for all indicators that are currently implemented.
+    Answer:  There are currently no implemented indicators, so that no data are collected.
 
 * Are the monitoring mechanisms used included in our Trustable scope? 
 
@@ -34,7 +34,7 @@
 
 * Are there gaps or trends in the data? 
 
-    Answer:  There are no data.
+    Answer:  There are no data where gaps or trends could be identified.
 
 * If there are gaps or trends, are they analysed and addressed?
 

@@ -14,7 +14,7 @@
 
 * Could there be whole categories of Expectations still undiscovered?
 
-    Answer:  It is unlikely, but the parsing of cbor could become relevant at some time.
+    Answer:  It is unlikely, but the parsing of CBOR could become relevant at some time.
 
 * Can we identify Expectations that have been understood but not specified?
 
@@ -26,7 +26,7 @@
 
 * How confident can we be that this list covers all critical requirements?
 
-    Answer:  We can not think of any more critical requirement of a JSON parser than to parse JSON data.
+    Answer:  We can not think of any more critical requirement of a JSON parser in the sense of RFC8259 than to parse JSON data in the sense of RFC8259.
 
 * How comprehensive is the list of tests? 
 

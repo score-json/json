@@ -14,7 +14,7 @@
 
 * Does change control capture all potential regressions? 
 
-    Answer:  NO CLUE
+    Answer:  Due to the test coverage of 99.186%, it is unlikely that a potential regression is not captured.
 
 * Is change control timely enough? 
 

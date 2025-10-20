@@ -14,7 +14,7 @@
 
 * How reliable is the monitoring process?
 
-    Answer: Due to no indicator data being collected, there is no monitoring process
+    Answer: Due to no indicator data being collected, there is no monitoring process.
 
 * How well does the production data correlate with our test data?
 
@@ -37,23 +37,23 @@
 
 * Do we have sensible/appropriate target failure rates?
 
-    Answer:  For the unit and integration tests, 0.
+    Answer:  For the unit and integration tests, zero. The target failure rate of fuzz testing is not under our control.
 
 * Do we need to check the targets?
 
-    Answer:  ???????? No.
+    Answer:  For the unit and integration tests, no. Since the fuzz testing runs and is investigated in the original nlohmann/json, there is no need to check the target.
 
 * Are we achieving the targets?
 
-    Answer:  ??????? Yes.
+    Answer:  For the unit and integration tests, yes. The achieving of the targets for the fuzz-testing is evaluated within the original nlohmann/json.
 
 * Are all underlying assumptions and target conditions for the analysis specified?
 
-    Answer:  There is no analysis.
+    Answer:  Since none of the unit and integration tests are expected to fail, there is no further analysis of the results besides verifying the expectation.
 
 * Have the underlying assumptions been verified using known good data?
 
-    Answer:  There is no analysis so that there are no underlying assumptions.
+    Answer:  The assumption that all unit and integration tests succeed under the expected conditions is demonstrated by the non-failure of the CI-Pipeline.
 
 * Has the Misbehaviour identification process been verified using known bad data?
 
@@ -61,4 +61,4 @@
 
 * Are results shown to be reproducible?
 
-    Answer: The tests can be reproduced on every machine.
+    Answer: It is expected that the tests can be reproduced on every modern sufficiently powerful machine.

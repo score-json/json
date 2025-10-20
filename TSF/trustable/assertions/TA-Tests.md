@@ -2,11 +2,11 @@
 
 * How confident are we that our test tooling and environment setups used for tests, fault inductions, and analyses are reproducible?
 
-    Answer:  The test can be reproduced any time on any machine running the versions of the operating systems and compilers as provided (TODO)
+    Answer:  The test can be reproduced any time on any machine running the versions of the operating systems and compilers as provided (TODO, cf. AOU-14)
 
 * Are any exceptions identified, documented and justified?
 
-    Answer:  Not applicable.
+    Answer:  To the best of our understanding, there are no exceptions identified.
 
 * How confident are we that all test components are taken from within our controlled environment?
 
@@ -22,4 +22,4 @@
 
 * How confident are we that all tests scenarios are repeatable? 
 
-    Answer:  Very.
+    Answer:  All test scenarios are repeated daily in the CI pipeline.
