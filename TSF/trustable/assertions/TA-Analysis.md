@@ -49,7 +49,7 @@
 
 * Are all underlying assumptions and target conditions for the analysis specified?
 
-    Answer:  Since none of the unit and integration tests are expected to fail, there is no further analysis of the results besides verifying the expectation.
+    Answer:  Since none of the unit and integration tests are expected to fail, there is no further analysis of the results besides verifying the expectation. In case any test fails ever, the failure of the CI-pipeline encourages the maintainer to investigate.
 
 * Have the underlying assumptions been verified using known good data?
 
@@ -57,7 +57,7 @@
 
 * Has the Misbehaviour identification process been verified using known bad data?
 
-    Answer: Misbehaviours published on nlohmann/json usually provide minimal working examples for reproducing the faulty behaviour.
+    Answer: Misbehaviours published on nlohmann/json usually provide minimal working examples for reproducing the faulty behaviour, enabling everyone to verify the identified misbehaviours. There is, however, no automatic process for the identification of misbehaviours. 
 
 * Are results shown to be reproducible?
 
