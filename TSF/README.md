@@ -7,3 +7,187 @@ The TSF-related additions, such as the Trustable Graph and tooling extensions, a
 - the utility scripts in the `TSF/scripts` folder
 
 The TSF graph (including links, nodes and their hashes) is saved in the `.dotstop.dot` file and the trudag extensions including CPP test references are stored in the `.dotstop_extensions` folder since these locations are required by the trudag tool.
+
+# Update Concept for the version of nlohmann/json within S-CORE
+
+## Assumptions of use
+
+This description of an update process is based on the following structure of the repository WHICH IS NOT THE CASE YET.
+It is assumed that the repository possesses a default branch called ``main`` containing the most recent documented version of ``nlohmann/json`` together with its documentation.
+Additionally, there is a branch ``develop``, which is **not** intended to mirror the branch of ``nlohmann/json`` with the same name, but instead serves as an in-repository testing ground for changes to either the library or its documentation.
+The releases of the documented version are identified by tags on ``main``.
+Moreover, the branch protection rules for ``main`` are set as described in the description of the forking process in ``TSF/README.md`` (WIP).
+
+## Update process of the original nlohmann/json
+
+The releases of ``nlohmann/json`` are collected on the `Release site <https://github.com/nlohmann/json/releases>` of the repository ``nlohmann/json``.
+Each release announcement is expected to contain the release date, SHA-256 values for json.hpp, include.zip and json.tar.xz, and a brief list containing bug fixes, improvements, further changes and deprecated functions.
+The new release is expected to be located within the branch **master**, from where the most recent version can be drawn.
+
+## Update process of the S-CORE version
+
+In the following, we shall describe the intricacies of updating the version of ``nlohmann/json`` within Eclipse S-CORE.
+This version is not a mere fork of the original master branch of ``nlohmann/json``, but instead enriched with the documentation following the Trustable Software Framework (TSF).
+The enrichment with the documentation necessitates some changes to the fork of the original repository.
+For the most part, these changes are in-obtrusive, and mere additions.
+In particular, the folders ``include`` and ``single-include`` remain unchanged, and should be updated without further adaptations.
+In some cases, however, additional tests are run and data are generated and collected, which were not run or generated in the original ``nlohmann/json``, so that obtrusive changes of files were necessary.
+For these files, and in particular the workflow files, caution must be exercised, as to not disturb the documentation.
+Moreover, some parts of the documentation must be adapted to the new version.
+
+
+### What can not be updated without further precautions?
+
+* ``cmake/ci.cmake``
+    This file defines, in particular, the various custom cmake targets; in particular, the various configurations for the execution of the unit- and integration-tests are defined.
+    The TSF requires, or, at the very least, strongly encourages us to collect test-results.
+    In order to do this efficiently, the ctest command is adapted to automatically generate the junit-logs of each test-run.
+    For this, the option ``--output-junit`` is set with output path ``../my_logs/TARGETNAME_junit.xml``, where TARGETNAME is replaced by the name of the respective cmake target; in case that this convention is insufficient to uniquely identify the logs, TARGETNAME is amended by a number.
+    When updating, it must be ensured that these adaptations are preserved.
+    Moreover, if the update introduces new cmake targets or new executions of ctest, it must be ensured, that the junit-log is generated and stored with a similar naming convention in the folder "../my_logs/".
+    Otherwise, it can not be ensured that the test data are accurately captured.
+
+* ``cmake/download_test_data.cmake``
+    This file is modified to ensure that the test-data are not downloaded from the original test-data repository, but instead from the copy of that repository within the Eclipse S-CORE organisation.
+    It must be ensured that this change is preserved.
+
+* ``tests/CMakeLists.txt``
+    This file collects, in particular, the files containing the unit- and integration-tests in a list, which is given to cmake. 
+    Custom tests were added in TSF/tests to document the fulfillment of the expectations. 
+    To ensure that these tests are run, the file tests/CMakeLists.txt has been modified.
+    During the update, it must be ensured, that the custom tests are still being executed.
+
+* ``.github/workflows/parent-workflow.yml``
+    To ensure a specific execution order for the individual github workflows, their execution is orchestrated by the parent-workflow.
+    To guarantee that this order is respected, it must be ensured that every other workflow except for ``docs-cleanup.yml``, ``scorecards.yml`` and ``stale.yml`` runs ``on workflow_call``, only.
+    For the three exceptions, it is recommended to keep the execution scheduled as currently the case.
+
+* ``.github/workflows/ubuntu.yml``
+    The ubuntu workflow orchestrates the parallel execution of various cmake targets with varying configurations running on the latest version of ubuntu.
+    The first adaptation is that every step, in which a junit-report is generated, generates an artifact.
+    It must be ensured, that these artifacts are still generated after the update.
+    The second adaptation is that the test-results are captured, processed and persistently stored or stored in the ubuntu-artifact.
+    Therefore, it must be ensured that the jobs ``publish_test_data_success``, ``publish_test_data_failure``, ``publish_test_data_cancellation`` and ``ubuntu_artifact`` are executed.
+    Moreover, in case that any further job is added by nlohmann, it must be ensured that this job is added to the list of jobs required before the latter workflows are executed.
+    If any further job added by nlohmann generates a junit-log, it must be ensured that this job generates an artifact containing its junit-logs. 
+
+* ``.github/workflows/cifuzz.yml``
+    This workflow uses Google's oss-fuzz, which is not available to the copy within Eclipse S-CORE. 
+    Therefore, this workflow needs to be disabled in the copy. 
+    Currently, this is done by removing it altogether, which we recommend to do so that no confusion as to why this workflow is not executed arises. 
+
+* ``.github/workflows/publish_documentation.yml``
+    This workflow is replaced with a completely customised version, which reflects the use of trudag and the integration into the Eclipse S-CORE organisation.
+    Therefore, it is recommended to not change this workflow. 
+    In particular, the version of publish_documentation.yml in the original repository nlohmann/json must not replace the publish_documentation.yml of the present repository.
+
+* ``.github/workflows/test_trudag_extensions.yml``
+    This workflow is not present in the original nlohmann/json and must not be removed, or modified (besides updating the versions of tools, if necessary) by the update.
+
+* Other entries of ``.github/workflows``
+    For every workflow, it must be ensured that the conditions of their execution are unchanged.
+    The workflows ``check_amalgamation``, ``codeql``, ``dependency_review``, ``labeler`` and ``test_trudag_extensions`` generate an artifact, which must not be changed.
+    New workflows should be carefully reviewed.
+    If it is determined that their execution within the project is beneficial, and that they do not interfere with, then they should be integrated within the parent workflow at an appropriate place and their execution condition should be set to on ``workflow``, or their execution should be scheduled appropriately. 
+    It is strongly recommended that the new workflow produces an artifact on success, and that the validator ``check_artifact_exists`` is adapted accordingly.
+    If nlohmann deletes any of the currently executed workflows, in particular ``check_amalgamation.yml``, ``codeql.yml``, ``dependency_review.yml``, ``labeler.yml``, ``test_trudag_extensions.yml`` and ``ubuntu.yml``, then it is strongly recommended to keep the currently executed version, since the automatic validator ``check_artifact_exists`` depends on the existence of these workflows.
+    In case that it is determined that these workflows should be deleted also in the documented copy of ``nlohmann/json``, then the validator ``check_artifact_exists`` and all its occurrences must be adapted accordingly.
+
+* ``ChangeLog.md``
+    It must be ensured that the changes of the update are properly described in the file ``ChangeLog.md``.
+
+
+### Necessary adaptations
+
+The following adaptation is recommended, and has, unfortunately, not been automated.
+
+* ``TSF/trustable/statements/JLS-02.md``
+    It must be carefully ensured that this statement and its references are still valid. In particular, it is strongly recommended to refer to a fuzz testing result running on the version that is updated to.
+
+
+The following adaptations to the documentation have been automated; the python-script TSF/scripts/update_helper.py may be used to assist with these changes. 
+For the error-free execution is it necessary, however, to adhere to the naming scheme json_version_X_XX_X, and to not change the structure of the directories.
+
+* ``TSF/Trustable/statements/JLS-11.md``
+    It must be ensured that the correct release date is used.
+
+* ``TSF/trustable/statements/JLS-14.md``
+    It must be ensured that the release of the correct version is referenced.
+    Furthermore, the sha-value of the evidence must be adapted to the one provided in that announcement post.
+
+* ``TSF/trustable/docs/introduction/index.rst``
+    In this file, the version of ``nlohmann/json`` that is documented is explicitly mentioned at two places. 
+    This version must be updated.
+    
+* ``TSF/scripts/generate_list_of_misbehaviours.py``
+    This script contains version and release date hard-coded. Both must be updated.
+
+
+### Recommended procedure VERY MUCH WIP 
+
+Based on the above observations, the following recommendations are derived.
+
+1. Create a new branch ``json_version_X_XX_X`` from the default branch containing the current version of ``nlohmann/json`` within Eclipse S-CORE
+2. Merge branch master from the original nlohmann/json into this branch, e.g. ``git checkout -b json_version_X_XX_X && git merge --no-commit nlohmann/master``
+3. Confirm the deletion of cifuzz.yml, macos.yml and windows.yml.
+4. Resolve the potential merge conflict in publish-documentation.yml by rejecting the incoming changes. Update the versions of the github actions, if necessary. 
+5. Resolve the potential merge conflicts in check_amalgamation.yml, codeql.yml, dependency_review.yml, labeler.yml, ``test_trudag_extensions.yml`` to ensure that the artifacts are generated, i.e. the jobs Generate XXX artifact and Upload XXX artifact are retained.
+6. Resolve the potential merge conflict in ubuntu.yml following the above instructions.
+7. Resolve the potential merge conflicts in cmake/download_test_data.cmake and cmake/ci.cmake following the above instructions.
+8. Carefully examine the automatically merged changes. If no interference is to be expected, complete the merge.
+9. In case any additional workflow has been added, carefully examine and integrate into the parent-workflow or schedule appropriately.
+10. Adapt the documentation as described above.
+11. Generate the documentation locally and carefully investigate any change in the trustable score(s).
+12. Merge into the default branch.
+13. Create a new release.
+
+# Update concept for the documentation
+
+## Assumptions of use
+
+The documentation follows the Trustable Software Framework (TSF), which is documented [here](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html).
+Furthermore, the automatic compilation of the documentation and the tracking of changes to the core functionalities of the library uses _trudag_, which is developed by Codethink and located [here](https://gitlab.com/CodethinkLabs/trustable/trustable).
+
+
+## Version of trudag
+
+The documentation is currently built using trudag version 2025.8.5.
+In case a major change of the trudag happens in the future, this might break some features of the documentation, or change some intended behaviours.
+Thus, it is recommended to not change the version of trudag.
+In case that it appears wise or necessary to change the version of trudag (e.g. when trudag is eventually certified), the following should be considered:
+
+* How has the algorithm for the accumulation of the trustable score changed? Ideally, it does not change, otherwise the necessity for a new review arises.
+* How has the data store interface changed? Ideally, it has not changed, but historical data and the documentation indicate that a change of the data store interface happened at some time.
+* How has the the expected configuration for the items changed? It is known that this configuration changed (at least) once before. What does the potential change mean?
+* Do all custom references and validators as well as the data store interface work as before?
+* Has the algorithm for the hashing changed, or are there any changes to the trustable scores? If so, investigate carefully!
+
+
+## Subject-Matter-Expert-scores
+
+The intention with the SME scores is to find the _true_ trustable score by means of a heuristic law-of-large-numbers argument. 
+Therefore, it is very much welcome if contributors add their SME scores to statements for which they feel confident to do so.
+While the committer may check SME scores for plausibility, it is recommended to not question SME scores as this interferes with the assumed independence of the SME!
+It is recommended that changes to SME scores are accumulated in the branch ``develop`` before the release of a new version of the documentation as to not clutter the release history.
+It is highly recommended to not delete SME scores under usual circumstances; most certainly, the SME scores should never be changed by anybody except the original SME.
+The following unusual circumstances can, after careful consideration, justify the removal or (much preferably!) the request for re-evaluation by the original SMEs:
+
+* change of references: 
+    If, e.g. due to an update of ``nlohmann/json``, the references of any items (be it tests or code) change, then this should trigger a re-evaluation of the statement. 
+    In particular if the behaviour changed significantly, it can be justifiable to assume that the old SME scores do not reflect the statement anymore.
+* addition of automatic validators: 
+    Recall that the SME judges in the absence of an automatic validator the validity of the statement using their own knowledge as well as the provided references, while in the presence of an automatic validator the validity of the validator score to represent the true score of the item is judged.
+    If a new automatic validator is added, then the meaning of the old SME scores is no longer represented, thereby urging for a re-review or (if a re-review is impossible) the removal of the score.
+
+## Validators
+
+The automatic validators are intended to calculate a trustable score based on quantifiable data. 
+In particular the introduction of a validator changes the meaning of the (potential) SME scores associated to a statement.
+Therefore, the change or introduction of an automatic validator is most critical.
+It is highly recommended to urge the original SME to re-review the statement and adapt their scores, or (at the least) to enlist additional SME to judge the changed statement.
+After careful consideration the highly critical decision to remove some SME scores no longer reflecting the statement could be made. 
+
+## References
+
+References should be treated as validators, i.e. any update of a reference should trigger a re-review by the SME.
+For references, however, the decision to remove a stale SME score is even more critical unless the reference reveals critical new information, which is highly unlikely, or the change of the reference is triggered by a significant change in the behaviour of the library, which heavily affected the statement.
