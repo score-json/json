@@ -351,7 +351,7 @@ def is_branch_protected(configuration: dict[str, yaml]) -> tuple[float, list[Exc
     branch = configuration.get("branch",None)
     if branch is None:
         return (0.0, RuntimeError("The branch is not specified."))
-    res = subprocess.run(["git", "diff", "--cached", "quiet"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
+    res = subprocess.run(["git", "diff", "--cached", "--quiet", "--exit-code"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
     if res.returncode != 0:
         raise RuntimeError("There are currently staged changes. Please unstage to proceed.")
     try:
