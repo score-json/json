@@ -18,6 +18,9 @@ Additionally, there is a branch ``develop``, which is **not** intended to mirror
 The releases of the documented version are identified by tags on ``main``.
 Moreover, the branch protection rules for ``main`` are set as described in the description of the forking process in ``TSF/README.md`` (WIP).
 
+Note that there is **no automatic information** on the existence of a new release in the original ``nlohmann/json``; instead the possibility to update is detected **manually**.
+Note further that, due to the currently relatively limited use of nlohmann/json within S-CORE, there appears currently no inherent need to keep the version up to date.
+
 ## Update process of the original nlohmann/json
 
 The releases of ``nlohmann/json`` are collected on the `Release site <https://github.com/nlohmann/json/releases>` of the repository ``nlohmann/json``.
@@ -28,6 +31,7 @@ The new release is expected to be located within the branch **master**, from whe
 
 In the following, we shall describe the intricacies of updating the version of ``nlohmann/json`` within Eclipse S-CORE.
 This version is not a mere fork of the original master branch of ``nlohmann/json``, but instead enriched with the documentation following the Trustable Software Framework (TSF).
+
 The enrichment with the documentation necessitates some changes to the fork of the original repository.
 For the most part, these changes are in-obtrusive, and mere additions.
 In particular, the folders ``include`` and ``single-include`` remain unchanged, and should be updated without further adaptations.
@@ -127,21 +131,25 @@ For the error-free execution is it necessary, however, to adhere to the naming s
 
 Based on the above observations, the following recommendations are derived.
 
-1. Create a new branch ``json_version_X_XX_X`` from the default branch containing the current version of ``nlohmann/json`` within Eclipse S-CORE
+1. Ensure that the content of the branch ``develop`` is identical to the branch ``main``.
+    Since it is intended to not change the library itself, in particular the folders ``include`` and ``single_include``, this should be possible by updating the documentation. 
 2. Merge branch master from the original nlohmann/json into this branch, e.g. ``git checkout -b json_version_X_XX_X && git merge --no-commit nlohmann/master``
 3. Confirm the deletion of cifuzz.yml, macos.yml and windows.yml.
-4. Resolve the potential merge conflict in publish-documentation.yml by rejecting the incoming changes. Update the versions of the github actions, if necessary. 
-5. Resolve the potential merge conflicts in check_amalgamation.yml, codeql.yml, dependency_review.yml, labeler.yml, ``test_trudag_extensions.yml`` to ensure that the artifacts are generated, i.e. the jobs Generate XXX artifact and Upload XXX artifact are retained.
+4. Resolve the potential merge conflict in publish-documentation.yml by rejecting the incoming changes.
+    Update the versions of the github actions, if necessary. 
+5. Resolve the potential merge conflicts in check_amalgamation.yml, codeql.yml, dependency_review.yml, labeler.yml, ``test_trudag_extensions.yml`` to ensure that the artifacts are generated, i.e. the jobs ``Generate XXX artifact`` and ``Upload XXX artifact`` are retained.
 6. Resolve the potential merge conflict in ubuntu.yml following the above instructions.
 7. Resolve the potential merge conflicts in cmake/download_test_data.cmake and cmake/ci.cmake following the above instructions.
 8. Carefully examine the automatically merged changes. If no interference is to be expected, complete the merge.
 9. In case any additional workflow has been added, carefully examine and integrate into the parent-workflow or schedule appropriately.
 10. Adapt the documentation as described above.
-11. Generate the documentation locally and carefully investigate any change in the trustable score(s).
+11. Generate the documentation locally and carefully investigate any change in the trustable score(s). 
+    If any relevant behaviour of the library changes, adapt the documentation. 
+    Additionally, if any additional tests were added, or existing tests were changed, carefully investigate whether these warrant an amendment of the documentation.
 12. Merge into the default branch.
-13. Create a new release.
+13. Create a new release under the tag vX.XX.X-trustable.1.
 
-# Update concept for the documentation
+# Update concept for the TSF documentation
 
 ## Assumptions of use
 
@@ -176,7 +184,7 @@ The following unusual circumstances can, after careful consideration, justify th
     If, e.g. due to an update of ``nlohmann/json``, the references of any items (be it tests or code) change, then this should trigger a re-evaluation of the statement. 
     In particular if the behaviour changed significantly, it can be justifiable to assume that the old SME scores do not reflect the statement anymore.
 * addition of automatic validators: 
-    Recall that the SME judges in the absence of an automatic validator the validity of the statement using their own knowledge as well as the provided references, while in the presence of an automatic validator the validity of the validator score to represent the true score of the item is judged.
+    Recall that the SME judges in the absence of an automatic validator the validity of the statement using their own knowledge as well as the provided references, while in the presence of an automatic validator the validity of the validator score to represent the true score of the item, which is estimated as in the case of no validator, is judged.
     If a new automatic validator is added, then the meaning of the old SME scores is no longer represented, thereby urging for a re-review or (if a re-review is impossible) the removal of the score.
 
 ## Validators
