@@ -360,3 +360,63 @@ def is_branch_protected(configuration: dict[str, yaml]) -> tuple[float, list[Exc
     except:
         return (1.0, [])
 
+def combinator(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    validators = configuration.get("validators",None)
+    if validators is None:
+        return (1.0, Warning("No validators were given, returning the void-validator."))
+    elif not isinstance(validators,list):
+        return (0.0, TypeError("The list of validators must be given as list."))
+    scores = []
+    exceptions = []
+    weights = []
+    for validator in validators:
+        # fetch configuration
+        validator_configuration = validator.get("configuration", None)
+        if not isinstance(validator_configuration,dict[str, yaml]):
+            return (0.0, TypeError("Validator configuration must be an object."))
+        # fetch weight
+        weight = float(validator.get("weight",1.0))
+        if weight<0:
+            return (0.0, TypeError("Validator weights must be non-negative."))
+        weights.append(weight)
+        # fetch type
+        validator_type = validator.get("type", None)
+        if validator_type is None:
+            return (0.0, TypeError("Missing validator type declaration."))
+        # execute validator
+        if validator_type == "check_artifact_exists":
+            validator_score, validator_errors = check_artifact_exists(validator_configuration)
+            scores.append(validator_score)
+            exceptions.extend(validator_errors)
+        elif validator_type == "https_response_time":
+            validator_score, validator_errors = https_response_time(validator_configuration)
+            scores.append(validator_score)
+            exceptions.extend(validator_errors)
+        elif validator_type == "check_test_results":
+            validator_score, validator_errors = check_test_results(validator_configuration)
+            scores.append(validator_score)
+            exceptions.extend(validator_errors)
+        elif validator_type == "file_exists":
+            validator_score, validator_errors = file_exists(validator_configuration)
+            scores.append(validator_score)
+            exceptions.extend(validator_errors)
+        elif validator_type == "sha_checker":
+            validator_score, validator_errors = sha_checker(validator_configuration)
+            scores.append(validator_score)
+            exceptions.extend(validator_errors)
+        elif validator_type == "check_issues":
+            validator_score, validator_errors = check_issues(validator_configuration)
+            scores.append(validator_score)
+            exceptions.extend(validator_errors)
+        elif validator_type == "did_workflows_fail":
+            validator_score, validator_errors = did_workflows_fail(validator_configuration)
+            scores.append(validator_score)
+            exceptions.extend(validator_errors)
+        elif validator_type == "is_branch_protected":
+            validator_score, validator_errors = is_branch_protected(validator_configuration)
+            scores.append(validator_score)
+            exceptions.extend(validator_errors)
+    if sum(weights) == 0.0:
+        return (0.0, exceptions)
+    else:
+        return (sum(list(map(lambda x,y: x*y, scores, weights)))/sum(weights),exceptions)
