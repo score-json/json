@@ -12,31 +12,33 @@ The TSF graph (including links, nodes and their hashes) is saved in the `.dotsto
 
 In order to fork this repository or set up any repository where the TSF documentation in this repository is to be included, the following settings have to be configured on GitHub.
 
-- In `Settings` > `Features`:
+- In `Settings` > `General` >`Features`:
     - Enable `Issues`
     
-- In `Settings` > `Branches` > `Add classic branch protection rule`: 
-    - Add "main" to the `Branch name pattern`
-    - Enable `Require a pull request before merging`
-    - Enable `Require approvals`
-    - Enable `Require review from Code Owners`
-    - Enable `Require status checks to pass before merging`
-    - Enable `Require branches to be up to date before merging`
-    - Enable `Require linear history`
-    - Enable `Do not allow bypassing the above settings`
-    - Click `Create`
+- In `Settings` > `Code and automation` > `Branches`:
+    - Click `Add classic branch protection rule` and add "main" to the `Branch name pattern` 
+    - Make sure that only the following settings are enabled:
+        - `Require a pull request before merging`
+        - `Require approvals`
+        - `Require review from Code Owners`
+        - `Require status checks to pass before merging`
+        - `Require branches to be up to date before merging`
+        - `Require linear history`
+        - `Do not allow bypassing the above settings`
 
-- In `Settings` > `Actions` > `General` > `Workflow Permissions`:
-    - Enable `Read repository contents and packages permissions`
-    - Disable `Allow GitHub Actions to create and approve pull requests`
-    - Click `Save`
+- In `Settings` > `Code and automation` > `Actions` > `General` > `Workflow Permissions`:
+    - Make sure that only the following settings are enabled:
+        - `Allow all actions and reusable workflows`
+        - `Require approval for first-time contributors`
+        - `Read repository contents and packages permissions`
 
-- In `Settings` > `Pages`:
+- In `Settings` > `Code and automation` > `Pages`:
     - Under `Source`, select `GitHub Actions`
 
-- In `Settings` > `Advanced Security`:
-    - Enable `Dependency graph`
-    - Enable `Dependabot alerts`
+- In `Settings` > `Security` > `Advanced Security`:
+    - Make sure that only the following settings are enabled:
+        - `Dependency graph`
+        - `Dependabot alerts`
 
 - In `Actions tab`:
     - Click `I understand my workflows, go ahead and enable them`
