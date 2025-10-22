@@ -50,7 +50,7 @@ jobs:
           if ! echo "$TARGET_LABELS" | jq -e --arg NAME "$LABEL_NAME" '.[] | select(.name == $NAME)' > /dev/null; then
             # Create the label if it doesn't exist
             echo "Creating label: $LABEL_NAME..."
-            gh label create "$LABEL_NAME" --repo "$TARGET_REPO" --color "$LABEL_COLOR" --description "$LABEL_DESCRIPTION"
+            gh label create "$LABEL_NAME" --repo "$TARGET_REPO" --force --color "$LABEL_COLOR" --description "$LABEL_DESCRIPTION"
           else
             echo "Label '$LABEL_NAME' already exists in $TARGET_REPO. Skipping..."
           fi
