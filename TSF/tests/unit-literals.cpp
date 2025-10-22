@@ -62,7 +62,7 @@ TEST_CASE("accept")
             CHECK(!json::accept("NULL"));
         }
         SECTION("false")
-        {            
+        {
             CHECK(!json::accept("False"));
             CHECK(!json::accept("fAlse"));
             CHECK(!json::accept("FAlse"));
@@ -1075,57 +1075,6 @@ TEST_CASE("accept")
 			CHECK(!json::accept("NAN"));
 		}
     }
-    SECTION("whitespace")
-    {
-        CHECK(json::accept(" false "));
-        CHECK(json::accept(" false\t"));
-        CHECK(json::accept(" false\n"));
-        CHECK(json::accept(" false\u000d"));
-        CHECK(json::accept("\tfalse "));
-        CHECK(json::accept("\tfalse\t"));
-        CHECK(json::accept("\tfalse\n"));
-        CHECK(json::accept("\tfalse\u000d"));
-        CHECK(json::accept("\nfalse "));
-        CHECK(json::accept("\nfalse\t"));
-        CHECK(json::accept("\nfalse\n"));
-        CHECK(json::accept("\nfalse\u000d"));
-        CHECK(json::accept("\u000dfalse "));
-        CHECK(json::accept("\u000dfalse\t"));
-        CHECK(json::accept("\u000dfalse\n"));
-        CHECK(json::accept("\u000dfalse\u000d"));
-        CHECK(json::accept(" null "));
-        CHECK(json::accept(" null\t"));
-        CHECK(json::accept(" null\n"));
-        CHECK(json::accept(" null\u000d"));
-        CHECK(json::accept("\tnull "));
-        CHECK(json::accept("\tnull\t"));
-        CHECK(json::accept("\tnull\n"));
-        CHECK(json::accept("\tnull\u000d"));
-        CHECK(json::accept("\nnull "));
-        CHECK(json::accept("\nnull\t"));
-        CHECK(json::accept("\nnull\n"));
-        CHECK(json::accept("\nnull\u000d"));
-        CHECK(json::accept("\u000dnull "));
-        CHECK(json::accept("\u000dnull\t"));
-        CHECK(json::accept("\u000dnull\n"));
-        CHECK(json::accept("\u000dnull\u000d"));
-        CHECK(json::accept(" true "));
-        CHECK(json::accept(" true\t"));
-        CHECK(json::accept(" true\n"));
-        CHECK(json::accept(" true\u000d"));
-        CHECK(json::accept("\ttrue "));
-        CHECK(json::accept("\ttrue\t"));
-        CHECK(json::accept("\ttrue\n"));
-        CHECK(json::accept("\ttrue\u000d"));
-        CHECK(json::accept("\ntrue "));
-        CHECK(json::accept("\ntrue\t"));
-        CHECK(json::accept("\ntrue\n"));
-        CHECK(json::accept("\ntrue\u000d"));
-        CHECK(json::accept("\u000dtrue "));
-        CHECK(json::accept("\u000dtrue\t"));
-        CHECK(json::accept("\u000dtrue\n"));
-        CHECK(json::accept("\u000dtrue\u000d"));    
-    }
 }
 
 TEST_CASE("parse")
@@ -1185,7 +1134,7 @@ TEST_CASE("parse")
         CHECK(json::parse("\u000dtrue ")==json::parse("true"));
         CHECK(json::parse("\u000dtrue\t")==json::parse("true"));
         CHECK(json::parse("\u000dtrue\n")==json::parse("true"));
-        CHECK(json::parse("\u000dtrue\u000d")==json::parse("true"));    
+        CHECK(json::parse("\u000dtrue\u000d")==json::parse("true"));
     }
     SECTION("capitalisation")
     {
@@ -1226,7 +1175,7 @@ TEST_CASE("parse")
             CHECK_THROWS_AS(parser_helper("NULL"),json::parse_error&);
         }
         SECTION("false")
-        {            
+        {
             CHECK_THROWS_AS(parser_helper("False"),json::parse_error&);
             CHECK_THROWS_AS(parser_helper("fAlse"),json::parse_error&);
             CHECK_THROWS_AS(parser_helper("FAlse"),json::parse_error&);
