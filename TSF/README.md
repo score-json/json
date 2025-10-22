@@ -23,7 +23,7 @@ Note further that, due to the currently relatively limited use of nlohmann/json 
 
 ## Update process of the original nlohmann/json
 
-The releases of ``nlohmann/json`` are collected on the `Release site <https://github.com/nlohmann/json/releases>` of the repository ``nlohmann/json``.
+The releases of ``nlohmann/json`` are collected on the [Release site](https://github.com/nlohmann/json/releases) of the repository ``nlohmann/json``.
 Each release announcement is expected to contain the release date, SHA-256 values for json.hpp, include.zip and json.tar.xz, and a brief list containing bug fixes, improvements, further changes and deprecated functions.
 The new release is expected to be located within the branch **master**, from where the most recent version can be drawn.
 
@@ -133,7 +133,7 @@ Based on the above observations, the following recommendations are derived.
 
 1. Ensure that the content of the branch ``develop`` is identical to the branch ``main``.
     Since it is intended to not change the library itself, in particular the folders ``include`` and ``single_include``, this should be possible by updating the documentation. 
-2. Merge branch master from the original nlohmann/json into this branch, e.g. ``git checkout -b json_version_X_XX_X && git merge --no-commit nlohmann/master``
+2. Merge branch master from the original nlohmann/json into ``develop``, e.g. ``git checkout -b json_version_X_XX_X && git merge --no-commit nlohmann/master``
 3. Confirm the deletion of cifuzz.yml, macos.yml and windows.yml.
 4. Resolve the potential merge conflict in publish-documentation.yml by rejecting the incoming changes.
     Update the versions of the github actions, if necessary. 
@@ -146,8 +146,8 @@ Based on the above observations, the following recommendations are derived.
 11. Generate the documentation locally and carefully investigate any change in the trustable score(s). 
     If any relevant behaviour of the library changes, adapt the documentation. 
     Additionally, if any additional tests were added, or existing tests were changed, carefully investigate whether these warrant an amendment of the documentation.
-12. Merge into the default branch.
-13. Create a new release under the tag vX.XX.X-trustable.1.
+12. Merge into the ``main``.
+13. Create a new release under the tag FIXME
 
 # Update concept for the TSF documentation
 
