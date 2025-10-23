@@ -54,11 +54,6 @@ This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json re
 - **State:** OPEN
 - **Created At:** 2025-04-01T14:14:30Z
 
-### [#4621](https://github.com/nlohmann/json/issues/4621)
-- **Title:** nlohman::ordered_json using deprecated operators on calls to .value and .at with join_pointers
-- **State:** OPEN
-- **Created At:** 2025-01-23T20:03:18Z
-
 ### [#4552](https://github.com/nlohmann/json/issues/4552)
 - **Title:** UTF-8 invalid characters are not always ignored when dumping with error_handler_t::ignore
 - **State:** OPEN
@@ -73,11 +68,6 @@ This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json re
 - **Title:** NLOHMANN_DEFINE_TYPE_* fails with zero members
 - **State:** OPEN
 - **Created At:** 2023-05-23T19:27:59Z
-
-### [#4014](https://github.com/nlohmann/json/issues/4014)
-- **Title:** `nlohhman::to_string()` default implementation shadows user defined one
-- **State:** OPEN
-- **Created At:** 2023-04-17T01:29:58Z
 
 ### [#3970](https://github.com/nlohmann/json/issues/3970)
 - **Title:** Incompatible with C++20 modules in MSVC
