@@ -464,6 +464,20 @@
 </ul>
 <p>Find more descriptions on the ongoing process and requirements at <a class="reference external" href="https://eclipse-score.github.io/process_description/main/trustable/index.html">Eclipse Process Description</a>.</p>
 </section>
+<section id="limitations-of-this-documentation">
+<h2>Limitations of this documentation<a class="headerlink" href="#limitations-of-this-documentation" title="Link to this heading">#</a></h2>
+<p>The present documentation covers a small part of the functionalities of Niels Lohmann’s JSON library only, due to the integration into the baselibs project.
+In the latter, it is intended to utilize the JSON library for the purpose of parsing JSON data into a user-datatype.
+The underlying standard, which defines the syntax of JSON data and the necessary parsing capabilities, is given in <a class="reference external" href="https://doi.org/10.17487/RFC8259">RFC8259</a>.
+Therefore, this documentation asserts the trustability of the capabilities of the library to recognize ill-formed JSON data according to RFC8259 and parse well-formed JSON data.
+In particular, the capabilities (and inabilities) according to different JSON formats, e.g. <a class="reference external" href="https://doi.org/10.17487/RFC6902">RFC6902</a>, <a class="reference external" href="https://doi.org/10.17487/RFC7396">RFC7396</a>, <a class="reference external" href="https://doi.org/10.17487/RFC7493">RFC7493</a>, <a class="reference external" href="https://doi.org/10.17487/RFC7049">RFC7049</a> and <a class="reference external" href="https://doi.org/10.17487/RFC8949">RFC8949</a> are not covered in this documentation.</p>
+</section>
+<section id="context-diagram">
+<h2>Context Diagram<a class="headerlink" href="#context-diagram" title="Link to this heading">#</a></h2>
+<p>The aim of this context diagram is to provide a high-level overview of the JSON library’s interactions with external entities in its environment. It illustrates the boundaries and expected interfaces of the JSON library within its operational context as assumed by this documentation.</p>
+<a class="reference internal image-reference" href="../_images/context_diagram.svg"><img alt="Context Diagram" src="../_images/context_diagram.svg" style="width: 1100px;" />
+</a>
+</section>
 <section id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>The application of the Trustable Software Framework to Niels Lohmann’s JSON library (version 3.12.0) involves a comprehensive assessment to ensure it meets our high-level requirements for external software. Key actions include formalizing necessary functionalities, addressing feature requests from S-CORE, and integrating trustable evidence into a coherent project workflow. The library is maintained with stringent quality checks and evidence generation processes, illustrating a commitment to high standards and the practicality required for certifiable software projects.</p>
@@ -520,6 +534,8 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-goals-of-the-json-library">Design Goals of the JSON Library</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baselibs-project-context">Baselibs Project Context</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-classification-strategy">Component Classification Strategy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-this-documentation">Limitations of this documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context-diagram">Context Diagram</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
   </nav></div>

@@ -65,7 +65,7 @@ _No Historic Data Found_
 
 ### AOU-03 
 
-The integrator ensures that integrator-controlled mirrors of the dependencies are persistently and accessibly stored as long as the library nlohmann/json is used.
+The integrator shall ensure that integrator-controlled mirrors of the dependencies are persistently and accessibly stored as long as the library nlohmann/json is used.
 
 
 **Supported Requests:**
@@ -517,7 +517,7 @@ _No Historic Data Found_
 
 ### AOU-20 
 
-The integrator shall ensure that the keys within an object are unique, whenever an object is parsed by nlohmann/json.
+The integrator shall ensure that the keys within an object are unique, whenever an object is to be parsed by nlohmann/json.
 
 
 **Supported Requests:**
@@ -681,7 +681,7 @@ _No Historic Data Found_
 
 ### AOU-25 
 
-The integrator shall convince himself that the behaviour of the C++ standard library is known, verified and validated.
+The integrator shall convince themselves that the behaviour of the used C++ standard library is known, verified and validated.
 
 
 **Supported Requests:**
@@ -713,7 +713,7 @@ _No Historic Data Found_
 
 ### AOU-26 
 
-The integrator shall convince himself that the misbehaviours of the C++ standard library and mitigations are known, verified and validated.
+The integrator shall convince themselves that the misbehaviours of the C++ standard library and mitigations are known, verified and validated.
 
 
 **Supported Requests:**
@@ -750,6 +750,7 @@ _No Historic Data Found_
 
 **Supported Requests:**
 
+- [TA-UPDATES](TA.md#ta-updates)
 
 **Supporting Items:**
 

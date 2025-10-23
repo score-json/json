@@ -87,10 +87,10 @@
 <!-- AOU&#45;26 -->
 <g id="node5" class="node">
 <title>AOU&#45;26</title>
-<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/generated/AOU.html#aou-26" xlink:title="AOU&#45;26: The integrator\nshall convince himself\nthat the misbehaviours\nof the C++ standard library\nand mitigations are known,\nverified and validated.\n" target="_top">
+<g id="a_node5"><a xlink:href="https://score-json.github.io/json/main/generated/AOU.html#aou-26" xlink:title="AOU&#45;26: The integrator\nshall convince themselves\nthat the misbehaviours\nof the C++ standard library\nand mitigations are known,\nverified and validated.\n" target="_top">
 <polygon fill="none" stroke="black" points="941.5,-113 730.5,-113 730.5,-15 941.5,-15 941.5,-113"/>
 <text text-anchor="middle" x="836" y="-97.8" font-family="Open Sans" font-size="14.00">AOU&#45;26: The integrator</text>
-<text text-anchor="middle" x="836" y="-82.8" font-family="Open Sans" font-size="14.00">shall convince himself</text>
+<text text-anchor="middle" x="836" y="-82.8" font-family="Open Sans" font-size="14.00">shall convince themselves</text>
 <text text-anchor="middle" x="836" y="-67.8" font-family="Open Sans" font-size="14.00">that the misbehaviours</text>
 <text text-anchor="middle" x="836" y="-52.8" font-family="Open Sans" font-size="14.00">of the C++ standard library</text>
 <text text-anchor="middle" x="836" y="-37.8" font-family="Open Sans" font-size="14.00">and mitigations are known,</text>

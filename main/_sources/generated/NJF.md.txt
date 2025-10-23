@@ -16,6 +16,12 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
+
 - `cpp-test: [parser class - core;accept;null]
 (TSF/tests/unit-class_parser_core.cpp)`
 
@@ -110,24 +116,24 @@ SECTION("null")
 	- Description: function to verify whether a candidate literal coincides with its expected value; here called with literal_text = ['n','u','l','l'].
 
 
-```cpp
-token_type scan_literal(const char_type* literal_text, const std::size_t length,
-                        token_type return_type)
-{
-    JSON_ASSERT(char_traits&lt;char_type&gt;::to_char_type(current) == literal_text[0]);
-    for (std::size_t i = 1; i &lt; length; ++i)
-    {
-        if (JSON_HEDLEY_UNLIKELY(char_traits&lt;char_type&gt;::to_char_type(get()) != literal_text[i]))
-        {
-            error_message = "invalid literal";
-            return token_type::parse_error;
-        }
-    }
-    return return_type;
-}
-
-```
-
+	```cpp
+	token_type scan_literal(const char_type* literal_text, const std::size_t length,
+	                        token_type return_type)
+	{
+	    JSON_ASSERT(char_traits&lt;char_type&gt;::to_char_type(current) == literal_text[0]);
+	    for (std::size_t i = 1; i &lt; length; ++i)
+	    {
+	        if (JSON_HEDLEY_UNLIKELY(char_traits&lt;char_type&gt;::to_char_type(get()) != literal_text[i]))
+	        {
+	            error_message = "invalid literal";
+	            return token_type::parse_error;
+	        }
+	    }
+	    return return_type;
+	}
+	
+	```
+	
 
 
 
@@ -159,6 +165,12 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
 
 - `cpp-test: [parser class - core;accept;true]
 (TSF/tests/unit-class_parser_core.cpp)`
@@ -357,24 +369,24 @@ SECTION("directly")
 	- Description: function to verify whether a candidate literal coincides with its expected value; here called with literal_text = ['t','r','u','e'].
 
 
-```cpp
-token_type scan_literal(const char_type* literal_text, const std::size_t length,
-                        token_type return_type)
-{
-    JSON_ASSERT(char_traits&lt;char_type&gt;::to_char_type(current) == literal_text[0]);
-    for (std::size_t i = 1; i &lt; length; ++i)
-    {
-        if (JSON_HEDLEY_UNLIKELY(char_traits&lt;char_type&gt;::to_char_type(get()) != literal_text[i]))
-        {
-            error_message = "invalid literal";
-            return token_type::parse_error;
-        }
-    }
-    return return_type;
-}
-
-```
-
+	```cpp
+	token_type scan_literal(const char_type* literal_text, const std::size_t length,
+	                        token_type return_type)
+	{
+	    JSON_ASSERT(char_traits&lt;char_type&gt;::to_char_type(current) == literal_text[0]);
+	    for (std::size_t i = 1; i &lt; length; ++i)
+	    {
+	        if (JSON_HEDLEY_UNLIKELY(char_traits&lt;char_type&gt;::to_char_type(get()) != literal_text[i]))
+	        {
+	            error_message = "invalid literal";
+	            return token_type::parse_error;
+	        }
+	    }
+	    return return_type;
+	}
+	
+	```
+	
 
 
 
@@ -406,6 +418,12 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
 
 - `cpp-test: [parser class - core;accept;false]
 (TSF/tests/unit-class_parser_core.cpp)`
@@ -501,24 +519,24 @@ SECTION("false")
 	- Description: function to verify whether a candidate literal coincides with its expected value; here called with literal_text = ['f','a','l','s','e'].
 
 
-```cpp
-token_type scan_literal(const char_type* literal_text, const std::size_t length,
-                        token_type return_type)
-{
-    JSON_ASSERT(char_traits&lt;char_type&gt;::to_char_type(current) == literal_text[0]);
-    for (std::size_t i = 1; i &lt; length; ++i)
-    {
-        if (JSON_HEDLEY_UNLIKELY(char_traits&lt;char_type&gt;::to_char_type(get()) != literal_text[i]))
-        {
-            error_message = "invalid literal";
-            return token_type::parse_error;
-        }
-    }
-    return return_type;
-}
-
-```
-
+	```cpp
+	token_type scan_literal(const char_type* literal_text, const std::size_t length,
+	                        token_type return_type)
+	{
+	    JSON_ASSERT(char_traits&lt;char_type&gt;::to_char_type(current) == literal_text[0]);
+	    for (std::size_t i = 1; i &lt; length; ++i)
+	    {
+	        if (JSON_HEDLEY_UNLIKELY(char_traits&lt;char_type&gt;::to_char_type(get()) != literal_text[i]))
+	        {
+	            error_message = "invalid literal";
+	            return token_type::parse_error;
+	        }
+	    }
+	    return return_type;
+	}
+	
+	```
+	
 
 
 
@@ -550,6 +568,12 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
 
 - `cpp-test: [parser class - core;accept;parse errors (accept)]
 (TSF/tests/unit-class_parser_core.cpp)`
@@ -1689,24 +1713,24 @@ SECTION("illegal literals")
 	- Description: function to verify whether a candidate literal coincides with its expected value; only ever called with the three admissible expected values
 
 
-```cpp
-token_type scan_literal(const char_type* literal_text, const std::size_t length,
-                        token_type return_type)
-{
-    JSON_ASSERT(char_traits&lt;char_type&gt;::to_char_type(current) == literal_text[0]);
-    for (std::size_t i = 1; i &lt; length; ++i)
-    {
-        if (JSON_HEDLEY_UNLIKELY(char_traits&lt;char_type&gt;::to_char_type(get()) != literal_text[i]))
-        {
-            error_message = "invalid literal";
-            return token_type::parse_error;
-        }
-    }
-    return return_type;
-}
-
-```
-
+	```cpp
+	token_type scan_literal(const char_type* literal_text, const std::size_t length,
+	                        token_type return_type)
+	{
+	    JSON_ASSERT(char_traits&lt;char_type&gt;::to_char_type(current) == literal_text[0]);
+	    for (std::size_t i = 1; i &lt; length; ++i)
+	    {
+	        if (JSON_HEDLEY_UNLIKELY(char_traits&lt;char_type&gt;::to_char_type(get()) != literal_text[i]))
+	        {
+	            error_message = "invalid literal";
+	            return token_type::parse_error;
+	        }
+	    }
+	    return return_type;
+	}
+	
+	```
+	
 
 
 
@@ -1777,6 +1801,12 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
 
 - `cpp-test: [parser class - core;accept;array;empty array]
 (TSF/tests/unit-class_parser_core.cpp)`
@@ -1887,18 +1917,18 @@ SECTION("empty array")
 	- Description: function, which skips admissible whitespace during reading
 
 
-```cpp
-void skip_whitespace()
-{
-    do
-    {
-        get();
-    }
-    while (current == ' ' || current == '\t' || current == '\n' || current == '\r');
-}
-
-```
-
+	```cpp
+	void skip_whitespace()
+	{
+	    do
+	    {
+	        get();
+	    }
+	    while (current == ' ' || current == '\t' || current == '\n' || current == '\r');
+	}
+	
+	```
+	
 
 
 
@@ -1930,6 +1960,12 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
 
 - `cpp-test: [parser class - core;accept;array;nonempty array]
 (TSF/tests/unit-class_parser_core.cpp)`
@@ -2250,6 +2286,12 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
+
 - `cpp-test: [deserialization;successful deserialization;stream]
 (tests/src/unit-deserialization.cpp)`
 
@@ -2539,6 +2581,12 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
 
 - `cpp-test: [parser class - core;accept;parse errors (accept)]
 (TSF/tests/unit-class_parser_core.cpp)`
@@ -3023,6 +3071,12 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
+
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_array_double_comma.json, /nst_json_testsuite2/test_parsing/n_array_double_extra_comma.json, /nst_json_testsuite2/test_parsing/n_array_just_comma.json, /nst_json_testsuite2/test_parsing/n_array_number_and_comma.json, /nst_json_testsuite2/test_parsing/n_array_number_and_several_commas.json, /nst_json_testsuite2/test_parsing/n_structure_array_with_unclosed_string.json, /nst_json_testsuite2/test_parsing/n_array_invalid_utf8.json, /nst_json_testsuite2/test_parsing/n_array_just_minus.json]`
 
 
@@ -3172,6 +3226,12 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
+
 - `cpp-testsuite: [/json_tests/pass2.json]`
 
 
@@ -3276,6 +3336,12 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
+
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/i_structure_500_nested_arrays.json]`
 
 
@@ -3377,6 +3443,12 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
 
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/y_array_with_several_null.json]`
 
@@ -3500,6 +3572,12 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
+
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_array_colon_instead_of_comma.json]`
 
 
@@ -3611,6 +3689,12 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
+
 - `cpp-test: [parser class - core;accept;object;empty object]
 (TSF/tests/unit-class_parser_core.cpp)`
 
@@ -3649,18 +3733,18 @@ SECTION("empty object")
 	- Description: function, which skips admissible whitespace during reading
 
 
-```cpp
-void skip_whitespace()
-{
-    do
-    {
-        get();
-    }
-    while (current == ' ' || current == '\t' || current == '\n' || current == '\r');
-}
-
-```
-
+	```cpp
+	void skip_whitespace()
+	{
+	    do
+	    {
+	        get();
+	    }
+	    while (current == ' ' || current == '\t' || current == '\n' || current == '\r');
+	}
+	
+	```
+	
 
 
 
@@ -3692,6 +3776,12 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
 
 - `cpp-test: [deserialization;contiguous containers;error cases;case 15]
 (tests/src/unit-deserialization.cpp)`
@@ -3808,6 +3898,12 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
 
 - `cpp-test: [deserialization;JSON Lines]
 (tests/src/unit-deserialization.cpp)`
@@ -4417,6 +4513,13 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of items JLEX-01, NJF-06.4`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-06.4) to find NJF-06.4
+
+
 - `cpp-test: [parser class - core;accept;object;nonempty object]
 (TSF/tests/unit-class_parser_core.cpp)`
 
@@ -4717,6 +4820,13 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of items JLEX-01, NJF-06.4`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-06.4) to find NJF-06.4
+
+
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_object_non_string_key.json, /nst_json_testsuite2/test_parsing/n_object_non_string_key_but_huge_number_instead.json]`
 
 
@@ -4882,6 +4992,13 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of items JLEX-01, NJF-06.4`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-06.4) to find NJF-06.4
+
 
 - `cpp-test: [parser class - core;accept;object;nonempty object]
 (TSF/tests/unit-class_parser_core.cpp)`
@@ -5185,6 +5302,13 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of items JLEX-01, NJF-06.5`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-06.5) to find NJF-06.5
+
+
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_object_single_quote.json, /nst_json_testsuite2/test_parsing/n_object_unquoted_key.json, /nst_json_testsuite2/test_parsing/n_object_non_string_key.json, /nst_json_testsuite2/test_parsing/n_object_non_string_key_but_huge_number_instead.json, /nst_json_testsuite2/test_parsing/n_object_key_with_single_quotes.json, /nst_json_testsuite2/test_parsing/n_object_bracket_key.json, /nst_json_testsuite2/test_parsing/n_object_unquoted_key.json]`
 
 
@@ -5385,6 +5509,13 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of items JLEX-01, NJF-06.5`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-06.5) to find NJF-06.5
+
+
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_object_bad_value.json]`
 
 
@@ -5477,6 +5608,12 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
 
 - `cpp-testsuite: [/json.org/1.json, /json.org/2.json, /json.org/3.json, /json.org/4.json, /json.org/5.json]`
 
@@ -5696,6 +5833,12 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
 
 - `cpp-testsuite: [/json.org/1.json, /json.org/2.json, /json.org/3.json, /json.org/4.json, /json.org/5.json]`
 
@@ -5948,6 +6091,12 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
 
 - `cpp-testsuite: [/json.org/1.json, /json.org/2.json, /json.org/3.json, /json.org/4.json, /json.org/5.json, /json.org/1.json, /json.org/2.json, /json.org/3.json, /json.org/4.json, /json.org/5.json]`
 
@@ -6248,6 +6397,12 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
+
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_object_comma_instead_of_colon.json]`
 
 
@@ -6459,595 +6614,595 @@ The service accepts and rejects strings according to RFC8259 §7.
 	- Description: function which scans a string and verifies *en passant* that the string is in accordance with RFC8259
 
 
-```cpp
-token_type scan_string()
-{
-    // reset token_buffer (ignore opening quote)
-    reset();
-
-    // we entered the function by reading an open quote
-    JSON_ASSERT(current == '\"');
-
-    while (true)
-    {
-        // get next character
-        switch (get())
-        {
-            // end of file while parsing string
-            case char_traits&lt;char_type&gt;::eof():
-            {
-                error_message = "invalid string: missing closing quote";
-                return token_type::parse_error;
-            }
-
-            // closing quote
-            case '\"':
-            {
-                return token_type::value_string;
-            }
-
-            // escapes
-            case '\\':
-            {
-                switch (get())
-                {
-                    // quotation mark
-                    case '\"':
-                        add('\"');
-                        break;
-                    // reverse solidus
-                    case '\\':
-                        add('\\');
-                        break;
-                    // solidus
-                    case '/':
-                        add('/');
-                        break;
-                    // backspace
-                    case 'b':
-                        add('\b');
-                        break;
-                    // form feed
-                    case 'f':
-                        add('\f');
-                        break;
-                    // line feed
-                    case 'n':
-                        add('\n');
-                        break;
-                    // carriage return
-                    case 'r':
-                        add('\r');
-                        break;
-                    // tab
-                    case 't':
-                        add('\t');
-                        break;
-
-                    // unicode escapes
-                    case 'u':
-                    {
-                        const int codepoint1 = get_codepoint();
-                        int codepoint = codepoint1; // start with codepoint1
-
-                        if (JSON_HEDLEY_UNLIKELY(codepoint1 == -1))
-                        {
-                            error_message = "invalid string: '\\u' must be followed by 4 hex digits";
-                            return token_type::parse_error;
-                        }
-
-                        // check if code point is a high surrogate
-                        if (0xD800 &lt;= codepoint1 && codepoint1 &lt;= 0xDBFF)
-                        {
-                            // expect next \uxxxx entry
-                            if (JSON_HEDLEY_LIKELY(get() == '\\' && get() == 'u'))
-                            {
-                                const int codepoint2 = get_codepoint();
-
-                                if (JSON_HEDLEY_UNLIKELY(codepoint2 == -1))
-                                {
-                                    error_message = "invalid string: '\\u' must be followed by 4 hex digits";
-                                    return token_type::parse_error;
-                                }
-
-                                // check if codepoint2 is a low surrogate
-                                if (JSON_HEDLEY_LIKELY(0xDC00 &lt;= codepoint2 && codepoint2 &lt;= 0xDFFF))
-                                {
-                                    // overwrite codepoint
-                                    codepoint = static_cast&lt;int&gt;(
-                                                    // high surrogate occupies the most significant 22 bits
-                                                    (static_cast&lt;unsigned int&gt;(codepoint1) &lt;&lt; 10u)
-                                                    // low surrogate occupies the least significant 15 bits
-                                                    + static_cast&lt;unsigned int&gt;(codepoint2)
-                                                    // there is still the 0xD800, 0xDC00 and 0x10000 noise
-                                                    // in the result, so we have to subtract with:
-                                                    // (0xD800 &lt;&lt; 10) + DC00 - 0x10000 = 0x35FDC00
-                                                    - 0x35FDC00u);
-                                }
-                                else
-                                {
-                                    error_message = "invalid string: surrogate U+D800..U+DBFF must be followed by U+DC00..U+DFFF";
-                                    return token_type::parse_error;
-                                }
-                            }
-                            else
-                            {
-                                error_message = "invalid string: surrogate U+D800..U+DBFF must be followed by U+DC00..U+DFFF";
-                                return token_type::parse_error;
-                            }
-                        }
-                        else
-                        {
-                            if (JSON_HEDLEY_UNLIKELY(0xDC00 &lt;= codepoint1 && codepoint1 &lt;= 0xDFFF))
-                            {
-                                error_message = "invalid string: surrogate U+DC00..U+DFFF must follow U+D800..U+DBFF";
-                                return token_type::parse_error;
-                            }
-                        }
-
-                        // result of the above calculation yields a proper codepoint
-                        JSON_ASSERT(0x00 &lt;= codepoint && codepoint &lt;= 0x10FFFF);
-
-                        // translate codepoint into bytes
-                        if (codepoint &lt; 0x80)
-                        {
-                            // 1-byte characters: 0xxxxxxx (ASCII)
-                            add(static_cast&lt;char_int_type&gt;(codepoint));
-                        }
-                        else if (codepoint &lt;= 0x7FF)
-                        {
-                            // 2-byte characters: 110xxxxx 10xxxxxx
-                            add(static_cast&lt;char_int_type&gt;(0xC0u | (static_cast&lt;unsigned int&gt;(codepoint) &gt;&gt; 6u)));
-                            add(static_cast&lt;char_int_type&gt;(0x80u | (static_cast&lt;unsigned int&gt;(codepoint) & 0x3Fu)));
-                        }
-                        else if (codepoint &lt;= 0xFFFF)
-                        {
-                            // 3-byte characters: 1110xxxx 10xxxxxx 10xxxxxx
-                            add(static_cast&lt;char_int_type&gt;(0xE0u | (static_cast&lt;unsigned int&gt;(codepoint) &gt;&gt; 12u)));
-                            add(static_cast&lt;char_int_type&gt;(0x80u | ((static_cast&lt;unsigned int&gt;(codepoint) &gt;&gt; 6u) & 0x3Fu)));
-                            add(static_cast&lt;char_int_type&gt;(0x80u | (static_cast&lt;unsigned int&gt;(codepoint) & 0x3Fu)));
-                        }
-                        else
-                        {
-                            // 4-byte characters: 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
-                            add(static_cast&lt;char_int_type&gt;(0xF0u | (static_cast&lt;unsigned int&gt;(codepoint) &gt;&gt; 18u)));
-                            add(static_cast&lt;char_int_type&gt;(0x80u | ((static_cast&lt;unsigned int&gt;(codepoint) &gt;&gt; 12u) & 0x3Fu)));
-                            add(static_cast&lt;char_int_type&gt;(0x80u | ((static_cast&lt;unsigned int&gt;(codepoint) &gt;&gt; 6u) & 0x3Fu)));
-                            add(static_cast&lt;char_int_type&gt;(0x80u | (static_cast&lt;unsigned int&gt;(codepoint) & 0x3Fu)));
-                        }
-
-                        break;
-                    }
-
-                    // other characters after escape
-                    default:
-                        error_message = "invalid string: forbidden character after backslash";
-                        return token_type::parse_error;
-                }
-
-                break;
-            }
-
-            // invalid control characters
-            case 0x00:
-            {
-                error_message = "invalid string: control character U+0000 (NUL) must be escaped to \\u0000";
-                return token_type::parse_error;
-            }
-
-            case 0x01:
-            {
-                error_message = "invalid string: control character U+0001 (SOH) must be escaped to \\u0001";
-                return token_type::parse_error;
-            }
-
-            case 0x02:
-            {
-                error_message = "invalid string: control character U+0002 (STX) must be escaped to \\u0002";
-                return token_type::parse_error;
-            }
-
-            case 0x03:
-            {
-                error_message = "invalid string: control character U+0003 (ETX) must be escaped to \\u0003";
-                return token_type::parse_error;
-            }
-
-            case 0x04:
-            {
-                error_message = "invalid string: control character U+0004 (EOT) must be escaped to \\u0004";
-                return token_type::parse_error;
-            }
-
-            case 0x05:
-            {
-                error_message = "invalid string: control character U+0005 (ENQ) must be escaped to \\u0005";
-                return token_type::parse_error;
-            }
-
-            case 0x06:
-            {
-                error_message = "invalid string: control character U+0006 (ACK) must be escaped to \\u0006";
-                return token_type::parse_error;
-            }
-
-            case 0x07:
-            {
-                error_message = "invalid string: control character U+0007 (BEL) must be escaped to \\u0007";
-                return token_type::parse_error;
-            }
-
-            case 0x08:
-            {
-                error_message = "invalid string: control character U+0008 (BS) must be escaped to \\u0008 or \\b";
-                return token_type::parse_error;
-            }
-
-            case 0x09:
-            {
-                error_message = "invalid string: control character U+0009 (HT) must be escaped to \\u0009 or \\t";
-                return token_type::parse_error;
-            }
-
-            case 0x0A:
-            {
-                error_message = "invalid string: control character U+000A (LF) must be escaped to \\u000A or \\n";
-                return token_type::parse_error;
-            }
-
-            case 0x0B:
-            {
-                error_message = "invalid string: control character U+000B (VT) must be escaped to \\u000B";
-                return token_type::parse_error;
-            }
-
-            case 0x0C:
-            {
-                error_message = "invalid string: control character U+000C (FF) must be escaped to \\u000C or \\f";
-                return token_type::parse_error;
-            }
-
-            case 0x0D:
-            {
-                error_message = "invalid string: control character U+000D (CR) must be escaped to \\u000D or \\r";
-                return token_type::parse_error;
-            }
-
-            case 0x0E:
-            {
-                error_message = "invalid string: control character U+000E (SO) must be escaped to \\u000E";
-                return token_type::parse_error;
-            }
-
-            case 0x0F:
-            {
-                error_message = "invalid string: control character U+000F (SI) must be escaped to \\u000F";
-                return token_type::parse_error;
-            }
-
-            case 0x10:
-            {
-                error_message = "invalid string: control character U+0010 (DLE) must be escaped to \\u0010";
-                return token_type::parse_error;
-            }
-
-            case 0x11:
-            {
-                error_message = "invalid string: control character U+0011 (DC1) must be escaped to \\u0011";
-                return token_type::parse_error;
-            }
-
-            case 0x12:
-            {
-                error_message = "invalid string: control character U+0012 (DC2) must be escaped to \\u0012";
-                return token_type::parse_error;
-            }
-
-            case 0x13:
-            {
-                error_message = "invalid string: control character U+0013 (DC3) must be escaped to \\u0013";
-                return token_type::parse_error;
-            }
-
-            case 0x14:
-            {
-                error_message = "invalid string: control character U+0014 (DC4) must be escaped to \\u0014";
-                return token_type::parse_error;
-            }
-
-            case 0x15:
-            {
-                error_message = "invalid string: control character U+0015 (NAK) must be escaped to \\u0015";
-                return token_type::parse_error;
-            }
-
-            case 0x16:
-            {
-                error_message = "invalid string: control character U+0016 (SYN) must be escaped to \\u0016";
-                return token_type::parse_error;
-            }
-
-            case 0x17:
-            {
-                error_message = "invalid string: control character U+0017 (ETB) must be escaped to \\u0017";
-                return token_type::parse_error;
-            }
-
-            case 0x18:
-            {
-                error_message = "invalid string: control character U+0018 (CAN) must be escaped to \\u0018";
-                return token_type::parse_error;
-            }
-
-            case 0x19:
-            {
-                error_message = "invalid string: control character U+0019 (EM) must be escaped to \\u0019";
-                return token_type::parse_error;
-            }
-
-            case 0x1A:
-            {
-                error_message = "invalid string: control character U+001A (SUB) must be escaped to \\u001A";
-                return token_type::parse_error;
-            }
-
-            case 0x1B:
-            {
-                error_message = "invalid string: control character U+001B (ESC) must be escaped to \\u001B";
-                return token_type::parse_error;
-            }
-
-            case 0x1C:
-            {
-                error_message = "invalid string: control character U+001C (FS) must be escaped to \\u001C";
-                return token_type::parse_error;
-            }
-
-            case 0x1D:
-            {
-                error_message = "invalid string: control character U+001D (GS) must be escaped to \\u001D";
-                return token_type::parse_error;
-            }
-
-            case 0x1E:
-            {
-                error_message = "invalid string: control character U+001E (RS) must be escaped to \\u001E";
-                return token_type::parse_error;
-            }
-
-            case 0x1F:
-            {
-                error_message = "invalid string: control character U+001F (US) must be escaped to \\u001F";
-                return token_type::parse_error;
-            }
-
-            // U+0020..U+007F (except U+0022 (quote) and U+005C (backspace))
-            case 0x20:
-            case 0x21:
-            case 0x23:
-            case 0x24:
-            case 0x25:
-            case 0x26:
-            case 0x27:
-            case 0x28:
-            case 0x29:
-            case 0x2A:
-            case 0x2B:
-            case 0x2C:
-            case 0x2D:
-            case 0x2E:
-            case 0x2F:
-            case 0x30:
-            case 0x31:
-            case 0x32:
-            case 0x33:
-            case 0x34:
-            case 0x35:
-            case 0x36:
-            case 0x37:
-            case 0x38:
-            case 0x39:
-            case 0x3A:
-            case 0x3B:
-            case 0x3C:
-            case 0x3D:
-            case 0x3E:
-            case 0x3F:
-            case 0x40:
-            case 0x41:
-            case 0x42:
-            case 0x43:
-            case 0x44:
-            case 0x45:
-            case 0x46:
-            case 0x47:
-            case 0x48:
-            case 0x49:
-            case 0x4A:
-            case 0x4B:
-            case 0x4C:
-            case 0x4D:
-            case 0x4E:
-            case 0x4F:
-            case 0x50:
-            case 0x51:
-            case 0x52:
-            case 0x53:
-            case 0x54:
-            case 0x55:
-            case 0x56:
-            case 0x57:
-            case 0x58:
-            case 0x59:
-            case 0x5A:
-            case 0x5B:
-            case 0x5D:
-            case 0x5E:
-            case 0x5F:
-            case 0x60:
-            case 0x61:
-            case 0x62:
-            case 0x63:
-            case 0x64:
-            case 0x65:
-            case 0x66:
-            case 0x67:
-            case 0x68:
-            case 0x69:
-            case 0x6A:
-            case 0x6B:
-            case 0x6C:
-            case 0x6D:
-            case 0x6E:
-            case 0x6F:
-            case 0x70:
-            case 0x71:
-            case 0x72:
-            case 0x73:
-            case 0x74:
-            case 0x75:
-            case 0x76:
-            case 0x77:
-            case 0x78:
-            case 0x79:
-            case 0x7A:
-            case 0x7B:
-            case 0x7C:
-            case 0x7D:
-            case 0x7E:
-            case 0x7F:
-            {
-                add(current);
-                break;
-            }
-
-            // U+0080..U+07FF: bytes C2..DF 80..BF
-            case 0xC2:
-            case 0xC3:
-            case 0xC4:
-            case 0xC5:
-            case 0xC6:
-            case 0xC7:
-            case 0xC8:
-            case 0xC9:
-            case 0xCA:
-            case 0xCB:
-            case 0xCC:
-            case 0xCD:
-            case 0xCE:
-            case 0xCF:
-            case 0xD0:
-            case 0xD1:
-            case 0xD2:
-            case 0xD3:
-            case 0xD4:
-            case 0xD5:
-            case 0xD6:
-            case 0xD7:
-            case 0xD8:
-            case 0xD9:
-            case 0xDA:
-            case 0xDB:
-            case 0xDC:
-            case 0xDD:
-            case 0xDE:
-            case 0xDF:
-            {
-                if (JSON_HEDLEY_UNLIKELY(!next_byte_in_range({0x80, 0xBF})))
-                {
-                    return token_type::parse_error;
-                }
-                break;
-            }
-
-            // U+0800..U+0FFF: bytes E0 A0..BF 80..BF
-            case 0xE0:
-            {
-                if (JSON_HEDLEY_UNLIKELY(!(next_byte_in_range({0xA0, 0xBF, 0x80, 0xBF}))))
-                {
-                    return token_type::parse_error;
-                }
-                break;
-            }
-
-            // U+1000..U+CFFF: bytes E1..EC 80..BF 80..BF
-            // U+E000..U+FFFF: bytes EE..EF 80..BF 80..BF
-            case 0xE1:
-            case 0xE2:
-            case 0xE3:
-            case 0xE4:
-            case 0xE5:
-            case 0xE6:
-            case 0xE7:
-            case 0xE8:
-            case 0xE9:
-            case 0xEA:
-            case 0xEB:
-            case 0xEC:
-            case 0xEE:
-            case 0xEF:
-            {
-                if (JSON_HEDLEY_UNLIKELY(!(next_byte_in_range({0x80, 0xBF, 0x80, 0xBF}))))
-                {
-                    return token_type::parse_error;
-                }
-                break;
-            }
-
-            // U+D000..U+D7FF: bytes ED 80..9F 80..BF
-            case 0xED:
-            {
-                if (JSON_HEDLEY_UNLIKELY(!(next_byte_in_range({0x80, 0x9F, 0x80, 0xBF}))))
-                {
-                    return token_type::parse_error;
-                }
-                break;
-            }
-
-            // U+10000..U+3FFFF F0 90..BF 80..BF 80..BF
-            case 0xF0:
-            {
-                if (JSON_HEDLEY_UNLIKELY(!(next_byte_in_range({0x90, 0xBF, 0x80, 0xBF, 0x80, 0xBF}))))
-                {
-                    return token_type::parse_error;
-                }
-                break;
-            }
-
-            // U+40000..U+FFFFF F1..F3 80..BF 80..BF 80..BF
-            case 0xF1:
-            case 0xF2:
-            case 0xF3:
-            {
-                if (JSON_HEDLEY_UNLIKELY(!(next_byte_in_range({0x80, 0xBF, 0x80, 0xBF, 0x80, 0xBF}))))
-                {
-                    return token_type::parse_error;
-                }
-                break;
-            }
-
-            // U+100000..U+10FFFF F4 80..8F 80..BF 80..BF
-            case 0xF4:
-            {
-                if (JSON_HEDLEY_UNLIKELY(!(next_byte_in_range({0x80, 0x8F, 0x80, 0xBF, 0x80, 0xBF}))))
-                {
-                    return token_type::parse_error;
-                }
-                break;
-            }
-
-            // remaining bytes (80..C1 and F5..FF) are ill-formed
-            default:
-            {
-                error_message = "invalid string: ill-formed UTF-8 byte";
-                return token_type::parse_error;
-            }
-        }
-    }
-}
-
-```
-
+	```cpp
+	token_type scan_string()
+	{
+	    // reset token_buffer (ignore opening quote)
+	    reset();
+	
+	    // we entered the function by reading an open quote
+	    JSON_ASSERT(current == '\"');
+	
+	    while (true)
+	    {
+	        // get next character
+	        switch (get())
+	        {
+	            // end of file while parsing string
+	            case char_traits&lt;char_type&gt;::eof():
+	            {
+	                error_message = "invalid string: missing closing quote";
+	                return token_type::parse_error;
+	            }
+	
+	            // closing quote
+	            case '\"':
+	            {
+	                return token_type::value_string;
+	            }
+	
+	            // escapes
+	            case '\\':
+	            {
+	                switch (get())
+	                {
+	                    // quotation mark
+	                    case '\"':
+	                        add('\"');
+	                        break;
+	                    // reverse solidus
+	                    case '\\':
+	                        add('\\');
+	                        break;
+	                    // solidus
+	                    case '/':
+	                        add('/');
+	                        break;
+	                    // backspace
+	                    case 'b':
+	                        add('\b');
+	                        break;
+	                    // form feed
+	                    case 'f':
+	                        add('\f');
+	                        break;
+	                    // line feed
+	                    case 'n':
+	                        add('\n');
+	                        break;
+	                    // carriage return
+	                    case 'r':
+	                        add('\r');
+	                        break;
+	                    // tab
+	                    case 't':
+	                        add('\t');
+	                        break;
+	
+	                    // unicode escapes
+	                    case 'u':
+	                    {
+	                        const int codepoint1 = get_codepoint();
+	                        int codepoint = codepoint1; // start with codepoint1
+	
+	                        if (JSON_HEDLEY_UNLIKELY(codepoint1 == -1))
+	                        {
+	                            error_message = "invalid string: '\\u' must be followed by 4 hex digits";
+	                            return token_type::parse_error;
+	                        }
+	
+	                        // check if code point is a high surrogate
+	                        if (0xD800 &lt;= codepoint1 && codepoint1 &lt;= 0xDBFF)
+	                        {
+	                            // expect next \uxxxx entry
+	                            if (JSON_HEDLEY_LIKELY(get() == '\\' && get() == 'u'))
+	                            {
+	                                const int codepoint2 = get_codepoint();
+	
+	                                if (JSON_HEDLEY_UNLIKELY(codepoint2 == -1))
+	                                {
+	                                    error_message = "invalid string: '\\u' must be followed by 4 hex digits";
+	                                    return token_type::parse_error;
+	                                }
+	
+	                                // check if codepoint2 is a low surrogate
+	                                if (JSON_HEDLEY_LIKELY(0xDC00 &lt;= codepoint2 && codepoint2 &lt;= 0xDFFF))
+	                                {
+	                                    // overwrite codepoint
+	                                    codepoint = static_cast&lt;int&gt;(
+	                                                    // high surrogate occupies the most significant 22 bits
+	                                                    (static_cast&lt;unsigned int&gt;(codepoint1) &lt;&lt; 10u)
+	                                                    // low surrogate occupies the least significant 15 bits
+	                                                    + static_cast&lt;unsigned int&gt;(codepoint2)
+	                                                    // there is still the 0xD800, 0xDC00 and 0x10000 noise
+	                                                    // in the result, so we have to subtract with:
+	                                                    // (0xD800 &lt;&lt; 10) + DC00 - 0x10000 = 0x35FDC00
+	                                                    - 0x35FDC00u);
+	                                }
+	                                else
+	                                {
+	                                    error_message = "invalid string: surrogate U+D800..U+DBFF must be followed by U+DC00..U+DFFF";
+	                                    return token_type::parse_error;
+	                                }
+	                            }
+	                            else
+	                            {
+	                                error_message = "invalid string: surrogate U+D800..U+DBFF must be followed by U+DC00..U+DFFF";
+	                                return token_type::parse_error;
+	                            }
+	                        }
+	                        else
+	                        {
+	                            if (JSON_HEDLEY_UNLIKELY(0xDC00 &lt;= codepoint1 && codepoint1 &lt;= 0xDFFF))
+	                            {
+	                                error_message = "invalid string: surrogate U+DC00..U+DFFF must follow U+D800..U+DBFF";
+	                                return token_type::parse_error;
+	                            }
+	                        }
+	
+	                        // result of the above calculation yields a proper codepoint
+	                        JSON_ASSERT(0x00 &lt;= codepoint && codepoint &lt;= 0x10FFFF);
+	
+	                        // translate codepoint into bytes
+	                        if (codepoint &lt; 0x80)
+	                        {
+	                            // 1-byte characters: 0xxxxxxx (ASCII)
+	                            add(static_cast&lt;char_int_type&gt;(codepoint));
+	                        }
+	                        else if (codepoint &lt;= 0x7FF)
+	                        {
+	                            // 2-byte characters: 110xxxxx 10xxxxxx
+	                            add(static_cast&lt;char_int_type&gt;(0xC0u | (static_cast&lt;unsigned int&gt;(codepoint) &gt;&gt; 6u)));
+	                            add(static_cast&lt;char_int_type&gt;(0x80u | (static_cast&lt;unsigned int&gt;(codepoint) & 0x3Fu)));
+	                        }
+	                        else if (codepoint &lt;= 0xFFFF)
+	                        {
+	                            // 3-byte characters: 1110xxxx 10xxxxxx 10xxxxxx
+	                            add(static_cast&lt;char_int_type&gt;(0xE0u | (static_cast&lt;unsigned int&gt;(codepoint) &gt;&gt; 12u)));
+	                            add(static_cast&lt;char_int_type&gt;(0x80u | ((static_cast&lt;unsigned int&gt;(codepoint) &gt;&gt; 6u) & 0x3Fu)));
+	                            add(static_cast&lt;char_int_type&gt;(0x80u | (static_cast&lt;unsigned int&gt;(codepoint) & 0x3Fu)));
+	                        }
+	                        else
+	                        {
+	                            // 4-byte characters: 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+	                            add(static_cast&lt;char_int_type&gt;(0xF0u | (static_cast&lt;unsigned int&gt;(codepoint) &gt;&gt; 18u)));
+	                            add(static_cast&lt;char_int_type&gt;(0x80u | ((static_cast&lt;unsigned int&gt;(codepoint) &gt;&gt; 12u) & 0x3Fu)));
+	                            add(static_cast&lt;char_int_type&gt;(0x80u | ((static_cast&lt;unsigned int&gt;(codepoint) &gt;&gt; 6u) & 0x3Fu)));
+	                            add(static_cast&lt;char_int_type&gt;(0x80u | (static_cast&lt;unsigned int&gt;(codepoint) & 0x3Fu)));
+	                        }
+	
+	                        break;
+	                    }
+	
+	                    // other characters after escape
+	                    default:
+	                        error_message = "invalid string: forbidden character after backslash";
+	                        return token_type::parse_error;
+	                }
+	
+	                break;
+	            }
+	
+	            // invalid control characters
+	            case 0x00:
+	            {
+	                error_message = "invalid string: control character U+0000 (NUL) must be escaped to \\u0000";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x01:
+	            {
+	                error_message = "invalid string: control character U+0001 (SOH) must be escaped to \\u0001";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x02:
+	            {
+	                error_message = "invalid string: control character U+0002 (STX) must be escaped to \\u0002";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x03:
+	            {
+	                error_message = "invalid string: control character U+0003 (ETX) must be escaped to \\u0003";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x04:
+	            {
+	                error_message = "invalid string: control character U+0004 (EOT) must be escaped to \\u0004";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x05:
+	            {
+	                error_message = "invalid string: control character U+0005 (ENQ) must be escaped to \\u0005";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x06:
+	            {
+	                error_message = "invalid string: control character U+0006 (ACK) must be escaped to \\u0006";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x07:
+	            {
+	                error_message = "invalid string: control character U+0007 (BEL) must be escaped to \\u0007";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x08:
+	            {
+	                error_message = "invalid string: control character U+0008 (BS) must be escaped to \\u0008 or \\b";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x09:
+	            {
+	                error_message = "invalid string: control character U+0009 (HT) must be escaped to \\u0009 or \\t";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x0A:
+	            {
+	                error_message = "invalid string: control character U+000A (LF) must be escaped to \\u000A or \\n";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x0B:
+	            {
+	                error_message = "invalid string: control character U+000B (VT) must be escaped to \\u000B";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x0C:
+	            {
+	                error_message = "invalid string: control character U+000C (FF) must be escaped to \\u000C or \\f";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x0D:
+	            {
+	                error_message = "invalid string: control character U+000D (CR) must be escaped to \\u000D or \\r";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x0E:
+	            {
+	                error_message = "invalid string: control character U+000E (SO) must be escaped to \\u000E";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x0F:
+	            {
+	                error_message = "invalid string: control character U+000F (SI) must be escaped to \\u000F";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x10:
+	            {
+	                error_message = "invalid string: control character U+0010 (DLE) must be escaped to \\u0010";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x11:
+	            {
+	                error_message = "invalid string: control character U+0011 (DC1) must be escaped to \\u0011";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x12:
+	            {
+	                error_message = "invalid string: control character U+0012 (DC2) must be escaped to \\u0012";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x13:
+	            {
+	                error_message = "invalid string: control character U+0013 (DC3) must be escaped to \\u0013";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x14:
+	            {
+	                error_message = "invalid string: control character U+0014 (DC4) must be escaped to \\u0014";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x15:
+	            {
+	                error_message = "invalid string: control character U+0015 (NAK) must be escaped to \\u0015";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x16:
+	            {
+	                error_message = "invalid string: control character U+0016 (SYN) must be escaped to \\u0016";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x17:
+	            {
+	                error_message = "invalid string: control character U+0017 (ETB) must be escaped to \\u0017";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x18:
+	            {
+	                error_message = "invalid string: control character U+0018 (CAN) must be escaped to \\u0018";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x19:
+	            {
+	                error_message = "invalid string: control character U+0019 (EM) must be escaped to \\u0019";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x1A:
+	            {
+	                error_message = "invalid string: control character U+001A (SUB) must be escaped to \\u001A";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x1B:
+	            {
+	                error_message = "invalid string: control character U+001B (ESC) must be escaped to \\u001B";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x1C:
+	            {
+	                error_message = "invalid string: control character U+001C (FS) must be escaped to \\u001C";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x1D:
+	            {
+	                error_message = "invalid string: control character U+001D (GS) must be escaped to \\u001D";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x1E:
+	            {
+	                error_message = "invalid string: control character U+001E (RS) must be escaped to \\u001E";
+	                return token_type::parse_error;
+	            }
+	
+	            case 0x1F:
+	            {
+	                error_message = "invalid string: control character U+001F (US) must be escaped to \\u001F";
+	                return token_type::parse_error;
+	            }
+	
+	            // U+0020..U+007F (except U+0022 (quote) and U+005C (backspace))
+	            case 0x20:
+	            case 0x21:
+	            case 0x23:
+	            case 0x24:
+	            case 0x25:
+	            case 0x26:
+	            case 0x27:
+	            case 0x28:
+	            case 0x29:
+	            case 0x2A:
+	            case 0x2B:
+	            case 0x2C:
+	            case 0x2D:
+	            case 0x2E:
+	            case 0x2F:
+	            case 0x30:
+	            case 0x31:
+	            case 0x32:
+	            case 0x33:
+	            case 0x34:
+	            case 0x35:
+	            case 0x36:
+	            case 0x37:
+	            case 0x38:
+	            case 0x39:
+	            case 0x3A:
+	            case 0x3B:
+	            case 0x3C:
+	            case 0x3D:
+	            case 0x3E:
+	            case 0x3F:
+	            case 0x40:
+	            case 0x41:
+	            case 0x42:
+	            case 0x43:
+	            case 0x44:
+	            case 0x45:
+	            case 0x46:
+	            case 0x47:
+	            case 0x48:
+	            case 0x49:
+	            case 0x4A:
+	            case 0x4B:
+	            case 0x4C:
+	            case 0x4D:
+	            case 0x4E:
+	            case 0x4F:
+	            case 0x50:
+	            case 0x51:
+	            case 0x52:
+	            case 0x53:
+	            case 0x54:
+	            case 0x55:
+	            case 0x56:
+	            case 0x57:
+	            case 0x58:
+	            case 0x59:
+	            case 0x5A:
+	            case 0x5B:
+	            case 0x5D:
+	            case 0x5E:
+	            case 0x5F:
+	            case 0x60:
+	            case 0x61:
+	            case 0x62:
+	            case 0x63:
+	            case 0x64:
+	            case 0x65:
+	            case 0x66:
+	            case 0x67:
+	            case 0x68:
+	            case 0x69:
+	            case 0x6A:
+	            case 0x6B:
+	            case 0x6C:
+	            case 0x6D:
+	            case 0x6E:
+	            case 0x6F:
+	            case 0x70:
+	            case 0x71:
+	            case 0x72:
+	            case 0x73:
+	            case 0x74:
+	            case 0x75:
+	            case 0x76:
+	            case 0x77:
+	            case 0x78:
+	            case 0x79:
+	            case 0x7A:
+	            case 0x7B:
+	            case 0x7C:
+	            case 0x7D:
+	            case 0x7E:
+	            case 0x7F:
+	            {
+	                add(current);
+	                break;
+	            }
+	
+	            // U+0080..U+07FF: bytes C2..DF 80..BF
+	            case 0xC2:
+	            case 0xC3:
+	            case 0xC4:
+	            case 0xC5:
+	            case 0xC6:
+	            case 0xC7:
+	            case 0xC8:
+	            case 0xC9:
+	            case 0xCA:
+	            case 0xCB:
+	            case 0xCC:
+	            case 0xCD:
+	            case 0xCE:
+	            case 0xCF:
+	            case 0xD0:
+	            case 0xD1:
+	            case 0xD2:
+	            case 0xD3:
+	            case 0xD4:
+	            case 0xD5:
+	            case 0xD6:
+	            case 0xD7:
+	            case 0xD8:
+	            case 0xD9:
+	            case 0xDA:
+	            case 0xDB:
+	            case 0xDC:
+	            case 0xDD:
+	            case 0xDE:
+	            case 0xDF:
+	            {
+	                if (JSON_HEDLEY_UNLIKELY(!next_byte_in_range({0x80, 0xBF})))
+	                {
+	                    return token_type::parse_error;
+	                }
+	                break;
+	            }
+	
+	            // U+0800..U+0FFF: bytes E0 A0..BF 80..BF
+	            case 0xE0:
+	            {
+	                if (JSON_HEDLEY_UNLIKELY(!(next_byte_in_range({0xA0, 0xBF, 0x80, 0xBF}))))
+	                {
+	                    return token_type::parse_error;
+	                }
+	                break;
+	            }
+	
+	            // U+1000..U+CFFF: bytes E1..EC 80..BF 80..BF
+	            // U+E000..U+FFFF: bytes EE..EF 80..BF 80..BF
+	            case 0xE1:
+	            case 0xE2:
+	            case 0xE3:
+	            case 0xE4:
+	            case 0xE5:
+	            case 0xE6:
+	            case 0xE7:
+	            case 0xE8:
+	            case 0xE9:
+	            case 0xEA:
+	            case 0xEB:
+	            case 0xEC:
+	            case 0xEE:
+	            case 0xEF:
+	            {
+	                if (JSON_HEDLEY_UNLIKELY(!(next_byte_in_range({0x80, 0xBF, 0x80, 0xBF}))))
+	                {
+	                    return token_type::parse_error;
+	                }
+	                break;
+	            }
+	
+	            // U+D000..U+D7FF: bytes ED 80..9F 80..BF
+	            case 0xED:
+	            {
+	                if (JSON_HEDLEY_UNLIKELY(!(next_byte_in_range({0x80, 0x9F, 0x80, 0xBF}))))
+	                {
+	                    return token_type::parse_error;
+	                }
+	                break;
+	            }
+	
+	            // U+10000..U+3FFFF F0 90..BF 80..BF 80..BF
+	            case 0xF0:
+	            {
+	                if (JSON_HEDLEY_UNLIKELY(!(next_byte_in_range({0x90, 0xBF, 0x80, 0xBF, 0x80, 0xBF}))))
+	                {
+	                    return token_type::parse_error;
+	                }
+	                break;
+	            }
+	
+	            // U+40000..U+FFFFF F1..F3 80..BF 80..BF 80..BF
+	            case 0xF1:
+	            case 0xF2:
+	            case 0xF3:
+	            {
+	                if (JSON_HEDLEY_UNLIKELY(!(next_byte_in_range({0x80, 0xBF, 0x80, 0xBF, 0x80, 0xBF}))))
+	                {
+	                    return token_type::parse_error;
+	                }
+	                break;
+	            }
+	
+	            // U+100000..U+10FFFF F4 80..8F 80..BF 80..BF
+	            case 0xF4:
+	            {
+	                if (JSON_HEDLEY_UNLIKELY(!(next_byte_in_range({0x80, 0x8F, 0x80, 0xBF, 0x80, 0xBF}))))
+	                {
+	                    return token_type::parse_error;
+	                }
+	                break;
+	            }
+	
+	            // remaining bytes (80..C1 and F5..FF) are ill-formed
+	            default:
+	            {
+	                error_message = "invalid string: ill-formed UTF-8 byte";
+	                return token_type::parse_error;
+	            }
+	        }
+	    }
+	}
+	
+	```
+	
 
 
 
@@ -7079,6 +7234,13 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of items JLEX-01, NJF-07`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-07) to find NJF-07
+
 
 - `cpp-test: [parser class - core;accept;string]
 (TSF/tests/unit-class_parser_core.cpp)`
@@ -7238,6 +7400,13 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of items JLEX-01, NJF-07`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-07) to find NJF-07
+
 
 - `cpp-test: [parser class - core;accept;parse errors (accept)]
 (TSF/tests/unit-class_parser_core.cpp)`
@@ -7822,6 +7991,13 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of items JLEX-01, NJF-07`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-07) to find NJF-07
+
+
 - `cpp-test: [parser class - core;accept;string;errors]
 (TSF/tests/unit-class_parser_core.cpp)`
 
@@ -7907,6 +8083,13 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of items JLEX-01, NJF-07`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-07) to find NJF-07
+
 
 - `cpp-test: [parser class - core;accept;string;escaped]
 (TSF/tests/unit-class_parser_core.cpp)`
@@ -8226,6 +8409,13 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of items JLEX-01, NJF-07`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-07) to find NJF-07
+
+
 - `cpp-test: [parser class - core;accept;string;escaped]
 (TSF/tests/unit-class_parser_core.cpp)`
 
@@ -8382,6 +8572,13 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of items JLEX-01, NJF-07`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-07) to find NJF-07
+
 
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/y_string_1_2_3_bytes_UTF-8_sequences.json, /nst_json_testsuite2/test_parsing/y_string_accepted_surrogate_pair.json, /nst_json_testsuite2/test_parsing/y_string_accepted_surrogate_pairs.json, /nst_json_testsuite2/test_parsing/y_string_allowed_escapes.json, /nst_json_testsuite2/test_parsing/y_string_backslash_and_u_escaped_zero.json, /nst_json_testsuite2/test_parsing/y_string_backslash_doublequotes.json, /nst_json_testsuite2/test_parsing/y_string_comments.json, /nst_json_testsuite2/test_parsing/y_string_double_escape_a.json, /nst_json_testsuite2/test_parsing/y_string_double_escape_n.json, /nst_json_testsuite2/test_parsing/y_string_escaped_control_character.json, /nst_json_testsuite2/test_parsing/y_string_escaped_noncharacter.json, /nst_json_testsuite2/test_parsing/y_string_in_array.json, /nst_json_testsuite2/test_parsing/y_string_in_array_with_leading_space.json, /nst_json_testsuite2/test_parsing/y_string_last_surrogates_1_and_2.json, /nst_json_testsuite2/test_parsing/y_string_nbsp_uescaped.json, /nst_json_testsuite2/test_parsing/y_string_nonCharacterInUTF-8_U+10FFFF.json, /nst_json_testsuite2/test_parsing/y_string_nonCharacterInUTF-8_U+FFFF.json, /nst_json_testsuite2/test_parsing/y_string_null_escape.json, /nst_json_testsuite2/test_parsing/y_string_one-byte-utf-8.json, /nst_json_testsuite2/test_parsing/y_string_pi.json, /nst_json_testsuite2/test_parsing/y_string_reservedCharacterInUTF-8_U+1BFFF.json, /nst_json_testsuite2/test_parsing/y_string_simple_ascii.json, /nst_json_testsuite2/test_parsing/y_string_space.json, /nst_json_testsuite2/test_parsing/y_string_surrogates_U+1D11E_MUSICAL_SYMBOL_G_CLEF.json, /nst_json_testsuite2/test_parsing/y_string_three-byte-utf-8.json, /nst_json_testsuite2/test_parsing/y_string_two-byte-utf-8.json, /nst_json_testsuite2/test_parsing/y_string_u+2028_line_sep.json, /nst_json_testsuite2/test_parsing/y_string_u+2029_par_sep.json, /nst_json_testsuite2/test_parsing/y_string_uEscape.json, /nst_json_testsuite2/test_parsing/y_string_uescaped_newline.json, /nst_json_testsuite2/test_parsing/y_string_unescaped_char_delete.json, /nst_json_testsuite2/test_parsing/y_string_unicode.json, /nst_json_testsuite2/test_parsing/y_string_unicodeEscapedBackslash.json, /nst_json_testsuite2/test_parsing/y_string_unicode_2.json, /nst_json_testsuite2/test_parsing/y_string_unicode_U+10FFFE_nonchar.json, /nst_json_testsuite2/test_parsing/y_string_unicode_U+1FFFE_nonchar.json, /nst_json_testsuite2/test_parsing/y_string_unicode_U+200B_ZERO_WIDTH_SPACE.json, /nst_json_testsuite2/test_parsing/y_string_unicode_U+2064_invisible_plus.json, /nst_json_testsuite2/test_parsing/y_string_unicode_U+FDD0_nonchar.json, /nst_json_testsuite2/test_parsing/y_string_unicode_U+FFFE_nonchar.json, /nst_json_testsuite2/test_parsing/y_string_unicode_escaped_double_quote.json, /nst_json_testsuite2/test_parsing/y_string_utf8.json, /nst_json_testsuite2/test_parsing/y_string_with_del_character.json, /nst_json_testsuite2/test_parsing/y_structure_lonely_string.json]`
 
@@ -8928,6 +9125,13 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of items JLEX-01, NJF-07`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-07) to find NJF-07
+
+
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_string_1_surrogate_then_escape.json, /nst_json_testsuite2/test_parsing/n_string_1_surrogate_then_escape_u.json, /nst_json_testsuite2/test_parsing/n_string_1_surrogate_then_escape_u1.json, /nst_json_testsuite2/test_parsing/n_string_1_surrogate_then_escape_u1x.json, /nst_json_testsuite2/test_parsing/n_string_accentuated_char_no_quotes.json, /nst_json_testsuite2/test_parsing/n_string_backslash_00.json, /nst_json_testsuite2/test_parsing/n_string_escape_x.json, /nst_json_testsuite2/test_parsing/n_string_escaped_backslash_bad.json, /nst_json_testsuite2/test_parsing/n_string_escaped_ctrl_char_tab.json, /nst_json_testsuite2/test_parsing/n_string_escaped_emoji.json, /nst_json_testsuite2/test_parsing/n_string_incomplete_escape.json, /nst_json_testsuite2/test_parsing/n_string_incomplete_escaped_character.json, /nst_json_testsuite2/test_parsing/n_string_incomplete_surrogate.json, /nst_json_testsuite2/test_parsing/n_string_incomplete_surrogate_escape_invalid.json, /nst_json_testsuite2/test_parsing/n_string_invalid-utf-8-in-escape.json, /nst_json_testsuite2/test_parsing/n_string_invalid_backslash_esc.json, /nst_json_testsuite2/test_parsing/n_string_invalid_unicode_escape.json, /nst_json_testsuite2/test_parsing/n_string_invalid_utf8_after_escape.json]`
 
 
@@ -9222,6 +9426,13 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of items JLEX-01, NJF-07`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-07) to find NJF-07
+
+
 - `cpp-test: [Unicode;escaped unicode]
 (TSF/tests/unit-strings.cpp)`
 
@@ -9287,6 +9498,13 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of items JLEX-01, NJF-07`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-07) to find NJF-07
+
 
 - `cpp-test: [Unicode;unescaped unicode]
 (TSF/tests/unit-strings.cpp)`
@@ -9371,336 +9589,336 @@ The service accepts numbers according to RFC8259 §6.
 	- Description: function, which scans numbers and verifies *en passant* that these number is in accordance with RFC8259
 
 
-```cpp
-    token_type scan_number()  // lgtm [cpp/use-of-goto] `goto` is used in this function to implement the number-parsing state machine described above. By design, any finite input will eventually reach the "done" state or return token_type::parse_error. In each intermediate state, 1 byte of the input is appended to the token_buffer vector, and only the already initialized variables token_buffer, number_type, and error_message are manipulated.
-    {
-        // reset token_buffer to store the number's bytes
-        reset();
-
-        // the type of the parsed number; initially set to unsigned; will be
-        // changed if minus sign, decimal point or exponent is read
-        token_type number_type = token_type::value_unsigned;
-
-        // state (init): we just found out we need to scan a number
-        switch (current)
-        {
-            case '-':
-            {
-                add(current);
-                goto scan_number_minus;
-            }
-
-            case '0':
-            {
-                add(current);
-                goto scan_number_zero;
-            }
-
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
-            {
-                add(current);
-                goto scan_number_any1;
-            }
-
-            // all other characters are rejected outside scan_number()
-            default:            // LCOV_EXCL_LINE
-                JSON_ASSERT(false); // NOLINT(cert-dcl03-c,hicpp-static-assert,misc-static-assert) LCOV_EXCL_LINE
-        }
-
-scan_number_minus:
-        // state: we just parsed a leading minus sign
-        number_type = token_type::value_integer;
-        switch (get())
-        {
-            case '0':
-            {
-                add(current);
-                goto scan_number_zero;
-            }
-
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
-            {
-                add(current);
-                goto scan_number_any1;
-            }
-
-            default:
-            {
-                error_message = "invalid number; expected digit after '-'";
-                return token_type::parse_error;
-            }
-        }
-
-scan_number_zero:
-        // state: we just parse a zero (maybe with a leading minus sign)
-        switch (get())
-        {
-            case '.':
-            {
-                add(decimal_point_char);
-                decimal_point_position = token_buffer.size() - 1;
-                goto scan_number_decimal1;
-            }
-
-            case 'e':
-            case 'E':
-            {
-                add(current);
-                goto scan_number_exponent;
-            }
-
-            default:
-                goto scan_number_done;
-        }
-
-scan_number_any1:
-        // state: we just parsed a number 0-9 (maybe with a leading minus sign)
-        switch (get())
-        {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
-            {
-                add(current);
-                goto scan_number_any1;
-            }
-
-            case '.':
-            {
-                add(decimal_point_char);
-                decimal_point_position = token_buffer.size() - 1;
-                goto scan_number_decimal1;
-            }
-
-            case 'e':
-            case 'E':
-            {
-                add(current);
-                goto scan_number_exponent;
-            }
-
-            default:
-                goto scan_number_done;
-        }
-
-scan_number_decimal1:
-        // state: we just parsed a decimal point
-        number_type = token_type::value_float;
-        switch (get())
-        {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
-            {
-                add(current);
-                goto scan_number_decimal2;
-            }
-
-            default:
-            {
-                error_message = "invalid number; expected digit after '.'";
-                return token_type::parse_error;
-            }
-        }
-
-scan_number_decimal2:
-        // we just parsed at least one number after a decimal point
-        switch (get())
-        {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
-            {
-                add(current);
-                goto scan_number_decimal2;
-            }
-
-            case 'e':
-            case 'E':
-            {
-                add(current);
-                goto scan_number_exponent;
-            }
-
-            default:
-                goto scan_number_done;
-        }
-
-scan_number_exponent:
-        // we just parsed an exponent
-        number_type = token_type::value_float;
-        switch (get())
-        {
-            case '+':
-            case '-':
-            {
-                add(current);
-                goto scan_number_sign;
-            }
-
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
-            {
-                add(current);
-                goto scan_number_any2;
-            }
-
-            default:
-            {
-                error_message =
-                    "invalid number; expected '+', '-', or digit after exponent";
-                return token_type::parse_error;
-            }
-        }
-
-scan_number_sign:
-        // we just parsed an exponent sign
-        switch (get())
-        {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
-            {
-                add(current);
-                goto scan_number_any2;
-            }
-
-            default:
-            {
-                error_message = "invalid number; expected digit after exponent sign";
-                return token_type::parse_error;
-            }
-        }
-
-scan_number_any2:
-        // we just parsed a number after the exponent or exponent sign
-        switch (get())
-        {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
-            {
-                add(current);
-                goto scan_number_any2;
-            }
-
-            default:
-                goto scan_number_done;
-        }
-
-scan_number_done:
-        // unget the character after the number (we only read it to know that
-        // we are done scanning a number)
-        unget();
-
-        char* endptr = nullptr; // NOLINT(misc-const-correctness,cppcoreguidelines-pro-type-vararg,hicpp-vararg)
-        errno = 0;
-
-        // try to parse integers first and fall back to floats
-        if (number_type == token_type::value_unsigned)
-        {
-            const auto x = std::strtoull(token_buffer.data(), &endptr, 10);
-
-            // we checked the number format before
-            JSON_ASSERT(endptr == token_buffer.data() + token_buffer.size());
-
-            if (errno != ERANGE)
-            {
-                value_unsigned = static_cast&lt;number_unsigned_t&gt;(x);
-                if (value_unsigned == x)
-                {
-                    return token_type::value_unsigned;
-                }
-            }
-        }
-        else if (number_type == token_type::value_integer)
-        {
-            const auto x = std::strtoll(token_buffer.data(), &endptr, 10);
-
-            // we checked the number format before
-            JSON_ASSERT(endptr == token_buffer.data() + token_buffer.size());
-
-            if (errno != ERANGE)
-            {
-                value_integer = static_cast&lt;number_integer_t&gt;(x);
-                if (value_integer == x)
-                {
-                    return token_type::value_integer;
-                }
-            }
-        }
-
-        // this code is reached if we parse a floating-point number or if an
-        // integer conversion above failed
-        strtof(value_float, token_buffer.data(), &endptr);
-
-        // we checked the number format before
-        JSON_ASSERT(endptr == token_buffer.data() + token_buffer.size());
-
-        return token_type::value_float;
-    }
-
-```
-
+	```cpp
+	    token_type scan_number()  // lgtm [cpp/use-of-goto] `goto` is used in this function to implement the number-parsing state machine described above. By design, any finite input will eventually reach the "done" state or return token_type::parse_error. In each intermediate state, 1 byte of the input is appended to the token_buffer vector, and only the already initialized variables token_buffer, number_type, and error_message are manipulated.
+	    {
+	        // reset token_buffer to store the number's bytes
+	        reset();
+	
+	        // the type of the parsed number; initially set to unsigned; will be
+	        // changed if minus sign, decimal point or exponent is read
+	        token_type number_type = token_type::value_unsigned;
+	
+	        // state (init): we just found out we need to scan a number
+	        switch (current)
+	        {
+	            case '-':
+	            {
+	                add(current);
+	                goto scan_number_minus;
+	            }
+	
+	            case '0':
+	            {
+	                add(current);
+	                goto scan_number_zero;
+	            }
+	
+	            case '1':
+	            case '2':
+	            case '3':
+	            case '4':
+	            case '5':
+	            case '6':
+	            case '7':
+	            case '8':
+	            case '9':
+	            {
+	                add(current);
+	                goto scan_number_any1;
+	            }
+	
+	            // all other characters are rejected outside scan_number()
+	            default:            // LCOV_EXCL_LINE
+	                JSON_ASSERT(false); // NOLINT(cert-dcl03-c,hicpp-static-assert,misc-static-assert) LCOV_EXCL_LINE
+	        }
+	
+	scan_number_minus:
+	        // state: we just parsed a leading minus sign
+	        number_type = token_type::value_integer;
+	        switch (get())
+	        {
+	            case '0':
+	            {
+	                add(current);
+	                goto scan_number_zero;
+	            }
+	
+	            case '1':
+	            case '2':
+	            case '3':
+	            case '4':
+	            case '5':
+	            case '6':
+	            case '7':
+	            case '8':
+	            case '9':
+	            {
+	                add(current);
+	                goto scan_number_any1;
+	            }
+	
+	            default:
+	            {
+	                error_message = "invalid number; expected digit after '-'";
+	                return token_type::parse_error;
+	            }
+	        }
+	
+	scan_number_zero:
+	        // state: we just parse a zero (maybe with a leading minus sign)
+	        switch (get())
+	        {
+	            case '.':
+	            {
+	                add(decimal_point_char);
+	                decimal_point_position = token_buffer.size() - 1;
+	                goto scan_number_decimal1;
+	            }
+	
+	            case 'e':
+	            case 'E':
+	            {
+	                add(current);
+	                goto scan_number_exponent;
+	            }
+	
+	            default:
+	                goto scan_number_done;
+	        }
+	
+	scan_number_any1:
+	        // state: we just parsed a number 0-9 (maybe with a leading minus sign)
+	        switch (get())
+	        {
+	            case '0':
+	            case '1':
+	            case '2':
+	            case '3':
+	            case '4':
+	            case '5':
+	            case '6':
+	            case '7':
+	            case '8':
+	            case '9':
+	            {
+	                add(current);
+	                goto scan_number_any1;
+	            }
+	
+	            case '.':
+	            {
+	                add(decimal_point_char);
+	                decimal_point_position = token_buffer.size() - 1;
+	                goto scan_number_decimal1;
+	            }
+	
+	            case 'e':
+	            case 'E':
+	            {
+	                add(current);
+	                goto scan_number_exponent;
+	            }
+	
+	            default:
+	                goto scan_number_done;
+	        }
+	
+	scan_number_decimal1:
+	        // state: we just parsed a decimal point
+	        number_type = token_type::value_float;
+	        switch (get())
+	        {
+	            case '0':
+	            case '1':
+	            case '2':
+	            case '3':
+	            case '4':
+	            case '5':
+	            case '6':
+	            case '7':
+	            case '8':
+	            case '9':
+	            {
+	                add(current);
+	                goto scan_number_decimal2;
+	            }
+	
+	            default:
+	            {
+	                error_message = "invalid number; expected digit after '.'";
+	                return token_type::parse_error;
+	            }
+	        }
+	
+	scan_number_decimal2:
+	        // we just parsed at least one number after a decimal point
+	        switch (get())
+	        {
+	            case '0':
+	            case '1':
+	            case '2':
+	            case '3':
+	            case '4':
+	            case '5':
+	            case '6':
+	            case '7':
+	            case '8':
+	            case '9':
+	            {
+	                add(current);
+	                goto scan_number_decimal2;
+	            }
+	
+	            case 'e':
+	            case 'E':
+	            {
+	                add(current);
+	                goto scan_number_exponent;
+	            }
+	
+	            default:
+	                goto scan_number_done;
+	        }
+	
+	scan_number_exponent:
+	        // we just parsed an exponent
+	        number_type = token_type::value_float;
+	        switch (get())
+	        {
+	            case '+':
+	            case '-':
+	            {
+	                add(current);
+	                goto scan_number_sign;
+	            }
+	
+	            case '0':
+	            case '1':
+	            case '2':
+	            case '3':
+	            case '4':
+	            case '5':
+	            case '6':
+	            case '7':
+	            case '8':
+	            case '9':
+	            {
+	                add(current);
+	                goto scan_number_any2;
+	            }
+	
+	            default:
+	            {
+	                error_message =
+	                    "invalid number; expected '+', '-', or digit after exponent";
+	                return token_type::parse_error;
+	            }
+	        }
+	
+	scan_number_sign:
+	        // we just parsed an exponent sign
+	        switch (get())
+	        {
+	            case '0':
+	            case '1':
+	            case '2':
+	            case '3':
+	            case '4':
+	            case '5':
+	            case '6':
+	            case '7':
+	            case '8':
+	            case '9':
+	            {
+	                add(current);
+	                goto scan_number_any2;
+	            }
+	
+	            default:
+	            {
+	                error_message = "invalid number; expected digit after exponent sign";
+	                return token_type::parse_error;
+	            }
+	        }
+	
+	scan_number_any2:
+	        // we just parsed a number after the exponent or exponent sign
+	        switch (get())
+	        {
+	            case '0':
+	            case '1':
+	            case '2':
+	            case '3':
+	            case '4':
+	            case '5':
+	            case '6':
+	            case '7':
+	            case '8':
+	            case '9':
+	            {
+	                add(current);
+	                goto scan_number_any2;
+	            }
+	
+	            default:
+	                goto scan_number_done;
+	        }
+	
+	scan_number_done:
+	        // unget the character after the number (we only read it to know that
+	        // we are done scanning a number)
+	        unget();
+	
+	        char* endptr = nullptr; // NOLINT(misc-const-correctness,cppcoreguidelines-pro-type-vararg,hicpp-vararg)
+	        errno = 0;
+	
+	        // try to parse integers first and fall back to floats
+	        if (number_type == token_type::value_unsigned)
+	        {
+	            const auto x = std::strtoull(token_buffer.data(), &endptr, 10);
+	
+	            // we checked the number format before
+	            JSON_ASSERT(endptr == token_buffer.data() + token_buffer.size());
+	
+	            if (errno != ERANGE)
+	            {
+	                value_unsigned = static_cast&lt;number_unsigned_t&gt;(x);
+	                if (value_unsigned == x)
+	                {
+	                    return token_type::value_unsigned;
+	                }
+	            }
+	        }
+	        else if (number_type == token_type::value_integer)
+	        {
+	            const auto x = std::strtoll(token_buffer.data(), &endptr, 10);
+	
+	            // we checked the number format before
+	            JSON_ASSERT(endptr == token_buffer.data() + token_buffer.size());
+	
+	            if (errno != ERANGE)
+	            {
+	                value_integer = static_cast&lt;number_integer_t&gt;(x);
+	                if (value_integer == x)
+	                {
+	                    return token_type::value_integer;
+	                }
+	            }
+	        }
+	
+	        // this code is reached if we parse a floating-point number or if an
+	        // integer conversion above failed
+	        strtof(value_float, token_buffer.data(), &endptr);
+	
+	        // we checked the number format before
+	        JSON_ASSERT(endptr == token_buffer.data() + token_buffer.size());
+	
+	        return token_type::value_float;
+	    }
+	
+	```
+	
 
 
 
@@ -9732,6 +9950,13 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of items JLEX-01, NJF-08`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-08) to find NJF-08
+
 
 - `cpp-test: [parser class - core;accept;number;integers]
 (TSF/tests/unit-class_parser_core.cpp)`
@@ -9844,6 +10069,13 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of items JLEX-01, NJF-08`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-08) to find NJF-08
+
+
 - `cpp-test: [parser class - core;accept;number;integers;edge cases]
 (TSF/tests/unit-class_parser_core.cpp)`
 
@@ -9896,6 +10128,13 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of items JLEX-01, NJF-08`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-08) to find NJF-08
+
 
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_number_+Inf.json, /nst_json_testsuite2/test_parsing/n_number_-NaN.json, /nst_json_testsuite2/test_parsing/n_number_Inf.json, /nst_json_testsuite2/test_parsing/n_number_NaN.json, /nst_json_testsuite2/test_parsing/n_number_NaN.json]`
 
@@ -10305,6 +10544,13 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of items JLEX-01, NJF-08`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-08) to find NJF-08
+
+
 - `cpp-test: [parser class - core;accept;number;integers;with exponent]
 (TSF/tests/unit-class_parser_core.cpp)`
 
@@ -10481,6 +10727,13 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of items JLEX-01, NJF-08`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-08) to find NJF-08
+
+
 - `cpp-test: [accept;exponents;U+0425]
 (TSF/tests/unit-numbers.cpp)`
 
@@ -10545,6 +10798,13 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of items JLEX-01, NJF-08`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-08) to find NJF-08
+
 
 - `cpp-test: [parser class - core;accept;number;invalid numbers]
 (TSF/tests/unit-class_parser_core.cpp)`
@@ -11278,6 +11538,13 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of items JLEX-01, NJF-08`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-08) to find NJF-08
+
+
 - `cpp-test: [parser class - core;accept;number;floating-point]
 (TSF/tests/unit-class_parser_core.cpp)`
 
@@ -11335,6 +11602,13 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of items JLEX-01, NJF-08`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-08) to find NJF-08
+
 
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_number_-01.json, /nst_json_testsuite2/test_parsing/n_number_neg_int_starting_with_zero.json]`
 
@@ -11474,6 +11748,13 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of items JLEX-01, NJF-08`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+	- see [here](NJF.md#njf-08) to find NJF-08
+
 
 - `cpp-test: [parser class - core;accept;number;integers]
 (TSF/tests/unit-class_parser_core.cpp)`
@@ -11723,6 +12004,12 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
+
 - `cpp-test: [accept;malformed sequences]
 (TSF/tests/unit-strings.cpp)`
 
@@ -11853,6 +12140,12 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
+
 - `cpp-test: [accept;overlong sequences]
 (TSF/tests/unit-strings.cpp)`
 
@@ -11945,6 +12238,12 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
 
 - `cpp-testsuite: [/nst_json_testsuite2/test_parsing/n_structure_lone-invalid-utf-8.json]`
 
@@ -12051,6 +12350,12 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
 
 - `cpp-test: [accept;noncharacter code positions]
 (TSF/tests/unit-strings.cpp)`
@@ -12182,6 +12487,12 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
+
 - `cpp-test: [Unicode;escaped unicode]
 (TSF/tests/unit-strings.cpp)`
 
@@ -12247,6 +12558,12 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
 
 - `cpp-test: [compliance tests from json.org;expected passes]
 (tests/src/unit-testsuites.cpp)`
@@ -12339,6 +12656,12 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
+
 - `cpp-test: [accept;UTF-8;single BOM]
 (TSF/tests/unit-byte_order_mark.cpp)`
 
@@ -12389,6 +12712,12 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
+
 - `cpp-test: [accept;UTF-8;multiple BOM]
 (TSF/tests/unit-byte_order_mark.cpp)`
 
@@ -12437,6 +12766,12 @@ _None_
 
 **References:**
 
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
+
 - `function: [parser::accept]
 (include/nlohmann/detail/input/parser.hpp)`
 
@@ -12444,15 +12779,15 @@ _None_
 	- Description: function, which implements the service to check for well-formed json
 
 
-```cpp
-bool accept(const bool strict = true)
-{
-    json_sax_acceptor&lt;BasicJsonType&gt; sax_acceptor;
-    return sax_parse(&sax_acceptor, strict);
-}
-
-```
-
+	```cpp
+	bool accept(const bool strict = true)
+	{
+	    json_sax_acceptor&lt;BasicJsonType&gt; sax_acceptor;
+	    return sax_parse(&sax_acceptor, strict);
+	}
+	
+	```
+	
 
 - `function: [parser::sax_parse]
 (include/nlohmann/detail/input/parser.hpp)`
@@ -12461,25 +12796,25 @@ bool accept(const bool strict = true)
 	- Description: function, which is called by parser::accept
 
 
-```cpp
-bool sax_parse(SAX* sax, const bool strict = true)
-{
-    (void)detail::is_sax_static_asserts&lt;SAX, BasicJsonType&gt; {};
-    const bool result = sax_parse_internal(sax);
-
-    // strict mode: next byte must be EOF
-    if (result && strict && (get_token() != token_type::end_of_input))
-    {
-        return sax-&gt;parse_error(m_lexer.get_position(),
-                                m_lexer.get_token_string(),
-                                parse_error::create(101, m_lexer.get_position(), exception_message(token_type::end_of_input, "value"), nullptr));
-    }
-
-    return result;
-}
-
-```
-
+	```cpp
+	bool sax_parse(SAX* sax, const bool strict = true)
+	{
+	    (void)detail::is_sax_static_asserts&lt;SAX, BasicJsonType&gt; {};
+	    const bool result = sax_parse_internal(sax);
+	
+	    // strict mode: next byte must be EOF
+	    if (result && strict && (get_token() != token_type::end_of_input))
+	    {
+	        return sax-&gt;parse_error(m_lexer.get_position(),
+	                                m_lexer.get_token_string(),
+	                                parse_error::create(101, m_lexer.get_position(), exception_message(token_type::end_of_input, "value"), nullptr));
+	    }
+	
+	    return result;
+	}
+	
+	```
+	
 
 - `function: [parser::sax_parse_internal]
 (include/nlohmann/detail/input/parser.hpp)`
@@ -12488,301 +12823,301 @@ bool sax_parse(SAX* sax, const bool strict = true)
 	- Description: function, which is called by parser::sax_parse
 
 
-```cpp
-bool sax_parse_internal(SAX* sax)
-{
-    // stack to remember the hierarchy of structured values we are parsing
-    // true = array; false = object
-    std::vector&lt;bool&gt; states;
-    // value to avoid a goto (see comment where set to true)
-    bool skip_to_state_evaluation = false;
-
-    while (true)
-    {
-        if (!skip_to_state_evaluation)
-        {
-            // invariant: get_token() was called before each iteration
-            switch (last_token)
-            {
-                case token_type::begin_object:
-                {
-                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;start_object(detail::unknown_size())))
-                    {
-                        return false;
-                    }
-
-                    // closing } -&gt; we are done
-                    if (get_token() == token_type::end_object)
-                    {
-                        if (JSON_HEDLEY_UNLIKELY(!sax-&gt;end_object()))
-                        {
-                            return false;
-                        }
-                        break;
-                    }
-
-                    // parse key
-                    if (JSON_HEDLEY_UNLIKELY(last_token != token_type::value_string))
-                    {
-                        return sax-&gt;parse_error(m_lexer.get_position(),
-                                                m_lexer.get_token_string(),
-                                                parse_error::create(101, m_lexer.get_position(), exception_message(token_type::value_string, "object key"), nullptr));
-                    }
-                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;key(m_lexer.get_string())))
-                    {
-                        return false;
-                    }
-
-                    // parse separator (:)
-                    if (JSON_HEDLEY_UNLIKELY(get_token() != token_type::name_separator))
-                    {
-                        return sax-&gt;parse_error(m_lexer.get_position(),
-                                                m_lexer.get_token_string(),
-                                                parse_error::create(101, m_lexer.get_position(), exception_message(token_type::name_separator, "object separator"), nullptr));
-                    }
-
-                    // remember we are now inside an object
-                    states.push_back(false);
-
-                    // parse values
-                    get_token();
-                    continue;
-                }
-
-                case token_type::begin_array:
-                {
-                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;start_array(detail::unknown_size())))
-                    {
-                        return false;
-                    }
-
-                    // closing ] -&gt; we are done
-                    if (get_token() == token_type::end_array)
-                    {
-                        if (JSON_HEDLEY_UNLIKELY(!sax-&gt;end_array()))
-                        {
-                            return false;
-                        }
-                        break;
-                    }
-
-                    // remember we are now inside an array
-                    states.push_back(true);
-
-                    // parse values (no need to call get_token)
-                    continue;
-                }
-
-                case token_type::value_float:
-                {
-                    const auto res = m_lexer.get_number_float();
-
-                    if (JSON_HEDLEY_UNLIKELY(!std::isfinite(res)))
-                    {
-                        return sax-&gt;parse_error(m_lexer.get_position(),
-                                                m_lexer.get_token_string(),
-                                                out_of_range::create(406, concat("number overflow parsing '", m_lexer.get_token_string(), '\''), nullptr));
-                    }
-
-                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;number_float(res, m_lexer.get_string())))
-                    {
-                        return false;
-                    }
-
-                    break;
-                }
-
-                case token_type::literal_false:
-                {
-                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;boolean(false)))
-                    {
-                        return false;
-                    }
-                    break;
-                }
-
-                case token_type::literal_null:
-                {
-                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;null()))
-                    {
-                        return false;
-                    }
-                    break;
-                }
-
-                case token_type::literal_true:
-                {
-                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;boolean(true)))
-                    {
-                        return false;
-                    }
-                    break;
-                }
-
-                case token_type::value_integer:
-                {
-                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;number_integer(m_lexer.get_number_integer())))
-                    {
-                        return false;
-                    }
-                    break;
-                }
-
-                case token_type::value_string:
-                {
-                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;string(m_lexer.get_string())))
-                    {
-                        return false;
-                    }
-                    break;
-                }
-
-                case token_type::value_unsigned:
-                {
-                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;number_unsigned(m_lexer.get_number_unsigned())))
-                    {
-                        return false;
-                    }
-                    break;
-                }
-
-                case token_type::parse_error:
-                {
-                    // using "uninitialized" to avoid "expected" message
-                    return sax-&gt;parse_error(m_lexer.get_position(),
-                                            m_lexer.get_token_string(),
-                                            parse_error::create(101, m_lexer.get_position(), exception_message(token_type::uninitialized, "value"), nullptr));
-                }
-                case token_type::end_of_input:
-                {
-                    if (JSON_HEDLEY_UNLIKELY(m_lexer.get_position().chars_read_total == 1))
-                    {
-                        return sax-&gt;parse_error(m_lexer.get_position(),
-                                                m_lexer.get_token_string(),
-                                                parse_error::create(101, m_lexer.get_position(),
-                                                        "attempting to parse an empty input; check that your input string or stream contains the expected JSON", nullptr));
-                    }
-
-                    return sax-&gt;parse_error(m_lexer.get_position(),
-                                            m_lexer.get_token_string(),
-                                            parse_error::create(101, m_lexer.get_position(), exception_message(token_type::literal_or_value, "value"), nullptr));
-                }
-                case token_type::uninitialized:
-                case token_type::end_array:
-                case token_type::end_object:
-                case token_type::name_separator:
-                case token_type::value_separator:
-                case token_type::literal_or_value:
-                default: // the last token was unexpected
-                {
-                    return sax-&gt;parse_error(m_lexer.get_position(),
-                                            m_lexer.get_token_string(),
-                                            parse_error::create(101, m_lexer.get_position(), exception_message(token_type::literal_or_value, "value"), nullptr));
-                }
-            }
-        }
-        else
-        {
-            skip_to_state_evaluation = false;
-        }
-
-        // we reached this line after we successfully parsed a value
-        if (states.empty())
-        {
-            // empty stack: we reached the end of the hierarchy: done
-            return true;
-        }
-
-        if (states.back())  // array
-        {
-            // comma -&gt; next value
-            if (get_token() == token_type::value_separator)
-            {
-                // parse a new value
-                get_token();
-                continue;
-            }
-
-            // closing ]
-            if (JSON_HEDLEY_LIKELY(last_token == token_type::end_array))
-            {
-                if (JSON_HEDLEY_UNLIKELY(!sax-&gt;end_array()))
-                {
-                    return false;
-                }
-
-                // We are done with this array. Before we can parse a
-                // new value, we need to evaluate the new state first.
-                // By setting skip_to_state_evaluation to false, we
-                // are effectively jumping to the beginning of this if.
-                JSON_ASSERT(!states.empty());
-                states.pop_back();
-                skip_to_state_evaluation = true;
-                continue;
-            }
-
-            return sax-&gt;parse_error(m_lexer.get_position(),
-                                    m_lexer.get_token_string(),
-                                    parse_error::create(101, m_lexer.get_position(), exception_message(token_type::end_array, "array"), nullptr));
-        }
-
-        // states.back() is false -&gt; object
-
-        // comma -&gt; next value
-        if (get_token() == token_type::value_separator)
-        {
-            // parse key
-            if (JSON_HEDLEY_UNLIKELY(get_token() != token_type::value_string))
-            {
-                return sax-&gt;parse_error(m_lexer.get_position(),
-                                        m_lexer.get_token_string(),
-                                        parse_error::create(101, m_lexer.get_position(), exception_message(token_type::value_string, "object key"), nullptr));
-            }
-
-            if (JSON_HEDLEY_UNLIKELY(!sax-&gt;key(m_lexer.get_string())))
-            {
-                return false;
-            }
-
-            // parse separator (:)
-            if (JSON_HEDLEY_UNLIKELY(get_token() != token_type::name_separator))
-            {
-                return sax-&gt;parse_error(m_lexer.get_position(),
-                                        m_lexer.get_token_string(),
-                                        parse_error::create(101, m_lexer.get_position(), exception_message(token_type::name_separator, "object separator"), nullptr));
-            }
-
-            // parse values
-            get_token();
-            continue;
-        }
-
-        // closing }
-        if (JSON_HEDLEY_LIKELY(last_token == token_type::end_object))
-        {
-            if (JSON_HEDLEY_UNLIKELY(!sax-&gt;end_object()))
-            {
-                return false;
-            }
-
-            // We are done with this object. Before we can parse a
-            // new value, we need to evaluate the new state first.
-            // By setting skip_to_state_evaluation to false, we
-            // are effectively jumping to the beginning of this if.
-            JSON_ASSERT(!states.empty());
-            states.pop_back();
-            skip_to_state_evaluation = true;
-            continue;
-        }
-
-        return sax-&gt;parse_error(m_lexer.get_position(),
-                                m_lexer.get_token_string(),
-                                parse_error::create(101, m_lexer.get_position(), exception_message(token_type::end_object, "object"), nullptr));
-    }
-}
-
-```
-
+	```cpp
+	bool sax_parse_internal(SAX* sax)
+	{
+	    // stack to remember the hierarchy of structured values we are parsing
+	    // true = array; false = object
+	    std::vector&lt;bool&gt; states;
+	    // value to avoid a goto (see comment where set to true)
+	    bool skip_to_state_evaluation = false;
+	
+	    while (true)
+	    {
+	        if (!skip_to_state_evaluation)
+	        {
+	            // invariant: get_token() was called before each iteration
+	            switch (last_token)
+	            {
+	                case token_type::begin_object:
+	                {
+	                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;start_object(detail::unknown_size())))
+	                    {
+	                        return false;
+	                    }
+	
+	                    // closing } -&gt; we are done
+	                    if (get_token() == token_type::end_object)
+	                    {
+	                        if (JSON_HEDLEY_UNLIKELY(!sax-&gt;end_object()))
+	                        {
+	                            return false;
+	                        }
+	                        break;
+	                    }
+	
+	                    // parse key
+	                    if (JSON_HEDLEY_UNLIKELY(last_token != token_type::value_string))
+	                    {
+	                        return sax-&gt;parse_error(m_lexer.get_position(),
+	                                                m_lexer.get_token_string(),
+	                                                parse_error::create(101, m_lexer.get_position(), exception_message(token_type::value_string, "object key"), nullptr));
+	                    }
+	                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;key(m_lexer.get_string())))
+	                    {
+	                        return false;
+	                    }
+	
+	                    // parse separator (:)
+	                    if (JSON_HEDLEY_UNLIKELY(get_token() != token_type::name_separator))
+	                    {
+	                        return sax-&gt;parse_error(m_lexer.get_position(),
+	                                                m_lexer.get_token_string(),
+	                                                parse_error::create(101, m_lexer.get_position(), exception_message(token_type::name_separator, "object separator"), nullptr));
+	                    }
+	
+	                    // remember we are now inside an object
+	                    states.push_back(false);
+	
+	                    // parse values
+	                    get_token();
+	                    continue;
+	                }
+	
+	                case token_type::begin_array:
+	                {
+	                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;start_array(detail::unknown_size())))
+	                    {
+	                        return false;
+	                    }
+	
+	                    // closing ] -&gt; we are done
+	                    if (get_token() == token_type::end_array)
+	                    {
+	                        if (JSON_HEDLEY_UNLIKELY(!sax-&gt;end_array()))
+	                        {
+	                            return false;
+	                        }
+	                        break;
+	                    }
+	
+	                    // remember we are now inside an array
+	                    states.push_back(true);
+	
+	                    // parse values (no need to call get_token)
+	                    continue;
+	                }
+	
+	                case token_type::value_float:
+	                {
+	                    const auto res = m_lexer.get_number_float();
+	
+	                    if (JSON_HEDLEY_UNLIKELY(!std::isfinite(res)))
+	                    {
+	                        return sax-&gt;parse_error(m_lexer.get_position(),
+	                                                m_lexer.get_token_string(),
+	                                                out_of_range::create(406, concat("number overflow parsing '", m_lexer.get_token_string(), '\''), nullptr));
+	                    }
+	
+	                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;number_float(res, m_lexer.get_string())))
+	                    {
+	                        return false;
+	                    }
+	
+	                    break;
+	                }
+	
+	                case token_type::literal_false:
+	                {
+	                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;boolean(false)))
+	                    {
+	                        return false;
+	                    }
+	                    break;
+	                }
+	
+	                case token_type::literal_null:
+	                {
+	                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;null()))
+	                    {
+	                        return false;
+	                    }
+	                    break;
+	                }
+	
+	                case token_type::literal_true:
+	                {
+	                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;boolean(true)))
+	                    {
+	                        return false;
+	                    }
+	                    break;
+	                }
+	
+	                case token_type::value_integer:
+	                {
+	                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;number_integer(m_lexer.get_number_integer())))
+	                    {
+	                        return false;
+	                    }
+	                    break;
+	                }
+	
+	                case token_type::value_string:
+	                {
+	                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;string(m_lexer.get_string())))
+	                    {
+	                        return false;
+	                    }
+	                    break;
+	                }
+	
+	                case token_type::value_unsigned:
+	                {
+	                    if (JSON_HEDLEY_UNLIKELY(!sax-&gt;number_unsigned(m_lexer.get_number_unsigned())))
+	                    {
+	                        return false;
+	                    }
+	                    break;
+	                }
+	
+	                case token_type::parse_error:
+	                {
+	                    // using "uninitialized" to avoid "expected" message
+	                    return sax-&gt;parse_error(m_lexer.get_position(),
+	                                            m_lexer.get_token_string(),
+	                                            parse_error::create(101, m_lexer.get_position(), exception_message(token_type::uninitialized, "value"), nullptr));
+	                }
+	                case token_type::end_of_input:
+	                {
+	                    if (JSON_HEDLEY_UNLIKELY(m_lexer.get_position().chars_read_total == 1))
+	                    {
+	                        return sax-&gt;parse_error(m_lexer.get_position(),
+	                                                m_lexer.get_token_string(),
+	                                                parse_error::create(101, m_lexer.get_position(),
+	                                                        "attempting to parse an empty input; check that your input string or stream contains the expected JSON", nullptr));
+	                    }
+	
+	                    return sax-&gt;parse_error(m_lexer.get_position(),
+	                                            m_lexer.get_token_string(),
+	                                            parse_error::create(101, m_lexer.get_position(), exception_message(token_type::literal_or_value, "value"), nullptr));
+	                }
+	                case token_type::uninitialized:
+	                case token_type::end_array:
+	                case token_type::end_object:
+	                case token_type::name_separator:
+	                case token_type::value_separator:
+	                case token_type::literal_or_value:
+	                default: // the last token was unexpected
+	                {
+	                    return sax-&gt;parse_error(m_lexer.get_position(),
+	                                            m_lexer.get_token_string(),
+	                                            parse_error::create(101, m_lexer.get_position(), exception_message(token_type::literal_or_value, "value"), nullptr));
+	                }
+	            }
+	        }
+	        else
+	        {
+	            skip_to_state_evaluation = false;
+	        }
+	
+	        // we reached this line after we successfully parsed a value
+	        if (states.empty())
+	        {
+	            // empty stack: we reached the end of the hierarchy: done
+	            return true;
+	        }
+	
+	        if (states.back())  // array
+	        {
+	            // comma -&gt; next value
+	            if (get_token() == token_type::value_separator)
+	            {
+	                // parse a new value
+	                get_token();
+	                continue;
+	            }
+	
+	            // closing ]
+	            if (JSON_HEDLEY_LIKELY(last_token == token_type::end_array))
+	            {
+	                if (JSON_HEDLEY_UNLIKELY(!sax-&gt;end_array()))
+	                {
+	                    return false;
+	                }
+	
+	                // We are done with this array. Before we can parse a
+	                // new value, we need to evaluate the new state first.
+	                // By setting skip_to_state_evaluation to false, we
+	                // are effectively jumping to the beginning of this if.
+	                JSON_ASSERT(!states.empty());
+	                states.pop_back();
+	                skip_to_state_evaluation = true;
+	                continue;
+	            }
+	
+	            return sax-&gt;parse_error(m_lexer.get_position(),
+	                                    m_lexer.get_token_string(),
+	                                    parse_error::create(101, m_lexer.get_position(), exception_message(token_type::end_array, "array"), nullptr));
+	        }
+	
+	        // states.back() is false -&gt; object
+	
+	        // comma -&gt; next value
+	        if (get_token() == token_type::value_separator)
+	        {
+	            // parse key
+	            if (JSON_HEDLEY_UNLIKELY(get_token() != token_type::value_string))
+	            {
+	                return sax-&gt;parse_error(m_lexer.get_position(),
+	                                        m_lexer.get_token_string(),
+	                                        parse_error::create(101, m_lexer.get_position(), exception_message(token_type::value_string, "object key"), nullptr));
+	            }
+	
+	            if (JSON_HEDLEY_UNLIKELY(!sax-&gt;key(m_lexer.get_string())))
+	            {
+	                return false;
+	            }
+	
+	            // parse separator (:)
+	            if (JSON_HEDLEY_UNLIKELY(get_token() != token_type::name_separator))
+	            {
+	                return sax-&gt;parse_error(m_lexer.get_position(),
+	                                        m_lexer.get_token_string(),
+	                                        parse_error::create(101, m_lexer.get_position(), exception_message(token_type::name_separator, "object separator"), nullptr));
+	            }
+	
+	            // parse values
+	            get_token();
+	            continue;
+	        }
+	
+	        // closing }
+	        if (JSON_HEDLEY_LIKELY(last_token == token_type::end_object))
+	        {
+	            if (JSON_HEDLEY_UNLIKELY(!sax-&gt;end_object()))
+	            {
+	                return false;
+	            }
+	
+	            // We are done with this object. Before we can parse a
+	            // new value, we need to evaluate the new state first.
+	            // By setting skip_to_state_evaluation to false, we
+	            // are effectively jumping to the beginning of this if.
+	            JSON_ASSERT(!states.empty());
+	            states.pop_back();
+	            skip_to_state_evaluation = true;
+	            continue;
+	        }
+	
+	        return sax-&gt;parse_error(m_lexer.get_position(),
+	                                m_lexer.get_token_string(),
+	                                parse_error::create(101, m_lexer.get_position(), exception_message(token_type::end_object, "object"), nullptr));
+	    }
+	}
+	
+	```
+	
 
 - `function: [lexer::scan]
 (include/nlohmann/detail/input/lexer.hpp)`
@@ -12791,97 +13126,97 @@ bool sax_parse_internal(SAX* sax)
 	- Description: function, which is called by parser::sax_parse_internal to read input data
 
 
-```cpp
-token_type scan()
-{
-    // initially, skip the BOM
-    if (position.chars_read_total == 0 && !skip_bom())
-    {
-        error_message = "invalid BOM; must be 0xEF 0xBB 0xBF if given";
-        return token_type::parse_error;
-    }
-
-    // read next character and ignore whitespace
-    skip_whitespace();
-
-    // ignore comments
-    while (ignore_comments && current == '/')
-    {
-        if (!scan_comment())
-        {
-            return token_type::parse_error;
-        }
-
-        // skip following whitespace
-        skip_whitespace();
-    }
-
-    switch (current)
-    {
-        // structural characters
-        case '[':
-            return token_type::begin_array;
-        case ']':
-            return token_type::end_array;
-        case '{':
-            return token_type::begin_object;
-        case '}':
-            return token_type::end_object;
-        case ':':
-            return token_type::name_separator;
-        case ',':
-            return token_type::value_separator;
-
-        // literals
-        case 't':
-        {
-            std::array&lt;char_type, 4&gt; true_literal = {{static_cast&lt;char_type&gt;('t'), static_cast&lt;char_type&gt;('r'), static_cast&lt;char_type&gt;('u'), static_cast&lt;char_type&gt;('e')}};
-            return scan_literal(true_literal.data(), true_literal.size(), token_type::literal_true);
-        }
-        case 'f':
-        {
-            std::array&lt;char_type, 5&gt; false_literal = {{static_cast&lt;char_type&gt;('f'), static_cast&lt;char_type&gt;('a'), static_cast&lt;char_type&gt;('l'), static_cast&lt;char_type&gt;('s'), static_cast&lt;char_type&gt;('e')}};
-            return scan_literal(false_literal.data(), false_literal.size(), token_type::literal_false);
-        }
-        case 'n':
-        {
-            std::array&lt;char_type, 4&gt; null_literal = {{static_cast&lt;char_type&gt;('n'), static_cast&lt;char_type&gt;('u'), static_cast&lt;char_type&gt;('l'), static_cast&lt;char_type&gt;('l')}};
-            return scan_literal(null_literal.data(), null_literal.size(), token_type::literal_null);
-        }
-
-        // string
-        case '\"':
-            return scan_string();
-
-        // number
-        case '-':
-        case '0':
-        case '1':
-        case '2':
-        case '3':
-        case '4':
-        case '5':
-        case '6':
-        case '7':
-        case '8':
-        case '9':
-            return scan_number();
-
-        // end of input (the null byte is needed when parsing from
-        // string literals)
-        case '\0':
-        case char_traits&lt;char_type&gt;::eof():
-            return token_type::end_of_input;
-
-        // error
-        default:
-            error_message = "invalid literal";
-            return token_type::parse_error;
-    }
-}
-
-```
-
+	```cpp
+	token_type scan()
+	{
+	    // initially, skip the BOM
+	    if (position.chars_read_total == 0 && !skip_bom())
+	    {
+	        error_message = "invalid BOM; must be 0xEF 0xBB 0xBF if given";
+	        return token_type::parse_error;
+	    }
+	
+	    // read next character and ignore whitespace
+	    skip_whitespace();
+	
+	    // ignore comments
+	    while (ignore_comments && current == '/')
+	    {
+	        if (!scan_comment())
+	        {
+	            return token_type::parse_error;
+	        }
+	
+	        // skip following whitespace
+	        skip_whitespace();
+	    }
+	
+	    switch (current)
+	    {
+	        // structural characters
+	        case '[':
+	            return token_type::begin_array;
+	        case ']':
+	            return token_type::end_array;
+	        case '{':
+	            return token_type::begin_object;
+	        case '}':
+	            return token_type::end_object;
+	        case ':':
+	            return token_type::name_separator;
+	        case ',':
+	            return token_type::value_separator;
+	
+	        // literals
+	        case 't':
+	        {
+	            std::array&lt;char_type, 4&gt; true_literal = {{static_cast&lt;char_type&gt;('t'), static_cast&lt;char_type&gt;('r'), static_cast&lt;char_type&gt;('u'), static_cast&lt;char_type&gt;('e')}};
+	            return scan_literal(true_literal.data(), true_literal.size(), token_type::literal_true);
+	        }
+	        case 'f':
+	        {
+	            std::array&lt;char_type, 5&gt; false_literal = {{static_cast&lt;char_type&gt;('f'), static_cast&lt;char_type&gt;('a'), static_cast&lt;char_type&gt;('l'), static_cast&lt;char_type&gt;('s'), static_cast&lt;char_type&gt;('e')}};
+	            return scan_literal(false_literal.data(), false_literal.size(), token_type::literal_false);
+	        }
+	        case 'n':
+	        {
+	            std::array&lt;char_type, 4&gt; null_literal = {{static_cast&lt;char_type&gt;('n'), static_cast&lt;char_type&gt;('u'), static_cast&lt;char_type&gt;('l'), static_cast&lt;char_type&gt;('l')}};
+	            return scan_literal(null_literal.data(), null_literal.size(), token_type::literal_null);
+	        }
+	
+	        // string
+	        case '\"':
+	            return scan_string();
+	
+	        // number
+	        case '-':
+	        case '0':
+	        case '1':
+	        case '2':
+	        case '3':
+	        case '4':
+	        case '5':
+	        case '6':
+	        case '7':
+	        case '8':
+	        case '9':
+	            return scan_number();
+	
+	        // end of input (the null byte is needed when parsing from
+	        // string literals)
+	        case '\0':
+	        case char_traits&lt;char_type&gt;::eof():
+	            return token_type::end_of_input;
+	
+	        // error
+	        default:
+	            error_message = "invalid literal";
+	            return token_type::parse_error;
+	    }
+	}
+	
+	```
+	
 
 
 
@@ -12913,6 +13248,12 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
 
 - `cpp-test: [accept;UTF-8;Other byte-order marks;UTF-32]
 (TSF/tests/unit-byte_order_mark.cpp)`
@@ -12960,6 +13301,12 @@ _None_
 
 
 **References:**
+
+- `this item also refers to the references of item JLEX-01`
+
+
+	- see [here](JLEX.md#jlex-01) to find JLEX-01
+
 
 - `cpp-test: [accept;UTF-8;unexpected BOM]
 (TSF/tests/unit-byte_order_mark.cpp)`
