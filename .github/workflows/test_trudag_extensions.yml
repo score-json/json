@@ -31,7 +31,7 @@ jobs:
     - name: Run tests
       run: |
         cd .dotstop_extensions
-        pytest -v
+        PYTHONPATH=.. pytest -v
 
     - name: Generate test_trudag_extensions artifact
       run: |

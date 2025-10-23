@@ -2,6 +2,9 @@
 level: 1.1
 normative: true
 references:
+        - type: item
+          items:
+            - JLEX-02
         - type: cpp_test
           name: "Unicode (2/5);RFC 3629;ill-formed first byte"
           path: "tests/src/unit-unicode2.cpp"

@@ -2,6 +2,10 @@
 level: 1.1
 normative: true
 references:
+        - type: item
+          items:
+            - JLEX-01
+            - NJF-08
         - type: cpp_test
           name: "accept;exponents;U+0425"
           path: "TSF/tests/unit-numbers.cpp"
