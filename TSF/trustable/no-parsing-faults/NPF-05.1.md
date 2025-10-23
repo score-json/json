@@ -2,6 +2,9 @@
 level: 1.1
 normative: true
 references:
+        - type: item
+          items:
+            - JLEX-02
         - type: cpp_test
           name: "parser class - core;parse;array;empty array"
           path: "TSF/tests/unit-class_parser_core.cpp"
