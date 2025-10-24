@@ -140,14 +140,6 @@ The content of a `TimeVaryingWebReference` is given by the content of a changelo
 
 An example of the complete configuration for `TimeVaryingWebReference` is
 
-in case of a custom description.
-
-## TimeVaryingWebReference
-
-The content of a `TimeVaryingWebReference` is given by the content of a changelog, whose default value is `ChangeLog.md`, which mirrors the changelog of nlohmann/json. This reference is intended for websites, whose content is constantly changing, so that a `WebContentReference` makes the item un-reviewable, but whose content at the time of an update influences the trustability. An example is `https://github.com/nlohmann/json/pulse/monthly`, which can be used to demonstrate that nlohmann/json is *up to the most recent version* under active development.
-
-An example of the complete configuration for `TimeVaryingWebReference` is
-
 ```
 ---
 ...
@@ -189,6 +181,26 @@ references:
   test_files:
     - TSF/tests
     - tests/src
+---
+```
+
+## NumberOfFailures
+
+This reference queries `https://github.com/{self._owner}/{self._repo}/actions?query=is%3Afailure+branch%3A{self._branch}` and collects the number of failed workflow runs as its content.
+Here, owner, repo and branch are the arguments given to the constructor of the reference.
+If no branch is specified, then all failures are collected, i.e. `https://github.com/{self._owner}/{self._repo}/actions?query=is%3Afailure` is queried.
+In case the website is un-reachable, or the github layout changes drastically so that the number of failed workflow runs does not exists at the expected location, an error is thrown.
+
+The expected configuration is 
+
+```
+---
+...
+references:
+- type: workflow_failures
+      owner: "eclipse-score"
+      repo: "inc_nlohmann_json"
+      branch: "json_version_3_12_0"
 ---
 ```
 
@@ -281,7 +293,7 @@ The test-files are called unit-FILE_NAME.cpp. In the configuration, FILE_NAME is
 
 For each test specified in test-files, the number of passed and failed test-cases is calculated, while the number of skipped test-cases is ignored. The score of each test is then the ratio of passed test-cases compared to all non-skipped test-cases; the total score is the mean of the individual scores.
 
-## issue_checker
+## check_issues
 
 The automatic validator `check_issues` is intended to evaluate the json-lists `raw_open_issues.json` and `raw_closed_issues.json` and compare with the list of known issues of nlohmann/json labelled as bug opened since the release of the version of nlohmann/json that is documented. The json lists are generated in the publish_documentation-Workflow, and not persistently stored.
 
@@ -303,6 +315,42 @@ These issues are collected in a table containing the issue-ID, an indication whe
 From `raw_closed_issues.json`, all issue IDs are collected, which are labelled as bug and opened after the release_date; and from `raw_open_issues.json`, all issue IDs are collected.
 If for any of these IDs, it is not explicitly indicated in the list of known misbehaviours that this issue does not apply to Eclipse S-CORE, then the score 0.0 is returned.
 Otherwise, the score 1.0 is assigned.
+
+## did_workflows_fail
+
+The automatic validator `did_workflows_fail` queries the web-site `https://github.com/{owner}/{repo}/actions?query=event%3A{event}+is%3Afailure+branch%3A{branch}` and looks on the number of workflow run results which is printed at the head of the table.
+In case that this number is not zero, a score of 0.0 is returned, and 1.0 otherwise.
+
+The expected configuration is given as follows:
+
+```
+evidence:
+    type: did_workflows_fail
+    configuration:
+        owner: "eclipse-score" # owner of the repository
+        repo: "inc_nlohmann_json" # name of the repository
+        branch: "json_version_3_12_0" # name of the branch
+        action: "push" # optional, default is push
+```
+
+It is of utmost importance that the arguments come with quotation marks, otherwise, the update helper does not work as intended.
+
+## is_branch_protected
+
+The automatic validator `is_branch_protected` tries to push to the specified branch, i.e. to execute the command `git push origin HEAD:{branch}`. 
+In case any changes are staged during the execution of the validator, an error is thrown before the push occurs.
+Since the validator is intended to be executed during a workflow run, where no change is staged, it is no expected that the error is thrown.
+
+The expected configuration is given as follows:
+
+```
+evidence:
+    type: is_branch_protected
+    configuration:
+        branch: "json_version_3_12_0" # name of the branch
+```
+
+It is of utmost importance that the arguments come with quotation marks, otherwise, the update helper does not work as intended.
 
 
 # Data store interface

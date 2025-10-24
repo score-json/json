@@ -4,7 +4,7 @@ normative: true
 evidence:
     type: issue_checker
     configuration:
-        release_date: "2025-04-11T00:00:00Z"
+        release_date: "2025-04-11T08:43:39Z"
         list_of_known_misbehaviours: "./TSF/docs/nlohmann_misbehaviours_comments.md"
 ---
 

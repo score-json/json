@@ -12,6 +12,8 @@ from TSF.scripts.generate_list_of_tests import ListOfTestsGenerator
 import hashlib
 import json
 from datetime import datetime, timezone
+import re
+import subprocess
 
 yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
@@ -353,3 +355,145 @@ def check_issues(configuration: dict[str, yaml]) -> tuple[float, list[Exception 
             return(0.0,[])  
     # If you are here, then there are no applicable misbehaviours.
     return (1.0, [])
+
+def did_workflows_fail(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    owner = configuration.get("owner",None)
+    if owner is None:
+        return (0.0, RuntimeError("The owner is not specified in the configuration of did_workflows_fail."))
+    repo = configuration.get("repo",None)
+    if repo is None:
+        return (0.0, RuntimeError("The repository is not specified in the configuration of did_workflows_fail."))
+    event = configuration.get("event","push")
+    url = f"https://github.com/{owner}/{repo}/actions?query=event%3A{event}+is%3Afailure"
+    branch = configuration.get("branch",None)
+    if branch is not None:
+        url += "+branch%3A{branch}"
+    res = requests.get(url)
+    if res.status_code != 200:
+        return (0.0, RuntimeError(f"The website {url} can not be successfully reached!"))
+    m = re.search(r'(\d+)\s+workflow run results', res.text, flags=re.I)
+    if m is None:
+        return (0.0, RuntimeError("The number of failed workflows can not be found."))
+    if m.group(1).strip() != "0":
+        return (0.0, Warning("There are failed workflows!"))
+    return (1.0, [])
+
+def is_branch_protected(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    branch = configuration.get("branch",None)
+    if branch is None:
+        return (0.0, RuntimeError("The branch is not specified."))
+    res = subprocess.run(["git", "diff", "--cached", "--quiet", "--exit-code"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
+    if res.returncode != 0:
+        raise RuntimeError("There are currently staged changes. Please unstage to proceed.")
+    try:
+        subprocess.run(["git","push","origin",f"HEAD:{branch}"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
+        return (0.0, RuntimeError(f"The branch {branch} is not protected!"))
+    except:
+        return (1.0, [])
+    
+def coveralls_reporter(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    owner = configuration.get("owner",None)
+    if owner is None:
+        return (0.0, [ValueError("The owner needs to be specified in the configuration for coveralls_reporter.")])
+    repo = configuration.get("repo",None)
+    if repo is None:
+        return (0.0, [ValueError("The repository needs to be specified in the configuration for coveralls_reporter.")])
+    branch = configuration.get("branch",None)
+    if branch is not None:
+        url = f"coveralls.io/github/{owner}/{repo}?branch={branch}.json"
+    else:
+        url = f"coveralls.io/github/{owner}/{repo}.json"
+    res = requests.get(url)
+    if res.status_code != 200:
+        return (0.0, [RuntimeError(f"Can not reach {url} to fetch the code coverage!")])
+    res = json.loads(res.text)
+    try:
+        covered_lines = int(res.get("covered_lines","0"))
+        relevant_lines = int(res.get("relevant_lines","1"))
+    except ValueError:
+        return (0.0, [RuntimeError("Critical error in the coveralls api: Expecting integer values for lines!")])
+    try:
+        expected_line_coverage = float(configuration.get("line_coverage","0.0"))
+    except ValueError:
+        return (0.0, [ValueError("line_coverage needs to be a floating point value!")])
+    try:
+        digits = int(configuration.get("significant_decimal_digits","3"))
+    except ValueError:
+        return (0.0, [ValueError("significant_decimal_digits needs to be an integer value!")])
+    if round(expected_line_coverage, digits) != round(covered_lines/relevant_lines * 100, digits):
+        return (0.0, [Warning("The line coverage has changed!")])
+    try:
+        covered_branches = int(res.get("covered_branches","0"))
+        relevant_branches = int(res.get("relevant_branches","1"))
+    except ValueError:
+        return (0.0, [RuntimeError("Critical error in the coveralls api: Expecting integer values for branches!")])
+    try:
+        expected_branch_coverage = float(configuration.get("branch_coverage","0.0"))
+    except ValueError:
+        return (0.0, [ValueError("branch_coverage needs to be a floating point value!")])
+    if round(expected_branch_coverage, digits) != round(covered_branches/relevant_branches * 100, digits):
+        return (0.0, [Warning("The branch coverage has changed!")])
+    return (1.0, [])
+    
+
+
+def combinator(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    validators = configuration.get("validators",None)
+    if validators is None:
+        return (1.0, Warning("No validators were given, returning the void-validator."))
+    elif not isinstance(validators,list):
+        return (0.0, TypeError("The list of validators must be given as list."))
+    scores = []
+    exceptions = []
+    weights = []
+    for validator in validators:
+        # fetch configuration
+        validator_configuration = validator.get("configuration", None)
+        if not isinstance(validator_configuration,dict[str, yaml]):
+            return (0.0, TypeError("Validator configuration must be an object."))
+        # fetch weight
+        weight = float(validator.get("weight",1.0))
+        if weight<0:
+            return (0.0, TypeError("Validator weights must be non-negative."))
+        weights.append(weight)
+        # fetch type
+        validator_type = validator.get("type", None)
+        if validator_type is None:
+            return (0.0, TypeError("Missing validator type declaration."))
+        # execute validator
+        if validator_type == "check_artifact_exists":
+            validator_score, validator_errors = check_artifact_exists(validator_configuration)
+            scores.append(validator_score)
+            exceptions.extend(validator_errors)
+        elif validator_type == "https_response_time":
+            validator_score, validator_errors = https_response_time(validator_configuration)
+            scores.append(validator_score)
+            exceptions.extend(validator_errors)
+        elif validator_type == "check_test_results":
+            validator_score, validator_errors = check_test_results(validator_configuration)
+            scores.append(validator_score)
+            exceptions.extend(validator_errors)
+        elif validator_type == "file_exists":
+            validator_score, validator_errors = file_exists(validator_configuration)
+            scores.append(validator_score)
+            exceptions.extend(validator_errors)
+        elif validator_type == "sha_checker":
+            validator_score, validator_errors = sha_checker(validator_configuration)
+            scores.append(validator_score)
+            exceptions.extend(validator_errors)
+        elif validator_type == "check_issues":
+            validator_score, validator_errors = check_issues(validator_configuration)
+            scores.append(validator_score)
+            exceptions.extend(validator_errors)
+        elif validator_type == "did_workflows_fail":
+            validator_score, validator_errors = did_workflows_fail(validator_configuration)
+            scores.append(validator_score)
+            exceptions.extend(validator_errors)
+        elif validator_type == "is_branch_protected":
+            validator_score, validator_errors = is_branch_protected(validator_configuration)
+            scores.append(validator_score)
+            exceptions.extend(validator_errors)
+    if sum(weights) == 0.0:
+        return (0.0, exceptions)
+    else:
+        return (sum(list(map(lambda x,y: x*y, scores, weights)))/sum(weights),exceptions)

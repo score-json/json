@@ -20,7 +20,7 @@ TEST_CASE("accept")
         // The only valid exponents are U+0065 and U+0045.
         // Their look-alikes, in particular U+0425 and U+0436 are forbidden.
         SECTION("U+0425")
-        {            
+        {
             CHECK(!json::accept("0\u0425123"));
             CHECK(!json::accept("123\u04250"));
             CHECK(!json::accept("0.123\u0425123"));
@@ -28,7 +28,7 @@ TEST_CASE("accept")
             CHECK(!json::accept("1.23\u04250"));
         }
         SECTION("U+0436")
-        {            
+        {
             CHECK(!json::accept("0\u0436123"));
             CHECK(!json::accept("123\u04360"));
             CHECK(!json::accept("0.123\u0436123"));
@@ -63,7 +63,6 @@ TEST_CASE("accept")
         }
         SECTION("minus")
         {
-            
             CHECK(!json::accept("1-1"));
             CHECK(!json::accept("0.1-1"));
             CHECK(!json::accept("0.1-1.0"));
@@ -75,7 +74,6 @@ TEST_CASE("accept")
         }
         SECTION("brackets")
         {
-            
             CHECK(!json::accept("(145)"));
             CHECK(!json::accept("(34.32874)"));
             CHECK(!json::accept("42\u0045(134)"));
@@ -83,12 +81,10 @@ TEST_CASE("accept")
         }
         SECTION("factorial")
         {
-            
             CHECK(!json::accept("13!"));
         }
         SECTION("multiplication")
         {
-            
             CHECK(!json::accept("1*1"));
             CHECK(!json::accept("1.45*5"));
             CHECK(!json::accept("154*23.76"));
@@ -99,7 +95,6 @@ TEST_CASE("accept")
         }
         SECTION("division")
         {
-            
             CHECK(!json::accept("0/0"));
             CHECK(!json::accept("1.45/5"));
             CHECK(!json::accept("154/23.76"));
@@ -110,7 +105,6 @@ TEST_CASE("accept")
         }
         SECTION("comma")
         {
-            
             CHECK(!json::accept("0,0"));
             CHECK(!json::accept("100,000"));
             CHECK(!json::accept("1,000.23"));
@@ -283,7 +277,7 @@ TEST_CASE("accept")
         CHECK(!json::accept("-0000000000000000000000000000000000042"));
     }
     // According to RFC8259, only numbers in base ten are allowed. For bases lower than ten, this can
-    // not be checked using the numerical representation and checking the grammar, assuming that the 
+    // not be checked using the numerical representation and checking the grammar, assuming that the
     // standard digits are used; instead, this is the job of the parser.
     // For bases exceeding ten, this can be checked. In particular hexadecimal can be tested for.
     // For base eight, this can also be tested assuming that one of the conventions for the
@@ -322,14 +316,14 @@ TEST_CASE("accept")
 
 TEST_CASE("parse")
 {
-    // While leading zeroes are forbidden according to RFC8259, 
+    // While leading zeroes are forbidden according to RFC8259,
     // leading zeroes in the exponent are allowed and ignored in the parsing.
     SECTION("exponents")
     {
         // The only valid exponents are U+0065 and U+0045.
         // Their look-alikes, in particular U+0425 and U+0436 are forbidden.
         SECTION("U+0425")
-        {            
+        {
             CHECK_THROWS_AS(parser_helper("0\u0425123"),json::parse_error&);
             CHECK_THROWS_AS(parser_helper("123\u04250"),json::parse_error&);
             CHECK_THROWS_AS(parser_helper("0.123\u0425123"),json::parse_error&);
@@ -337,7 +331,7 @@ TEST_CASE("parse")
             CHECK_THROWS_AS(parser_helper("1.23\u04250"),json::parse_error&);
         }
         SECTION("U+0436")
-        {            
+        {
             CHECK_THROWS_AS(parser_helper("0\u0436123"),json::parse_error&);
             CHECK_THROWS_AS(parser_helper("123\u04360"),json::parse_error&);
             CHECK_THROWS_AS(parser_helper("0.123\u0436123"),json::parse_error&);
@@ -384,7 +378,6 @@ TEST_CASE("parse")
         }
         SECTION("minus")
         {
-            
             CHECK_THROWS_AS(parser_helper("1-1"),json::parse_error&);
             CHECK_THROWS_AS(parser_helper("0.1-1"),json::parse_error&);
             CHECK_THROWS_AS(parser_helper("0.1-1.0"),json::parse_error&);
@@ -396,7 +389,6 @@ TEST_CASE("parse")
         }
         SECTION("brackets")
         {
-            
             CHECK_THROWS_AS(parser_helper("(145)"),json::parse_error&);
             CHECK_THROWS_AS(parser_helper("(34.32874)"),json::parse_error&);
             CHECK_THROWS_AS(parser_helper("42\u0045(134)"),json::parse_error&);
@@ -408,7 +400,6 @@ TEST_CASE("parse")
         }
         SECTION("multiplication")
         {
-            
             CHECK_THROWS_AS(parser_helper("1*1"),json::parse_error&);
             CHECK_THROWS_AS(parser_helper("1.45*5"),json::parse_error&);
             CHECK_THROWS_AS(parser_helper("154*23.76"),json::parse_error&);
@@ -419,7 +410,6 @@ TEST_CASE("parse")
         }
         SECTION("division")
         {
-            
             CHECK_THROWS_AS(parser_helper("0/0"),json::parse_error&);
             CHECK_THROWS_AS(parser_helper("1.45/5"),json::parse_error&);
             CHECK_THROWS_AS(parser_helper("154/23.76"),json::parse_error&);
@@ -430,14 +420,13 @@ TEST_CASE("parse")
         }
         SECTION("comma")
         {
-            
             CHECK_THROWS_AS(parser_helper("0,0"),json::parse_error&);
             CHECK_THROWS_AS(parser_helper("100,000"),json::parse_error&);
             CHECK_THROWS_AS(parser_helper("1,000.23"),json::parse_error&);
         }
     }
     SECTION("trailing zeroes")
-    {   
+    {
         // Trailing zeroes after the decimal point do not influence the parsing
         CHECK(json::parse("3.1415000000000000000000000")==json::parse("3.1415"));
         CHECK(json::parse("3.1415000000000\u004515")==json::parse("3.1415\u004515"));
@@ -543,7 +532,7 @@ TEST_CASE("parse")
     }
     SECTION("Precision")
     {
-        CHECK(json::parse("1.7976931348623158e308").dump()=="1.7976931348623157e+308"); // maximum double value 
+        CHECK(json::parse("1.7976931348623158e308").dump()=="1.7976931348623157e+308"); // maximum double value
         CHECK(json::parse("-1.7976931348623158e308").dump()=="-1.7976931348623157e+308"); // minimum double value
     }
 }
