@@ -328,10 +328,10 @@ def check_issues(configuration: dict[str, yaml]) -> tuple[float, list[Exception 
 def did_workflows_fail(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
     owner = configuration.get("owner",None)
     if owner is None:
-        return (0.0, RuntimeError("The owner is not specified."))
+        return (0.0, RuntimeError("The owner is not specified in the configuration of did_workflows_fail."))
     repo = configuration.get("repo",None)
     if repo is None:
-        return (0.0, RuntimeError("The repository is not specified."))
+        return (0.0, RuntimeError("The repository is not specified in the configuration of did_workflows_fail."))
     event = configuration.get("event","push")
     url = f"https://github.com/{owner}/{repo}/actions?query=event%3A{event}+is%3Afailure"
     branch = configuration.get("branch",None)
@@ -359,6 +359,52 @@ def is_branch_protected(configuration: dict[str, yaml]) -> tuple[float, list[Exc
         return (0.0, RuntimeError(f"The branch {branch} is not protected!"))
     except:
         return (1.0, [])
+    
+def coveralls_reporter(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    owner = configuration.get("owner",None)
+    if owner is None:
+        return (0.0, [ValueError("The owner needs to be specified in the configuration for coveralls_reporter.")])
+    repo = configuration.get("repo",None)
+    if repo is None:
+        return (0.0, [ValueError("The repository needs to be specified in the configuration for coveralls_reporter.")])
+    branch = configuration.get("branch",None)
+    if branch is not None:
+        url = f"coveralls.io/github/{owner}/{repo}?branch={branch}.json"
+    else:
+        url = f"coveralls.io/github/{owner}/{repo}.json"
+    res = requests.get(url)
+    if res.status_code != 200:
+        return (0.0, [RuntimeError(f"Can not reach {url} to fetch the code coverage!")])
+    res = json.loads(res.text)
+    try:
+        covered_lines = int(res.get("covered_lines","0"))
+        relevant_lines = int(res.get("relevant_lines","1"))
+    except ValueError:
+        return (0.0, [RuntimeError("Critical error in the coveralls api: Expecting integer values for lines!")])
+    try:
+        expected_line_coverage = float(configuration.get("line_coverage","0.0"))
+    except ValueError:
+        return (0.0, [ValueError("line_coverage needs to be a floating point value!")])
+    try:
+        digits = int(configuration.get("significant_decimal_digits","3"))
+    except ValueError:
+        return (0.0, [ValueError("significant_decimal_digits needs to be an integer value!")])
+    if round(expected_line_coverage, digits) != round(covered_lines/relevant_lines * 100, digits):
+        return (0.0, [Warning("The line coverage has changed!")])
+    try:
+        covered_branches = int(res.get("covered_branches","0"))
+        relevant_branches = int(res.get("relevant_branches","1"))
+    except ValueError:
+        return (0.0, [RuntimeError("Critical error in the coveralls api: Expecting integer values for branches!")])
+    try:
+        expected_branch_coverage = float(configuration.get("branch_coverage","0.0"))
+    except ValueError:
+        return (0.0, [ValueError("branch_coverage needs to be a floating point value!")])
+    if round(expected_branch_coverage, digits) != round(covered_branches/relevant_branches * 100, digits):
+        return (0.0, [Warning("The branch coverage has changed!")])
+    return (1.0, [])
+    
+
 
 def combinator(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
     validators = configuration.get("validators",None)
