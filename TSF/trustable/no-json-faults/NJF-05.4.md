@@ -2,6 +2,9 @@
 level: 1.1
 normative: true
 references:
+        - type: item
+          items:
+            - JLEX-01
         - type: cpp_test
           name: "parser class - core;accept;parse errors (accept)"
           path: "TSF/tests/unit-class_parser_core.cpp"

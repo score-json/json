@@ -2,6 +2,13 @@ from typing import TypeAlias, Tuple, List
 import os
 import requests
 import sqlite3
+import sys
+
+current_dir = os.getcwd()
+if current_dir not in sys.path:
+    sys.path.insert(0, current_dir)
+
+from TSF.scripts.generate_list_of_tests import ListOfTestsGenerator
 import hashlib
 import json
 from datetime import datetime, timezone
@@ -233,6 +240,30 @@ def file_exists(configuration: dict[str, yaml]) -> tuple[float, list[Exception |
         else:
             found_files += 1 if os.path.isfile(file) else 0
     return (found_files/expected_files, exceptions)
+    
+def check_list_of_tests(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    # initialise the generator
+    generator = ListOfTestsGenerator()
+    db = configuration.get("database",None)
+    if db is not None:
+        generator.set_database(db)
+    table = configuration.get("table",None)
+    if table is not None:
+        generator.set_table(table)
+    sources = configuration.get("sources",None)
+    if sources is not None:
+        generator.set_sources(sources)
+    
+    # fetch the expected result
+    try:
+        with open("./TSF/docs/list_of_test_environments.md", 'r') as f:
+            expected = f.read()
+            if expected == generator.fetch_all_test_data():
+                return(1.0,[])
+            else:
+                return(0.0,[Exception("The expected list of test-cases does not coincide with the fetched list.")])
+    except:
+        return(0.0,[Exception("An exception occurred when trying to compare the expected and the fetched list of tests.")])
 
 def sha_checker(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
     # get file of which the sha is to be calculated

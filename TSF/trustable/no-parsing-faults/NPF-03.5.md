@@ -2,6 +2,10 @@
 level: 1.1
 normative: true
 references:
+        - type: item
+          items:
+            - JLEX-02
+            - NPF-03
         - type: cpp_test
           name: "compliance tests from nativejson-benchmark;strings"
           path: "tests/src/unit-testsuites.cpp"

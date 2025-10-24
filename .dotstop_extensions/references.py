@@ -450,12 +450,10 @@ class FunctionReference(SourceSpanReference):
     def get_function_line_numbers(path: Path, name: str, overload = 1) -> tuple[int, int]:
         with open(path, 'r') as file:
             lines = file.readlines()
-        function_start_line = FunctionReference.get_function_start(path, name, lines, overload)
-        function_end_line = FunctionReference.get_function_end(path, name, function_start_line, lines)
-        return (function_start_line, function_end_line)
+        return FunctionReference.get_function_boundaries(path, name, lines, overload)
         
 
-    def get_function_start(path: Path, name: str, lines: list[str], overload: int) -> int:
+    def get_function_boundaries(path: Path, name: str, lines: list[str], overload: int) -> list[int]:
         # Split name in class_name and function_name, 
         # and check that both, and only both, parts of the name are found.
         name_parts = name.split("::")
@@ -466,77 +464,69 @@ class FunctionReference(SourceSpanReference):
         in_class = False
         sections = []
         instance = 0
-        amopen = []
+        start_line = 0
+        found_start = False
+        in_body = False
         for line_number, line in enumerate(lines):
             # first task: find literal string "class class_name " within a line
             if not in_class:
                 if f"class {name_parts[0]} " in line or f"class {name_parts[0]}\n" in line:
                     in_class = True
-                    continue
                 continue
             # now we are within the class
             # time to search for our function
+            # ignore all commented out lines
+            if line.strip().startswith("//"):
+                continue
             if "};" in line and len(sections)==0:
                 # then, we have reached the end of the class
                 break
-            # ignore all commented out lines
-            if line.strip().startswith("//"):
-                continue
-            if '{' in line or '}' in line:
-                for c in line:
-                    if c == '{':
-                        sections.append(1)
-                    if c == '}':
-                        try:
-                            sections.pop()
-                        except IndexError:
-                            raise ValueError(f"Fatal error: Could not resolve {name} in file {path}.")
-            # A function-declaration always contains the literal string " function_name("
-            # When this string is found within the indentation of the class itself,
-            # then it can be assumed that we have a function declaration.
-            # This is true in case of the hpp-files of nlohmann/json. 
-            if f" {name_parts[1]}(" in line and len(sections) == 1:
-                instance += 1
-                if instance == overload:
-                    return line_number
+            if not found_start:
+                if '{' in line or '}' in line:
+                    for c in line:
+                        if c == '{':
+                            sections.append(1)
+                        if c == '}':
+                            try:
+                                sections.pop()
+                            except IndexError:
+                                raise ValueError(f"Fatal error: Could not resolve {name} in file {path}.")
+                # A function-declaration always contains the literal string " function_name("
+                # When this string is found within the indentation of the class itself,
+                # then it can be assumed that we have a function declaration.
+                # This is true in case of the hpp-files of nlohmann/json. 
+                if f" {name_parts[1]}(" in line and len(sections) == 1:
+                    instance += 1
+                    if instance == overload:
+                        start_line = line_number
+                        found_start = True
+                        sections.pop()
+            else:
+                if '{' in line or '}' in line:
+                    for c in line:
+                        if c == '{':
+                            sections.append(1)
+                        if c == '}':
+                            try:
+                                sections.pop()
+                            except IndexError:
+                                raise ValueError(f"Fatal error: Could not resolve {name} in file {path}.")
+                if not in_body and len(sections)>0:
+                    in_body = True
+                if in_body and len(sections)==0:
+                    return [start_line,line_number]
         if not in_class:
             raise ValueError(f"Could not find class {name_parts[0]} in file {path}")
-        if overload%10 == 1 and overload != 11:
+        if not found_start and overload%10 == 1 and overload%100 != 11:
             raise ValueError(f"Could not locate {overload}st implementation of {name_parts[1]} in file {path}.")
-        elif overload%10 == 2 and overload != 12:
+        elif not found_start and overload%10 == 2 and overload%100 != 12:
             raise ValueError(f"Could not locate {overload}nd implementation of {name} in file {path}.")
-        elif overload%10 == 3 and overload != 13:
+        elif not found_start and overload%10 == 3 and overload%100 != 13:
             raise ValueError(f"Could not locate {overload}rd implementation of {name} in file {path}.")
-        else:
+        elif not found_start:
             raise ValueError(f"Could not locate {overload}th implementation of {name} in file {path}.")
-    
-    def get_function_end(path: Path, name: str, function_start: int, lines: list[str]) -> int:
-        found_start = False
-        sections = []
-        for line_number, line in enumerate(lines):
-            if line_number<function_start:
-                # skip ahead
-                continue
-            # Now, we have found the line, where the function declaration is located.
-            # In nlohmann/json, the function body is written between a lonely { and a lonely }.
-            # First, we should search for the first lonely {.
-            # ignore all commented out lines
-            if line.strip().startswith("//"):
-                continue
-            if '{' in line or '}' in line:
-                for c in line:
-                    if c == '{':
-                        sections.append(1)
-                    if c == '}':
-                        try:
-                            sections.pop()
-                        except IndexError:
-                            raise ValueError(f"Fatal error: Could not resolve {name} in file {path}.")
-            if not found_start and len(sections)>0:
-                found_start = True
-            if found_start and len(sections)==0:
-                return line_number
-        raise ValueError(f"Could not find end of function-body of {name} in file {path}.")
+        else:
+            raise ValueError(f"Could not find end of function-body of {name} in file {path}.")
 
     @property
     def content(self) -> bytes:
@@ -549,7 +539,7 @@ class FunctionReference(SourceSpanReference):
         content = self.remove_leading_whitespace_preserve_indentation(content)
         content = format_cpp_code_as_markdown(content)
         if self._description != "":
-            content = make_md_bullet_point(f"Description: {self._description}",1) + "\n\n" + content
+            content = make_md_bullet_point(f"Description: {self._description}",1) + "\n\n" + add_indentation(content,1)
         return content
 
     def __str__(self) -> str:
@@ -859,3 +849,49 @@ class NumberOfFailures(BaseReference):
         else:
             result = f"failures on {self._owner}/{self._repo}"
         return result
+    
+class ItemReference(BaseReference):
+    def __init__(self, items: list[str]) -> None:
+        if len(items) == 0:
+            raise RuntimeError("Error: Can't initialise empty ItemReference.")
+        self._items = items
+    
+    @classmethod
+    def type(cls) -> str:
+        return "item"
+    
+    @staticmethod
+    def get_markdown_link(item: str) -> str:
+        first_part = item.split("-")[0]
+        return f"see [here]({first_part}.md#{item.lower()}) to find {item}"
+    
+    @staticmethod
+    def get_reference_contents(items: list[str]) -> bytes:
+        lines = open(".dotstop.dot","r").read().split("\n")
+        contents = []
+        for item in items:
+            # check whether the item is valid
+            content = [line for line in lines if line.startswith(f"\"{item}\" [")]
+            if len(content) != 1:
+                raise RuntimeError(f"Error: The item {item} is not contained in the trustable graph")
+            contents.append(content[0].encode("utf-8"))
+        return b"".join(contents) if len(contents)!=0 else b"No external references"
+
+    @property
+    def content(self) -> bytes:
+        return ItemReference.get_reference_contents(self._items)
+    
+    def as_markdown(self, filepath: None | str = None) -> str:
+        result = ""
+        for item in self._items:
+            result += make_md_bullet_point(ItemReference.get_markdown_link(item),1)
+        return result
+    
+    def __str__(self):
+        title = "this item also refers to the references of "
+        if len(self._items) == 1:
+            title += "item "
+        else:
+            title += "items "
+        title += ", ".join(self._items)
+        return title
