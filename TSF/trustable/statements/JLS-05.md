@@ -30,6 +30,11 @@ evidence:
 score:
     Jonas-Kirchhoff: 1.0
     Erikhu1: 1.0
+    aschemmel-tech: 0.2
 ---
 
 The OSS nlohmann/json is widely used, actively maintained and uses github issues to track bugs and misbehaviours.
+
+aschemmel-tech: also here I would expect more reasoning why we think it is "widely used" and "actively maintained",
+also I question that using using github issues is a sign of "trustability".
+For "widely used" maybe refer to https://github.com/nlohmann/json?tab=readme-ov-file#customers ?

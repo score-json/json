@@ -8,6 +8,9 @@ references:
 score:
     Jonas-Kirchhoff: 1.0
     Erikhu1: 1.0
+    aschemmel-tech: 0.5
 ---
 
 Main branch is protected, i.e. no direct commits are possible.
+
+aschemmel-tech: In my understanding this is mybe only half of what we want to assess, the other half are the changes in nlohman/json.
