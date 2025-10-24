@@ -10,8 +10,8 @@
 
 * What are the trends for each score?
 
-    **Answer**:  CAN NOT BE **Answer**ED NOW
+    **Answer**:  CAN NOT BE ANSWERED NOW
 
 * How well do our scores correlate with external feedback signals?
 
-    **Answer**:  CAN NOT BE **Answer**ED NOW
+    **Answer**:  CAN NOT BE ANSWERED NOW
