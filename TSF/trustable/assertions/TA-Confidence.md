@@ -2,16 +2,16 @@
 
 * What is the algorithm for combining/comparing the scores?
 
-    Answer:  It is the standard algorithm of trudag.
+    **Answer**:  It is the standard algorithm of trudag.
 
 * How confident are we that this algorithm is fit for purpose?
 
-    Answer:  We have no reason to assume that the standard algorithm is not fit for our purpose.
+    **Answer**:  We have no reason to assume that the standard algorithm is not fit for our purpose.
 
 * What are the trends for each score?
 
-    Answer:  CAN NOT BE ANSWERED NOW
+    **Answer**:  CAN NOT BE **Answer**ED NOW
 
 * How well do our scores correlate with external feedback signals?
 
-    Answer:  CAN NOT BE ANSWERED NOW
+    **Answer**:  CAN NOT BE **Answer**ED NOW

@@ -2,24 +2,24 @@
 
 * Where are the change and configuration management controls specified?
 
-    Answer:  WIP
+    **Answer**:  WIP
 
 * Are these controls enforced for all of components, tools, data, documentation and configurations?
 
-    Answer:  The S-CORE Methodology is followed, compliance with which enforces the change process to be followed.
+    **Answer**:  The S-CORE Methodology is followed, compliance with which enforces the change process to be followed.
 
 * Are there any ways in which these controls can be subverted, and have we mitigated them?
 
-    Answer:  Yes, the change process can just not be followed. We have no real method to enforce it other than to trust that the committers follow the S-CORE processes.
+    **Answer**:  Yes, the change process can just not be followed. We have no real method to enforce it other than to trust that the committers follow the S-CORE processes.
 
 * Does change control capture all potential regressions? 
 
-    Answer:  Due to the test coverage of 99.186%, it is unlikely that a potential regression is not captured.
+    **Answer**:  Due to the test coverage of 99.186%, it is unlikely that a potential regression is not captured.
 
 * Is change control timely enough? 
 
-    Answer:  Not applicable, as far as can be understood right now, there is no immanent need to keep the library up to date. 
+    **Answer**:  Not applicable, as far as can be understood right now, there is no immanent need to keep the library up to date. 
 
 * Are all guidance and checks understandable and consistently followed? 
 
-    Answer:  WIP
+    **Answer**:  WIP
