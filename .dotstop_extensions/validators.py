@@ -11,7 +11,6 @@ if current_dir not in sys.path:
 from TSF.scripts.generate_list_of_tests import ListOfTestsGenerator
 import hashlib
 import json
-from datetime import datetime, timezone
 import re
 import subprocess
 
@@ -149,7 +148,7 @@ def check_test_results(configuration: dict[str, yaml]) -> tuple[float, list[Exce
     # get the test-names
     raw_tests = configuration.get("tests",None)
     if raw_tests is None:
-        return(1.0, Warning("Warning: No tests specified! Assuming absolute trustability!"))
+        return(1.0, [Warning("Warning: No tests specified! Assuming absolute trustability!")])
     # process test-names
     tests = []
     for test in raw_tests:
@@ -291,15 +290,16 @@ def sha_checker(configuration: dict[str, yaml]) -> tuple[float, list[Exception |
     return (score, exceptions)
 
 def check_issues(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    from datetime import datetime, timezone
     # get relevant release date
     release_date = configuration.get("release_date",None)
     if release_date is None:
-        return (0.0, RuntimeError("The release date of the most recent version of nlohmann/json is not specified."))
+        return (0.0, [RuntimeError("The release date of the most recent version of nlohmann/json is not specified.")])
     else:
         try:
             release_time = datetime.strptime(release_date,"%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc).timestamp()
         except:
-            return(0.0, RuntimeError("The format of the release date is to be %Y-%m-%dT%H:%M:%SZ"))
+            return(0.0, [RuntimeError("The format of the release date is to be %Y-%m-%dT%H:%M:%SZ")])
     # get path to static list of misbehaviours
     raw_known_misbehaviours = configuration.get("list_of_known_misbehaviours",None)
     # parse list of inapplicable misbehaviours
@@ -331,10 +331,10 @@ def check_issues(configuration: dict[str, yaml]) -> tuple[float, list[Exception 
                                         and (all_open_issues[i].get("labels"))[0].get("name") == "kind: bug"
                                 ]
     except:
-        return(0.0, RuntimeError("The list of open issues could not be extracted."))
+        return(0.0, [RuntimeError("The list of open issues could not be extracted.")])
     for issue in relevant_open_issues:
         if issue not in inapplicable_misbehaviours and issue is not None:
-            return(0.0,[])  
+            return(0.0, [])  
     # parse raw list of closed misbehaviours
     try:
         with open("raw_closed_issues.json") as list_2:
@@ -349,20 +349,20 @@ def check_issues(configuration: dict[str, yaml]) -> tuple[float, list[Exception 
                                             >=release_time
                                 ]
     except:
-        return(0.0, RuntimeError("The list of closed issues could not be extracted."))
+        return(0.0, [RuntimeError("The list of closed issues could not be extracted.")])
     for issue in relevant_closed_issues:
         if issue not in inapplicable_misbehaviours and issue is not None:
-            return(0.0,[])  
+            return(0.0, [])  
     # If you are here, then there are no applicable misbehaviours.
     return (1.0, [])
 
 def did_workflows_fail(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
     owner = configuration.get("owner",None)
     if owner is None:
-        return (0.0, RuntimeError("The owner is not specified in the configuration of did_workflows_fail."))
+        return (0.0, [RuntimeError("The owner is not specified in the configuration of did_workflows_fail.")])
     repo = configuration.get("repo",None)
     if repo is None:
-        return (0.0, RuntimeError("The repository is not specified in the configuration of did_workflows_fail."))
+        return (0.0, [RuntimeError("The repository is not specified in the configuration of did_workflows_fail.")])
     event = configuration.get("event","push")
     url = f"https://github.com/{owner}/{repo}/actions?query=event%3A{event}+is%3Afailure"
     branch = configuration.get("branch",None)
@@ -370,24 +370,24 @@ def did_workflows_fail(configuration: dict[str, yaml]) -> tuple[float, list[Exce
         url += "+branch%3A{branch}"
     res = requests.get(url)
     if res.status_code != 200:
-        return (0.0, RuntimeError(f"The website {url} can not be successfully reached!"))
+        return (0.0, [RuntimeError(f"The website {url} can not be successfully reached!")])
     m = re.search(r'(\d+)\s+workflow run results', res.text, flags=re.I)
     if m is None:
-        return (0.0, RuntimeError("The number of failed workflows can not be found."))
+        return (0.0, [RuntimeError("The number of failed workflows can not be found.")])
     if m.group(1).strip() != "0":
-        return (0.0, Warning("There are failed workflows!"))
+        return (0.0, [Warning("There are failed workflows!")])
     return (1.0, [])
 
 def is_branch_protected(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
     branch = configuration.get("branch",None)
     if branch is None:
-        return (0.0, RuntimeError("The branch is not specified."))
+        return (0.0, [RuntimeError("The branch is not specified.")])
     res = subprocess.run(["git", "diff", "--cached", "--quiet", "--exit-code"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
     if res.returncode != 0:
         raise RuntimeError("There are currently staged changes. Please unstage to proceed.")
     try:
         subprocess.run(["git","push","origin",f"HEAD:{branch}"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
-        return (0.0, RuntimeError(f"The branch {branch} is not protected!"))
+        return (0.0, [RuntimeError(f"The branch {branch} is not protected!")])
     except:
         return (1.0, [])
     
@@ -440,9 +440,9 @@ def coveralls_reporter(configuration: dict[str, yaml]) -> tuple[float, list[Exce
 def combinator(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
     validators = configuration.get("validators",None)
     if validators is None:
-        return (1.0, Warning("No validators were given, returning the void-validator."))
+        return (1.0, [Warning("No validators were given, returning the void-validator.")])
     elif not isinstance(validators,list):
-        return (0.0, TypeError("The list of validators must be given as list."))
+        return (0.0, [TypeError("The list of validators must be given as list.")])
     scores = []
     exceptions = []
     weights = []
@@ -450,16 +450,16 @@ def combinator(configuration: dict[str, yaml]) -> tuple[float, list[Exception | 
         # fetch configuration
         validator_configuration = validator.get("configuration", None)
         if not isinstance(validator_configuration,dict[str, yaml]):
-            return (0.0, TypeError("Validator configuration must be an object."))
+            return (0.0, [TypeError("Validator configuration must be an object.")])
         # fetch weight
         weight = float(validator.get("weight",1.0))
         if weight<0:
-            return (0.0, TypeError("Validator weights must be non-negative."))
+            return (0.0, [TypeError("Validator weights must be non-negative.")])
         weights.append(weight)
         # fetch type
         validator_type = validator.get("type", None)
         if validator_type is None:
-            return (0.0, TypeError("Missing validator type declaration."))
+            return (0.0, [TypeError("Missing validator type declaration.")])
         # execute validator
         if validator_type == "check_artifact_exists":
             validator_score, validator_errors = check_artifact_exists(validator_configuration)
