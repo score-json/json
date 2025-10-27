@@ -14,9 +14,9 @@ Custom references are defined in `references.py`. A (custom) reference is used b
 
 ## CPPTestReference
 
-The content of a `CPPTestReference` is given by the lines of code corresponding to a test-case or a section of a test-case in the unit-tests given in tests/src and TSF/tests.
+The content of a `CPPTestReference` is given by the lines of code corresponding to a test-case or a section of a test-case in a specified unit-test-file. The sections are identified in the value of "name", where the nested sections are separated by semicolons.
 
-For the `CPPTestReference` an example is:
+For the `CPPTestReference` the expected configuration is:
 ```
 ---
 ...
@@ -30,9 +30,12 @@ references:
 
 ## JSONTestsuiteReference
 
-The content of a `JSONTestsuiteReference` is given by the lines of code corresponding to a test-case or a section of a test-case in the unit tests, where a (list of) specified test-file(s) located on an external test-repository is utilized, and the content of these test-files.
+The `JSONTestsuiteReference` is a variant of the function reference, which is augmented by an external file containing test-data in the form of well- or ill-formed JSON candidate data. 
+A `JSONTestsuiteReference` is therefore given by the data of a `CPPTestReference` together with a list containing the paths to these external files.
+The external files are stored in a separate branch of the repository, and their text is loaded via call to github.
+The content of a `JSONTestsuiteReference` is given by the content of the underlying `CPPTestReference` together with the sum of the contents of the external test-suite files.
 
-For the `JSONTestsuiteReference` an example is:
+For the `JSONTestsuiteReference` the expected configuration is:
 ```
 ---
 ...
@@ -65,7 +68,8 @@ references:
 ---
 ```
 
-Since functions may be overloaded, a `FunctionReference` can be initialised with an optional overload-parameter; additionally, it is possible to give a description. The full example is:
+Since functions may be overloaded, a `FunctionReference` can be initialised with an optional overload-parameter. 
+The overload-parameter specifies which implementation of the function is referred to, i.e. if the overload-parameter for the function ``class::function()`` is set to _n_, then the _n_-th implementation of ``function()`` within the class ``class`` is used, if it exists; otherwise, an error is thrown. Additionally, it is possible, but not mandatory, to give a description. The full example is:
 ```
 ---
 ...
@@ -351,6 +355,29 @@ evidence:
 ```
 
 It is of utmost importance that the arguments come with quotation marks, otherwise, the update helper does not work as intended.
+
+## coveralls_reporter
+
+The automatic validator `coveralls_reporter` queries the [coveralls](https://coveralls.io/) api to get the line and branch coverages calculated by the service, which is running on the repository.
+Unless the version of `nlohmann/json` documented in this repository changes, it is expected that both coverage numbers remain constant.
+When initialising the reference, the current code coverage is given as a parameter, to which the fetched coverages are compared.
+If no branch is specified, then the most recently calculated coverage is fetched, so that it is generally recommended to specify a branch.
+Moreover, it is possible to specify the number of decimal digits, which is defaulted to three, when not specified.
+The validator returns a score of 1.0 if both fetched coverages rounded to the specified number of decimal digits coincide with the specified ones, and a score of 0.0 otherwise.
+
+The expected configuration is the following:
+
+```
+evidence:
+    type: coveralls_reporter
+    configuration:
+        owner: "score-json"
+        repo: "json"
+        branch: "main"
+        line_coverage: 99.186
+        branch_coverage: 93.865
+        digits: 3
+```
 
 
 # Data store interface
