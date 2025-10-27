@@ -61,3 +61,22 @@ The single_include/nlohmann/json.hpp is the single and only component of the lib
 * Do all dependencies comply with acceptable licensing terms?
 
     **Answer**:  Yes, the library is licensed under MIT License .
+
+#### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* List of components used to build XYZ, including:
+    * Whether content is provided as source or binary
+    * Record of component assessments:
+        * Originating project and version
+        * Date of assessments and identity of assessors
+        * Role of component in XYZ
+        * Sources of bug and risk data
+        * Potential misbehaviours and risks identified and assessed
+        * List of tools used to build and verify XYZ
+    * Record of tool assessments:
+        * Originating project and tool version
+        * Date of assessments and identity of assessors
+        * Role of the tool in XYZ releases
+        * Potential misbehaviours and impacts
+        * Detectability and severity of impacts
+        * Tests or measures to address identified impacts

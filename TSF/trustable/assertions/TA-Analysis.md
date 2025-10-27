@@ -62,3 +62,10 @@
 * Are results shown to be reproducible?
 
     **Answer**: It is expected that the tests can be reproduced on every modern sufficiently powerful machine.
+
+#### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* Analysis of test data, including thresholds in relation to appropriate statistical properties.
+* Analysis of failures
+* Analysis of spikes and trends
+* Validation of analysis methods used

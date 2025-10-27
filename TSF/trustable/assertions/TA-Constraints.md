@@ -27,3 +27,11 @@
 * Do external users actively keep up with updates, and are they properly notified of any changes?
 
     **Answer**:  External users of the library are not necessarily automatically notified of an update, and are neither assumed nor required to keep up to date. If the external user forks the github repository, however, then github shows automatically whenever the upstream changes.
+
+#### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* Installation manuals with worked examples
+* Configuration manuals with worked examples
+* Specification documentation with a clearly defined scope
+* User guides detailing limitations in interfaces designed for expandability or modularity
+* Documented strategies used by external users to address constraints and work with existing Statements

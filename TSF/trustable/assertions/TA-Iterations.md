@@ -19,3 +19,15 @@
 * For software developed by us, what claims are we making, and how confident are we about these claims?
 
     **Answer**:  This is the remainder of the documentation.
+
+#### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* list of components with source
+* source code
+* build instructions
+* test code
+* test results summary
+* attestations
+* list of components where source code is not available
+* risk analysis
+* attestations

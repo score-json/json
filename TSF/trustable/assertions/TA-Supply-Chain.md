@@ -23,3 +23,15 @@
 *    Are mirrored projects based on the correct upstream?
 
     **Answer**:  Yes.
+
+#### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* list of all XYZ components including
+* URL of mirrored projects in controlled environment
+* URL of upstream projects
+* successful build of XYZ from source
+    * without access to external source projects
+    * without access to cached data
+* update logs for mirrored projects
+* mirrors reject history rewrites
+* mirroring is configured via infrastructure under direct control

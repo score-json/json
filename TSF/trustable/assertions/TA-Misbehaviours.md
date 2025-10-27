@@ -47,3 +47,14 @@
 * Do input analysis findings on verifiable tool or component claims and features identify additional misbehaviours or support existing mitigations?
 
     **Answer**:  Currently, there is no analysis which identifies additional misbehaviours. The only such analysis is indirectly via the analysis of the fuzz testing, which currently does not identifies additional misbehaviours.
+
+#### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* List of identified Misbehaviours
+* List of Expectations for mitigations addressing identified Misbehaviours
+* Risk analysis
+* Test analysis, including:
+    * False negative tests
+    * Exception handling tests
+    * Stress tests
+    * Soak tests

@@ -47,3 +47,13 @@
 * Are indicators from code, component, tool, or data inspections taken into consideration?
 
     **Answer**:  There are no indicators.
+
+#### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* Risk analyses
+* List of advance warning indicators
+* List of Expectations for monitoring mechanisms
+* List of implemented monitoring mechanisms
+* List of identified misbehaviours without advance warning indicators
+* List of advance warning indicators without implemented monitoring mechanisms
+* Advance warning signal data as time series (see TA-DATA)

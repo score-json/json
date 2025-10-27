@@ -39,3 +39,11 @@
 * Are any subsets of our data being published?
 
     **Answer**:  Yes, the collected data are publicly available.
+
+#### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* Time-stamped and traceable result records for each test execution, linked to associated system under test version and specification references.
+* List of monitored indicators, linked to associated specification version references.
+* Time-stamped and traceable test-derived data for each indicator, linked to associated system under test version and indicator specifications references.
+* List of monitored deployments, linked to associated version and configuration references.
+* Time-stamped and traceable production data for each indicator, linked to associated deployment metadata and specification references.

@@ -41,3 +41,11 @@ This project follows purely the Methodologies of Eclipse S-CORE.
 * Is ongoing training required to follow these processes?
 
     **Answer**:  
+
+#### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* Manual process documentation
+* References to methodologies applied as part of these processes
+* Results of applying the processes
+* Criteria used to confirm that the processes were applied correctly
+* Review records for results

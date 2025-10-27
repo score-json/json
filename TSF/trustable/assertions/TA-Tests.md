@@ -23,3 +23,10 @@
 * How confident are we that all tests scenarios are repeatable? 
 
     **Answer**:  All test scenarios are repeated daily in the CI pipeline.
+
+#### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* Test build environment reproducibility
+* Test build configuration
+* Test build reproducibility
+* Test environment configuration

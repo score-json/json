@@ -48,3 +48,10 @@
 * Are input analysis findings from components, tools, and data considered in relation to Expectations?
 
     **Answer**:  No findings have been found.
+
+#### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* List of Expectations
+* Argument of sufficiency for break-down of expected behaviour for all Expectations
+* Validation and verification of expected behaviour
+

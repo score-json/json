@@ -23,3 +23,7 @@
 * Are all guidance and checks understandable and consistently followed? 
 
     **Answer**:  WIP
+
+#### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* change management process and configuration artifacts

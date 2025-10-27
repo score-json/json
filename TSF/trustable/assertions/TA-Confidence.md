@@ -15,3 +15,7 @@
 * How well do our scores correlate with external feedback signals?
 
     **Answer**:  CAN NOT BE ANSWERED NOW
+
+#### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* Confidence scores from other TA items
