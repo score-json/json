@@ -59,20 +59,10 @@ This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json re
 - **State:** OPEN
 - **Created At:** 2024-12-17T15:49:31Z
 
-### [#4104](https://github.com/nlohmann/json/issues/4104)
-- **Title:** NLOHMANN_DEFINE_TYPE_INTRUSIVE with nlohmann::json::json_pointer
-- **State:** OPEN
-- **Created At:** 2023-08-11T11:54:29Z
-
 ### [#4041](https://github.com/nlohmann/json/issues/4041)
 - **Title:** NLOHMANN_DEFINE_TYPE_* fails with zero members
 - **State:** OPEN
 - **Created At:** 2023-05-23T19:27:59Z
-
-### [#3970](https://github.com/nlohmann/json/issues/3970)
-- **Title:** Incompatible with C++20 modules in MSVC
-- **State:** OPEN
-- **Created At:** 2023-03-09T13:14:19Z
 
 ### [#3912](https://github.com/nlohmann/json/issues/3912)
 - **Title:** inconsistency with string/string_view lookups
