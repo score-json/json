@@ -2,7 +2,7 @@
 level: 1.1
 normative: true
 evidence:
-    type: issue_checker
+    type: check_issues
     configuration:
         release_date: "2025-04-11T00:00:00Z"
         list_of_known_misbehaviours: "./TSF/docs/nlohmann_misbehaviours_comments.md"
