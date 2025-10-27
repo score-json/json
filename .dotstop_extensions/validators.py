@@ -11,7 +11,6 @@ if current_dir not in sys.path:
 from TSF.scripts.generate_list_of_tests import ListOfTestsGenerator
 import hashlib
 import json
-from datetime import datetime, timezone
 
 yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
@@ -289,6 +288,7 @@ def sha_checker(configuration: dict[str, yaml]) -> tuple[float, list[Exception |
     return (score, exceptions)
 
 def check_issues(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
+    from datetime import datetime, timezone
     # get relevant release date
     release_date = configuration.get("release_date",None)
     if release_date is None:
@@ -329,7 +329,7 @@ def check_issues(configuration: dict[str, yaml]) -> tuple[float, list[Exception 
                                         and (all_open_issues[i].get("labels"))[0].get("name") == "kind: bug"
                                 ]
     except:
-        return(0.0, RuntimeError("The list of open issues could not be extracted."))
+        return(0.0, [RuntimeError("The list of open issues could not be extracted.")])
     for issue in relevant_open_issues:
         if issue not in inapplicable_misbehaviours and issue is not None:
             return(0.0,[])  
@@ -347,7 +347,7 @@ def check_issues(configuration: dict[str, yaml]) -> tuple[float, list[Exception 
                                             >=release_time
                                 ]
     except:
-        return(0.0, RuntimeError("The list of closed issues could not be extracted."))
+        return(0.0, [RuntimeError("The list of closed issues could not be extracted.")])
     for issue in relevant_closed_issues:
         if issue not in inapplicable_misbehaviours and issue is not None:
             return(0.0,[])  
