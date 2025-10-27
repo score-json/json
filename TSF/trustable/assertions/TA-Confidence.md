@@ -19,3 +19,6 @@
 #### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * Confidence scores from other TA items
+
+    **Comment**:
+

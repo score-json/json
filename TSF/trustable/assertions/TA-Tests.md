@@ -27,6 +27,18 @@
 #### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * Test build environment reproducibility
+
+    **Comment**:
+
 * Test build configuration
+
+    **Comment**:
+
 * Test build reproducibility
+
+    **Comment**:
+
 * Test environment configuration
+
+    **Comment**:
+

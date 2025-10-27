@@ -66,6 +66,9 @@ The single_include/nlohmann/json.hpp is the single and only component of the lib
 
 * List of components used to build XYZ, including:
     * Whether content is provided as source or binary
+
+        **Comment**:
+
     * Record of component assessments:
         * Originating project and version
         * Date of assessments and identity of assessors
@@ -73,6 +76,9 @@ The single_include/nlohmann/json.hpp is the single and only component of the lib
         * Sources of bug and risk data
         * Potential misbehaviours and risks identified and assessed
         * List of tools used to build and verify XYZ
+
+        **Comment**:
+
     * Record of tool assessments:
         * Originating project and tool version
         * Date of assessments and identity of assessors
@@ -80,3 +86,6 @@ The single_include/nlohmann/json.hpp is the single and only component of the lib
         * Potential misbehaviours and impacts
         * Detectability and severity of impacts
         * Tests or measures to address identified impacts
+
+        **Comment**:
+

@@ -31,7 +31,22 @@
 #### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * Installation manuals with worked examples
+
+    **Comment**:
+
 * Configuration manuals with worked examples
+
+    **Comment**:
+
 * Specification documentation with a clearly defined scope
+
+    **Comment**:
+
 * User guides detailing limitations in interfaces designed for expandability or modularity
+
+    **Comment**:
+
 * Documented strategies used by external users to address constraints and work with existing Statements
+
+    **Comment**:
+

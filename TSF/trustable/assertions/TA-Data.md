@@ -43,7 +43,22 @@
 #### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * Time-stamped and traceable result records for each test execution, linked to associated system under test version and specification references.
+
+    **Comment**:
+
 * List of monitored indicators, linked to associated specification version references.
+
+    **Comment**:
+
 * Time-stamped and traceable test-derived data for each indicator, linked to associated system under test version and indicator specifications references.
+
+    **Comment**:
+
 * List of monitored deployments, linked to associated version and configuration references.
+
+    **Comment**:
+
 * Time-stamped and traceable production data for each indicator, linked to associated deployment metadata and specification references.
+
+    **Comment**:
+

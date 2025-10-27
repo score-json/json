@@ -52,6 +52,15 @@
 #### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * List of Expectations
+
+    **Comment**:
+
 * Argument of sufficiency for break-down of expected behaviour for all Expectations
+
+    **Comment**:
+
 * Validation and verification of expected behaviour
+
+    **Comment**:
+
 

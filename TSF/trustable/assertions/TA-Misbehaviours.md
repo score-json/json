@@ -51,10 +51,22 @@
 #### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * List of identified Misbehaviours
+
+    **Comment**:
+
 * List of Expectations for mitigations addressing identified Misbehaviours
+
+    **Comment**:
+
 * Risk analysis
+
+    **Comment**:
+
 * Test analysis, including:
     * False negative tests
     * Exception handling tests
     * Stress tests
     * Soak tests
+
+    **Comment**:
+

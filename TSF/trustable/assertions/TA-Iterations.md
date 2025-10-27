@@ -23,11 +23,38 @@
 #### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * list of components with source
+
+    **Comment**:
+
 * source code
+
+    **Comment**:
+
 * build instructions
+
+    **Comment**:
+
 * test code
+
+    **Comment**:
+
 * test results summary
+
+    **Comment**:
+
 * attestations
+
+    **Comment**:
+
 * list of components where source code is not available
+
+    **Comment**:
+
 * risk analysis
+
+    **Comment**:
+
 * attestations
+
+    **Comment**:
+

@@ -64,13 +64,46 @@
 #### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * List of known bugs fixed since last release
+
+    **Comment**:
+
 * List of outstanding bugs still not fixed, with triage/prioritisation based on severity/relevance/impact
+
+    **Comment**:
+
 * List of known vulnerabilities fixed since last release
+
+    **Comment**:
+
 * List of outstanding known vulnerabilities still not fixed, with triage/prioritisation based on severity/relevance/impact
+
+    **Comment**:
+
 * List of XYZ component versions, showing where a newer version exists upstream
+
+    **Comment**:
+
 * List of component version updates since last release
+
+    **Comment**:
+
 * List of fixes applied to developed code since last release
+
+    **Comment**:
+
 * List of fixes for developed code that are outstanding, not applied yet
+
+    **Comment**:
+
 * List of XYZ faults outstanding (O)
+
+    **Comment**:
+
 * List of XYZ faults fixed since last release (F)
+
+    **Comment**:
+
 * List of XYZ faults mitigated since last release (M)
+
+    **Comment**:
+

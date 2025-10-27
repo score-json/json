@@ -27,11 +27,32 @@
 #### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * list of all XYZ components including
+
+    **Comment**:
+
 * URL of mirrored projects in controlled environment
+
+    **Comment**:
+
 * URL of upstream projects
+
+    **Comment**:
+
 * successful build of XYZ from source
     * without access to external source projects
     * without access to cached data
+
+    **Comment**:
+
 * update logs for mirrored projects
+
+    **Comment**:
+
 * mirrors reject history rewrites
+
+    **Comment**:
+
 * mirroring is configured via infrastructure under direct control
+
+    **Comment**:
+

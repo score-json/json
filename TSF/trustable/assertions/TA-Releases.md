@@ -27,8 +27,14 @@
 #### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * list of reproducible SHAs
+
+    **Comment**:
+
 * list of non-reproducible elements with:
     * explanation and justification
     * details of what is not reproducible
     * evidence of configuration management for build instructions and infrastructure
     * evidence of repeatable builds
+
+    **Comment**:
+

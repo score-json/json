@@ -51,9 +51,30 @@
 #### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * Risk analyses
+
+    **Comment**:
+
 * List of advance warning indicators
+
+    **Comment**:
+
 * List of Expectations for monitoring mechanisms
+
+    **Comment**:
+
 * List of implemented monitoring mechanisms
+
+    **Comment**:
+
 * List of identified misbehaviours without advance warning indicators
+
+    **Comment**:
+
 * List of advance warning indicators without implemented monitoring mechanisms
+
+    **Comment**:
+
 * Advance warning signal data as time series (see TA-DATA)
+
+    **Comment**:
+

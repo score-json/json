@@ -66,6 +66,18 @@
 #### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * Analysis of test data, including thresholds in relation to appropriate statistical properties.
+
+    **Comment**:
+
 * Analysis of failures
+
+    **Comment**:
+
 * Analysis of spikes and trends
+
+    **Comment**:
+
 * Validation of analysis methods used
+
+    **Comment**:
+

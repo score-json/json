@@ -45,7 +45,22 @@ This project follows purely the Methodologies of Eclipse S-CORE.
 #### List of suggested evidence from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
 
 * Manual process documentation
+
+    **Comment**:
+
 * References to methodologies applied as part of these processes
+
+    **Comment**:
+
 * Results of applying the processes
+
+    **Comment**:
+
 * Criteria used to confirm that the processes were applied correctly
+
+    **Comment**:
+
 * Review records for results
+
+    **Comment**:
+
