@@ -2,7 +2,7 @@
 
 * Are the constraints grounded in realistic expectations, backed by real-world examples?
 
-    **Answer**:  The constraints originate from S-CORE and the library itself.
+    **Answer**:  The constraints originate from S-CORE (e.g. AOU-04, AOU-05, AOU-07, AOU-21), the standard RFC-8259 (e.g. AOU-05, AOU-20, AOU-21) and the library nlohmann/json itself (AOU-06, AOU-20) in order to ensure that the expectations are met.
 
 * Do they effectively guide downstream consumers in expanding upon existing Statements?
 
@@ -14,7 +14,7 @@
 
 * Are any Statements explicitly designated as not reusable or adaptable?
 
-    **Answer**:  NO?????
+    **Answer**:  No statement has been intentionally designated as not reusable or adaptable.
 
 * Are there worked examples from downstream or upstream users demonstrating these constraints in practice?
 
@@ -22,7 +22,7 @@
 
 * Have there been any documented misunderstandings from users, and are these visibly resolved?
 
-    **Answer**:  Yes, it is documented that the [brace initialisation](https://json.nlohmann.me/home/faq/) regularly leads to confusion, cf. [here](https://github.com/nlohmann/json/issues/4898).
+    **Answer**:  Yes, it is documented that the [brace initialisation](https://json.nlohmann.me/home/faq/) (cf. AOU-06) regularly leads to confusion, cf. [here](https://github.com/nlohmann/json/issues/4898).
 
 * Do external users actively keep up with updates, and are they properly notified of any changes?
 
