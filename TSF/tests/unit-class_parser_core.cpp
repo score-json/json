@@ -8,10 +8,10 @@
 
 /*
 This file has been adapted from the original nlohmann/json library (tests/src/unit-class_parser.cpp)
-to use the plain json::accept() and json::parse() functions instead of advanced helper functions, 
-which make many additional function calls (see the definitions of parse_helper and accept_helper in 
-tests/src/unit-class_parser.cpp). This allows to directly attribute a test result to the accept() or 
-parse() function, which is needed to use the test results as evidence for the well-formedness and parsing 
+to use the plain json::accept() and json::parse() functions instead of advanced helper functions,
+which make many additional function calls (see the definitions of parse_helper and accept_helper in
+tests/src/unit-class_parser.cpp). This allows to directly attribute a test result to the accept() or
+parse() function, which is needed to use the test results as evidence for the well-formedness and parsing
  of JSON requirements. Unnecessary code and test sections have been removed.
 */
 
@@ -34,7 +34,7 @@ bool accept_helper(const std::string& s);
 
 json parser_helper(const std::string& s)
 {
-    return json::parse(s); 
+    return json::parse(s);
 }
 
 bool accept_helper(const std::string& s)

@@ -14,9 +14,9 @@ Custom references are defined in `references.py`. A (custom) reference is used b
 
 ## CPPTestReference
 
-The content of a `CPPTestReference` is given by the lines of code corresponding to a test-case or a section of a test-case in the unit-tests given in tests/src and TSF/tests.
+The content of a `CPPTestReference` is given by the lines of code corresponding to a test-case or a section of a test-case in a specified unit-test-file. The sections are identified in the value of "name", where the nested sections are separated by semicolons.
 
-For the `CPPTestReference` an example is:
+For the `CPPTestReference` the expected configuration is:
 ```
 ---
 ...
@@ -30,9 +30,12 @@ references:
 
 ## JSONTestsuiteReference
 
-The content of a `JSONTestsuiteReference` is given by the lines of code corresponding to a test-case or a section of a test-case in the unit tests, where a (list of) specified test-file(s) located on an external test-repository is utilized, and the content of these test-files.
+The `JSONTestsuiteReference` is a variant of the function reference, which is augmented by an external file containing test-data in the form of well- or ill-formed JSON candidate data. 
+A `JSONTestsuiteReference` is therefore given by the data of a `CPPTestReference` together with a list containing the paths to these external files.
+The external files are stored in a separate branch of the repository, and their text is loaded via call to github.
+The content of a `JSONTestsuiteReference` is given by the content of the underlying `CPPTestReference` together with the sum of the contents of the external test-suite files.
 
-For the `JSONTestsuiteReference` an example is:
+For the `JSONTestsuiteReference` the expected configuration is:
 ```
 ---
 ...
@@ -65,7 +68,8 @@ references:
 ---
 ```
 
-Since functions may be overloaded, a `FunctionReference` can be initialised with an optional overload-parameter; additionally, it is possible to give a description. The full example is:
+Since functions may be overloaded, a `FunctionReference` can be initialised with an optional overload-parameter. 
+The overload-parameter specifies which implementation of the function is referred to, i.e. if the overload-parameter for the function ``class::function()`` is set to _n_, then the _n_-th implementation of ``function()`` within the class ``class`` is used, if it exists; otherwise, an error is thrown. Additionally, it is possible, but not mandatory, to give a description. The full example is:
 ```
 ---
 ...
@@ -140,14 +144,6 @@ The content of a `TimeVaryingWebReference` is given by the content of a changelo
 
 An example of the complete configuration for `TimeVaryingWebReference` is
 
-in case of a custom description.
-
-## TimeVaryingWebReference
-
-The content of a `TimeVaryingWebReference` is given by the content of a changelog, whose default value is `ChangeLog.md`, which mirrors the changelog of nlohmann/json. This reference is intended for websites, whose content is constantly changing, so that a `WebContentReference` makes the item un-reviewable, but whose content at the time of an update influences the trustability. An example is `https://github.com/nlohmann/json/pulse/monthly`, which can be used to demonstrate that nlohmann/json is *up to the most recent version* under active development.
-
-An example of the complete configuration for `TimeVaryingWebReference` is
-
 ```
 ---
 ...
@@ -189,6 +185,26 @@ references:
   test_files:
     - TSF/tests
     - tests/src
+---
+```
+
+## NumberOfFailures
+
+This reference queries `https://github.com/{self._owner}/{self._repo}/actions?query=is%3Afailure+branch%3A{self._branch}` and collects the number of failed workflow runs as its content.
+Here, owner, repo and branch are the arguments given to the constructor of the reference.
+If no branch is specified, then all failures are collected, i.e. `https://github.com/{self._owner}/{self._repo}/actions?query=is%3Afailure` is queried.
+In case the website is un-reachable, or the github layout changes drastically so that the number of failed workflow runs does not exists at the expected location, an error is thrown.
+
+The expected configuration is 
+
+```
+---
+...
+references:
+- type: workflow_failures
+      owner: "eclipse-score"
+      repo: "inc_nlohmann_json"
+      branch: "json_version_3_12_0"
 ---
 ```
 
@@ -281,7 +297,7 @@ The test-files are called unit-FILE_NAME.cpp. In the configuration, FILE_NAME is
 
 For each test specified in test-files, the number of passed and failed test-cases is calculated, while the number of skipped test-cases is ignored. The score of each test is then the ratio of passed test-cases compared to all non-skipped test-cases; the total score is the mean of the individual scores.
 
-## issue_checker
+## check_issues
 
 The automatic validator `check_issues` is intended to evaluate the json-lists `raw_open_issues.json` and `raw_closed_issues.json` and compare with the list of known issues of nlohmann/json labelled as bug opened since the release of the version of nlohmann/json that is documented. The json lists are generated in the publish_documentation-Workflow, and not persistently stored.
 
@@ -303,6 +319,65 @@ These issues are collected in a table containing the issue-ID, an indication whe
 From `raw_closed_issues.json`, all issue IDs are collected, which are labelled as bug and opened after the release_date; and from `raw_open_issues.json`, all issue IDs are collected.
 If for any of these IDs, it is not explicitly indicated in the list of known misbehaviours that this issue does not apply to Eclipse S-CORE, then the score 0.0 is returned.
 Otherwise, the score 1.0 is assigned.
+
+## did_workflows_fail
+
+The automatic validator `did_workflows_fail` queries the web-site `https://github.com/{owner}/{repo}/actions?query=event%3A{event}+is%3Afailure+branch%3A{branch}` and looks on the number of workflow run results which is printed at the head of the table.
+In case that this number is not zero, a score of 0.0 is returned, and 1.0 otherwise.
+
+The expected configuration is given as follows:
+
+```
+evidence:
+    type: did_workflows_fail
+    configuration:
+        owner: "eclipse-score" # owner of the repository
+        repo: "inc_nlohmann_json" # name of the repository
+        branch: "json_version_3_12_0" # name of the branch
+        action: "push" # optional, default is push
+```
+
+It is of utmost importance that the arguments come with quotation marks, otherwise, the update helper does not work as intended.
+
+## is_branch_protected
+
+The automatic validator `is_branch_protected` tries to push to the specified branch, i.e. to execute the command `git push origin HEAD:{branch}`. 
+In case any changes are staged during the execution of the validator, an error is thrown before the push occurs.
+Since the validator is intended to be executed during a workflow run, where no change is staged, it is no expected that the error is thrown.
+
+The expected configuration is given as follows:
+
+```
+evidence:
+    type: is_branch_protected
+    configuration:
+        branch: "json_version_3_12_0" # name of the branch
+```
+
+It is of utmost importance that the arguments come with quotation marks, otherwise, the update helper does not work as intended.
+
+## coveralls_reporter
+
+The automatic validator `coveralls_reporter` queries the [coveralls](https://coveralls.io/) api to get the line and branch coverages calculated by the service, which is running on the repository.
+Unless the version of `nlohmann/json` documented in this repository changes, it is expected that both coverage numbers remain constant.
+When initialising the reference, the current code coverage is given as a parameter, to which the fetched coverages are compared.
+If no branch is specified, then the most recently calculated coverage is fetched, so that it is generally recommended to specify a branch.
+Moreover, it is possible to specify the number of decimal digits, which is defaulted to three, when not specified.
+The validator returns a score of 1.0 if both fetched coverages rounded to the specified number of decimal digits coincide with the specified ones, and a score of 0.0 otherwise.
+
+The expected configuration is the following:
+
+```
+evidence:
+    type: coveralls_reporter
+    configuration:
+        owner: "score-json"
+        repo: "json"
+        branch: "main"
+        line_coverage: 99.186
+        branch_coverage: 93.865
+        digits: 3
+```
 
 
 # Data store interface

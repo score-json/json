@@ -16,7 +16,7 @@ void parser_helper(const std::string& input){
 TEST_CASE("accept")
 {
     // A name (or key) is a string. No other token is a valid name
-    // See also n_object_missing_key.json, n_object_non_string_key.json, 
+    // See also n_object_missing_key.json, n_object_non_string_key.json,
     // n_object_non_string_key_but_huge_number_instead.json, n_object_repeated_null_null
     // n_object_unquoted_key for some non-exhaustive tests
     SECTION("names")
@@ -88,7 +88,7 @@ TEST_CASE("accept")
                 CHECK(json::accept("{\"foo\\u001fbar\":123}"));
             }
             SECTION("unicode")
-            {  
+            {
                 // escaped
                 CHECK(json::accept("{\"\\u0066\\u006f\\u006f\\u0062\\u0061\\u0072\":123}"));
                 // unescaped
@@ -109,7 +109,7 @@ TEST_CASE("accept")
             }
         }
     }
-    // Name/key and value of an array are treated as any other token. 
+    // Name/key and value of an array are treated as any other token.
     // In particular, leading and trailing whitespace are ignored
     SECTION("whitespace")
     {
@@ -129,7 +129,7 @@ TEST_CASE("accept")
             CHECK(json::accept("{\u000d\"foo\"\u000d:\u000d\"bar\"\u000d}"));
             CHECK(json::accept("{ \"foo\"\t:\n\"bar\"\n}"));
             CHECK(json::accept("{\t\t\t\t\t\n\n\u000d\"foo\"\t \t\t  \n\n  \u000d:\"bar\"}"));
-        }   
+        }
     }
     // The colon U+003A is the only valid member separator.
     // Look-alikes are illegal.
@@ -137,7 +137,7 @@ TEST_CASE("accept")
     SECTION("member separator")
     {
         CHECK(json::accept("{\"foo\"\u003a\"bar\"}"));      //:
-        CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));     
+        CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));
         CHECK(!json::accept("{\"foo\"\ua789\"bar\"}"));
         CHECK(!json::accept("{\"foo\"\u005b\"bar\"}"));     //[
         CHECK(!json::accept("{\"foo\"\u007b\"bar\"}"));     //{
@@ -169,14 +169,14 @@ TEST_CASE("parse")
             CHECK(json::parse("{ \"foo\"\t:\n\"bar\"\n}")==json::parse("{\"foo\":\"bar\"}"));
             CHECK(json::parse("{\t\t\t\t\t\n\n\u000d\"foo\"\t \t\t  \n\n  \u000d:\"bar\"}")==json::parse("{\"foo\":\"bar\"}"));
         }
-    }    
+    }
     // The colon U+003A is the only valid member separator.
     // Look-alikes are illegal.
     // All other valid structural characters are illegal.
     SECTION("member separator")
     {
         CHECK_NOTHROW(parser_helper("{\"foo\"\u003a\"bar\"}"));      //:
-        CHECK_THROWS_AS(parser_helper("{\"foo\"\uff1a\"bar\"}"),json::parse_error&);     
+        CHECK_THROWS_AS(parser_helper("{\"foo\"\uff1a\"bar\"}"),json::parse_error&);
         CHECK_THROWS_AS(parser_helper("{\"foo\"\ua789\"bar\"}"),json::parse_error&);
         CHECK_THROWS_AS(parser_helper("{\"foo\"\u005b\"bar\"}"),json::parse_error&);     //[
         CHECK_THROWS_AS(parser_helper("{\"foo\"\u007b\"bar\"}"),json::parse_error&);     //{
@@ -249,6 +249,6 @@ TEST_CASE("parse")
             ss2 >> _2;
             ss3 >> _3;
             CHECK(_2==_3);
-        }        
+        }
     }
 }
