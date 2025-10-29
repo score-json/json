@@ -22,12 +22,12 @@ jobs:
     with:
       artifact_id: "labeler-${{ github.sha }}"
 
-  check_SME_review:
+  SME_review_checker:
     permissions:
       contents: read
       pull-requests: read
     name: Run SME_review_checker Workflow
-    if: ${{ github.event_name == 'pull_request' }} # only run check_SME_review for PRs
+    if: ${{ github.event_name == 'pull_request' }} # only run SME_review_checker for PRs
     uses: ./.github/workflows/SME_review_checker.yml
     with:
       artifact_id: "SME_review_checker-${{ github.sha }}"
@@ -73,11 +73,11 @@ jobs:
   collect_artifacts_pr:
     name: "Collect Results & Deploy (PR)"
     if: github.event_name == 'pull_request'
-    needs: [labeler, check_SME_review, check_amalgamation, test_trudag_extensions, dependency_review, codeql, ubuntu]
+    needs: [labeler, SME_review_checker, check_amalgamation, test_trudag_extensions, dependency_review, codeql, ubuntu]
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [labeler, check_SME_review, check_amalgamation, test_trudag_extensions, dependency_review, codeql, ubuntu]
+        target: [labeler, SME_review_checker, check_amalgamation, test_trudag_extensions, dependency_review, codeql, ubuntu]
 
     steps:
       - name: Checkout code
@@ -106,11 +106,11 @@ jobs:
   collect_artifacts_non_pr:
     name: "Collect Results & Deploy (Non-PR)"
     if: github.event_name != 'pull_request'
-    needs: [labeler, check_SME_review, test_trudag_extensions, codeql, ubuntu]  # no check_amalgamation or dependency_review if non PR
+    needs: [labeler, SME_review_checker, test_trudag_extensions, codeql, ubuntu]  # no check_amalgamation or dependency_review if non PR
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [labeler, check_SME_review, test_trudag_extensions, codeql, ubuntu]
+        target: [labeler, SME_review_checker, test_trudag_extensions, codeql, ubuntu]
 
     steps:
       - name: Checkout code
