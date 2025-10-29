@@ -1,0 +1,176 @@
+name: CVE Counter
+
+on:
+  workflow_call:
+    inputs:
+      artifact_id:
+        description: 'Unique identifier for artifacts'
+        required: true
+        type: string
+
+permissions:
+  security-events: read
+  contents: read
+
+jobs:
+  count-cves:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Count Open CVEs and Security Issues
+        id: count-security
+        run: |
+          echo "Counting open security issues..."
+          
+          # Initialize counters
+          CODESCANNING_COUNT=0
+          DEPENDABOT_COUNT=0
+          
+          # Get code scanning alerts
+          echo "Fetching code scanning alerts..."
+          CODESCANNING_RESPONSE=$(curl -s -w "%{http_code}" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+                                      -H "Accept: application/vnd.github+json" \
+                                      -H "X-GitHub-Api-Version: 2022-11-28" \
+                                      "https://api.github.com/repos/${{ github.repository }}/code-scanning/alerts?state=open")
+          
+          CODESCANNING_HTTP_CODE="${CODESCANNING_RESPONSE: -3}"
+          CODESCANNING_BODY="${CODESCANNING_RESPONSE%???}"
+          
+          if [ "$CODESCANNING_HTTP_CODE" = "200" ]; then
+            CODESCANNING_COUNT=$(echo "$CODESCANNING_BODY" | jq -r 'length' 2>/dev/null || echo "0")
+            echo "Code scanning alerts found: $CODESCANNING_COUNT"
+          else
+            echo "Code scanning access failed with HTTP $CODESCANNING_HTTP_CODE"
+            echo "$CODESCANNING_BODY"
+          fi
+          
+          # Get Dependabot alerts
+          echo "Fetching Dependabot alerts..."
+          DEPENDABOT_RESPONSE=$(curl -s -w "%{http_code}" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+                                    -H "Accept: application/vnd.github+json" \
+                                    -H "X-GitHub-Api-Version: 2022-11-28" \
+                                    "https://api.github.com/repos/${{ github.repository }}/dependabot/alerts?state=open")
+          
+          DEPENDABOT_HTTP_CODE="${DEPENDABOT_RESPONSE: -3}"
+          DEPENDABOT_BODY="${DEPENDABOT_RESPONSE%???}"
+          
+          if [ "$DEPENDABOT_HTTP_CODE" = "200" ]; then
+            DEPENDABOT_COUNT=$(echo "$DEPENDABOT_BODY" | jq -r 'length' 2>/dev/null || echo "0")
+            echo "Dependabot alerts found: $DEPENDABOT_COUNT"
+          else
+            echo "Dependabot access failed with HTTP $DEPENDABOT_HTTP_CODE"
+            echo "$DEPENDABOT_BODY"
+          fi
+          
+          # Calculate totals
+          TOTAL_SECURITY_ISSUES=$((CODESCANNING_COUNT + DEPENDABOT_COUNT))
+          
+          echo "=== SECURITY SUMMARY ==="
+          echo "Code Scanning Alerts (open): $CODESCANNING_COUNT"
+          echo "Dependabot Alerts (open): $DEPENDABOT_COUNT" 
+          echo "Total Open Security Issues: $TOTAL_SECURITY_ISSUES"
+          
+          # Set outputs for artifact creation
+          echo "codescanning_count=$CODESCANNING_COUNT" >> $GITHUB_OUTPUT
+          echo "dependabot_count=$DEPENDABOT_COUNT" >> $GITHUB_OUTPUT
+          echo "total_count=$TOTAL_SECURITY_ISSUES" >> $GITHUB_OUTPUT
+
+      - name: Get current branch name
+        id: get_branch
+        env:
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          PR_BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
+          GITHUB_REF_SAFE: ${{ github.ref }}
+        run: |
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            # Use the branch from the pull request safely via environment variable
+            current_branch="$PR_BRANCH_NAME"
+          else
+            # Remove the "refs/heads/" prefix from GITHUB_REF safely
+            current_branch="${GITHUB_REF_SAFE#refs/heads/}"
+          fi
+ 
+          # Write the branch name to $GITHUB_ENV securely
+          echo "branch_name=${current_branch}" >> "$GITHUB_ENV"
+
+      - name: Fetch data storage branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch --all
+          git checkout save_historical_data && git pull || git checkout -b save_historical_data
+      
+      - name: Load persistent data
+        run: |
+          if ! git ls-tree --name-only origin/save_historical_data TSF/MemoryEfficientTestResultData.db | grep TSF/MemoryEfficientTestResultData.db; then
+            touch TSF/MemoryEfficientTestResultData.db
+            git add TSF/MemoryEfficientTestResultData.db
+            git commit -m "Create persistent storage"
+            git push origin save_historical_data
+          fi
+          git checkout $branch_name
+          git checkout save_historical_data -- TSF/MemoryEfficientTestResultData.db
+
+      - name: Store CVE data
+        run: |
+          python3 TSF/scripts/capture_cve_data.py ${{ steps.count-security.outputs.total_count }}
+      
+      - name: Checkout data storage branch
+        if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref_name == 'main')
+        run: |
+          git stash push --include-untracked -- $(git status --porcelain | awk '{print $2}' | grep -v TSF/MemoryEfficientTestResultData.db)
+          git checkout save_historical_data
+
+      - name: Commit and Push persistent data
+        if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref_name == 'main')
+        run: |
+          git add TSF/MemoryEfficientTestResultData.db
+          git commit -m "Save CVE data" || echo "No CVE data to be saved"
+          git push origin save_historical_data
+      
+      - name: Recover stash
+        if: github.event_name == 'schedule' || (github.event_name == 'push' && github.ref_name == 'main')
+        run: |
+          git checkout $branch_name
+          git stash apply
+      
+      - name: Move CVE report
+        run: |
+          mkdir cve_report
+          if [ -f MemoryEfficientCVEResults.db ]; then
+            mv MemoryEfficientCVEResults.db cve_report/MemoryEfficientCVEResults.db
+          else
+            echo "No CVE results were captured."
+          fi
+
+      - name: Generate cve artifact
+        run: |
+          echo "Generating CVE artifact..."
+          mkdir -p cve
+          if [ -f cve_report/MemoryEfficientCVEResults.db ]; then
+            mv cve_report/MemoryEfficientCVEResults.db cve/MemoryEfficientCVEResults.db
+          else
+            echo "No CVE data was captured."
+          fi
+          echo "cve processed for ${{ inputs.artifact_id }}" > cve/cve.txt
+
+      - name: Upload cve artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact_id }}
+          path: cve/
+
+      - name: Set Workflow Summary
+        run: |
+          echo "## Security Issues Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Alert Type | Count |" >> $GITHUB_STEP_SUMMARY
+          echo "|------------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Code Scanning | ${{ steps.count-security.outputs.codescanning_count }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Dependabot | ${{ steps.count-security.outputs.dependabot_count }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Total Open Issues** | **${{ steps.count-security.outputs.total_count }}** |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "📊 Detailed report available in workflow artifacts." >> $GITHUB_STEP_SUMMARY
