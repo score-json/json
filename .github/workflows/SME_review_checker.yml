@@ -1,0 +1,95 @@
+name: SME Review Checker
+
+on:
+  workflow_call:
+    inputs:
+      artifact_id:
+        description: 'Unique identifier for artifacts'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  check-SME-review:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@c6295a65d1254861815972266d5933fd6e532bdf # v2.11.1
+        with:
+          egress-policy: audit
+
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: changed-files
+        run: |
+          # Get the base branch
+          BASE_BRANCH="${{ github.event.pull_request.base.ref || 'main' }}"
+          
+          # Get all changed files in the PR
+          CHANGED_FILES=$(git diff --name-only origin/$BASE_BRANCH...HEAD)
+          
+          # Save changed files to output
+          echo "files<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGED_FILES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Check if supported statements are scored
+        run: |
+          # Read the changed files
+          CHANGED_FILES="${{ steps.changed-files.outputs.files }}"
+          
+          # Process each changed file
+          while IFS= read -r file; do
+            # Skip empty lines
+            if [[ -z "$file" ]]; then
+              continue
+            fi
+            
+            echo "Checking file: $file"
+            
+            # Check if file is in TSF/trustable folder and ends with .md
+            if [[ "$file" == TSF/trustable/* && "$file" == *.md ]]; then
+              # Extract filename without path and extension
+              filename=$(basename "$file" .md)
+              
+              # Skip README files
+              if [[ "$filename" == "README" ]]; then
+                continue
+              fi
+              
+              echo "Checking TSF trustable file: $file (filename: $filename)"
+              
+              # Check if filename pattern exists in .dotstop.dot
+              if grep -q "\"$filename\" -> " .dotstop.dot; then
+                echo "  Found reference in .dotstop.dot for: $filename"
+                
+                # Check if the file contains "score:" substring
+                if [[ -f "$file" ]] && grep -q "score:" "$file"; then
+                  echo "ERROR: $file - Error: supported statements shall not be scored"
+                  exit 1
+                fi
+              else
+                echo "No reference found in .dotstop.dot for: $filename"
+              fi
+          done <<< "$CHANGED_FILES"
+
+          echo "All changed TSF items passed validation"
+
+      - name: Generate artifact
+        run: |
+          mkdir -p SME_review_checker
+          echo "SME review checker processed for ${{ inputs.artifact_id }}" > SME_review_checker/SME_review_checker.txt
+
+      - name: Upload SME review checker artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: ${{ inputs.artifact_id }}
+          path: SME_review_checker/
