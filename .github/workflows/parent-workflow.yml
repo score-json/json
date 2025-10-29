@@ -23,9 +23,9 @@ jobs:
       artifact_id: "labeler-${{ github.sha }}"
 
   check_SME_review:
-      permissions:
-        contents: read
-        pull-requests: read
+    permissions:
+      contents: read
+      pull-requests: read
     name: Run SME_review_checker Workflow
     uses: ./.github/workflows/SME_review_checker.yml
     with:
