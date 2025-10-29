@@ -27,6 +27,7 @@ jobs:
       contents: read
       pull-requests: read
     name: Run SME_review_checker Workflow
+    if: ${{ github.event_name == 'pull_request' }} # only run check_SME_review for PRs
     uses: ./.github/workflows/SME_review_checker.yml
     with:
       artifact_id: "SME_review_checker-${{ github.sha }}"

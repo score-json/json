@@ -79,6 +79,7 @@ jobs:
               else
                 echo "No reference found in .dotstop.dot for: $filename"
               fi
+            fi
           done <<< "$CHANGED_FILES"
 
           echo "All changed TSF items passed validation"
