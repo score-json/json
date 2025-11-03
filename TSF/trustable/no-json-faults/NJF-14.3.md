@@ -27,3 +27,5 @@ score:
 ---
 
 The service does not accept incomplete or perturbed UTF-8 byte order marks within the first three characters of the input.
+
+sab

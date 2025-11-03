@@ -7,3 +7,5 @@ references:
 ---
 
 All sources for nlohmann/json library and tools are mirrored in our controlled environment.
+
+nlohmann

@@ -33,3 +33,5 @@ score:
 ---
 
 The service does accept the six structural characters.
+
+sab

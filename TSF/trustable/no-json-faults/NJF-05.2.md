@@ -42,3 +42,5 @@ score:
 ---
 
 The service accepts the non-empty arrays.
+
+sab

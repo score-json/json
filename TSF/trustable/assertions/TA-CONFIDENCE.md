@@ -7,3 +7,5 @@ references:
 ---
 
 Confidence in nlohmann/json library is measured based on results of analysis.
+
+nlohmann

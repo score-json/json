@@ -11,3 +11,5 @@ score:
 ---
 
 The S-Core methodologies are followed.
+
+The S-Core methodologies are followed in the score impl by nlohmann/json

@@ -4,3 +4,5 @@ normative: true
 ---
 
 Automated tests are reviewed by a Subject Matter Expert to verify they test the properties they claim to.
+
+Automated tests within the TSF documentation are reviewed by a Subject Matter Expert to verify they test the properties they claim to.

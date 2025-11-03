@@ -27,3 +27,5 @@ score:
 ---
 
 If the service does not accept any value candidate as singleton, then the service does not accept the object candidate.
+
+sab

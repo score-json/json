@@ -7,3 +7,5 @@ references:
 ---
 
 Constraints on adaptation and deployment of nlohmann/json library are specified.
+
+score
