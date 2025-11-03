@@ -50,3 +50,5 @@ score:
 ---
 
 If the service recognises the name candidate as string, then it accepts the name candidate.
+
+sab

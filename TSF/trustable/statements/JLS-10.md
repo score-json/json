@@ -4,3 +4,5 @@ normative: true
 ---
 
 Every release includes source code, build instructions, tests and attestations. (TODO: Test result summary)
+
+Every release of nlohmann/json includes source code, build instructions, tests and attestations. (TODO: Test result summary)

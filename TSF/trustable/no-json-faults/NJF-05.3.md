@@ -38,3 +38,5 @@ score:
 ---
 
 If every value candidate of a properly bounded array is accepted as singleton, then the service accepts the array.
+
+sab

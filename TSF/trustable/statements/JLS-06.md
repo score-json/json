@@ -9,3 +9,5 @@ references:
 ---
 
 Changes to the code (main branch) are applied only after code review and passing of all pipelines.
+
+Changes to the code (main branch) of nlohmann/json are applied only after code review and passing of all pipelines.

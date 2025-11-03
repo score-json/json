@@ -7,3 +7,5 @@ references:
 ---
 
 Collected data from tests and monitoring of deployed software is analysed according to specified objectives.
+
+s-core

@@ -13,3 +13,5 @@ evidence:
 ---
 
 The SHA value of the library in use coincides with the SHA value provided by Niels Lohmann for that version.
+
+The SHA value of "./single_include/nlohmann/json.hpp" within s-core coincides with the SHA value of nlohmann/json provided by Niels Lohmann for that version.

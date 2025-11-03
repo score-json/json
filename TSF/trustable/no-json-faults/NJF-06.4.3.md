@@ -41,3 +41,5 @@ score:
 ---
 
 If the service accepts the value-candidate as a singleton, then the value-candidate is accepted.
+
+sab

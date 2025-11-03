@@ -7,3 +7,5 @@ score:
 ---
 
 Main branch is protected, i.e. no direct commits are possible.
+
+Main branch of nlohmann/json is protected, i.e. no direct commits are possible.

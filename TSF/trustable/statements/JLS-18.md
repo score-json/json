@@ -18,3 +18,5 @@ score:
 ---
 
 Results from tests are accurately captured.
+
+is ok
