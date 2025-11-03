@@ -951,3 +951,46 @@ class ItemReference(BaseReference):
             title += "items "
         title += ", ".join(self._items)
         return title
+    
+
+class IncludeListReference(BaseReference):
+    """
+    Reference that lists all #include lines in a given file (e.g. single_include/nlohmann/json.hpp).
+    Usage: IncludeListReference("single_include/nlohmann/json.hpp", "optional description")
+    """
+    def __init__(self, path: str, description: str = "") -> None:
+        self._path = Path(path)
+        self._description = description
+
+    @classmethod
+    def type(cls) -> str:
+        return "include_list"
+
+    @property
+    def content(self) -> bytes:
+        if not self._path.is_file():
+            raise ReferenceError(f"Cannot get non-existent or non-regular file {self._path}")
+        text = self._path.read_text(encoding="utf-8")
+        includes = [line.rstrip() for line in text.splitlines() if line.lstrip().startswith("#include")]
+        if not includes:
+            return b"No includes found"
+        return ("\n".join(includes)).encode("utf-8")
+
+    def as_markdown(self, filepath: None | str = None) -> str:
+        """
+        Return a markdown-formatted code block with the includes.
+        Indented one level to match the other reference markdown formatting.
+        """
+        content = self.content.decode("utf-8")
+        if content == "No includes found":
+            return make_md_bullet_point(f"No includes found in {self._path}", 1)
+        md = format_cpp_code_as_markdown(content)
+        if self._description:
+            md = make_md_bullet_point(f"Description: {self._description}", 1) + "\n\n" + add_indentation(md, 1)
+        else:
+            md = add_indentation(md, 1)
+        return md
+
+    def __str__(self) -> str:
+        return f"includes: ({self._path})"
+
