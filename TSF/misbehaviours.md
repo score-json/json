@@ -4,6 +4,16 @@ This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json re
 
 ## Open Issues
 
+### [#4974](https://github.com/nlohmann/json/issues/4974)
+- **Title:** [MSVC][build] JSON failed with error C2672: 'nlohmann::json_abi_v3_12_0::basic_json<std::map,std::vector,std::string,bool,int64_t,uint64_t,double,
+- **State:** OPEN
+- **Created At:** 2025-10-30T10:01:39Z
+
+### [#4972](https://github.com/nlohmann/json/issues/4972)
+- **Title:** Natvis file for version 3.12.0 does not contain a type definition for detail::json_default_base
+- **State:** OPEN
+- **Created At:** 2025-10-29T16:05:32Z
+
 ### [#4946](https://github.com/nlohmann/json/issues/4946)
 - **Title:** Failure with cmake 4.1
 - **State:** OPEN
@@ -18,11 +28,6 @@ This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json re
 - **Title:** Constructing array from C++20 ranges view does not work
 - **State:** OPEN
 - **Created At:** 2025-09-11T10:13:26Z
-
-### [#4903](https://github.com/nlohmann/json/issues/4903)
-- **Title:** LNK2005
-- **State:** OPEN
-- **Created At:** 2025-08-24T08:50:37Z
 
 ### [#4901](https://github.com/nlohmann/json/issues/4901)
 - **Title:** stack overflow
@@ -141,6 +146,11 @@ This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json re
 
 
 ## Closed Issues (since v3.12.0)
+
+### [#4903](https://github.com/nlohmann/json/issues/4903)
+- **Title:** LNK2005
+- **State:** CLOSED
+- **Created At:** 2025-08-24T08:50:37Z
 
 ### [#4892](https://github.com/nlohmann/json/issues/4892)
 - **Title:** Feature request: please add separate "declaration" and "implementation" macros for enum serialization
