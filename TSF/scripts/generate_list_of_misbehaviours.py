@@ -33,13 +33,13 @@ if __name__ == "__main__":
 
     print("## Open issues\n")
     for issue in relevant_open_issues:
-        print(f"### [#{issue.get("number")}]({issue.get("url")})\n- **Title:** {issue.get("title")}\n- **State:** {issue.get("state")}\n- **Created At:** {issue.get("createdAt")}\n")
+        print(f'### [#{issue.get("number")}]({issue.get("url")})\n- **Title:** {issue.get("title")}\n- **State:** {issue.get("state")}\n- **Created At:** {issue.get("createdAt")}\n')
         comment_nlohmann_misbehaviours(int(issue.get("number")))
         print("\n")
 
     print(f"\n## Closed Issues (since version {version}\n")    
     for issue in relevant_closed_issues:
-        print(f"### [#{issue.get("number")}]({issue.get("url")})\n- **Title:** {issue.get("title")}\n- **State:** {issue.get("state")}\n- **Created At:** {issue.get("createdAt")}\n")
+        print(f'### [#{issue.get("number")}]({issue.get("url")})\n- **Title:** {issue.get("title")}\n- **State:** {issue.get("state")}\n- **Created At:** {issue.get("createdAt")}\n')
         comment_nlohmann_misbehaviours(int(issue.get("number")))
         print("\n")
         
