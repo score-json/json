@@ -106,11 +106,11 @@ jobs:
   collect_artifacts_non_pr:
     name: "Collect Results & Deploy (Non-PR)"
     if: github.event_name != 'pull_request'
-    needs: [labeler, SME_review_checker, test_trudag_extensions, codeql, ubuntu]  # no check_amalgamation or dependency_review if non PR
+    needs: [labeler, test_trudag_extensions, codeql, ubuntu]  # no check_amalgamation, dependency_review or SME_review_checker if non PR
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [labeler, SME_review_checker, test_trudag_extensions, codeql, ubuntu]
+        target: [labeler, test_trudag_extensions, codeql, ubuntu]
 
     steps:
       - name: Checkout code
