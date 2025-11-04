@@ -32,4 +32,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The OSS nlohmann/json is widely used, actively maintained and uses github issues to track bugs and misbehaviours.
+The OSS nlohmann/json is widely used and actively maintained; bugs and misbehaviours are tracked publicly and transparently.
