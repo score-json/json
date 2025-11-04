@@ -6,6 +6,4 @@ references:
       path: ./TSF/trustable/assertions/TA-INDICATORS-CHECKLIST.md
 ---
 
-Advanced warning indicators for misbehaviours are identified, and monitoring mechanisms are specified, verified and validated based on analysis.
-
-score
+In score-json, advanced warning indicators for misbehaviours are identified, and monitoring mechanisms are specified, verified and validated based on analysis.

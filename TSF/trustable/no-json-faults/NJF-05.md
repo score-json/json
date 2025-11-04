@@ -3,6 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The service accepts and rejects arrays according to RFC8259 §5.
-
-sab
+The service provided by nlohmann/json accepts and rejects arrays according to RFC8259 §5.

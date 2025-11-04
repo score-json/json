@@ -27,6 +27,4 @@ score:
     Erikhu1: 0.95
 ---
 
-The service accepts nested arrays.
-
-sab
+The service provided by nlohmann/json accepts nested arrays.

@@ -29,6 +29,4 @@ score:
     Erikhu1: 0.95
 ---
 
-The service accept the nested objects.
-
-sab
+The service provided by nlohmann/json accepts the nested objects.

@@ -6,6 +6,4 @@ references:
       path: ./TSF/trustable/assertions/TA-INPUTS-CHECKLIST.md
 ---
 
-All inputs to nlohmann/json library are assessed, to identify potential risks and issues.
-
-nlohmann
+All inputs to nlohmann/json are assessed, to identify potential risks and issues.

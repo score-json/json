@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The service checks the well-formedness of strings.
+The service provided by nlohmann/json checks the well-formedness of strings.

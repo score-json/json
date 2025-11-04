@@ -33,6 +33,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service does accept e or E for numbers with exponent within the bounds of double.
-
-sab
+The service provided by nlohmann/json does accept e or E for numbers with exponent within the bounds of double.

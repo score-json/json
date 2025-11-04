@@ -19,6 +19,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service does not accept single unpaired utf-16 surrogates.
-
-sab
+The service provided by nlohmann/json does not accept single unpaired utf-16 surrogates.

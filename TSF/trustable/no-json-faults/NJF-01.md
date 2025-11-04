@@ -35,7 +35,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service accepts the literal name null. 
-
-
 The service provided by nlohmann/json accepts the literal name null. 

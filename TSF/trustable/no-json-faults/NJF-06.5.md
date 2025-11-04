@@ -11,6 +11,4 @@ references:
           description: "Checks that the empty member in a nonempty object is rejected."
 ---
 
-The service does not accept objects with improper members.
-
-sab
+The service provided by nlohmann/json does not accept objects with improper members.

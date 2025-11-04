@@ -32,6 +32,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service accepts UTF-16 surrogate pairs.
-
-sab
+The service provided by nlohmann/json accepts UTF-16 surrogate pairs.

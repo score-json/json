@@ -19,6 +19,4 @@ score:
     Erikhu1: 0.9
 ---
 
-The service rejects "overlong sequences".
-
-sab
+The service provided by nlohmann/json rejects "overlong sequences".

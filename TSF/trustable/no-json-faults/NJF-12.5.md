@@ -22,6 +22,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service accepts Non-Characters.
-
-sab
+The service provided by nlohmann/json accepts Non-Characters.

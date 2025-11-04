@@ -25,4 +25,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service throws an exception on improperly bounded strings.
+The service provided by nlohmann/json throws an exception on improperly bounded strings.

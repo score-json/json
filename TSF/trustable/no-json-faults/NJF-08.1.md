@@ -20,6 +20,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service does accept integers within the limits of 64-bit double.
-
-sab
+The service provided by nlohmann/json does accept integers within the limits of 64-bit double.

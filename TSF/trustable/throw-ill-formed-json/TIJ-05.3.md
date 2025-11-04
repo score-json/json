@@ -30,4 +30,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service throws an exception if an improper string is used as name of any member.
+The service provided by nlohmann/json throws an exception if an improper string is used as name of any member.

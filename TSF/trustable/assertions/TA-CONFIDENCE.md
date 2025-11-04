@@ -6,6 +6,4 @@ references:
       path: ./TSF/trustable/assertions/TA-CONFIDENCE-CHECKLIST.md
 ---
 
-Confidence in nlohmann/json library is measured based on results of analysis.
-
-nlohmann
+Confidence in nlohmann/json is measured based on results of analysis.

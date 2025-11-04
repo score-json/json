@@ -19,4 +19,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service ignores leading zeroes in the exponent.
+The service provided by nlohmann/json ignores leading zeroes in the exponent.

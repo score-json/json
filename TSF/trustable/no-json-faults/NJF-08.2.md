@@ -20,6 +20,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service does accept integers according to IEEE 754 binary64.
-
-sab
+The service provided by nlohmann/json does accept integers according to IEEE 754 binary64.

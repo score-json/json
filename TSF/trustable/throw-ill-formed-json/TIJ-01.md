@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The parsing service throws an exception on ill-formed literal names.
+The parsing service provided by nlohmann/json throws an exception on ill-formed literal names.

@@ -45,6 +45,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service does accept the escaped control characters.
-
-sab
+The service provided by nlohmann/json does accept escaped control characters.

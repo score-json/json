@@ -26,4 +26,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service ignores leading and trailing whitespace for each value.
+The service provided by nlohmann/json ignores leading and trailing whitespace for each value.
