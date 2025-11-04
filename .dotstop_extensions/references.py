@@ -822,7 +822,7 @@ class NumberOfFailures(BaseReference):
         # build the url
         url = f"https://github.com/{self._owner}/{self._repo}/actions?query=is%3Afailure"
         if self._branch is not None:
-            url += "+branch%3A{self._branch}"
+            url += f"+branch%3A{self._branch}"
         # ask the website
         res = requests.get(url)
         # if call is not successful, raise an error
@@ -837,7 +837,7 @@ class NumberOfFailures(BaseReference):
         return m.group(1).encode('utf-8')
     
     def as_markdown(self, filepath: None | str = None) -> str:
-        if self._branch is not None:
+        if self._branch is None:
             return f"{self.content.decode('utf-8')} workflows failed on {self._owner}/{self._repo}"
         else:
             return f"{self.content.decode('utf-8')} workflows failed on branch {self._branch} of {self._owner}/{self._repo}"

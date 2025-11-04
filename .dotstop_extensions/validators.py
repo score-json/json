@@ -367,7 +367,7 @@ def did_workflows_fail(configuration: dict[str, yaml]) -> tuple[float, list[Exce
     url = f"https://github.com/{owner}/{repo}/actions?query=event%3A{event}+is%3Afailure"
     branch = configuration.get("branch",None)
     if branch is not None:
-        url += "+branch%3A{branch}"
+        url += f"+branch%3A{branch}"
     res = requests.get(url)
     if res.status_code != 200:
         return (0.0, [RuntimeError(f"The website {url} can not be successfully reached!")])
