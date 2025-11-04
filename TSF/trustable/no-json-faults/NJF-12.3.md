@@ -26,6 +26,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service rejects single escaped and unescaped, and paired unescaped utf-16 surrogates.
-
-sab
+The service provided by nlohmann/json rejects single escaped and unescaped, and paired unescaped utf-16 surrogates.

@@ -24,4 +24,4 @@ score:
     Jonas-Kirchhoff: 1.0
 ---
 
-A github workflow of the implementation of nlohmann/json within s-core executes the unit tests daily and saves the results as time-series data.
+A github workflow of score-json executes the unit tests daily and saves the results as time-series data.

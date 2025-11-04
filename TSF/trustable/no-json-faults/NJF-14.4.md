@@ -18,6 +18,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service does not accept UTF-16 and UTF-32 byte order marks instead of the UTF-8 byte order mark.
-
-sab
+The service provided by nlohmann/json does not accept UTF-16 and UTF-32 byte order marks instead of the UTF-8 byte order mark.

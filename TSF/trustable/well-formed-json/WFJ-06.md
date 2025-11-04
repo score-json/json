@@ -38,4 +38,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service checks that a JSON value must be an object, array, number, or string, or one of the lowercase literal names false, null, or true
+The service provided by nlohmann/json checks that a JSON value must be an object, array, number, or string, or one of the lowercase literal names false, null, or true

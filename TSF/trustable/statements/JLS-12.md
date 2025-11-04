@@ -10,6 +10,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The S-Core change process management is followed.
-
 A change management process is followed by nlohmann/json.

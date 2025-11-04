@@ -40,6 +40,4 @@ score:
     Erikhu1: 1.0
 ---
 
-If the service accepts the value-candidate as a singleton, then the value-candidate is accepted.
-
-sab
+If the service provided by nlohmann/json accepts the value-candidate as a singleton, then the value-candidate is accepted.

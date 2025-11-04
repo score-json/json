@@ -38,6 +38,4 @@ score:
     Erikhu1: 1.0
 ---
 
-If the service does not accept any name candidate as singleton, then the service does not accept the object candidate.
-
-sab
+If the service provided by nlohmann/json does not accept any name candidate as singleton, then the service does not accept the object candidate.

@@ -36,6 +36,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service accepts the empty array.
-
-sab
+The service provided by nlohmann/json accepts the empty array.

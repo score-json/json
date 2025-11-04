@@ -15,4 +15,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service throws an exception on unescaped control characters.
+The service provided by nlohmann/json throws an exception on unescaped control characters.

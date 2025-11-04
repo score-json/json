@@ -19,4 +19,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service throws an exception on incorrect surrogate pairs.
+The service provided by nlohmann/json throws an exception on incorrect surrogate pairs.

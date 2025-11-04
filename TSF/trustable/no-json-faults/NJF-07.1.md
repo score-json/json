@@ -25,6 +25,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service does accept empty string.
-
-sab
+The service provided by nlohmann/json does accept empty strings.

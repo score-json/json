@@ -34,4 +34,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service parses non-empty arrays.
+The service provided by nlohmann/json parses non-empty arrays.

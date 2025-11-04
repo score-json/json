@@ -6,6 +6,4 @@ references:
       path: ./TSF/trustable/assertions/TA-FIXES-CHECKLIST.md
 ---
 
-Known bugs or misbehaviours are analysed and triaged, and critical fixes or mitigations are implemented or applied.
-
-nlohmann
+In nlohmann/json, known bugs or misbehaviours are analysed and triaged, and critical fixes or mitigations are implemented or applied.

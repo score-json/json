@@ -22,6 +22,4 @@ score:
     Erikhu1: 0.95
 ---
 
-The service accepts the non-empty objects.
-
-sab
+The service provided by nlohmann/json accepts the non-empty objects.

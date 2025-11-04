@@ -22,6 +22,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service does not accept u0415 and u0436 (cyrillic e and E) as exponent signs in numbers with exponent.
-
-sab
+The service provided by nlohmann/json does not accept u0415 and u0436 (cyrillic e and E) as exponent signs in numbers with exponent.

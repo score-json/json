@@ -32,6 +32,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service does accept the six structural characters.
-
-sab
+The service provided by nlohmann/json does accept the six structural characters.

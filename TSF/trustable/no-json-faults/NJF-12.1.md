@@ -18,6 +18,4 @@ score:
     Erikhu1: 0.95
 ---
 
-The service rejects malformed UTF-8 data.
-
-sab
+The service provided by nlohmann/json rejects malformed UTF-8 data.

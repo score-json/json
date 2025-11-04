@@ -27,4 +27,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service parses escaped characters in the basic multilingual plane.
+The service provided by nlohmann/json parses escaped characters in the basic multilingual plane.

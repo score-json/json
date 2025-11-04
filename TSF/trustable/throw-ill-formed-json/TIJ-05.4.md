@@ -18,4 +18,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service throws an exception if any member has an improper value.
+The service provided by nlohmann/json throws an exception if any member has an improper value.

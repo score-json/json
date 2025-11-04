@@ -35,6 +35,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service accepts the literal name false.
-
-sab
+The service provided by nlohmann/json accepts the literal name false.

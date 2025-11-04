@@ -19,4 +19,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service parses the literal name null.
+The service provided by nlohmann/json parses the literal name null.

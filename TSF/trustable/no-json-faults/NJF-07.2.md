@@ -33,6 +33,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service does not accept the improperly bounded strings.
-
-sab
+The service provided by nlohmann/json does not accept the improperly bounded strings.

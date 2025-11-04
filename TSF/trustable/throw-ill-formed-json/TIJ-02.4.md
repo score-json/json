@@ -18,4 +18,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service throws an exception on U+0415 and U+0436 instead of U+0045 or U+0065.
+The service provided by nlohmann/json throws an exception on U+0415 and U+0436 instead of U+0045 or U+0065.

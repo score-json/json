@@ -30,7 +30,5 @@ score:
     Erikhu1: 1.0
 ---
 
-The service does not accept NaN, infinity.
-
-sab
+The service provided by nlohmann/json does not accept NaN and infinity.
 

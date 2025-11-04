@@ -22,4 +22,4 @@ score:
     Erikhu1: 0.95
 ---
 
-The service parses duplicate names without error and reports the last member with that name only.
+The service provided by nlohmann/json parses duplicate names without error and reports the last member with that name only.

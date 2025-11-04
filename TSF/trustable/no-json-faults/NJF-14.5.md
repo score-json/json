@@ -18,6 +18,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service does not accept UTF-8 byte order mark outside of a string and outside of the first three characters of the input.
-
-sab
+The service provided by nlohmann/json does not accept UTF-8 byte order mark outside of a string and outside of the first three characters of the input.

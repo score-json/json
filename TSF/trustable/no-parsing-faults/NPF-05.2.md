@@ -25,4 +25,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service parses empty arrays.
+The service provided by nlohmann/json parses empty arrays.

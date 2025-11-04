@@ -3,6 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The service parses well-formed UTF-8 encoded data only.
-
-sab and all above
+The service provided by nlohmann/json parses well-formed UTF-8 encoded data only.

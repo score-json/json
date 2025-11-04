@@ -37,6 +37,4 @@ score:
     Erikhu1: 1.0
 ---
 
-If every value candidate of a properly bounded array is accepted as singleton, then the service accepts the array.
-
-sab
+If every value candidate of a properly bounded array is accepted as singleton, then the service provided by nlohmann/json accepts the array.
