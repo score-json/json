@@ -112,7 +112,7 @@ jobs:
           gh issue list --repo "$REPO" --state closed --limit 10000 --json number,title,state,createdAt,url,labels > raw_closed_issues.json
 
           # print the list of misbehaviours
-          python3 ./TSF/scripts/generate_list_of_misbehaviours.py > $OUTPUT_FILE
+          python3 TSF/scripts/generate_list_of_misbehaviours.py > $OUTPUT_FILE
 
           # Push misbehaviours file to save_historical_data branch
           git add TSF/misbehaviours.md
