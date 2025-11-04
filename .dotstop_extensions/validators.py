@@ -493,6 +493,10 @@ def combinator(configuration: dict[str, yaml]) -> tuple[float, list[Exception | 
             validator_score, validator_errors = is_branch_protected(validator_configuration)
             scores.append(validator_score)
             exceptions.extend(validator_errors)
+        elif validator_type == "coveralls_reporter":
+            validator_score, validator_errors = coveralls_reporter(validator_configuration)
+            scores.append(validator_score)
+            exceptions.extend(validator_errors)
     if sum(weights) == 0.0:
         return (0.0, exceptions)
     else:

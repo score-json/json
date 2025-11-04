@@ -193,7 +193,7 @@ references:
 This reference queries `https://github.com/{self._owner}/{self._repo}/actions?query=is%3Afailure+branch%3A{self._branch}` and collects the number of failed workflow runs as its content.
 Here, owner, repo and branch are the arguments given to the constructor of the reference.
 If no branch is specified, then all failures are collected, i.e. `https://github.com/{self._owner}/{self._repo}/actions?query=is%3Afailure` is queried.
-In case the website is un-reachable, or the github layout changes drastically so that the number of failed workflow runs does not exists at the expected location, an error is thrown.
+In case the website is un-reachable, or the github layout changes drastically so that the number of failed workflow runs does not exist at the expected location, an error is thrown.
 
 The expected configuration is 
 
@@ -343,7 +343,7 @@ It is of utmost importance that the arguments come with quotation marks, otherwi
 
 The automatic validator `is_branch_protected` tries to push to the specified branch, i.e. to execute the command `git push origin HEAD:{branch}`. 
 In case any changes are staged during the execution of the validator, an error is thrown before the push occurs.
-Since the validator is intended to be executed during a workflow run, where no change is staged, it is no expected that the error is thrown.
+Since the validator is intended to be executed during a workflow run, where no change is staged, it is not expected that the error is thrown.
 
 The expected configuration is given as follows:
 
@@ -379,6 +379,59 @@ evidence:
         digits: 3
 ```
 
+## combinator
+
+The automatic validator `combinator` is a meta-validator that executes multiple validators and combines their scores using a weighted average. This enables the validation of complex trustable items that require evidence from multiple sources or validation methods.
+
+The combinator accepts a list of validators, each with its own configuration and optional weight. Each validator is executed independently, and their scores are combined using the formula: `(score1 * weight1 + score2 * weight2 + ...) / (weight1 + weight2 + ...)`. If no weights are specified, all validators are treated with equal weight (weight = 1.0).
+
+The combinator supports the following validator types:
+- `check_artifact_exists`
+- `https_response_time` 
+- `check_test_results`
+- `file_exists`
+- `sha_checker`
+- `check_issues`
+- `did_workflows_fail`
+- `is_branch_protected`
+- `coveralls_reporter`
+
+The expected configuration is as follows:
+
+```
+evidence:
+    type: combinator
+    configuration:
+        validators:
+            - type: "check_test_results"
+              weight: 2.0  # optional, defaults to 1.0
+              configuration:
+                  tests:
+                      - class_lexer
+                      - unicode1
+            - type: "https_response_time"
+              weight: 1.0  # optional, defaults to 1.0  
+              configuration:
+                  target_seconds: 2
+                  urls:
+                      - "https://github.com/nlohmann/json/issues"
+            - type: "coveralls_reporter"
+              weight: 1.5  # optional, defaults to 1.0
+              configuration:
+                  owner: "score-json"
+                  repo: "json"
+                  branch: "main"
+                  line_coverage: 99.186
+                  branch_coverage: 93.865
+                  digits: 3
+            - type: "did_workflows_fail"
+              configuration:
+                  owner: "eclipse-score"
+                  repo: "inc_nlohmann_json" 
+                  branch: "json_version_3_12_0"
+```
+
+All weights must be non-negative. If the sum of all weights is zero, the combinator returns a score of 0.0. The combinator aggregates all exceptions and warnings from the individual validators and returns them alongside the combined score.
 
 # Data store interface
 
