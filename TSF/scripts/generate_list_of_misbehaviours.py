@@ -13,13 +13,13 @@ if __name__ == "__main__":
         all_open_issues = json.load(list_1)
     relevant_open_issues = [all_open_issues[i] for i in range(0,len(all_open_issues))
                                 if len(all_open_issues[i].get("labels",[]))!=0 
-                                and (all_open_issues[i].get("labels"))[0].get("name") == "kind: bug"
+                                and any(label.get("name") == "kind: bug" for label in all_open_issues[i].get("labels", []))
                             ]
     with open("raw_closed_issues.json") as list_2:
         all_closed_issues = json.load(list_2)
     relevant_closed_issues = [all_closed_issues[i] for i in range(0,len(all_closed_issues))
                                     if len(all_closed_issues[i].get("labels",[]))!=0 
-                                    and (all_closed_issues[i].get("labels"))[0].get("name") == "kind: bug"
+                                    and any(label.get("name") == "kind: bug" for label in all_closed_issues[i].get("labels", []))
                                     and datetime.strptime(all_closed_issues[i].get("createdAt","2000-01-01T00:00:00Z"),"%Y-%m-%dT%H:%M:%SZ")
                                                                                 .replace(tzinfo=timezone.utc)
                                                                                 .timestamp()
@@ -33,13 +33,13 @@ if __name__ == "__main__":
 
     print("## Open issues\n")
     for issue in relevant_open_issues:
-        print(f'### [#{issue.get("number")}]({issue.get("url")})\n- **Title:** {issue.get("title")}\n- **State:** {issue.get("state")}\n- **Created At:** {issue.get("createdAt")}\n')
+        print(f"### [#{issue.get('number')}]({issue.get('url')})\n- **Title:** {issue.get('title')}\n- **State:** {issue.get('state')}\n- **Created At:** {issue.get('createdAt')}\n")
         comment_nlohmann_misbehaviours(int(issue.get("number")))
         print("\n")
 
-    print(f"\n## Closed Issues (since version {version}\n")    
+    print(f"\n## Closed Issues (since version {version})\n")
     for issue in relevant_closed_issues:
-        print(f'### [#{issue.get("number")}]({issue.get("url")})\n- **Title:** {issue.get("title")}\n- **State:** {issue.get("state")}\n- **Created At:** {issue.get("createdAt")}\n')
+        print(f"### [#{issue.get('number')}]({issue.get('url')})\n- **Title:** {issue.get('title')}\n- **State:** {issue.get('state')}\n- **Created At:** {issue.get('createdAt')}\n")
         comment_nlohmann_misbehaviours(int(issue.get("number")))
         print("\n")
         
