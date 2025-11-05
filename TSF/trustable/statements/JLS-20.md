@@ -1,7 +1,7 @@
 ---
 level: 1.1
 normative: true
-references: 
+references:
     - type: verbose_file
       path: ./.github/workflows/parent-workflow.yml
       description: "github workflow running on push to main and triggering the workflow publish_documentation"
@@ -19,6 +19,9 @@ evidence:
             - https://github.com/score-json/json/blob/save_historical_data/TSF/TrustableScoring.db
 score:
     Jonas-Kirchhoff: 1.0
+    aschemmmel-tech: 0.5
 ---
 
 A github workflow saves the history of scores in the trustable graph to derive trends.
+
+aschemmel-tech: do we also have some display of the historical data planned (to use for analyses)? Is this already provided/automated by TSF?
