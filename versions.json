@@ -2,9 +2,5 @@
   {
     "version": "main",
     "url": "https://score-json.github.io/json/main/"
-  },
-  {
-    "version": "test_documentation_workflow",
-    "url": "https://score-json.github.io/json/test_documentation_workflow/"
   }
 ]
