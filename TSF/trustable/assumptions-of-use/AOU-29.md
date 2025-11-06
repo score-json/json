@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The integrator shall evaluate the necessity of monitoring mechanisms and implement these in score-json together with a persistent storage of monitoring data as needed.
+The integrator shall check the security tab in the github UI on a regular basis and analyze and fix or dismiss any outstanding CVEs.

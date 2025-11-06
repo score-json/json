@@ -8,4 +8,6 @@ evidence:
         list_of_known_misbehaviours: "./TSF/docs/nlohmann_misbehaviours_comments.md"
 ---
 
-A score based on outstanding, fixed and mitigated faults is calculated based on github issues in nlohmann/json.
+Outstanding bugs or misbehaviours are analyzed within score-json to determine whether they are relevant for S-CORE's use cases of nlohmann/json.
+
+TA-FIXES EVIDENCE 2 INCLUDED
