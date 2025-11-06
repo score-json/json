@@ -354,7 +354,7 @@ evidence:
         branch: "json_version_3_12_0" # name of the branch
 ```
 
-It is of utmost importance that the arguments come with quotation marks, otherwise, the update helper does not work as intended.
+It is of utmost importance that the arguments come with quotation marks. Otherwise, the update helper does not work as intended.
 
 ## coveralls_reporter
 
