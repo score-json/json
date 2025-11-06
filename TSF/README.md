@@ -10,21 +10,10 @@ The TSF graph (including links, nodes and their hashes) is saved in the `.dotsto
 
 # Forking the repository
 
-In order to fork this repository or set up any repository where the TSF documentation in this repository is to be included, the following settings have to be configured on GitHub.
+In order to fork this repository or set up any repository where the TSF documentation in this repository is to be included, the following settings have to be configured on GitHub. In addition to the below settings, make sure to also configure appropriate branch protection rules. 
 
 - In `Settings` > `General` >`Features`:
     - Enable `Issues`
-    
-- In `Settings` > `Code and automation` > `Branches`:
-    - Click `Add classic branch protection rule` and add "main" to the `Branch name pattern` 
-    - Make sure that only the following settings are enabled:
-        - `Require a pull request before merging`
-        - `Require approvals`
-        - `Require review from Code Owners`
-        - `Require status checks to pass before merging`
-        - `Require branches to be up to date before merging`
-        - `Require linear history`
-        - `Do not allow bypassing the above settings`
 
 - In `Settings` > `Code and automation` > `Actions` > `General` > `Workflow Permissions`:
     - Make sure that only the following settings are enabled:
