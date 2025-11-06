@@ -167,40 +167,59 @@ jobs:
           git commit -m "Updated issues list" || echo "No changes to commit"
           git push origin save_historical_data && git pull
       
-      - name: Generate current CVE report
+      - name: Generate current CodeQL report
         run: |
           # Define variables
-          CVE_OUTPUT_FILE="TSF/cve_report.md"
+          CODEQL_OUTPUT_FILE="TSF/codeql_report.md"
           
-          # Get code scanning alerts
+          # Get code scanning alerts with pagination support
           echo "Fetching code scanning alerts..."
-          CODESCANNING_RESPONSE=$(curl -s -w "%{http_code}" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-                                      -H "Accept: application/vnd.github+json" \
-                                      -H "X-GitHub-Api-Version: 2022-11-28" \
-                                      "https://api.github.com/repos/${{ github.repository }}/code-scanning/alerts?state=open")
+          CODESCANNING_COUNT=0
+          PAGE=1
+          PER_PAGE=100
           
-          CODESCANNING_HTTP_CODE="${CODESCANNING_RESPONSE: -3}"
-          CODESCANNING_BODY="${CODESCANNING_RESPONSE%???}"
+          while true; do
+            CODESCANNING_RESPONSE=$(curl -s -w "%{http_code}" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+                                        -H "Accept: application/vnd.github+json" \
+                                        -H "X-GitHub-Api-Version: 2022-11-28" \
+                                        "https://api.github.com/repos/${{ github.repository }}/code-scanning/alerts?state=open&page=$PAGE&per_page=$PER_PAGE")
+            
+            CODESCANNING_HTTP_CODE="${CODESCANNING_RESPONSE: -3}"
+            CODESCANNING_BODY="${CODESCANNING_RESPONSE%???}"
+            
+            if [ "$CODESCANNING_HTTP_CODE" = "200" ]; then
+              PAGE_COUNT=$(echo "$CODESCANNING_BODY" | jq -r 'length' 2>/dev/null || echo "0")
+              echo "Page $PAGE: found $PAGE_COUNT code scanning alerts"
+              CODESCANNING_COUNT=$((CODESCANNING_COUNT + PAGE_COUNT))
+              
+              # If we got fewer results than per_page, we've reached the end
+              if [ "$PAGE_COUNT" -lt "$PER_PAGE" ]; then
+                break
+              fi
+              PAGE=$((PAGE + 1))
+            else
+              echo "Code scanning access failed with HTTP $CODESCANNING_HTTP_CODE on page $PAGE"
+              echo "Response body: $CODESCANNING_BODY"
+              # If first page fails, set count to 0, otherwise keep what we have
+              if [ "$PAGE" -eq 1 ]; then
+                CODESCANNING_COUNT=0
+              fi
+              break
+            fi
+          done
           
-          if [ "$CODESCANNING_HTTP_CODE" = "200" ]; then
-            CODESCANNING_COUNT=$(echo "$CODESCANNING_BODY" | jq -r 'length' 2>/dev/null || echo "0")
-            echo "Code scanning alerts found: $CODESCANNING_COUNT"
-          else
-            echo "Code scanning access failed with HTTP $CODESCANNING_HTTP_CODE"
-            echo "Response body: $CODESCANNING_BODY"
-            CODESCANNING_COUNT=0
-          fi
+          echo "Total code scanning alerts found: $CODESCANNING_COUNT"
           
           echo "=== SECURITY SUMMARY ==="
           echo "Code Scanning Alerts (open): $CODESCANNING_COUNT"
           echo "Total Open Security Issues: $CODESCANNING_COUNT"
           
-          # Generate the CVE report using the new script
-          python3 TSF/scripts/generate_cve_report.py $CODESCANNING_COUNT > $CVE_OUTPUT_FILE
+          # Generate the CodeQL report
+          python3 TSF/scripts/generate_codeql_report.py $CODESCANNING_COUNT > $CODEQL_OUTPUT_FILE
 
-          # Push CVE report file to save_historical_data branch
-          git add TSF/cve_report.md
-          git commit -m "Updated CVE report" || echo "No changes to commit"
+          # Push CodeQL report file to save_historical_data branch
+          git add TSF/codeql_report.md
+          git commit -m "Updated CodeQL report" || echo "No changes to commit"
           git push origin save_historical_data && git pull
 
       - name: Load persistent data
