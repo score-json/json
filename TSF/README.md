@@ -10,21 +10,10 @@ The TSF graph (including links, nodes and their hashes) is saved in the `.dotsto
 
 # Forking the repository
 
-In order to fork this repository or set up any repository where the TSF documentation in this repository is to be included, the following settings have to be configured on GitHub.
+In order to fork this repository or set up any repository where the TSF documentation in this repository is to be included, the following settings have to be configured on GitHub. In addition to the below settings, make sure to also configure appropriate branch protection rules. 
 
 - In `Settings` > `General` >`Features`:
     - Enable `Issues`
-    
-- In `Settings` > `Code and automation` > `Branches`:
-    - Click `Add classic branch protection rule` and add "main" to the `Branch name pattern` 
-    - Make sure that only the following settings are enabled:
-        - `Require a pull request before merging`
-        - `Require approvals`
-        - `Require review from Code Owners`
-        - `Require status checks to pass before merging`
-        - `Require branches to be up to date before merging`
-        - `Require linear history`
-        - `Do not allow bypassing the above settings`
 
 - In `Settings` > `Code and automation` > `Actions` > `General` > `Workflow Permissions`:
     - Make sure that only the following settings are enabled:
@@ -43,6 +32,18 @@ In order to fork this repository or set up any repository where the TSF document
 - In `Actions tab`:
     - Click `I understand my workflows, go ahead and enable them`
     - In the left side menu, click `Show more workflows...` and enable any workflows which are labelled as `Disabled`
+
+# Release management 
+
+The releases process of this repository shall conform to the [release management plan of Eclipse S-CORE](https://github.com/eclipse-score/score/blob/668bae4d1a704565983d34b8447d5a035696299a/docs/platform_management_plan/release_management.rst#id11). Most notably, the release tags shall follow semantic versioning format.
+
+- The components of the tag shall be incremented both in case of an update to TSF documentation, and in case of updating to a new release of the upstream nlohmann/json library.
+- Updates to TSF documentation shall increment the PATCH or MINOR component.
+- Updating the version of nlohmann/json to a new release shall increment the appropriate tag component based on the extensiveness and nature of the upstream changes.
+- To indicate the version of nlohmann/json in use, the nlohmann/json release tag shall always be clearly included in the release notes of this repository.
+- The release notes of this repository shall always indicate whether the release includes changes to only TSF documentation, only the version of nlohmann/json, or both.
+
+To update either the version of nlohmann/json within S-CORE or TSF documentation, please refer to the respective Update Concepts below.
 
 # Update Concept for the version of nlohmann/json within S-CORE
 
