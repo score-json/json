@@ -217,7 +217,7 @@ It is highly recommended to not delete SME scores under usual circumstances; mos
 The following unusual circumstances can, after careful consideration, justify the removal or (much preferably!) the request for re-evaluation by the original SMEs:
 
 * change of references: 
-    If, e.g. due to an update of ``nlohmann/json``, the references of any items (be it tests or code) change, then this should trigger a re-evaluation of the statement. 
+    If, e.g. due to an update of ``nlohmann/json``, the references of any items (be it tests or code) changes, then this should trigger a re-evaluation of the statement. 
     In particular if the behaviour changed significantly, it can be justifiable to assume that the old SME scores do not reflect the statement anymore.
 * addition of automatic validators: 
     Recall that the SME judges in the absence of an automatic validator the validity of the statement using their own knowledge as well as the provided references, while in the presence of an automatic validator the validity of the validator score to represent the true score of the item, which is estimated as in the case of no validator, is judged.
