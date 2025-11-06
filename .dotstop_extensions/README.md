@@ -337,7 +337,7 @@ evidence:
         action: "push" # optional, default is push
 ```
 
-It is of utmost importance that the arguments come with quotation marks, otherwise, the update helper does not work as intended.
+It is of utmost importance that the arguments come with quotation marks. Otherwise, the update helper does not work as intended.
 
 ## is_branch_protected
 
