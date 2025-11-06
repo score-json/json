@@ -14,11 +14,6 @@ This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json re
 - **State:** OPEN
 - **Created At:** 2025-10-29T16:05:32Z
 
-### [#4946](https://github.com/nlohmann/json/issues/4946)
-- **Title:** Failure with cmake 4.1
-- **State:** OPEN
-- **Created At:** 2025-10-08T13:54:22Z
-
 ### [#4925](https://github.com/nlohmann/json/issues/4925)
 - **Title:** Assertion error when converting to and from BJdata
 - **State:** OPEN
@@ -146,6 +141,11 @@ This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json re
 
 
 ## Closed Issues (since v3.12.0)
+
+### [#4946](https://github.com/nlohmann/json/issues/4946)
+- **Title:** Failure with cmake 4.1
+- **State:** CLOSED
+- **Created At:** 2025-10-08T13:54:22Z
 
 ### [#4903](https://github.com/nlohmann/json/issues/4903)
 - **Title:** LNK2005
