@@ -2,7 +2,7 @@ import json
 import sys
 from datetime import datetime, timezone
 
-def generate_cve_report(codescanning_count):
+def generate_codeql_report(codescanning_count):
     """Generate a markdown report for CodeQL security issues"""
     
     current_time = datetime.now(timezone.utc)
@@ -32,7 +32,7 @@ def generate_cve_report(codescanning_count):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: generate_cve_report.py <codescanning_count>", file=sys.stderr)
+        print("Usage: generate_codeql_report.py <codescanning_count>", file=sys.stderr)
         sys.exit(1)
     
     try:
@@ -41,4 +41,4 @@ if __name__ == "__main__":
         print("Error: CodeQL count must be a valid integer", file=sys.stderr)
         sys.exit(1)
     
-    generate_cve_report(codescanning_count)
+    generate_codeql_report(codescanning_count)
