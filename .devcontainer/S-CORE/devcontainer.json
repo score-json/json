@@ -39,7 +39,7 @@
 	// "forwardPorts": [],
 
 	// Uncomment the next line to run commands after the container is created.
-	"postCreateCommand": "bash .devcontainer/S-CORE/post_create_script.sh"
+	"postCreateCommand": "bash .devcontainer/S-CORE/post_create_script.sh",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
