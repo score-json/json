@@ -12,4 +12,4 @@ evidence:
         digits: 3
 ---
 
-The test coverage for this version of nlohmann/json is monitored by coveralls and stays constant.
+The test coverage for this version of nlohmann/json is monitored using Coveralls and is not decreasing over time, unless reasonably justified.
