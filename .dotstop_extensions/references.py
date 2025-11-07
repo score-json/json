@@ -723,6 +723,34 @@ It should be noted that not all unit-tests in a test-file are executed with ever
         return fetched_data
 
     def fetch_all_test_data(self, input: list[str]):
+        """
+        Extract and compile test structure information from C++ test files along with execution environment data.
+        
+        This method processes a list of file or directory paths to find C++ unit test files (matching pattern 
+        "unit-*.cpp"), extracts their TEST_CASE and SECTION structure, and combines this with recent test 
+        execution environment information from the database to generate a comprehensive markdown report.
+        
+        The method recursively searches directories for test files, parses each file to extract the hierarchical
+        test structure (TEST_CASE containing nested SECTIONs), and correlates this with historical execution
+        data to show which compiler/standard combinations were used to run the tests.
+        
+        Args:
+            input: List of file or directory paths to process. Files must match "unit-*.cpp" pattern.
+                  Directories are recursively searched for matching test files.
+        
+        Returns:
+            str: A markdown-formatted report containing:
+                - Header explaining the test structure format
+                - For each test file: nested bullet lists showing TEST_CASE and SECTION hierarchy  
+                - Execution environment information showing which compiler/standard combinations
+                  successfully ran all tests vs. which had some test cases skipped
+                - Notes about files that appear to have no recent execution history
+        
+        Note:
+            The method relies on extract_recent_test_environments() to get database information
+            and extract_test_structure() to parse individual test files. Test file names are
+            transformed using transform_test_file_to_test_name() to match database entries.
+        """
         # inputs: path(s) to directory potentially containing some test-data
         extracted_test_data = []
         recent_test_data = self.extract_recent_test_environments()
