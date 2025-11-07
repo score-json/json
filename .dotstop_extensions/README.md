@@ -339,23 +339,6 @@ evidence:
 
 It is of utmost importance that the arguments come with quotation marks. Otherwise, the update helper does not work as intended.
 
-## is_branch_protected
-
-The automatic validator `is_branch_protected` tries to push to the specified branch, i.e. to execute the command `git push origin HEAD:{branch}`. 
-In case any changes are staged during the execution of the validator, an error is thrown before the push occurs.
-Since the validator is intended to be executed during a workflow run, where no change is staged, it is not expected that the error is thrown.
-
-The expected configuration is given as follows:
-
-```
-evidence:
-    type: is_branch_protected
-    configuration:
-        branch: "json_version_3_12_0" # name of the branch
-```
-
-It is of utmost importance that the arguments come with quotation marks. Otherwise, the update helper does not work as intended.
-
 ## coveralls_reporter
 
 The automatic validator `coveralls_reporter` queries the [coveralls](https://coveralls.io/) api to get the line and branch coverages calculated by the service, which is running on the repository.
@@ -393,7 +376,6 @@ The combinator supports the following validator types:
 - `sha_checker`
 - `check_issues`
 - `did_workflows_fail`
-- `is_branch_protected`
 - `coveralls_reporter`
 
 The expected configuration is as follows:

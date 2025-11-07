@@ -377,19 +377,6 @@ def did_workflows_fail(configuration: dict[str, yaml]) -> tuple[float, list[Exce
     if m.group(1).strip() != "0":
         return (0.0, [Warning("There are failed workflows!")])
     return (1.0, [])
-
-def is_branch_protected(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
-    branch = configuration.get("branch",None)
-    if branch is None:
-        return (0.0, [RuntimeError("The branch is not specified.")])
-    res = subprocess.run(["git", "diff", "--cached", "--quiet", "--exit-code"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
-    if res.returncode != 0:
-        raise RuntimeError("There are currently staged changes. Please unstage to proceed.")
-    try:
-        subprocess.run(["git","push","origin",f"HEAD:{branch}"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
-        return (0.0, [RuntimeError(f"The branch {branch} is not protected!")])
-    except:
-        return (1.0, [])
     
 def coveralls_reporter(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:
     owner = configuration.get("owner",None)
@@ -487,10 +474,6 @@ def combinator(configuration: dict[str, yaml]) -> tuple[float, list[Exception | 
             exceptions.extend(validator_errors)
         elif validator_type == "did_workflows_fail":
             validator_score, validator_errors = did_workflows_fail(validator_configuration)
-            scores.append(validator_score)
-            exceptions.extend(validator_errors)
-        elif validator_type == "is_branch_protected":
-            validator_score, validator_errors = is_branch_protected(validator_configuration)
             scores.append(validator_score)
             exceptions.extend(validator_errors)
         elif validator_type == "coveralls_reporter":
