@@ -43,5 +43,3 @@ score:
 ---
 
 The nlohmann/json library is widely used and actively maintained; bugs and misbehaviours are tracked publicly and transparently.
-
-INSERT TA-FIXES EVIDENCE 1 (RELEASE NOTES)
