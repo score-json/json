@@ -8,4 +8,4 @@ references:
       branch: "master"
 ---
 
-Changes to the default branch in nlohmann/json are applied only after code review and passing of all pipelines.
+Changes to the master branch in nlohmann/json are applied only after code review and passing of all pipelines.
