@@ -69,7 +69,7 @@ references:
 ```
 
 Since functions may be overloaded, a `FunctionReference` can be initialised with an optional overload-parameter. 
-The overload-parameter specifies which implementation of the function is referred to, i.e. if the overload-parameter for the function ``class::function()`` is set to _n_, then the _n_-th implementation when counting the occurrences from top to bottom, of ``function()`` within the class ``class`` is used, if it exists; otherwise, an error is thrown. Additionally, it is possible, but not mandatory, to give a description. The full example is:
+The overload-parameter specifies which implementation of the function is referred to, i.e. if the overload-parameter for the function ``class::function()`` is set to _n_, then the _n_-th implementation when counting the occurrences from top to bottom of ``function()`` within the class ``class`` is used, if it exists; otherwise, an error is thrown. Additionally, it is possible, but not mandatory, to give a description. The full example is:
 ```
 ---
 ...
