@@ -660,7 +660,31 @@ It should be noted that not all unit-tests in a test-file are executed with ever
         return ("\n".join(lines_out) + "\n") if lines_out else ""
 
     def extract_recent_test_environments(self) -> dict:
+        """
+        Extract recent test environment information from the test results database.
+        
+        This method connects to the SQLite database specified in self._database and queries 
+        the table specified in self._table to retrieve information about test environments
+        where unit tests were executed. It categorizes the results into tests that ran 
+        without skipping any test cases ('noskip') and tests where some cases were skipped ('skip').
+        
+        The database is expected to have a table with columns:
+        - name: test file name (e.g., "test-example")  
+        - compiler: compiler used (e.g., "gcc", "clang")
+        - cpp_standard: C++ standard used (e.g., "c++17", "c++20")
+        - skipped_cases: number of test cases that were skipped (0 means no skips)
+        
+        Returns:
+            dict: A dictionary where keys are test case names and values are dictionaries containing:
+                - "noskip": list of environments where all tests ran (no skipped cases)
+                - "skip": list of environments where some tests were skipped
+                Each environment entry contains compiler, standard, and (for skip) skipped count.
+        
+        Raises:
+            RuntimeError: If the database cannot be accessed or the expected table doesn't exist
+        """
         fetched_data = dict()
+        connector = None
         try:    
             # initialise connection to test result database
             connector = sqlite3.connect(self._database)
@@ -669,29 +693,33 @@ It should be noted that not all unit-tests in a test-file are executed with ever
             cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name = ?;",(self._table,))
             if cursor.fetchone() is None: 
                 raise RuntimeError(f"Fatal Error: Could not find table {self._table} in database {self._database}.")
+            
+            # get all test-files from recent test executions
+            command = f"SELECT name FROM {self._table};"
+            cursor.execute(command)
+            raw_cases = cursor.fetchall()
+            cases = set([raw_case[0] for raw_case in raw_cases])
+            # for each test-file
+            for case in cases:
+                case_data = dict()
+                # get the test-environments
+                command = f"SELECT compiler, cpp_standard FROM {self._table} WHERE name = ? and skipped_cases == 0"
+                cursor.execute(command,(case,))
+                results = cursor.fetchall()
+                case_data["noskip"] = [{"compiler":result[0], "standard":result[1]} for result in results]
+                # some test-cases are skipped with certain environments
+                # It is unclear from the log, which cases are skipped;
+                # we leave this to the interested reader
+                command = f"SELECT compiler, cpp_standard, skipped_cases FROM {self._table} WHERE name = ? and skipped_cases != 0"
+                cursor.execute(command, (case,))
+                results = cursor.fetchall()
+                case_data["skip"] = [{"compiler": result[0], "standard": result[1], "skipped": result[2]} for result in results]
+                fetched_data[case] = case_data
         except sqlite3.Error as e:
             raise RuntimeError(f"Fatal Error accessing database {self._database}: {e}")
-        # get all test-files from recent test executions
-        command = f"SELECT name FROM {self._table};"
-        cursor.execute(command)
-        raw_cases = cursor.fetchall()
-        cases = set([raw_case[0] for raw_case in raw_cases])
-        # for each test-file
-        for case in cases:
-            case_data = dict()
-            # get the test-environments
-            command = f"SELECT compiler, cpp_standard FROM {self._table} WHERE name = ? and skipped_cases == 0"
-            cursor.execute(command,(case,))
-            results = cursor.fetchall()
-            case_data["noskip"] = [{"compiler":result[0], "standard":result[1]} for result in results]
-            # some test-cases are skipped with certain environments
-            # It is unclear from the log, which cases are skipped;
-            # we leave this to the interested reader
-            command = f"SELECT compiler, cpp_standard, skipped_cases FROM {self._table} WHERE name = ? and skipped_cases != 0"
-            cursor.execute(command, (case,))
-            results = cursor.fetchall()
-            case_data["skip"] = [{"compiler": result[0], "standard": result[1], "skipped": result[2]} for result in results]
-            fetched_data[case] = case_data
+        finally:
+            if connector:
+                connector.close()
         return fetched_data
 
     def fetch_all_test_data(self, input: list[str]):
