@@ -368,9 +368,18 @@ def did_workflows_fail(configuration: dict[str, yaml]) -> tuple[float, list[Exce
     branch = configuration.get("branch",None)
     if branch is not None:
         url += f"+branch%3A{branch}"
-    res = requests.get(url)
+    
+    try:
+        res = requests.get(url, timeout=30)  # Add timeout to prevent hanging
+    except requests.exceptions.ConnectionError as e:
+        return (0.0, [RuntimeError(f"Connection error when accessing {url}: {e}")])
+    except requests.exceptions.Timeout as e:
+        return (0.0, [RuntimeError(f"Timeout error when accessing {url}: {e}")])
+    except requests.exceptions.RequestException as e:
+        return (0.0, [RuntimeError(f"Request error when accessing {url}: {e}")])
+    
     if res.status_code != 200:
-        return (0.0, [RuntimeError(f"The website {url} can not be successfully reached!")])
+        return (0.0, [RuntimeError(f"The website {url} can not be successfully reached! Status code: {res.status_code}")])
     m = re.search(r'(\d+)\s+workflow run results', res.text, flags=re.I)
     if m is None:
         return (0.0, [RuntimeError("The number of failed workflows can not be found.")])
