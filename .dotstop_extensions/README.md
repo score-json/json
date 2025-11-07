@@ -188,7 +188,7 @@ references:
 ---
 ```
 
-## NumberOfFailures
+## workflow_failures
 
 This reference queries `https://github.com/{self._owner}/{self._repo}/actions?query=is%3Afailure+branch%3A{self._branch}` and collects the number of failed workflow runs as its content.
 Here, owner, repo and branch are the arguments given to the constructor of the reference.

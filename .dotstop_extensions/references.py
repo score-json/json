@@ -807,7 +807,7 @@ class Checklist(LFR):
 
 del LFR
 
-class NumberOfFailures(BaseReference):
+class workflow_failures(BaseReference):
     def __init__(self, owner: str, repo: str, branch: str | None = None) -> None:
         self._owner = owner
         self._repo = repo
