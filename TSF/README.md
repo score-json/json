@@ -221,8 +221,7 @@ The following unusual circumstances can, after careful consideration, justify th
     If, e.g. due to an update of ``nlohmann/json``, the references of any items (be it tests or code) changes, then this should trigger a re-evaluation of the statement. 
     In particular if the behaviour changed significantly, it can be justifiable to assume that the old SME scores do not reflect the statement anymore.
 * addition of automatic validators: 
-    Recall that the SME judges in the absence of an automatic validator the validity of the statement using their own knowledge as well as the provided references, while in the presence of an automatic validator the validity of the validator score to represent the true score of the item, which is estimated as in the case of no validator, is judged.
-    If a new automatic validator is added, then the meaning of the old SME scores is no longer represented, thereby urging for a re-review or (if a re-review is impossible) the removal of the score.
+    Recall that the SME-scores have different meanings depending on whether or not an automatic validator is implemented. In the absence of a validator, the SME shall assess their confidence in the statement based on linked artifacts (references) and their own knowledge. In the presence of an automatic validator, the SME shall assess only their confidence in the validator as an accurate measure of the truth of the statement.
 
 ## Validators
 
