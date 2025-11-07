@@ -381,7 +381,7 @@ evidence:
 
 ## combinator
 
-The automatic validator `combinator` is a meta-validator that executes multiple validators and combines their scores using a weighted average. This enables the validation of complex trustable items that require evidence from multiple sources or validation methods.
+The trudag tool does currently not support the use of multiple custom validators for one single TSF item. To work around this, the validator `combinator` is implemented as a meta-validator that executes multiple validators and combines their scores using a weighted average. This enables the validation of complex trustable items that require evidence from multiple sources or validation methods.
 
 The combinator accepts a list of validators, each with its own configuration and optional weight. Each validator is executed independently, and their scores are combined using the formula: `(score1 * weight1 + score2 * weight2 + ...) / (weight1 + weight2 + ...)`. If no weights are specified, all validators are treated with equal weight (weight = 1.0).
 
