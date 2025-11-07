@@ -42,4 +42,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The nlohmann/json library is widely used and actively maintained; bugs and misbehaviours are tracked publicly and transparently.
+nlohmann/json is widely used and actively maintained; bugs and misbehaviours are tracked publicly and transparently.
