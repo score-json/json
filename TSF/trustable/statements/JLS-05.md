@@ -22,7 +22,7 @@ references:
           description: "comparison between JSON libraries demonstrating the popularity of nlohmann/json"
         - type: project_website
           url: "https://json.nlohmann.me/home/customers/"
-          description: "list of large projects using nlohmann/json"
+          description: "presents a list of a subset of all customers who are using the nlohmann/json library"
 evidence:
         type: https_response_time
         configuration:
@@ -33,11 +33,12 @@ evidence:
                     - "https://github.com/nlohmann/json/graphs/contributors"
                     - "https://github.com/nlohmann/json/forks?include=active&page=1&period=&sort_by=last_updated"
                     - "https://github.com/nlohmann/json/pulse"
+                    - "https://json.nlohmann.me/home/customers/"
 score:
     Jonas-Kirchhoff: 1.0
     Erikhu1: 1.0
 ---
 
-The OSS nlohmann/json is widely used and actively maintained; bugs and misbehaviours are tracked publicly and transparently.
+The nlohmann/json library is widely used and actively maintained; bugs and misbehaviours are tracked publicly and transparently.
 
 INSERT TA-FIXES EVIDENCE 1 (RELEASE NOTES)
