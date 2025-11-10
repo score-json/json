@@ -20,7 +20,7 @@ references:
         - type: project_website
           url: "https://github.com/orgs/score-json/discussions/27#discussion-8594385"
           description: "comparison between JSON libraries demonstrating the popularity of nlohmann/json"
-        - type: project_website
+        - type: website
           url: "https://json.nlohmann.me/home/customers/"
           description: "presents a list of a subset of all customers who are using the nlohmann/json library"
         - type: project_website
