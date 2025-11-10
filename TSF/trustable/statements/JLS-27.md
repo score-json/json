@@ -7,4 +7,4 @@ references:
       description: "file containing all include occurrences of the score-project."
 ---
 
-The nlohnmann/json library uses no external components besides the C++ standard components.
+nlohmann/json uses no external components besides the C++ standard components.
