@@ -977,10 +977,6 @@ class IncludeListReference(BaseReference):
         return ("\n".join(includes)).encode("utf-8")
 
     def as_markdown(self, filepath: None | str = None) -> str:
-        """
-        Return a markdown-formatted code block with the includes.
-        Indented one level to match the other reference markdown formatting.
-        """
         content = self.content.decode("utf-8")
         if content == "No includes found":
             return make_md_bullet_point(f"No includes found in {self._path}", 1)
