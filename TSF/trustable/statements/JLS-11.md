@@ -11,5 +11,3 @@ score:
 ---
 
 Outstanding bugs or misbehaviours are analyzed within score-json to determine whether they are relevant for S-CORE's use cases of the nlohmann/json library.
-
-TA-FIXES EVIDENCE 2 INCLUDED
