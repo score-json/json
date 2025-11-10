@@ -17,7 +17,6 @@ evidence:
                 target_seconds: 2
                 urls:
                     - "https://introspector.oss-fuzz.com/project-profile?project=json"
-                    - "https://storage.googleapis.com/oss-fuzz-introspector/json/inspector-report/20250824/fuzz_report.html"
 score:
     Jonas-Kirchhoff: 1.0
     Erikhu1: 1.0
