@@ -658,5 +658,5 @@ class IncludeListReference(BaseReference):
         return md
 
     def __str__(self) -> str:
-        return f"Include List Reference for: {self._path}"
+        return f"List of included libraries for: {self._path}"
 
