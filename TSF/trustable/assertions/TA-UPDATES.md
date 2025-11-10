@@ -6,4 +6,4 @@ references:
       path: ./TSF/trustable/assertions/TA-UPDATES-CHECKLIST.md
 ---
 
-nlohmann/json components, configurations and tools are updated under specified change and configuration management controls.
+nlohmann/json library components, configurations and tools are updated under specified change and configuration management controls.
