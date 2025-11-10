@@ -439,7 +439,60 @@
 <li><p><a class="reference internal" href="JLS.html#jls-26"><span class="std std-ref">JLS-26</span></a></p></li>
 </ul>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TSF/trustable/assertions/TA-ANALYSIS-CHECKLIST.md</span></code></p></li>
+</ul>
+<section id="checklist-for-ta-analysis-from-codethink">
+<h2>Checklist for TA-ANALYSIS from <a class="reference external" href="https://codethinklabs.gitlab.io/trustable/trustable/print_page.html">Codethink</a><a class="headerlink" href="#checklist-for-ta-analysis-from-codethink" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>What fraction of Expectations are covered by the test data?</p>
+<p><strong>Answer</strong>: The two expectations are JLEX-01 and JLEX-02. Every statement supporting both of the expectations is ultimately supported by a test, except for WFJ-06. For WFJ-06 it is impossible to provide a direct tests, since this is a statement on infinitely many cases. Indirect tests are provided by the rejection of ill-formed json data.</p>
+</li>
+<li><p>What fraction of Misbehaviours are covered by the monitored indicator data?</p>
+<p><strong>Answer</strong>: For the intended use-case, no misbehaviours have been identified. Furthermore, no indicator data are collected.</p>
+</li>
+<li><p>How confident are we that the indicator data are accurate and timely?</p>
+<p><strong>Answer</strong>:  No indicator data are collected.</p>
+</li>
+<li><p>How reliable is the monitoring process?</p>
+<p><strong>Answer</strong>: Due to no indicator data being collected, there is no monitoring process.</p>
+</li>
+<li><p>How well does the production data correlate with our test data?</p>
+<p><strong>Answer</strong>:  Due to the general nature of the library, there are no production data.</p>
+</li>
+<li><p>Are we publishing our data analysis?</p>
+<p><strong>Answer</strong>:  Since we have no production data with which to compare our not collected indicator data or our test data, no data analysis is done, which is not published.</p>
+</li>
+<li><p>Are we comparing and analysing production data vs test?</p>
+<p><strong>Answer</strong>:  There are no production data.</p>
+</li>
+<li><p>Are our results getting better, or worse?</p>
+<p><strong>Answer</strong>:  Neither.</p>
+</li>
+<li><p>Are we addressing spikes/regressions?
+<strong>Answer</strong>:  There are no spikes in the non-existent indicator data. If a test ever fails, then the spike is investigated. The results of fuzz testing are investigated in the original nlohmann/json.</p></li>
+<li><p>Do we have sensible/appropriate target failure rates?</p>
+<p><strong>Answer</strong>:  For the unit and integration tests, zero. The target failure rate of fuzz testing is not under our control.</p>
+</li>
+<li><p>Do we need to check the targets?</p>
+<p><strong>Answer</strong>:  For the unit and integration tests, no. Since the fuzz testing runs and is investigated in the original nlohmann/json, there is no need to check the target.</p>
+</li>
+<li><p>Are we achieving the targets?</p>
+<p><strong>Answer</strong>:  For the unit and integration tests, yes. The achieving of the targets for the fuzz-testing is evaluated within the original nlohmann/json.</p>
+</li>
+<li><p>Are all underlying assumptions and target conditions for the analysis specified?</p>
+<p><strong>Answer</strong>:  Since none of the unit and integration tests are expected to fail, there is no further analysis of the results besides verifying the expectation. In case any test fails ever, the failure of the CI-pipeline encourages the maintainer to investigate.</p>
+</li>
+<li><p>Have the underlying assumptions been verified using known good data?</p>
+<p><strong>Answer</strong>:  The assumption that all unit and integration tests succeed under the expected conditions is demonstrated by the non-failure of the CI-Pipeline.</p>
+</li>
+<li><p>Has the Misbehaviour identification process been verified using known bad data?</p>
+<p><strong>Answer</strong>: Misbehaviours published on nlohmann/json usually provide minimal working examples for reproducing the faulty behaviour, enabling everyone to verify the identified misbehaviours. There is, however, no automatic process for the identification of misbehaviours.</p>
+</li>
+<li><p>Are results shown to be reproducible?</p>
+<p><strong>Answer</strong>: It is expected that the tests can be reproduced on every modern sufficiently powerful machine.</p>
+</li>
+</ul>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -535,12 +588,13 @@
 <tr class="row-odd"><td><p>2025-11-06 18:37:31</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p>2025-11-06 18:45:03.871310</p></td>
+<tr class="row-even"><td><p>2025-11-10 12:59:50.415890</p></td>
 <td><p>0.00</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
 </section>
 <hr class="docutils" />
 <section id="ta-behaviours">
@@ -558,9 +612,53 @@
 <li><p><a class="reference internal" href="AOU.html#aou-23"><span class="std std-ref">AOU-23</span></a></p></li>
 <li><p><a class="reference internal" href="AOU.html#aou-24"><span class="std std-ref">AOU-24</span></a></p></li>
 <li><p><a class="reference internal" href="AOU.html#aou-25"><span class="std std-ref">AOU-25</span></a></p></li>
+<li><p><a class="reference internal" href="JLS.html#jls-27"><span class="std std-ref">JLS-27</span></a></p></li>
 </ul>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TSF/trustable/assertions/TA-BEHAVIOURS-CHECKLIST.md</span></code></p></li>
+</ul>
+<section id="checklist-for-ta-behaviours-from-codethink">
+<h2>Checklist for TA-BEHAVIOURS from <a class="reference external" href="https://codethinklabs.gitlab.io/trustable/trustable/print_page.html">Codethink</a><a class="headerlink" href="#checklist-for-ta-behaviours-from-codethink" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>How has the list of Expectations varied over time?</p>
+<p><strong>Answer</strong>: The list of expectations is taken from <a class="reference external" href="https://eclipse-score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html">here</a>, whose development can be retraced using git.</p>
+</li>
+<li><p>How confident can we be that this list is comprehensive?</p>
+<p><strong>Answer</strong>:  The list of expectations has been collected amongst the stakeholders in S-CORE, so that we are very confident that the list is comprehensive.
+The expectation to serialize user data into JSON format</p>
+</li>
+<li><p>Could some participants have incentives to manipulate information?</p>
+<p><strong>Answer</strong>:  We can not imagine any reason.</p>
+</li>
+<li><p>Could there be whole categories of Expectations still undiscovered?</p>
+<p><strong>Answer</strong>:  It is unlikely, but the parsing of CBOR could become relevant at some time.</p>
+</li>
+<li><p>Can we identify Expectations that have been understood but not specified?</p>
+<p><strong>Answer</strong>:  No.</p>
+</li>
+<li><p>Can we identify some new Expectations, right now?</p>
+<p><strong>Answer</strong>:  No.</p>
+</li>
+<li><p>How confident can we be that this list covers all critical requirements?</p>
+<p><strong>Answer</strong>:  We can not think of any more critical requirement of a JSON parser in the sense of RFC8259 than to parse JSON data in the sense of RFC8259.</p>
+</li>
+<li><p>How comprehensive is the list of tests?</p>
+<p><strong>Answer</strong>:  Currently, the branch coverage is 93.865% and the line coverage is 99.186%, cf. JLS-27.</p>
+</li>
+<li><p>Is every Expectation covered by at least one implemented test?</p>
+<p><strong>Answer</strong>:  Yes, both of the expectations are covered by at least one implemented test. Moreover, each statement supporting the expectations is covered by a test with the exception of WFJ-06.</p>
+</li>
+<li><p>Are there any Expectations where we believe more coverage would help?</p>
+<p><strong>Answer</strong>: No.</p>
+</li>
+<li><p>How do dependencies affect Expectations, and are their properties verifiable?</p>
+<p><strong>Answer</strong>: The library nlohmann/json does not have external dependencies, so that there are in particular none that affect Expectations.</p>
+</li>
+<li><p>Are input analysis findings from components, tools, and data considered in relation to Expectations?</p>
+<p><strong>Answer</strong>:  No findings have been found.</p>
+</li>
+</ul>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -596,12 +694,13 @@
 <tr class="row-odd"><td><p>2025-08-29 15:47:02</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p>2025-11-06 18:45:03.871310</p></td>
+<tr class="row-even"><td><p>2025-11-10 12:59:50.415890</p></td>
 <td><p>0.00</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
 </section>
 <hr class="docutils" />
 <section id="ta-confidence">
@@ -619,7 +718,25 @@
 <li><p><a class="reference internal" href="JLS.html#jls-20"><span class="std std-ref">JLS-20</span></a></p></li>
 </ul>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TSF/trustable/assertions/TA-CONFIDENCE-CHECKLIST.md</span></code></p></li>
+</ul>
+<section id="checklist-for-ta-confidence-from-codethink">
+<h2>Checklist for TA-CONFIDENCE from <a class="reference external" href="https://codethinklabs.gitlab.io/trustable/trustable/print_page.html">Codethink</a><a class="headerlink" href="#checklist-for-ta-confidence-from-codethink" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>What is the algorithm for combining/comparing the scores?</p>
+<p><strong>Answer</strong>:  It is the standard algorithm of trudag.</p>
+</li>
+<li><p>How confident are we that this algorithm is fit for purpose?</p>
+<p><strong>Answer</strong>:  We have no reason to assume that the standard algorithm is not fit for our purpose.</p>
+</li>
+<li><p>What are the trends for each score?</p>
+<p><strong>Answer</strong>:  CAN NOT BE ANSWERED NOW</p>
+</li>
+<li><p>How well do our scores correlate with external feedback signals?</p>
+<p><strong>Answer</strong>:  CAN NOT BE ANSWERED NOW</p>
+</li>
+</ul>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -655,12 +772,13 @@
 <tr class="row-odd"><td><p>2025-08-29 15:47:02</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p>2025-11-06 18:45:03.871310</p></td>
+<tr class="row-even"><td><p>2025-11-10 12:59:50.415890</p></td>
 <td><p>0.00</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
 </section>
 <hr class="docutils" />
 <section id="ta-constraints">
@@ -682,7 +800,34 @@
 <li><p><a class="reference internal" href="AOU.html#aou-21"><span class="std std-ref">AOU-21</span></a></p></li>
 </ul>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TSF/trustable/assertions/TA-CONSTRAINTS-CHECKLIST.md</span></code></p></li>
+</ul>
+<section id="checklist-for-ta-constraints-from-codethink">
+<h2>Checklist for TA-CONSTRAINTS from <a class="reference external" href="https://codethinklabs.gitlab.io/trustable/trustable/print_page.html">Codethink</a><a class="headerlink" href="#checklist-for-ta-constraints-from-codethink" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Are the constraints grounded in realistic expectations, backed by real-world examples?</p>
+<p><strong>Answer</strong>:  The constraints originate from S-CORE (e.g. AOU-04, AOU-05, AOU-07, AOU-21), the standard RFC-8259 (e.g. AOU-05, AOU-20, AOU-21) and the library nlohmann/json itself (AOU-06, AOU-20) in order to ensure that the expectations are met.</p>
+</li>
+<li><p>Do they effectively guide downstream consumers in expanding upon existing Statements?</p>
+<p><strong>Answer</strong>:  ?????</p>
+</li>
+<li><p>Do they provide clear guidance for upstreams on reusing components with well-defined claims?</p>
+<p><strong>Answer</strong>:  ?????</p>
+</li>
+<li><p>Are any Statements explicitly designated as not reusable or adaptable?</p>
+<p><strong>Answer</strong>:  No statement has been intentionally designated as not reusable or adaptable.</p>
+</li>
+<li><p>Are there worked examples from downstream or upstream users demonstrating these constraints in practice?</p>
+<p><strong>Answer</strong>:  ????</p>
+</li>
+<li><p>Have there been any documented misunderstandings from users, and are these visibly resolved?</p>
+<p><strong>Answer</strong>:  Yes, it is documented that the <a class="reference external" href="https://json.nlohmann.me/home/faq/">brace initialisation</a> (cf. AOU-06) regularly leads to confusion, cf. <a class="reference external" href="https://github.com/nlohmann/json/issues/4898">here</a>.</p>
+</li>
+<li><p>Do external users actively keep up with updates, and are they properly notified of any changes?</p>
+<p><strong>Answer</strong>:  External users of the library are not necessarily automatically notified of an update, and are neither assumed nor required to keep up to date. If the external user forks the github repository, however, then github shows automatically whenever the upstream changes.</p>
+</li>
+</ul>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -718,12 +863,13 @@
 <tr class="row-odd"><td><p>2025-08-29 15:47:02</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p>2025-11-06 18:45:03.871310</p></td>
+<tr class="row-even"><td><p>2025-11-10 12:59:50.415890</p></td>
 <td><p>0.00</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
 </section>
 <hr class="docutils" />
 <section id="ta-data">
@@ -739,7 +885,43 @@
 <li><p><a class="reference internal" href="AOU.html#aou-18"><span class="std std-ref">AOU-18</span></a></p></li>
 </ul>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TSF/trustable/assertions/TA-DATA-CHECKLIST.md</span></code></p></li>
+</ul>
+<section id="checklist-for-ta-data-from-codethink">
+<h2>Checklist for TA-DATA from <a class="reference external" href="https://codethinklabs.gitlab.io/trustable/trustable/print_page.html">Codethink</a><a class="headerlink" href="#checklist-for-ta-data-from-codethink" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Is all test data stored with long-term accessibility?</p>
+<p><strong>Answer</strong>:  If we assume that github is long-term accessible, then yes.</p>
+</li>
+<li><p>Is all monitoring data stored with long-term accessibility?</p>
+<p><strong>Answer</strong>:  There are no monitoring data.</p>
+</li>
+<li><p>Are extensible data models implemented?</p>
+<p><strong>Answer</strong>:  The data are stored in an sqlite database.</p>
+</li>
+<li><p>Is sensitive data handled correctly (broadcasted, stored, discarded, or anonymised) with appropriate encryption and redundancy?</p>
+<p><strong>Answer</strong>:  There are no sensitive data produced, collected or stored.</p>
+</li>
+<li><p>Are proper backup mechanisms in place?</p>
+<p><strong>Answer</strong>:  Not more than the default mechanisms of github.</p>
+</li>
+<li><p>Are storage and backup limits tested?</p>
+<p><strong>Answer</strong>:  No.</p>
+</li>
+<li><p>Are all data changes traceable?</p>
+<p><strong>Answer</strong>:  Yes, due to the usage of github.</p>
+</li>
+<li><p>Are concurrent changes correctly managed and resolved?</p>
+<p><strong>Answer</strong>:  Yes, due to the usage of github.</p>
+</li>
+<li><p>Is data accessible only to intended parties?</p>
+<p><strong>Answer</strong>:  Since the library is open source, there are no unintended parties.</p>
+</li>
+<li><p>Are any subsets of our data being published?</p>
+<p><strong>Answer</strong>:  Yes, the collected data are publicly available.</p>
+</li>
+</ul>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -835,12 +1017,13 @@
 <tr class="row-odd"><td><p>2025-11-06 18:37:31</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p>2025-11-06 18:45:03.871310</p></td>
+<tr class="row-even"><td><p>2025-11-10 12:59:50.415890</p></td>
 <td><p>0.00</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
 </section>
 <hr class="docutils" />
 <section id="ta-fixes">
@@ -860,7 +1043,58 @@
 <li><p><a class="reference internal" href="AOU.html#aou-28"><span class="std std-ref">AOU-28</span></a></p></li>
 </ul>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TSF/trustable/assertions/TA-FIXES-CHECKLIST.md</span></code></p></li>
+</ul>
+<section id="checklist-for-ta-fixes-from-codethink">
+<h2>Checklist for TA-FIXES from <a class="reference external" href="https://codethinklabs.gitlab.io/trustable/trustable/print_page.html">Codethink</a><a class="headerlink" href="#checklist-for-ta-fixes-from-codethink" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>How many faults have we identified in XYZ?</p>
+<p><strong>Answer</strong>:  There are no identifiable faults concerning the expectations.</p>
+</li>
+<li><p>How many unknown faults remain to be found, based on the number that have been processed so far?</p>
+<p><strong>Answer</strong>:  It is unlikely that there are unknown faults concerning the expectations.</p>
+</li>
+<li><p>Is there any possibility that people could be motivated to manipulate the lists (e.g. bug bonus or pressure to close).</p>
+<p><strong>Answer</strong>:  Since the project is entirely open source, it is quite unlikely.</p>
+</li>
+<li><p>How many faults may be unrecorded (or incorrectly closed, or downplayed)?</p>
+<p><strong>Answer</strong>:  There may be none, at least when it concerns the expectations.</p>
+</li>
+<li><p>How do we collect lists of bugs and known vulnerabilities from components?</p>
+<p><strong>Answer</strong>:  We pull the list from the issues reported to nlohmann/json labelled as bug and open or opened since the last release. This list is then stored using github, thereby enabling a traceability of the list.</p>
+</li>
+<li><p>How (and how often) do we check these lists for relevant bugs and known vulnerabilities?</p>
+<p><strong>Answer</strong>:  Whenever we generate the documentation, the list is pulled. If there is an issue previously unrecorded, then the maintainer is encouraged by the change of the trustable score to check this issue on applicability.</p>
+</li>
+<li><p>How confident can we be that the lists are honestly maintained?</p>
+<p><strong>Answer</strong>:  We can not imagine a reason why the list could be dishonestly maintained.</p>
+</li>
+<li><p>Could some participants have incentives to manipulate information?</p>
+<p><strong>Answer</strong>:  We can not think of a reason why.</p>
+</li>
+<li><p>How confident are we that the lists are comprehensive?</p>
+<p><strong>Answer</strong>:  We have no reason to assume that discovered bugs are not reported to nlohmann/json.</p>
+</li>
+<li><p>Could there be whole categories of bugs/vulnerabilities still undiscovered?</p>
+<p><strong>Answer</strong>:  There could be a mislabelling of issues, but it is unlikely that there are bugs or vulnerabilities not labelled as bug, instead it is likely that perceived issues due to a misunderstanding of how the library works are labelled as bug.</p>
+</li>
+<li><p>How effective is our triage/prioritisation?</p>
+<p><strong>Answer</strong>: ????? Since it is not intended to fix the library within S-CORE, but instead leave the development to the original nlohmann/json, there is no need to have a triage or prioritisation.</p>
+</li>
+<li><p>How many components have never been updated?</p>
+<p><strong>Answer</strong>:  None, the single component is up to date.</p>
+</li>
+<li><p>How confident are we that we could update them?</p>
+<p><strong>Answer</strong>:  If nlohmann/json would release an new version, we are very confident that we can update to that version.</p>
+</li>
+<li><p>How confident are we that outstanding fixes do not impact our Expectations?</p>
+<p><strong>Answer</strong>:  We have not found any outstanding fixes impacting our expectations.</p>
+</li>
+<li><p>How confident are we that outstanding fixes do not address Misbehaviours?</p>
+<p><strong>Answer</strong>: For all of the none identified misbehaviours, we are very confident that none of the outstanding fixes do not address them.</p>
+</li>
+</ul>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -956,12 +1190,13 @@
 <tr class="row-odd"><td><p>2025-11-06 18:37:31</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p>2025-11-06 18:45:03.871310</p></td>
+<tr class="row-even"><td><p>2025-11-10 12:59:50.415890</p></td>
 <td><p>0.00</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
 </section>
 <hr class="docutils" />
 <section id="ta-indicators">
@@ -976,11 +1211,54 @@
 <li><p><a class="reference internal" href="AOU.html#aou-09"><span class="std std-ref">AOU-09</span></a></p></li>
 </ul>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TSF/trustable/assertions/TA-INDICATORS-CHECKLIST.md</span></code></p></li>
+</ul>
+<section id="checklist-for-ta-indicators-from-codethink">
+<h2>Checklist for TA-INDICATORS from <a class="reference external" href="https://codethinklabs.gitlab.io/trustable/trustable/print_page.html">Codethink</a><a class="headerlink" href="#checklist-for-ta-indicators-from-codethink" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>How appropriate/thorough are the analyses that led to the indicators?</p>
+<p><strong>Answer</strong>:  Since no misbehaviours for the use of the library for parsing and verification of JSON data according to RFC8259 have been identified, no warning indicators are implemented.</p>
+</li>
+<li><p>How confident can we be that the list of indicators is comprehensive?</p>
+<p><strong>Answer</strong>:  There are no warning indicators implemented, of which we are very confident.</p>
+</li>
+<li><p>Could there be whole categories of warning indicators still missing?</p>
+<p><strong>Answer</strong>:  Yes, there could. Within S-CORE, however, any warning indicator that is not natively implemented within the original nlohmann/json should be implemented in the wrapper defining the interface between the library and the project using it.</p>
+</li>
+<li><p>How has the list of advance warning indicators varied over time?</p>
+<p><strong>Answer</strong>:  It has stayed constant.</p>
+</li>
+<li><p>How confident are we that the indicators are leading/predictive?</p>
+<p><strong>Answer</strong>: There are none.</p>
+</li>
+<li><p>Are there misbehaviours that have no advance warning indicators?</p>
+<p><strong>Answer</strong>:  There are no misbehaviours identified.</p>
+</li>
+<li><p>Can we collect data for all indicators?</p>
+<p><strong>Answer</strong>:  There are currently no implemented indicators, so that no data are collected.</p>
+</li>
+<li><p>Are the monitoring mechanisms used included in our Trustable scope?</p>
+<p><strong>Answer</strong>:  No, but there are also none.</p>
+</li>
+<li><p>Are there gaps or trends in the data?</p>
+<p><strong>Answer</strong>:  There are no data where gaps or trends could be identified.</p>
+</li>
+<li><p>If there are gaps or trends, are they analysed and addressed?</p>
+<p><strong>Answer</strong>:  There are no data.</p>
+</li>
+<li><p>Is the data actually predictive/useful?</p>
+<p><strong>Answer</strong>:  There are no data.</p>
+</li>
+<li><p>Are indicators from code, component, tool, or data inspections taken into consideration?</p>
+<p><strong>Answer</strong>:  There are no indicators.</p>
+</li>
+</ul>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
 <p><em>No Historic Data Found</em></p>
+</section>
 </section>
 <hr class="docutils" />
 <section id="ta-inputs">
@@ -996,7 +1274,59 @@
 <li><p><a class="reference internal" href="AOU.html#aou-10_combined"><span class="std std-ref">AOU-10_COMBINED</span></a></p></li>
 </ul>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TSF/trustable/assertions/TA-INPUTS-CHECKLIST.md</span></code></p></li>
+</ul>
+<section id="checklist-for-ta-inputs-from-codethink">
+<h2>Checklist for TA-INPUTS from <a class="reference external" href="https://codethinklabs.gitlab.io/trustable/trustable/print_page.html">Codethink</a><a class="headerlink" href="#checklist-for-ta-inputs-from-codethink" title="Link to this heading">#</a></h2>
+<p>The single_include/nlohmann/json.hpp is the single and only component of the library.</p>
+<ul>
+<li><p>Are there components that are not on the list?</p>
+<p><strong>Answer</strong>:  No.</p>
+</li>
+<li><p>Are there assessments for all components?</p>
+<p><strong>Answer</strong>:  ?????</p>
+</li>
+<li><p>Has an assessment been done for the current version of the component?</p>
+<p><strong>Answer</strong>:  ?????</p>
+</li>
+<li><p>Have sources of bug and/or vulnerability data been identified?</p>
+<p><strong>Answer</strong>:  There are no bug and/or vulnerability data.</p>
+</li>
+<li><p>Have additional tests and/or Expectations been documented and linked to component assessment?</p>
+<p><strong>Answer</strong>:  ??????</p>
+</li>
+<li><p>Are component tests run when integrating new versions of components?</p>
+<p><strong>Answer</strong>:  There are no further components.</p>
+</li>
+<li><p>Are there tools that are not on the list?</p>
+<p><strong>Answer</strong>:  The library does not use external tools, except for the tools provided by the C++ standard library.</p>
+</li>
+<li><p>Are there impact assessments for all tools?</p>
+<p><strong>Answer</strong>:  ?????? The library does not use external tools for which an impact assessment has to be done.</p>
+</li>
+<li><p>Have tools with high impact been qualified?</p>
+<p><strong>Answer</strong>: There are no tools with high impact.</p>
+</li>
+<li><p>Were assessments or reviews done for the current tool versions?</p>
+<p><strong>Answer</strong>:  ????? The library does not use external tools for which an impact assessment has to be done.</p>
+</li>
+<li><p>Have additional tests and/or Expectations been documented and linked to tool assessments?</p>
+<p><strong>Answer</strong>:  No.</p>
+</li>
+<li><p>Are tool tests run when integrating new versions of tools?</p>
+<p><strong>Answer</strong>:  The library does not use external tools for which a new version needs to be integrated.</p>
+</li>
+<li><p>Are tool and component tests included in release preparation?</p>
+<p><strong>Answer</strong>:  Yes, the tests of the library are included in the release.</p>
+</li>
+<li><p>Can patches be applied, and then upstreamed for long-term maintenance?</p>
+<p><strong>Answer</strong>:  Yes, if ever a misbehaviour is found and patched, then a pull-request to the original nlohmann/json repository can be opened to upstream the changes.</p>
+</li>
+<li><p>Do all dependencies comply with acceptable licensing terms?</p>
+<p><strong>Answer</strong>:  Yes, the library is licensed under MIT License .</p>
+</li>
+</ul>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -1032,12 +1362,13 @@
 <tr class="row-odd"><td><p>2025-08-29 15:47:02</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p>2025-11-06 18:45:03.871310</p></td>
+<tr class="row-even"><td><p>2025-11-10 12:59:50.415890</p></td>
 <td><p>0.00</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
 </section>
 <hr class="docutils" />
 <section id="ta-iterations">
@@ -1053,7 +1384,28 @@
 <li><p><a class="reference internal" href="JLS.html#jls-19"><span class="std std-ref">JLS-19</span></a></p></li>
 </ul>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TSF/trustable/assertions/TA-ITERATIONS-CHECKLIST.md</span></code></p></li>
+</ul>
+<section id="checklist-for-ta-iterations-from-codethink">
+<h2>Checklist for TA-ITERATIONS from <a class="reference external" href="https://codethinklabs.gitlab.io/trustable/trustable/print_page.html">Codethink</a><a class="headerlink" href="#checklist-for-ta-iterations-from-codethink" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>How much of the software is provided as binary only, expressed as a fraction of the BoM list?</p>
+<p><strong>Answer</strong>:  None.</p>
+</li>
+<li><p>How much is binary, expressed as a fraction of the total storage footprint?</p>
+<p><strong>Answer</strong>:  None.</p>
+</li>
+<li><p>For binaries, what claims are being made and how confident are we in the people/organisations making the claims?</p>
+<p><strong>Answer</strong>:  There are no binaries.</p>
+</li>
+<li><p>For third-party source code, what claims are we making, and how confident are we about these claims?</p>
+<p><strong>Answer</strong>:  There is no third-party source code in the library.</p>
+</li>
+<li><p>For software developed by us, what claims are we making, and how confident are we about these claims?</p>
+<p><strong>Answer</strong>:  This is the remainder of the documentation.</p>
+</li>
+</ul>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -1089,12 +1441,13 @@
 <tr class="row-odd"><td><p>2025-08-29 15:47:02</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p>2025-11-06 18:45:03.871310</p></td>
+<tr class="row-even"><td><p>2025-11-10 12:59:50.415890</p></td>
 <td><p>0.00</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
 </section>
 <hr class="docutils" />
 <section id="ta-methodologies">
@@ -1110,7 +1463,44 @@
 <li><p><a class="reference internal" href="JLS.html#jls-13"><span class="std std-ref">JLS-13</span></a></p></li>
 </ul>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TSF/trustable/assertions/TA-METHODOLOGIES-CHECKLIST.md</span></code></p></li>
+</ul>
+<section id="checklist-for-ta-methodologies-from-codethink">
+<h2>Checklist for TA-METHODOLOGIES from <a class="reference external" href="https://codethinklabs.gitlab.io/trustable/trustable/print_page.html">Codethink</a><a class="headerlink" href="#checklist-for-ta-methodologies-from-codethink" title="Link to this heading">#</a></h2>
+<p>This project follows purely the Methodologies of Eclipse S-CORE.</p>
+<ul>
+<li><p>Are the identified gaps documented clearly to justify using a manual process?</p>
+<p><strong>Answer</strong>:</p>
+</li>
+<li><p>Are the goals for each process clearly defined?</p>
+<p><strong>Answer</strong>:</p>
+</li>
+<li><p>Is the sequence of procedures documented in an unambiguous manner?</p>
+<p><strong>Answer</strong>:</p>
+</li>
+<li><p>Can improvements to the processes be suggested and implemented?</p>
+<p><strong>Answer</strong>:</p>
+</li>
+<li><p>How frequently are processes changed?</p>
+<p><strong>Answer</strong>:</p>
+</li>
+<li><p>How are changes to manual processes communicated?</p>
+<p><strong>Answer</strong>:</p>
+</li>
+<li><p>Are there any exceptions to the processes?</p>
+<p><strong>Answer</strong>:</p>
+</li>
+<li><p>How is evidence of process adherence recorded?</p>
+<p><strong>Answer</strong>:</p>
+</li>
+<li><p>How is the effectiveness of the process evaluated?</p>
+<p><strong>Answer</strong>:</p>
+</li>
+<li><p>Is ongoing training required to follow these processes?</p>
+<p><strong>Answer</strong>:</p>
+</li>
+</ul>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -1146,12 +1536,13 @@
 <tr class="row-odd"><td><p>2025-08-29 15:47:02</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p>2025-11-06 18:45:03.871310</p></td>
+<tr class="row-even"><td><p>2025-11-10 12:59:50.415890</p></td>
 <td><p>0.00</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
 </section>
 <hr class="docutils" />
 <section id="ta-misbehaviours">
@@ -1172,7 +1563,49 @@
 <li><p><a class="reference internal" href="AOU.html#aou-26"><span class="std std-ref">AOU-26</span></a></p></li>
 </ul>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TSF/trustable/assertions/TA-MISBEHAVIOURS-CHECKLIST.md</span></code></p></li>
+</ul>
+<section id="checklist-for-ta-misbehaviours-from-codethink">
+<h2>Checklist for TA-MISBEHAVIOURS from <a class="reference external" href="https://codethinklabs.gitlab.io/trustable/trustable/print_page.html">Codethink</a><a class="headerlink" href="#checklist-for-ta-misbehaviours-from-codethink" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>How has the list of misbehaviours varied over time?</p>
+<p><strong>Answer</strong>:  The list of misbehaviours is collected using github and its development is thereby understandable.</p>
+</li>
+<li><p>How confident can we be that this list is comprehensive?</p>
+<p><strong>Answer</strong>:  Due to the collaborative nature of the open source community, we deem it quite unlikely that there are any known misbehaviours which are not reported to the repository nlohmann/json.</p>
+</li>
+<li><p>How well do the misbehaviours map to the expectations?</p>
+<p><strong>Answer</strong>:  There are no identified misbehaviours that tangent the expectations.</p>
+</li>
+<li><p>Could some participants have incentives to manipulate information?</p>
+<p><strong>Answer</strong>:  We could not think of an incentive that any collaborateur could have to manipulate the information.</p>
+</li>
+<li><p>Could there be whole categories of misbehaviours still undiscovered?</p>
+<p><strong>Answer</strong>:  Due to the wide use and long-standing development of the library it is quite unlikely that any major misbehaviors, in particular regarding the parsing and validating of JSON data in the sense of RFC-8259, is undiscovered.</p>
+</li>
+<li><p>Can we identify misbehaviours that have been understood but not specified?</p>
+<p><strong>Answer</strong>:  No.</p>
+</li>
+<li><p>Can we identify some new misbehaviours, right now?</p>
+<p><strong>Answer</strong>:  No.</p>
+</li>
+<li><p>Is every misbehaviour represented by at least one fault induction test?</p>
+<p><strong>Answer</strong>:  Since there are no misbehaviours that concern the use within S-CORE, no.</p>
+</li>
+<li><p>Are fault inductions used to demonstrate that tests which usually pass can and do fail appropriately?</p>
+<p><strong>Answer</strong>:  ?????? No.</p>
+</li>
+<li><p>Are all the fault induction results actually collected?</p>
+<p><strong>Answer</strong>:  ?????? No.</p>
+</li>
+<li><p>Are the results evaluated?</p>
+<p><strong>Answer</strong>:  ?????? No.</p>
+</li>
+<li><p>Do input analysis findings on verifiable tool or component claims and features identify additional misbehaviours or support existing mitigations?</p>
+<p><strong>Answer</strong>:  Currently, there is no analysis which identifies additional misbehaviours. The only such analysis is indirectly via the analysis of the fuzz testing, which currently does not identifies additional misbehaviours.</p>
+</li>
+</ul>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -1208,12 +1641,13 @@
 <tr class="row-odd"><td><p>2025-08-29 15:47:02</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p>2025-11-06 18:45:03.871310</p></td>
+<tr class="row-even"><td><p>2025-11-10 12:59:50.415890</p></td>
 <td><p>0.00</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
 </section>
 <hr class="docutils" />
 <section id="ta-releases">
@@ -1230,7 +1664,31 @@
 <li><p><a class="reference internal" href="AOU.html#aou-08"><span class="std std-ref">AOU-08</span></a></p></li>
 </ul>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TSF/trustable/assertions/TA-RELEASES-CHECKLIST.md</span></code></p></li>
+</ul>
+<section id="checklist-for-ta-releases-from-codethink">
+<h2>Checklist for TA-RELEASES from <a class="reference external" href="https://codethinklabs.gitlab.io/trustable/trustable/print_page.html">Codethink</a><a class="headerlink" href="#checklist-for-ta-releases-from-codethink" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>How confident are we that all components are taken from within our controlled environment?</p>
+<p><strong>Answer</strong>:  This library does not take anything from outside of this repository.</p>
+</li>
+<li><p>How confident are we that all of the tools we are using are also under our control?</p>
+<p><strong>Answer</strong>:  The version of nlohmann/json that is documented with this documentation is under the full control of the Eclipse S-CORE organisation.</p>
+</li>
+<li><p>Are our builds repeatable on a different server, or in a different context?</p>
+<p><strong>Answer</strong>:  Since there is no “build” of the header-only library, yes.</p>
+</li>
+<li><p>How sure are we that our builds don’t access the internet?</p>
+<p><strong>Answer</strong>:  There is no implemented access to the internet in the library itself. The testsuite is downloaded from a within Eclipse S-CORE.</p>
+</li>
+<li><p>How many of our components are non-reproducible?</p>
+<p><strong>Answer</strong>:  The single component is reproducible.</p>
+</li>
+<li><p>How confident are we that our reproducibility check is correct?</p>
+<p><strong>Answer</strong>:  Quite.</p>
+</li>
+</ul>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -1266,12 +1724,13 @@
 <tr class="row-odd"><td><p>2025-08-29 15:47:02</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p>2025-11-06 18:45:03.871310</p></td>
+<tr class="row-even"><td><p>2025-11-10 12:59:50.415890</p></td>
 <td><p>0.00</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
 </section>
 <hr class="docutils" />
 <section id="ta-supply-chain">
@@ -1288,7 +1747,47 @@
 <li><p><a class="reference internal" href="JLS.html#jls-23"><span class="std std-ref">JLS-23</span></a></p></li>
 </ul>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TSF/trustable/assertions/TA-SUPPLY_CHAIN-CHECKLIST.md</span></code></p></li>
+</ul>
+<section id="checklist-for-ta-supply-chain-from-codethink">
+<h2>Checklist for TA-SUPPLY_CHAIN from <a class="reference external" href="https://codethinklabs.gitlab.io/trustable/trustable/print_page.html">Codethink</a><a class="headerlink" href="#checklist-for-ta-supply-chain-from-codethink" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Could there be other components, missed from the list?</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>**Answer**:  Since the library does not contain any external components, no.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Does the list include all toolchain components?</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>**Answer**:  Since the library does not contain any external components, yes.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Does the toolchain include a bootstrap?</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>**Answer**:  ???? No.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Could the content of a mirrored project be compromised by an upstream change?</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>**Answer**:  Since the library does not contain any external components, no.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Are mirrored projects up to date with the upstream project?</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>**Answer**:  Yes, the library is up to date with the most recent release of the original nlohmann/json
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Are mirrored projects based on the correct upstream?</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>**Answer**:  Yes.
+</pre></div>
+</div>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -1324,12 +1823,13 @@
 <tr class="row-odd"><td><p>2025-08-29 15:47:02</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p>2025-11-06 18:45:03.871310</p></td>
+<tr class="row-even"><td><p>2025-11-10 12:59:50.415890</p></td>
 <td><p>0.00</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
 </section>
 <hr class="docutils" />
 <section id="ta-tests">
@@ -1345,7 +1845,31 @@
 <li><p><a class="reference internal" href="AOU.html#aou-15"><span class="std std-ref">AOU-15</span></a></p></li>
 </ul>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TSF/trustable/assertions/TA-TESTS-CHECKLIST.md</span></code></p></li>
+</ul>
+<section id="checklist-for-ta-tests-from-codethink">
+<h2>Checklist for TA-TESTS from <a class="reference external" href="https://codethinklabs.gitlab.io/trustable/trustable/print_page.html">Codethink</a><a class="headerlink" href="#checklist-for-ta-tests-from-codethink" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>How confident are we that our test tooling and environment setups used for tests, fault inductions, and analyses are reproducible?</p>
+<p><strong>Answer</strong>:  The test can be reproduced any time on any machine running the versions of the operating systems and compilers as provided (TODO, cf. AOU-14)</p>
+</li>
+<li><p>Are any exceptions identified, documented and justified?</p>
+<p><strong>Answer</strong>:  To the best of our understanding, there are no exceptions identified.</p>
+</li>
+<li><p>How confident are we that all test components are taken from within our controlled environment?</p>
+<p><strong>Answer</strong>:  All tests are either self-contained or download test data from <a class="reference external" href="https://github.com/eclipse-score/inc_nlohmann_json/tree/json_test_data_version_3_1_0_mirror">within Eclipse S-CORE</a>.</p>
+</li>
+<li><p>How confident are we that all of the test environments we are using are also under our control?</p>
+<p><strong>Answer</strong>: ????  The environments are standard docker images of ubuntu and standard versions of compilers.</p>
+</li>
+<li><p>Do we record all test environment components, including hardware and infrastructure used for exercising tests and processing input/output data?</p>
+<p><strong>Answer</strong>:  No, since the tests are independent from hard-ware, these data are not collected.</p>
+</li>
+<li><p>How confident are we that all tests scenarios are repeatable?</p>
+<p><strong>Answer</strong>:  All test scenarios are repeated daily in the CI pipeline.</p>
+</li>
+</ul>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -1381,12 +1905,13 @@
 <tr class="row-odd"><td><p>2025-08-29 15:47:02</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p>2025-11-06 18:45:03.871310</p></td>
+<tr class="row-even"><td><p>2025-11-10 12:59:50.415890</p></td>
 <td><p>0.00</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
 </section>
 <hr class="docutils" />
 <section id="ta-updates">
@@ -1404,7 +1929,31 @@
 <li><p><a class="reference internal" href="AOU.html#aou-27"><span class="std std-ref">AOU-27</span></a></p></li>
 </ul>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TSF/trustable/assertions/TA-UPDATES-CHECKLIST.md</span></code></p></li>
+</ul>
+<section id="checklist-for-ta-updates-from-codethink">
+<h2>Checklist for TA-UPDATES from <a class="reference external" href="https://codethinklabs.gitlab.io/trustable/trustable/print_page.html">Codethink</a><a class="headerlink" href="#checklist-for-ta-updates-from-codethink" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Where are the change and configuration management controls specified?</p>
+<p><strong>Answer</strong>:  WIP</p>
+</li>
+<li><p>Are these controls enforced for all of components, tools, data, documentation and configurations?</p>
+<p><strong>Answer</strong>:  The S-CORE Methodology is followed, compliance with which enforces the change process to be followed.</p>
+</li>
+<li><p>Are there any ways in which these controls can be subverted, and have we mitigated them?</p>
+<p><strong>Answer</strong>:  Yes, the change process can just not be followed. We have no real method to enforce it other than to trust that the committers follow the S-CORE processes.</p>
+</li>
+<li><p>Does change control capture all potential regressions?</p>
+<p><strong>Answer</strong>:  Due to the test coverage of 99.186%, it is unlikely that a potential regression is not captured.</p>
+</li>
+<li><p>Is change control timely enough?</p>
+<p><strong>Answer</strong>:  Not applicable, as far as can be understood right now, there is no immanent need to keep the library up to date.</p>
+</li>
+<li><p>Are all guidance and checks understandable and consistently followed?</p>
+<p><strong>Answer</strong>:  WIP</p>
+</li>
+</ul>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -1440,12 +1989,13 @@
 <tr class="row-odd"><td><p>2025-08-29 15:47:02</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p>2025-11-06 18:45:03.871310</p></td>
+<tr class="row-even"><td><p>2025-11-10 12:59:50.415890</p></td>
 <td><p>0.00</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
 </section>
 <hr class="docutils" />
 <section id="ta-validation">
@@ -1461,7 +2011,53 @@
 <li><p><a class="reference internal" href="JLS.html#jls-22"><span class="std std-ref">JLS-22</span></a></p></li>
 </ul>
 <p><strong>References:</strong></p>
-<p><em>None</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TSF/trustable/assertions/TA-VALIDATION-CHECKLIST.md</span></code></p></li>
+</ul>
+<section id="checklist-for-ta-validation-from-codethink">
+<h2>Checklist for TA-VALIDATION from <a class="reference external" href="https://codethinklabs.gitlab.io/trustable/trustable/print_page.html">Codethink</a><a class="headerlink" href="#checklist-for-ta-validation-from-codethink" title="Link to this heading">#</a></h2>
+<p>I DO NOT FEEL CONFIDENT TO <strong>Answer</strong> THIS!</p>
+<ul>
+<li><p>Is the selection of tests correct?</p>
+<p><strong>Answer</strong>:  ???? Who could tell this?</p>
+</li>
+<li><p>Are the tests executed enough times?</p>
+<p><strong>Answer</strong>:  ???? Define “enough times”</p>
+</li>
+<li><p>How confident are we that all test results are being captured?</p>
+<p><strong>Answer</strong>: ???? How fine-grained is a test-result supposed to be?</p>
+</li>
+<li><p>Can we look at any individual test result, and establish what it relates to?</p>
+<p><strong>Answer</strong>:  ????</p>
+</li>
+<li><p>Can we trace from any test result to the expectation it relates to?</p>
+<p><strong>Answer</strong>:  No, there are more tests than expectations, and in particular tests that relate to the inner workings of the library which are not used by S-CORE.</p>
+</li>
+<li><p>Can we identify precisely which environment (software and hardware) were used?</p>
+<p><strong>Answer</strong>:  ???? How precisely shall that be? Moreover, the tests are supposed to run independent of underlying hardware, since this is a software.</p>
+</li>
+<li><p>How many pass/fail results would be expected, based on the scheduled tests?</p>
+<p><strong>Answer</strong>:  Zero fails.</p>
+</li>
+<li><p>Do we have all of the expected results?</p>
+<p><strong>Answer</strong>:  Yes.</p>
+</li>
+<li><p>Do we have time-series data for all of those results?</p>
+<p><strong>Answer</strong>:  Yes, there are time-series data.</p>
+</li>
+<li><p>If there are any gaps, do we understand why?</p>
+<p><strong>Answer</strong>:  ????  Define gaps</p>
+</li>
+<li><p>Are the test validation strategies credible and appropriate?</p>
+<p><strong>Answer</strong>:  ???? Define test validation strategies</p>
+</li>
+<li><p>What proportion of the implemented tests are validated?</p>
+<p><strong>Answer</strong>:  ???? None.</p>
+</li>
+<li><p>Have the tests been verified using known good and bad data?</p>
+<p><strong>Answer</strong>:  ????</p>
+</li>
+</ul>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -1557,12 +2153,13 @@
 <tr class="row-odd"><td><p>2025-11-06 18:37:31</p></td>
 <td><p>0.00</p></td>
 </tr>
-<tr class="row-even"><td><p>2025-11-06 18:45:03.871310</p></td>
+<tr class="row-even"><td><p>2025-11-10 12:59:50.415890</p></td>
 <td><p>0.00</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
 </section>
 
 
@@ -1594,22 +2191,70 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">TA-ANALYSIS</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-behaviours">TA-BEHAVIOURS</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-confidence">TA-CONFIDENCE</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-constraints">TA-CONSTRAINTS</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-data">TA-DATA</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-fixes">TA-FIXES</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-indicators">TA-INDICATORS</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-inputs">TA-INPUTS</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-iterations">TA-ITERATIONS</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-methodologies">TA-METHODOLOGIES</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-misbehaviours">TA-MISBEHAVIOURS</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-releases">TA-RELEASES</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-supply-chain">TA-SUPPLY_CHAIN</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-tests">TA-TESTS</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-updates">TA-UPDATES</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-validation">TA-VALIDATION</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">TA-ANALYSIS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist-for-ta-analysis-from-codethink">Checklist for TA-ANALYSIS from Codethink</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-behaviours">TA-BEHAVIOURS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist-for-ta-behaviours-from-codethink">Checklist for TA-BEHAVIOURS from Codethink</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-confidence">TA-CONFIDENCE</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist-for-ta-confidence-from-codethink">Checklist for TA-CONFIDENCE from Codethink</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-constraints">TA-CONSTRAINTS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist-for-ta-constraints-from-codethink">Checklist for TA-CONSTRAINTS from Codethink</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-data">TA-DATA</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist-for-ta-data-from-codethink">Checklist for TA-DATA from Codethink</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-fixes">TA-FIXES</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist-for-ta-fixes-from-codethink">Checklist for TA-FIXES from Codethink</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-indicators">TA-INDICATORS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist-for-ta-indicators-from-codethink">Checklist for TA-INDICATORS from Codethink</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-inputs">TA-INPUTS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist-for-ta-inputs-from-codethink">Checklist for TA-INPUTS from Codethink</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-iterations">TA-ITERATIONS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist-for-ta-iterations-from-codethink">Checklist for TA-ITERATIONS from Codethink</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-methodologies">TA-METHODOLOGIES</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist-for-ta-methodologies-from-codethink">Checklist for TA-METHODOLOGIES from Codethink</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-misbehaviours">TA-MISBEHAVIOURS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist-for-ta-misbehaviours-from-codethink">Checklist for TA-MISBEHAVIOURS from Codethink</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-releases">TA-RELEASES</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist-for-ta-releases-from-codethink">Checklist for TA-RELEASES from Codethink</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-supply-chain">TA-SUPPLY_CHAIN</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist-for-ta-supply-chain-from-codethink">Checklist for TA-SUPPLY_CHAIN from Codethink</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-tests">TA-TESTS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist-for-ta-tests-from-codethink">Checklist for TA-TESTS from Codethink</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-updates">TA-UPDATES</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist-for-ta-updates-from-codethink">Checklist for TA-UPDATES from Codethink</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ta-validation">TA-VALIDATION</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checklist-for-ta-validation-from-codethink">Checklist for TA-VALIDATION from Codethink</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>

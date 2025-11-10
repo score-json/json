@@ -93,7 +93,7 @@ SECTION("capitalisation")
         CHECK_THROWS_AS(parser_helper("NULL"),json::parse_error&);
     }
     SECTION("false")
-    {            
+    {
         CHECK_THROWS_AS(parser_helper("False"),json::parse_error&);
         CHECK_THROWS_AS(parser_helper("fAlse"),json::parse_error&);
         CHECK_THROWS_AS(parser_helper("FAlse"),json::parse_error&);
@@ -1719,7 +1719,7 @@ _None_
 
 ```cpp
 SECTION("U+0425")
-{            
+{
     CHECK_THROWS_AS(parser_helper("0\u0425123"),json::parse_error&);
     CHECK_THROWS_AS(parser_helper("123\u04250"),json::parse_error&);
     CHECK_THROWS_AS(parser_helper("0.123\u0425123"),json::parse_error&);
@@ -1736,7 +1736,7 @@ SECTION("U+0425")
 
 ```cpp
 SECTION("U+0436")
-{            
+{
     CHECK_THROWS_AS(parser_helper("0\u0436123"),json::parse_error&);
     CHECK_THROWS_AS(parser_helper("123\u04360"),json::parse_error&);
     CHECK_THROWS_AS(parser_helper("0.123\u0436123"),json::parse_error&);
@@ -2390,7 +2390,6 @@ SECTION("operators")
     }
     SECTION("minus")
     {
-
         CHECK_THROWS_AS(parser_helper("1-1"),json::parse_error&);
         CHECK_THROWS_AS(parser_helper("0.1-1"),json::parse_error&);
         CHECK_THROWS_AS(parser_helper("0.1-1.0"),json::parse_error&);
@@ -2402,7 +2401,6 @@ SECTION("operators")
     }
     SECTION("brackets")
     {
-
         CHECK_THROWS_AS(parser_helper("(145)"),json::parse_error&);
         CHECK_THROWS_AS(parser_helper("(34.32874)"),json::parse_error&);
         CHECK_THROWS_AS(parser_helper("42\u0045(134)"),json::parse_error&);
@@ -2414,7 +2412,6 @@ SECTION("operators")
     }
     SECTION("multiplication")
     {
-
         CHECK_THROWS_AS(parser_helper("1*1"),json::parse_error&);
         CHECK_THROWS_AS(parser_helper("1.45*5"),json::parse_error&);
         CHECK_THROWS_AS(parser_helper("154*23.76"),json::parse_error&);
@@ -2425,7 +2422,6 @@ SECTION("operators")
     }
     SECTION("division")
     {
-
         CHECK_THROWS_AS(parser_helper("0/0"),json::parse_error&);
         CHECK_THROWS_AS(parser_helper("1.45/5"),json::parse_error&);
         CHECK_THROWS_AS(parser_helper("154/23.76"),json::parse_error&);
@@ -2436,7 +2432,6 @@ SECTION("operators")
     }
     SECTION("comma")
     {
-
         CHECK_THROWS_AS(parser_helper("0,0"),json::parse_error&);
         CHECK_THROWS_AS(parser_helper("100,000"),json::parse_error&);
         CHECK_THROWS_AS(parser_helper("1,000.23"),json::parse_error&);
@@ -2689,10 +2684,10 @@ SECTION("unescaped unicode")
     for (uint32_t i = 0x0000; i&lt;=0x10FFFF; i++)
     {
         std::string temp = uint_to_utf8(i);
-        if ((i&gt;=0xD800 && i&lt;=0xDFFF)) { 
+        if ((i&gt;=0xD800 && i&lt;=0xDFFF)) {
             // Unpaired utf-16 surrogates are illegal.
-            // Observe that this verbatim not what RFC8259 §7 prescribes; 
-            // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
+            // Observe that this verbatim not what RFC8259 §7 prescribes;
+            // it appears, however, to be in the spirit of RFC8259, cf. §8.2
             // The other characters are illegal if unescaped.
             CHECK(!json::accept(temp));
             CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
@@ -2702,7 +2697,7 @@ SECTION("unescaped unicode")
                     CHECK(!json::accept(temp));
                     CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
                 }
-            } 
+            }
         } else if (i&lt;0x0020||i==0x0022||i==0x005c){
             CHECK(!json::accept(temp));
             CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
@@ -3442,7 +3437,7 @@ SECTION("ill-formed")
             CHECK_THROWS_AS(parser_helper(temp.str()),json::parse_error&);
         }
     }
-}       
+}
 
 ```
 
@@ -4675,7 +4670,7 @@ _None_
 SECTION("member separator")
 {
     CHECK_NOTHROW(parser_helper("{\"foo\"\u003a\"bar\"}"));      //:
-    CHECK_THROWS_AS(parser_helper("{\"foo\"\uff1a\"bar\"}"),json::parse_error&);     
+    CHECK_THROWS_AS(parser_helper("{\"foo\"\uff1a\"bar\"}"),json::parse_error&);
     CHECK_THROWS_AS(parser_helper("{\"foo\"\ua789\"bar\"}"),json::parse_error&);
     CHECK_THROWS_AS(parser_helper("{\"foo\"\u005b\"bar\"}"),json::parse_error&);     //[
     CHECK_THROWS_AS(parser_helper("{\"foo\"\u007b\"bar\"}"),json::parse_error&);     //{

@@ -968,7 +968,7 @@ SECTION("capitalisation")
         CHECK(!json::accept("NULL"));
     }
     SECTION("false")
-    {            
+    {
         CHECK(!json::accept("False"));
         CHECK(!json::accept("fAlse"));
         CHECK(!json::accept("FAlse"));
@@ -4736,7 +4736,7 @@ SECTION("control characters")
 
 ```cpp
 SECTION("unicode")
-{  
+{
     // escaped
     CHECK(json::accept("{\"\\u0066\\u006f\\u006f\\u0062\\u0061\\u0072\":123}"));
     // unescaped
@@ -4776,7 +4776,7 @@ SECTION("escaped UTF-16 surrogates")
 SECTION("member separator")
 {
     CHECK(json::accept("{\"foo\"\u003a\"bar\"}"));      //:
-    CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));     
+    CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));
     CHECK(!json::accept("{\"foo\"\ua789\"bar\"}"));
     CHECK(!json::accept("{\"foo\"\u005b\"bar\"}"));     //[
     CHECK(!json::accept("{\"foo\"\u007b\"bar\"}"));     //{
@@ -4949,7 +4949,7 @@ SECTION("literals")
 SECTION("member separator")
 {
     CHECK(json::accept("{\"foo\"\u003a\"bar\"}"));      //:
-    CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));     
+    CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));
     CHECK(!json::accept("{\"foo\"\ua789\"bar\"}"));
     CHECK(!json::accept("{\"foo\"\u005b\"bar\"}"));     //[
     CHECK(!json::accept("{\"foo\"\u007b\"bar\"}"));     //{
@@ -5174,7 +5174,7 @@ SECTION("nonempty object")
 SECTION("member separator")
 {
     CHECK(json::accept("{\"foo\"\u003a\"bar\"}"));      //:
-    CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));     
+    CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));
     CHECK(!json::accept("{\"foo\"\ua789\"bar\"}"));
     CHECK(!json::accept("{\"foo\"\u005b\"bar\"}"));     //[
     CHECK(!json::accept("{\"foo\"\u007b\"bar\"}"));     //{
@@ -5465,7 +5465,7 @@ _None_
 SECTION("member separator")
 {
     CHECK(json::accept("{\"foo\"\u003a\"bar\"}"));      //:
-    CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));     
+    CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));
     CHECK(!json::accept("{\"foo\"\ua789\"bar\"}"));
     CHECK(!json::accept("{\"foo\"\u005b\"bar\"}"));     //[
     CHECK(!json::accept("{\"foo\"\u007b\"bar\"}"));     //{
@@ -5565,7 +5565,7 @@ _None_
 SECTION("member separator")
 {
     CHECK(json::accept("{\"foo\"\u003a\"bar\"}"));      //:
-    CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));     
+    CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));
     CHECK(!json::accept("{\"foo\"\ua789\"bar\"}"));
     CHECK(!json::accept("{\"foo\"\u005b\"bar\"}"));     //[
     CHECK(!json::accept("{\"foo\"\u007b\"bar\"}"));     //{
@@ -5790,7 +5790,7 @@ _None_
 SECTION("member separator")
 {
     CHECK(json::accept("{\"foo\"\u003a\"bar\"}"));      //:
-    CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));     
+    CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));
     CHECK(!json::accept("{\"foo\"\ua789\"bar\"}"));
     CHECK(!json::accept("{\"foo\"\u005b\"bar\"}"));     //[
     CHECK(!json::accept("{\"foo\"\u007b\"bar\"}"));     //{
@@ -6015,7 +6015,7 @@ _None_
 SECTION("member separator")
 {
     CHECK(json::accept("{\"foo\"\u003a\"bar\"}"));      //:
-    CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));     
+    CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));
     CHECK(!json::accept("{\"foo\"\ua789\"bar\"}"));
     CHECK(!json::accept("{\"foo\"\u005b\"bar\"}"));     //[
     CHECK(!json::accept("{\"foo\"\u007b\"bar\"}"));     //{
@@ -6353,7 +6353,7 @@ _None_
 SECTION("member separator")
 {
     CHECK(json::accept("{\"foo\"\u003a\"bar\"}"));      //:
-    CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));     
+    CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));
     CHECK(!json::accept("{\"foo\"\ua789\"bar\"}"));
     CHECK(!json::accept("{\"foo\"\u005b\"bar\"}"));     //[
     CHECK(!json::accept("{\"foo\"\u007b\"bar\"}"));     //{
@@ -6555,7 +6555,7 @@ _None_
 SECTION("member separator")
 {
     CHECK(json::accept("{\"foo\"\u003a\"bar\"}"));      //:
-    CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));     
+    CHECK(!json::accept("{\"foo\"\uff1a\"bar\"}"));
     CHECK(!json::accept("{\"foo\"\ua789\"bar\"}"));
     CHECK(!json::accept("{\"foo\"\u005b\"bar\"}"));     //[
     CHECK(!json::accept("{\"foo\"\u007b\"bar\"}"));     //{
@@ -8359,8 +8359,8 @@ SECTION("escaped unicode")
         if (i&gt;=0xD800 && i&lt;=0xDFFF)
         {
             // Unpaired utf-16 surrogates are illegal.
-            // Observe that this verbatim not what RFC8259 §7 prescribes; 
-            // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
+            // Observe that this verbatim not what RFC8259 §7 prescribes;
+            // it appears, however, to be in the spirit of RFC8259, cf. §8.2
             // Illegal characters are not parsed anyway.
             CHECK(!json::accept(temp.str()));
             CHECK(!json::accept(temp2.str()));
@@ -9376,8 +9376,8 @@ SECTION("escaped unicode")
         if (i&gt;=0xD800 && i&lt;=0xDFFF)
         {
             // Unpaired utf-16 surrogates are illegal.
-            // Observe that this verbatim not what RFC8259 §7 prescribes; 
-            // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
+            // Observe that this verbatim not what RFC8259 §7 prescribes;
+            // it appears, however, to be in the spirit of RFC8259, cf. §8.2
             // Illegal characters are not parsed anyway.
             CHECK(!json::accept(temp.str()));
             CHECK(!json::accept(temp2.str()));
@@ -9449,8 +9449,8 @@ SECTION("escaped unicode")
         if (i&gt;=0xD800 && i&lt;=0xDFFF)
         {
             // Unpaired utf-16 surrogates are illegal.
-            // Observe that this verbatim not what RFC8259 §7 prescribes; 
-            // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
+            // Observe that this verbatim not what RFC8259 §7 prescribes;
+            // it appears, however, to be in the spirit of RFC8259, cf. §8.2
             // Illegal characters are not parsed anyway.
             CHECK(!json::accept(temp.str()));
             CHECK(!json::accept(temp2.str()));
@@ -9516,10 +9516,10 @@ SECTION("unescaped unicode")
     for (uint32_t i = 0x0000; i&lt;=0x10FFFF; i++)
     {
         std::string temp = uint_to_utf8(i);
-        if ((i&gt;=0xD800 && i&lt;=0xDFFF)) { 
+        if ((i&gt;=0xD800 && i&lt;=0xDFFF)) {
             // Unpaired utf-16 surrogates are illegal.
-            // Observe that this verbatim not what RFC8259 §7 prescribes; 
-            // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
+            // Observe that this verbatim not what RFC8259 §7 prescribes;
+            // it appears, however, to be in the spirit of RFC8259, cf. §8.2
             // The other characters are illegal if unescaped.
             CHECK(!json::accept(temp));
             CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
@@ -9529,7 +9529,7 @@ SECTION("unescaped unicode")
                     CHECK(!json::accept(temp));
                     CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
                 }
-            } 
+            }
         } else if (i&lt;0x0020||i==0x0022||i==0x005c){
             CHECK(!json::accept(temp));
             CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
@@ -10740,7 +10740,7 @@ _None_
 
 ```cpp
 SECTION("U+0425")
-{            
+{
     CHECK(!json::accept("0\u0425123"));
     CHECK(!json::accept("123\u04250"));
     CHECK(!json::accept("0.123\u0425123"));
@@ -10757,7 +10757,7 @@ SECTION("U+0425")
 
 ```cpp
 SECTION("U+0436")
-{            
+{
     CHECK(!json::accept("0\u0436123"));
     CHECK(!json::accept("123\u04360"));
     CHECK(!json::accept("0.123\u0436123"));
@@ -11450,7 +11450,6 @@ SECTION("operators")
     }
     SECTION("minus")
     {
-
         CHECK(!json::accept("1-1"));
         CHECK(!json::accept("0.1-1"));
         CHECK(!json::accept("0.1-1.0"));
@@ -11462,7 +11461,6 @@ SECTION("operators")
     }
     SECTION("brackets")
     {
-
         CHECK(!json::accept("(145)"));
         CHECK(!json::accept("(34.32874)"));
         CHECK(!json::accept("42\u0045(134)"));
@@ -11470,12 +11468,10 @@ SECTION("operators")
     }
     SECTION("factorial")
     {
-
         CHECK(!json::accept("13!"));
     }
     SECTION("multiplication")
     {
-
         CHECK(!json::accept("1*1"));
         CHECK(!json::accept("1.45*5"));
         CHECK(!json::accept("154*23.76"));
@@ -11486,7 +11482,6 @@ SECTION("operators")
     }
     SECTION("division")
     {
-
         CHECK(!json::accept("0/0"));
         CHECK(!json::accept("1.45/5"));
         CHECK(!json::accept("154/23.76"));
@@ -11497,7 +11492,6 @@ SECTION("operators")
     }
     SECTION("comma")
     {
-
         CHECK(!json::accept("0,0"));
         CHECK(!json::accept("100,000"));
         CHECK(!json::accept("1,000.23"));
@@ -12293,10 +12287,10 @@ SECTION("unescaped unicode")
     for (uint32_t i = 0x0000; i&lt;=0x10FFFF; i++)
     {
         std::string temp = uint_to_utf8(i);
-        if ((i&gt;=0xD800 && i&lt;=0xDFFF)) { 
+        if ((i&gt;=0xD800 && i&lt;=0xDFFF)) {
             // Unpaired utf-16 surrogates are illegal.
-            // Observe that this verbatim not what RFC8259 §7 prescribes; 
-            // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
+            // Observe that this verbatim not what RFC8259 §7 prescribes;
+            // it appears, however, to be in the spirit of RFC8259, cf. §8.2
             // The other characters are illegal if unescaped.
             CHECK(!json::accept(temp));
             CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
@@ -12306,7 +12300,7 @@ SECTION("unescaped unicode")
                     CHECK(!json::accept(temp));
                     CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
                 }
-            } 
+            }
         } else if (i&lt;0x0020||i==0x0022||i==0x005c){
             CHECK(!json::accept(temp));
             CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
@@ -12429,10 +12423,10 @@ SECTION("unescaped unicode")
     for (uint32_t i = 0x0000; i&lt;=0x10FFFF; i++)
     {
         std::string temp = uint_to_utf8(i);
-        if ((i&gt;=0xD800 && i&lt;=0xDFFF)) { 
+        if ((i&gt;=0xD800 && i&lt;=0xDFFF)) {
             // Unpaired utf-16 surrogates are illegal.
-            // Observe that this verbatim not what RFC8259 §7 prescribes; 
-            // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
+            // Observe that this verbatim not what RFC8259 §7 prescribes;
+            // it appears, however, to be in the spirit of RFC8259, cf. §8.2
             // The other characters are illegal if unescaped.
             CHECK(!json::accept(temp));
             CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
@@ -12442,7 +12436,7 @@ SECTION("unescaped unicode")
                     CHECK(!json::accept(temp));
                     CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
                 }
-            } 
+            }
         } else if (i&lt;0x0020||i==0x0022||i==0x005c){
             CHECK(!json::accept(temp));
             CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
@@ -12509,8 +12503,8 @@ SECTION("escaped unicode")
         if (i&gt;=0xD800 && i&lt;=0xDFFF)
         {
             // Unpaired utf-16 surrogates are illegal.
-            // Observe that this verbatim not what RFC8259 §7 prescribes; 
-            // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
+            // Observe that this verbatim not what RFC8259 §7 prescribes;
+            // it appears, however, to be in the spirit of RFC8259, cf. §8.2
             // Illegal characters are not parsed anyway.
             CHECK(!json::accept(temp.str()));
             CHECK(!json::accept(temp2.str()));
@@ -12669,7 +12663,7 @@ _None_
 ```cpp
 SECTION("single BOM")
 {
-    // a single byte order mark is treated as an empty token, which is not a valid json token. 
+    // a single byte order mark is treated as an empty token, which is not a valid json token.
     CHECK(!json::accept("\xEF\xBB\xBF"));
     CHECK(json::accept("\xEF\xBB\xBF\n\"foo\""));
     CHECK(json::accept("\xEF\xBB\xBF\"foo\""));

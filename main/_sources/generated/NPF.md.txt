@@ -158,7 +158,7 @@ _None_
 ```cpp
 SECTION("multiple BOM")
 {
-    // Whenever a fourth character of a BOM-candidate is read, an error is thrown. 
+    // Whenever a fourth character of a BOM-candidate is read, an error is thrown.
     // This error does not depend on any trailing garbage.
     CHECK_THROWS_WITH_AS(parser_helper("\xEF\xBB\xBF\xEF\xBB\xBF"),"[json.exception.parse_error.101] parse error at line 1, column 4: syntax error while parsing value - invalid literal; last read: '\xEF\xBB\xBF\xEF'", json::parse_error&);
     CHECK_THROWS_WITH_AS(parser_helper("\xEF\xBB\xBF\xEF\xBB\xBF\xEF\xBB\xBF"),"[json.exception.parse_error.101] parse error at line 1, column 4: syntax error while parsing value - invalid literal; last read: '\xEF\xBB\xBF\xEF'", json::parse_error&);
@@ -1086,7 +1086,7 @@ SECTION("issue #379 - locale-independent str-to-num")
 
 ```cpp
 SECTION("trailing zeroes")
-{   
+{
     // Trailing zeroes after the decimal point do not influence the parsing
     CHECK(json::parse("3.1415000000000000000000000")==json::parse("3.1415"));
     CHECK(json::parse("3.1415000000000\u004515")==json::parse("3.1415\u004515"));
@@ -1479,7 +1479,7 @@ SECTION("with exponent")
 ```cpp
 SECTION("Precision")
 {
-    CHECK(json::parse("1.7976931348623158e308").dump()=="1.7976931348623157e+308"); // maximum double value 
+    CHECK(json::parse("1.7976931348623158e308").dump()=="1.7976931348623157e+308"); // maximum double value
     CHECK(json::parse("-1.7976931348623158e308").dump()=="-1.7976931348623157e+308"); // minimum double value
 }
 
@@ -3239,8 +3239,8 @@ SECTION("escaped unicode")
         if (i&gt;=0xD800 && i&lt;=0xDFFF)
         {
             // Unpaired utf-16 surrogates are illegal.
-            // Observe that this verbatim not what RFC8259 §7 prescribes; 
-            // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
+            // Observe that this verbatim not what RFC8259 §7 prescribes;
+            // it appears, however, to be in the spirit of RFC8259, cf. §8.2
             // Illegal characters are not parsed anyway.
             CHECK(!json::accept(temp.str()));
             CHECK(!json::accept(temp2.str()));
@@ -3383,10 +3383,10 @@ SECTION("unescaped unicode")
     for (uint32_t i = 0x0000; i&lt;=0x10FFFF; i++)
     {
         std::string temp = uint_to_utf8(i);
-        if ((i&gt;=0xD800 && i&lt;=0xDFFF)) { 
+        if ((i&gt;=0xD800 && i&lt;=0xDFFF)) {
             // Unpaired utf-16 surrogates are illegal.
-            // Observe that this verbatim not what RFC8259 §7 prescribes; 
-            // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
+            // Observe that this verbatim not what RFC8259 §7 prescribes;
+            // it appears, however, to be in the spirit of RFC8259, cf. §8.2
             // The other characters are illegal if unescaped.
             CHECK(!json::accept(temp));
             CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
@@ -3396,7 +3396,7 @@ SECTION("unescaped unicode")
                     CHECK(!json::accept(temp));
                     CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
                 }
-            } 
+            }
         } else if (i&lt;0x0020||i==0x0022||i==0x005c){
             CHECK(!json::accept(temp));
             CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
@@ -4456,7 +4456,7 @@ SECTION("whitespace")
     CHECK(json::parse("\u000dtrue ")==json::parse("true"));
     CHECK(json::parse("\u000dtrue\t")==json::parse("true"));
     CHECK(json::parse("\u000dtrue\n")==json::parse("true"));
-    CHECK(json::parse("\u000dtrue\u000d")==json::parse("true"));    
+    CHECK(json::parse("\u000dtrue\u000d")==json::parse("true"));
 }
 
 ```

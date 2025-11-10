@@ -179,13 +179,6 @@ jobs:
 ````
 
 
-- `website: https://github.com/score-json/json/settings/branch_protection_rules/65227858`
-
-
-`https://github.com/score-json/json/settings/branch_protection_rules/65227858`
-	- branch protection rule for main branch specifying that failures of tests prevent merge.
-
-
 
 
 
@@ -426,6 +419,20 @@ _None_
 	- presents activity over the past week
 
 
+- `website: https://github.com/orgs/score-json/discussions/27#discussion-8594385`
+
+
+`https://github.com/orgs/score-json/discussions/27#discussion-8594385`
+	- comparison between JSON libraries demonstrating the popularity of nlohmann/json
+
+
+- `website: https://json.nlohmann.me/home/customers/`
+
+
+`https://json.nlohmann.me/home/customers/`
+	- list of large projects using nlohmann/json
+
+
 
 
 
@@ -457,12 +464,10 @@ _None_
 
 **References:**
 
-- `website: https://github.com/score-json/json/settings/branches`
+- `failures on branch master of nlohmann/json`
 
 
-`https://github.com/score-json/json/settings/branches`
-	- Branch protection policies
-
+0 workflows failed on branch master of nlohmann/json
 
 
 
@@ -495,13 +500,7 @@ _None_
 
 **References:**
 
-- `website: https://github.com/score-json/json/settings/branch_protection_rules/65227858`
-
-
-`https://github.com/score-json/json/settings/branch_protection_rules/65227858`
-	- branch protection rule for main branch specifying that failures of tests prevent merge.
-
-
+_None_
 
 
 
@@ -737,10 +736,10 @@ _None_
 
 **References:**
 
-- `website: /nlohmann/json/tree/v3.12.0`
+- `website: https://github.com/nlohmann/json/tree/v3.12.0`
 
 
-`/nlohmann/json/tree/v3.12.0`
+`https://github.com/nlohmann/json/tree/v3.12.0`
 	- release site of nlohmann/json containing the sha values
 
 
@@ -9614,52 +9613,8 @@ jobs:
           # Fetch closed issues from the nlohmann/json repository
           gh issue list --repo "$REPO" --state closed --limit 10000 --json number,title,state,createdAt,url,labels &gt; raw_closed_issues.json
 
-          # Add title to the output file
-          echo "# Misbehaviours Report" &gt; $OUTPUT_FILE
-          echo "" &gt;&gt; $OUTPUT_FILE
-          echo "This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json repository. The misbehaviours are compiled from github issues of the nlohmann/json repository, and link to each corresponding issue." &gt;&gt; $OUTPUT_FILE
-          echo "" &gt;&gt; $OUTPUT_FILE
-
-          # Add subtitle for open issues
-          echo "## Open Issues" &gt;&gt; $OUTPUT_FILE
-          echo "" &gt;&gt; $OUTPUT_FILE
-
-          # Filter raw open issues for labels containing "bug" and convert to output .md file
-          jq -r '
-              map(select(.labels[]?.name | test("bug"; "i"))) |
-              map("### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n") |
-              .[]
-            ' raw_open_issues.json &gt;&gt; $OUTPUT_FILE
-
-          jq -c '
-            .[]
-| select(.labels[]?; .name | test("bug"; "i"))
-| { n: .number
-              , md: "### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n"
-              }
-          ' raw_open_issues.json |
-          while IFS= read -r rec; do
-            num=$(jq -r '.n' &lt;&lt;&lt; "$rec")
-            md=$(jq -r '.md' &lt;&lt;&lt; "$rec")
-            py_out=$(python3 ./TSF/scripts/identify_nlohmann_issue.py "$num")
-            {
-              printf "%s\n" "$md"
-              printf "%s\n" "$py_out"
-            } &gt;&gt; "$OUTPUT_FILE"
-          done
-
-          # Add subtitle for closed issues
-          echo "" &gt;&gt; $OUTPUT_FILE
-          echo "## Closed Issues (since v3.12.0)" &gt;&gt; $OUTPUT_FILE
-          echo "" &gt;&gt; $OUTPUT_FILE
-
-          # Filter raw closed issues for labels containing "bug", created after release date of nlohmann/json version in use, and convert to output .md file
-          jq -r '
-              map(select(.labels[]?.name | test("bug"; "i"))) |
-              map(select(.createdAt &gt; "2025-04-11T00:00:00Z")) |  # Adjust date as needed, 2025-04-11 corresponds to release v3.12.0 of nlohmann/json
-              map("### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n") |
-              .[]
-            ' raw_closed_issues.json &gt;&gt; $OUTPUT_FILE
+          # print the list of misbehaviours
+          python3 TSF/scripts/generate_list_of_misbehaviours.py &gt; $OUTPUT_FILE
 
           # Push misbehaviours file to save_historical_data branch
           git add TSF/misbehaviours.md
@@ -10984,7 +10939,7 @@ _No Historic Data Found_
 
 ### JLS-26 
 
-Pipeline execution results are analyzed in the fork and the original nlohmann/json repository.
+Pipeline execution results are analyzed in nlohmann/json.
 
 
 **Supported Requests:**
@@ -10999,13 +10954,43 @@ _None_
 
 **References:**
 
-- `website: https://github.com/score-json/json/settings/branch_protection_rules/65227858`
+- `failures on branch master of nlohmann/json`
 
 
-`https://github.com/score-json/json/settings/branch_protection_rules/65227858`
-	- branch protection rule for main branch specifying that failures of any workflow prevent merge.
+0 workflows failed on branch master of nlohmann/json
 
 
+
+
+**Fallacies:**
+
+_None_
+
+**Graph:**
+
+_No Historic Data Found_
+
+
+---
+
+### JLS-27 
+
+The test coverage for this version of nlohmann/json is monitored using Coveralls and is not decreasing over time, unless reasonably justified.
+
+
+**Supported Requests:**
+
+- [TA-BEHAVIOURS](TA.md#ta-behaviours)
+
+**Supporting Items:**
+
+_None_
+
+
+
+**References:**
+
+_None_
 
 
 

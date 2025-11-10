@@ -89,7 +89,8 @@ This presents the compliance for the _JSON-Library Statements_ (JLS) in tabular 
 | [JLS-23](JLS.md#jls-23) |  The Eclipse S-CORE organization mirrors the nlohmann/json project in a github fork. | 0.00 |
 | [JLS-24](JLS.md#jls-24) |  The nlohmann/json library recognizes malformed JSON and returns an exception. | 0.00 |
 | [JLS-25](JLS.md#jls-25) |  Malicious code changes are mitigated by code reviews, adhering to Eclipse S-core contribution procedures and vigilance from the open-source community. | 0.00 |
-| [JLS-26](JLS.md#jls-26) |  Pipeline execution results are analyzed in the fork and the original nlohmann/json repository. | 0.00 |
+| [JLS-26](JLS.md#jls-26) |  Pipeline execution results are analyzed in nlohmann/json. | 0.00 |
+| [JLS-27](JLS.md#jls-27) |  The test coverage for this version of nlohmann/json is monitored using Coveralls and is not decreasing over time, unless reasonably justified. | 0.00 |
 
 ## Compliance for NJF
 This presents the compliance for the _No JSON Faults_ (NJF) in tabular form.
@@ -313,6 +314,6 @@ This presents the compliance for _Well Formed JSON_ (WFJ) in tabular form.
 _Generated for: Software_
 
 * _Repository root: /home/runner/work/json/json_
-* _Commit SHA: 330ef0a4db751fa583bfadd96e9b8c63ad771454_
-* _Commit date/time: Thu Nov  6 18:37:31 2025_
-* _Commit tag: 330ef0a_
+* _Commit SHA: fe309c21659291f4232c90d7f6aab14ec28f5484_
+* _Commit date/time: Mon Nov 10 09:33:38 2025_
+* _Commit tag: fe309c2_

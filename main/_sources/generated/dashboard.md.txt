@@ -8,7 +8,7 @@ The distribution of scores for evidence nodes across the graph.
 
 |bin|count|
 |-|-|
-|0.0-0.1  |162|
+|0.0-0.1  |163|
 |0.1-0.2  |0|
 |0.2-0.3  |0|
 |0.3-0.4  |0|
@@ -46,7 +46,7 @@ The distribution of scores for all nodes across the graph.
 
 |bin|count|
 |-|-|
-|0.0-0.1  |220|
+|0.0-0.1  |221|
 |0.1-0.2  |0|
 |0.2-0.3  |0|
 |0.3-0.4  |0|
@@ -129,10 +129,10 @@ The distribution of scores for all nodes across the graph.
 
 | Category | Count |
 |----------|-------|
-|statements|224|
-|reviewed statements|4|
-|unreviewed statements|220|
+|statements|225|
+|reviewed statements|0|
+|unreviewed statements|225|
 |orphaned statements|0|
 |statements with evidence|45|
-|evidence|162|
+|evidence|163|
 |expectations|1|

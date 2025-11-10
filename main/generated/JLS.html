@@ -595,11 +595,6 @@
 <span class="w">      </span><span class="nt">artifact_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ubuntu-${{</span><span class="nv"> </span><span class="s">github.sha</span><span class="nv"> </span><span class="s">}}&quot;</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">website:</span> <span class="pre">https://github.com/score-json/json/settings/branch_protection_rules/65227858</span></code></p></li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">https://github.com/score-json/json/settings/branch_protection_rules/65227858</span></code>
-- branch protection rule for main branch specifying that failures of tests prevent merge.</p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -761,6 +756,16 @@
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">https://github.com/nlohmann/json/pulse</span></code>
 - presents activity over the past week</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">website:</span> <span class="pre">https://github.com/orgs/score-json/discussions/27#discussion-8594385</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">https://github.com/orgs/score-json/discussions/27#discussion-8594385</span></code>
+- comparison between JSON libraries demonstrating the popularity of nlohmann/json</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">website:</span> <span class="pre">https://json.nlohmann.me/home/customers/</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">https://json.nlohmann.me/home/customers/</span></code>
+- list of large projects using nlohmann/json</p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -778,10 +783,9 @@
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">website:</span> <span class="pre">https://github.com/score-json/json/settings/branches</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">failures</span> <span class="pre">on</span> <span class="pre">branch</span> <span class="pre">master</span> <span class="pre">of</span> <span class="pre">nlohmann/json</span></code></p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">https://github.com/score-json/json/settings/branches</span></code>
-- Branch protection policies</p>
+<p>0 workflows failed on branch master of nlohmann/json</p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -798,11 +802,7 @@
 <p><strong>Supporting Items:</strong></p>
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">website:</span> <span class="pre">https://github.com/score-json/json/settings/branch_protection_rules/65227858</span></code></p></li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">https://github.com/score-json/json/settings/branch_protection_rules/65227858</span></code>
-- branch protection rule for main branch specifying that failures of tests prevent merge.</p>
+<p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -930,9 +930,9 @@
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">website:</span> <span class="pre">/nlohmann/json/tree/v3.12.0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">website:</span> <span class="pre">https://github.com/nlohmann/json/tree/v3.12.0</span></code></p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">/nlohmann/json/tree/v3.12.0</span></code>
+<p><code class="docutils literal notranslate"><span class="pre">https://github.com/nlohmann/json/tree/v3.12.0</span></code>
 - release site of nlohmann/json containing the sha values</p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
@@ -9712,60 +9712,16 @@ All tests in this file were run in the following configurations:
 <span class="w">          </span><span class="no"># Fetch closed issues from the nlohmann/json repository</span>
 <span class="w">          </span><span class="no">gh issue list --repo &quot;$REPO&quot; --state closed --limit 10000 --json number,title,state,createdAt,url,labels &amp;gt; raw_closed_issues.json</span>
 
-<span class="w">          </span><span class="no"># Add title to the output file</span>
-<span class="w">          </span><span class="no">echo &quot;# Misbehaviours Report&quot; &amp;gt; $OUTPUT_FILE</span>
-<span class="w">          </span><span class="no">echo &quot;&quot; &amp;gt;&amp;gt; $OUTPUT_FILE</span>
-<span class="w">          </span><span class="no">echo &quot;This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json repository. The misbehaviours are compiled from github issues of the nlohmann/json repository, and link to each corresponding issue.&quot; &amp;gt;&amp;gt; $OUTPUT_FILE</span>
-<span class="w">          </span><span class="no">echo &quot;&quot; &amp;gt;&amp;gt; $OUTPUT_FILE</span>
+<span class="w">          </span><span class="no"># print the list of misbehaviours</span>
+<span class="w">          </span><span class="no">python3 TSF/scripts/generate_list_of_misbehaviours.py &amp;gt; $OUTPUT_FILE</span>
 
-<span class="w">          </span><span class="no"># Add subtitle for open issues</span>
-<span class="w">          </span><span class="no">echo &quot;## Open Issues&quot; &amp;gt;&amp;gt; $OUTPUT_FILE</span>
-<span class="w">          </span><span class="no">echo &quot;&quot; &amp;gt;&amp;gt; $OUTPUT_FILE</span>
-
-<span class="w">          </span><span class="no"># Filter raw open issues for labels containing &quot;bug&quot; and convert to output .md file</span>
-<span class="w">          </span><span class="no">jq -r &#39;</span>
-<span class="w">              </span><span class="no">map(select(.labels[]?.name | test(&quot;bug&quot;; &quot;i&quot;))) |</span>
-<span class="w">              </span><span class="no">map(&quot;### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n&quot;) |</span>
-<span class="w">              </span><span class="no">.[]</span>
-<span class="w">            </span><span class="no">&#39; raw_open_issues.json &amp;gt;&amp;gt; $OUTPUT_FILE</span>
-
-<span class="w">          </span><span class="no">jq -c &#39;</span>
-<span class="w">            </span><span class="no">.[]</span>
-<span class="p p-Indicator">|</span><span class="err"> select(.labels[]?; .name | test(&quot;bug&quot;; &quot;i&quot;))</span>
-<span class="p p-Indicator">|</span><span class="err"> { n: .number</span>
-<span class="w">              </span><span class="no">, md: &quot;### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n&quot;</span>
-<span class="w">              </span><span class="no">}</span>
-<span class="w">          </span><span class="s">&#39;</span><span class="nv"> </span><span class="s">raw_open_issues.json</span><span class="nv"> </span><span class="s">|</span>
-<span class="w">          </span><span class="s">while</span><span class="nv"> </span><span class="s">IFS=</span><span class="nv"> </span><span class="s">read</span><span class="nv"> </span><span class="s">-r</span><span class="nv"> </span><span class="s">rec;</span><span class="nv"> </span><span class="s">do</span>
-<span class="w">            </span><span class="s">num=$(jq</span><span class="nv"> </span><span class="s">-r</span><span class="nv"> </span><span class="s">&#39;</span><span class="l l-Scalar l-Scalar-Plain">.n&#39; &amp;lt;&amp;lt;&amp;lt; &quot;$rec&quot;)</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">md=$(jq -r &#39;.md&#39; &amp;lt;&amp;lt;&amp;lt; &quot;$rec&quot;)</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">py_out=$(python3 ./TSF/scripts/identify_nlohmann_issue.py &quot;$num&quot;)</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">{</span>
-<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">printf &quot;%s\n&quot; &quot;$md&quot;</span>
-<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">printf &quot;%s\n&quot; &quot;$py_out&quot;</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">} &amp;gt;&amp;gt; &quot;$OUTPUT_FILE&quot;</span>
-<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">done</span>
-
-<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain"># Add subtitle for closed issues</span>
-<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;&quot; &amp;gt;&amp;gt; $OUTPUT_FILE</span>
-<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;## Closed Issues (since v3.12.0)&quot; &amp;gt;&amp;gt; $OUTPUT_FILE</span>
-<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;&quot; &amp;gt;&amp;gt; $OUTPUT_FILE</span>
-
-<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain"># Filter raw closed issues for labels containing &quot;bug&quot;, created after release date of nlohmann/json version in use, and convert to output .md file</span>
-<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">jq -r &#39;</span>
-<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">map(select(.labels[]?.name | test(&quot;bug&quot;; &quot;i&quot;))) |</span>
-<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">map(select(.createdAt &amp;gt; &quot;2025-04-11T00:00:00Z&quot;)) |</span><span class="w">  </span><span class="c1"># Adjust date as needed, 2025-04-11 corresponds to release v3.12.0 of nlohmann/json</span>
-<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">map(&quot;### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n&quot;) |</span>
-<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">.[]</span>
-<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">&#39; raw_closed_issues.json &amp;gt;&amp;gt; $OUTPUT_FILE</span>
-
-<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain"># Push misbehaviours file to save_historical_data branch</span>
-<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">git add TSF/misbehaviours.md</span>
-<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">git commit -m &quot;Updated issues list&quot; || echo &quot;No changes to commit&quot;</span>
-<span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">git push origin save_historical_data &amp;&amp; git pull</span>
+<span class="w">          </span><span class="no"># Push misbehaviours file to save_historical_data branch</span>
+<span class="w">          </span><span class="no">git add TSF/misbehaviours.md</span>
+<span class="w">          </span><span class="no">git commit -m &quot;Updated issues list&quot; || echo &quot;No changes to commit&quot;</span>
+<span class="w">          </span><span class="no">git push origin save_historical_data &amp;&amp; git pull</span>
 <span class="w">      </span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">- name</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Load persistent data</span>
-<span class="w w-Error">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Load persistent data</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">if ! git ls-tree --name-only origin/save_historical_data TSF/TrustableScoring.db | grep TSF/TrustableScoring.db; then</span>
 <span class="w">            </span><span class="no">mkdir -p TSF</span>
 <span class="w">            </span><span class="no">touch TSF/TrustableScoring.db</span>
@@ -9776,7 +9732,7 @@ All tests in this file were run in the following configurations:
 <span class="w">          </span><span class="no">git checkout $branch_name</span>
 <span class="w">          </span><span class="no">git checkout save_historical_data -- TSF/TrustableScoring.db</span>
 
-<span class="w w-Error">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Generate trudag report</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Generate trudag report</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">REPO_FULL=&quot;${{ github.repository }}&quot;</span>
 <span class="w">          </span><span class="no">REPO_NAME=&quot;${REPO_FULL#*/}&quot;</span>
@@ -9809,7 +9765,7 @@ All tests in this file were run in the following configurations:
 <span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TSF/docs/generated/</span>
 <span class="w">          </span><span class="nt">if-no-files-found</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">error</span>
 <span class="w">          </span>
-<span class="w w-Error">  </span><span class="nt">build-docs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build-docs</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">run-trudag</span>
 <span class="w">    </span><span class="c1"># the eclipse-score/cicd-workflow docs.yml is adjusted to download the trudag report artifact before building the documentation</span>
 <span class="w">    </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./.github/workflows/docs.yml</span>
@@ -10975,7 +10931,7 @@ All tests in this file were run in the following configurations:
 <hr class="docutils" />
 <section id="jls-26">
 <h1>JLS-26<a class="headerlink" href="#jls-26" title="Link to this heading">#</a></h1>
-<p>Pipeline execution results are analyzed in the fork and the original nlohmann/json repository.</p>
+<p>Pipeline execution results are analyzed in nlohmann/json.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="TA.html#ta-analysis"><span class="std std-ref">TA-ANALYSIS</span></a></p></li>
@@ -10984,10 +10940,26 @@ All tests in this file were run in the following configurations:
 <p><em>None</em></p>
 <p><strong>References:</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">website:</span> <span class="pre">https://github.com/score-json/json/settings/branch_protection_rules/65227858</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">failures</span> <span class="pre">on</span> <span class="pre">branch</span> <span class="pre">master</span> <span class="pre">of</span> <span class="pre">nlohmann/json</span></code></p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">https://github.com/score-json/json/settings/branch_protection_rules/65227858</span></code>
-- branch protection rule for main branch specifying that failures of any workflow prevent merge.</p>
+<p>0 workflows failed on branch master of nlohmann/json</p>
+<p><strong>Fallacies:</strong></p>
+<p><em>None</em></p>
+<p><strong>Graph:</strong></p>
+<p><em>No Historic Data Found</em></p>
+</section>
+<hr class="docutils" />
+<section id="jls-27">
+<h1>JLS-27<a class="headerlink" href="#jls-27" title="Link to this heading">#</a></h1>
+<p>The test coverage for this version of nlohmann/json is monitored using Coveralls and is not decreasing over time, unless reasonably justified.</p>
+<p><strong>Supported Requests:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="TA.html#ta-behaviours"><span class="std std-ref">TA-BEHAVIOURS</span></a></p></li>
+</ul>
+<p><strong>Supporting Items:</strong></p>
+<p><em>None</em></p>
+<p><strong>References:</strong></p>
+<p><em>None</em></p>
 <p><strong>Fallacies:</strong></p>
 <p><em>None</em></p>
 <p><strong>Graph:</strong></p>
@@ -11048,6 +11020,7 @@ All tests in this file were run in the following configurations:
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jls-24">JLS-24</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jls-25">JLS-25</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jls-26">JLS-26</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#jls-27">JLS-27</a></li>
 </ul>
 
   </nav></div>

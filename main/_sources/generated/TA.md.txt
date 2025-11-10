@@ -18,7 +18,75 @@ Collected data from tests and monitoring of deployed software is analysed accord
 
 **References:**
 
-_None_
+- `TSF/trustable/assertions/TA-ANALYSIS-CHECKLIST.md`
+
+
+#### Checklist for TA-ANALYSIS from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* What fraction of Expectations are covered by the test data?
+
+    **Answer**: The two expectations are JLEX-01 and JLEX-02. Every statement supporting both of the expectations is ultimately supported by a test, except for WFJ-06. For WFJ-06 it is impossible to provide a direct tests, since this is a statement on infinitely many cases. Indirect tests are provided by the rejection of ill-formed json data.
+
+* What fraction of Misbehaviours are covered by the monitored indicator data?
+
+    **Answer**: For the intended use-case, no misbehaviours have been identified. Furthermore, no indicator data are collected.
+
+* How confident are we that the indicator data are accurate and timely?
+
+    **Answer**:  No indicator data are collected.
+
+* How reliable is the monitoring process?
+
+    **Answer**: Due to no indicator data being collected, there is no monitoring process.
+
+* How well does the production data correlate with our test data?
+
+    **Answer**:  Due to the general nature of the library, there are no production data.
+
+* Are we publishing our data analysis?
+
+    **Answer**:  Since we have no production data with which to compare our not collected indicator data or our test data, no data analysis is done, which is not published.
+
+* Are we comparing and analysing production data vs test?
+
+    **Answer**:  There are no production data.
+
+* Are our results getting better, or worse?
+
+    **Answer**:  Neither.
+
+* Are we addressing spikes/regressions?
+    **Answer**:  There are no spikes in the non-existent indicator data. If a test ever fails, then the spike is investigated. The results of fuzz testing are investigated in the original nlohmann/json.
+
+* Do we have sensible/appropriate target failure rates?
+
+    **Answer**:  For the unit and integration tests, zero. The target failure rate of fuzz testing is not under our control.
+
+* Do we need to check the targets?
+
+    **Answer**:  For the unit and integration tests, no. Since the fuzz testing runs and is investigated in the original nlohmann/json, there is no need to check the target.
+
+* Are we achieving the targets?
+
+    **Answer**:  For the unit and integration tests, yes. The achieving of the targets for the fuzz-testing is evaluated within the original nlohmann/json.
+
+* Are all underlying assumptions and target conditions for the analysis specified?
+
+    **Answer**:  Since none of the unit and integration tests are expected to fail, there is no further analysis of the results besides verifying the expectation. In case any test fails ever, the failure of the CI-pipeline encourages the maintainer to investigate.
+
+* Have the underlying assumptions been verified using known good data?
+
+    **Answer**:  The assumption that all unit and integration tests succeed under the expected conditions is demonstrated by the non-failure of the CI-Pipeline.
+
+* Has the Misbehaviour identification process been verified using known bad data?
+
+    **Answer**: Misbehaviours published on nlohmann/json usually provide minimal working examples for reproducing the faulty behaviour, enabling everyone to verify the identified misbehaviours. There is, however, no automatic process for the identification of misbehaviours. 
+
+* Are results shown to be reproducible?
+
+    **Answer**: It is expected that the tests can be reproduced on every modern sufficiently powerful machine.
+
+
 
 
 
@@ -60,7 +128,7 @@ _None_
 |2025-10-27 12:37:56|0.00 |N/A|N/A|N/A|
 |2025-11-03 13:09:23|0.00 |N/A|N/A|N/A|
 |2025-11-06 18:37:31|0.00 |N/A|N/A|N/A|
-|2025-11-06 18:45:03.871310|0.00 |N/A|N/A|N/A|
+|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|N/A|
 
 
 
@@ -83,12 +151,67 @@ Expected or required behaviours for nlohmann/json library are identified, specif
 - [AOU-23](AOU.md#aou-23)
 - [AOU-24](AOU.md#aou-24)
 - [AOU-25](AOU.md#aou-25)
+- [JLS-27](JLS.md#jls-27)
 
 
 
 **References:**
 
-_None_
+- `TSF/trustable/assertions/TA-BEHAVIOURS-CHECKLIST.md`
+
+
+#### Checklist for TA-BEHAVIOURS from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* How has the list of Expectations varied over time?
+
+    **Answer**: The list of expectations is taken from [here](https://eclipse-score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html), whose development can be retraced using git.
+
+* How confident can we be that this list is comprehensive?
+
+    **Answer**:  The list of expectations has been collected amongst the stakeholders in S-CORE, so that we are very confident that the list is comprehensive. 
+    The expectation to serialize user data into JSON format 
+
+* Could some participants have incentives to manipulate information?
+
+    **Answer**:  We can not imagine any reason.
+
+* Could there be whole categories of Expectations still undiscovered?
+
+    **Answer**:  It is unlikely, but the parsing of CBOR could become relevant at some time.
+
+* Can we identify Expectations that have been understood but not specified?
+
+    **Answer**:  No.
+
+* Can we identify some new Expectations, right now? 
+
+    **Answer**:  No.
+
+* How confident can we be that this list covers all critical requirements?
+
+    **Answer**:  We can not think of any more critical requirement of a JSON parser in the sense of RFC8259 than to parse JSON data in the sense of RFC8259.
+
+* How comprehensive is the list of tests? 
+
+    **Answer**:  Currently, the branch coverage is 93.865% and the line coverage is 99.186%, cf. JLS-27.
+
+* Is every Expectation covered by at least one implemented test? 
+
+    **Answer**:  Yes, both of the expectations are covered by at least one implemented test. Moreover, each statement supporting the expectations is covered by a test with the exception of WFJ-06.
+
+* Are there any Expectations where we believe more coverage would help?
+
+    **Answer**: No.
+
+* How do dependencies affect Expectations, and are their properties verifiable?
+
+    **Answer**: The library nlohmann/json does not have external dependencies, so that there are in particular none that affect Expectations.
+
+* Are input analysis findings from components, tools, and data considered in relation to Expectations?
+
+    **Answer**:  No findings have been found.
+
+
 
 
 
@@ -102,15 +225,15 @@ _None_
 
 |date-time|TA-BEHAVIOURS|
 |-|-|
-|2025-08-26 12:04:48|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-26 15:38:44|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 10:29:06|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 13:23:16|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 14:20:48|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-11-06 18:45:03.871310|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-26 12:04:48|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-26 15:38:44|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-27 10:29:06|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-27 13:23:16|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-27 14:20:48|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 
 
 
@@ -136,7 +259,27 @@ Confidence in nlohmann/json library is measured based on results of analysis.
 
 **References:**
 
-_None_
+- `TSF/trustable/assertions/TA-CONFIDENCE-CHECKLIST.md`
+
+
+#### Checklist for TA-CONFIDENCE from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* What is the algorithm for combining/comparing the scores?
+
+    **Answer**:  It is the standard algorithm of trudag.
+
+* How confident are we that this algorithm is fit for purpose?
+
+    **Answer**:  We have no reason to assume that the standard algorithm is not fit for our purpose.
+
+* What are the trends for each score?
+
+    **Answer**:  CAN NOT BE ANSWERED NOW
+
+* How well do our scores correlate with external feedback signals?
+
+    **Answer**:  CAN NOT BE ANSWERED NOW
+
 
 
 
@@ -158,7 +301,7 @@ _None_
 |2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|N/A|
 |2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|N/A|
 |2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|N/A|
-|2025-11-06 18:45:03.871310|0.00 |N/A|N/A|N/A|N/A|
+|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|N/A|N/A|
 
 
 
@@ -188,7 +331,39 @@ Constraints on adaptation and deployment of nlohmann/json library are specified.
 
 **References:**
 
-_None_
+- `TSF/trustable/assertions/TA-CONSTRAINTS-CHECKLIST.md`
+
+
+#### Checklist for TA-CONSTRAINTS from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* Are the constraints grounded in realistic expectations, backed by real-world examples?
+
+    **Answer**:  The constraints originate from S-CORE (e.g. AOU-04, AOU-05, AOU-07, AOU-21), the standard RFC-8259 (e.g. AOU-05, AOU-20, AOU-21) and the library nlohmann/json itself (AOU-06, AOU-20) in order to ensure that the expectations are met.
+
+* Do they effectively guide downstream consumers in expanding upon existing Statements?
+
+    **Answer**:  ?????
+
+* Do they provide clear guidance for upstreams on reusing components with well-defined claims?
+
+    **Answer**:  ?????
+
+* Are any Statements explicitly designated as not reusable or adaptable?
+
+    **Answer**:  No statement has been intentionally designated as not reusable or adaptable.
+
+* Are there worked examples from downstream or upstream users demonstrating these constraints in practice?
+
+    **Answer**:  ????
+
+* Have there been any documented misunderstandings from users, and are these visibly resolved?
+
+    **Answer**:  Yes, it is documented that the [brace initialisation](https://json.nlohmann.me/home/faq/) (cf. AOU-06) regularly leads to confusion, cf. [here](https://github.com/nlohmann/json/issues/4898).
+
+* Do external users actively keep up with updates, and are they properly notified of any changes?
+
+    **Answer**:  External users of the library are not necessarily automatically notified of an update, and are neither assumed nor required to keep up to date. If the external user forks the github repository, however, then github shows automatically whenever the upstream changes.
+
 
 
 
@@ -210,7 +385,7 @@ _None_
 |2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-11-06 18:45:03.871310|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 
 
 
@@ -234,7 +409,51 @@ Data is collected from tests, and from monitoring of deployed software, accordin
 
 **References:**
 
-_None_
+- `TSF/trustable/assertions/TA-DATA-CHECKLIST.md`
+
+
+#### Checklist for TA-DATA from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* Is all test data stored with long-term accessibility?
+
+    **Answer**:  If we assume that github is long-term accessible, then yes.
+
+* Is all monitoring data stored with long-term accessibility?
+
+    **Answer**:  There are no monitoring data.
+
+* Are extensible data models implemented?
+
+    **Answer**:  The data are stored in an sqlite database.
+
+* Is sensitive data handled correctly (broadcasted, stored, discarded, or anonymised) with appropriate encryption and redundancy?
+
+    **Answer**:  There are no sensitive data produced, collected or stored.
+
+* Are proper backup mechanisms in place?
+
+    **Answer**:  Not more than the default mechanisms of github.
+
+* Are storage and backup limits tested?
+
+    **Answer**:  No.
+
+* Are all data changes traceable? 
+
+    **Answer**:  Yes, due to the usage of github.
+
+* Are concurrent changes correctly managed and resolved? 
+
+    **Answer**:  Yes, due to the usage of github.
+
+* Is data accessible only to intended parties?
+
+    **Answer**:  Since the library is open source, there are no unintended parties.
+
+* Are any subsets of our data being published?
+
+    **Answer**:  Yes, the collected data are publicly available.
+
 
 
 
@@ -276,7 +495,7 @@ _None_
 |2025-10-27 12:37:56|0.00 |N/A|N/A|
 |2025-11-03 13:09:23|0.00 |N/A|N/A|
 |2025-11-06 18:37:31|0.00 |N/A|N/A|
-|2025-11-06 18:45:03.871310|0.00 |N/A|N/A|
+|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|
 
 
 
@@ -304,7 +523,72 @@ Known bugs or misbehaviours are analysed and triaged, and critical fixes or miti
 
 **References:**
 
-_None_
+- `TSF/trustable/assertions/TA-FIXES-CHECKLIST.md`
+
+
+#### Checklist for TA-FIXES from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+
+* How many faults have we identified in XYZ?
+
+    **Answer**:  There are no identifiable faults concerning the expectations. 
+
+* How many unknown faults remain to be found, based on the number that have been processed so far?
+
+    **Answer**:  It is unlikely that there are unknown faults concerning the expectations.
+
+* Is there any possibility that people could be motivated to manipulate the lists (e.g. bug bonus or pressure to close).
+
+    **Answer**:  Since the project is entirely open source, it is quite unlikely.
+
+* How many faults may be unrecorded (or incorrectly closed, or downplayed)?
+
+    **Answer**:  There may be none, at least when it concerns the expectations.
+
+* How do we collect lists of bugs and known vulnerabilities from components?
+
+    **Answer**:  We pull the list from the issues reported to nlohmann/json labelled as bug and open or opened since the last release. This list is then stored using github, thereby enabling a traceability of the list.
+
+* How (and how often) do we check these lists for relevant bugs and known vulnerabilities?
+
+    **Answer**:  Whenever we generate the documentation, the list is pulled. If there is an issue previously unrecorded, then the maintainer is encouraged by the change of the trustable score to check this issue on applicability.
+
+* How confident can we be that the lists are honestly maintained?
+
+    **Answer**:  We can not imagine a reason why the list could be dishonestly maintained.
+
+* Could some participants have incentives to manipulate information?
+
+    **Answer**:  We can not think of a reason why.
+
+* How confident are we that the lists are comprehensive? 
+
+    **Answer**:  We have no reason to assume that discovered bugs are not reported to nlohmann/json.
+
+* Could there be whole categories of bugs/vulnerabilities still undiscovered?
+
+    **Answer**:  There could be a mislabelling of issues, but it is unlikely that there are bugs or vulnerabilities not labelled as bug, instead it is likely that perceived issues due to a misunderstanding of how the library works are labelled as bug.
+
+* How effective is our triage/prioritisation? 
+
+    **Answer**: ????? Since it is not intended to fix the library within S-CORE, but instead leave the development to the original nlohmann/json, there is no need to have a triage or prioritisation. 
+
+* How many components have never been updated? 
+
+    **Answer**:  None, the single component is up to date.
+
+* How confident are we that we could update them? 
+
+    **Answer**:  If nlohmann/json would release an new version, we are very confident that we can update to that version.
+
+* How confident are we that outstanding fixes do not impact our Expectations?
+
+    **Answer**:  We have not found any outstanding fixes impacting our expectations.
+
+* How confident are we that outstanding fixes do not address Misbehaviours?
+
+    **Answer**: For all of the none identified misbehaviours, we are very confident that none of the outstanding fixes do not address them.
+
 
 
 
@@ -346,7 +630,7 @@ _None_
 |2025-10-27 12:37:56|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
 |2025-11-03 13:09:23|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
 |2025-11-06 18:37:31|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-11-06 18:45:03.871310|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
 
 
 
@@ -369,7 +653,59 @@ Advanced warning indicators for misbehaviours are identified, and monitoring mec
 
 **References:**
 
-_None_
+- `TSF/trustable/assertions/TA-INDICATORS-CHECKLIST.md`
+
+
+#### Checklist for TA-INDICATORS from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* How appropriate/thorough are the analyses that led to the indicators?
+
+    **Answer**:  Since no misbehaviours for the use of the library for parsing and verification of JSON data according to RFC8259 have been identified, no warning indicators are implemented.
+
+* How confident can we be that the list of indicators is comprehensive? 
+
+    **Answer**:  There are no warning indicators implemented, of which we are very confident.
+
+* Could there be whole categories of warning indicators still missing?
+
+    **Answer**:  Yes, there could. Within S-CORE, however, any warning indicator that is not natively implemented within the original nlohmann/json should be implemented in the wrapper defining the interface between the library and the project using it.
+
+* How has the list of advance warning indicators varied over time?
+
+    **Answer**:  It has stayed constant.
+
+* How confident are we that the indicators are leading/predictive?
+
+    **Answer**: There are none.
+
+* Are there misbehaviours that have no advance warning indicators?
+
+    **Answer**:  There are no misbehaviours identified.
+
+* Can we collect data for all indicators? 
+
+    **Answer**:  There are currently no implemented indicators, so that no data are collected.
+
+* Are the monitoring mechanisms used included in our Trustable scope? 
+
+    **Answer**:  No, but there are also none.
+
+* Are there gaps or trends in the data? 
+
+    **Answer**:  There are no data where gaps or trends could be identified.
+
+* If there are gaps or trends, are they analysed and addressed?
+
+    **Answer**:  There are no data.
+
+* Is the data actually predictive/useful?
+
+    **Answer**:  There are no data.
+
+* Are indicators from code, component, tool, or data inspections taken into consideration?
+
+    **Answer**:  There are no indicators.
+
 
 
 
@@ -402,7 +738,73 @@ All inputs to nlohmann/json library are assessed, to identify potential risks an
 
 **References:**
 
-_None_
+- `TSF/trustable/assertions/TA-INPUTS-CHECKLIST.md`
+
+
+#### Checklist for TA-INPUTS from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+The single_include/nlohmann/json.hpp is the single and only component of the library.
+
+* Are there components that are not on the list?
+
+    **Answer**:  No.
+
+* Are there assessments for all components?
+
+    **Answer**:  ?????
+
+* Has an assessment been done for the current version of the component?
+
+    **Answer**:  ?????
+
+* Have sources of bug and/or vulnerability data been identified?
+
+    **Answer**:  There are no bug and/or vulnerability data.
+
+* Have additional tests and/or Expectations been documented and linked to component assessment?
+
+    **Answer**:  ??????
+
+* Are component tests run when integrating new versions of components?
+
+    **Answer**:  There are no further components.
+
+* Are there tools that are not on the list?
+
+    **Answer**:  The library does not use external tools, except for the tools provided by the C++ standard library.
+
+* Are there impact assessments for all tools?
+
+    **Answer**:  ?????? The library does not use external tools for which an impact assessment has to be done.
+
+* Have tools with high impact been qualified?
+
+    **Answer**: There are no tools with high impact.
+
+* Were assessments or reviews done for the current tool versions?
+
+    **Answer**:  ????? The library does not use external tools for which an impact assessment has to be done.
+
+* Have additional tests and/or Expectations been documented and linked to tool assessments?
+
+    **Answer**:  No.
+
+* Are tool tests run when integrating new versions of tools?
+
+    **Answer**:  The library does not use external tools for which a new version needs to be integrated.
+
+* Are tool and component tests included in release preparation?
+
+    **Answer**:  Yes, the tests of the library are included in the release.
+
+* Can patches be applied, and then upstreamed for long-term maintenance?
+
+    **Answer**:  Yes, if ever a misbehaviour is found and patched, then a pull-request to the original nlohmann/json repository can be opened to upstream the changes.
+
+* Do all dependencies comply with acceptable licensing terms?
+
+    **Answer**:  Yes, the library is licensed under MIT License .
+
 
 
 
@@ -424,7 +826,7 @@ _None_
 |2025-08-27 16:24:53|0.00 |N/A|N/A|
 |2025-08-28 17:29:59|0.00 |N/A|N/A|
 |2025-08-29 15:47:02|0.00 |N/A|N/A|
-|2025-11-06 18:45:03.871310|0.00 |N/A|N/A|
+|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|
 
 
 
@@ -448,7 +850,31 @@ All constructed iterations of nlohmann/json library include source code, build i
 
 **References:**
 
-_None_
+- `TSF/trustable/assertions/TA-ITERATIONS-CHECKLIST.md`
+
+
+#### Checklist for TA-ITERATIONS from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* How much of the software is provided as binary only, expressed as a fraction of the BoM list? 
+
+    **Answer**:  None.
+
+* How much is binary, expressed as a fraction of the total storage footprint?
+
+    **Answer**:  None.
+
+* For binaries, what claims are being made and how confident are we in the people/organisations making the claims?
+
+    **Answer**:  There are no binaries.
+
+* For third-party source code, what claims are we making, and how confident are we about these claims?
+
+    **Answer**:  There is no third-party source code in the library.
+
+* For software developed by us, what claims are we making, and how confident are we about these claims?
+
+    **Answer**:  This is the remainder of the documentation.
+
 
 
 
@@ -470,7 +896,7 @@ _None_
 |2025-08-27 16:24:53|0.00 |N/A|N/A|
 |2025-08-28 17:29:59|0.00 |N/A|N/A|
 |2025-08-29 15:47:02|0.00 |N/A|N/A|
-|2025-11-06 18:45:03.871310|0.00 |N/A|N/A|
+|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|
 
 
 
@@ -494,7 +920,53 @@ Manual methodologies applied for nlohmann/json library by contributors, and thei
 
 **References:**
 
-_None_
+- `TSF/trustable/assertions/TA-METHODOLOGIES-CHECKLIST.md`
+
+
+#### Checklist for TA-METHODOLOGIES from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+This project follows purely the Methodologies of Eclipse S-CORE.
+
+* Are the identified gaps documented clearly to justify using a manual process?
+
+    **Answer**:  
+
+* Are the goals for each process clearly defined?
+
+    **Answer**:  
+
+* Is the sequence of procedures documented in an unambiguous manner?
+
+    **Answer**:  
+
+* Can improvements to the processes be suggested and implemented?
+
+    **Answer**:  
+
+* How frequently are processes changed?
+
+    **Answer**:  
+
+* How are changes to manual processes communicated?
+
+    **Answer**:  
+
+* Are there any exceptions to the processes?
+
+    **Answer**:  
+
+* How is evidence of process adherence recorded?
+
+    **Answer**:  
+
+* How is the effectiveness of the process evaluated?
+
+    **Answer**:  
+
+* Is ongoing training required to follow these processes?
+
+    **Answer**:  
+
 
 
 
@@ -516,7 +988,7 @@ _None_
 |2025-08-27 16:24:53|0.00 |N/A|N/A|
 |2025-08-28 17:29:59|0.00 |N/A|N/A|
 |2025-08-29 15:47:02|0.00 |N/A|N/A|
-|2025-11-06 18:45:03.871310|0.00 |N/A|N/A|
+|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|
 
 
 
@@ -545,7 +1017,59 @@ Prohibited misbehaviours for nlohmann/json library are identified, and mitigatio
 
 **References:**
 
-_None_
+- `TSF/trustable/assertions/TA-MISBEHAVIOURS-CHECKLIST.md`
+
+
+#### Checklist for TA-MISBEHAVIOURS from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* How has the list of misbehaviours varied over time?
+
+    **Answer**:  The list of misbehaviours is collected using github and its development is thereby understandable.
+
+* How confident can we be that this list is comprehensive?
+
+    **Answer**:  Due to the collaborative nature of the open source community, we deem it quite unlikely that there are any known misbehaviours which are not reported to the repository nlohmann/json.
+
+* How well do the misbehaviours map to the expectations?
+
+    **Answer**:  There are no identified misbehaviours that tangent the expectations.
+
+* Could some participants have incentives to manipulate information?
+
+    **Answer**:  We could not think of an incentive that any collaborateur could have to manipulate the information.
+
+* Could there be whole categories of misbehaviours still undiscovered?
+
+    **Answer**:  Due to the wide use and long-standing development of the library it is quite unlikely that any major misbehaviors, in particular regarding the parsing and validating of JSON data in the sense of RFC-8259, is undiscovered. 
+
+* Can we identify misbehaviours that have been understood but not specified?
+
+    **Answer**:  No.
+
+* Can we identify some new misbehaviours, right now?
+
+    **Answer**:  No.
+
+* Is every misbehaviour represented by at least one fault induction test?
+
+    **Answer**:  Since there are no misbehaviours that concern the use within S-CORE, no.
+
+* Are fault inductions used to demonstrate that tests which usually pass can and do fail appropriately?
+
+    **Answer**:  ?????? No.
+
+* Are all the fault induction results actually collected?
+
+    **Answer**:  ?????? No.
+
+* Are the results evaluated?
+
+    **Answer**:  ?????? No.
+
+* Do input analysis findings on verifiable tool or component claims and features identify additional misbehaviours or support existing mitigations?
+
+    **Answer**:  Currently, there is no analysis which identifies additional misbehaviours. The only such analysis is indirectly via the analysis of the fuzz testing, which currently does not identifies additional misbehaviours.
+
 
 
 
@@ -567,7 +1091,7 @@ _None_
 |2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-11-06 18:45:03.871310|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 
 
 
@@ -592,7 +1116,35 @@ Construction of nlohmann/json library releases is fully repeatable and the resul
 
 **References:**
 
-_None_
+- `TSF/trustable/assertions/TA-RELEASES-CHECKLIST.md`
+
+
+#### Checklist for TA-RELEASES from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* How confident are we that all components are taken from within our controlled environment?
+
+    **Answer**:  This library does not take anything from outside of this repository.
+
+* How confident are we that all of the tools we are using are also under our control?
+
+    **Answer**:  The version of nlohmann/json that is documented with this documentation is under the full control of the Eclipse S-CORE organisation.
+
+* Are our builds repeatable on a different server, or in a different context?
+
+    **Answer**:  Since there is no "build" of the header-only library, yes.
+
+* How sure are we that our builds don't access the internet?
+
+    **Answer**:  There is no implemented access to the internet in the library itself. The testsuite is downloaded from a within Eclipse S-CORE.
+
+* How many of our components are non-reproducible?
+
+    **Answer**:  The single component is reproducible.
+
+* How confident are we that our reproducibility check is correct?
+
+    **Answer**:  Quite.
+
 
 
 
@@ -614,7 +1166,7 @@ _None_
 |2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|
 |2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|
 |2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|
-|2025-11-06 18:45:03.871310|0.00 |N/A|N/A|N/A|
+|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|N/A|
 
 
 
@@ -639,7 +1191,35 @@ All sources for nlohmann/json library and tools are mirrored in our controlled e
 
 **References:**
 
-_None_
+- `TSF/trustable/assertions/TA-SUPPLY_CHAIN-CHECKLIST.md`
+
+
+#### Checklist for TA-SUPPLY_CHAIN from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+*    Could there be other components, missed from the list?
+
+    **Answer**:  Since the library does not contain any external components, no.
+
+*    Does the list include all toolchain components?
+
+    **Answer**:  Since the library does not contain any external components, yes.
+
+*    Does the toolchain include a bootstrap?
+
+    **Answer**:  ???? No.
+
+*    Could the content of a mirrored project be compromised by an upstream change?
+
+    **Answer**:  Since the library does not contain any external components, no.
+
+*    Are mirrored projects up to date with the upstream project?
+
+    **Answer**:  Yes, the library is up to date with the most recent release of the original nlohmann/json
+
+*    Are mirrored projects based on the correct upstream?
+
+    **Answer**:  Yes.
+
 
 
 
@@ -661,7 +1241,7 @@ _None_
 |2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|
 |2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|
 |2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|
-|2025-11-06 18:45:03.871310|0.00 |N/A|N/A|N/A|
+|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|N/A|
 
 
 
@@ -685,7 +1265,35 @@ All tests for nlohmann/json library, and its build and test environments, are co
 
 **References:**
 
-_None_
+- `TSF/trustable/assertions/TA-TESTS-CHECKLIST.md`
+
+
+#### Checklist for TA-TESTS from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* How confident are we that our test tooling and environment setups used for tests, fault inductions, and analyses are reproducible?
+
+    **Answer**:  The test can be reproduced any time on any machine running the versions of the operating systems and compilers as provided (TODO, cf. AOU-14)
+
+* Are any exceptions identified, documented and justified?
+
+    **Answer**:  To the best of our understanding, there are no exceptions identified.
+
+* How confident are we that all test components are taken from within our controlled environment?
+
+    **Answer**:  All tests are either self-contained or download test data from [within Eclipse S-CORE](https://github.com/eclipse-score/inc_nlohmann_json/tree/json_test_data_version_3_1_0_mirror).
+
+* How confident are we that all of the test environments we are using are also under our control? 
+
+    **Answer**: ????  The environments are standard docker images of ubuntu and standard versions of compilers.
+
+* Do we record all test environment components, including hardware and infrastructure used for exercising tests and processing input/output data? 
+
+    **Answer**:  No, since the tests are independent from hard-ware, these data are not collected.
+
+* How confident are we that all tests scenarios are repeatable? 
+
+    **Answer**:  All test scenarios are repeated daily in the CI pipeline.
+
 
 
 
@@ -707,7 +1315,7 @@ _None_
 |2025-08-27 16:24:53|0.00 |N/A|N/A|
 |2025-08-28 17:29:59|0.00 |N/A|N/A|
 |2025-08-29 15:47:02|0.00 |N/A|N/A|
-|2025-11-06 18:45:03.871310|0.00 |N/A|N/A|
+|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|
 
 
 
@@ -733,7 +1341,35 @@ nlohmann/json library components, configurations and tools are updated under spe
 
 **References:**
 
-_None_
+- `TSF/trustable/assertions/TA-UPDATES-CHECKLIST.md`
+
+
+#### Checklist for TA-UPDATES from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+* Where are the change and configuration management controls specified?
+
+    **Answer**:  WIP
+
+* Are these controls enforced for all of components, tools, data, documentation and configurations?
+
+    **Answer**:  The S-CORE Methodology is followed, compliance with which enforces the change process to be followed.
+
+* Are there any ways in which these controls can be subverted, and have we mitigated them?
+
+    **Answer**:  Yes, the change process can just not be followed. We have no real method to enforce it other than to trust that the committers follow the S-CORE processes.
+
+* Does change control capture all potential regressions? 
+
+    **Answer**:  Due to the test coverage of 99.186%, it is unlikely that a potential regression is not captured.
+
+* Is change control timely enough? 
+
+    **Answer**:  Not applicable, as far as can be understood right now, there is no immanent need to keep the library up to date. 
+
+* Are all guidance and checks understandable and consistently followed? 
+
+    **Answer**:  WIP
+
 
 
 
@@ -755,7 +1391,7 @@ _None_
 |2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|N/A|
 |2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|N/A|
 |2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|N/A|
-|2025-11-06 18:45:03.871310|0.00 |N/A|N/A|N/A|N/A|
+|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|N/A|N/A|
 
 
 
@@ -779,7 +1415,65 @@ All specified tests are executed repeatedly, under defined conditions in control
 
 **References:**
 
-_None_
+- `TSF/trustable/assertions/TA-VALIDATION-CHECKLIST.md`
+
+
+#### Checklist for TA-VALIDATION from [Codethink](https://codethinklabs.gitlab.io/trustable/trustable/print_page.html)
+
+I DO NOT FEEL CONFIDENT TO **Answer** THIS!
+
+* Is the selection of tests correct?
+
+    **Answer**:  ???? Who could tell this?
+
+* Are the tests executed enough times? 
+
+    **Answer**:  ???? Define "enough times"
+
+* How confident are we that all test results are being captured?
+
+    **Answer**: ???? How fine-grained is a test-result supposed to be?
+    
+* Can we look at any individual test result, and establish what it relates to?
+
+    **Answer**:  ????
+
+* Can we trace from any test result to the expectation it relates to? 
+
+    **Answer**:  No, there are more tests than expectations, and in particular tests that relate to the inner workings of the library which are not used by S-CORE. 
+
+* Can we identify precisely which environment (software and hardware) were used?
+
+    **Answer**:  ???? How precisely shall that be? Moreover, the tests are supposed to run independent of underlying hardware, since this is a software. 
+
+* How many pass/fail results would be expected, based on the scheduled tests?
+
+    **Answer**:  Zero fails.
+
+* Do we have all of the expected results?
+
+    **Answer**:  Yes.
+
+* Do we have time-series data for all of those results? 
+
+    **Answer**:  Yes, there are time-series data.
+
+* If there are any gaps, do we understand why?
+
+    **Answer**:  ????  Define gaps
+
+* Are the test validation strategies credible and appropriate? 
+
+    **Answer**:  ???? Define test validation strategies
+
+* What proportion of the implemented tests are validated? 
+
+    **Answer**:  ???? None.
+
+* Have the tests been verified using known good and bad data? 
+
+    **Answer**:  ???? 
+
 
 
 
@@ -821,5 +1515,5 @@ _None_
 |2025-10-27 12:37:56|0.00 |N/A|N/A|
 |2025-11-03 13:09:23|0.00 |N/A|N/A|
 |2025-11-06 18:37:31|0.00 |N/A|N/A|
-|2025-11-06 18:45:03.871310|0.00 |N/A|N/A|
+|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|
 
