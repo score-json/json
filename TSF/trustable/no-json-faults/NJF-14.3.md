@@ -26,4 +26,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service provided by nlohmann/json does not accept incomplete or perturbed UTF-8 byte order marks within the first three characters of the input.
+The service provided by the nlohmann/json library does not accept incomplete or perturbed UTF-8 byte order marks within the first three characters of the input.

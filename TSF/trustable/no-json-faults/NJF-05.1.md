@@ -36,4 +36,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service provided by nlohmann/json accepts the empty array.
+The service provided by the nlohmann/json library accepts the empty array.

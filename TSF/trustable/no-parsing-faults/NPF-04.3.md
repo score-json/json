@@ -19,4 +19,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service provided by nlohmann/json parses the literal name false.
+The service provided by the nlohmann/json library parses the literal name false.

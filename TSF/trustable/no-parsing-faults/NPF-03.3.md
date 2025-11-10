@@ -19,4 +19,4 @@ score:
     Erikhu1: 0.95
 ---
 
-The service provided by nlohmann/json ignores capitalisation in escaped hexadecimal unicode.
+The service provided by the nlohmann/json library ignores capitalisation in escaped hexadecimal unicode.

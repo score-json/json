@@ -45,4 +45,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service provided by nlohmann/json parses UTF-8 encoded data.
+The service provided by the nlohmann/json library parses UTF-8 encoded data.

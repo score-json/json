@@ -26,4 +26,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service provided by nlohmann/json ignores leading and trailing whitespace for name and value of each member.
+The service provided by the nlohmann/json library ignores leading and trailing whitespace for name and value of each member.
