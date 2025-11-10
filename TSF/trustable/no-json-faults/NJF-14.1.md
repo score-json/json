@@ -18,4 +18,4 @@ score:
     Erikhu1: 1.0
 ---
 
-If the service provided by nlohmann/json accepts an input containing no BOM, then it accepts a single UTF-8 byte order mark followed by that input.
+If the service provided by the nlohmann/json library accepts an input containing no BOM, then it accepts a single UTF-8 byte order mark followed by that input.

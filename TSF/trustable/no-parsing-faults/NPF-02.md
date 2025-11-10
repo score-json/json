@@ -8,4 +8,4 @@ references:
           description: "function, which parses numbers into C++ number-types and verifies *en passant* that these numbers are in accordance with RFC8259"
 ---
 
-The service provided by nlohmann/json parses numbers according to RFC8259.
+The service provided by the nlohmann/json library parses numbers according to RFC8259.

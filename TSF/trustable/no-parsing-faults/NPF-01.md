@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The service provided by nlohmann/json ignores the presence of a byte order mark.
+The service provided by the nlohmann/json library ignores the presence of a byte order mark.

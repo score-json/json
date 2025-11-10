@@ -32,4 +32,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service provided by nlohmann/json does not accept leading zeroes.
+The service provided by the nlohmann/json library does not accept leading zeroes.

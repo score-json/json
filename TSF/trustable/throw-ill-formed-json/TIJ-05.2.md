@@ -32,4 +32,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service provided by nlohmann/json throws an exception if a non-string is used as name of any member.
+The service provided by the nlohmann/json library throws an exception if a non-string is used as name of any member.

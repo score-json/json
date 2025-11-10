@@ -81,4 +81,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service provided by nlohmann/json does not accept invalid syntax for numbers.
+The service provided by the nlohmann/json library does not accept invalid syntax for numbers.

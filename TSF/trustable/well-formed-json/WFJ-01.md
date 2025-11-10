@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The service provided by nlohmann/json checks the well-formedness of the literal names.
+The service provided by the nlohmann/json library checks the well-formedness of the literal names.

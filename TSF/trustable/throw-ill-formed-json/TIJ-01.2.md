@@ -34,4 +34,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service provided by nlohmann/json throws an exception on any other than the three literal names true, false, null.
+The service provided by the nlohmann/json library throws an exception on any other than the three literal names true, false, null.

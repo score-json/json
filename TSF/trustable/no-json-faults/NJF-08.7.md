@@ -20,4 +20,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service provided by nlohmann/json does accept decimal points in numbers within the bounds of double.
+The service provided by the nlohmann/json library does accept decimal points in numbers within the bounds of double.

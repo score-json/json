@@ -8,4 +8,4 @@ references:
           description: "function, which parses strings into C++ std::string and verifies *en passant* that these strings are in accordance with RFC8259"
 ---
 
-The service provided by nlohmann/json parses strings according to RFC8259.
+The service provided by the nlohmann/json library parses strings according to RFC8259.

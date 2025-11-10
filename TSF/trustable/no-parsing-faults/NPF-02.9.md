@@ -23,4 +23,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service provided by nlohmann/json parses floating point numbers within IEEE 754-2008 binary64 standard.
+The service provided by the nlohmann/json library parses floating point numbers within IEEE 754-2008 binary64 standard.

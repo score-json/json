@@ -27,4 +27,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service provided by nlohmann/json throws an exception on leading zeroes.
+The service provided by the nlohmann/json library throws an exception on leading zeroes.

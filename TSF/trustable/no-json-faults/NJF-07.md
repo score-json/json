@@ -8,4 +8,4 @@ references:
           description: "function which scans a string and verifies *en passant* that the string is in accordance with RFC8259"
 ---
 
-The service provided by nlohmann/json accepts and rejects strings according to RFC8259 §7.
+The service provided by the nlohmann/json library accepts and rejects strings according to RFC8259 §7.

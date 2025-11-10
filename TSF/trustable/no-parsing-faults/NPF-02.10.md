@@ -23,4 +23,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service provided by nlohmann/json ignores trailing zeroes after the decimal point.
+The service provided by the nlohmann/json library ignores trailing zeroes after the decimal point.

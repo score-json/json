@@ -33,4 +33,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service provided by nlohmann/json parses integers without exponent within the precision of int64_t. 
+The service provided by the nlohmann/json library parses integers without exponent within the precision of int64_t. 

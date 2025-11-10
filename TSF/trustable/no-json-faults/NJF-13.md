@@ -19,4 +19,4 @@ score:
     Erikhu1: 0.95
 ---
 
-The service provided by nlohmann/json accepts JSON data consisting of combinations of the data types.
+The service provided by the nlohmann/json library accepts JSON data consisting of combinations of the data types.
