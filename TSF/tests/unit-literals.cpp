@@ -62,7 +62,7 @@ TEST_CASE("accept")
             CHECK(!json::accept("NULL"));
         }
         SECTION("false")
-        {            
+        {
             CHECK(!json::accept("False"));
             CHECK(!json::accept("fAlse"));
             CHECK(!json::accept("FAlse"));
@@ -1134,7 +1134,7 @@ TEST_CASE("parse")
         CHECK(json::parse("\u000dtrue ")==json::parse("true"));
         CHECK(json::parse("\u000dtrue\t")==json::parse("true"));
         CHECK(json::parse("\u000dtrue\n")==json::parse("true"));
-        CHECK(json::parse("\u000dtrue\u000d")==json::parse("true"));    
+        CHECK(json::parse("\u000dtrue\u000d")==json::parse("true"));
     }
     SECTION("capitalisation")
     {
@@ -1175,7 +1175,7 @@ TEST_CASE("parse")
             CHECK_THROWS_AS(parser_helper("NULL"),json::parse_error&);
         }
         SECTION("false")
-        {            
+        {
             CHECK_THROWS_AS(parser_helper("False"),json::parse_error&);
             CHECK_THROWS_AS(parser_helper("fAlse"),json::parse_error&);
             CHECK_THROWS_AS(parser_helper("FAlse"),json::parse_error&);
