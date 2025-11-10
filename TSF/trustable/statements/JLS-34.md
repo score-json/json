@@ -1,15 +1,12 @@
 ---
 level: 1.1
 normative: true
-evidence:
-    type: coveralls_reporter
-    configuration:
-        owner: "score-json"
-        repo: "json"
-        branch: "main"
-        line_coverage: 99.186
-        branch_coverage: 93.865
-        digits: 3
+references:
+    - type: include_list
+      path: single_include/nlohmann/json.hpp
+      description: "file containing all include occurrences of the score-project."
+score:
+    Erikhu1: 1.0
 ---
 
-The test coverage for this version of nlohmann/json is monitored using Coveralls and is not decreasing over time, unless reasonably justified.
+The nlohmann/json library has no external components or dependencies besides the C++ standard components.
