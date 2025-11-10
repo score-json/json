@@ -6,4 +6,4 @@ references:
       path: ./TSF/trustable/assertions/TA-RELEASES-CHECKLIST.md
 ---
 
-Construction of nlohmann/json releases is fully repeatable and the results are fully reproducible, with any exceptions documented and justified.
+Construction of releases for the nlohmann/json library is fully repeatable and the results are fully reproducible, with any exceptions documented and justified.
