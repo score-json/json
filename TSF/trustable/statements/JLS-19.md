@@ -13,7 +13,9 @@ references:
           description: "Meson build manifest file"
         - type: web_content
           url: "https://raw.githubusercontent.com/nlohmann/json/refs/heads/develop/Package.swift"
-          description: "Swift Package Manager manifest file"          
+          description: "Swift Package Manager manifest file"
+score:
+    Erikhu1: 1.0
 ---
 
 All library components, build dependencies, and build tools in the nlohmann/json repository are declared in build system manifests.

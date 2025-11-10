@@ -25,7 +25,7 @@ references:
           description: "presents a list of a subset of all customers who are using the nlohmann/json library"
         - type: project_website
           url: "https://github.com/nlohmann/json/releases/tag/v3.12.0"
-          description: "release notes for v3.12.0, listing bugs, CVEs and warnings fixed or mitigated since last release"
+          description: "release notes for v3.12.0, listing bugs, CVEs and warnings which were either fixed or mitigated since last release"
 evidence:
         type: https_response_time
         configuration:
