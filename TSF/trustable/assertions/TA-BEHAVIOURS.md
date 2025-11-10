@@ -6,4 +6,4 @@ references:
       path: ./TSF/trustable/assertions/TA-BEHAVIOURS-CHECKLIST.md
 ---
 
-Expected or required behaviours for nlohmann/json are identified, specified, verified and validated based on analysis.
+Expected or required behaviours for the nlohmann/json library are identified, specified, verified and validated based on analysis.
