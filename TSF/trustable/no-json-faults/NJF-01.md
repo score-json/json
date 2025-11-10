@@ -27,7 +27,7 @@ references:
 evidence:
   type: check_test_results
   configuration:
-    tests: 
+    tests:
         - class_parser_core
         - testsuites
 score:
@@ -35,4 +35,6 @@ score:
     Erikhu1: 1.0
 ---
 
-The service accepts the literal name null. 
+The service accepts the literal name null.
+
+aschemmel-tech: why mix test references with the function reference?

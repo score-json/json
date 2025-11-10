@@ -11,11 +11,14 @@ references:
 evidence:
   type: check_test_results
   configuration:
-    tests: 
+    tests:
         - byte_order_mark
 score:
     Jonas-Kirchhoff: 1.0
     Erikhu1: 1.0
+    aschemmel-tech: 0.0
 ---
 
 If the service accepts an input containing no BOM, then it accepts a single UTF-8 byte order mark followed by that input.
+
+aschemmel-tech: could not see this in the tests, all inputs in "accept"/"UTF-8"/"single BOM" contain a "BOM"

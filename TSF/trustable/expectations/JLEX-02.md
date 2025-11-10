@@ -36,3 +36,5 @@ references:
 ---
 
 The requirement regarding [JSON Deserialization](https://eclipse-score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__deserialization) is fulfilled.
+
+aschemmel-tech: Unclear why evidences/references needed here as this just accumulates scores

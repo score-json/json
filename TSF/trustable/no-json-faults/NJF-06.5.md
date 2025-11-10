@@ -12,3 +12,5 @@ references:
 ---
 
 The service does not accept objects with improper members.
+
+aschemmel-tech: do we need references here, as it has leaves?

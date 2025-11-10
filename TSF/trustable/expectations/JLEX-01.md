@@ -36,3 +36,5 @@ references:
 ---
 
 The requirement regarding [JSON Validation](https://eclipse-score.github.io/score/main/modules/baselibs/json/docs/requirements/index.html#comp_req__json__validation) is fulfilled.
+
+aschemmel-tech: Requirement was merged with the one from JLEX-02 (as there is no interface to do this seperately). When moved to S-CORE repository better move to needs links to avoid such errors.

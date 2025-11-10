@@ -21,7 +21,7 @@ references:
 evidence:
   type: check_test_results
   configuration:
-    tests: 
+    tests:
         - objects
         - testsuites
 score:
@@ -30,3 +30,5 @@ score:
 ---
 
 The acceptance of nested objects does not depend on the depth of nesting.
+
+aschemmel-tech: why is this on the same level as NJF-06.6 ? is it ok that Jonas as the creator of the evidence gives a score as well (what does TSF say)?

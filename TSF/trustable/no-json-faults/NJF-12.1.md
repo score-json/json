@@ -11,7 +11,7 @@ references:
 evidence:
   type: check_test_results
   configuration:
-    tests: 
+    tests:
         - strings
 score:
     Jonas-Kirchhoff: 0.9
@@ -19,3 +19,5 @@ score:
 ---
 
 The service rejects malformed UTF-8 data.
+
+aschemmel-tech: Also here please state why you score less than 1.0, so we know what to do to improve the testing. "name" points to testcase, which is good

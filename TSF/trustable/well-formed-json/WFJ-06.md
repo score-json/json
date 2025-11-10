@@ -39,3 +39,5 @@ score:
 ---
 
 The service checks that a JSON value must be an object, array, number, or string, or one of the lowercase literal names false, null, or true
+
+aschemmel-tech: why not a test? is the idea to do a code review of the function's code as displayed in the report?
