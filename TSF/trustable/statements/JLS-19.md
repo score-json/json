@@ -16,4 +16,4 @@ references:
           description: "Swift Package Manager manifest file"          
 ---
 
-All library components, build dependencies, and build tools in nlohmann/json are declared in build system manifests.
+All library components, build dependencies, and build tools in the nlohmann/json repository are declared in build system manifests.
