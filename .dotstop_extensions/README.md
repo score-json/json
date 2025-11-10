@@ -221,7 +221,7 @@ Here, the elements of the list `items` must be normative nodes of the trustable 
 
 ## IncludeListReference
 
-The content of an `IncludeListReference` is given by the list of `#include` lines extracted from a specified source/header file in the repository (for example `single_include/nlohmann/json.hpp`). This reference is useful to document which headers a file depends on without embedding the full file content into the report.
+The content of an `IncludeListReference` is given by the list of `#include` lines extracted from a specified source/header file in the repository (for example `single_include/nlohmann/json.hpp`). This reference is useful to document which libraries a file depends on without embedding the full file content into the report.
 
 Behaviour:
 - content: returns the concatenation of all lines that begin with `#include` in the target file as UTF-8 encoded bytes. If no includes are found, the content is `b"No includes found"`.
