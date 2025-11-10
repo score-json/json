@@ -20,7 +20,7 @@ TEST_CASE("accept")
     {
         SECTION("single BOM")
         {
-            // a single byte order mark is treated as an empty token, which is not a valid json token. 
+            // a single byte order mark is treated as an empty token, which is not a valid json token.
             CHECK(!json::accept("\xEF\xBB\xBF"));
             CHECK(json::accept("\xEF\xBB\xBF\n\"foo\""));
             CHECK(json::accept("\xEF\xBB\xBF\"foo\""));
@@ -72,7 +72,7 @@ TEST_CASE("parse")
     {
         SECTION("multiple BOM")
         {
-            // Whenever a fourth character of a BOM-candidate is read, an error is thrown. 
+            // Whenever a fourth character of a BOM-candidate is read, an error is thrown.
             // This error does not depend on any trailing garbage.
             CHECK_THROWS_WITH_AS(parser_helper("\xEF\xBB\xBF\xEF\xBB\xBF"),"[json.exception.parse_error.101] parse error at line 1, column 4: syntax error while parsing value - invalid literal; last read: '\xEF\xBB\xBF\xEF'", json::parse_error&);
             CHECK_THROWS_WITH_AS(parser_helper("\xEF\xBB\xBF\xEF\xBB\xBF\xEF\xBB\xBF"),"[json.exception.parse_error.101] parse error at line 1, column 4: syntax error while parsing value - invalid literal; last read: '\xEF\xBB\xBF\xEF'", json::parse_error&);

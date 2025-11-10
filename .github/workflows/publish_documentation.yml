@@ -111,52 +111,8 @@ jobs:
           # Fetch closed issues from the nlohmann/json repository
           gh issue list --repo "$REPO" --state closed --limit 10000 --json number,title,state,createdAt,url,labels > raw_closed_issues.json
 
-          # Add title to the output file
-          echo "# Misbehaviours Report" > $OUTPUT_FILE
-          echo "" >> $OUTPUT_FILE
-          echo "This report lists known misbehaviours or bugs of v3.12.0 of the nlohmann/json repository. The misbehaviours are compiled from github issues of the nlohmann/json repository, and link to each corresponding issue." >> $OUTPUT_FILE
-          echo "" >> $OUTPUT_FILE
-
-          # Add subtitle for open issues
-          echo "## Open Issues" >> $OUTPUT_FILE
-          echo "" >> $OUTPUT_FILE
-
-          # Filter raw open issues for labels containing "bug" and convert to output .md file
-          jq -r '
-              map(select(.labels[]?.name | test("bug"; "i"))) |
-              map("### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n") |
-              .[]
-            ' raw_open_issues.json >> $OUTPUT_FILE
-
-          jq -c '
-            .[]
-            | select(.labels[]?; .name | test("bug"; "i"))
-            | { n: .number
-              , md: "### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n"
-              }
-          ' raw_open_issues.json |
-          while IFS= read -r rec; do
-            num=$(jq -r '.n' <<< "$rec")
-            md=$(jq -r '.md' <<< "$rec")
-            py_out=$(python3 ./TSF/scripts/identify_nlohmann_issue.py "$num")
-            {
-              printf "%s\n" "$md"
-              printf "%s\n" "$py_out"
-            } >> "$OUTPUT_FILE"
-          done
-
-          # Add subtitle for closed issues
-          echo "" >> $OUTPUT_FILE
-          echo "## Closed Issues (since v3.12.0)" >> $OUTPUT_FILE
-          echo "" >> $OUTPUT_FILE
-
-          # Filter raw closed issues for labels containing "bug", created after release date of nlohmann/json version in use, and convert to output .md file
-          jq -r '
-              map(select(.labels[]?.name | test("bug"; "i"))) |
-              map(select(.createdAt > "2025-04-11T00:00:00Z")) |  # Adjust date as needed, 2025-04-11 corresponds to release v3.12.0 of nlohmann/json
-              map("### [#\(.number)](\(.url))\n- **Title:** \(.title)\n- **State:** \(.state)\n- **Created At:** \(.createdAt)\n") |
-              .[]
-            ' raw_closed_issues.json >> $OUTPUT_FILE
+          # print the list of misbehaviours
+          python3 TSF/scripts/generate_list_of_misbehaviours.py > $OUTPUT_FILE
 
           # Push misbehaviours file to save_historical_data branch
           git add TSF/misbehaviours.md
