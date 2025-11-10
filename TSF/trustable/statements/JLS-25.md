@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-Malicious code changes in nlohmann/json are mitigated by code reviews, adhering to the contribution guidelines specified by nlohmann/json.
+Malicious code changes in nlohmann/json are mitigated by code reviews, adhering to the contribution guidelines and security policy specified by nlohmann/json.
