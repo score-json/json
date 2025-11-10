@@ -2,15 +2,9 @@
 level: 1.1
 normative: true
 references:
-        - type: project_website
+        - type: web_content
           url: https://scorecard.dev/viewer/?uri=github.com%2Fnlohmann%2Fjson
           description: "OpenSSF Scorecard Report for nlohmann/json showing score for 'CI-Tests'"
-evidence:
-        type: https_response_time
-        configuration:
-                target_seconds: 2
-                urls:
-                    - "https://scorecard.dev/viewer/?uri=github.com%2Fnlohmann%2Fjson"
 score:
     Erikhu1: 1.0
 ---
