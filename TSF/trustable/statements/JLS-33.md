@@ -7,4 +7,4 @@ references:
           description: "the vulnerability reporting template used in nlohmann/json, which includes a severity section and CVSS scoring"
 ---
 
-Outstanding CVEs are triaged in nlohmann/json.
+Outstanding CVEs are triaged in the nlohmann/json repository.
