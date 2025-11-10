@@ -640,8 +640,26 @@ class IncludeListReference(BaseReference):
     def content(self) -> bytes:
         if not self._path.is_file():
             raise ReferenceError(f"Cannot get non-existent or non-regular file {self._path}")
+        
         text = self._path.read_text(encoding="utf-8")
-        includes = [line.rstrip() for line in text.splitlines() if line.lstrip().startswith("#include")]
+        includes = []
+        
+        for line in text.splitlines():
+            # Only process lines that start with #include (ignoring whitespace)
+            if line.lstrip().startswith("#include"):
+                # Remove single-line comments
+                line = line.split("//")[0].rstrip()
+                
+                # Remove multi-line comments
+                comment_start = line.find("/*")
+                if comment_start != -1:
+                    comment_end = line.find("*/", comment_start)
+                    if comment_end != -1:
+                        line = line[:comment_start] + line[comment_end + 2:]
+                
+                # Add the cleaned include line
+                includes.append(line.rstrip())
+        
         if not includes:
             return b"No includes found"
         return ("\n".join(includes)).encode("utf-8")
