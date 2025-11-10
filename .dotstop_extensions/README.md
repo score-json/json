@@ -219,6 +219,32 @@ references:
 ```
 Here, the elements of the list `items` must be normative nodes of the trustable graph, otherwise an error is thrown.
 
+## IncludeListReference
+
+The content of an `IncludeListReference` is given by the list of `#include` lines extracted from a specified source/header file in the repository (for example `single_include/nlohmann/json.hpp`). This reference is useful to document which headers a file depends on without embedding the full file content into the report.
+
+Behaviour:
+- content: returns the concatenation of all lines that begin with `#include` in the target file as UTF-8 encoded bytes. If no includes are found, the content is `b"No includes found"`.
+- as_markdown: renders the found `#include` lines as a C++ code block (```cpp ... ```). If a `description` was provided when constructing the reference, the description is shown as an indented bullet above the code block.
+- If the referenced file does not exist or is not a regular file, accessing `content` raises a ReferenceError.
+
+Usage example:
+
+```
+---
+...
+
+references:
+- type: include_list
+  path: "single_include/nlohmann/json.hpp"
+  description: "List of direct includes of the amalgamated header"
+---
+```
+
+Notes:
+- `description` is optional.
+- The reference only extracts lines whose first non-whitespace characters are `#include`.
+
 # Validators
 
 Validators are extensions of trudag, used to validate any data that can be reduced to a floating point metric. The resulting scores are used as evidence for the trustability of items in the trustable graph.
