@@ -3,6 +3,7 @@ from trudag.dotstop.core.reference.references import BaseReference
 from trudag.dotstop.core.reference.references import SourceSpanReference
 import requests
 import sqlite3
+import re
 
 # Constants
 MAX_JSON_LINES_FOR_DISPLAY = 25
@@ -545,7 +546,270 @@ class FunctionReference(SourceSpanReference):
         # this is used as a title in the trudag report
         return f"function: [{self._name}]\n({str(self.path)})"
     
-from trudag.dotstop.core.reference.references import LocalFileReference as LFR
+class ListOfTestCases(BaseReference):
+
+    def __init__(self, test_files: list[str], recent_result_database: str = "artifacts/MemoryEfficientTestResults.db", recent_result_table: str = "test_results") -> None:
+        self._test_files = test_files
+        self._database = recent_result_database
+        self._table =  recent_result_table
+
+    @staticmethod    
+    def compile_string(items: list[str]) -> str:
+        # input: list of strings representing the structure of TEST_CASE, SECTION etc.,
+        # e.g. items = ["lexer class", "scan", "literal names"]
+        # output: the last item of the list, representing the most recent SECTION,
+        # indented as in the source code 
+        # throws error if input is empty
+        if len(items) == 0:
+            raise RuntimeError("Received empty structural list; nonempty list expected.")
+        result = ""
+        for _ in range(1, len(items)):
+            result += "    "
+        if items:
+            result += "* " + items[-1]
+        return result
+
+    @staticmethod    
+    def extract_quotation(s: str) -> str:
+        # input: string containing at least one quoted substring, e.g. s = "my \"input\""
+        # output: the first quoted substring of the input
+        # throws error if no quoted substring can be found.
+        first = s.find('"')
+        if first == -1:
+            raise RuntimeError("Expected quotation mark; none were detected.")
+        second = s.find('"', first + 1)
+        if second == -1:
+            raise RuntimeError("Expected quotation marks; only one was detected.")
+        return s[first + 1 : second]
+    
+    @staticmethod
+    def remove_and_count_indent(s: str) -> tuple[int, str]:
+        # input: string with possibly leading whitespace (space of horizontal tab)
+        # output: the number of leading spaces and the string with leading whitespace removed;
+        # tab counted as four spaces
+        cnt = 0
+        i = 0
+        n = len(s)
+        while i < n and (s[i] == " " or s[i] == "\t"):
+            if s[i] == " ":
+                cnt += 1
+            elif s[i] == "\t":
+                cnt += 4
+            i += 1
+        return (cnt, s[i:])
+
+    @staticmethod
+    def head_of_list() -> str:
+        return """## List of all unit-tests with test environments
+
+This list contains all unit-tests possibly running in this project.
+These tests are compiled from the source-code, where the individual unit-tests are arranged in TEST_CASEs containing possibly nested SECTIONs.
+To reflect the structure of the nested sections, nested lists are utilised, where the top-level list represents the list of TEST_CASEs. 
+
+It should be noted that not all unit-tests in a test-file are executed with every compiler-configuration.
+"""
+    
+    @staticmethod
+    def transform_test_file_to_test_name(test_file: str) -> str:
+        return "test-"+"-".join((test_file.split('.')[0]).split('-')[1:])
+
+    @classmethod
+    def type(cls) -> str:
+        return "list_of_test_cases"
+
+    def extract_test_structure(self, file_path: Path) -> str:
+        # input: path to a file potentially containing unit-tests
+        # output: the extracted arrangement of TEST_CASE and SECTION
+        # in the form of nested markdown lists
+
+        indent = 0 # the indent of the currently read line
+        current_indent = 0 # the indent of the last TEST_CASE or SECTION
+        current_path = [] # the current path
+        lines_out = [] # the collection of lines to be outputted
+
+        # open file_path as read-only, and process line by line
+        with file_path.open("r", encoding="utf-8", errors="replace") as source:
+            for line in source:
+                # count and remove leading whitespace
+                indent, trimmed = self.remove_and_count_indent(str(line))
+                
+                # check whether we have found a TEST_CASE
+                if trimmed.startswith("TEST_CASE(") or trimmed.startswith("TEST_CASE_TEMPLATE(") or trimmed.startswith("TEST_CASE_TEMPLATE_DEFINE("):
+                    # remember the current indent
+                    current_indent = indent
+                    # TEST_CASE is always the head of a new arrangement-structure
+                    # remove stored structure
+                    current_path.clear()
+                    # extract name of TEST_CASE and append path
+                    current_path.append(self.extract_quotation(trimmed))
+                    lines_out.append(self.compile_string(current_path))
+                
+                # check whether we have found a SECTION
+                if trimmed.startswith("SECTION("):
+                    # update path to reflect arrangement of current section
+                    while indent <= current_indent and current_path:
+                        current_path.pop()
+                        current_indent -= 4
+                    # remember the current indent
+                    current_indent = indent
+                    # extract name of SECTION and append path
+                    current_path.append(self.extract_quotation(trimmed))
+                    lines_out.append(self.compile_string(current_path))
+
+        # process extracted lines
+        return ("\n".join(lines_out) + "\n") if lines_out else ""
+
+    def extract_recent_test_environments(self) -> dict:
+        """
+        Extract recent test environment information from the test results database.
+        
+        This method connects to the SQLite database specified in self._database and queries 
+        the table specified in self._table to retrieve information about test environments
+        where unit tests were executed. It categorizes the results into tests that ran 
+        without skipping any test cases ('noskip') and tests where some cases were skipped ('skip').
+        
+        The database is expected to have a table with columns:
+        - name: test file name (e.g., "test-example")  
+        - compiler: compiler used (e.g., "gcc", "clang")
+        - cpp_standard: C++ standard used (e.g., "c++17", "c++20")
+        - skipped_cases: number of test cases that were skipped (0 means no skips)
+        
+        Returns:
+            dict: A dictionary where keys are test case names and values are dictionaries containing:
+                - "noskip": list of environments where all tests ran (no skipped cases)
+                - "skip": list of environments where some tests were skipped
+                Each environment entry contains compiler, standard, and (for skip) skipped count.
+        
+        Raises:
+            RuntimeError: If the database cannot be accessed or the expected table doesn't exist
+        """
+        fetched_data = dict()
+        connector = None
+        try:    
+            # initialise connection to test result database
+            connector = sqlite3.connect(self._database)
+            cursor = connector.cursor()
+            # verify that the expected table does exist
+            cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name = ?;",(self._table,))
+            if cursor.fetchone() is None: 
+                raise RuntimeError(f"Fatal Error: Could not find table {self._table} in database {self._database}.")
+            
+            # get all test-files from recent test executions
+            command = f"SELECT name FROM {self._table};"
+            cursor.execute(command)
+            raw_cases = cursor.fetchall()
+            cases = set([raw_case[0] for raw_case in raw_cases])
+            # for each test-file
+            for case in cases:
+                case_data = dict()
+                # get the test-environments
+                command = f"SELECT compiler, cpp_standard FROM {self._table} WHERE name = ? and skipped_cases == 0"
+                cursor.execute(command,(case,))
+                results = cursor.fetchall()
+                case_data["noskip"] = [{"compiler":result[0], "standard":result[1]} for result in results]
+                # some test-cases are skipped with certain environments
+                # It is unclear from the log, which cases are skipped;
+                # we leave this to the interested reader
+                command = f"SELECT compiler, cpp_standard, skipped_cases FROM {self._table} WHERE name = ? and skipped_cases != 0"
+                cursor.execute(command, (case,))
+                results = cursor.fetchall()
+                case_data["skip"] = [{"compiler": result[0], "standard": result[1], "skipped": result[2]} for result in results]
+                fetched_data[case] = case_data
+        except sqlite3.Error as e:
+            raise RuntimeError(f"Fatal Error accessing database {self._database}: {e}")
+        finally:
+            if connector:
+                connector.close()
+        return fetched_data
+
+    def fetch_all_test_data(self, input: list[str]):
+        """
+        Extract and compile test structure information from C++ test files along with execution environment data.
+        
+        This method processes a list of file or directory paths to find C++ unit test files (matching pattern 
+        "unit-*.cpp"), extracts their TEST_CASE and SECTION structure, and combines this with recent test 
+        execution environment information from the database to generate a comprehensive markdown report.
+        
+        The method recursively searches directories for test files, parses each file to extract the hierarchical
+        test structure (TEST_CASE containing nested SECTIONs), and correlates this with historical execution
+        data to show which compiler/standard combinations were used to run the tests.
+        
+        Args:
+            input: List of file or directory paths to process. Files must match "unit-*.cpp" pattern.
+                  Directories are recursively searched for matching test files.
+        
+        Returns:
+            str: A markdown-formatted report containing:
+                - Header explaining the test structure format
+                - For each test file: nested bullet lists showing TEST_CASE and SECTION hierarchy  
+                - Execution environment information showing which compiler/standard combinations
+                  successfully ran all tests vs. which had some test cases skipped
+                - Notes about files that appear to have no recent execution history
+        
+        Note:
+            The method relies on extract_recent_test_environments() to get database information
+            and extract_test_structure() to parse individual test files. Test file names are
+            transformed using transform_test_file_to_test_name() to match database entries.
+        """
+        # inputs: path(s) to directory potentially containing some test-data
+        extracted_test_data = []
+        recent_test_data = self.extract_recent_test_environments()
+        for arg in input:
+            p = Path(arg)
+            if p.is_file() and p.suffix == ".cpp" and p.name.startswith("unit-"):
+                extracted_test_data.append((p.name,self.extract_test_structure(p)))
+            elif p.is_dir():
+                for entry in p.rglob("*"):
+                    if entry.is_file() and entry.suffix == ".cpp" and entry.name.startswith("unit-"):
+                        extracted_test_data.append((entry.name,self.extract_test_structure(entry)))
+        extracted_test_data.sort(key= lambda x: x[0])
+        result = self.head_of_list()
+        for test_file, list_of_tests in extracted_test_data:
+            result += f"\n\n### List of tests in file {test_file}\n\n"
+            result += list_of_tests
+            result += "\n\n"
+            if recent_test_data.get(self.transform_test_file_to_test_name(test_file), None) is None:
+                result += "Unfortunately, none of the following tests seems to have been executed. Very strange indeed!\n\n"
+            else:
+                if recent_test_data.get(self.transform_test_file_to_test_name(test_file)).get("noskip",None) is not None:
+                    if len(recent_test_data.get(self.transform_test_file_to_test_name(test_file)).get("noskip")) != 0:
+                        result  += "\nAll tests in this file were run in the following configurations:\n\n"
+                        for datum in recent_test_data.get(self.transform_test_file_to_test_name(test_file)).get("noskip"):
+                            result += "* "
+                            result += datum.get("compiler",None)
+                            result += " with standard "
+                            result += datum.get("standard",None)
+                            result += "\n"
+                if recent_test_data.get(self.transform_test_file_to_test_name(test_file)).get("skip",None) is not None:
+                    if len(recent_test_data.get(self.transform_test_file_to_test_name(test_file)).get("skip")) != 0:
+                        result += "\nIn the following configuration, however, some test-cases were skipped:\n\n"
+                        for datum in recent_test_data.get(self.transform_test_file_to_test_name(test_file)).get("skip"):
+                            result += "* "
+                            how_many = datum.get("skipped",None)
+                            result += str(how_many)
+                            if how_many == 1:
+                                result += " test case was skipped when using "
+                            else:
+                                result += " test cases were skipped when using "
+                            result += datum.get("compiler",None)
+                            result += " with standard "
+                            result += datum.get("standard",None)
+                            result += "\n"
+        return result
+    
+    @property
+    def content(self) -> bytes:
+        # encoding is necessary since content will be hashed
+        return self.fetch_all_test_data(self._test_files).encode('utf-8')
+    
+    def as_markdown(self, filepath: None | str = None) -> str:
+        return self.content.decode('utf-8')
+
+    def __str__(self) -> str:
+        # this is used as a title in the trudag report
+        return "List of all unit-tests"
+
+from trudag.dotstop.core.reference.references import LocalFileReference as LFR    
 
 class VerboseFileReference(LFR):
     def __init__(self, path: str, description: str = "", **kwargs) -> None:
@@ -574,7 +838,73 @@ class VerboseFileReference(LFR):
     def __str__(self) -> str:
         return str(self._path)  
 
+class Checklist(LFR):
+    def __init__(self, path: str, **kwargs) -> None:
+        self._path = Path(path)
+   
+    @classmethod
+    def type(cls) -> str:
+        return "checklist"
+ 
+    @property    
+    def content(self) -> bytes:
+        if not self._path.is_file():
+            raise ReferenceError(
+                f"Cannot get non-existent or non-regular file {self._path}"
+            )
+        with self._path.open("rb") as reference_content:
+            return reference_content.read()
+       
+    def as_markdown(self, filepath: None | str = None) -> str:
+        return self.content.decode('utf-8')
+   
+    def __str__(self) -> str:
+        return str(self._path)  
+
 del LFR
+
+class workflow_failures(BaseReference):
+    def __init__(self, owner: str, repo: str, branch: str | None = None) -> None:
+        self._owner = owner
+        self._repo = repo
+        self._branch = branch
+    
+    @classmethod
+    def type(cls) -> str:
+        return "workflow_failures"
+    
+    @property
+    def content(self) -> bytes:
+        # build the url
+        url = f"https://github.com/{self._owner}/{self._repo}/actions?query=is%3Afailure"
+        if self._branch is not None:
+            url += f"+branch%3A{self._branch}"
+        # ask the website
+        res = requests.get(url)
+        # if call is not successful, raise an error
+        if res.status_code != 200:
+            candidate = f"The url {url} is not reachable, so that the number of failed workflows can not be fetched!"
+            raise RuntimeError(candidate)
+        # otherwise fetch the number printed in the head of the table
+        m = re.search(r'(\d+)\s+workflow run results', res.text, flags=re.I)
+        if m is None:
+            candidate = f"The number of failed workflows can not be found, please check that the table head contains \"XX workflow run results\"!"
+            raise RuntimeError(candidate)
+        return m.group(1).encode('utf-8')
+    
+    def as_markdown(self, filepath: None | str = None) -> str:
+        if self._branch is None:
+            return f"{self.content.decode('utf-8')} workflows failed on {self._owner}/{self._repo}"
+        else:
+            return f"{self.content.decode('utf-8')} workflows failed on branch {self._branch} of {self._owner}/{self._repo}"
+    
+    def __str__(self) -> str:
+        # this is used as a title in the trudag report
+        if self._branch is not None:
+            result = f"failures on branch {self._branch} of {self._owner}/{self._repo}"
+        else:
+            result = f"failures on {self._owner}/{self._repo}"
+        return result
     
 class ItemReference(BaseReference):
     def __init__(self, items: list[str]) -> None:
