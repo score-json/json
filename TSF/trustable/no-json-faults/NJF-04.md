@@ -51,4 +51,4 @@ score:
     Erikhu1: 0.95
 ---
 
-The service does not accept any other literal name.
+The service provided by the nlohmann/json library does not accept any other literal name.

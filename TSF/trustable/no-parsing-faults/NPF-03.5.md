@@ -23,4 +23,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service parses \\, \\/, \\b,\\f, \\n, \\r, \\t and escaped quotation marks.
+The service provided by the nlohmann/json library parses \\, \\/, \\b,\\f, \\n, \\r, \\t and escaped quotation marks.

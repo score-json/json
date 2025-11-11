@@ -21,4 +21,4 @@ score:
     Jonas-Kirchhoff: 1.0
 ---
 
-A github workflow saves the history of scores in the trustable graph to derive trends.
+A github workflow of score-json saves the history of scores in the trustable graph to derive trends.

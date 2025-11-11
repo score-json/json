@@ -33,4 +33,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service does accept comma as value separator.
+The service provided by the nlohmann/json library does accept comma as value separator.

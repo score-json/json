@@ -51,4 +51,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service does not accept any improperly bounded arrays.
+The service provided by the nlohmann/json library does not accept any improperly bounded arrays.

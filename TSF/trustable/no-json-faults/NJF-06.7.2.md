@@ -39,4 +39,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service does not accept any other member separator.
+The service provided by the nlohmann/json library does not accept any other member separator.
