@@ -21,4 +21,4 @@ score:
     Erikhu1: 0.9
 ---
 
-The acceptance of nested arrays does not depend on the depth of nesting.
+The acceptance of nested arrays by the service provided by the nlohmann/json library does not depend on the depth of nesting.

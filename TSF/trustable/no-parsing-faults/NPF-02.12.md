@@ -19,4 +19,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service ignores capitalisation of the exponent.
+The service provided by the nlohmann/json library ignores capitalisation of the exponent.

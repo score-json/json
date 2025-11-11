@@ -29,4 +29,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service accepts leading and closing whitespaces.
+The service provided by the nlohmann/json library accepts leading and closing whitespaces.

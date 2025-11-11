@@ -15,4 +15,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service throws an exception on unpaired utf-16 surrogates.
+The service provided by the nlohmann/json library throws an exception on unpaired utf-16 surrogates.

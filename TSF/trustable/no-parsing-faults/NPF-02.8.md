@@ -19,4 +19,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service ignores one singular leading plus of the exponent.
+The service provided by the nlohmann/json library ignores one singular leading plus of the exponent.

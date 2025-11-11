@@ -30,4 +30,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service parses all unescaped utf-8 characters except quotation mark, reverse solidus and the control characters.
+The service provided by the nlohmann/json library parses all unescaped utf-8 characters except quotation marks, reverse solidus and the control characters.

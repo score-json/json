@@ -8,4 +8,4 @@ references:
           description: "function to scan a literal candidate, compare it to its expected value and return the corresponding C++ literal"
 ---
 
-The service parses literal names "true", "false" and "null" according to RFC8259.
+The service provided by the nlohmann/json library parses literal names "true", "false" and "null" according to RFC8259.

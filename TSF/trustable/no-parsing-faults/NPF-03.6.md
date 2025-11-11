@@ -19,4 +19,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service parses the empty string.
+The service provided by the nlohmann/json library parses the empty string.

@@ -10,4 +10,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The S-Core methodologies are followed.
+The S-Core methodologies are followed in score-json.

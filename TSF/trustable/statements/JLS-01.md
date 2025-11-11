@@ -15,4 +15,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The CI pipeline of the main branch executes on each pull request (opened, reopened, synchronized) the integration test suite, and failures in these runs are investigated by contributors.
+The CI pipeline of the main branch of nlohmann/json executes on each pull request (opened, reopened, synchronized) the integration test suite, and failures in these runs are investigated by contributors.
