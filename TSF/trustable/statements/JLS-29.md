@@ -12,4 +12,4 @@ score:
     Erikhu1: 0.7
 ---
 
-Known bugs, misbehaviours and CVEs are analyzed and fixed or mitigated in the nlohmann/json repository.
+Known bugs, misbehaviours and CVEs are analyzed and either fixed or mitigated in the nlohmann/json repository.
