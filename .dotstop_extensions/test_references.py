@@ -2,7 +2,7 @@ import pytest
 import tempfile
 from pathlib import Path
 from unittest.mock import patch
-from references import CPPTestReference, JSONTestsuiteReference, FunctionReference, ItemReference, ListOfTestCases
+from references import CPPTestReference, JSONTestsuiteReference, FunctionReference, ItemReference, IncludeListReference, ListOfTestCases
 from validators import file_exists
 
 
@@ -698,6 +698,67 @@ def test_file_exists(tmp_path):
     assert any(isinstance(exception,Warning) for exception in exceptions)
     assert any(isinstance(exception,RuntimeError) for exception in exceptions)
 
+def test_include_list_init():
+    ref = IncludeListReference("some/path.hpp", "my desc")
+    assert ref._path == Path("some/path.hpp")
+    assert ref._description == "my desc"
+
+def test_type_classmethod_include_list():
+    assert IncludeListReference.type() == "include_list"
+
+def test_content_includes_found():
+    content = '#include <iostream>\n   #include "local.h"\nint x = 0;\n'
+    temp = create_temp_file(content, suffix='.hpp')
+    try:
+        ref = IncludeListReference(str(temp), "desc")
+        data = ref.content
+        assert isinstance(data, bytes)
+        decoded = data.decode('utf-8')
+        assert '#include <iostream>' in decoded
+        assert '#include "local.h"' in decoded
+    finally:
+        temp.unlink()
+
+def test_content_no_includes():
+    temp = create_temp_file('int x = 1;\n// nothing to include\n', suffix='.hpp')
+    try:
+        ref = IncludeListReference(str(temp))
+        assert ref.content == b"No includes found"
+    finally:
+        temp.unlink()
+
+def test_content_file_not_found():
+    ref = IncludeListReference("nonexistent_file_hopefully.hpp")
+    with pytest.raises(ReferenceError):
+        _ = ref.content
+
+def test_as_markdown_with_description():
+    content = '#include <vector>\n#include "a.h"\n'
+    temp = create_temp_file(content, suffix='.hpp')
+    try:
+        ref = IncludeListReference(str(temp), "list of includes")
+        md = ref.as_markdown()
+        assert isinstance(md, str)
+        # starts with an indented bullet for description
+        assert md.startswith('\t- Description: list of includes')
+        assert '```cpp' in md
+        assert '#include <vector>' in md
+    finally:
+        temp.unlink()
+
+def test_as_markdown_no_includes():
+    temp = create_temp_file('void f();\n', suffix='.hpp')
+    try:
+        ref = IncludeListReference(str(temp))
+        md = ref.as_markdown()
+        # should return a single indented bullet line about no includes
+        assert md.strip().startswith('- No includes found in')
+    finally:
+        temp.unlink()
+
+def test_str_include_list():
+    ref = IncludeListReference("path/to/file.hpp")
+    assert str(ref) == f"includes: ({Path('path/to/file.hpp')})"
 # ListOfTestCases tests
 @pytest.fixture
 def sample_unit_test_content():
