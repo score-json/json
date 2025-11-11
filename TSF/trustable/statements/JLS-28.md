@@ -4,7 +4,7 @@ normative: true
 references:
         - type: project_website
           url: "https://github.com/nlohmann/json/discussions/4967"
-          description: "Discussion in nlohmann/json showing that no triage process for bugs are currently in place"
+          description: "Discussion in nlohmann/json showing that no triage processes for bugs are currently in place"
 score:
     Erikhu1: 0.0
 ---
