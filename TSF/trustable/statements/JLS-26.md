@@ -11,4 +11,4 @@ score:
     Erikhu1: 1.0
 ---
 
-Pipeline execution results are analyzed in nlohmann/json.
+Pipeline execution results are analyzed in the nlohmann/json repository.
