@@ -11,6 +11,9 @@ references:
         - type: web_content
           url: "https://raw.githubusercontent.com/nlohmann/json/refs/heads/develop/.github/workflows/cifuzz.yml"
           description: "Configuration file for Fuzz-Testing pipeline in the original nlohmann/json repository"
+        - type: web_content
+          url: https://scorecard.dev/viewer/?uri=github.com%2Fnlohmann%2Fjson
+          description: "OpenSSF Scorecard Report for nlohmann/json, where score for 'Fuzzing' supports this statement."
 evidence:
         type: https_response_time
         configuration:
