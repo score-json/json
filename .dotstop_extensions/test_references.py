@@ -758,7 +758,7 @@ def test_as_markdown_no_includes():
 
 def test_str_include_list():
     ref = IncludeListReference("path/to/file.hpp")
-    assert str(ref) == f"includes: ({Path('path/to/file.hpp')})"
+    assert str(ref) == f"List of included libraries for: {Path('path/to/file.hpp')}"
 # ListOfTestCases tests
 @pytest.fixture
 def sample_unit_test_content():
