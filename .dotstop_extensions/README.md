@@ -140,7 +140,7 @@ in case of a custom description.
 
 ## TimeVaryingWebReference
 
-The content of a `TimeVaryingWebReference` is given by the content of a changelog, whose default value is `ChangeLog.md`, which mirrors the changelog of nlohmann/json. This reference is intended for websites, whose content is constantly changing, so that a `WebContentReference` makes the item un-reviewable, but whose content at the time of an update influences the trustability. An example is `https://github.com/nlohmann/json/pulse/monthly`, which can be used to demonstrate that nlohmann/json is *up to the most recent version* under active development.
+The content of a `TimeVaryingWebReference` is given by the content of a changelog, whose default value is `ChangeLog.md`, which mirrors the changelog of nlohmann/json. This reference is intended for websites whose content is constantly changing, so that a `WebContentReference` makes the item un-reviewable, but whose content at the time of an update influences the trustability. An example is `https://github.com/nlohmann/json/pulse/monthly`, which can be used to demonstrate that nlohmann/json is *up to the most recent version* under active development.
 
 An example of the complete configuration for `TimeVaryingWebReference` is
 
@@ -296,8 +296,8 @@ evidence:
             - "https://github.com/nlohmann/json/graphs/commit-activity"
             - "https://github.com/nlohmann/json/forks?include=active&page=1&period=&sort_by=last_updated"
 ```
-A response time of at least the five-fold of the acceptable response time is deemed inacceptable and gives an individual score of zero.
-Likewise inacceptable is a response code other than `200`, which gives an individual score of zero.
+A response time of at least the five-fold of the acceptable response time is deemed unacceptable and gives an individual score of zero.
+Likewise unacceptable is a response code other than `200`, which gives an individual score of zero.
 
 The total score is the mean of the individual scores.
 

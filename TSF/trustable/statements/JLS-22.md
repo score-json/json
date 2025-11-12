@@ -12,7 +12,7 @@ references:
       path: ./TSF/scripts/capture_test_data.py
       description: "script, which collects the data produced by ctest in a database"
     - type: website
-      url: https://github.com/score-json/json/blob/save_historical_data/TSF/MemoryEfficientTestResultData.db
+      url: "https://github.com/score-json/json/blob/save_historical_data/TSF/MemoryEfficientTestResultData.db"
       description: "the database containing the test results"
 evidence:
     type: https_response_time
