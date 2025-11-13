@@ -53,6 +53,7 @@ The following table displays the possible scenarios for calculating the scores o
 .. _score: https://codethinklabs.gitlab.io/trustable/trustable/trudag/scoring-roadmap.html
 
 
+
 **Parent nodes**:
 The score for any parent node is then recursively calculated as the normalized weighted sum of the scores of its supporting statements.
 Note that currently, TSF only supports equal weighting. 
@@ -78,7 +79,9 @@ The following table displays the possible scenarios for calculating the scores o
 .. _link-status: https://codethinklabs.gitlab.io/trustable/trustable/reference/trudag/dotstop/core/graph/trustable_graph.html#trudag.dotstop.core.graph.trustable_graph.LinkStatus
 .. _score: https://codethinklabs.gitlab.io/trustable/trustable/trudag/scoring-roadmap.html
 
-**Terminology**:
+
+Terminology
+~~~~~~~~~~~
 - **normative**: Indicates whether the statement is normative (`true`) or not (`false`). If a statement is not normative, it does not contribute to the score calculation, and shall not be reviewed. This attribute is not to be set or changed by the SME reviewer.
 - **review-status**: Indicates the current review status of the statement. A `false` means the statement needs to be reviewed or re-reviewed, and that the score is set to `0.0`. A `true` means the statement has been reviewed by a subject matter expert (SME).
 - **SME-score**: A score reflecting the SME reviewer's confidence in the truth of the statement as a probability.
@@ -86,8 +89,6 @@ The following table displays the possible scenarios for calculating the scores o
 - **reference**: Supporting material for the SME reviewer to evaluate the statement.
 - **link-status**: Indicates whether the statement has any suspect links. If suspect links exist, the score of a parent item is calculated based on child items without suspect links only.   
 - **score-calculation**: Shows how the score is calculated.
-
-The scores for parent nodes are then calculated recursively based on the mean score of their child nodes.
 
 Example scoring
 ~~~~~~~~~~~~~~~
