@@ -43,4 +43,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service does not accept escaped invalid characters.
+The service provided by the nlohmann/json library does not accept escaped invalid characters.

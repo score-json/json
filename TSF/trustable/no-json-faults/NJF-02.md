@@ -39,4 +39,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service accepts the literal name true.
+The service provided by the nlohmann/json library accepts the literal name true.

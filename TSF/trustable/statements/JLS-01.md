@@ -4,12 +4,15 @@ normative: true
 references:
     - type: file
       path: .github/workflows/parent-workflow.yml
-    - type: web_content
-      url: https://github.com/score-json/json/settings/branch_protection_rules/65227858
-      description: "branch protection rule for main branch specifying that failures of tests prevent merge."
+evidence:
+    type: did_workflows_fail
+    configuration:
+        owner: "score-json"
+        repo: "json"
+        branch: "main"
 score:
     Jonas-Kirchhoff: 1.0
     Erikhu1: 1.0
 ---
 
-The CI pipeline of the main branch executes on each pull request (opened, reopened, synchronized) the integration test suite, and failures in these runs are investigated by contributors.
+The CI pipeline of the main branch of nlohmann/json executes on each pull request (opened, reopened, synchronized) the integration test suite, and failures in these runs are investigated by contributors.

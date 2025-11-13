@@ -39,4 +39,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service parses integers with exponent within the precision of 64-bit double. 
+The service provided by the nlohmann/json library parses integers with exponent within the precision of 64-bit double. 

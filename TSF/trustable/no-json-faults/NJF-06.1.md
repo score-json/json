@@ -26,4 +26,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service accepts the empty object.
+The service provided by the nlohmann/json library accepts the empty object.

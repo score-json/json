@@ -18,4 +18,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service does not parse multiple UTF-8 byte order marks at the beginning of the input and throws an exception.
+The service provided by the nlohmann/json library does not parse multiple UTF-8 byte order marks at the beginning of the input and throws an exception.

@@ -10,7 +10,7 @@ using nlohmann::json;
 namespace
 {
 void parser_helper(const std::string& input);
-std::string uint_to_utf8(const uint32_t& input); 
+std::string uint_to_utf8(const uint32_t& input);
 
 void parser_helper(const std::string& input){
     const json temp = json::parse(input);
@@ -258,8 +258,8 @@ TEST_CASE("Unicode" * doctest::skip())
             if (i>=0xD800 && i<=0xDFFF)
             {
                 // Unpaired utf-16 surrogates are illegal.
-                // Observe that this verbatim not what RFC8259 §7 prescribes; 
-                // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
+                // Observe that this verbatim not what RFC8259 §7 prescribes;
+                // it appears, however, to be in the spirit of RFC8259, cf. §8.2
                 // Illegal characters are not parsed anyway.
                 CHECK(!json::accept(temp.str()));
                 CHECK(!json::accept(temp2.str()));
@@ -278,10 +278,10 @@ TEST_CASE("Unicode" * doctest::skip())
         for (uint32_t i = 0x0000; i<=0x10FFFF; i++)
         {
             std::string temp = uint_to_utf8(i);
-            if ((i>=0xD800 && i<=0xDFFF)) { 
+            if ((i>=0xD800 && i<=0xDFFF)) {
                 // Unpaired utf-16 surrogates are illegal.
-                // Observe that this verbatim not what RFC8259 §7 prescribes; 
-                // it appears, however, to be in the spirit of RFC8259, cf. §8.2 
+                // Observe that this verbatim not what RFC8259 §7 prescribes;
+                // it appears, however, to be in the spirit of RFC8259, cf. §8.2
                 // The other characters are illegal if unescaped.
                 CHECK(!json::accept(temp));
                 CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
@@ -291,7 +291,7 @@ TEST_CASE("Unicode" * doctest::skip())
                         CHECK(!json::accept(temp));
                         CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
                     }
-                } 
+                }
             } else if (i<0x0020||i==0x0022||i==0x005c){
                 CHECK(!json::accept(temp));
                 CHECK_THROWS_AS(parser_helper(temp),json::parse_error&);
@@ -334,7 +334,7 @@ TEST_CASE("Unicode" * doctest::skip())
                     CHECK_THROWS_AS(parser_helper(temp.str()),json::parse_error&);
                 }
             }
-        }       
+        }
     }
 
 }

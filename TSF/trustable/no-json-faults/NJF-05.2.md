@@ -41,4 +41,4 @@ score:
     Erikhu1: 0.85
 ---
 
-The service accepts the non-empty arrays.
+The service provided by the nlohmann/json library accepts the non-empty arrays.

@@ -2,19 +2,11 @@
 level: 1.1
 normative: true
 references:
-        - type: website
-          url: https://github.com/score-json/json/settings/branches
-          description: "Branch protection policies"
-evidence:
-  type: "check_artifact_exists"
-  configuration:
-    check_amalgamation: include
-    codeql: include
-    dependency_review: include
-    labeler: include
-    publish_documentation: include
-    test_trudag_extensions: include
-    ubuntu: include
+        - type: web_content
+          url: "https://scorecard.dev/viewer/?uri=github.com%2Fnlohmann%2Fjson"
+          description: "OpenSSF Scorecard Report for nlohmann/json, where score for 'Code-Review' reflects this statement."
+score:
+    Erikhu1: 0.3
 ---
 
-Changes to the code (main branch) are applied only after code review and passing of all pipelines.
+Pull requests in the nlohmann/json repository are merged only after code review.

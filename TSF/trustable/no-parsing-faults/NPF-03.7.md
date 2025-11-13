@@ -74,4 +74,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service parses non-empty strings.
+The service provided by the nlohmann/json library parses non-empty strings.

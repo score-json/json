@@ -2,7 +2,7 @@ import pytest
 import tempfile
 from pathlib import Path
 from unittest.mock import patch
-from references import CPPTestReference, JSONTestsuiteReference, FunctionReference, ItemReference
+from references import CPPTestReference, JSONTestsuiteReference, FunctionReference, ItemReference, IncludeListReference, ListOfTestCases
 from validators import file_exists
 
 
@@ -697,3 +697,223 @@ def test_file_exists(tmp_path):
     assert score == 2/4
     assert any(isinstance(exception,Warning) for exception in exceptions)
     assert any(isinstance(exception,RuntimeError) for exception in exceptions)
+
+# ListOfTestCases tests
+@pytest.fixture
+def sample_unit_test_content():
+    """Sample unit test file content for testing ListOfTestCases."""
+    return '''TEST_CASE("basic arithmetic")
+{
+    SECTION("addition")
+    {
+        CHECK(1 + 1 == 2);
+        
+        SECTION("positive numbers")
+        {
+            CHECK(5 + 3 == 8);
+        }
+    }
+    
+    SECTION("multiplication")
+    {
+        CHECK(2 * 3 == 6);
+    }
+}
+
+TEST_CASE("another test")
+{
+    CHECK(true);
+}
+'''
+
+@pytest.fixture
+def temp_unit_test_file(sample_unit_test_content, tmp_path):
+    """Create a temporary unit test file."""
+    test_file = tmp_path / "unit-sample.cpp"
+    test_file.write_text(sample_unit_test_content)
+    return test_file
+
+def test_list_of_test_cases_type_classmethod():
+    """Test the type class method."""
+    assert ListOfTestCases.type() == "list_of_test_cases"
+
+def test_compile_string():
+    """Test compile_string static method."""
+    # Test single item
+    result = ListOfTestCases.compile_string(["test_case"])
+    assert result == "* test_case"
+    
+    # Test nested items
+    result = ListOfTestCases.compile_string(["test_case", "section1", "section2"])
+    assert result == "        * section2"
+    
+    # Test proper indentation
+    result = ListOfTestCases.compile_string(["test_case", "section"])
+    assert result == "    * section"
+
+def test_compile_string_empty_list():
+    """Test compile_string with empty list raises error."""
+    with pytest.raises(RuntimeError, match="Received empty structural list; nonempty list expected."):
+        ListOfTestCases.compile_string([])
+
+def test_extract_quotation():
+    """Test extract_quotation static method."""
+    # Test basic extraction
+    result = ListOfTestCases.extract_quotation('TEST_CASE("my test")')
+    assert result == "my test"
+    
+    # Test with multiple quotes (should return first)
+    result = ListOfTestCases.extract_quotation('SECTION("section1") and "section2"')
+    assert result == "section1"
+
+def test_extract_quotation_no_quotes():
+    """Test extract_quotation with no quotes raises error."""
+    with pytest.raises(RuntimeError, match="Expected quotation mark; none were detected."):
+        ListOfTestCases.extract_quotation("no quotes here")
+
+def test_extract_quotation_single_quote():
+    """Test extract_quotation with single quote raises error."""
+    with pytest.raises(RuntimeError, match="Expected quotation marks; only one was detected."):
+        ListOfTestCases.extract_quotation('single quote"')
+
+def test_remove_and_count_indent():
+    """Test remove_and_count_indent static method."""
+    # Test spaces
+    count, text = ListOfTestCases.remove_and_count_indent("    hello")
+    assert count == 4
+    assert text == "hello"
+    
+    # Test tabs (4 spaces each)
+    count, text = ListOfTestCases.remove_and_count_indent("\t\thello")
+    assert count == 8
+    assert text == "hello"
+    
+    # Test mixed tabs and spaces
+    count, text = ListOfTestCases.remove_and_count_indent("\t  hello")
+    assert count == 6
+    assert text == "hello"
+    
+    # Test no indentation
+    count, text = ListOfTestCases.remove_and_count_indent("hello")
+    assert count == 0
+    assert text == "hello"
+
+def test_head_of_list():
+    """Test head_of_list static method."""
+    result = ListOfTestCases.head_of_list()
+    assert "## List of all unit-tests with test environments" in result
+    assert "TEST_CASEs" in result
+    assert "SECTIONs" in result
+
+def test_transform_test_file_to_test_name():
+    """Test transform_test_file_to_test_name static method."""
+    result = ListOfTestCases.transform_test_file_to_test_name("unit-example-test.cpp")
+    assert result == "test-example-test"
+    
+    result = ListOfTestCases.transform_test_file_to_test_name("unit-simple.cpp")
+    assert result == "test-simple"
+
+def test_extract_test_structure(temp_unit_test_file):
+    """Test extract_test_structure method."""
+    list_ref = ListOfTestCases([])
+    result = list_ref.extract_test_structure(temp_unit_test_file)
+    
+    # Should contain test cases and sections
+    assert "* basic arithmetic" in result
+    assert "    * addition" in result
+    assert "        * positive numbers" in result
+    assert "    * multiplication" in result
+    assert "* another test" in result
+
+def test_extract_test_structure_empty_file(tmp_path):
+    """Test extract_test_structure with empty file."""
+    empty_file = tmp_path / "empty.cpp"
+    empty_file.write_text("")
+    
+    list_ref = ListOfTestCases([])
+    result = list_ref.extract_test_structure(empty_file)
+    assert result == ""
+
+def test_list_of_test_cases_init():
+    """Test ListOfTestCases initialization."""
+    test_files = ["tests/unit-test1.cpp", "tests/unit-test2.cpp"]
+    list_ref = ListOfTestCases(test_files, "custom.db", "custom_table")
+    
+    assert list_ref._test_files == test_files
+    assert list_ref._database == "custom.db"
+    assert list_ref._table == "custom_table"
+
+def test_list_of_test_cases_init_defaults():
+    """Test ListOfTestCases initialization with default parameters."""
+    test_files = ["tests/unit-test1.cpp"]
+    list_ref = ListOfTestCases(test_files)
+    
+    assert list_ref._test_files == test_files
+    assert list_ref._database == "artifacts/MemoryEfficientTestResults.db"
+    assert list_ref._table == "test_results"
+
+def test_str_method():
+    """Test __str__ method."""
+    list_ref = ListOfTestCases(["test_file"])
+    assert str(list_ref) == "List of all unit-tests"
+def test_include_list_init():
+    ref = IncludeListReference("some/path.hpp", "my desc")
+    assert ref._path == Path("some/path.hpp")
+    assert ref._description == "my desc"
+
+def test_type_classmethod_include_list():
+    assert IncludeListReference.type() == "include_list"
+
+def test_content_includes_found():
+    content = '#include <iostream>\n   #include "local.h"\nint x = 0;\n'
+    temp = create_temp_file(content, suffix='.hpp')
+    try:
+        ref = IncludeListReference(str(temp), "desc")
+        data = ref.content
+        assert isinstance(data, bytes)
+        decoded = data.decode('utf-8')
+        assert '#include <iostream>' in decoded
+        assert '#include "local.h"' in decoded
+    finally:
+        temp.unlink()
+
+def test_content_no_includes():
+    temp = create_temp_file('int x = 1;\n// nothing to include\n', suffix='.hpp')
+    try:
+        ref = IncludeListReference(str(temp))
+        assert ref.content == b"No includes found"
+    finally:
+        temp.unlink()
+
+def test_content_file_not_found():
+    ref = IncludeListReference("nonexistent_file_hopefully.hpp")
+    with pytest.raises(ReferenceError):
+        _ = ref.content
+
+def test_as_markdown_with_description():
+    content = '#include <vector>\n#include "a.h"\n'
+    temp = create_temp_file(content, suffix='.hpp')
+    try:
+        ref = IncludeListReference(str(temp), "list of includes")
+        md = ref.as_markdown()
+        assert isinstance(md, str)
+        # starts with an indented bullet for description
+        assert md.startswith('\t- Description: list of includes')
+        assert '```cpp' in md
+        assert '#include <vector>' in md
+    finally:
+        temp.unlink()
+
+def test_as_markdown_no_includes():
+    temp = create_temp_file('void f();\n', suffix='.hpp')
+    try:
+        ref = IncludeListReference(str(temp))
+        md = ref.as_markdown()
+        # should return a single indented bullet line about no includes
+        assert md.strip().startswith('- No includes found in')
+    finally:
+        temp.unlink()
+
+def test_str_include_list():
+    ref = IncludeListReference("path/to/file.hpp")
+    assert str(ref) == f"List of included libraries for: {Path('path/to/file.hpp')}"

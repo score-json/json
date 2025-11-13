@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The service checks the well-formedness of objects.
+The service provided by the nlohmann/json library checks the well-formedness of objects.

@@ -9,7 +9,7 @@ references:
       path: ./.github/workflows/publish_documentation.yml
       description: "github workflow executing calculation and storage of trustable scores"
     - type: website
-      url: https://github.com/score-json/json/blob/save_historical_data/TSF/TrustableScoring.db
+      url: "https://github.com/score-json/json/blob/save_historical_data/TSF/TrustableScoring.db"
       description: "the database containing the trustable scores"
 evidence:
     type: https_response_time
@@ -21,4 +21,4 @@ score:
     Jonas-Kirchhoff: 1.0
 ---
 
-A github workflow saves the history of scores in the trustable graph to derive trends.
+A github workflow of score-json saves the history of scores in the trustable graph to derive trends.
