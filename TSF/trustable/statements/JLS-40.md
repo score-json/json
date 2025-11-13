@@ -2,7 +2,7 @@
 level: 1.1
 normative: true
 references:
-  - type: website
+  - type: website_content
     url: "https://github.com/nlohmann/json/blob/develop/.github/CONTRIBUTING.md"
     description: "nlohmann/json contribution guidelines describing analysis, testing, and review expectations"
   - type: web_content

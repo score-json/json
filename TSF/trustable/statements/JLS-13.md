@@ -5,7 +5,7 @@ references:
         - type: project_website
           url: "https://github.com/nlohmann/json/blob/develop/.github/CODEOWNERS"
           description: "CODEOWNERS file specifying that changes to any file requests @nlohmann for code review in case of a pull request"
-        - type: website
+        - type: website_content
           url: "https://github.com/nlohmann/json?tab=contributing-ov-file#readme"
           description: "nlohmann/json contribution guidelines"
         - type: website
