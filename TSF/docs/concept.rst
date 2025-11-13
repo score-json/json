@@ -21,7 +21,7 @@ For the concept of the Trustable Software Framework (TSF), please refer to the `
 Scoring
 ---------------------
 
-The trustability scores in the TSF are calculated recursively using the underlying graph structure.
+The Trustable scores in the TSF are calculated recursively using the underlying graph structure.
 
 Depending on whether the node is a leaf node (i.e., has no supporting statements) or a parent node (i.e., has supporting statements), the calculation of the trustability score differs.
 
@@ -31,7 +31,7 @@ In particular, the existence or absence of a validator plays a crucial role in h
 The following table displays the possible scenarios for calculating the scores of leaf nodes, depending on the existence or values of its attributes:
 
 +------------+----------------+--------------+--------------+--------------+------------------------------------------+
-| normative_ | review-status_ | SME-score_   | validator_   | reference_   | score-calculation_                       |
+| normative_ | review-status_ | SME-score_   | validator_   | reference_   | Trustable-score_                         |
 +============+================+==============+==============+==============+==========================================+
 | ``false``  | ``*``          | ``*``        | ``*``        | ``*``        | no score                                 |
 +------------+----------------+--------------+--------------+--------------+------------------------------------------+
@@ -50,7 +50,7 @@ The following table displays the possible scenarios for calculating the scores o
 .. _SME-score: https://codethinklabs.gitlab.io/trustable/trustable/reference/trudag/dotstop/core/item.html#trudag.dotstop.core.item.BaseItem.sme_scores
 .. _validator: https://codethinklabs.gitlab.io/trustable/trustable/trudag/usage.html#providing-evidence
 .. _reference: https://codethinklabs.gitlab.io/trustable/trustable/reference/trudag/dotstop/core/item.html#trudag.dotstop.core.item.BaseItem.references
-.. _score: https://codethinklabs.gitlab.io/trustable/trustable/trudag/scoring-roadmap.html
+.. _Trustable-score: https://codethinklabs.gitlab.io/trustable/trustable/trudag/scoring-roadmap.html
 
 
 
@@ -63,7 +63,7 @@ Any supporting statements with a suspect link are excluded from the calculation 
 The following table displays the possible scenarios for calculating the scores of parent nodes:
 
 +------------+----------------+--------------+----------------------------------------------------+
-| normative_ | review-status_ | link-status_ | score-calculation_                                 |
+| normative_ | review-status_ | link-status_ | Trustable-score_                                   |
 +============+================+==============+====================================================+
 | ``false``  | ``*``          | ``*``        | no score                                           |
 +------------+----------------+--------------+----------------------------------------------------+
@@ -77,7 +77,7 @@ The following table displays the possible scenarios for calculating the scores o
 .. _normative: https://codethinklabs.gitlab.io/trustable/trustable/reference/trudag/dotstop/core/item.html#trudag.dotstop.core.item.BaseItem.normative
 .. _review-status: https://codethinklabs.gitlab.io/trustable/trustable/reference/trudag/dotstop/core/graph/trustable_graph.html#trudag.dotstop.core.graph.trustable_graph.TrustableGraph.set_link_status
 .. _link-status: https://codethinklabs.gitlab.io/trustable/trustable/reference/trudag/dotstop/core/graph/trustable_graph.html#trudag.dotstop.core.graph.trustable_graph.LinkStatus
-.. _score: https://codethinklabs.gitlab.io/trustable/trustable/trudag/scoring-roadmap.html
+.. _Trustable-score: https://codethinklabs.gitlab.io/trustable/trustable/trudag/scoring-roadmap.html
 
 
 Terminology
@@ -88,7 +88,7 @@ Terminology
 - **validator**: Automatic scripts that validate the correctness of a statement. Note that in the markdown files, validators are referred to as "evidence".
 - **reference**: Supporting material for the SME reviewer to evaluate the statement.
 - **link-status**: Indicates whether the statement has any suspect links. If suspect links exist, the score of a parent item is calculated based on child items without suspect links only.   
-- **score-calculation**: Shows how the score is calculated.
+- **Trustable-score**: Shows how the TSF score is calculated.
 
 Example scoring
 ~~~~~~~~~~~~~~~
