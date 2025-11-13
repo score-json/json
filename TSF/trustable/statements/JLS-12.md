@@ -2,12 +2,12 @@
 level: 1.1
 normative: true
 references:
-        - type: website
-          url: "https://eclipse-score.github.io/process_description/main/process_areas/change_management/index.html"
-          description: "Documentation of S-CORE change process management"
+        - type: web_content
+          url: "https://github.com/nlohmann/json/community"
+          description: "List of defined community standards in nlohmann/json"
 score:
     Jonas-Kirchhoff: 1.0
     Erikhu1: 1.0
 ---
 
-A change management process is followed by nlohmann/json.
+The nlohmann/json repository has well-defined community standards, including a contribution guideline and a security policy.
