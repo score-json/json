@@ -12,4 +12,4 @@ score:
     Erikhu1: 0.9
 ---
 
-Pull requests in the nlohmann/json repository are approved and merged only after running CI-tests and successfully passing the pipeline.
+Pull requests in the nlohmann/json repository are merged only after running CI-tests and successfully passing the pipeline.
