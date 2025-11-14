@@ -2,7 +2,7 @@
 level: 1.1
 normative: true
 references:
-    - type: file
+    - type: verbose_file
       path: "/workspaces/json/TSF/README.md"
       description: "release management and update process description"    
 ---
