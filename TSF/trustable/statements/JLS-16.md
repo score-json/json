@@ -5,7 +5,7 @@ references:
       comment: "The list of all test-cases together with their execution environments"
     - type: website
       path: "https://github.com/score-json/json/actions"
-      description: "Github actions page showing that score-json is using github host environment."
+      description: "Github actions page showing that score-json is using Github host environment."
 evidence:
     type: check_list_of_tests
     configuration: 
@@ -16,4 +16,4 @@ level: 1.1
 normative: true
 ---
 
-A list of tests, which is extracted from the test execution, is provided, along with a list of test environments.
+A list of tests, which is extracted from the test execution, is provided, along with a list of test environments, a list of fault induction tests and test construction configurations and results.
