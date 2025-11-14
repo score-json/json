@@ -11,6 +11,9 @@ references:
         - type: website
           url: "https://github.com/nlohmann/json/actions?query=event%3Apush+branch%3Amaster"
           description: "GitHub reviews of nlohmann/json filtered for push to master"
+        - type: verbose_file
+          path: "/workspaces/json/ChangeLog.md"
+          description: "A mirror of the Changelog of nlohmann/json's Changelog"
 evidence:
     type: https_response_time    
     configuration:
@@ -24,4 +27,4 @@ score:
     Erikhu1: 1.0
 ---
 
-All contributions to the nlohmann/json repository are subject to a defined review process.
+All contributions to the nlohmann/json repository are reviewed according to the project’s documented contribution and review process.

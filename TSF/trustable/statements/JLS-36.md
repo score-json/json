@@ -7,4 +7,4 @@ references:
       description: "release management and update process description"    
 ---
 
-All S-CORE methodologies governing releases and updates are defined and consistently followed.
+Releases and updates of the score-json repository are carried out in accordance with defined and documented release and update process.

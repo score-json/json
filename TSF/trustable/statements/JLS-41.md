@@ -3,17 +3,17 @@ level: 1.1
 normative: true
 references:
     - type: project_website
-        url: "https://github.com/nlohmann/json/blob/develop/.github/CODEOWNERS"
-        description: "Definition of responsible owners and reviewers for the nlohmann/json repository"
+      url: "https://github.com/nlohmann/json/blob/develop/.github/CODEOWNERS"
+      description: "Definition of responsible owners and reviewers for the nlohmann/json repository"
     - type: project_website
-        url: "https://github.com/nlohmann/json/blob/develop/.github/CONTRIBUTING.md"
-        description: "nlohmann/json contribution guidelines describing contribution, testing, and review expectations"
+      url: "https://github.com/nlohmann/json/blob/develop/.github/CONTRIBUTING.md"
+      description: "nlohmann/json contribution guidelines describing contribution, testing, and review expectations"
     - type: project_website
-        url: "https://github.com/nlohmann/json/blob/develop/.github/CODE_OF_CONDUCT.md"
-        description: "Code of Conduct defining behavioural expectations during collaboration and review"
+      url: "https://github.com/nlohmann/json/blob/develop/.github/CODE_OF_CONDUCT.md"
+      description: "Code of Conduct defining behavioural expectations during collaboration and review"
     - type: verbose_file
-        path: "TSF/README.md"
-        description: "TSF documentation describing responsibilities, verification processes, and change control for score-json"
+      path: "TSF/README.md"
+      description: "TSF documentation describing responsibilities, verification processes, and change control for score-json"
 evidence:
     type: https_response_time    
     configuration:
