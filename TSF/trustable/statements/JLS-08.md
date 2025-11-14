@@ -7,4 +7,4 @@ references:
       description: "Dashboard showing distributions of evidence scores and SME (subject-matter expert) scores."
 ---
 
-Each statement is scored based on SME reviews or automatic validation functions.
+Each leaf node in the Trustable Graph is scored either based on an SME review alone or on a combination of an SME review and an automatic validation function.
