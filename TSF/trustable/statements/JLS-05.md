@@ -18,7 +18,7 @@ references:
           url: "https://github.com/nlohmann/json/pulse"
           description: "presents activity over the past week"
         - type: project_website
-          url: "https://github.com/orgs/eclipse-score/inc_nlohmann_json/discussions/27#discussion-8594385"
+          url: "https://github.com/orgs/score-json/discussions/27#discussion-8594385"
           description: "comparison between JSON libraries demonstrating the popularity of nlohmann/json"
         - type: project_website
           url: "https://json.nlohmann.me/home/customers/"
@@ -36,7 +36,7 @@ evidence:
                     - "https://github.com/nlohmann/json/graphs/contributors"
                     - "https://github.com/nlohmann/json/forks?include=active&page=1&period=&sort_by=last_updated"
                     - "https://github.com/nlohmann/json/pulse"
-                    - "https://github.com/orgs/eclipse-score/inc_nlohmann_json/discussions/27#discussion-8594385"
+                    - "https://github.com/orgs/score-json/discussions/27#discussion-8594385"
                     - "https://json.nlohmann.me/home/customers/"
 score:
     Jonas-Kirchhoff: 1.0

@@ -4,7 +4,7 @@ normative: true
 evidence:
     type: coveralls_reporter
     configuration:
-        owner: "eclipse-score/inc_nlohmann_json"
+        owner: "score-json"
         repo: "json"
         branch: "main"
         line_coverage: 99.186
