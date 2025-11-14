@@ -1,7 +1,7 @@
 
 ### TIJ-01 
 
-The parsing service throws an exception on ill-formed literal names.
+The parsing service provided by the nlohmann/json library throws an exception on ill-formed literal names.
 
 
 **Supported Requests:**
@@ -34,7 +34,7 @@ _No Historic Data Found_
 
 ### TIJ-01.1 
 
-The service throws an exception on capitalised literal names.
+The service provided by the nlohmann/json library throws an exception on capitalised literal names.
 
 
 **Supported Requests:**
@@ -147,7 +147,7 @@ _No Historic Data Found_
 
 ### TIJ-01.2 
 
-The service throws an exception on any other than the three literal names true, false, null.
+The service provided by the nlohmann/json library throws an exception on any other than the three literal names true, false, null.
 
 
 **Supported Requests:**
@@ -1018,7 +1018,7 @@ _No Historic Data Found_
 
 ### TIJ-02 
 
-The parsing service throws an exception on ill-formed numbers.
+The parsing service provided by the nlohmann/json library throws an exception on ill-formed numbers.
 
 
 **Supported Requests:**
@@ -1054,7 +1054,7 @@ _No Historic Data Found_
 
 ### TIJ-02.1 
 
-The service throws an exception on leading plus.
+The service provided by the nlohmann/json library throws an exception on leading plus.
 
 
 **Supported Requests:**
@@ -1135,7 +1135,7 @@ _No Historic Data Found_
 
 ### TIJ-02.2 
 
-The service throws an exception on leading zeroes.
+The service provided by the nlohmann/json library throws an exception on leading zeroes.
 
 
 **Supported Requests:**
@@ -1290,7 +1290,7 @@ _No Historic Data Found_
 
 ### TIJ-02.3 
 
-The service throws an exception on NaN, infinity.
+The service provided by the nlohmann/json library throws an exception on NaN and infinity.
 
 
 **Supported Requests:**
@@ -1698,7 +1698,7 @@ _No Historic Data Found_
 
 ### TIJ-02.4 
 
-The service throws an exception on U+0415 and U+0436 instead of U+0045 or U+0065.
+The service provided by the nlohmann/json library throws an exception on U+0415 and U+0436 instead of U+0045 or U+0065.
 
 
 **Supported Requests:**
@@ -1763,7 +1763,7 @@ _No Historic Data Found_
 
 ### TIJ-02.5 
 
-The service throws an exception on invalid number syntax.
+The service provided by the nlohmann/json library throws an exception on invalid number syntax.
 
 
 **Supported Requests:**
@@ -2525,7 +2525,7 @@ _No Historic Data Found_
 
 ### TIJ-03 
 
-The parsing service throws an exception on ill-formed strings.
+The parsing service provided by the nlohmann/json library throws an exception on ill-formed strings.
 
 
 **Supported Requests:**
@@ -2561,7 +2561,7 @@ _No Historic Data Found_
 
 ### TIJ-03.1 
 
-The service throws an exception on unescaped control characters.
+The service provided by the nlohmann/json library throws an exception on unescaped control characters.
 
 
 **Supported Requests:**
@@ -2659,7 +2659,7 @@ _No Historic Data Found_
 
 ### TIJ-03.2 
 
-The service throws an exception on unpaired utf-16 surrogates.
+The service provided by the nlohmann/json library throws an exception on unpaired utf-16 surrogates.
 
 
 **Supported Requests:**
@@ -2727,7 +2727,7 @@ _No Historic Data Found_
 
 ### TIJ-03.3 
 
-The service throws an exception on improperly bounded strings.
+The service provided by the nlohmann/json library throws an exception on improperly bounded strings.
 
 
 **Supported Requests:**
@@ -3119,7 +3119,7 @@ _No Historic Data Found_
 
 ### TIJ-03.4 
 
-The service throws an exception on escaped invalid characters.
+The service provided by the nlohmann/json library throws an exception on escaped invalid characters.
 
 
 **Supported Requests:**
@@ -3378,7 +3378,7 @@ _No Historic Data Found_
 
 ### TIJ-03.5 
 
-The service throws an exception on incorrect surrogate pairs.
+The service provided by the nlohmann/json library throws an exception on incorrect surrogate pairs.
 
 
 **Supported Requests:**
@@ -3458,7 +3458,7 @@ _No Historic Data Found_
 
 ### TIJ-04 
 
-The parsing service throws an exception on ill-formed arrays.
+The parsing service provided by the nlohmann/json library throws an exception on ill-formed arrays.
 
 
 **Supported Requests:**
@@ -3492,7 +3492,7 @@ _No Historic Data Found_
 
 ### TIJ-04.1 
 
-The service throws an exception on improperly bounded arrays.
+The service provided by the nlohmann/json library throws an exception on improperly bounded arrays.
 
 
 **Supported Requests:**
@@ -3744,7 +3744,7 @@ _No Historic Data Found_
 
 ### TIJ-04.2 
 
-The service throws an exception on improper values within a properly bounded array.
+The service provided by the nlohmann/json library throws an exception on improper values within a properly bounded array.
 
 
 **Supported Requests:**
@@ -3893,7 +3893,7 @@ _No Historic Data Found_
 
 ### TIJ-04.3 
 
-The service throws an exception on improper value separators.
+The service provided by the nlohmann/json library throws an exception on improper value separators.
 
 
 **Supported Requests:**
@@ -3965,7 +3965,7 @@ _No Historic Data Found_
 
 ### TIJ-05 
 
-The parsing service throws an exception on ill-formed objects.
+The parsing service provided by the nlohmann/json library throws an exception on ill-formed objects.
 
 
 **Supported Requests:**
@@ -4001,7 +4001,7 @@ _No Historic Data Found_
 
 ### TIJ-05.1 
 
-The service throws an exception on improperly bounded objects.
+The service provided by the nlohmann/json library throws an exception on improperly bounded objects.
 
 
 **Supported Requests:**
@@ -4117,7 +4117,7 @@ _No Historic Data Found_
 
 ### TIJ-05.2 
 
-The service throws an exception if a non-string is used as name of any member.
+The service provided by the nlohmann/json library throws an exception if a non-string is used as name of any member.
 
 
 **Supported Requests:**
@@ -4262,7 +4262,7 @@ _No Historic Data Found_
 
 ### TIJ-05.3 
 
-The service throws an exception if an improper string is used as name of any member.
+The service provided by the nlohmann/json library throws an exception if an improper string is used as name of any member.
 
 
 **Supported Requests:**
@@ -4441,7 +4441,7 @@ _No Historic Data Found_
 
 ### TIJ-05.4 
 
-The service throws an exception if any member has an improper value.
+The service provided by the nlohmann/json library throws an exception if any member has an improper value.
 
 
 **Supported Requests:**
@@ -4513,7 +4513,7 @@ _No Historic Data Found_
 
 ### TIJ-05.5 
 
-The service throws an exception on improper member separators.
+The service provided by the nlohmann/json library throws an exception on improper member separators.
 
 
 **Supported Requests:**
@@ -4699,7 +4699,7 @@ _No Historic Data Found_
 
 ### TIJ-06 
 
-The service recognises ill-formed byte-order marks and throws an exception.
+The service provided by the nlohmann/json library recognises ill-formed byte-order marks and throws an exception.
 
 
 **Supported Requests:**

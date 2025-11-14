@@ -427,7 +427,7 @@
                   
   <section id="npf-01">
 <h1>NPF-01<a class="headerlink" href="#npf-01" title="Link to this heading">#</a></h1>
-<p>The service ignores the presence of a byte order mark.</p>
+<p>The service provided by the nlohmann/json library ignores the presence of a byte order mark.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="PJD.html#pjd-01"><span class="std std-ref">PJD-01</span></a></p></li>
@@ -450,7 +450,7 @@
 <hr class="docutils" />
 <section id="npf-01-1">
 <h1>NPF-01.1<a class="headerlink" href="#npf-01-1" title="Link to this heading">#</a></h1>
-<p>The service ignores the presence of a single UTF-8 byte order mark at the very beginning of the input.</p>
+<p>The service provided by the nlohmann/json library ignores the presence of a single UTF-8 byte order mark at the very beginning of the input.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-01"><span class="std std-ref">NPF-01</span></a></p></li>
@@ -518,7 +518,7 @@
 <hr class="docutils" />
 <section id="npf-01-2">
 <h1>NPF-01.2<a class="headerlink" href="#npf-01-2" title="Link to this heading">#</a></h1>
-<p>The service does not parse multiple UTF-8 byte order marks at the beginning of the input and throws an exception.</p>
+<p>The service provided by the nlohmann/json library does not parse multiple UTF-8 byte order marks at the beginning of the input and throws an exception.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-01"><span class="std std-ref">NPF-01</span></a></p></li>
@@ -555,7 +555,7 @@
 <hr class="docutils" />
 <section id="npf-01-3">
 <h1>NPF-01.3<a class="headerlink" href="#npf-01-3" title="Link to this heading">#</a></h1>
-<p>The service does not parse UTF-8 byte order marks outside of a string and the first three characters of the input, and throws an exception.</p>
+<p>The service provided by the nlohmann/json library does not parse UTF-8 byte order marks outside of a string and the first three characters of the input, and throws an exception.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-01"><span class="std std-ref">NPF-01</span></a></p></li>
@@ -595,7 +595,7 @@
 <hr class="docutils" />
 <section id="npf-01-4">
 <h1>NPF-01.4<a class="headerlink" href="#npf-01-4" title="Link to this heading">#</a></h1>
-<p>The service does not parse UTF-16 and UTF-32 byte order mark instead of an UTF-8 byte order mark, and throws an exception.</p>
+<p>The service provided by the nlohmann/json library does not parse UTF-16 and UTF-32 byte order mark instead of an UTF-8 byte order mark, and throws an exception.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-01"><span class="std std-ref">NPF-01</span></a></p></li>
@@ -637,7 +637,7 @@
 <hr class="docutils" />
 <section id="npf-01-5">
 <h1>NPF-01.5<a class="headerlink" href="#npf-01-5" title="Link to this heading">#</a></h1>
-<p>The service does not parse partial and perturbed UTF-8 byte order marks within the first three characters of the input and throws an exception.</p>
+<p>The service provided by the nlohmann/json library does not parse partial and perturbed UTF-8 byte order marks within the first three characters of the input and throws an exception.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-01"><span class="std std-ref">NPF-01</span></a></p></li>
@@ -800,7 +800,7 @@
 <hr class="docutils" />
 <section id="npf-02">
 <h1>NPF-02<a class="headerlink" href="#npf-02" title="Link to this heading">#</a></h1>
-<p>The service parses numbers according to RFC8259.</p>
+<p>The service provided by the nlohmann/json library parses numbers according to RFC8259.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="PJD.html#pjd-03"><span class="std std-ref">PJD-03</span></a></p></li>
@@ -815,7 +815,6 @@
 <li><p><a class="reference internal" href="#npf-02.6"><span class="std std-ref">NPF-02.6</span></a></p></li>
 <li><p><a class="reference internal" href="#npf-02.7"><span class="std std-ref">NPF-02.7</span></a></p></li>
 <li><p><a class="reference internal" href="#npf-02.8"><span class="std std-ref">NPF-02.8</span></a></p></li>
-<li><p><a class="reference internal" href="AOU.html#aou-22"><span class="std std-ref">AOU-22</span></a></p></li>
 <li><p><a class="reference internal" href="#npf-02.9"><span class="std std-ref">NPF-02.9</span></a></p></li>
 <li><p><a class="reference internal" href="#npf-02.10"><span class="std std-ref">NPF-02.10</span></a></p></li>
 <li><p><a class="reference internal" href="#npf-02.11"><span class="std std-ref">NPF-02.11</span></a></p></li>
@@ -1165,7 +1164,7 @@
 <hr class="docutils" />
 <section id="npf-02-1">
 <h1>NPF-02.1<a class="headerlink" href="#npf-02-1" title="Link to this heading">#</a></h1>
-<p>The service parses integers without exponent within the precision of int64_t.</p>
+<p>The service provided by the nlohmann/json library parses integers without exponent within the precision of int64_t.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-02"><span class="std std-ref">NPF-02</span></a></p></li>
@@ -1275,7 +1274,7 @@
 <hr class="docutils" />
 <section id="npf-02-10">
 <h1>NPF-02.10<a class="headerlink" href="#npf-02-10" title="Link to this heading">#</a></h1>
-<p>The service ignores trailing zeroes after the decimal point.</p>
+<p>The service provided by the nlohmann/json library ignores trailing zeroes after the decimal point.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-02"><span class="std std-ref">NPF-02</span></a></p></li>
@@ -1327,7 +1326,7 @@
 <hr class="docutils" />
 <section id="npf-02-11">
 <h1>NPF-02.11<a class="headerlink" href="#npf-02-11" title="Link to this heading">#</a></h1>
-<p>The service parses numbers within the 64-bit double range but outside of the double precision without throwing an exception and without guarantee of precision.</p>
+<p>The service provided by the nlohmann/json library parses numbers within the 64-bit double range but outside of the double precision without throwing an exception and without guarantee of precision.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-02"><span class="std std-ref">NPF-02</span></a></p></li>
@@ -1399,7 +1398,7 @@
 <hr class="docutils" />
 <section id="npf-02-12">
 <h1>NPF-02.12<a class="headerlink" href="#npf-02-12" title="Link to this heading">#</a></h1>
-<p>The service ignores capitalisation of the exponent.</p>
+<p>The service provided by the nlohmann/json library ignores capitalisation of the exponent.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-02"><span class="std std-ref">NPF-02</span></a></p></li>
@@ -1430,7 +1429,7 @@
 <hr class="docutils" />
 <section id="npf-02-2">
 <h1>NPF-02.2<a class="headerlink" href="#npf-02-2" title="Link to this heading">#</a></h1>
-<p>The service parses integers with exponent within the precision of 64-bit double.</p>
+<p>The service provided by the nlohmann/json library parses integers with exponent within the precision of 64-bit double.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-02"><span class="std std-ref">NPF-02</span></a></p></li>
@@ -1615,7 +1614,7 @@
 <hr class="docutils" />
 <section id="npf-02-3">
 <h1>NPF-02.3<a class="headerlink" href="#npf-02-3" title="Link to this heading">#</a></h1>
-<p>The service parses floating point values without exponent within the precision of 64-bit double.</p>
+<p>The service provided by the nlohmann/json library parses floating point values without exponent within the precision of 64-bit double.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-02"><span class="std std-ref">NPF-02</span></a></p></li>
@@ -1744,7 +1743,7 @@
 <hr class="docutils" />
 <section id="npf-02-4">
 <h1>NPF-02.4<a class="headerlink" href="#npf-02-4" title="Link to this heading">#</a></h1>
-<p>The service parses floating point values with exponent within the precision of 64-bit double.</p>
+<p>The service provided by the nlohmann/json library parses floating point values with exponent within the precision of 64-bit double.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-02"><span class="std std-ref">NPF-02</span></a></p></li>
@@ -1851,7 +1850,7 @@
 <hr class="docutils" />
 <section id="npf-02-5">
 <h1>NPF-02.5<a class="headerlink" href="#npf-02-5" title="Link to this heading">#</a></h1>
-<p>The service ignores leading zeroes in the exponent.</p>
+<p>The service provided by the nlohmann/json library ignores leading zeroes in the exponent.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-02"><span class="std std-ref">NPF-02</span></a></p></li>
@@ -1891,7 +1890,7 @@
 <hr class="docutils" />
 <section id="npf-02-6">
 <h1>NPF-02.6<a class="headerlink" href="#npf-02-6" title="Link to this heading">#</a></h1>
-<p>The service parses integers within IEEE 754-2008 binary64.</p>
+<p>The service provided by the nlohmann/json library parses integers within IEEE 754-2008 binary64.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-02"><span class="std std-ref">NPF-02</span></a></p></li>
@@ -1952,7 +1951,7 @@
 <hr class="docutils" />
 <section id="npf-02-7">
 <h1>NPF-02.7<a class="headerlink" href="#npf-02-7" title="Link to this heading">#</a></h1>
-<p>The service ignores leading and trailing whitespace.</p>
+<p>The service provided by the nlohmann/json library ignores leading and trailing whitespace.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-02"><span class="std std-ref">NPF-02</span></a></p></li>
@@ -2017,7 +2016,7 @@
 <hr class="docutils" />
 <section id="npf-02-8">
 <h1>NPF-02.8<a class="headerlink" href="#npf-02-8" title="Link to this heading">#</a></h1>
-<p>The service ignores one singular leading plus of the exponent.</p>
+<p>The service provided by the nlohmann/json library ignores one singular leading plus of the exponent.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-02"><span class="std std-ref">NPF-02</span></a></p></li>
@@ -2051,7 +2050,7 @@
 <hr class="docutils" />
 <section id="npf-02-9">
 <h1>NPF-02.9<a class="headerlink" href="#npf-02-9" title="Link to this heading">#</a></h1>
-<p>The service parses floating point numbers within IEEE 754-2008 binary64 standard.</p>
+<p>The service provided by the nlohmann/json library parses floating point numbers within IEEE 754-2008 binary64 standard.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-02"><span class="std std-ref">NPF-02</span></a></p></li>
@@ -2271,7 +2270,7 @@
 <hr class="docutils" />
 <section id="npf-03">
 <h1>NPF-03<a class="headerlink" href="#npf-03" title="Link to this heading">#</a></h1>
-<p>The service parses strings according to RFC8259.</p>
+<p>The service provided by the nlohmann/json library parses strings according to RFC8259.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="PJD.html#pjd-03"><span class="std std-ref">PJD-03</span></a></p></li>
@@ -2889,7 +2888,7 @@
 <hr class="docutils" />
 <section id="npf-03-1">
 <h1>NPF-03.1<a class="headerlink" href="#npf-03-1" title="Link to this heading">#</a></h1>
-<p>The service ignores leading and trailing whitespace.</p>
+<p>The service provided by the nlohmann/json library ignores leading and trailing whitespace.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-03"><span class="std std-ref">NPF-03</span></a></p></li>
@@ -2953,7 +2952,7 @@
 <hr class="docutils" />
 <section id="npf-03-2">
 <h1>NPF-03.2<a class="headerlink" href="#npf-03-2" title="Link to this heading">#</a></h1>
-<p>The service parses escaped characters in the basic multilingual plane.</p>
+<p>The service provided by the nlohmann/json library parses escaped characters in the basic multilingual plane.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-03"><span class="std std-ref">NPF-03</span></a></p></li>
@@ -3092,7 +3091,7 @@
 <hr class="docutils" />
 <section id="npf-03-3">
 <h1>NPF-03.3<a class="headerlink" href="#npf-03-3" title="Link to this heading">#</a></h1>
-<p>The service ignores capitalisation in escaped hexadecimal unicode.</p>
+<p>The service provided by the nlohmann/json library ignores capitalisation in escaped hexadecimal unicode.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-03"><span class="std std-ref">NPF-03</span></a></p></li>
@@ -3145,7 +3144,7 @@
 <hr class="docutils" />
 <section id="npf-03-4">
 <h1>NPF-03.4<a class="headerlink" href="#npf-03-4" title="Link to this heading">#</a></h1>
-<p>The service parses all unescaped utf-8 characters except quotation mark, reverse solidus and the control characters.</p>
+<p>The service provided by the nlohmann/json library parses all unescaped utf-8 characters except quotation marks, reverse solidus and the control characters.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-03"><span class="std std-ref">NPF-03</span></a></p></li>
@@ -3266,7 +3265,7 @@
 <hr class="docutils" />
 <section id="npf-03-5">
 <h1>NPF-03.5<a class="headerlink" href="#npf-03-5" title="Link to this heading">#</a></h1>
-<p>The service parses \, \/, \b,\f, \n, \r, \t and escaped quotation marks.</p>
+<p>The service provided by the nlohmann/json library parses \, \/, \b,\f, \n, \r, \t and escaped quotation marks.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-03"><span class="std std-ref">NPF-03</span></a></p></li>
@@ -3355,7 +3354,7 @@
 <hr class="docutils" />
 <section id="npf-03-6">
 <h1>NPF-03.6<a class="headerlink" href="#npf-03-6" title="Link to this heading">#</a></h1>
-<p>The service parses the empty string.</p>
+<p>The service provided by the nlohmann/json library parses the empty string.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-03"><span class="std std-ref">NPF-03</span></a></p></li>
@@ -3485,7 +3484,7 @@
 <hr class="docutils" />
 <section id="npf-03-7">
 <h1>NPF-03.7<a class="headerlink" href="#npf-03-7" title="Link to this heading">#</a></h1>
-<p>The service parses non-empty strings.</p>
+<p>The service provided by the nlohmann/json library parses non-empty strings.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-03"><span class="std std-ref">NPF-03</span></a></p></li>
@@ -3915,7 +3914,7 @@
 <hr class="docutils" />
 <section id="npf-04">
 <h1>NPF-04<a class="headerlink" href="#npf-04" title="Link to this heading">#</a></h1>
-<p>The service parses literal names “true”, “false” and “null” according to RFC8259.</p>
+<p>The service provided by the nlohmann/json library parses literal names “true”, “false” and “null” according to RFC8259.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="PJD.html#pjd-03"><span class="std std-ref">PJD-03</span></a></p></li>
@@ -3959,7 +3958,7 @@
 <hr class="docutils" />
 <section id="npf-04-1">
 <h1>NPF-04.1<a class="headerlink" href="#npf-04-1" title="Link to this heading">#</a></h1>
-<p>The service ignores leading and trailing whitespace.</p>
+<p>The service provided by the nlohmann/json library ignores leading and trailing whitespace.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-04"><span class="std std-ref">NPF-04</span></a></p></li>
@@ -4054,7 +4053,7 @@
 <hr class="docutils" />
 <section id="npf-04-2">
 <h1>NPF-04.2<a class="headerlink" href="#npf-04-2" title="Link to this heading">#</a></h1>
-<p>The service parses the literal name true.</p>
+<p>The service provided by the nlohmann/json library parses the literal name true.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-04"><span class="std std-ref">NPF-04</span></a></p></li>
@@ -4085,7 +4084,7 @@
 <hr class="docutils" />
 <section id="npf-04-3">
 <h1>NPF-04.3<a class="headerlink" href="#npf-04-3" title="Link to this heading">#</a></h1>
-<p>The service parses the literal name false.</p>
+<p>The service provided by the nlohmann/json library parses the literal name false.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-04"><span class="std std-ref">NPF-04</span></a></p></li>
@@ -4116,7 +4115,7 @@
 <hr class="docutils" />
 <section id="npf-04-4">
 <h1>NPF-04.4<a class="headerlink" href="#npf-04-4" title="Link to this heading">#</a></h1>
-<p>The service parses the literal name null.</p>
+<p>The service provided by the nlohmann/json library parses the literal name null.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-04"><span class="std std-ref">NPF-04</span></a></p></li>
@@ -4147,7 +4146,7 @@
 <hr class="docutils" />
 <section id="npf-05">
 <h1>NPF-05<a class="headerlink" href="#npf-05" title="Link to this heading">#</a></h1>
-<p>The service parses arrays according to RFC8259.</p>
+<p>The service provided by the nlohmann/json library parses arrays according to RFC8259.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="PJD.html#pjd-03"><span class="std std-ref">PJD-03</span></a></p></li>
@@ -4168,7 +4167,7 @@
 <hr class="docutils" />
 <section id="npf-05-1">
 <h1>NPF-05.1<a class="headerlink" href="#npf-05-1" title="Link to this heading">#</a></h1>
-<p>The service ignores leading and trailing whitespace for each value.</p>
+<p>The service provided by the nlohmann/json library ignores leading and trailing whitespace for each value.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-05"><span class="std std-ref">NPF-05</span></a></p></li>
@@ -4241,7 +4240,7 @@
 <hr class="docutils" />
 <section id="npf-05-2">
 <h1>NPF-05.2<a class="headerlink" href="#npf-05-2" title="Link to this heading">#</a></h1>
-<p>The service parses empty arrays.</p>
+<p>The service provided by the nlohmann/json library parses empty arrays.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-05"><span class="std std-ref">NPF-05</span></a></p></li>
@@ -4306,7 +4305,7 @@
 <hr class="docutils" />
 <section id="npf-05-3">
 <h1>NPF-05.3<a class="headerlink" href="#npf-05-3" title="Link to this heading">#</a></h1>
-<p>The service parses non-empty arrays.</p>
+<p>The service provided by the nlohmann/json library parses non-empty arrays.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-05"><span class="std std-ref">NPF-05</span></a></p></li>
@@ -4436,7 +4435,7 @@
 <hr class="docutils" />
 <section id="npf-06">
 <h1>NPF-06<a class="headerlink" href="#npf-06" title="Link to this heading">#</a></h1>
-<p>The service parses objects according to RFC8259.</p>
+<p>The service provided by the nlohmann/json library parses objects according to RFC8259.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="PJD.html#pjd-03"><span class="std std-ref">PJD-03</span></a></p></li>
@@ -4458,7 +4457,7 @@
 <hr class="docutils" />
 <section id="npf-06-1">
 <h1>NPF-06.1<a class="headerlink" href="#npf-06-1" title="Link to this heading">#</a></h1>
-<p>The service ignores leading and trailing whitespace for name and value of each member.</p>
+<p>The service provided by the nlohmann/json library ignores leading and trailing whitespace for name and value of each member.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-06"><span class="std std-ref">NPF-06</span></a></p></li>
@@ -4523,7 +4522,7 @@
 <hr class="docutils" />
 <section id="npf-06-2">
 <h1>NPF-06.2<a class="headerlink" href="#npf-06-2" title="Link to this heading">#</a></h1>
-<p>The service parses duplicate names without error and reports the last member with that name only.</p>
+<p>The service provided by the nlohmann/json library parses duplicate names without error and reports the last member with that name only.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-06"><span class="std std-ref">NPF-06</span></a></p></li>
@@ -4586,7 +4585,7 @@
 <hr class="docutils" />
 <section id="npf-06-3">
 <h1>NPF-06.3<a class="headerlink" href="#npf-06-3" title="Link to this heading">#</a></h1>
-<p>The service parses empty objects.</p>
+<p>The service provided by the nlohmann/json library parses empty objects.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-06"><span class="std std-ref">NPF-06</span></a></p></li>
@@ -4617,7 +4616,7 @@
 <hr class="docutils" />
 <section id="npf-06-4">
 <h1>NPF-06.4<a class="headerlink" href="#npf-06-4" title="Link to this heading">#</a></h1>
-<p>The service parses non-empty objects.</p>
+<p>The service provided by the nlohmann/json library parses non-empty objects.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-06"><span class="std std-ref">NPF-06</span></a></p></li>
@@ -4647,7 +4646,7 @@
 <hr class="docutils" />
 <section id="npf-07">
 <h1>NPF-07<a class="headerlink" href="#npf-07" title="Link to this heading">#</a></h1>
-<p>The service parses well-formed UTF-8 encoded data only.</p>
+<p>The service provided by the nlohmann/json library parses well-formed UTF-8 encoded data only.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="PJD.html#pjd-03"><span class="std std-ref">PJD-03</span></a></p></li>
@@ -4667,7 +4666,7 @@
 <hr class="docutils" />
 <section id="npf-07-1">
 <h1>NPF-07.1<a class="headerlink" href="#npf-07-1" title="Link to this heading">#</a></h1>
-<p>The service parses UTF-8 encoded data.</p>
+<p>The service provided by the nlohmann/json library parses UTF-8 encoded data.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#npf-07"><span class="std std-ref">NPF-07</span></a></p></li>
@@ -4881,7 +4880,7 @@
 <hr class="docutils" />
 <section id="npf-07-2">
 <h1>NPF-07.2<a class="headerlink" href="#npf-07-2" title="Link to this heading">#</a></h1>
-<p>The service throws an exception on ill-formed UTF-8 data.</p>
+<p>The service provided by the nlohmann/json library throws an exception on ill-formed UTF-8 data.</p>
 <p><strong>Supported Requests:</strong></p>
 <ul class="simple">
 <li><p><a class="reference internal" href="JLS.html#jls-24"><span class="std std-ref">JLS-24</span></a></p></li>

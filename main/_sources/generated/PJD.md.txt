@@ -1,7 +1,7 @@
 
 ### PJD-01 
 
-The service provides implementations that parses JSON texts, which ignores the presence of a byte order mark rather than treating it as an error.
+The service provided by the nlohmann/json library provides implementations that parses JSON texts, which ignores the presence of a byte order mark rather than treating it as an error.
 
 
 **Supported Requests:**
@@ -33,7 +33,7 @@ _No Historic Data Found_
 
 ### PJD-02 
 
-The service transforms a JSON text into a C++ representation using C++ containers (for arrays and objects) and primitive datatypes (for strings, numbers, boolean, null).
+The service provided by the nlohmann/json library transforms a JSON text into a C++ representation using C++ containers (for arrays and objects) and primitive datatypes (for strings, numbers, boolean, null).
 
 
 **Supported Requests:**
@@ -65,7 +65,7 @@ _No Historic Data Found_
 
 ### PJD-03 
 
-The service parses all texts that conform to the JSON grammar.
+The service provided by the nlohmann/json library parses all texts that conform to the JSON grammar.
 
 
 **Supported Requests:**
@@ -74,8 +74,6 @@ The service parses all texts that conform to the JSON grammar.
 
 **Supporting Items:**
 
-- [AOU-21](AOU.md#aou-21)
-- [AOU-05](AOU.md#aou-05)
 - [NPF-02](NPF.md#npf-02)
 - [NPF-04](NPF.md#npf-04)
 - [NPF-05](NPF.md#npf-05)

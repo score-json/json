@@ -1,7 +1,7 @@
 
 ### NPF-01 
 
-The service ignores the presence of a byte order mark.
+The service provided by the nlohmann/json library ignores the presence of a byte order mark.
 
 
 **Supported Requests:**
@@ -37,7 +37,7 @@ _No Historic Data Found_
 
 ### NPF-01.1 
 
-The service ignores the presence of a single UTF-8 byte order mark at the very beginning of the input.
+The service provided by the nlohmann/json library ignores the presence of a single UTF-8 byte order mark at the very beginning of the input.
 
 
 **Supported Requests:**
@@ -129,7 +129,7 @@ _No Historic Data Found_
 
 ### NPF-01.2 
 
-The service does not parse multiple UTF-8 byte order marks at the beginning of the input and throws an exception.
+The service provided by the nlohmann/json library does not parse multiple UTF-8 byte order marks at the beginning of the input and throws an exception.
 
 
 **Supported Requests:**
@@ -186,7 +186,7 @@ _No Historic Data Found_
 
 ### NPF-01.3 
 
-The service does not parse UTF-8 byte order marks outside of a string and the first three characters of the input, and throws an exception.
+The service provided by the nlohmann/json library does not parse UTF-8 byte order marks outside of a string and the first three characters of the input, and throws an exception.
 
 
 **Supported Requests:**
@@ -246,7 +246,7 @@ _No Historic Data Found_
 
 ### NPF-01.4 
 
-The service does not parse UTF-16 and UTF-32 byte order mark instead of an UTF-8 byte order mark, and throws an exception.
+The service provided by the nlohmann/json library does not parse UTF-16 and UTF-32 byte order mark instead of an UTF-8 byte order mark, and throws an exception.
 
 
 **Supported Requests:**
@@ -308,7 +308,7 @@ _No Historic Data Found_
 
 ### NPF-01.5 
 
-The service does not parse partial and perturbed UTF-8 byte order marks within the first three characters of the input and throws an exception.
+The service provided by the nlohmann/json library does not parse partial and perturbed UTF-8 byte order marks within the first three characters of the input and throws an exception.
 
 
 **Supported Requests:**
@@ -503,7 +503,7 @@ _No Historic Data Found_
 
 ### NPF-02 
 
-The service parses numbers according to RFC8259.
+The service provided by the nlohmann/json library parses numbers according to RFC8259.
 
 
 **Supported Requests:**
@@ -520,7 +520,6 @@ The service parses numbers according to RFC8259.
 - [NPF-02.6](NPF.md#npf-02.6)
 - [NPF-02.7](NPF.md#npf-02.7)
 - [NPF-02.8](NPF.md#npf-02.8)
-- [AOU-22](AOU.md#aou-22)
 - [NPF-02.9](NPF.md#npf-02.9)
 - [NPF-02.10](NPF.md#npf-02.10)
 - [NPF-02.11](NPF.md#npf-02.11)
@@ -884,7 +883,7 @@ _No Historic Data Found_
 
 ### NPF-02.1 
 
-The service parses integers without exponent within the precision of int64_t. 
+The service provided by the nlohmann/json library parses integers without exponent within the precision of int64_t. 
 
 
 **Supported Requests:**
@@ -1039,7 +1038,7 @@ _No Historic Data Found_
 
 ### NPF-02.10 
 
-The service ignores trailing zeroes after the decimal point.
+The service provided by the nlohmann/json library ignores trailing zeroes after the decimal point.
 
 
 **Supported Requests:**
@@ -1115,7 +1114,7 @@ _No Historic Data Found_
 
 ### NPF-02.11 
 
-The service parses numbers within the 64-bit double range but outside of the double precision without throwing an exception and without guarantee of precision.
+The service provided by the nlohmann/json library parses numbers within the 64-bit double range but outside of the double precision without throwing an exception and without guarantee of precision.
 
 
 **Supported Requests:**
@@ -1207,7 +1206,7 @@ _No Historic Data Found_
 
 ### NPF-02.12 
 
-The service ignores capitalisation of the exponent.
+The service provided by the nlohmann/json library ignores capitalisation of the exponent.
 
 
 **Supported Requests:**
@@ -1258,7 +1257,7 @@ _No Historic Data Found_
 
 ### NPF-02.2 
 
-The service parses integers with exponent within the precision of 64-bit double. 
+The service provided by the nlohmann/json library parses integers with exponent within the precision of 64-bit double. 
 
 
 **Supported Requests:**
@@ -1502,7 +1501,7 @@ _No Historic Data Found_
 
 ### NPF-02.3 
 
-The service parses floating point values without exponent within the precision of 64-bit double.
+The service provided by the nlohmann/json library parses floating point values without exponent within the precision of 64-bit double.
 
 
 **Supported Requests:**
@@ -1651,7 +1650,7 @@ _No Historic Data Found_
 
 ### NPF-02.4 
 
-The service parses floating point values with exponent within the precision of 64-bit double.
+The service provided by the nlohmann/json library parses floating point values with exponent within the precision of 64-bit double.
 
 
 **Supported Requests:**
@@ -1782,7 +1781,7 @@ _No Historic Data Found_
 
 ### NPF-02.5 
 
-The service ignores leading zeroes in the exponent.
+The service provided by the nlohmann/json library ignores leading zeroes in the exponent.
 
 
 **Supported Requests:**
@@ -1842,7 +1841,7 @@ _No Historic Data Found_
 
 ### NPF-02.6 
 
-The service parses integers within IEEE 754-2008 binary64.
+The service provided by the nlohmann/json library parses integers within IEEE 754-2008 binary64.
 
 
 **Supported Requests:**
@@ -1927,7 +1926,7 @@ _No Historic Data Found_
 
 ### NPF-02.7 
 
-The service ignores leading and trailing whitespace.
+The service provided by the nlohmann/json library ignores leading and trailing whitespace.
 
 
 **Supported Requests:**
@@ -2015,7 +2014,7 @@ _No Historic Data Found_
 
 ### NPF-02.8 
 
-The service ignores one singular leading plus of the exponent.
+The service provided by the nlohmann/json library ignores one singular leading plus of the exponent.
 
 
 **Supported Requests:**
@@ -2069,7 +2068,7 @@ _No Historic Data Found_
 
 ### NPF-02.9 
 
-The service parses floating point numbers within IEEE 754-2008 binary64 standard.
+The service provided by the nlohmann/json library parses floating point numbers within IEEE 754-2008 binary64 standard.
 
 
 **Supported Requests:**
@@ -2313,7 +2312,7 @@ _No Historic Data Found_
 
 ### NPF-03 
 
-The service parses strings according to RFC8259.
+The service provided by the nlohmann/json library parses strings according to RFC8259.
 
 
 **Supported Requests:**
@@ -2947,7 +2946,7 @@ _No Historic Data Found_
 
 ### NPF-03.1 
 
-The service ignores leading and trailing whitespace.
+The service provided by the nlohmann/json library ignores leading and trailing whitespace.
 
 
 **Supported Requests:**
@@ -3034,7 +3033,7 @@ _No Historic Data Found_
 
 ### NPF-03.2 
 
-The service parses escaped characters in the basic multilingual plane.
+The service provided by the nlohmann/json library parses escaped characters in the basic multilingual plane.
 
 
 **Supported Requests:**
@@ -3201,7 +3200,7 @@ _No Historic Data Found_
 
 ### NPF-03.3 
 
-The service ignores capitalisation in escaped hexadecimal unicode.
+The service provided by the nlohmann/json library ignores capitalisation in escaped hexadecimal unicode.
 
 
 **Supported Requests:**
@@ -3274,7 +3273,7 @@ _No Historic Data Found_
 
 ### NPF-03.4 
 
-The service parses all unescaped utf-8 characters except quotation mark, reverse solidus and the control characters.
+The service provided by the nlohmann/json library parses all unescaped utf-8 characters except quotation marks, reverse solidus and the control characters.
 
 
 **Supported Requests:**
@@ -3426,7 +3425,7 @@ _No Historic Data Found_
 
 ### NPF-03.5 
 
-The service parses \\, \\/, \\b,\\f, \\n, \\r, \\t and escaped quotation marks.
+The service provided by the nlohmann/json library parses \\, \\/, \\b,\\f, \\n, \\r, \\t and escaped quotation marks.
 
 
 **Supported Requests:**
@@ -3539,7 +3538,7 @@ _No Historic Data Found_
 
 ### NPF-03.6 
 
-The service parses the empty string.
+The service provided by the nlohmann/json library parses the empty string.
 
 
 **Supported Requests:**
@@ -3689,7 +3688,7 @@ _No Historic Data Found_
 
 ### NPF-03.7 
 
-The service parses non-empty strings.
+The service provided by the nlohmann/json library parses non-empty strings.
 
 
 **Supported Requests:**
@@ -4320,7 +4319,7 @@ _No Historic Data Found_
 
 ### NPF-04 
 
-The service parses literal names "true", "false" and "null" according to RFC8259.
+The service provided by the nlohmann/json library parses literal names "true", "false" and "null" according to RFC8259.
 
 
 **Supported Requests:**
@@ -4380,7 +4379,7 @@ _No Historic Data Found_
 
 ### NPF-04.1 
 
-The service ignores leading and trailing whitespace.
+The service provided by the nlohmann/json library ignores leading and trailing whitespace.
 
 
 **Supported Requests:**
@@ -4498,7 +4497,7 @@ _No Historic Data Found_
 
 ### NPF-04.2 
 
-The service parses the literal name true.
+The service provided by the nlohmann/json library parses the literal name true.
 
 
 **Supported Requests:**
@@ -4549,7 +4548,7 @@ _No Historic Data Found_
 
 ### NPF-04.3 
 
-The service parses the literal name false.
+The service provided by the nlohmann/json library parses the literal name false.
 
 
 **Supported Requests:**
@@ -4600,7 +4599,7 @@ _No Historic Data Found_
 
 ### NPF-04.4 
 
-The service parses the literal name null.
+The service provided by the nlohmann/json library parses the literal name null.
 
 
 **Supported Requests:**
@@ -4651,7 +4650,7 @@ _No Historic Data Found_
 
 ### NPF-05 
 
-The service parses arrays according to RFC8259.
+The service provided by the nlohmann/json library parses arrays according to RFC8259.
 
 
 **Supported Requests:**
@@ -4685,7 +4684,7 @@ _No Historic Data Found_
 
 ### NPF-05.1 
 
-The service ignores leading and trailing whitespace for each value.
+The service provided by the nlohmann/json library ignores leading and trailing whitespace for each value.
 
 
 **Supported Requests:**
@@ -4785,7 +4784,7 @@ _No Historic Data Found_
 
 ### NPF-05.2 
 
-The service parses empty arrays.
+The service provided by the nlohmann/json library parses empty arrays.
 
 
 **Supported Requests:**
@@ -4877,7 +4876,7 @@ _No Historic Data Found_
 
 ### NPF-05.3 
 
-The service parses non-empty arrays.
+The service provided by the nlohmann/json library parses non-empty arrays.
 
 
 **Supported Requests:**
@@ -5068,7 +5067,7 @@ _No Historic Data Found_
 
 ### NPF-06 
 
-The service parses objects according to RFC8259.
+The service provided by the nlohmann/json library parses objects according to RFC8259.
 
 
 **Supported Requests:**
@@ -5103,7 +5102,7 @@ _No Historic Data Found_
 
 ### NPF-06.1 
 
-The service ignores leading and trailing whitespace for name and value of each member.
+The service provided by the nlohmann/json library ignores leading and trailing whitespace for name and value of each member.
 
 
 **Supported Requests:**
@@ -5195,7 +5194,7 @@ _No Historic Data Found_
 
 ### NPF-06.2 
 
-The service parses duplicate names without error and reports the last member with that name only.
+The service provided by the nlohmann/json library parses duplicate names without error and reports the last member with that name only.
 
 
 **Supported Requests:**
@@ -5281,7 +5280,7 @@ _No Historic Data Found_
 
 ### NPF-06.3 
 
-The service parses empty objects.
+The service provided by the nlohmann/json library parses empty objects.
 
 
 **Supported Requests:**
@@ -5332,7 +5331,7 @@ _No Historic Data Found_
 
 ### NPF-06.4 
 
-The service parses non-empty objects.
+The service provided by the nlohmann/json library parses non-empty objects.
 
 
 **Supported Requests:**
@@ -5382,7 +5381,7 @@ _No Historic Data Found_
 
 ### NPF-07 
 
-The service parses well-formed UTF-8 encoded data only.
+The service provided by the nlohmann/json library parses well-formed UTF-8 encoded data only.
 
 
 **Supported Requests:**
@@ -5415,7 +5414,7 @@ _No Historic Data Found_
 
 ### NPF-07.1 
 
-The service parses UTF-8 encoded data.
+The service provided by the nlohmann/json library parses UTF-8 encoded data.
 
 
 **Supported Requests:**
@@ -5681,7 +5680,7 @@ _No Historic Data Found_
 
 ### NPF-07.2 
 
-The service throws an exception on ill-formed UTF-8 data.
+The service provided by the nlohmann/json library throws an exception on ill-formed UTF-8 data.
 
 
 **Supported Requests:**

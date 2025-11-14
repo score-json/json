@@ -1,12 +1,12 @@
 
 ### AOU-01 
 
-The integrator shall report problems with nlohmann/json's implementation to the upstream nlohmann/json project whenever a problem is detected.
+The integrator shall report problems with eclipse-score/inc_nlohmann_json's implementation to the upstream nlohmann/json repository whenever a problem is detected.
 
 
 **Supported Requests:**
 
-- [TA-FIXES](TA.md#ta-fixes)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
 
@@ -33,12 +33,12 @@ _No Historic Data Found_
 
 ### AOU-02 
 
-The integrator shall ensure that the build environment used for nlohmann/json is supplied with consistent dependencies in every integrating system.
+The integrator shall ensure that the build environment used for eclipse-score/inc_nlohmann_json is supplied with consistent dependencies in every integrating system.
 
 
 **Supported Requests:**
 
-- [TA-SUPPLY_CHAIN](TA.md#ta-supply_chain)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
 
@@ -65,12 +65,12 @@ _No Historic Data Found_
 
 ### AOU-03 
 
-The integrator shall ensure that integrator-controlled mirrors of the dependencies are persistently and accessibly stored as long as the library nlohmann/json is used.
+The integrator shall ensure that integrator-controlled mirrors of the dependencies of the nlohmann/json repository are persistently and accessibly stored as long as the nlohmann/json library is used within eclipse-score/inc_nlohmann_json.
 
 
 **Supported Requests:**
 
-- [TA-SUPPLY_CHAIN](TA.md#ta-supply_chain)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
 
@@ -97,7 +97,7 @@ _No Historic Data Found_
 
 ### AOU-04 
 
-The integrator shall ensure that exceptions are properly handled or turned off, whenever nlohmann/json is used.
+The integrator shall ensure that exceptions are properly handled or turned off in eclipse-score/inc_nlohmann_json, whenever eclipse-score/inc_nlohmann_json's implementation of nlohmann/json is used.
 
 
 **Supported Requests:**
@@ -129,12 +129,11 @@ _No Historic Data Found_
 
 ### AOU-05 
 
-The integrator shall ensure that input is encoded as UTF-8 (as required by RFC8259) and that exceptions thrown in case other string formats are used are properly handled
+The integrator shall ensure that in eclipse-score/inc_nlohmann_json, input is encoded as UTF-8 (as required by RFC8259) and that in case other string formats are used, thrown exceptions are properly handled.
 
 
 **Supported Requests:**
 
-- [PJD-03](PJD.md#pjd-03)
 - [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
@@ -162,7 +161,7 @@ _No Historic Data Found_
 
 ### AOU-06 
 
-The integrator shall ensure that brace initialization (e.g. json j{true};) is not used with the types basic_json, json, or ordered_json, unless an object or array is created.
+The integrator shall ensure that in eclipse-score/inc_nlohmann_json brace initialization (e.g. json j{true};) is not used with the types basic_json, json, or ordered_json, unless an object or array is created.
 
 
 **Supported Requests:**
@@ -194,7 +193,7 @@ _No Historic Data Found_
 
 ### AOU-07 
 
-The integrator shall ensure that exceptions, which are expected during parsing with default parameters, are properly handled whenever the input is no valid JSON.
+The integrator shall ensure in eclipse-score/inc_nlohmann_json that exceptions, which are expected during parsing with default parameters, are properly handled whenever the input is no valid JSON.
 
 
 **Supported Requests:**
@@ -226,12 +225,12 @@ _No Historic Data Found_
 
 ### AOU-08 
 
-The integrator shall ensure that all necessary source files and built tools are mirrored, e.g. using a built server without internet access, as long as nlohmann/json is actively used.
+The integrator shall ensure that all necessary source files and built tools are mirrored in eclipse-score/inc_nlohmann_json, e.g. using a built server without internet access, as long as nlohmann/json is actively used within eclipse-score/inc_nlohmann_json.
 
 
 **Supported Requests:**
 
-- [TA-RELEASES](TA.md#ta-releases)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
 
@@ -258,12 +257,12 @@ _No Historic Data Found_
 
 ### AOU-09 
 
-The integrator shall ensure that advanced warning indicators for misbehaviours are identified, and monitoring mechanisms are specified, verified and validated based on analysis.
+The integrator shall ensure inside eclipse-score/inc_nlohmann_json that advanced warning indicators for misbehaviours are identified, and monitoring mechanisms are specified, verified and validated based on analysis.
 
 
 **Supported Requests:**
 
-- [TA-INDICATORS](TA.md#ta-indicators)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
 
@@ -288,17 +287,46 @@ _No Historic Data Found_
 
 ---
 
-### AOU-10_COMBINED 
+### AOU-10 
 
-The integrator shall evaluate the provided evidence and supplement it where necessary, whenever the trustability documentation of nlohmann/json is reviewed.
+The integrator shall, whenever possible, turn any remaining Assumptions-of-Use (AOU) items into statements and add suitable references and/or validators.
 
 
 **Supported Requests:**
 
-- [TA-CONFIDENCE](TA.md#ta-confidence)
-- [TA-FIXES](TA.md#ta-fixes)
-- [TA-INPUTS](TA.md#ta-inputs)
-- [TA-METHODOLOGIES](TA.md#ta-methodologies)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
+
+**Supporting Items:**
+
+_None_
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
+
+**Graph:**
+
+_No Historic Data Found_
+
+
+---
+
+### AOU-11 
+
+The integrator shall, whenever possible, replace outdated and/or provide additional references and validators that would further improve the trustability of a statement.
+
+
+**Supported Requests:**
+
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
 
@@ -325,7 +353,7 @@ _No Historic Data Found_
 
 ### AOU-14 
 
-The integrator shall ensure that nlohmann/json library is built with tools from the provided matrix specification, whenever nlohmann/json is used. (not yet provided)
+The integrator shall ensure that the eclipse-score/inc_nlohmann_json is built with tools from the provided matrix specification, whenever nlohmann/json is used within eclipse-score/inc_nlohmann_json. (not yet provided)
 
 
 **Supported Requests:**
@@ -357,12 +385,12 @@ _No Historic Data Found_
 
 ### AOU-15 
 
-The integrator shall maintain mirrors for all code and tools utilized in testing as long as nlohmann/json is actively used.
+The integrator shall maintain mirrors for all code and tools utilized in testing as long as nlohmann/json is actively used within eclipse-score/inc_nlohmann_json.
 
 
 **Supported Requests:**
 
-- [TA-TESTS](TA.md#ta-tests)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
 
@@ -389,7 +417,7 @@ _No Historic Data Found_
 
 ### AOU-16 
 
-The integrator shall use C++ versions and compilers that are tested in the CI pipeline, whenever nlohmann/json is used.
+The integrator shall use C++ versions and compilers that are tested in the CI pipeline, whenever nlohmann/json is used within eclipse-score/inc_nlohmann_json.
 
 
 **Supported Requests:**
@@ -421,12 +449,12 @@ _No Historic Data Found_
 
 ### AOU-17 
 
-The integrator shall identify misbehaviours for nlohmann/json, define appropriate mitigations, and ensure that these mitigations are thoroughly validated, whenever using nlohmann/json.
+The integrator shall identify misbehaviours for the nlohmann/json library, define appropriate mitigations, and ensure that these mitigations are thoroughly validated, whenever using eclipse-score/inc_nlohmann_json.
 
 
 **Supported Requests:**
 
-- [TA-MISBEHAVIOURS](TA.md#ta-misbehaviours)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
 
@@ -453,12 +481,12 @@ _No Historic Data Found_
 
 ### AOU-18 
 
-The integrator shall ensure that monitoring data from deployed software is accurately captured, securely stored, and well-documented for analysis, as long as nlohmann/json is actively used.
+The integrator shall ensure that monitoring data from deployed software is accurately captured, securely stored, and well-documented for analysis within eclipse-score/inc_nlohmann_json, as long as the nlohmann/json library is actively used within eclipse-score/inc_nlohmann_json.
 
 
 **Supported Requests:**
 
-- [TA-DATA](TA.md#ta-data)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
 
@@ -485,12 +513,12 @@ _No Historic Data Found_
 
 ### AOU-19 
 
-The integrator shall analyze monitoring data systematically to detect trends and identify issues, as long as nlohmann/json is actively used.
+The integrator shall analyze monitoring data systematically to detect trends and identify issues,  as long as the nlohmann/json library is actively used within eclipse-score/inc_nlohmann_json.
 
 
 **Supported Requests:**
 
-- [TA-ANALYSIS](TA.md#ta-analysis)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
 
@@ -517,12 +545,11 @@ _No Historic Data Found_
 
 ### AOU-20 
 
-The integrator shall ensure that the keys within an object are unique, whenever an object is to be parsed by nlohmann/json.
+The integrator shall ensure that the keys within an object are unique, whenever an object is to be parsed by eclipse-score/inc_nlohmann_json.
 
 
 **Supported Requests:**
 
-- [JLEX-02](JLEX.md#jlex-02)
 - [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
@@ -550,12 +577,11 @@ _No Historic Data Found_
 
 ### AOU-21 
 
-The integrator shall ensure that a string does not contain escaped unpaired utf-16 surrogate characters, and that exceptions are properly handled, whenever a string is to be parsed by nlohmann/json.
+The integrator shall ensure that a string does not contain escaped unpaired utf-16 surrogate characters, and that exceptions are properly handled in eclipse-score/inc_nlohmann_json, whenever a string is to be parsed.
 
 
 **Supported Requests:**
 
-- [PJD-03](PJD.md#pjd-03)
 - [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
@@ -583,12 +609,12 @@ _No Historic Data Found_
 
 ### AOU-22 
 
-The integrator shall ensure that numbers are written in base 10, and that exceptions and misbehaviours in case that any other base is used are properly handled and mitigated, whenever a number is parsed by nlohmann/json.
+The integrator shall ensure that numbers are written in base 10, and that exceptions and misbehaviours in case that any other base is used are properly handled and mitigated within eclipse-score/inc_nlohmann_json, whenever a number is parsed.
 
 
 **Supported Requests:**
 
-- [NPF-02](NPF.md#npf-02)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
 
@@ -615,13 +641,12 @@ _No Historic Data Found_
 
 ### AOU-23 
 
-The integrator shall ensure that data are complete and error-free, whenever they are transmitted to nlohmann/json.
+The integrator shall ensure that data are complete and error-free, whenever they are transmitted to eclipse-score/inc_nlohmann_json.
 
 
 **Supported Requests:**
 
-- [TA-BEHAVIOURS](TA.md#ta-behaviours)
-- [TA-MISBEHAVIOURS](TA.md#ta-misbehaviours)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
 
@@ -648,13 +673,12 @@ _No Historic Data Found_
 
 ### AOU-24 
 
-The integrator shall ensure that the data do not change during reading, whenever transmitted to nlohmann/json.
+The integrator shall ensure that the data do not change during reading, whenever transmitted to eclipse-score/inc_nlohmann_json.
 
 
 **Supported Requests:**
 
-- [TA-BEHAVIOURS](TA.md#ta-behaviours)
-- [TA-MISBEHAVIOURS](TA.md#ta-misbehaviours)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
 
@@ -686,7 +710,7 @@ The integrator shall convince themselves that the behaviour of the used C++ stan
 
 **Supported Requests:**
 
-- [TA-BEHAVIOURS](TA.md#ta-behaviours)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
 
@@ -718,7 +742,7 @@ The integrator shall convince themselves that the misbehaviours of the C++ stand
 
 **Supported Requests:**
 
-- [TA-MISBEHAVIOURS](TA.md#ta-misbehaviours)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
 
@@ -745,12 +769,12 @@ _No Historic Data Found_
 
 ### AOU-27 
 
- The integrator shall ensure that ChangeLog.md is updated whenever the local mirror of nlohmann/json is updated. 
+The integrator shall ensure that the 'Release management' and 'Update concepts' in TSF/README.md are followed whenever any changes are done in eclipse-score/inc_nlohmann_json.
 
 
 **Supported Requests:**
 
-- [TA-UPDATES](TA.md#ta-updates)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
 
@@ -777,12 +801,44 @@ _No Historic Data Found_
 
 ### AOU-28 
 
-The integrator shall ensure that the known open bugs of nlohmann/json are regularly reviewed on their impact on the use of the documented version as long as the library is actively used.
+The integrator shall ensure that the known open bugs of the nlohmann/json repository are regularly reviewed on their impact on the use of the documented version of nlohmann/json, as long as the nlohmann/json library is actively used within eclipse-score/inc_nlohmann_json.
 
 
 **Supported Requests:**
 
-- [TA-FIXES](TA.md#ta-fixes)
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
+
+**Supporting Items:**
+
+_None_
+
+
+
+**References:**
+
+_None_
+
+
+
+**Fallacies:**
+
+_None_
+
+**Graph:**
+
+_No Historic Data Found_
+
+
+---
+
+### AOU-29 
+
+The integrator shall check the security tab in the GitHub UI on a regular basis, analyze and either fix or dismiss any outstanding CVEs.
+
+
+**Supported Requests:**
+
+- [TA-CONSTRAINTS](TA.md#ta-constraints)
 
 **Supporting Items:**
 

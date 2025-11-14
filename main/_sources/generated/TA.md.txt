@@ -1,7 +1,7 @@
 
 ### TA-ANALYSIS 
 
-Collected data from tests and monitoring of deployed software is analysed according to specified objectives.
+Collected data from tests and monitoring of deployed software in eclipse-score/inc_nlohmann_json is analysed according to specified objectives.
 
 
 **Supported Requests:**
@@ -11,7 +11,6 @@ Collected data from tests and monitoring of deployed software is analysed accord
 **Supporting Items:**
 
 - [JLS-17](JLS.md#jls-17)
-- [AOU-19](AOU.md#aou-19)
 - [JLS-26](JLS.md#jls-26)
 
 
@@ -100,35 +99,35 @@ _None_
 
 |date-time|TA-ANALYSIS|
 |-|-|
-|2025-08-26 12:04:48|0.00 |N/A|N/A|N/A|
-|2025-08-26 15:38:44|0.00 |N/A|N/A|N/A|
-|2025-08-27 10:29:06|0.00 |N/A|N/A|N/A|
-|2025-08-27 13:23:16|0.00 |N/A|N/A|N/A|
-|2025-08-27 14:20:48|0.00 |N/A|N/A|N/A|
-|2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|
-|2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|
-|2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|
-|2025-09-10 16:20:35|0.00 |N/A|N/A|N/A|
-|2025-09-11 09:23:26|0.00 |N/A|N/A|N/A|
-|2025-09-12 13:29:30|0.00 |N/A|N/A|N/A|
-|2025-09-15 11:48:05|0.00 |N/A|N/A|N/A|
-|2025-09-15 16:25:33|0.00 |N/A|N/A|N/A|
-|2025-09-16 11:32:53|0.00 |N/A|N/A|N/A|
-|2025-09-16 15:15:09|0.00 |N/A|N/A|N/A|
-|2025-09-17 09:31:47|0.00 |N/A|N/A|N/A|
-|2025-09-19 12:26:04|0.00 |N/A|N/A|N/A|
-|2025-09-26 09:39:39|0.00 |N/A|N/A|N/A|
-|2025-09-29 10:05:38|0.00 |N/A|N/A|N/A|
-|2025-10-06 15:13:57|0.00 |N/A|N/A|N/A|
-|2025-10-07 17:09:21|0.00 |N/A|N/A|N/A|
-|2025-10-14 18:05:11|0.00 |N/A|N/A|N/A|
-|2025-10-23 16:32:31|0.00 |N/A|N/A|N/A|
-|2025-10-24 08:52:52|0.00 |N/A|N/A|N/A|
-|2025-10-24 10:13:58|0.00 |N/A|N/A|N/A|
-|2025-10-27 12:37:56|0.00 |N/A|N/A|N/A|
-|2025-11-03 13:09:23|0.00 |N/A|N/A|N/A|
-|2025-11-06 18:37:31|0.00 |N/A|N/A|N/A|
-|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|N/A|
+|2025-08-26 12:04:48|0.00 |N/A|N/A|
+|2025-08-26 15:38:44|0.00 |N/A|N/A|
+|2025-08-27 10:29:06|0.00 |N/A|N/A|
+|2025-08-27 13:23:16|0.00 |N/A|N/A|
+|2025-08-27 14:20:48|0.00 |N/A|N/A|
+|2025-08-27 16:24:53|0.00 |N/A|N/A|
+|2025-08-28 17:29:59|0.00 |N/A|N/A|
+|2025-08-29 15:47:02|0.00 |N/A|N/A|
+|2025-09-10 16:20:35|0.00 |N/A|N/A|
+|2025-09-11 09:23:26|0.00 |N/A|N/A|
+|2025-09-12 13:29:30|0.00 |N/A|N/A|
+|2025-09-15 11:48:05|0.00 |N/A|N/A|
+|2025-09-15 16:25:33|0.00 |N/A|N/A|
+|2025-09-16 11:32:53|0.00 |N/A|N/A|
+|2025-09-16 15:15:09|0.00 |N/A|N/A|
+|2025-09-17 09:31:47|0.00 |N/A|N/A|
+|2025-09-19 12:26:04|0.00 |N/A|N/A|
+|2025-09-26 09:39:39|0.00 |N/A|N/A|
+|2025-09-29 10:05:38|0.00 |N/A|N/A|
+|2025-10-06 15:13:57|0.00 |N/A|N/A|
+|2025-10-07 17:09:21|0.00 |N/A|N/A|
+|2025-10-14 18:05:11|0.00 |N/A|N/A|
+|2025-10-23 16:32:31|0.00 |N/A|N/A|
+|2025-10-24 08:52:52|0.00 |N/A|N/A|
+|2025-10-24 10:13:58|0.00 |N/A|N/A|
+|2025-10-27 12:37:56|0.00 |N/A|N/A|
+|2025-11-03 13:09:23|0.00 |N/A|N/A|
+|2025-11-06 18:37:31|0.00 |N/A|N/A|
+|2025-11-14 15:50:06.044992|0.00 |N/A|N/A|
 
 
 
@@ -136,7 +135,7 @@ _None_
 
 ### TA-BEHAVIOURS 
 
-Expected or required behaviours for nlohmann/json library are identified, specified, verified and validated based on analysis.
+Expected or required behaviours for the nlohmann/json library are identified, specified, verified and validated based on analysis.
 
 
 **Supported Requests:**
@@ -148,10 +147,6 @@ Expected or required behaviours for nlohmann/json library are identified, specif
 - [JLEX-01](JLEX.md#jlex-01)
 - [JLEX-02](JLEX.md#jlex-02)
 - [JLS-03](JLS.md#jls-03)
-- [AOU-23](AOU.md#aou-23)
-- [AOU-24](AOU.md#aou-24)
-- [AOU-25](AOU.md#aou-25)
-- [JLS-27](JLS.md#jls-27)
 
 
 
@@ -225,15 +220,15 @@ _None_
 
 |date-time|TA-BEHAVIOURS|
 |-|-|
-|2025-08-26 12:04:48|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-26 15:38:44|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 10:29:06|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 13:23:16|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 14:20:48|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-26 12:04:48|0.00 |N/A|N/A|N/A|
+|2025-08-26 15:38:44|0.00 |N/A|N/A|N/A|
+|2025-08-27 10:29:06|0.00 |N/A|N/A|N/A|
+|2025-08-27 13:23:16|0.00 |N/A|N/A|N/A|
+|2025-08-27 14:20:48|0.00 |N/A|N/A|N/A|
+|2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|
+|2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|
+|2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|
+|2025-11-14 15:50:06.044992|0.00 |N/A|N/A|N/A|
 
 
 
@@ -241,7 +236,7 @@ _None_
 
 ### TA-CONFIDENCE 
 
-Confidence in nlohmann/json library is measured based on results of analysis.
+Confidence in the nlohmann/json library is measured based on results of analysis.
 
 
 **Supported Requests:**
@@ -252,7 +247,6 @@ Confidence in nlohmann/json library is measured based on results of analysis.
 
 - [JLS-08](JLS.md#jls-08)
 - [JLS-09](JLS.md#jls-09)
-- [AOU-10_COMBINED](AOU.md#aou-10_combined)
 - [JLS-20](JLS.md#jls-20)
 
 
@@ -293,15 +287,15 @@ _None_
 
 |date-time|TA-CONFIDENCE|
 |-|-|
-|2025-08-26 12:04:48|0.00 |N/A|N/A|N/A|N/A|
-|2025-08-26 15:38:44|0.00 |N/A|N/A|N/A|N/A|
-|2025-08-27 10:29:06|0.00 |N/A|N/A|N/A|N/A|
-|2025-08-27 13:23:16|0.00 |N/A|N/A|N/A|N/A|
-|2025-08-27 14:20:48|0.00 |N/A|N/A|N/A|N/A|
-|2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|N/A|
-|2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|N/A|
-|2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|N/A|
-|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|N/A|N/A|
+|2025-08-26 12:04:48|0.00 |N/A|N/A|N/A|
+|2025-08-26 15:38:44|0.00 |N/A|N/A|N/A|
+|2025-08-27 10:29:06|0.00 |N/A|N/A|N/A|
+|2025-08-27 13:23:16|0.00 |N/A|N/A|N/A|
+|2025-08-27 14:20:48|0.00 |N/A|N/A|N/A|
+|2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|
+|2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|
+|2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|
+|2025-11-14 15:50:06.044992|0.00 |N/A|N/A|N/A|
 
 
 
@@ -309,7 +303,7 @@ _None_
 
 ### TA-CONSTRAINTS 
 
-Constraints on adaptation and deployment of nlohmann/json library are specified.
+Constraints on adaptation and deployment of eclipse-score/inc_nlohmann_json are specified.
 
 
 **Supported Requests:**
@@ -326,6 +320,25 @@ Constraints on adaptation and deployment of nlohmann/json library are specified.
 - [AOU-16](AOU.md#aou-16)
 - [AOU-20](AOU.md#aou-20)
 - [AOU-21](AOU.md#aou-21)
+- [AOU-01](AOU.md#aou-01)
+- [AOU-02](AOU.md#aou-02)
+- [AOU-03](AOU.md#aou-03)
+- [AOU-08](AOU.md#aou-08)
+- [AOU-09](AOU.md#aou-09)
+- [AOU-15](AOU.md#aou-15)
+- [AOU-17](AOU.md#aou-17)
+- [AOU-18](AOU.md#aou-18)
+- [AOU-19](AOU.md#aou-19)
+- [AOU-22](AOU.md#aou-22)
+- [AOU-23](AOU.md#aou-23)
+- [AOU-24](AOU.md#aou-24)
+- [AOU-25](AOU.md#aou-25)
+- [AOU-26](AOU.md#aou-26)
+- [AOU-27](AOU.md#aou-27)
+- [AOU-28](AOU.md#aou-28)
+- [AOU-29](AOU.md#aou-29)
+- [AOU-10](AOU.md#aou-10)
+- [AOU-11](AOU.md#aou-11)
 
 
 
@@ -377,15 +390,15 @@ _None_
 
 |date-time|TA-CONSTRAINTS|
 |-|-|
-|2025-08-26 12:04:48|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-26 15:38:44|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 10:29:06|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 13:23:16|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 14:20:48|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-26 12:04:48|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-26 15:38:44|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-27 10:29:06|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-27 13:23:16|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-27 14:20:48|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-11-14 15:50:06.044992|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 
 
 
@@ -393,7 +406,7 @@ _None_
 
 ### TA-DATA 
 
-Data is collected from tests, and from monitoring of deployed software, according to specified objectives.
+Data in eclipse-score/inc_nlohmann_json is collected from tests, and from monitoring of deployed software, according to specified objectives.
 
 
 **Supported Requests:**
@@ -403,7 +416,6 @@ Data is collected from tests, and from monitoring of deployed software, accordin
 **Supporting Items:**
 
 - [JLS-18](JLS.md#jls-18)
-- [AOU-18](AOU.md#aou-18)
 
 
 
@@ -467,35 +479,35 @@ _None_
 
 |date-time|TA-DATA|
 |-|-|
-|2025-08-26 12:04:48|0.00 |N/A|N/A|
-|2025-08-26 15:38:44|0.00 |N/A|N/A|
-|2025-08-27 10:29:06|0.00 |N/A|N/A|
-|2025-08-27 13:23:16|0.00 |N/A|N/A|
-|2025-08-27 14:20:48|0.00 |N/A|N/A|
-|2025-08-27 16:24:53|0.00 |N/A|N/A|
-|2025-08-28 17:29:59|0.00 |N/A|N/A|
-|2025-08-29 15:47:02|0.00 |N/A|N/A|
-|2025-09-10 16:20:35|0.00 |N/A|N/A|
-|2025-09-11 09:23:26|0.00 |N/A|N/A|
-|2025-09-12 13:29:30|0.00 |N/A|N/A|
-|2025-09-15 11:48:05|0.00 |N/A|N/A|
-|2025-09-15 16:25:33|0.00 |N/A|N/A|
-|2025-09-16 11:32:53|0.00 |N/A|N/A|
-|2025-09-16 15:15:09|0.00 |N/A|N/A|
-|2025-09-17 09:31:47|0.00 |N/A|N/A|
-|2025-09-19 12:26:04|0.00 |N/A|N/A|
-|2025-09-26 09:39:39|0.00 |N/A|N/A|
-|2025-09-29 10:05:38|0.00 |N/A|N/A|
-|2025-10-06 15:13:57|0.00 |N/A|N/A|
-|2025-10-07 17:09:21|0.00 |N/A|N/A|
-|2025-10-14 18:05:11|0.00 |N/A|N/A|
-|2025-10-23 16:32:31|0.00 |N/A|N/A|
-|2025-10-24 08:52:52|0.00 |N/A|N/A|
-|2025-10-24 10:13:58|0.00 |N/A|N/A|
-|2025-10-27 12:37:56|0.00 |N/A|N/A|
-|2025-11-03 13:09:23|0.00 |N/A|N/A|
-|2025-11-06 18:37:31|0.00 |N/A|N/A|
-|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|
+|2025-08-26 12:04:48|0.00 |N/A|
+|2025-08-26 15:38:44|0.00 |N/A|
+|2025-08-27 10:29:06|0.00 |N/A|
+|2025-08-27 13:23:16|0.00 |N/A|
+|2025-08-27 14:20:48|0.00 |N/A|
+|2025-08-27 16:24:53|0.00 |N/A|
+|2025-08-28 17:29:59|0.00 |N/A|
+|2025-08-29 15:47:02|0.00 |N/A|
+|2025-09-10 16:20:35|0.00 |N/A|
+|2025-09-11 09:23:26|0.00 |N/A|
+|2025-09-12 13:29:30|0.00 |N/A|
+|2025-09-15 11:48:05|0.00 |N/A|
+|2025-09-15 16:25:33|0.00 |N/A|
+|2025-09-16 11:32:53|0.00 |N/A|
+|2025-09-16 15:15:09|0.00 |N/A|
+|2025-09-17 09:31:47|0.00 |N/A|
+|2025-09-19 12:26:04|0.00 |N/A|
+|2025-09-26 09:39:39|0.00 |N/A|
+|2025-09-29 10:05:38|0.00 |N/A|
+|2025-10-06 15:13:57|0.00 |N/A|
+|2025-10-07 17:09:21|0.00 |N/A|
+|2025-10-14 18:05:11|0.00 |N/A|
+|2025-10-23 16:32:31|0.00 |N/A|
+|2025-10-24 08:52:52|0.00 |N/A|
+|2025-10-24 10:13:58|0.00 |N/A|
+|2025-10-27 12:37:56|0.00 |N/A|
+|2025-11-03 13:09:23|0.00 |N/A|
+|2025-11-06 18:37:31|0.00 |N/A|
+|2025-11-14 15:50:06.044992|0.00 |N/A|
 
 
 
@@ -503,7 +515,7 @@ _None_
 
 ### TA-FIXES 
 
-Known bugs or misbehaviours are analysed and triaged, and critical fixes or mitigations are implemented or applied.
+In the nlohmann/json repository, known bugs or misbehaviours are analysed and triaged, and critical fixes or mitigations are implemented or applied.
 
 
 **Supported Requests:**
@@ -513,11 +525,12 @@ Known bugs or misbehaviours are analysed and triaged, and critical fixes or miti
 **Supporting Items:**
 
 - [JLS-05](JLS.md#jls-05)
-- [AOU-01](AOU.md#aou-01)
 - [JLS-04](JLS.md#jls-04)
 - [JLS-11](JLS.md#jls-11)
-- [AOU-10_COMBINED](AOU.md#aou-10_combined)
-- [AOU-28](AOU.md#aou-28)
+- [JLS-30](JLS.md#jls-30)
+- [JLS-29](JLS.md#jls-29)
+- [JLS-28](JLS.md#jls-28)
+- [JLS-33](JLS.md#jls-33)
 
 
 
@@ -602,35 +615,35 @@ _None_
 
 |date-time|TA-FIXES|
 |-|-|
-|2025-08-26 12:04:48|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-26 15:38:44|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 10:29:06|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 13:23:16|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 14:20:48|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-09-10 16:20:35|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-09-11 09:23:26|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-09-12 13:29:30|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-09-15 11:48:05|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-09-15 16:25:33|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-09-16 11:32:53|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-09-16 15:15:09|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-09-17 09:31:47|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-09-19 12:26:04|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-09-26 09:39:39|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-09-29 10:05:38|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-10-06 15:13:57|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-10-07 17:09:21|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-10-14 18:05:11|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-10-23 16:32:31|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-10-24 08:52:52|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-10-24 10:13:58|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-10-27 12:37:56|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-11-03 13:09:23|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-11-06 18:37:31|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-26 12:04:48|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-26 15:38:44|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-27 10:29:06|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-27 13:23:16|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-27 14:20:48|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-09-10 16:20:35|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-09-11 09:23:26|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-09-12 13:29:30|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-09-15 11:48:05|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-09-15 16:25:33|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-09-16 11:32:53|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-09-16 15:15:09|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-09-17 09:31:47|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-09-19 12:26:04|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-09-26 09:39:39|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-09-29 10:05:38|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-10-06 15:13:57|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-10-07 17:09:21|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-10-14 18:05:11|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-10-23 16:32:31|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-10-24 08:52:52|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-10-24 10:13:58|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-10-27 12:37:56|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-11-03 13:09:23|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-11-06 18:37:31|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-11-14 15:50:06.044992|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 
 
 
@@ -638,7 +651,7 @@ _None_
 
 ### TA-INDICATORS 
 
-Advanced warning indicators for misbehaviours are identified, and monitoring mechanisms are specified, verified and validated based on analysis.
+In eclipse-score/inc_nlohmann_json, advanced warning indicators for misbehaviours are identified, and monitoring mechanisms are specified, verified and validated based on analysis.
 
 
 **Supported Requests:**
@@ -647,7 +660,7 @@ Advanced warning indicators for misbehaviours are identified, and monitoring mec
 
 **Supporting Items:**
 
-- [AOU-09](AOU.md#aou-09)
+_None_
 
 
 
@@ -722,7 +735,7 @@ _No Historic Data Found_
 
 ### TA-INPUTS 
 
-All inputs to nlohmann/json library are assessed, to identify potential risks and issues.
+All inputs to the nlohmann/json library are assessed, to identify potential risks and issues.
 
 
 **Supported Requests:**
@@ -732,7 +745,6 @@ All inputs to nlohmann/json library are assessed, to identify potential risks an
 **Supporting Items:**
 
 - [JLS-04](JLS.md#jls-04)
-- [AOU-10_COMBINED](AOU.md#aou-10_combined)
 
 
 
@@ -818,15 +830,15 @@ _None_
 
 |date-time|TA-INPUTS|
 |-|-|
-|2025-08-26 12:04:48|0.00 |N/A|N/A|
-|2025-08-26 15:38:44|0.00 |N/A|N/A|
-|2025-08-27 10:29:06|0.00 |N/A|N/A|
-|2025-08-27 13:23:16|0.00 |N/A|N/A|
-|2025-08-27 14:20:48|0.00 |N/A|N/A|
-|2025-08-27 16:24:53|0.00 |N/A|N/A|
-|2025-08-28 17:29:59|0.00 |N/A|N/A|
-|2025-08-29 15:47:02|0.00 |N/A|N/A|
-|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|
+|2025-08-26 12:04:48|0.00 |N/A|
+|2025-08-26 15:38:44|0.00 |N/A|
+|2025-08-27 10:29:06|0.00 |N/A|
+|2025-08-27 13:23:16|0.00 |N/A|
+|2025-08-27 14:20:48|0.00 |N/A|
+|2025-08-27 16:24:53|0.00 |N/A|
+|2025-08-28 17:29:59|0.00 |N/A|
+|2025-08-29 15:47:02|0.00 |N/A|
+|2025-11-14 15:50:06.044992|0.00 |N/A|
 
 
 
@@ -834,7 +846,7 @@ _None_
 
 ### TA-ITERATIONS 
 
-All constructed iterations of nlohmann/json library include source code, build instructions, tests, results and attestations.
+All constructed iterations of the nlohmann/json library include source code, build instructions, tests, results and attestations.
 
 
 **Supported Requests:**
@@ -896,7 +908,7 @@ _None_
 |2025-08-27 16:24:53|0.00 |N/A|N/A|
 |2025-08-28 17:29:59|0.00 |N/A|N/A|
 |2025-08-29 15:47:02|0.00 |N/A|N/A|
-|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|
+|2025-11-14 15:50:06.044992|0.00 |N/A|N/A|
 
 
 
@@ -904,7 +916,7 @@ _None_
 
 ### TA-METHODOLOGIES 
 
-Manual methodologies applied for nlohmann/json library by contributors, and their results, are managed according to specified objectives.
+Manual methodologies applied for the nlohmann/json library by contributors, and their results, are managed according to specified objectives.
 
 
 **Supported Requests:**
@@ -913,7 +925,6 @@ Manual methodologies applied for nlohmann/json library by contributors, and thei
 
 **Supporting Items:**
 
-- [AOU-10_COMBINED](AOU.md#aou-10_combined)
 - [JLS-13](JLS.md#jls-13)
 
 
@@ -980,15 +991,15 @@ _None_
 
 |date-time|TA-METHODOLOGIES|
 |-|-|
-|2025-08-26 12:04:48|0.00 |N/A|N/A|
-|2025-08-26 15:38:44|0.00 |N/A|N/A|
-|2025-08-27 10:29:06|0.00 |N/A|N/A|
-|2025-08-27 13:23:16|0.00 |N/A|N/A|
-|2025-08-27 14:20:48|0.00 |N/A|N/A|
-|2025-08-27 16:24:53|0.00 |N/A|N/A|
-|2025-08-28 17:29:59|0.00 |N/A|N/A|
-|2025-08-29 15:47:02|0.00 |N/A|N/A|
-|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|
+|2025-08-26 12:04:48|0.00 |N/A|
+|2025-08-26 15:38:44|0.00 |N/A|
+|2025-08-27 10:29:06|0.00 |N/A|
+|2025-08-27 13:23:16|0.00 |N/A|
+|2025-08-27 14:20:48|0.00 |N/A|
+|2025-08-27 16:24:53|0.00 |N/A|
+|2025-08-28 17:29:59|0.00 |N/A|
+|2025-08-29 15:47:02|0.00 |N/A|
+|2025-11-14 15:50:06.044992|0.00 |N/A|
 
 
 
@@ -996,7 +1007,7 @@ _None_
 
 ### TA-MISBEHAVIOURS 
 
-Prohibited misbehaviours for nlohmann/json library are identified, and mitigations are specified, verified and validated based on analysis.
+Prohibited misbehaviours for the nlohmann/json library are identified, and mitigations are specified, verified and validated based on analysis.
 
 
 **Supported Requests:**
@@ -1008,10 +1019,7 @@ Prohibited misbehaviours for nlohmann/json library are identified, and mitigatio
 - [JLS-02](JLS.md#jls-02)
 - [JLS-24](JLS.md#jls-24)
 - [JLS-25](JLS.md#jls-25)
-- [AOU-17](AOU.md#aou-17)
-- [AOU-24](AOU.md#aou-24)
-- [AOU-23](AOU.md#aou-23)
-- [AOU-26](AOU.md#aou-26)
+- [JLS-31](JLS.md#jls-31)
 
 
 
@@ -1083,15 +1091,15 @@ _None_
 
 |date-time|TA-MISBEHAVIOURS|
 |-|-|
-|2025-08-26 12:04:48|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-26 15:38:44|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 10:29:06|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 13:23:16|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 14:20:48|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
-|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-26 12:04:48|0.00 |N/A|N/A|N/A|N/A|
+|2025-08-26 15:38:44|0.00 |N/A|N/A|N/A|N/A|
+|2025-08-27 10:29:06|0.00 |N/A|N/A|N/A|N/A|
+|2025-08-27 13:23:16|0.00 |N/A|N/A|N/A|N/A|
+|2025-08-27 14:20:48|0.00 |N/A|N/A|N/A|N/A|
+|2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|N/A|
+|2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|N/A|
+|2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|N/A|
+|2025-11-14 15:50:06.044992|0.00 |N/A|N/A|N/A|N/A|
 
 
 
@@ -1099,7 +1107,7 @@ _None_
 
 ### TA-RELEASES 
 
-Construction of nlohmann/json library releases is fully repeatable and the results are fully reproducible, with any exceptions documented and justified.
+Construction of releases for the nlohmann/json library is fully repeatable and the results are fully reproducible, with any exceptions documented and justified.
 
 
 **Supported Requests:**
@@ -1110,7 +1118,6 @@ Construction of nlohmann/json library releases is fully repeatable and the resul
 
 - [JLS-14](JLS.md#jls-14)
 - [JLS-21](JLS.md#jls-21)
-- [AOU-08](AOU.md#aou-08)
 
 
 
@@ -1158,15 +1165,15 @@ _None_
 
 |date-time|TA-RELEASES|
 |-|-|
-|2025-08-26 12:04:48|0.00 |N/A|N/A|N/A|
-|2025-08-26 15:38:44|0.00 |N/A|N/A|N/A|
-|2025-08-27 10:29:06|0.00 |N/A|N/A|N/A|
-|2025-08-27 13:23:16|0.00 |N/A|N/A|N/A|
-|2025-08-27 14:20:48|0.00 |N/A|N/A|N/A|
-|2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|
-|2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|
-|2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|
-|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|N/A|
+|2025-08-26 12:04:48|0.00 |N/A|N/A|
+|2025-08-26 15:38:44|0.00 |N/A|N/A|
+|2025-08-27 10:29:06|0.00 |N/A|N/A|
+|2025-08-27 13:23:16|0.00 |N/A|N/A|
+|2025-08-27 14:20:48|0.00 |N/A|N/A|
+|2025-08-27 16:24:53|0.00 |N/A|N/A|
+|2025-08-28 17:29:59|0.00 |N/A|N/A|
+|2025-08-29 15:47:02|0.00 |N/A|N/A|
+|2025-11-14 15:50:06.044992|0.00 |N/A|N/A|
 
 
 
@@ -1174,7 +1181,7 @@ _None_
 
 ### TA-SUPPLY_CHAIN 
 
-All sources for nlohmann/json library and tools are mirrored in our controlled environment.
+All sources and tools for the nlohmann/json library are mirrored in our controlled environment.
 
 
 **Supported Requests:**
@@ -1183,8 +1190,6 @@ All sources for nlohmann/json library and tools are mirrored in our controlled e
 
 **Supporting Items:**
 
-- [AOU-02](AOU.md#aou-02)
-- [AOU-03](AOU.md#aou-03)
 - [JLS-23](JLS.md#jls-23)
 
 
@@ -1233,15 +1238,15 @@ _None_
 
 |date-time|TA-SUPPLY_CHAIN|
 |-|-|
-|2025-08-26 12:04:48|0.00 |N/A|N/A|N/A|
-|2025-08-26 15:38:44|0.00 |N/A|N/A|N/A|
-|2025-08-27 10:29:06|0.00 |N/A|N/A|N/A|
-|2025-08-27 13:23:16|0.00 |N/A|N/A|N/A|
-|2025-08-27 14:20:48|0.00 |N/A|N/A|N/A|
-|2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|
-|2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|
-|2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|
-|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|N/A|
+|2025-08-26 12:04:48|0.00 |N/A|
+|2025-08-26 15:38:44|0.00 |N/A|
+|2025-08-27 10:29:06|0.00 |N/A|
+|2025-08-27 13:23:16|0.00 |N/A|
+|2025-08-27 14:20:48|0.00 |N/A|
+|2025-08-27 16:24:53|0.00 |N/A|
+|2025-08-28 17:29:59|0.00 |N/A|
+|2025-08-29 15:47:02|0.00 |N/A|
+|2025-11-14 15:50:06.044992|0.00 |N/A|
 
 
 
@@ -1249,7 +1254,7 @@ _None_
 
 ### TA-TESTS 
 
-All tests for nlohmann/json library, and its build and test environments, are constructed from controlled/mirrored sources and are reproducible, with any exceptions documented.
+All tests for the nlohmann/json library, and its build and test environments, are constructed from controlled/mirrored sources and are reproducible, with any exceptions documented.
 
 
 **Supported Requests:**
@@ -1259,7 +1264,6 @@ All tests for nlohmann/json library, and its build and test environments, are co
 **Supporting Items:**
 
 - [JLS-16](JLS.md#jls-16)
-- [AOU-15](AOU.md#aou-15)
 
 
 
@@ -1307,15 +1311,15 @@ _None_
 
 |date-time|TA-TESTS|
 |-|-|
-|2025-08-26 12:04:48|0.00 |N/A|N/A|
-|2025-08-26 15:38:44|0.00 |N/A|N/A|
-|2025-08-27 10:29:06|0.00 |N/A|N/A|
-|2025-08-27 13:23:16|0.00 |N/A|N/A|
-|2025-08-27 14:20:48|0.00 |N/A|N/A|
-|2025-08-27 16:24:53|0.00 |N/A|N/A|
-|2025-08-28 17:29:59|0.00 |N/A|N/A|
-|2025-08-29 15:47:02|0.00 |N/A|N/A|
-|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|
+|2025-08-26 12:04:48|0.00 |N/A|
+|2025-08-26 15:38:44|0.00 |N/A|
+|2025-08-27 10:29:06|0.00 |N/A|
+|2025-08-27 13:23:16|0.00 |N/A|
+|2025-08-27 14:20:48|0.00 |N/A|
+|2025-08-27 16:24:53|0.00 |N/A|
+|2025-08-28 17:29:59|0.00 |N/A|
+|2025-08-29 15:47:02|0.00 |N/A|
+|2025-11-14 15:50:06.044992|0.00 |N/A|
 
 
 
@@ -1335,7 +1339,9 @@ nlohmann/json library components, configurations and tools are updated under spe
 - [JLS-06](JLS.md#jls-06)
 - [JLS-07](JLS.md#jls-07)
 - [JLS-12](JLS.md#jls-12)
-- [AOU-27](AOU.md#aou-27)
+- [JLS-32](JLS.md#jls-32)
+- [JLS-35](JLS.md#jls-35)
+- [JLS-34](JLS.md#jls-34)
 
 
 
@@ -1383,15 +1389,15 @@ _None_
 
 |date-time|TA-UPDATES|
 |-|-|
-|2025-08-26 12:04:48|0.00 |N/A|N/A|N/A|N/A|
-|2025-08-26 15:38:44|0.00 |N/A|N/A|N/A|N/A|
-|2025-08-27 10:29:06|0.00 |N/A|N/A|N/A|N/A|
-|2025-08-27 13:23:16|0.00 |N/A|N/A|N/A|N/A|
-|2025-08-27 14:20:48|0.00 |N/A|N/A|N/A|N/A|
-|2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|N/A|
-|2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|N/A|
-|2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|N/A|
-|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|N/A|N/A|
+|2025-08-26 12:04:48|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-26 15:38:44|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-27 10:29:06|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-27 13:23:16|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-27 14:20:48|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-27 16:24:53|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-28 17:29:59|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-08-29 15:47:02|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
+|2025-11-14 15:50:06.044992|0.00 |N/A|N/A|N/A|N/A|N/A|N/A|
 
 
 
@@ -1399,7 +1405,7 @@ _None_
 
 ### TA-VALIDATION 
 
-All specified tests are executed repeatedly, under defined conditions in controlled environments, according to specified objectives.
+All specified tests are executed repeatedly, under defined conditions in controlled environments, according to specified objectives. (To revisit)
 
 
 **Supported Requests:**
@@ -1515,5 +1521,5 @@ _None_
 |2025-10-27 12:37:56|0.00 |N/A|N/A|
 |2025-11-03 13:09:23|0.00 |N/A|N/A|
 |2025-11-06 18:37:31|0.00 |N/A|N/A|
-|2025-11-10 12:59:50.415890|0.00 |N/A|N/A|
+|2025-11-14 15:50:06.044992|0.00 |N/A|N/A|
 

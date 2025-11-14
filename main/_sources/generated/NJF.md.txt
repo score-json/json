@@ -1,7 +1,7 @@
 
 ### NJF-01 
 
-The service accepts the literal name null. 
+The service provided by the nlohmann/json library accepts the literal name null. 
 
 
 **Supported Requests:**
@@ -151,7 +151,7 @@ _No Historic Data Found_
 
 ### NJF-02 
 
-The service accepts the literal name true.
+The service provided by the nlohmann/json library accepts the literal name true.
 
 
 **Supported Requests:**
@@ -404,7 +404,7 @@ _No Historic Data Found_
 
 ### NJF-03 
 
-The service accepts the literal name false.
+The service provided by the nlohmann/json library accepts the literal name false.
 
 
 **Supported Requests:**
@@ -554,7 +554,7 @@ _No Historic Data Found_
 
 ### NJF-04 
 
-The service does not accept any other literal name.
+The service provided by the nlohmann/json library does not accept any other literal name.
 
 
 **Supported Requests:**
@@ -1748,7 +1748,7 @@ _No Historic Data Found_
 
 ### NJF-05 
 
-The service accepts and rejects arrays according to RFC8259 §5.
+The service provided by the nlohmann/json library accepts and rejects arrays according to RFC8259 §5.
 
 
 **Supported Requests:**
@@ -1787,7 +1787,7 @@ _No Historic Data Found_
 
 ### NJF-05.1 
 
-The service accepts the empty array.
+The service provided by the nlohmann/json library accepts the empty array.
 
 
 **Supported Requests:**
@@ -1946,7 +1946,7 @@ _No Historic Data Found_
 
 ### NJF-05.2 
 
-The service accepts the non-empty arrays.
+The service provided by the nlohmann/json library accepts the non-empty arrays.
 
 
 **Supported Requests:**
@@ -2271,7 +2271,7 @@ _No Historic Data Found_
 
 ### NJF-05.3 
 
-If every value candidate of a properly bounded array is accepted as singleton, then the service accepts the array.
+If every value candidate of a properly bounded array is accepted as singleton, then the service provided by the nlohmann/json library accepts the array.
 
 
 **Supported Requests:**
@@ -2567,7 +2567,7 @@ _No Historic Data Found_
 
 ### NJF-05.4 
 
-The service does not accept any improperly bounded arrays.
+The service provided by the nlohmann/json library does not accept any improperly bounded arrays.
 
 
 **Supported Requests:**
@@ -3056,7 +3056,7 @@ _No Historic Data Found_
 
 ### NJF-05.5 
 
-The service does not accept arrays with improper values.
+The service provided by the nlohmann/json library does not accept arrays with improper values.
 
 
 **Supported Requests:**
@@ -3211,7 +3211,7 @@ _No Historic Data Found_
 
 ### NJF-05.6 
 
-The service accepts nested arrays.
+The service provided by the nlohmann/json library accepts nested arrays.
 
 
 **Supported Requests:**
@@ -3321,7 +3321,7 @@ _No Historic Data Found_
 
 ### NJF-05.6.0 
 
-The acceptance of nested arrays does not depend on the depth of nesting.
+The acceptance of nested arrays by the service provided by the nlohmann/json library does not depend on the depth of nesting.
 
 
 **Supported Requests:**
@@ -3396,7 +3396,7 @@ _No Historic Data Found_
 
 ### NJF-05.7 
 
-The service does only accept comma as value separator.
+The service provided by the nlohmann/json library does only accept comma as value separator.
 
 
 **Supported Requests:**
@@ -3429,7 +3429,7 @@ _No Historic Data Found_
 
 ### NJF-05.7.1 
 
-The service does accept comma as value separator.
+The service provided by the nlohmann/json library does accept comma as value separator.
 
 
 **Supported Requests:**
@@ -3557,7 +3557,7 @@ _No Historic Data Found_
 
 ### NJF-05.7.2 
 
-The service does not accept any other value separator.
+The service provided by the nlohmann/json library does not accept any other value separator.
 
 
 **Supported Requests:**
@@ -3635,7 +3635,7 @@ _No Historic Data Found_
 
 ### NJF-06 
 
-The service accepts and rejects objects according to RFC8259 §4.
+The service provided by the nlohmann/json library accepts and rejects objects according to RFC8259 §4.
 
 
 **Supported Requests:**
@@ -3674,7 +3674,7 @@ _No Historic Data Found_
 
 ### NJF-06.1 
 
-The service accepts the empty object.
+The service provided by the nlohmann/json library accepts the empty object.
 
 
 **Supported Requests:**
@@ -3762,7 +3762,7 @@ _No Historic Data Found_
 
 ### NJF-06.2 
 
-The service does not accept improperly bounded objects.
+The service provided by the nlohmann/json library does not accept improperly bounded objects.
 
 
 **Supported Requests:**
@@ -3884,7 +3884,7 @@ _No Historic Data Found_
 
 ### NJF-06.3 
 
-The service accepts the non-empty objects.
+The service provided by the nlohmann/json library accepts the non-empty objects.
 
 
 **Supported Requests:**
@@ -3984,7 +3984,7 @@ _No Historic Data Found_
 
 ### NJF-06.4 
 
-The admissible members of an object have the form name : value.
+The admissible members of an object provided to the eclipse-score/inc_nlohmann_json have the form name : value.
 
 
 **Supported Requests:**
@@ -4498,7 +4498,7 @@ _No Historic Data Found_
 
 ### NJF-06.4.1 
 
-If the service recognises the name candidate as string, then it accepts the name candidate.
+If the service provided by the nlohmann/json library recognises the name candidate as string, then it accepts the name candidate.
 
 
 **Supported Requests:**
@@ -4805,7 +4805,7 @@ _No Historic Data Found_
 
 ### NJF-06.4.2 
 
-The service does not accept any other token as name.
+The service provided by the nlohmann/json library does not accept any other token as name.
 
 
 **Supported Requests:**
@@ -4978,7 +4978,7 @@ _No Historic Data Found_
 
 ### NJF-06.4.3 
 
-If the service accepts the value-candidate as a singleton, then the value-candidate is accepted.
+If the service provided by the nlohmann/json library accepts the value-candidate as a singleton, then the value-candidate is accepted.
 
 
 **Supported Requests:**
@@ -5203,7 +5203,7 @@ _No Historic Data Found_
 
 ### NJF-06.5 
 
-The service does not accept objects with improper members.
+The service provided by the nlohmann/json library does not accept objects with improper members.
 
 
 **Supported Requests:**
@@ -5287,7 +5287,7 @@ _No Historic Data Found_
 
 ### NJF-06.5.1 
 
-If the service does not accept any name candidate as singleton, then the service does not accept the object candidate.
+If the service provided by the nlohmann/json library does not accept any name candidate as singleton, then the service does not accept the object candidate.
 
 
 **Supported Requests:**
@@ -5494,7 +5494,7 @@ _No Historic Data Found_
 
 ### NJF-06.5.2 
 
-If the service does not accept any value candidate as singleton, then the service does not accept the object candidate.
+If the service provided by the nlohmann/json library does not accept any value candidate as singleton, then the service does not accept the object candidate.
 
 
 **Supported Requests:**
@@ -5594,7 +5594,7 @@ _No Historic Data Found_
 
 ### NJF-06.6 
 
-The service accept the nested objects.
+The service provided by the nlohmann/json library accepts the nested objects.
 
 
 **Supported Requests:**
@@ -5819,7 +5819,7 @@ _No Historic Data Found_
 
 ### NJF-06.6.0 
 
-The acceptance of nested objects does not depend on the depth of nesting.
+The acceptance of nested objects inside the nlohmann/json library does not depend on the depth of nesting.
 
 
 **Supported Requests:**
@@ -6044,7 +6044,7 @@ _No Historic Data Found_
 
 ### NJF-06.7 
 
-The service does only accept comma as member separator.
+The service provided by the nlohmann/json library does only accept comma as member separator.
 
 
 **Supported Requests:**
@@ -6077,7 +6077,7 @@ _No Historic Data Found_
 
 ### NJF-06.7.1 
 
-The service accepts comma as member separator.
+The service provided by the nlohmann/json library accepts comma as member separator.
 
 
 **Supported Requests:**
@@ -6382,7 +6382,7 @@ _No Historic Data Found_
 
 ### NJF-06.7.2 
 
-The service does not accept any other member separator.
+The service provided by the nlohmann/json library does not accept any other member separator.
 
 
 **Supported Requests:**
@@ -6584,7 +6584,7 @@ _No Historic Data Found_
 
 ### NJF-07 
 
-The service accepts and rejects strings according to RFC8259 §7.
+The service provided by the nlohmann/json library accepts and rejects strings according to RFC8259 §7.
 
 
 **Supported Requests:**
@@ -7220,7 +7220,7 @@ _No Historic Data Found_
 
 ### NJF-07.1 
 
-The service does accept empty string.
+The service provided by the nlohmann/json library does accept empty strings.
 
 
 **Supported Requests:**
@@ -7386,7 +7386,7 @@ _No Historic Data Found_
 
 ### NJF-07.2 
 
-The service does not accept the improperly bounded strings.
+The service provided by the nlohmann/json library does not accept the improperly bounded strings.
 
 
 **Supported Requests:**
@@ -7976,7 +7976,7 @@ _No Historic Data Found_
 
 ### NJF-07.3 
 
-The service does not accept unescaped control characters.
+The service provided by the nlohmann/json library does not accept unescaped control characters.
 
 
 **Supported Requests:**
@@ -8069,7 +8069,7 @@ _No Historic Data Found_
 
 ### NJF-07.4 
 
-The service does accept the escaped control characters.
+The service provided by the nlohmann/json library does accept escaped control characters.
 
 
 **Supported Requests:**
@@ -8394,7 +8394,7 @@ _No Historic Data Found_
 
 ### NJF-07.5 
 
-The service accepts UTF-16 surrogate pairs.
+The service provided by the nlohmann/json library accepts UTF-16 surrogate pairs.
 
 
 **Supported Requests:**
@@ -8558,7 +8558,7 @@ _No Historic Data Found_
 
 ### NJF-07.6 
 
-The service does accept the non-empty strings.
+The service provided by the nlohmann/json library does accept non-empty strings.
 
 
 **Supported Requests:**
@@ -9110,7 +9110,7 @@ _No Historic Data Found_
 
 ### NJF-07.7 
 
-The service does not accept escaped invalid characters.
+The service provided by the nlohmann/json library does not accept escaped invalid characters.
 
 
 **Supported Requests:**
@@ -9411,7 +9411,7 @@ _No Historic Data Found_
 
 ### NJF-07.8 
 
-The service does not accept single unpaired utf-16 surrogates.
+The service provided by the nlohmann/json library does not accept single unpaired utf-16 surrogates.
 
 
 **Supported Requests:**
@@ -9484,7 +9484,7 @@ _No Historic Data Found_
 
 ### NJF-07.9 
 
-The service does not accept unescaped UTF-16 surrogate pairs.
+The service provided by the nlohmann/json library does not accept unescaped UTF-16 surrogate pairs.
 
 
 **Supported Requests:**
@@ -9559,7 +9559,7 @@ _No Historic Data Found_
 
 ### NJF-08 
 
-The service accepts numbers according to RFC8259 §6.
+The service provided by the nlohmann/json library accepts numbers according to RFC8259 §6.
 
 
 **Supported Requests:**
@@ -9936,7 +9936,7 @@ _No Historic Data Found_
 
 ### NJF-08.1 
 
-The service does accept integers within the limits of 64-bit double.
+The service provided by the nlohmann/json library does accept integers within the limits of 64-bit double.
 
 
 **Supported Requests:**
@@ -10054,7 +10054,7 @@ _No Historic Data Found_
 
 ### NJF-08.2 
 
-The service does accept integers according to IEEE 754 binary64.
+The service provided by the nlohmann/json library does accept integers according to IEEE 754 binary64.
 
 
 **Supported Requests:**
@@ -10114,7 +10114,7 @@ _No Historic Data Found_
 
 ### NJF-08.3 
 
-The service does not accept NaN, infinity.
+The service provided by the nlohmann/json library does not accept NaN and infinity.
 
 
 **Supported Requests:**
@@ -10529,7 +10529,7 @@ _No Historic Data Found_
 
 ### NJF-08.4 
 
-The service does accept e or E for numbers with exponent within the bounds of double.
+The service provided by the nlohmann/json library does accept e or E for numbers with exponent within the bounds of double.
 
 
 **Supported Requests:**
@@ -10712,7 +10712,7 @@ _No Historic Data Found_
 
 ### NJF-08.5 
 
-The service does not accept u0415 and u0436 (cyrillic e and E) as exponent signs in numbers with exponent.
+The service provided by the nlohmann/json library does not accept u0415 and u0436 (cyrillic e and E) as exponent signs in numbers with exponent.
 
 
 **Supported Requests:**
@@ -10784,7 +10784,7 @@ _No Historic Data Found_
 
 ### NJF-08.6 
 
-The service does not accept invalid syntax for numbers.
+The service provided by the nlohmann/json library does not accept invalid syntax for numbers.
 
 
 **Supported Requests:**
@@ -11517,7 +11517,7 @@ _No Historic Data Found_
 
 ### NJF-08.7 
 
-The service does accept decimal points in numbers within the bounds of double.
+The service provided by the nlohmann/json library does accept decimal points in numbers within the bounds of double.
 
 
 **Supported Requests:**
@@ -11582,7 +11582,7 @@ _No Historic Data Found_
 
 ### NJF-08.8 
 
-The service does not accept leading zeroes.
+The service provided by the nlohmann/json library does not accept leading zeroes.
 
 
 **Supported Requests:**
@@ -11728,7 +11728,7 @@ _No Historic Data Found_
 
 ### NJF-08.9 
 
-The service does not accept any other digit symbol than 0-9.
+The service provided by the nlohmann/json library does not accept any other digit symbol than 0-9.
 
 
 **Supported Requests:**
@@ -11947,7 +11947,7 @@ _No Historic Data Found_
 
 ### NJF-12 
 
-The service decodes UTF-8 data.
+The service provided by the nlohmann/json library decodes UTF-8 data.
 
 
 **Supported Requests:**
@@ -11983,7 +11983,7 @@ _No Historic Data Found_
 
 ### NJF-12.1 
 
-The service rejects malformed UTF-8 data.
+The service provided by the nlohmann/json library rejects malformed UTF-8 data.
 
 
 **Supported Requests:**
@@ -12119,7 +12119,7 @@ _No Historic Data Found_
 
 ### NJF-12.2 
 
-The service rejects "overlong sequences".
+The service provided by the nlohmann/json library rejects "overlong sequences".
 
 
 **Supported Requests:**
@@ -12218,7 +12218,7 @@ _No Historic Data Found_
 
 ### NJF-12.3 
 
-The service rejects single escaped and unescaped, and paired unescaped utf-16 surrogates.
+The service provided by the nlohmann/json library rejects single escaped and unescaped, and paired unescaped utf-16 surrogates.
 
 
 **Supported Requests:**
@@ -12330,7 +12330,7 @@ _No Historic Data Found_
 
 ### NJF-12.5 
 
-The service accepts Non-Characters.
+The service provided by the nlohmann/json library accepts Non-Characters.
 
 
 **Supported Requests:**
@@ -12466,7 +12466,7 @@ _No Historic Data Found_
 
 ### NJF-12.6 
 
-The service accepts well-formed UTF-8 data.
+The service provided by the nlohmann/json library accepts well-formed UTF-8 data.
 
 
 **Supported Requests:**
@@ -12538,7 +12538,7 @@ _No Historic Data Found_
 
 ### NJF-13 
 
-The service accepts JSON data consisting of combinations of the data types.
+The service provided by the nlohmann/json library accepts JSON data consisting of combinations of the data types.
 
 
 **Supported Requests:**
@@ -12599,7 +12599,7 @@ _No Historic Data Found_
 
 ### NJF-14 
 
-The service accepts a single complete UTF-8 byte order mark at the beginning of the input only.
+The service provided by the nlohmann/json library accepts a single complete UTF-8 byte order mark at the beginning of the input only.
 
 
 **Supported Requests:**
@@ -12635,7 +12635,7 @@ _No Historic Data Found_
 
 ### NJF-14.1 
 
-If the service accepts an input containing no BOM, then it accepts a single UTF-8 byte order mark followed by that input.
+If the service provided by the nlohmann/json library accepts an input containing no BOM, then it accepts a single UTF-8 byte order mark followed by that input.
 
 
 **Supported Requests:**
@@ -12691,7 +12691,7 @@ _No Historic Data Found_
 
 ### NJF-14.2 
 
-The service does not accept multiple UTF-8 byte order marks.
+The service provided by the nlohmann/json library does not accept multiple UTF-8 byte order marks.
 
 
 **Supported Requests:**
@@ -12745,7 +12745,7 @@ _No Historic Data Found_
 
 ### NJF-14.3 
 
-The service does not accept incomplete or perturbed UTF-8 byte order marks within the first three characters of the input.
+The service provided by the nlohmann/json library does not accept incomplete or perturbed UTF-8 byte order marks within the first three characters of the input.
 
 
 **Supported Requests:**
@@ -13228,7 +13228,7 @@ _No Historic Data Found_
 
 ### NJF-14.4 
 
-The service does not accept UTF-16 and UTF-32 byte order marks instead of the UTF-8 byte order mark.
+The service provided by the nlohmann/json library does not accept UTF-16 and UTF-32 byte order marks instead of the UTF-8 byte order mark.
 
 
 **Supported Requests:**
@@ -13281,7 +13281,7 @@ _No Historic Data Found_
 
 ### NJF-14.5 
 
-The service does not accept UTF-8 byte order mark outside of a string and outside of the first three characters of the input.
+The service provided by the nlohmann/json library does not accept UTF-8 byte order mark outside of a string and outside of the first three characters of the input.
 
 
 **Supported Requests:**

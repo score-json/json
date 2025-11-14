@@ -1,7 +1,7 @@
 
 ### WFJ-01 
 
-The service checks the well-formedness of the literal names.
+The service provided by the nlohmann/json library checks the well-formedness of the literal names.
 
 
 **Supported Requests:**
@@ -36,7 +36,7 @@ _No Historic Data Found_
 
 ### WFJ-02 
 
-The service checks the well-formedness of strings.
+The service provided by the nlohmann/json library checks the well-formedness of strings.
 
 
 **Supported Requests:**
@@ -68,7 +68,7 @@ _No Historic Data Found_
 
 ### WFJ-03 
 
-The service checks the well-formedness of numbers.
+The service provided by the nlohmann/json library checks the well-formedness of numbers.
 
 
 **Supported Requests:**
@@ -100,7 +100,7 @@ _No Historic Data Found_
 
 ### WFJ-04 
 
-The service checks the well-formedness of array.
+The service provided by the nlohmann/json library checks the well-formedness of array.
 
 
 **Supported Requests:**
@@ -132,7 +132,7 @@ _No Historic Data Found_
 
 ### WFJ-05 
 
-The service checks the well-formedness of objects.
+The service provided by the nlohmann/json library checks the well-formedness of objects.
 
 
 **Supported Requests:**
@@ -165,7 +165,7 @@ _No Historic Data Found_
 
 ### WFJ-06 
 
-The service checks that a JSON value must be an object, array, number, or string, or one of the lowercase literal names false, null, or true
+The service provided by the nlohmann/json library checks that a JSON value must be an object, array, number, or string, or one of the lowercase literal names false, null, or true
 
 
 **Supported Requests:**
@@ -694,7 +694,7 @@ _No Historic Data Found_
 
 ### WFJ-07 
 
-The service checks that JSON is only serialized using UTF-8.
+The service provided by the nlohmann/json library checks that JSON is only serialized using UTF-8.
 
 
 **Supported Requests:**
@@ -726,7 +726,7 @@ _No Historic Data Found_
 
 ### WFJ-08 
 
-The service ignores byte order marks.
+The service provided by the nlohmann/json library ignores byte order marks.
 
 
 **Supported Requests:**
