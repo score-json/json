@@ -29,4 +29,4 @@ score:
     Erikhu1: 0.95
 ---
 
-The acceptance of nested objects inside nlohmann/json does not depend on the depth of nesting.
+The acceptance of nested objects inside the nlohmann/json library does not depend on the depth of nesting.
