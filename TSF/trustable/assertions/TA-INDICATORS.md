@@ -6,4 +6,4 @@ references:
       path: ./TSF/trustable/assertions/TA-INDICATORS-CHECKLIST.md
 ---
 
-In score-json, advanced warning indicators for misbehaviours are identified, and monitoring mechanisms are specified, verified and validated based on analysis.
+In eclipse-score/inc_nlohmann_json, advanced warning indicators for misbehaviours are identified, and monitoring mechanisms are specified, verified and validated based on analysis.

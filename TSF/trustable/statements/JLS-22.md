@@ -24,4 +24,4 @@ score:
     Jonas-Kirchhoff: 1.0
 ---
 
-A github workflow of score-json executes the unit tests daily and saves the results as time-series data.
+A github workflow of eclipse-score/inc_nlohmann_json executes the unit tests daily and saves the results as time-series data.

@@ -13,4 +13,4 @@ score:
     Erikhu1: 0.5
 ---
 
-Outstanding CVEs are analyzed within score-json to determine whether they can be dismissed, and/or are relevant for S-CORE's use cases of the nlohmann/json library.
+Outstanding CVEs are analyzed within eclipse-score/inc_nlohmann_json to determine whether they can be dismissed, and/or are relevant for S-CORE's use cases of the nlohmann/json library.

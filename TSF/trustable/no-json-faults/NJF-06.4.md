@@ -13,4 +13,4 @@ references:
           path: "tests/src/unit-testsuites.cpp"
 ---
 
-The admissible members of an object provided to the score-json have the form name : value.
+The admissible members of an object provided to the eclipse-score/inc_nlohmann_json have the form name : value.
