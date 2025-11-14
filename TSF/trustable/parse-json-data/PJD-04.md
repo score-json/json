@@ -15,4 +15,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service correctly parses 64-bit integers (exceeding the range defined in RFC8259).
+The service provided by the nlohmann/json library correctly parses 64-bit integers (exceeding the range defined in RFC8259).

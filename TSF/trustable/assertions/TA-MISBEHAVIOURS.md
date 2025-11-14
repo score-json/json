@@ -6,4 +6,4 @@ references:
       path: ./TSF/trustable/assertions/TA-MISBEHAVIOURS-CHECKLIST.md
 ---
 
-Prohibited misbehaviours for nlohmann/json library are identified, and mitigations are specified, verified and validated based on analysis.
+Prohibited misbehaviours for the nlohmann/json library are identified, and mitigations are specified, verified and validated based on analysis.

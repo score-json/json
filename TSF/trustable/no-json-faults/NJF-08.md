@@ -8,4 +8,4 @@ references:
           description: "function, which scans numbers and verifies *en passant* that these number is in accordance with RFC8259"
 ---
 
-The service accepts numbers according to RFC8259 §6.
+The service provided by the nlohmann/json library accepts numbers according to RFC8259 §6.

@@ -28,4 +28,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service does not parse partial and perturbed UTF-8 byte order marks within the first three characters of the input and throws an exception.
+The service provided by the nlohmann/json library does not parse partial and perturbed UTF-8 byte order marks within the first three characters of the input and throws an exception.

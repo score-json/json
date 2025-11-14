@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The integrator is required to evaluate the provided evidence for TA-METHODOLOGIES and supplement it where necessary.
+The integrator shall, whenever possible, replace outdated and/or provide additional references and validators that would further improve the trustability of a statement.

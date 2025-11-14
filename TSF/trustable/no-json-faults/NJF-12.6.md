@@ -19,4 +19,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service accepts well-formed UTF-8 data.
+The service provided by the nlohmann/json library accepts well-formed UTF-8 data.

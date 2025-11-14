@@ -11,4 +11,4 @@ score:
     Erikhu1: 1.0
 ---
 
-Pipeline execution results are analyzed in nlohmann/json.
+Any failed CI pipeline executions in the master branch of the nlohmann/json repository are analyzed and fixed.

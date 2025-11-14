@@ -49,4 +49,4 @@ score:
     Erikhu1: 1.0
 ---
 
-If the service recognises the name candidate as string, then it accepts the name candidate.
+If the service provided by the nlohmann/json library recognises the name candidate as string, then it accepts the name candidate.

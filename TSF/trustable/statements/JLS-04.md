@@ -20,4 +20,4 @@ score:
     Erikhu1: 1.0
 ---
 
-External dependencies are checked for potential security vulnerabilities with each pull request to main. Merging is blocked until all warnings are resolved.
+External dependencies within nlohmann/json are checked for potential security vulnerabilities with each pull request to main. Merging is blocked until all warnings are resolved.

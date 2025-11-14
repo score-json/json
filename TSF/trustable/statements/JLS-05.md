@@ -22,7 +22,10 @@ references:
           description: "comparison between JSON libraries demonstrating the popularity of nlohmann/json"
         - type: project_website
           url: "https://json.nlohmann.me/home/customers/"
-          description: "list of large projects using nlohmann/json"
+          description: "presents a list of a subset of all customers who are using the nlohmann/json library"
+        - type: web_content
+          url: "https://github.com/nlohmann/json/releases/tag/v3.12.0"
+          description: "release notes for v3.12.0, listing bugs, CVEs and warnings which were either fixed or mitigated since last release"
 evidence:
         type: https_response_time
         configuration:
@@ -33,9 +36,11 @@ evidence:
                     - "https://github.com/nlohmann/json/graphs/contributors"
                     - "https://github.com/nlohmann/json/forks?include=active&page=1&period=&sort_by=last_updated"
                     - "https://github.com/nlohmann/json/pulse"
+                    - "https://github.com/orgs/score-json/discussions/27#discussion-8594385"
+                    - "https://json.nlohmann.me/home/customers/"
 score:
     Jonas-Kirchhoff: 1.0
     Erikhu1: 1.0
 ---
 
-The OSS nlohmann/json is widely used, actively maintained and uses github issues to track bugs and misbehaviours.
+The nlohmann/json library is widely used and actively maintained; bugs and misbehaviours are tracked publicly and transparently.

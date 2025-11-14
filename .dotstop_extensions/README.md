@@ -140,7 +140,7 @@ in case of a custom description.
 
 ## TimeVaryingWebReference
 
-The content of a `TimeVaryingWebReference` is given by the content of a changelog, whose default value is `ChangeLog.md`, which mirrors the changelog of nlohmann/json. This reference is intended for websites, whose content is constantly changing, so that a `WebContentReference` makes the item un-reviewable, but whose content at the time of an update influences the trustability. An example is `https://github.com/nlohmann/json/pulse/monthly`, which can be used to demonstrate that nlohmann/json is *up to the most recent version* under active development.
+The content of a `TimeVaryingWebReference` is given by the content of a changelog, whose default value is `ChangeLog.md`, which mirrors the changelog of nlohmann/json. This reference is intended for websites whose content is constantly changing, so that a `WebContentReference` makes the item un-reviewable, but whose content at the time of an update influences the trustability. An example is `https://github.com/nlohmann/json/pulse/monthly`, which can be used to demonstrate that nlohmann/json is *up to the most recent version* under active development.
 
 An example of the complete configuration for `TimeVaryingWebReference` is
 
@@ -235,6 +235,32 @@ references:
 ```
 Here, the elements of the list `items` must be normative nodes of the trustable graph, otherwise an error is thrown.
 
+## IncludeListReference
+
+The content of an `IncludeListReference` is given by the list of `#include` lines extracted from a specified source/header file in the repository (for example `single_include/nlohmann/json.hpp`). This reference is useful to document which libraries a file depends on without embedding the full file content into the report.
+
+Behaviour:
+- content: returns the concatenation of all lines that begin with `#include` in the target file as UTF-8 encoded bytes. If no includes are found, the content is `b"No includes found"`.
+- as_markdown: renders the found `#include` lines as a C++ code block (```cpp ... ```). If a `description` was provided when constructing the reference, the description is shown as an indented bullet above the code block.
+- If the referenced file does not exist or is not a regular file, accessing `content` raises a ReferenceError.
+
+Usage example:
+
+```
+---
+...
+
+references:
+- type: include_list
+  path: "single_include/nlohmann/json.hpp"
+  description: "List of direct includes of the amalgamated header"
+---
+```
+
+Notes:
+- `description` is optional.
+- The reference only extracts lines whose first non-whitespace characters are `#include`.
+
 # Validators
 
 Validators are extensions of trudag, used to validate any data that can be reduced to a floating point metric. The resulting scores are used as evidence for the trustability of items in the trustable graph.
@@ -270,8 +296,8 @@ evidence:
             - "https://github.com/nlohmann/json/graphs/commit-activity"
             - "https://github.com/nlohmann/json/forks?include=active&page=1&period=&sort_by=last_updated"
 ```
-A response time of at least the five-fold of the acceptable response time is deemed inacceptable and gives an individual score of zero.
-Likewise inacceptable is a response code other than `200`, which gives an individual score of zero.
+A response time of at least the five-fold of the acceptable response time is deemed unacceptable and gives an individual score of zero.
+Likewise unacceptable is a response code other than `200`, which gives an individual score of zero.
 
 The total score is the mean of the individual scores.
 

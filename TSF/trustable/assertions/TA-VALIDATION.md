@@ -6,4 +6,4 @@ references:
       path: ./TSF/trustable/assertions/TA-VALIDATION-CHECKLIST.md
 ---
 
-All specified tests are executed repeatedly, under defined conditions in controlled environments, according to specified objectives.
+All specified tests are executed repeatedly, under defined conditions in controlled environments, according to specified objectives. (To revisit)

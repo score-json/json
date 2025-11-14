@@ -26,4 +26,4 @@ score:
     Erikhu1: 1.0
 ---
 
-The service throws an exception on NaN, infinity.
+The service provided by the nlohmann/json library throws an exception on NaN and infinity.

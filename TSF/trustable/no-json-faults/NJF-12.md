@@ -3,4 +3,4 @@ level: 1.1
 normative: true
 ---
 
-The service decodes UTF-8 data.
+The service provided by the nlohmann/json library decodes UTF-8 data.
